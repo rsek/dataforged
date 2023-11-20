@@ -2,21 +2,19 @@
  * Abstract interfaces and utility types that are only used internally. They are not included in the final schema.
  */
 import {
-	type ObjectProperties,
-	type TArray,
-	type TOmit,
-	type TOptional,
-	type TPartial,
-	type TProperties,
-	type TRecord,
 	Type,
 	type ObjectOptions,
+	type ObjectProperties,
 	type SchemaOptions,
 	type Static,
+	type TArray,
 	type TBoolean,
 	type TLiteral,
 	type TNumber,
 	type TObject,
+	type TOmit,
+	type TOptional,
+	type TRecord,
 	type TRef,
 	type TSchema,
 	type TString,
@@ -28,7 +26,6 @@ import type { OracleTableRow } from '../oracles.js'
 import { DictKey } from './id.js'
 import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
-import type * as Utils from './utils.js'
 
 export type MergeObjectSchemas<A extends TObject, B extends TObject> = TObject<
 	A['properties'] & B['properties']
@@ -330,56 +327,3 @@ export type TRecursiveCollection<T extends TCollection<TSchema>> = TObject<
 		collections: TOptional<TDictionary<TThis>>
 	}
 >
-
-type EnhanceablePrimitive = TNumber | TBoolean
-
-type EnhanceableValue = EnhanceablePrimitive | TObject | TRef<TObject>
-
-type EnhanceableArrayItem = EnhanceableValue | TString
-type EnhanceableArray = TArray<EnhanceableArrayItem>
-
-type Enhanceable =
-	| EnhanceableValue
-	| EnhanceableArray
-	| Utils.TNullable<EnhanceableValue>
-	| Utils.TNullable<EnhanceableArray>
-	| TOptional<EnhanceableValue>
-	| TOptional<EnhanceableArray>
-	| TRef<EnhanceableValue>
-
-type UnwrapEnhanceable<T extends Enhanceable> = T extends TRef<infer U>
-	? U
-	: T extends Utils.TNullable<infer U>
-	  ? U
-	  : T
-
-type DeRef<T extends TSchema> = T extends TRef<infer U> ? U : T
-
-type Enhancer<T extends Enhanceable | TObject> = TOptional<
-	T extends TRef<EnhanceablePrimitive>
-		? DeRef<T>
-		: T extends TRef<TObject>
-		  ? Enhancer<DeRef<T>>
-		  : T extends TObject
-		    ? TObject<T>
-		    : T
->
-
-type EnhanceableKeyBlacklist = `enhance_${string}` | `source`
-
-type PickEnhanceable<T extends TProperties> = TypeFest.ConditionalPick<
-	Omit<T, EnhanceableKeyBlacklist>,
-	Enhanceable
->
-
-type TEnhanceableProperties<
-	T extends TProperties,
-	D extends keyof T | null
-> = D extends keyof T ? PickEnhanceable<T> & Pick<T, D> : PickEnhanceable<T>
-
-export type TObjectEnhancement<
-	T extends TObject,
-	D extends keyof Static<T> | null
-> = TPartial<TObject<TEnhanceableProperties<ObjectProperties<T>, D>>>
-
-export function Enhancer<T extends TSchema>() {}
