@@ -14,7 +14,6 @@ export type StatRule = Static<typeof StatRule>
 export const ConditionMeterRule = Type.Composite(
 	[
 		Type.Object({
-			name: Type.Ref(Localize.Label),
 			description: Type.Ref(Localize.MarkdownString),
 			shared: Type.Boolean({ default: false })
 		}),

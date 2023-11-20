@@ -64,3 +64,6 @@ export const AssetType = Abstract.Collection(
 )
 export type AssetType = Static<typeof AssetType>
 export type TAssetType = typeof AssetType
+
+export * from './assets/fields.js'
+export * from './assets/ability.js'

@@ -1,6 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { ID } from './index.js'
-import { UnionOneOf } from '../../../typebox/union-oneof.js'
 import { Nullable } from './utils.js'
 
 export const SVGImageURL = Type.RegExp(/\.svg$/i, {

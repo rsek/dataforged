@@ -41,7 +41,7 @@ export function TNullable(schema: unknown): schema is TNullable {
 }
 
 export function NonNullable<T extends TNullable>(base: T) {
-	const [schema, _nullSchema] = base.anyOf
+	const [schema] = base.anyOf
 	return schema
 }
 

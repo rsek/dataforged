@@ -72,21 +72,26 @@ export function isEnhanceable(field: TInputField<TInput<TSchema>, string>) {
 
 export function CounterField(id: TRef<TString>) {
 	return InputField(Counter, 'counter', id, {
-		[EnhanceableProperties]: ['max']
+		[EnhanceableProperties]: ['max'],
+		title: 'CounterField'
 	})
 }
 export type TCounterField = ReturnType<typeof CounterField>
 export type CounterField = Static<TCounterField>
 
 export function ClockField(id: TRef<TString>) {
-	return InputField(Clock, 'clock', id, { [EnhanceableProperties]: ['max'] })
+	return InputField(Clock, 'clock', id, {
+		[EnhanceableProperties]: ['max'],
+		title: 'ClockField'
+	})
 }
 export type TClockField = ReturnType<typeof ClockField>
 export type ClockField = Static<TClockField>
 
 export function ConditionMeterField(id: TRef<TString>) {
 	return InputField(Meter(LiteralZero, Type.Integer()), 'condition_meter', id, {
-		[EnhanceableProperties]: ['max']
+		[EnhanceableProperties]: ['max'],
+		title: 'ConditionMeterField'
 	})
 }
 export type TConditionMeterField = ReturnType<typeof ConditionMeterField>
@@ -112,7 +117,7 @@ export function SelectStatField(
 		SelectOption(Type.Ref(Player.PlayerStat)),
 		'select_stat',
 		id,
-		options
+		{ title: 'SelectStatField', options }
 	)
 }
 export type TSelectStatField = ReturnType<typeof SelectStatField>
@@ -135,11 +140,13 @@ export function SelectEnhancementField(
 						Type.Ref<TMoveEnhancement>('#/$defs/MoveEnhancement')
 					)
 				})
-			)
+			),
+			{ title: 'SelectEnhancementOption' }
 		),
 		'select_enhancement',
 		id,
 		{
+			title: 'SelectEnhancementField',
 			description:
 				'Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).',
 			...options
@@ -157,6 +164,7 @@ export function CardFlipField(id: TRef<TString>, options: ObjectOptions = {}) {
 		'card_flip',
 		id,
 		{
+			title: 'CardFlipField',
 			description: `When its value is set to \`true\` it means that the card is flipped over. Some assets use this to represent a 'broken' state (e.g. Starforged Module assets).`,
 			...options
 		}
@@ -166,13 +174,16 @@ export type TCardFlipField = ReturnType<typeof CardFlipField>
 export type CardFlipField = Static<TCardFlipField>
 
 export function CheckboxField(id: TRef<TString>, options: ObjectOptions = {}) {
-	return InputField(Checkbox, 'checkbox', id, options)
+	return InputField(Checkbox, 'checkbox', id, {
+		title: 'CheckboxField',
+		...options
+	})
 }
 export type TCheckboxField = ReturnType<typeof CheckboxField>
 export type CheckboxField = Static<TCheckboxField>
 
 export function TextField(id: TRef<TString>, options: ObjectOptions = {}) {
-	return InputField(TextInput, 'text', id, options)
+	return InputField(TextInput, 'text', id, { title: 'TextField', ...options })
 }
 export type TTextField = ReturnType<typeof TextField>
 export type TextField = Static<TTextField>

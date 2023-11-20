@@ -144,7 +144,7 @@ export const AssetAbilityControlField = DiscriminatedUnion(
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
 
-export const AbilityOptionFields = [Fields.TextField].map((fn) =>
+const AbilityOptionFields = [Fields.TextField].map((fn) =>
 	fn(Type.Ref(ID.AssetAbilityOptionFieldID))
 )
 
