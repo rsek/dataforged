@@ -1,4 +1,4 @@
-import { Type, type Static, type TOptional } from '@sinclair/typebox'
+import { Type, type Static } from '@sinclair/typebox'
 import { JsonEnum, JsonEnumFromRecord } from '../../typebox/enum.js'
 import { RecursiveCollection } from './utils/generic.js'
 import { Generic, ID, Localize, Metadata } from './common/index.js'

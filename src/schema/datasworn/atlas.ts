@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { ID, Generic } from './common/index.js'
 import { AtlasID } from './common/id.js'
+import { Generic, ID } from './common/index.js'
 
 export const AtlasEntry = Generic.Cyclopedia(
 	Type.Object({

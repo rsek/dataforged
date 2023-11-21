@@ -1,16 +1,15 @@
-import {
-	type Static,
-	Type,
-	type ObjectOptions,
-	type TProperties
-} from '@sinclair/typebox'
-import { ID, Localize, Progress, Metadata, Generic } from './common/index.js'
-import { OracleTableRow } from './oracles.js'
-import { JsonEnum, UnionOneOf } from '../../typebox/index.js'
-import { toJtdElements } from '../../json-typedef/utils.js'
+import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../json-typedef/symbol.js'
-import { type CanBeLiteral, Merge, ObjectLiterals } from './utils/typebox.js'
-import { WithDefaults } from './utils/typebox.js'
+import { toJtdElements } from '../../json-typedef/utils.js'
+import { JsonEnum, UnionOneOf } from '../../typebox/index.js'
+import { Generic, ID, Localize, Metadata, Progress } from './common/index.js'
+import { OracleTableRow } from './oracles.js'
+import {
+	Merge,
+	ObjectLiterals,
+	WithDefaults,
+	type CanBeLiteral
+} from './utils/typebox.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
