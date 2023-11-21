@@ -4,66 +4,30 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     /// <summary>
-    /// A standard player character stat.
+    /// A basic player character stat.
     /// </summary>
     [JsonConverter(typeof(PlayerStatJsonConverter))]
-    public enum PlayerStat
+    public class PlayerStat
     {
-        Edge,
-
-        Heart,
-
-        Iron,
-
-        Shadow,
-
-        Wits,
+        /// <summary>
+        /// The underlying data being wrapped.
+        /// </summary>
+        public DictKey Value { get; set; }
     }
+
     public class PlayerStatJsonConverter : JsonConverter<PlayerStat>
     {
         public override PlayerStat Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            string value = JsonSerializer.Deserialize<string>(ref reader, options);
-            switch (value)
-            {
-                case "edge":
-                    return PlayerStat.Edge;
-                case "heart":
-                    return PlayerStat.Heart;
-                case "iron":
-                    return PlayerStat.Iron;
-                case "shadow":
-                    return PlayerStat.Shadow;
-                case "wits":
-                    return PlayerStat.Wits;
-                default:
-                    throw new ArgumentException(String.Format("Bad PlayerStat value: {0}", value));
-            }
+            return new PlayerStat { Value = JsonSerializer.Deserialize<DictKey>(ref reader, options) };
         }
 
         public override void Write(Utf8JsonWriter writer, PlayerStat value, JsonSerializerOptions options)
         {
-            switch (value)
-            {
-                case PlayerStat.Edge:
-                    JsonSerializer.Serialize<string>(writer, "edge", options);
-                    return;
-                case PlayerStat.Heart:
-                    JsonSerializer.Serialize<string>(writer, "heart", options);
-                    return;
-                case PlayerStat.Iron:
-                    JsonSerializer.Serialize<string>(writer, "iron", options);
-                    return;
-                case PlayerStat.Shadow:
-                    JsonSerializer.Serialize<string>(writer, "shadow", options);
-                    return;
-                case PlayerStat.Wits:
-                    JsonSerializer.Serialize<string>(writer, "wits", options);
-                    return;
-            }
+            JsonSerializer.Serialize<DictKey>(writer, value.Value, options);
         }
     }
 }

@@ -3,18 +3,18 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleTableRow
     {
-        [JsonPropertyName("high")]
-        public byte? High { get; set; }
-
         [JsonPropertyName("id")]
         public OracleTableRowId Id { get; set; }
 
-        [JsonPropertyName("low")]
-        public byte? Low { get; set; }
+        [JsonPropertyName("max")]
+        public short? Max { get; set; }
+
+        [JsonPropertyName("min")]
+        public short? Min { get; set; }
 
         [JsonPropertyName("result")]
         public MarkdownString Result { get; set; }
@@ -27,9 +27,13 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OracleTableId? EmbedTable { get; set; }
 
+        [JsonPropertyName("i18n")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public I18nHints? I18n { get; set; }
+
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public SvgImageUrl? Icon { get; set; }
+        public SvgimageUrl? Icon { get; set; }
 
         [JsonPropertyName("rolls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

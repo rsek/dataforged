@@ -2,21 +2,41 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class AssetAbilityControlFieldCheckbox : AssetAbilityControlField
     {
         [JsonPropertyName("field_type")]
         public string FieldType { get => "checkbox"; }
 
+        /// <summary>
+        /// Does this field disable the asset when its value is set to `true`?
+        /// </summary>
+        [JsonPropertyName("disables_asset")]
+        public bool DisablesAsset { get; set; }
+
         [JsonPropertyName("id")]
-        public AssetControlFieldId Id { get; set; }
+        public AssetAbilityControlFieldId Id { get; set; }
 
-        [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        /// <summary>
+        /// Does this field count as an impact (Starforged) or debility
+        /// (Ironsworn classic) when its value is set to `true`?
+        /// </summary>
+        [JsonPropertyName("is_impact")]
+        public bool IsImpact { get; set; }
 
+        /// <summary>
+        /// A label for this input. In some contexts it may be undesirable
+        /// to render this text, but it should always be exposed to assistive
+        /// technology (e.g. with `aria-label` in HTML).
+        /// </summary>
+        [JsonPropertyName("name")]
+        public Label Name { get; set; }
+
+        /// <summary>
+        /// Is the box checked?
+        /// </summary>
         [JsonPropertyName("value")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public bool? Value { get; set; }
+        public bool Value { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     [JsonConverter(typeof(AssetIdwildcardJsonConverter))]
     public class AssetIdwildcard

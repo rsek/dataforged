@@ -4,10 +4,10 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     /// <summary>
-    /// Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
+    /// Challenge rank, represented as an integer:
     /// </summary>
     [JsonConverter(typeof(ChallengeRankJsonConverter))]
     public class ChallengeRank

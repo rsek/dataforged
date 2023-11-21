@@ -18,7 +18,7 @@ import {
 	type TSchema,
 	type TUnion
 } from '@sinclair/typebox'
-import { isEmpty, mapValues } from 'lodash-es'
+import { cloneDeep, isEmpty, mapValues } from 'lodash-es'
 import type * as TypeFest from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 
@@ -40,12 +40,11 @@ export function Merge<TTarget extends TObject, TSource extends TObject>(
 	source: TSource,
 	options: ObjectOptions = {}
 ) {
-	const omitKeys = Object.keys(source.properties) as Array<
-		keyof Static<TSource>
+	const toOmit = Object.keys(source.properties)
+	return Type.Composite([Type.Omit(target, toOmit), source], options) as TMerge<
+		TTarget,
+		TSource
 	>
-	const base = Type.Omit(target, omitKeys)
-	// @ts-expect-error
-	return Type.Composite([base, source], options) as TMerge<TTarget, TSource>
 }
 export type Merge<TTarget, TSource> = Omit<TTarget, keyof TSource> & TSource
 

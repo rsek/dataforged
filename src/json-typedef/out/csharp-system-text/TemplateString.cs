@@ -4,13 +4,13 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     /// <summary>
     /// A rich text string in Markdown with replaced values from oracle roll
     /// results.
     /// 
-    ///       The custom syntax `{{some_row_key:some_oracle_table_id}}`
+    /// The custom syntax `{{some_row_key:some_oracle_table_id}}`
     /// should be replaced by the `some_row_key` string of a rolled
     /// oracle table. This is usually the `result` key, for example
     /// `{{result:starforged/oracles/core/action}}`

@@ -4,7 +4,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     [JsonConverter(typeof(AssetAbilityOptionFieldJsonConverter))]
     public abstract class AssetAbilityOptionField
@@ -20,12 +20,6 @@ namespace Dataforged
 
             switch (tagValue)
             {
-                case "select_asset_extension":
-                    return JsonSerializer.Deserialize<AssetAbilityOptionFieldSelectAssetExtension>(ref readerCopy, options);
-                case "select_number":
-                    return JsonSerializer.Deserialize<AssetAbilityOptionFieldSelectNumber>(ref readerCopy, options);
-                case "select_stat":
-                    return JsonSerializer.Deserialize<AssetAbilityOptionFieldSelectStat>(ref readerCopy, options);
                 case "text":
                     return JsonSerializer.Deserialize<AssetAbilityOptionFieldText>(ref readerCopy, options);
                 default:

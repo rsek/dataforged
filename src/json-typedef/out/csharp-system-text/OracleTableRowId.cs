@@ -4,8 +4,16 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
+    /// <summary>
+    /// Normally, rows will end with two numbers separated by a dash, indicating
+    /// their dice range.
+    /// 
+    /// Rows with a single number represent unrollable rows that are sometimes
+    /// included for rendering purposes; in this case, the number represents the
+    /// row's index.
+    /// </summary>
     [JsonConverter(typeof(OracleTableRowIdJsonConverter))]
     public class OracleTableRowId
     {

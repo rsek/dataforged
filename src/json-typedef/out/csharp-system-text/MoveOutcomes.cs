@@ -2,15 +2,26 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
+    /// <summary>
+    /// A standalone localized description for each move outcome (miss, weak
+    /// hit, or strong hit). This is for for e.g. VTT implementations, where
+    /// it's often useful to display only the rules text relevant to a roll
+    /// result.
+    /// 
+    ///   This often requires light editorialization to create text that can
+    /// stand alone without reference to the rest of the move. For example, 'as
+    /// above' (in reference to another move outcome) shouldn't be used here;
+    /// instead, the relevant text should be repeated.
+    /// </summary>
     public class MoveOutcomes
     {
         [JsonPropertyName("miss")]
-        public MoveOutcomeMatchable Miss { get; set; }
+        public MoveOutcome Miss { get; set; }
 
         [JsonPropertyName("strong_hit")]
-        public MoveOutcomeMatchable StrongHit { get; set; }
+        public MoveOutcome StrongHit { get; set; }
 
         [JsonPropertyName("weak_hit")]
         public MoveOutcome WeakHit { get; set; }

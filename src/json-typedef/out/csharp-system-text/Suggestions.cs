@@ -3,20 +3,36 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class Suggestions
     {
         [JsonPropertyName("assets")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<AssetIdwildcard> Assets { get; set; }
+        public IList<AssetId> Assets { get; set; }
+
+        [JsonPropertyName("atlas")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<AtlasEntryId> Atlas { get; set; }
 
         [JsonPropertyName("moves")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<MoveId> Moves { get; set; }
 
+        [JsonPropertyName("npcs")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<NpcId> Npcs { get; set; }
+
         [JsonPropertyName("oracles")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<OracleTableId> Oracles { get; set; }
+
+        [JsonPropertyName("site_domains")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<DelveSiteDomainId> SiteDomains { get; set; }
+
+        [JsonPropertyName("site_themes")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<DelveSiteThemeId> SiteThemes { get; set; }
     }
 }

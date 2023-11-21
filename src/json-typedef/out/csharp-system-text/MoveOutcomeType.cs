@@ -4,24 +4,15 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     [JsonConverter(typeof(MoveOutcomeTypeJsonConverter))]
     public enum MoveOutcomeType
     {
-        /// <summary>
-        /// The player's score doesn't beat any challenge dice.
-        /// </summary>
         Miss,
 
-        /// <summary>
-        /// The player's score beats both of the challenge dice.
-        /// </summary>
         StrongHit,
 
-        /// <summary>
-        /// The player's score beats one of the challenge dice.
-        /// </summary>
         WeakHit,
     }
     public class MoveOutcomeTypeJsonConverter : JsonConverter<MoveOutcomeType>

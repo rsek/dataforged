@@ -2,21 +2,28 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
+    /// <summary>
+    /// Represents an input that accepts plain text.
+    /// </summary>
     public class AssetAbilityOptionFieldText : AssetAbilityOptionField
     {
         [JsonPropertyName("field_type")]
         public string FieldType { get => "text"; }
 
         [JsonPropertyName("id")]
-        public AssetOptionFieldId Id { get; set; }
+        public AssetAbilityOptionFieldId Id { get; set; }
 
-        [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        /// <summary>
+        /// A label for this input. In some contexts it may be undesirable
+        /// to render this text, but it should always be exposed to assistive
+        /// technology (e.g. with `aria-label` in HTML).
+        /// </summary>
+        [JsonPropertyName("name")]
+        public Label Name { get; set; }
 
         [JsonPropertyName("value")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Value { get; set; }
     }
 }

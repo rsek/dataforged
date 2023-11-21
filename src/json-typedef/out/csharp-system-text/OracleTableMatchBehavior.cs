@@ -2,7 +2,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleTableMatchBehavior
     {

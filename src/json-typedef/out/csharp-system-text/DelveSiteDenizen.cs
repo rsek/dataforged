@@ -2,25 +2,31 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class DelveSiteDenizen
     {
         [JsonPropertyName("frequency")]
         public DelveSiteDenizenFrequency Frequency { get; set; }
 
-        [JsonPropertyName("high")]
-        public byte High { get; set; }
+        [JsonPropertyName("id")]
+        public DelveSiteDenizenId Id { get; set; }
 
-        [JsonPropertyName("low")]
-        public byte Low { get; set; }
+        [JsonPropertyName("max")]
+        public short Max { get; set; }
 
-        [JsonPropertyName("encounter")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Id? Encounter { get; set; }
+        [JsonPropertyName("min")]
+        public short Min { get; set; }
 
         [JsonPropertyName("name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the relevant NPC entry, if one is specified.
+        /// </summary>
+        [JsonPropertyName("npc")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public NpcId? Npc { get; set; }
     }
 }

@@ -2,11 +2,12 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     /// <summary>
-    /// Information on who can trigger this trigger option. Usually this is just
-    /// the player, but some asset abilities can trigger from an ally's move.
+    /// Information on who can trigger this trigger condition. Usually this is
+    /// just the player, but some asset abilities can trigger from an ally's
+    /// move.
     /// </summary>
     public class TriggerBy
     {

@@ -4,14 +4,8 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
-    /// <summary>
-    /// Asset controls are fields that are expected to change throughout the
-    /// asset's lifespan. The most common example are the condition meters on
-    /// certain assets. A more complex example is the distinct mechanical modes
-    /// on Ironsworn's 'Armored'.
-    /// </summary>
     [JsonConverter(typeof(AssetControlFieldJsonConverter))]
     public abstract class AssetControlField
     {
@@ -26,10 +20,14 @@ namespace Dataforged
 
             switch (tagValue)
             {
+                case "card_flip":
+                    return JsonSerializer.Deserialize<AssetControlFieldCardFlip>(ref readerCopy, options);
                 case "checkbox":
                     return JsonSerializer.Deserialize<AssetControlFieldCheckbox>(ref readerCopy, options);
-                case "select_asset_extension":
-                    return JsonSerializer.Deserialize<AssetControlFieldSelectAssetExtension>(ref readerCopy, options);
+                case "condition_meter":
+                    return JsonSerializer.Deserialize<AssetControlFieldConditionMeter>(ref readerCopy, options);
+                case "select_enhancement":
+                    return JsonSerializer.Deserialize<AssetControlFieldSelectEnhancement>(ref readerCopy, options);
                 default:
                     throw new ArgumentException(String.Format("Bad FieldType value: {0}", tagValue));
             }

@@ -3,19 +3,19 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleCollectionRendering
     {
         [JsonPropertyName("columns")]
-        public IDictionary<string, OracleCollectionColumn> Columns { get; set; }
+        public IDictionary<string, OracleCollectionTableColumn> Columns { get; set; }
 
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Color? Color { get; set; }
+        public Csscolor? Color { get; set; }
 
-        [JsonPropertyName("style")]
+        [JsonPropertyName("table_style")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleCollectionStyle? Style { get; set; }
+        public OracleCollectionStyle? TableStyle { get; set; }
     }
 }

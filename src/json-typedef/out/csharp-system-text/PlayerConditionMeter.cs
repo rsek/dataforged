@@ -4,52 +4,30 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     /// <summary>
-    /// A standard player character condition meter.
+    /// A basic, rollable player character resource.
     /// </summary>
     [JsonConverter(typeof(PlayerConditionMeterJsonConverter))]
-    public enum PlayerConditionMeter
+    public class PlayerConditionMeter
     {
-        Health,
-
-        Spirit,
-
-        Supply,
+        /// <summary>
+        /// The underlying data being wrapped.
+        /// </summary>
+        public DictKey Value { get; set; }
     }
+
     public class PlayerConditionMeterJsonConverter : JsonConverter<PlayerConditionMeter>
     {
         public override PlayerConditionMeter Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            string value = JsonSerializer.Deserialize<string>(ref reader, options);
-            switch (value)
-            {
-                case "health":
-                    return PlayerConditionMeter.Health;
-                case "spirit":
-                    return PlayerConditionMeter.Spirit;
-                case "supply":
-                    return PlayerConditionMeter.Supply;
-                default:
-                    throw new ArgumentException(String.Format("Bad PlayerConditionMeter value: {0}", value));
-            }
+            return new PlayerConditionMeter { Value = JsonSerializer.Deserialize<DictKey>(ref reader, options) };
         }
 
         public override void Write(Utf8JsonWriter writer, PlayerConditionMeter value, JsonSerializerOptions options)
         {
-            switch (value)
-            {
-                case PlayerConditionMeter.Health:
-                    JsonSerializer.Serialize<string>(writer, "health", options);
-                    return;
-                case PlayerConditionMeter.Spirit:
-                    JsonSerializer.Serialize<string>(writer, "spirit", options);
-                    return;
-                case PlayerConditionMeter.Supply:
-                    JsonSerializer.Serialize<string>(writer, "supply", options);
-                    return;
-            }
+            JsonSerializer.Serialize<DictKey>(writer, value.Value, options);
         }
     }
 }

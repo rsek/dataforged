@@ -4,14 +4,8 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
-    /// <summary>
-    /// Asset options are fields that are usually only set once, typically when
-    /// the player purchases the asset. The most common examples are the "Name"
-    /// fields on companion assets. A more complex example is the choice of
-    /// stats on the Devotant asset.
-    /// </summary>
     [JsonConverter(typeof(AssetOptionFieldJsonConverter))]
     public abstract class AssetOptionField
     {
@@ -26,8 +20,8 @@ namespace Dataforged
 
             switch (tagValue)
             {
-                case "select_asset_extension":
-                    return JsonSerializer.Deserialize<AssetOptionFieldSelectAssetExtension>(ref readerCopy, options);
+                case "select_enhancement":
+                    return JsonSerializer.Deserialize<AssetOptionFieldSelectEnhancement>(ref readerCopy, options);
                 case "select_stat":
                     return JsonSerializer.Deserialize<AssetOptionFieldSelectStat>(ref readerCopy, options);
                 case "text":

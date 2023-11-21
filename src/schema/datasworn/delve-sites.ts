@@ -113,16 +113,13 @@ export type TDelveSite = typeof DelveSite
 export type DelveSiteCardType = 'theme' | 'domain'
 export type DelveSiteCardRowType = 'feature' | 'danger'
 
-const DelveSiteCard = (properties: TProperties, options: ObjectOptions = {}) =>
-	Generic.SourcedNode(
-		Type.Object({
-			summary: Type.Ref(Localize.MarkdownString),
-			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
-			...properties
-		}),
-		options
-	)
+const DelveCardMixin = Generic.SourcedNode(
+	Type.Object({
+		summary: Type.Ref(Localize.MarkdownString),
+		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL))
+	})
+)
 
 export const DelveSiteThemeFeatureRow = Merge(
 	OracleTableRow,
@@ -144,8 +141,9 @@ export const DelveSiteThemeDangerRow = Merge(
 	{ $id: '#/$defs/DelveSiteThemeDangerRow' }
 )
 export type DelveSiteThemeDangerRow = Static<typeof DelveSiteThemeDangerRow>
-export const DelveSiteTheme = DelveSiteCard(
-	{
+export const DelveSiteTheme = Merge(
+	DelveCardMixin,
+	Type.Object({
 		id: Type.Ref(ID.DelveSiteThemeID),
 		card_type: Type.Literal('theme'),
 		features: Type.Intersect(
@@ -189,8 +187,8 @@ export const DelveSiteTheme = DelveSiteCard(
 				}
 			}
 		)
-	},
-	{ $id: '#/$defs/DelveSiteTheme', title: 'Delve site theme' }
+	}),
+	{ $id: '#/$defs/DelveSiteTheme' }
 )
 export type DelveSiteTheme = Static<typeof DelveSiteTheme>
 export type TDelveSiteTheme = typeof DelveSiteTheme
@@ -215,8 +213,9 @@ export const DelveSiteDomainDangerRow = Merge(
 	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
 )
 export type DelveSiteDomainDangerRow = Static<typeof DelveSiteDomainDangerRow>
-export const DelveSiteDomain = DelveSiteCard(
-	{
+export const DelveSiteDomain = Merge(
+	DelveCardMixin,
+	Type.Object({
 		id: Type.Ref(ID.DelveSiteDomainID),
 		card_type: Type.Literal('domain'),
 		name_oracle: Type.Optional(
@@ -295,7 +294,7 @@ export const DelveSiteDomain = DelveSiteCard(
 				}
 			}
 		)
-	},
+	}),
 	{ $id: '#/$defs/DelveSiteDomain' }
 )
 

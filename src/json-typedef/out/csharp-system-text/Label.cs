@@ -4,10 +4,10 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     /// <summary>
-    /// A user-facing text label or name.
+    /// A localized plain text name or label.
     /// </summary>
     [JsonConverter(typeof(LabelJsonConverter))]
     public class Label

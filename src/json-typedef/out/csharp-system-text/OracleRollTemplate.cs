@@ -2,18 +2,40 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
+    /// <summary>
+    /// Provides string templates that may be used in place of the static
+    /// row text from `OracleTableRow#result`, `OracleTableRow#summary`, and
+    /// `OracleTableRow#description`.
+    /// 
+    ///   These strings are formatted in Markdown, but use a special syntax
+    /// for their placeholders: `{{result:some_oracle_table_id}}`. The
+    /// placeholder should be replaced with the value of a rolled (or selected)
+    /// `OracleTableRow#result` from the target oracle table ID.
+    /// </summary>
     public class OracleRollTemplate
     {
+        /// <summary>
+        /// A string template that may be used in place of
+        /// OracleTableRow#description.
+        /// </summary>
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TemplateString? Description { get; set; }
 
+        /// <summary>
+        /// A string template that may be used in place of
+        /// OracleTableRow#result.
+        /// </summary>
         [JsonPropertyName("result")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TemplateString? Result { get; set; }
 
+        /// <summary>
+        /// A string template that may be used in place of
+        /// OracleTableRow#summary.
+        /// </summary>
         [JsonPropertyName("summary")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TemplateString? Summary { get; set; }

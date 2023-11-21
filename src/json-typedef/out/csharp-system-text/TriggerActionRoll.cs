@@ -3,23 +3,20 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
-    public class TriggerActionRoll : Trigger
+    public class TriggerActionRoll
     {
-        [JsonPropertyName("roll_type")]
-        public string RollType { get => "action_roll"; }
+        [JsonPropertyName("conditions")]
+        public IList<TriggerActionRollCondition> Conditions { get; set; }
 
         /// <summary>
-        /// Text describing the primary trigger condition of the move. Any
-        /// trigger options are assumed to meet this condition in addition to
-        /// their own trigger conditions.
+        /// A markdown string of the primary trigger text for this move.
+        /// 
+        /// Secondary trigger text (for specific stats or uses of an asset
+        /// ability) may be available for individual trigger conditions.
         /// </summary>
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
-
-        [JsonPropertyName("roll_options")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<TriggerRollOptionAction> RollOptions { get; set; }
     }
 }

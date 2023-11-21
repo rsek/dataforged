@@ -2,19 +2,34 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleTableRoll
     {
-        [JsonPropertyName("oracle")]
-        public OracleTableId Oracle { get; set; }
+        [JsonPropertyName("times")]
+        public short Times { get; set; }
+
+        /// <summary>
+        /// The rulebook explicitly cautions *against* rolling all details
+        /// at once, so rolling every referenced oracle automatically is not
+        /// recommended. That said, some oracle results only provide useful
+        /// information once a secondary roll occurs, such as "Action + Theme".
+        /// If this value is omitted, assume it's false.
+        /// </summary>
+        [JsonPropertyName("auto")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool? Auto { get; set; }
 
         [JsonPropertyName("method")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OracleTableRollMethod? Method { get; set; }
 
-        [JsonPropertyName("times")]
+        /// <summary>
+        /// The ID of the oracle table to be rolled. If omitted, it defaults to
+        /// the ID of this oracle table.
+        /// </summary>
+        [JsonPropertyName("oracle")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public byte? Times { get; set; }
+        public OracleTableId? Oracle { get; set; }
     }
 }

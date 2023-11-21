@@ -11,13 +11,6 @@ import * as defs from '../schema/datasworn/index.js'
 const definitions = toJtdModule(defs) as Record<string, JTD.Schema>
 
 const root: JTD.Schema = JSON.parse(JSON.stringify({ definitions }))
-// console.log(root)
-
-// for (const [k, def] of Object.entries(root.definitions)) {
-// 	const isValid = JTD.isValidSchema(def)
-// 	const emoji = isValid ? '✅' : '❌'
-// 	log.info(`${emoji} ${k}`)
-// }
 
 const referenceNames = new Set<string>()
 
@@ -34,8 +27,6 @@ crawlForRefs(root as Record<string, unknown>)
 
 for (const name of referenceNames)
 	if (!(name in root?.definitions)) log.info(`Missing definition for ${name}`)
-
-// if (!JTD.isSchema(schema)) throw Error()
 
 const json = JSON.stringify(root, undefined, '\t')
 const filePath = path.join(

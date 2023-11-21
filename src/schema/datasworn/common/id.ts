@@ -232,7 +232,7 @@ export const OracleTableID = Extend(OracleCollectionID, [Node], {
 export type OracleTableID = Opaque<Static<typeof OracleTableID>>
 
 export const OracleTableIDWildcard = toWildcard(OracleTableID, {
-	description: `Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree. For example, 'starforged/oracles/**/location' represents any starforged table with the "location" key.`,
+	description: `Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree. For example, 'starforged/oracles/\*\*/location' represents any starforged table with the "location" key.`,
 	examples: [
 		'*/oracles/**/peril',
 		'starforged/oracles/character/names/*',

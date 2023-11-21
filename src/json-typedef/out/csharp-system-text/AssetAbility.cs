@@ -3,10 +3,13 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class AssetAbility
     {
+        /// <summary>
+        /// Is this asset ability enabled?
+        /// </summary>
         [JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
 
@@ -16,18 +19,32 @@ namespace Dataforged
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
 
+        /// <summary>
+        /// Fields whose values are expected to change over the life of the
+        /// asset.
+        /// </summary>
         [JsonPropertyName("controls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, AssetAbilityControlField> Controls { get; set; }
 
-        [JsonPropertyName("extend_asset")]
+        /// <summary>
+        /// Changes made to the asset, when this ability is enabled.
+        /// </summary>
+        [JsonPropertyName("enhance_asset")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public AssetExtension? ExtendAsset { get; set; }
+        public AssetEnhancement? EnhanceAsset { get; set; }
 
-        [JsonPropertyName("extend_moves")]
+        /// <summary>
+        /// Describes changes made to various moves by this asset ability.
+        /// Usually these require specific trigger conditions.
+        /// </summary>
+        [JsonPropertyName("enhance_moves")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<MoveExtension> ExtendMoves { get; set; }
+        public IList<MoveEnhancement> EnhanceMoves { get; set; }
 
+        /// <summary>
+        /// Unique moves added by this asset ability.
+        /// </summary>
         [JsonPropertyName("moves")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, Move> Moves { get; set; }
@@ -36,6 +53,10 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? Name { get; set; }
 
+        /// <summary>
+        /// Fields that are expected to be set once and remain the same through
+        /// the life of the asset.
+        /// </summary>
         [JsonPropertyName("options")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, AssetAbilityOptionField> Options { get; set; }

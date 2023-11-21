@@ -2,15 +2,29 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleTableColumn
     {
+        /// <summary>
+        /// The value(s) from each OracleTableRow that is rendered in this
+        /// column.
+        /// </summary>
         [JsonPropertyName("content_type")]
-        public OracleColumnContentType ContentType { get; set; }
+        public OracleTableColumnContentType ContentType { get; set; }
 
-        [JsonPropertyName("label")]
+        /// <summary>
+        /// The thematic color for this column.
+        /// </summary>
+        [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Label? Label { get; set; }
+        public Csscolor? Color { get; set; }
+
+        /// <summary>
+        /// The table column's header text.
+        /// </summary>
+        [JsonPropertyName("name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public Label? Name { get; set; }
     }
 }

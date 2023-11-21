@@ -4,8 +4,12 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
+    /// <summary>
+    /// Special roll instructions to use when rolling multiple times on a single
+    /// oracle table.
+    /// </summary>
     [JsonConverter(typeof(OracleTableRollMethodJsonConverter))]
     public enum OracleTableRollMethod
     {

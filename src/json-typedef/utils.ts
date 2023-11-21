@@ -18,7 +18,7 @@ import {
 } from '@sinclair/typebox'
 import * as JTD from 'jtd'
 
-import { inRange, merge, pick, set } from 'lodash-es'
+import { cloneDeep, inRange, merge, pick, set } from 'lodash-es'
 import { TNullable } from '../schema/datasworn/utils/typebox.js'
 import { log } from '../scripts/utils/logger.js'
 import {
@@ -38,7 +38,7 @@ import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
 export function getMetadata<T extends TAnySchema>(schema: T) {
 	const metadata = pick(
-		schema,
+		cloneDeep(schema),
 		// general
 		'description',
 		'examples',
@@ -310,7 +310,9 @@ function toJtdForm<T extends TSchema>(
 	// @ts-expect-error
 	if (schema[JsonTypeDef]?.schema != null)
 		// @ts-expect-error
-		return merge(schema[JsonTypeDef].schema, { metadata: getMetadata(schema) })
+		return merge(cloneDeep(schema[JsonTypeDef].schema), {
+			metadata: getMetadata(schema)
+		})
 
 	if (TypeGuard.TLiteral(schema)) result = toJtdSingleEnum(schema) as any
 	if (TypeGuard.TNull(schema)) result = toJtdNull(schema) as any

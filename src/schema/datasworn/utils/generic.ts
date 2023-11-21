@@ -20,6 +20,7 @@ import type * as Metadata from '../common/metadata.js'
 import type * as Localize from '../common/localize.js'
 import { Merge } from './typebox.js'
 import { DictKey } from '../common/id.js'
+import { cloneDeep } from 'lodash-es'
 
 export function Dictionary<T extends TSchema>(
 	valuesSchema: T,
@@ -49,7 +50,7 @@ export function SourcedNode<T extends TObject>(
 	schema: T,
 	options: ObjectOptions = {}
 ) {
-	return Merge(SourcedNodeMixin, schema, options)
+	return Merge(cloneDeep(SourcedNodeMixin), schema, options)
 }
 
 export type SourcedNode = Static<typeof SourcedNodeMixin>

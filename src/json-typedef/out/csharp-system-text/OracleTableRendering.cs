@@ -3,24 +3,15 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleTableRendering
     {
-        [JsonPropertyName("color")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Color? Color { get; set; }
-
         [JsonPropertyName("columns")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, OracleTableColumn> Columns { get; set; }
 
-        [JsonPropertyName("icon")]
+        [JsonPropertyName("table_style")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public SvgImageUrl? Icon { get; set; }
-
-        [JsonPropertyName("style")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleTableStyle? Style { get; set; }
+        public OracleTableStyle? TableStyle { get; set; }
     }
 }

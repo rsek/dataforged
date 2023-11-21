@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class DelveSiteTheme
     {
@@ -11,10 +11,10 @@ namespace Dataforged
         public DelveSiteThemeCardType CardType { get; set; }
 
         [JsonPropertyName("dangers")]
-        public IList<FeatureOrDanger> Dangers { get; set; }
+        public IList<DelveSiteThemeDangerRow> Dangers { get; set; }
 
         [JsonPropertyName("features")]
-        public IList<FeatureOrDanger> Features { get; set; }
+        public IList<DelveSiteThemeFeatureRow> Features { get; set; }
 
         [JsonPropertyName("id")]
         public DelveSiteThemeId Id { get; set; }
@@ -28,13 +28,17 @@ namespace Dataforged
         [JsonPropertyName("summary")]
         public MarkdownString Summary { get; set; }
 
+        [JsonPropertyName("canonical_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public Label? CanonicalName { get; set; }
+
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Description { get; set; }
 
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public SvgImageUrl? Icon { get; set; }
+        public SvgimageUrl? Icon { get; set; }
 
         [JsonPropertyName("suggestions")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

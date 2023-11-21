@@ -3,10 +3,13 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleTable
     {
+        [JsonPropertyName("dice")]
+        public DiceNotation Dice { get; set; }
+
         [JsonPropertyName("id")]
         public OracleTableId Id { get; set; }
 
@@ -23,9 +26,22 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }
 
+        /// <summary>
+        /// A longer description of the oracle table's intended usage, which
+        /// might include multiple paragraphs. If it's only a couple sentences,
+        /// use the `summary` key instead.
+        /// </summary>
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Description { get; set; }
+
+        [JsonPropertyName("icon")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public SvgimageUrl? Icon { get; set; }
+
+        [JsonPropertyName("images")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<WebpimageUrl> Images { get; set; }
 
         [JsonPropertyName("match")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -35,10 +51,24 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OracleTableRendering? Rendering { get; set; }
 
+        /// <summary>
+        /// Indicates that this table replaces the identified table. References
+        /// to the replaced table can be considered equivalent to this table.
+        /// </summary>
+        [JsonPropertyName("replaces")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public OracleTableId? Replaces { get; set; }
+
         [JsonPropertyName("suggestions")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Suggestions? Suggestions { get; set; }
 
+        /// <summary>
+        /// A brief summary of the oracle table's intended usage, no more than
+        /// a few sentences in length. This is intended for use in application
+        /// tooltips and similar sorts of hints. Longer text should use the
+        /// "description" key instead.
+        /// </summary>
         [JsonPropertyName("summary")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Summary { get; set; }

@@ -3,21 +3,18 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     public class OracleCollection
     {
         [JsonPropertyName("id")]
-        public OracleCollectionId Id { get; set; }
+        public string Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }
 
         [JsonPropertyName("source")]
         public Source Source { get; set; }
-
-        [JsonPropertyName("summary")]
-        public MarkdownString Summary { get; set; }
 
         [JsonPropertyName("canonical_name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -29,7 +26,7 @@ namespace Dataforged
 
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Color? Color { get; set; }
+        public Csscolor? Color { get; set; }
 
         [JsonPropertyName("contents")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -39,20 +36,41 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Description { get; set; }
 
-        [JsonPropertyName("extends")]
+        /// <summary>
+        /// This collection's content enhances the identified collection, rather
+        /// than being a standalone collection of its own.
+        /// </summary>
+        [JsonPropertyName("enhances")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleCollectionId? Extends { get; set; }
+        public OracleCollectionId? Enhances { get; set; }
+
+        [JsonPropertyName("icon")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public SvgimageUrl? Icon { get; set; }
+
+        [JsonPropertyName("images")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<WebpimageUrl> Images { get; set; }
 
         [JsonPropertyName("rendering")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleCollectionRendering? Rendering { get; set; }
+        public OracleCollectionRendering0 Rendering { get; set; }
 
-        [JsonPropertyName("sample_names")]
+        /// <summary>
+        /// This collection replaces the identified collection. References
+        /// to the replaced collection can be considered equivalent to this
+        /// collection.
+        /// </summary>
+        [JsonPropertyName("replaces")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<Label> SampleNames { get; set; }
+        public OracleCollectionId? Replaces { get; set; }
 
         [JsonPropertyName("suggestions")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Suggestions? Suggestions { get; set; }
+
+        [JsonPropertyName("summary")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public MarkdownString? Summary { get; set; }
     }
 }

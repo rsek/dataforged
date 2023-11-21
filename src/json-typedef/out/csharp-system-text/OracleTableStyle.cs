@@ -4,7 +4,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dataforged
+namespace Datasworn
 {
     [JsonConverter(typeof(OracleTableStyleJsonConverter))]
     public enum OracleTableStyle
@@ -13,7 +13,7 @@ namespace Dataforged
 
         EmbedInRow,
 
-        Table,
+        StandaloneTable,
     }
     public class OracleTableStyleJsonConverter : JsonConverter<OracleTableStyle>
     {
@@ -26,8 +26,8 @@ namespace Dataforged
                     return OracleTableStyle.EmbedAsColumn;
                 case "embed_in_row":
                     return OracleTableStyle.EmbedInRow;
-                case "table":
-                    return OracleTableStyle.Table;
+                case "standalone_table":
+                    return OracleTableStyle.StandaloneTable;
                 default:
                     throw new ArgumentException(String.Format("Bad OracleTableStyle value: {0}", value));
             }
@@ -43,8 +43,8 @@ namespace Dataforged
                 case OracleTableStyle.EmbedInRow:
                     JsonSerializer.Serialize<string>(writer, "embed_in_row", options);
                     return;
-                case OracleTableStyle.Table:
-                    JsonSerializer.Serialize<string>(writer, "table", options);
+                case OracleTableStyle.StandaloneTable:
+                    JsonSerializer.Serialize<string>(writer, "standalone_table", options);
                     return;
             }
         }
