@@ -1,9 +1,11 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Dictionary } from '../common/abstract.js'
-import { DeepPartial, NoDefaults, Nullable } from '../common/utils.js'
+import { Dictionary } from '../utils/generic.js'
+import { DeepPartial, NoDefaults, Nullable } from '../utils/typebox.js'
 import { AssetIDWildcard } from '../common/id.js'
 import { AssetConditionMeter } from './fields.js'
 import { AssetPropertiesEnhanceable } from './common.js'
+import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { Fields } from '../common/index.js'
 
 export const AssetAttachment = Type.Object(
 	{
@@ -27,28 +29,27 @@ export type TAssetAttachment = typeof AssetAttachment
 export type AssetAttachment = Static<TAssetAttachment>
 
 export const AssetConditionMeterEnhancement = NoDefaults(
-	Type.Partial(
-		Type.Omit(AssetConditionMeter, [
-			'name',
-			'value',
-			'id',
-			'moves',
-			'min',
-			'field_type',
-			'controls' // condition meters accept only boolean controls, which can't be enhanced
-		]),
-		{ $id: '#/$defs/AssetConditionMeterEnhancement' }
-	)
+	// for the moment, it's only practical to enhance condition meters
+
+	Type.Pick(AssetConditionMeter, ['field_type', 'max']),
+	{
+		$id: '#/$defs/AssetConditionMeterEnhancement'
+	}
 )
 export type AssetConditionMeterEnhancement = Static<
 	typeof AssetConditionMeterEnhancement
 >
 
+export const AssetControlFieldEnhancement = DiscriminatedUnion(
+	Fields.DISCRIMINATOR,
+	[AssetConditionMeterEnhancement],
+	{ $id: 'AssetControlFieldEnhancement' }
+)
+
 export const AssetEnhancement = DeepPartial(
 	NoDefaults(
 		AssetPropertiesEnhanceable(
-			// for the moment, it's only practical to enhance condition meters
-			Type.Optional(Dictionary(Type.Ref(AssetConditionMeterEnhancement)))
+			Type.Optional(Dictionary(Type.Ref(AssetControlFieldEnhancement)))
 		)
 	),
 	{

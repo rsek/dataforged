@@ -1,11 +1,12 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Abstract, ID, Localize, Metadata } from './common/index.js'
+import { Generic, ID, Localize, Metadata } from './common/index.js'
 import {
 	type TAssetOptionField,
 	type TAssetControlField
 } from './assets/fields.js'
 import { type TAssetAbility } from './assets/ability.js'
 import { AssetPropertiesEnhanceable } from './assets/common.js'
+import { Merge } from './utils/typebox.js'
 
 const AssetPropertiesUnenhanceable = Type.Object({
 	name: Type.Ref(Localize.Label),
@@ -29,7 +30,7 @@ const AssetPropertiesUnenhanceable = Type.Object({
 	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 	color: Type.Optional(Type.Ref(Metadata.CSSColor)),
 	options: Type.Optional(
-		Abstract.Dictionary(
+		Generic.Dictionary(
 			Type.Ref<TAssetOptionField>('#/$defs/AssetOptionField'),
 			{
 				description:
@@ -45,19 +46,17 @@ const AssetPropertiesUnenhanceable = Type.Object({
 	)
 })
 
-export const Asset = Type.Composite(
-	[
-		AssetPropertiesEnhanceable(
-			Type.Ref<TAssetControlField>('#/$defs/AssetControlField')
-		),
-		AssetPropertiesUnenhanceable
-	],
+export const Asset = Merge(
+	AssetPropertiesEnhanceable(
+		Type.Ref<TAssetControlField>('#/$defs/AssetControlField')
+	),
+	AssetPropertiesUnenhanceable,
 	{ $id: '#/$defs/Asset', additionalProperties: false }
 )
 export type TAsset = typeof Asset
 export type Asset = Static<typeof Asset>
 
-export const AssetType = Abstract.Collection(
+export const AssetType = Generic.Collection(
 	Type.Ref<TAsset>('#/$defs/Asset'),
 	Type.Ref(ID.AssetTypeID),
 	{ $id: '#/$defs/AssetType' }

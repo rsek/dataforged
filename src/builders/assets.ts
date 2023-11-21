@@ -9,13 +9,13 @@ import {
 import { cloneDeep, mapValues, omit } from 'lodash-es'
 import { Move } from './moves.js'
 import { trackID } from './id-tracker.js'
-import { type SourcedNode } from '../schema/datasworn/common/abstract.js'
-import { type Abstract } from '../schema/datasworn/common/index.js'
+import { type SourcedNode } from '../schema/datasworn/utils/generic.js'
+import { type Generic } from '../schema/datasworn/common/index.js'
 
 export const Asset = sourcedTransformer<
 	In.Asset,
 	Out.Asset,
-	Abstract.Collection<Out.Asset>
+	Generic.Collection<Out.Asset>
 >({
 	options: function (
 		this: SourcedNode,

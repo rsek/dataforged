@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import { type Static } from '@sinclair/typebox'
 import { type Opaque } from 'type-fest'
 import {
 	DiceRange,
@@ -10,8 +10,9 @@ import {
 	ID,
 	RecursiveCollectionID,
 	UncollectableID,
-	toWildcard
-} from './regex.js'
+	toWildcard,
+	IDUnion
+} from '../utils/regex.js'
 
 export const NamespaceID = ID([Namespace], {
 	$id: '#/$defs/NamespaceID',
@@ -187,7 +188,7 @@ const AssetMoveID = Extend(AssetAbilityID, ['moves', Node], {
 	description: 'A move ID for an asset move.'
 })
 
-export const MoveID = Type.Union([StandardMoveID, AssetMoveID], {
+export const MoveID = IDUnion([StandardMoveID, AssetMoveID], {
 	description: 'A move ID, for a standard move or a unique asset move',
 	examples: [
 		'classic/moves/combat/strike',
@@ -196,7 +197,7 @@ export const MoveID = Type.Union([StandardMoveID, AssetMoveID], {
 	$id: '#/$defs/MoveID'
 })
 export type MoveID = Opaque<Static<typeof MoveID>>
-export const MoveIDWildcard = Type.Union(
+export const MoveIDWildcard = IDUnion(
 	[StandardMoveID, AssetMoveID].map((id) => toWildcard(id)),
 	{
 		title: 'Move ID (with wildcard)',
@@ -244,7 +245,7 @@ export type OracleTableIDWildcard = Opaque<Static<typeof OracleTableIDWildcard>>
 const RowWithRange = Extend(OracleTableID, [DiceRange])
 const RowNull = Extend(OracleTableID, [Index])
 
-export const OracleTableRowID = Type.Union([RowWithRange, RowNull], {
+export const OracleTableRowID = IDUnion([RowWithRange, RowNull], {
 	examples: [
 		'classic/oracles/action_and_theme/action/1-1',
 		'starforged/oracles/derelicts/zones/starship/0'

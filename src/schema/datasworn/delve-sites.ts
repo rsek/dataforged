@@ -4,12 +4,13 @@ import {
 	type ObjectOptions,
 	type TProperties
 } from '@sinclair/typebox'
-import { ID, Localize, Progress, Metadata, Abstract } from './common/index.js'
-import { Squash } from './common/utils.js'
+import { ID, Localize, Progress, Metadata, Generic } from './common/index.js'
 import { OracleTableRow } from './oracles.js'
 import { JsonEnum, UnionOneOf } from '../../typebox/index.js'
 import { toJtdElements } from '../../json-typedef/utils.js'
 import { JsonTypeDef } from '../../json-typedef/symbol.js'
+import { type CanBeLiteral, Merge, ObjectLiterals } from './utils/typebox.js'
+import { WithDefaults } from './utils/typebox.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
@@ -40,17 +41,18 @@ export const DelveSiteDenizen = Type.Object(
 )
 export type DelveSiteDenizen = Static<typeof DelveSiteDenizen>
 
-const StaticDenizenRowStub = (
+function StaticDenizenRowStub(
 	min: number,
 	max: number,
 	frequency: DelveSiteDenizenFrequency
-) =>
-	Squash([
-		Abstract.StaticRowStub({ min, max }),
+) {
+	return Merge(
+		StaticRowStub({ min, max }),
 		Type.Object({ frequency: Type.Literal(frequency) })
-	])
+	)
+}
 
-export const DelveSite = Abstract.SourcedNode(
+export const DelveSite = Generic.SourcedNode(
 	Type.Object({
 		id: Type.Ref(ID.DelveSiteID),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
@@ -112,7 +114,7 @@ export type DelveSiteCardType = 'theme' | 'domain'
 export type DelveSiteCardRowType = 'feature' | 'danger'
 
 const DelveSiteCard = (properties: TProperties, options: ObjectOptions = {}) =>
-	Abstract.SourcedNode(
+	Generic.SourcedNode(
 		Type.Object({
 			summary: Type.Ref(Localize.MarkdownString),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
@@ -122,27 +124,23 @@ const DelveSiteCard = (properties: TProperties, options: ObjectOptions = {}) =>
 		options
 	)
 
-export const DelveSiteThemeFeatureRow = Type.Composite(
-	[
-		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
-		Type.Object({
-			id: Type.Ref(ID.ThemeFeatureRowID),
-			min: Type.Integer(),
-			max: Type.Integer()
-		})
-	],
+export const DelveSiteThemeFeatureRow = Merge(
+	OracleTableRow,
+	Type.Object({
+		id: Type.Ref(ID.ThemeFeatureRowID),
+		min: Type.Integer(),
+		max: Type.Integer()
+	}),
 	{ $id: '#/$defs/DelveSiteThemeFeatureRow' }
 )
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
-export const DelveSiteThemeDangerRow = Type.Composite(
-	[
-		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
-		Type.Object({
-			id: Type.Ref(ID.ThemeDangerRowID),
-			min: Type.Integer(),
-			max: Type.Integer()
-		})
-	],
+export const DelveSiteThemeDangerRow = Merge(
+	OracleTableRow,
+	Type.Object({
+		id: Type.Ref(ID.ThemeDangerRowID),
+		min: Type.Integer(),
+		max: Type.Integer()
+	}),
 	{ $id: '#/$defs/DelveSiteThemeDangerRow' }
 )
 export type DelveSiteThemeDangerRow = Static<typeof DelveSiteThemeDangerRow>
@@ -154,11 +152,11 @@ export const DelveSiteTheme = DelveSiteCard(
 			[
 				Type.Array(Type.Ref(DelveSiteThemeFeatureRow)),
 				Type.Tuple([
-					Abstract.StaticRowStub({ min: 1, max: 4 }),
-					Abstract.StaticRowStub({ min: 5, max: 8 }),
-					Abstract.StaticRowStub({ min: 9, max: 12 }),
-					Abstract.StaticRowStub({ min: 13, max: 16 }),
-					Abstract.StaticRowStub({ min: 17, max: 20 })
+					StaticRowStub({ min: 1, max: 4 }),
+					StaticRowStub({ min: 5, max: 8 }),
+					StaticRowStub({ min: 9, max: 12 }),
+					StaticRowStub({ min: 13, max: 16 }),
+					StaticRowStub({ min: 17, max: 20 })
 				])
 			],
 			{
@@ -171,18 +169,18 @@ export const DelveSiteTheme = DelveSiteCard(
 			[
 				Type.Array(Type.Ref(DelveSiteThemeDangerRow)),
 				Type.Tuple([
-					Abstract.StaticRowStub({ min: 1, max: 5 }),
-					Abstract.StaticRowStub({ min: 6, max: 10 }),
-					Abstract.StaticRowStub({ min: 11, max: 12 }),
-					Abstract.StaticRowStub({ min: 13, max: 14 }),
-					Abstract.StaticRowStub({ min: 15, max: 16 }),
-					Abstract.StaticRowStub({ min: 17, max: 18 }),
-					Abstract.StaticRowStub({ min: 19, max: 20 }),
-					Abstract.StaticRowStub({ min: 21, max: 22 }),
-					Abstract.StaticRowStub({ min: 23, max: 24 }),
-					Abstract.StaticRowStub({ min: 25, max: 26 }),
-					Abstract.StaticRowStub({ min: 27, max: 28 }),
-					Abstract.StaticRowStub({ min: 29, max: 30 })
+					StaticRowStub({ min: 1, max: 5 }),
+					StaticRowStub({ min: 6, max: 10 }),
+					StaticRowStub({ min: 11, max: 12 }),
+					StaticRowStub({ min: 13, max: 14 }),
+					StaticRowStub({ min: 15, max: 16 }),
+					StaticRowStub({ min: 17, max: 18 }),
+					StaticRowStub({ min: 19, max: 20 }),
+					StaticRowStub({ min: 21, max: 22 }),
+					StaticRowStub({ min: 23, max: 24 }),
+					StaticRowStub({ min: 25, max: 26 }),
+					StaticRowStub({ min: 27, max: 28 }),
+					StaticRowStub({ min: 29, max: 30 })
 				])
 			],
 			{
@@ -197,27 +195,23 @@ export const DelveSiteTheme = DelveSiteCard(
 export type DelveSiteTheme = Static<typeof DelveSiteTheme>
 export type TDelveSiteTheme = typeof DelveSiteTheme
 
-export const DelveSiteDomainFeatureRow = Type.Composite(
-	[
-		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
-		Type.Object({
-			id: Type.Ref(ID.DomainFeatureRowID),
-			min: Type.Integer(),
-			max: Type.Integer()
-		})
-	],
+export const DelveSiteDomainFeatureRow = Merge(
+	OracleTableRow,
+	Type.Object({
+		id: Type.Ref(ID.DomainFeatureRowID),
+		min: Type.Integer(),
+		max: Type.Integer()
+	}),
 	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
-export const DelveSiteDomainDangerRow = Type.Composite(
-	[
-		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
-		Type.Object({
-			id: Type.Ref(ID.DomainDangerRowID),
-			min: Type.Integer(),
-			max: Type.Integer()
-		})
-	],
+export const DelveSiteDomainDangerRow = Merge(
+	OracleTableRow,
+	Type.Object({
+		id: Type.Ref(ID.DomainDangerRowID),
+		min: Type.Integer(),
+		max: Type.Integer()
+	}),
 	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
 )
 export type DelveSiteDomainDangerRow = Static<typeof DelveSiteDomainDangerRow>
@@ -235,16 +229,16 @@ export const DelveSiteDomain = DelveSiteCard(
 			[
 				Type.Array(Type.Ref(DelveSiteDomainFeatureRow)),
 				Type.Tuple([
-					Abstract.StaticRowStub({ min: 21, max: 43 }),
-					Abstract.StaticRowStub({ min: 44, max: 56 }),
-					Abstract.StaticRowStub({ min: 57, max: 64 }),
-					Abstract.StaticRowStub({ min: 65, max: 68 }),
-					Abstract.StaticRowStub({ min: 69, max: 72 }),
-					Abstract.StaticRowStub({ min: 73, max: 76 }),
-					Abstract.StaticRowStub({ min: 77, max: 80 }),
-					Abstract.StaticRowStub({ min: 81, max: 84 }),
-					Abstract.StaticRowStub({ min: 85, max: 88 }),
-					Abstract.StaticRowStub(
+					StaticRowStub({ min: 21, max: 43 }),
+					StaticRowStub({ min: 44, max: 56 }),
+					StaticRowStub({ min: 57, max: 64 }),
+					StaticRowStub({ min: 65, max: 68 }),
+					StaticRowStub({ min: 69, max: 72 }),
+					StaticRowStub({ min: 73, max: 76 }),
+					StaticRowStub({ min: 77, max: 80 }),
+					StaticRowStub({ min: 81, max: 84 }),
+					StaticRowStub({ min: 85, max: 88 }),
+					StaticRowStub(
 						{ min: 89, max: 98 },
 						{
 							result: 'Something unusual or unexpected',
@@ -258,7 +252,7 @@ export const DelveSiteDomain = DelveSiteCard(
 							}
 						}
 					),
-					Abstract.StaticRowStub(
+					StaticRowStub(
 						{ min: 99, max: 99 },
 						{
 							result: 'You transition into a new theme',
@@ -267,7 +261,7 @@ export const DelveSiteDomain = DelveSiteCard(
 							}
 						}
 					),
-					Abstract.StaticRowStub(
+					StaticRowStub(
 						{ min: 100, max: 100 },
 						{
 							result: 'You transition into a new domain',
@@ -288,11 +282,11 @@ export const DelveSiteDomain = DelveSiteCard(
 			[
 				Type.Array(Type.Ref(DelveSiteDomainDangerRow)),
 				Type.Tuple([
-					Abstract.StaticRowStub({ min: 31, max: 33 }),
-					Abstract.StaticRowStub({ min: 34, max: 36 }),
-					Abstract.StaticRowStub({ min: 37, max: 39 }),
-					Abstract.StaticRowStub({ min: 40, max: 42 }),
-					Abstract.StaticRowStub({ min: 43, max: 45 })
+					StaticRowStub({ min: 31, max: 33 }),
+					StaticRowStub({ min: 34, max: 36 }),
+					StaticRowStub({ min: 37, max: 39 }),
+					StaticRowStub({ min: 40, max: 42 }),
+					StaticRowStub({ min: 43, max: 45 })
 				])
 			],
 			{
@@ -302,8 +296,24 @@ export const DelveSiteDomain = DelveSiteCard(
 			}
 		)
 	},
-	{ $id: '#/$defs/DelveSiteDomain', title: 'Delve site domain' }
+	{ $id: '#/$defs/DelveSiteDomain' }
 )
 
 export type DelveSiteDomain = Static<typeof DelveSiteDomain>
 export type TDelveSiteDomain = typeof DelveSiteDomain
+
+function StaticRowStub(
+	literals: Partial<CanBeLiteral<OracleTableRow>> & {
+		min?: number
+		max?: number
+	},
+	defaults: Partial<
+		OracleTableRow & {
+			min?: number
+			max?: number
+		}
+	> = {}
+) {
+	const result = WithDefaults(ObjectLiterals(literals), defaults)
+	return result
+}

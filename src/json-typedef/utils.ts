@@ -16,8 +16,10 @@ import {
 	TString,
 	TypeGuard
 } from '@sinclair/typebox'
+import * as JTD from 'jtd'
+
 import { inRange, merge, pick, set } from 'lodash-es'
-import { TNullable } from '../schema/datasworn/common/utils.js'
+import { TNullable } from '../schema/datasworn/utils/typebox.js'
 import { log } from '../scripts/utils/logger.js'
 import {
 	Description,
@@ -185,50 +187,8 @@ function isStringEnum(schema: TSchema): schema is TJsonEnum<string[]> {
 }
 
 export function toJtdInteger<T extends TInteger>(schema: T) {
-	let type: JTDSchemaType<number>['type'] = 'int16' // reasonably safe fallback
-
-	const integerRange: Record<
-		Exclude<JTDSchemaType<number>['type'], `float${number}`>,
-		[number, number]
-	> = {
-		uint8: [0, 255],
-		int8: [-128, 127],
-		uint16: [0, 65535],
-		int16: [-32768, 32767],
-		int32: [-2147483648, 2147483647],
-		uint32: [0, 4294967295]
-	}
-	if (
-		typeof schema.minimum === 'number' &&
-		typeof schema.maximum === 'number'
-	) {
-		for (const [k, [min, max]] of Object.entries(integerRange)) {
-			if (
-				inRange(schema.minimum, min, max + 1) &&
-				inRange(schema.maximum, min, max + 1)
-			) {
-				type = k as typeof type
-				break
-			}
-		}
-	} else if (typeof schema.minimum === 'number') {
-		for (const [k, [min, max]] of Object.entries(integerRange)) {
-			if (inRange(schema.minimum, min, max + 1)) {
-				type = k as typeof type
-				break
-			}
-		}
-	} else if (typeof schema.maximum === 'number') {
-		for (const [k, [min, max]] of Object.entries(integerRange)) {
-			if (schema.maximum <= max) {
-				type = k as typeof type
-				break
-			}
-		}
-	}
-
 	const typedef: JTDSchemaType<number> = {
-		type,
+		type: 'int16', // reasonably safe fallback
 		metadata: getMetadata(schema)
 	}
 	return typedef
@@ -395,7 +355,7 @@ function toJtdForm<T extends TSchema>(
 }
 
 export function toJtdModule<T extends Record<string, TSchema>>(ns: T) {
-	const result = {} as { [K in keyof T]: JTDSchemaType<Static<T[K]>> }
+	const result = {} as { [K in keyof T]: JTD.Schema }
 
 	for (const k in ns)
 		try {

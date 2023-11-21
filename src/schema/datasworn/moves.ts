@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Abstract, ID } from './common/index.js'
+import { Generic, ID } from './common/index.js'
 import {
 	MoveActionRoll,
 	MoveActionRollEnhancement,
@@ -45,7 +45,7 @@ export type MoveEnhancement =
 
 // export type MoveEnhancement = Static<typeof MoveEnhancement>
 
-export const MoveCategory = Abstract.Collection(
+export const MoveCategory = Generic.Collection(
 	Type.Ref(Move),
 	Type.Ref(ID.MoveCategoryID),
 	{ $id: '#/$defs/MoveCategory' }

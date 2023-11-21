@@ -1,7 +1,6 @@
 import {
 	Type,
 	type ObjectOptions,
-	type ObjectProperties,
 	type Static,
 	type TLiteral,
 	type TObject,
@@ -9,20 +8,9 @@ import {
 	type TSchema,
 	type TString
 } from '@sinclair/typebox'
-import { LiteralZero } from './utils.js'
-import * as Player from './player.js'
-import {
-	Checkbox,
-	Clock,
-	Counter,
-	Input,
-	Meter,
-	Select,
-	SelectOption,
-	TextInput,
-	type TInput,
-	type TSelectOption
-} from './inputs.js'
+import { LiteralZero, Merge, type TMerge } from '../utils/typebox.js'
+import type * as Player from './player.js'
+import * as Base from './inputs.js'
 import { type TAssetEnhancement } from '../assets/enhancement.js'
 import { type TMoveEnhancement } from '../moves.js'
 
@@ -31,7 +19,10 @@ export const EnhanceableProperties = Symbol('EnhanceableProperties')
 /** The standard discriminator key for input fields. */
 export const DISCRIMINATOR = 'field_type' as const
 
-function InputField<T extends TInput<TSchema>, Discriminator extends string>(
+function InputField<
+	T extends Base.TInput<TSchema>,
+	Discriminator extends string
+>(
 	base: T,
 	discriminator: Discriminator,
 	id: TRef<TString>,
@@ -41,8 +32,7 @@ function InputField<T extends TInput<TSchema>, Discriminator extends string>(
 		id,
 		[DISCRIMINATOR]: Type.Literal(discriminator)
 	})
-	// @ts-expect-error
-	return Type.Composite([mixin, base], {
+	return Merge(base, mixin, {
 		description: base.description,
 		$comment: base.$comment,
 		[EnhanceableProperties]: [] as Array<keyof Static<T>>,
@@ -50,28 +40,37 @@ function InputField<T extends TInput<TSchema>, Discriminator extends string>(
 	}) as TInputField<T, Discriminator>
 }
 export type TInputField<
-	T extends TInput<TSchema>,
+	T extends Base.TInput<TSchema>,
 	Discriminator extends string
-> = TObject<
-	{
+> = TMerge<
+	T,
+	TObject<{
 		id: TRef<TString>
 		[DISCRIMINATOR]: TLiteral<Discriminator>
-	} & ObjectProperties<T>
+	}>
 > & { [EnhanceableProperties]: Array<keyof Static<T>> }
 
 // ReturnType<typeof InputField<T, Discriminator>> & InputFieldOptions<T>
 
-export type InputField<T extends Input<any>, Discriminator extends string> = {
-	id: string
-	[DISCRIMINATOR]: Discriminator
-} & T
+export type InputField<
+	T extends Base.Input<any>,
+	Discriminator extends string
+> = Merge<
+	T,
+	{
+		id: string
+		[DISCRIMINATOR]: Discriminator
+	}
+>
 
-export function isEnhanceable(field: TInputField<TInput<TSchema>, string>) {
+export function isEnhanceable(
+	field: TInputField<Base.TInput<TSchema>, string>
+) {
 	return !!field[EnhanceableProperties].length
 }
 
 export function CounterField(id: TRef<TString>) {
-	return InputField(Counter, 'counter', id, {
+	return InputField(Base.Counter, 'counter', id, {
 		[EnhanceableProperties]: ['max'],
 		title: 'CounterField'
 	})
@@ -80,7 +79,7 @@ export type TCounterField = ReturnType<typeof CounterField>
 export type CounterField = Static<TCounterField>
 
 export function ClockField(id: TRef<TString>) {
-	return InputField(Clock, 'clock', id, {
+	return InputField(Base.Clock, 'clock', id, {
 		[EnhanceableProperties]: ['max'],
 		title: 'ClockField'
 	})
@@ -89,16 +88,21 @@ export type TClockField = ReturnType<typeof ClockField>
 export type ClockField = Static<TClockField>
 
 export function ConditionMeterField(id: TRef<TString>) {
-	return InputField(Meter(LiteralZero, Type.Integer()), 'condition_meter', id, {
-		[EnhanceableProperties]: ['max'],
-		title: 'ConditionMeterField'
-	})
+	return InputField(
+		Base.Meter(LiteralZero, Type.Integer()),
+		'condition_meter',
+		id,
+		{
+			[EnhanceableProperties]: ['max'],
+			title: 'ConditionMeterField'
+		}
+	)
 }
 export type TConditionMeterField = ReturnType<typeof ConditionMeterField>
 export type ConditionMeterField = Static<TConditionMeterField>
 
 function SelectField<
-	Option extends TSelectOption<TSchema>,
+	Option extends Base.TSelectOption<TSchema>,
 	Discriminator extends string
 >(
 	optionSchema: Option,
@@ -106,7 +110,7 @@ function SelectField<
 	id: TRef<TString>,
 	options: ObjectOptions = {}
 ) {
-	return InputField(Select(optionSchema), discriminator, id, options)
+	return InputField(Base.Select(optionSchema), discriminator, id, options)
 }
 
 export function SelectStatField(
@@ -114,7 +118,12 @@ export function SelectStatField(
 	options: ObjectOptions = {}
 ) {
 	return SelectField(
-		SelectOption(Type.Ref(Player.PlayerStat), { title: 'SelectStatOption' }),
+		Base.SelectOption(
+			Type.Ref<typeof Player.PlayerStat>('#/$defs/PlayerStat'),
+			{
+				title: 'SelectStatOption'
+			}
+		),
 		'select_stat',
 		id,
 		{ title: 'SelectStatField', options }
@@ -128,7 +137,7 @@ export function SelectEnhancementField(
 	options: ObjectOptions = {}
 ) {
 	return SelectField(
-		SelectOption(
+		Base.SelectOption(
 			Type.Partial(
 				Type.Object({
 					enhance_asset: Type.Ref<TAssetEnhancement>(
@@ -158,7 +167,7 @@ export type SelectEnhancementField = Static<TSelectEnhancementField>
 
 export function CardFlipField(id: TRef<TString>, options: ObjectOptions = {}) {
 	return InputField(
-		Input(
+		Base.Input(
 			Type.Boolean({ description: 'Is the card flipped over?', default: false })
 		),
 		'card_flip',
@@ -174,7 +183,7 @@ export type TCardFlipField = ReturnType<typeof CardFlipField>
 export type CardFlipField = Static<TCardFlipField>
 
 export function CheckboxField(id: TRef<TString>, options: ObjectOptions = {}) {
-	return InputField(Checkbox, 'checkbox', id, {
+	return InputField(Base.Checkbox, 'checkbox', id, {
 		title: 'CheckboxField',
 		...options
 	})
@@ -183,7 +192,10 @@ export type TCheckboxField = ReturnType<typeof CheckboxField>
 export type CheckboxField = Static<TCheckboxField>
 
 export function TextField(id: TRef<TString>, options: ObjectOptions = {}) {
-	return InputField(TextInput, 'text', id, { title: 'TextField', ...options })
+	return InputField(Base.TextInput, 'text', id, {
+		title: 'TextField',
+		...options
+	})
 }
 export type TTextField = ReturnType<typeof TextField>
 export type TextField = Static<TTextField>

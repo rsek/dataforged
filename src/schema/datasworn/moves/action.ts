@@ -3,16 +3,21 @@ import {
 	ExtractLiteralFromEnum,
 	JsonEnumFromRecord,
 	Type,
-	type Static
+	type ObjectOptions,
+	type Static,
+	type TObject
 } from '../../../typebox/index.js'
 import { AssetIDWildcard, DictKey } from '../common/id.js'
 import { Localize, Player } from '../common/index.js'
-import { Nullable, SetOptional } from '../common/utils.js'
-import { ActionRollMethod, MoveOutcomes, MoveRollType } from './common.js'
+import { Merge, Nullable, SetOptional } from '../utils/typebox.js'
+import {
+	MoveRollType,
+	type ActionRollMethod,
+	type MoveOutcomes
+} from './common.js'
 import {
 	Move,
 	MoveEnhancement,
-	RollOption,
 	Trigger,
 	TriggerCondition,
 	TriggerConditionEnhancement,
@@ -33,10 +38,25 @@ export const ActionRollUsing = JsonEnumFromRecord(
 	},
 	{ $id: '#/$defs/ActionRollUsing' }
 )
-
 export type ActionRollUsing = Static<typeof ActionRollUsing>
 
-export const RollOptionAssetControl = RollOption(
+function ActionRollOptionBase<
+	Using extends ActionRollUsing,
+	Props extends TObject
+>(using: Using, props: Props, options: ObjectOptions = {}) {
+	return Merge(
+		props,
+		Type.Object({
+			using: ExtractLiteralFromEnum(ActionRollUsing, using)
+		}),
+		{
+			additionalProperties: false,
+			...options
+		}
+	)
+}
+
+export const RollOptionAssetControl = ActionRollOptionBase(
 	'asset_control',
 	Type.Object({
 		assets: Nullable(Type.Array(Type.Ref(AssetIDWildcard)), {
@@ -54,7 +74,7 @@ export const RollOptionAssetControl = RollOption(
 
 export type RollOptionAssetControl = Static<typeof RollOptionAssetControl>
 
-export const RollOptionAttachedAssetControl = RollOption(
+export const RollOptionAttachedAssetControl = ActionRollOptionBase(
 	'attached_asset_control',
 	Type.Pick(RollOptionAssetControl, ['control']),
 	{ $id: '#/$defs/RollOptionAttachedAssetControl' }
@@ -64,7 +84,7 @@ export type RollOptionAttachedAssetControl = Static<
 	typeof RollOptionAttachedAssetControl
 >
 
-export const RollOptionAssetOption = RollOption(
+export const RollOptionAssetOption = ActionRollOptionBase(
 	'asset_option',
 	Type.Object({
 		assets: Nullable(Type.Array(Type.Ref(AssetIDWildcard)), {
@@ -81,7 +101,7 @@ export const RollOptionAssetOption = RollOption(
 
 export type RollOptionAssetOption = Static<typeof RollOptionAssetOption>
 
-export const RollOptionAttachedAssetOption = RollOption(
+export const RollOptionAttachedAssetOption = ActionRollOptionBase(
 	'attached_asset_option',
 	Type.Pick(RollOptionAssetOption, ['option']),
 	{ $id: '#/$defs/RollOptionAttachedAssetOption' }
@@ -93,7 +113,7 @@ export type RollOptionAttachedAssetOption = Static<
 
 // TODO: should using be 'option_type' instead?
 
-export const RollOptionStat = RollOption(
+export const RollOptionStat = ActionRollOptionBase(
 	'stat',
 	Type.Object({
 		stat: Type.Ref(Player.PlayerStat)
@@ -103,7 +123,7 @@ export const RollOptionStat = RollOption(
 
 export type RollOptionStat = Static<typeof RollOptionStat>
 
-export const RollOptionConditionMeter = RollOption(
+export const RollOptionConditionMeter = ActionRollOptionBase(
 	'condition_meter',
 	Type.Object({
 		condition_meter: Type.Ref(Player.PlayerConditionMeter)
@@ -112,7 +132,7 @@ export const RollOptionConditionMeter = RollOption(
 )
 export type RollOptionConditionMeter = Static<typeof RollOptionConditionMeter>
 
-export const RollOptionCustom = RollOption(
+export const RollOptionCustom = ActionRollOptionBase(
 	'custom',
 	Type.Object({
 		name: Type.Ref(Localize.Label),
@@ -141,7 +161,7 @@ export const ActionRollOption = DiscriminatedUnion(
 export type ActionRollOption = Static<typeof ActionRollOption>
 
 export const TriggerActionRollCondition = TriggerCondition(
-	Type.Ref(ActionRollMethod),
+	Type.Ref<typeof ActionRollMethod>('#/$defs/ActionRollMethod'),
 	Type.Ref(ActionRollOption),
 
 	{ $id: '#/$defs/TriggerActionRollCondition' }
@@ -158,7 +178,7 @@ export type TriggerActionRoll = Static<typeof TriggerActionRoll>
 export const MoveActionRoll = Move(
 	ExtractLiteralFromEnum(MoveRollType, 'action_roll'),
 	Type.Ref(TriggerActionRoll),
-	Type.Ref(MoveOutcomes),
+	Type.Ref<typeof MoveOutcomes>('#/$defs/MoveOutcomes'),
 	{
 		title: 'Move (action roll)',
 		description: 'A move that makes an action roll.',

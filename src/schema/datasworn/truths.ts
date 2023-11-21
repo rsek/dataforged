@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { ID, Localize } from './common/index.js'
-import * as Abstract from './common/abstract.js'
+import * as Abstract from './utils/generic.js'
 import * as Metadata from './common/metadata.js'
 
 export const TruthOption = Type.Object(

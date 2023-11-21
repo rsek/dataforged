@@ -1,8 +1,8 @@
 import { Type, type Static, type TOptional } from '@sinclair/typebox'
 import { JsonEnum, JsonEnumFromRecord } from '../../typebox/enum.js'
-import { RecursiveCollection } from './common/abstract.js'
-import { Abstract, ID, Localize, Metadata } from './common/index.js'
-import { Nullable, Squash } from './common/utils.js'
+import { RecursiveCollection } from './utils/generic.js'
+import { Generic, ID, Localize, Metadata } from './common/index.js'
+import { Nullable, Merge } from './utils/typebox.js'
 
 export const OracleRollTemplate = Type.Object(
 	{
@@ -161,16 +161,14 @@ export const OracleTableColumn = Type.Object(
 )
 export type OracleTableColumn = Static<typeof OracleTableColumn>
 
-export const OracleCollectionTableColumn = Squash(
-	[
-		OracleTableColumn,
-		Type.Object({
-			table_key: Type.Ref(ID.DictKey, {
-				description:
-					'The key of the OracleTable (within this collection), whose data is used to render this column.'
-			})
+export const OracleCollectionTableColumn = Merge(
+	OracleTableColumn,
+	Type.Object({
+		table_key: Type.Ref(ID.DictKey, {
+			description:
+				'The key of the OracleTable (within this collection), whose data is used to render this column.'
 		})
-	],
+	}),
 	{
 		$id: '#/$defs/OracleCollectionTableColumn'
 	}
@@ -182,7 +180,7 @@ export type OracleCollectionTableColumn = Static<
 export const OracleTableRendering = Type.Object(
 	{
 		table_style: Type.Optional(Type.Ref(OracleTableStyle)),
-		columns: Abstract.Dictionary(Type.Ref(OracleTableColumn), {
+		columns: Generic.Dictionary(Type.Ref(OracleTableColumn), {
 			default: {
 				roll: { name: 'Roll', content_type: 'roll' },
 				result: { name: 'Result', content_type: 'result' }
@@ -203,7 +201,7 @@ export const DiceNotation = Type.RegExp(
 )
 export type DiceNotation = Static<typeof DiceNotation>
 
-export const OracleTable = Abstract.SourcedNode(
+export const OracleTable = Generic.SourcedNode(
 	Type.Object({
 		id: Type.Ref(ID.OracleTableID),
 		dice: Type.Ref(DiceNotation, { default: '1d100' }),
@@ -238,7 +236,7 @@ export type OracleTable = Static<typeof OracleTable>
 
 const OracleRenderingBase = Type.Object({
 	columns: Type.Optional(
-		Abstract.Dictionary(Type.Ref(OracleTableColumn), {
+		Generic.Dictionary(Type.Ref(OracleTableColumn), {
 			description:
 				'Describes the rendering of this oracle as a standalone table.'
 		})
@@ -251,32 +249,31 @@ export const OracleCollectionStyle = JsonEnum(['multi_table'], {
 })
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
-export const OracleCollectionRendering = Squash(
-	[
-		OracleRenderingBase,
-		Type.Object({
-			columns: Abstract.Dictionary(Type.Ref(OracleCollectionTableColumn)),
-			table_style: Type.Optional(Type.Ref(OracleCollectionStyle))
-		})
-	],
+export const OracleCollectionRendering = Merge(
+	OracleRenderingBase,
+	Type.Object({
+		columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn)),
+		table_style: Type.Optional(Type.Ref(OracleCollectionStyle))
+	}),
 	{ $id: '#/$defs/OracleCollectionRendering' }
 )
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
-const OracleCollectionBase = Type.Composite([
+const OracleCollectionBase = Merge(
 	Type.Object({
 		rendering: Type.Optional(OracleCollectionRendering)
 	}),
-	Abstract.Collection(Type.Ref(OracleTable), Type.Ref(ID.OracleCollectionID))
-]) as Abstract.TCollection<typeof OracleTable> & {
-	properties: { rendering: TOptional<typeof OracleCollectionRendering> }
-	static: OracleCollection
-}
+	Generic.Collection(Type.Ref(OracleTable), Type.Ref(ID.OracleCollectionID))
+)
+// as Generic.TCollection<typeof OracleTable> & {
+// 	properties: { rendering: TOptional<typeof OracleCollectionRendering> }
+// 	static: OracleCollection
+// }
 
 export const OracleCollection = RecursiveCollection(OracleCollectionBase, {
 	$id: '#/$defs/OracleCollection'
 })
 export type OracleCollection = RecursiveCollection<
-	Abstract.Collection<OracleTable> & { rendering?: OracleCollectionRendering }
+	Generic.Collection<OracleTable> & { rendering?: OracleCollectionRendering }
 >
 export type TOracleCollection = typeof OracleCollection

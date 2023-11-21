@@ -14,12 +14,11 @@ import { transform } from '../../builders/transformer.js'
 import type { In, Out } from '../../types/index.js'
 import ajv from '../validation/ajv.js'
 import { log } from '../utils/logger.js'
-import { writeJSON } from './readWrite.js'
+import { writeJSON, readSource } from './readWrite.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
 import { ROOT_OUTPUT } from '../const.js'
 import * as jsc from '../validation/jsc.js'
 import JsonPointer from 'json-pointer'
-import { readSource } from './readWrite.js'
 import { formatPath } from '../../utils.js'
 import {
 	isSortableObjectSchema,
@@ -27,8 +26,8 @@ import {
 	sortDataswornKeys,
 	sortSchemaKeys
 } from './sort.js'
-import { JSONSchema7 } from 'json-schema'
-import { SourcedNode } from '../../schema/datasworn/common/abstract.js'
+import { type JSONSchema7 } from 'json-schema'
+import { type SourcedNode } from '../../schema/datasworn/utils/generic.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -65,7 +64,9 @@ export async function buildSourcebook(
 
 	// flush old files from outdir
 	const cleanup = Promise.all(
-		oldJsonFiles.map((filePath) => fs.unlink(filePath))
+		oldJsonFiles.map(async (filePath) => {
+			await fs.unlink(filePath)
+		})
 	)
 
 	const builtFiles = new Map<string, Out.Datasworn>()
@@ -81,7 +82,7 @@ export async function buildSourcebook(
 					schemaIdOut
 				)
 
-				builtFiles.set(filePath, builtData as any)
+				builtFiles.set(filePath, builtData)
 			} catch (error) {
 				log.error(`Failed to build from ${formatPath(filePath)}:`, error)
 			}
@@ -98,7 +99,7 @@ export async function buildSourcebook(
 		'source.page'
 	) as unknown as SourcebookMetadata
 
-	const toWrite: Promise<void>[] = []
+	const toWrite: Array<Promise<void>> = []
 
 	for (const [k, v] of Object.entries(sourcebook)) {
 		if (isMacroKey(k)) continue
@@ -121,9 +122,9 @@ export async function buildSourcebook(
 		toWrite.push(
 			fs
 				.ensureFile(outPath)
-				.then(() => {
+				.then(async () => {
 					log.info(`✏️  Writing to ${formatPath(outPath)}`)
-					return writeJSON(outPath, jsonOut, { replacer })
+					await writeJSON(outPath, jsonOut, { replacer })
 				})
 				.catch(
 					(err) =>
@@ -175,8 +176,6 @@ function cleanDatasworn(datasworn: Out.Datasworn) {
 			isSortableObjectSchema(schema)
 		)
 			sortedPointers[nicePointer] = sortDataswornKeys(value as any)
-
-		return
 	})
 
 	// console.log('pointersToDelete', pointersToDelete)

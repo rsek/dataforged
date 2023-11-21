@@ -1,24 +1,57 @@
+/** Utilities for manipulating TypeBox schemas. */
 import {
-	type TNull,
-	type TOmit,
-	type TPartial,
-	type TPick,
-	type TRequired,
-	type TSchema,
-	type TUnion,
 	Type,
 	TypeClone,
 	TypeGuard,
 	type ObjectOptions,
 	type SchemaOptions,
 	type Static,
+	type TLiteralValue,
+	type TNull,
+	/** Transform an object of literal values into a schema representing the object. */
 	type TObject,
-	type TProperties
+	type TOmit,
+	type TPartial,
+	type TPick,
+	type TProperties,
+	type TRequired,
+	type TSchema,
+	type TUnion
 } from '@sinclair/typebox'
-import { camelCase, isEmpty } from 'lodash-es'
+import { isEmpty, mapValues } from 'lodash-es'
 import type * as TypeFest from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { type MergeObjectSchemas } from './abstract.js'
+
+/** Transform an object of literal values into a schema representing the object. */
+
+export function ObjectLiterals<T extends Record<string, TLiteralValue>>(
+	object: T
+) {
+	return Type.Object(mapValues(object, (v) => Type.Literal(v)))
+} /** Extracts all properties that can be rendered as Type.Literal with typebox */
+export type CanBeLiteral<T> = {
+	[K in keyof T as Required<T>[K] extends TLiteralValue | null | undefined
+		? K
+		: never]: T[K]
+}
+
+export function Merge<TTarget extends TObject, TSource extends TObject>(
+	target: TTarget,
+	source: TSource,
+	options: ObjectOptions = {}
+) {
+	const omitKeys = Object.keys(source.properties) as Array<
+		keyof Static<TSource>
+	>
+	const base = Type.Omit(target, omitKeys)
+	// @ts-expect-error
+	return Type.Composite([base, source], options) as TMerge<TTarget, TSource>
+}
+export type Merge<TTarget, TSource> = Omit<TTarget, keyof TSource> & TSource
+
+export type TMerge<TTarget extends TObject, TSource extends TObject> = TObject<
+	Merge<TTarget['properties'], TSource['properties']>
+>
 
 export const isNullable = Symbol('isNullable')
 
@@ -34,8 +67,8 @@ export function Nullable<T extends TSchema>(
 
 	return newSchema
 }
-
 /** Typeguard */
+
 export function TNullable(schema: unknown): schema is TNullable {
 	return (schema as TNullable)[isNullable] === 'Nullable'
 }
@@ -43,23 +76,6 @@ export function TNullable(schema: unknown): schema is TNullable {
 export function NonNullable<T extends TNullable>(base: T) {
 	const [schema] = base.anyOf
 	return schema
-}
-
-export function Squash<Head extends TObject[], Tail extends TObject>(
-	schemas: [...Head, Tail],
-	options: ObjectOptions = {}
-) {
-	type StripOverriddenProps = Omit<Head[number], keyof Tail>
-	type Merged = TypeFest.Simplify<StripOverriddenProps & Tail>
-
-	const properties = schemas
-		.map((schema) => schema.properties)
-		.reduce((prevProps, currentProps) => ({
-			...prevProps,
-			...currentProps
-		})) as Merged['properties']
-
-	return Type.Object(properties, options)
 }
 
 export type ExtractKeysOfValueType<ObjectType, ValueType> = {
@@ -73,19 +89,11 @@ export type PickByType<ObjectType, ValueType> = {
 	>]: ObjectType[P]
 }
 
-function capitalize(str: string) {
-	return str[0].toUpperCase() + str.slice(1)
-}
-
-export function pascalCase(str: string) {
-	return capitalize(camelCase(str))
-}
-
 export type DeepPartial<T extends Record<any, any>> = {
 	[K in keyof T]?: T[K] extends Record<any, any> ? DeepPartial<T[K]> : T[K]
 }
-
 // Specialized TObject type that can be passed to TIntersect
+
 export interface TDeepPartial<T extends TObject> extends TObject {
 	static: DeepPartial<Static<T>>
 }
@@ -109,12 +117,12 @@ export type SetOptional<
 	Keys extends keyof BaseType
 > = TypeFest.SetOptional<BaseType, Keys>
 
-export type TSetOptional<
-	T extends TObject,
-	K extends keyof Static<T>
-> = MergeObjectSchemas<TOmit<T, K>, TPartial<TPick<T, K>>>
-
+export type TSetOptional<T extends TObject, K extends keyof Static<T>> = TMerge<
+	TOmit<T, K>,
+	TPartial<TPick<T, K>>
+>
 /** Make the provided keys optional */
+
 export function SetOptional<
 	T extends TObject,
 	K extends Array<keyof Static<T>>
@@ -130,77 +138,38 @@ export function SetOptional<
 
 export type PartialExcept<T, K extends keyof T> = Pick<T, K> &
 	Partial<Omit<T, K>>
-type TPartialExcept<
+
+export type TPartialExcept<
 	T extends TObject,
 	K extends keyof Static<T>
-> = MergeObjectSchemas<TPick<T, K>, TPartial<TOmit<T, K>>>
-
+> = TMerge<TPick<T, K>, TPartial<TOmit<T, K>>>
 /** Make everything optional except for the provided keys  */
+
 export function PartialExcept<
 	T extends TObject,
 	K extends Array<keyof Static<T>>
 >(schema: T, requiredKeys: [...K], options: SchemaOptions = {}) {
-	return Type.Composite(
-		[
-			Type.Pick(schema, requiredKeys),
-			Type.Partial(Type.Omit(schema, requiredKeys))
-		],
+	return Merge(
+		Type.Pick(schema, requiredKeys),
+		Type.Partial(Type.Omit(schema, requiredKeys)),
 		options
-	) as unknown as TPartialExcept<T, K[number]>
+	) as TPartialExcept<T, K[number]>
 }
-
-type TSetRequired<
-	T extends TObject,
-	K extends keyof Static<T>
-> = MergeObjectSchemas<TRequired<TPick<T, K>>, TOmit<T, K>>
-
+type TSetRequired<T extends TObject, K extends keyof Static<T>> = TMerge<
+	TOmit<T, K>,
+	TRequired<TPick<T, K>>
+>
 /** Make the provided keys required */
+
 export function SetRequired<
 	T extends TObject,
 	K extends Array<keyof Static<T>>
 >(schema: T, requiredKeys: [...K], options: ObjectOptions = {}) {
-	return Type.Composite(
-		[
-			Type.Omit(schema, requiredKeys),
-			Type.Required(Type.Pick(schema, requiredKeys))
-		],
+	return Merge(
+		Type.Omit(schema, requiredKeys),
+		Type.Required(Type.Pick(schema, requiredKeys)),
 		options
-	) as unknown as TSetRequired<T, K[number]>
-}
-
-export type RequireExcept<T, K extends keyof T> = Required<Omit<T, K>> &
-	Pick<T, K>
-/** Make everything required except for the provided keys */
-export function RequireExcept<
-	T extends TObject,
-	K extends Array<keyof Static<T>>
->(schema: T, nonRequiredKeys: [...K], options: SchemaOptions = {}) {
-	return Type.Composite(
-		[
-			Type.Pick(schema, nonRequiredKeys),
-			Type.Required(Type.Omit(schema, nonRequiredKeys))
-		],
-		options
-	)
-}
-
-export function PolymorphicWithID<
-	TFieldSchema extends TSchema[],
-	TFieldID extends TSchema
->(
-	fieldID: TFieldID,
-	fieldSchemas: [...TFieldSchema],
-	options: ObjectOptions = {}
-) {
-	const discriminator = Type.Object(
-		{ id: fieldID },
-		{ additionalProperties: true }
-	)
-
-	return Type.Intersect<[typeof discriminator, TUnion<TFieldSchema>]>(
-		[discriminator, Type.Union(fieldSchemas)],
-		options
-	)
+	) as TSetRequired<T, K[number]>
 }
 
 export function NoDefaults<T extends TObject>(
@@ -221,33 +190,35 @@ export function WithDefaults<T extends TObject>(
 ) {
 	const newSchema = TypeClone.Type(schema, options)
 
-	for (const key in defaults) newSchema.properties[key].default = defaults[key]
+	for (const key in defaults) {
+		newSchema.properties[key] ||= {} as any
+		newSchema.properties[key].default = defaults[key]
+	}
 
 	return newSchema
 }
-
 /** Resolves to `{const: 0}` in JSON schema, and falls back to uint8 for JSON TypeDef */
+
 export const LiteralZero = Type.Literal(0, {
 	default: 0,
 	[JsonTypeDef]: { schema: { type: 'uint8' } }
 })
 export type LiteralZero = 0
-
 /**
  * A schema that resolves to a given type.
  * @template T - The static type of the schema.
  */
-export type TSchemaOf<T> = TSchema & { static: T }
 
+export type TSchemaOf<T> = TSchema & { static: T }
 /**
  * A schema that resolves to a type, which may be optional or nullable.
  * @template T - The static type of the schema.
  */
+
 export type TFuzzySchemaOf<T> =
 	| TSchemaOf<T>
 	| (TSchema & { static: T | undefined })
 	| (TSchema & { static: T | null })
-
 /**
  * Assigns descriptions to the properties of an object schema.
  * @param schema - The object schema.
@@ -255,6 +226,7 @@ export type TFuzzySchemaOf<T> =
  * @param override - Should non-empty descriptions be overwritten? (default: true)
  * @returns The mutated object schema.
  */
+
 export function setDescriptions<T extends TObject>(
 	schema: T,
 	descriptions: Partial<Record<keyof T['properties'], string | undefined>>,

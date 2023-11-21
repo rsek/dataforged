@@ -135,19 +135,19 @@ export const MoveOutcome = Type.Object(
 )
 export type MoveOutcome = Static<typeof MoveOutcome>
 
-// export const MoveOutcomeMatchable = Type.Composite(
-// 	[MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) })],
+// export const MoveOutcomeMatchable = Merge(
+// 	MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) }),
 // 	{ $id: '#/$defs/MoveOutcomeMatchable' }
 // )
 // export type MoveOutcomeMatchable = Static<typeof MoveOutcomeMatchable>
 
 export const MoveOutcomes = Type.Object(
 	{
-		[Outcome.StrongHit]: Type.Ref(MoveOutcome),
-		// [Outcome.StrongHit]: Type.Ref(MoveOutcomeMatchable),
-		[Outcome.WeakHit]: Type.Ref(MoveOutcome),
-		[Outcome.Miss]: Type.Ref(MoveOutcome)
-		// [Outcome.Miss]: Type.Ref(MoveOutcomeMatchable),
+		[Outcome.StrongHit]: Type.Ref<typeof MoveOutcome>('#/$defs/MoveOutcome'),
+		// [Outcome.StrongHit]: Type.Ref<typeof MoveOutcomeMatchable>('#/$defs/MoveOutcomeMatchable'),
+		[Outcome.WeakHit]: Type.Ref<typeof MoveOutcome>('#/$defs/MoveOutcome'),
+		[Outcome.Miss]: Type.Ref<typeof MoveOutcome>('#/$defs/MoveOutcome')
+		// [Outcome.Miss]: Type.Ref<typeof MoveOutcomeMatchable>('#/$defs/MoveOutcomeMatchable'),
 	},
 	{
 		$id: '#/$defs/MoveOutcomes',

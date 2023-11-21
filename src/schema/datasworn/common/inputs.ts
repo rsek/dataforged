@@ -11,23 +11,25 @@ import {
 	type Static,
 	type TSchema
 } from '@sinclair/typebox'
-import { type Simplify } from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 
 import {
 	LiteralZero,
 	Nullable,
 	type TFuzzySchemaOf,
-	setDescriptions
-} from './utils.js'
+	setDescriptions,
+	Merge,
+	type TMerge
+} from '../utils/typebox.js'
 
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { JsonEnum } from '../../../typebox/index.js'
-import * as Localize from './localize.js'
-import { DictKey } from './id.js'
-import * as Abstract from './abstract.js'
+import * as Generic from '../utils/generic.js'
 
-const InputName = Type.Ref(Localize.Label, {
+import { type DictKey } from './id.js'
+import type * as Localize from './localize.js'
+
+const InputName = Type.Ref<typeof Localize.Label>('#/$defs/Label', {
 	description:
 		'A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).'
 })
@@ -90,14 +92,12 @@ export interface Range<
 	max: Max
 }
 
-export const Counter = Type.Composite(
-	[
-		Input(Type.Integer({ default: 0 })),
-		Range({
-			min: LiteralZero,
-			max: Nullable(Type.Integer())
-		})
-	],
+export const Counter = Merge(
+	Input(Type.Integer({ default: 0 })),
+	Range({
+		min: LiteralZero,
+		max: Nullable(Type.Integer())
+	}),
 	{
 		description:
 			'A counter that starts at zero, with an optional maximum value.',
@@ -107,27 +107,25 @@ export const Counter = Type.Composite(
 export type TCounter = typeof Counter
 export type Counter = Static<typeof Counter>
 
-export const Clock = Type.Composite(
-	[
-		Input(
-			Type.Integer({
-				default: 0,
-				description: 'The current number of filled clock segments.'
-			})
-		),
-		Range({
-			min: {
-				...LiteralZero,
-				description:
-					'The minimum number of filled clock segments. This is always 0.'
-			},
-			max: JsonEnum([4, 6, 8, 10], {
-				[JsonTypeDef]: { schema: { type: 'uint8' } },
-				description:
-					'The size of the clock -- in other words, the maximum number of filled clock segments.'
-			})
+export const Clock = Merge(
+	Input(
+		Type.Integer({
+			default: 0,
+			description: 'The current number of filled clock segments.'
 		})
-	],
+	),
+	Range({
+		min: {
+			...LiteralZero,
+			description:
+				'The minimum number of filled clock segments. This is always 0.'
+		},
+		max: JsonEnum([4, 6, 8, 10], {
+			[JsonTypeDef]: { schema: { type: 'uint8' } },
+			description:
+				'The size of the clock -- in other words, the maximum number of filled clock segments.'
+		})
+	}),
 	{
 		description: 'A clock with 4, 6, 8, or 10 segments.',
 		$comment:
@@ -145,26 +143,23 @@ export function Meter<
 	Min extends TInteger | TLiteral<number> = TInteger,
 	Max extends TInteger | TLiteral<number> = TInteger
 >(min: Min, max: Max, options: ObjectOptions = {}): TMeter<Min, Max> {
-	// @ts-expect-error
-	return Type.Composite(
-		[
-			Input(Type.Integer({ description: 'The current value of this meter.' })),
-			Range<Min, Max>({
-				min: { description: 'The minimum value of this meter.', ...min },
-				max: { description: 'The maximum value of this meter.', ...max }
-			})
-		],
+	return Merge(
+		Input(Type.Integer({ description: 'The current value of this meter.' })),
+		Range<Min, Max>({
+			min: { description: 'The minimum value of this meter.', ...min },
+			max: { description: 'The maximum value of this meter.', ...max }
+		}),
 		options
 	)
 }
 export type TMeter<
 	Min extends TInteger | TLiteral<number> = TInteger,
 	Max extends TInteger | TLiteral<number> = TInteger
-> = TObject<TInput<TInteger>['properties'] & TRange<Min, Max>['properties']>
+> = TMerge<TInput<TInteger>, TRange<Min, Max>>
 export type Meter<
 	Min extends number = number,
 	Max extends number = number
-> = Simplify<Range<Min, Max> & Input<number>>
+> = Merge<Range<Min, Max>, Input<number>>
 
 /**
  * Represents a checkbox, similar to an HTML `<input type="checkbox">` element.
@@ -209,7 +204,7 @@ export function SelectOption<Value extends TSchema>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Input(value)
-	return Type.Composite([SelectOptionBase, mixin], {
+	return Merge(SelectOptionBase, mixin, {
 		description: 'Represents an option in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<option>` element.',
 		...options
@@ -226,7 +221,7 @@ function Choices<T extends TSchema>(
 ) {
 	return Type.Object(
 		{
-			choices: Abstract.Dictionary(choiceSchema)
+			choices: Generic.Dictionary(choiceSchema)
 		},
 		options
 	)
@@ -237,7 +232,7 @@ export interface Choices<T> {
 }
 
 const SelectOptionGroupBase = Type.Object({
-	name: Type.Ref(Localize.Label, {
+	name: Type.Ref<typeof Localize.Label>('#/$defs/Label', {
 		description: 'A label for this option group.'
 	}),
 	option_type: Type.Literal('option_group')
@@ -247,7 +242,7 @@ export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(optionSchema)
-	return Type.Composite([SelectOptionGroupBase, mixin], {
+	return Merge(SelectOptionGroupBase, mixin, {
 		description: 'Represents a grouping of options in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
 		title: optionSchema.title ? optionSchema.title + 'Group' : undefined,
@@ -267,7 +262,7 @@ export type SelectOptionGroup<Option extends SelectOption<any>> = Static<
 
 const SelectBase = Input(
 	Nullable(
-		Type.Ref(DictKey, {
+		Type.Ref<typeof DictKey>('#/$defs/DictKey', {
 			description:
 				'The key of the currently selected choice from the `choices` property, or `null` if none is selected.',
 			default: null
@@ -289,7 +284,7 @@ export function Select<Option extends TSelectOption<TSchema>>(
 			SelectOptionGroup(optionSchema)
 		])
 	)
-	return Type.Composite([SelectBase, mixin], {
+	return Merge(SelectBase, mixin, {
 		description: 'Represents a list of mutually exclusive choices.',
 		$comment: 'Semantics are similar to the HTML `<select>` element',
 		...options

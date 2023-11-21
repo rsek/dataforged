@@ -1,5 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Abstract, ID, Localize, Progress } from './common/index.js'
+import { Generic, ID, Localize, Progress } from './common/index.js'
+import { Merge } from './utils/typebox.js'
 
 export const NpcNature = Type.Ref(Localize.Label, {
 	description:
@@ -24,7 +25,7 @@ export const NpcNature = Type.Ref(Localize.Label, {
 })
 export type NpcNature = Static<typeof NpcNature>
 
-const NpcMixin = Abstract.Cyclopedia(
+const NpcMixin = Generic.Cyclopedia(
 	Type.Object({
 		id: Type.Ref(ID.NpcID),
 
@@ -39,13 +40,11 @@ const NpcMixin = Abstract.Cyclopedia(
 	})
 )
 
-export const NpcVariant = Type.Composite(
-	[
-		Type.Pick(NpcMixin, ['name', 'rank', 'nature', 'summary', 'description']),
-		Type.Object({
-			id: Type.Ref(ID.NpcVariantID)
-		})
-	],
+export const NpcVariant = Merge(
+	Type.Pick(NpcMixin, ['name', 'rank', 'nature', 'summary', 'description']),
+	Type.Object({
+		id: Type.Ref(ID.NpcVariantID)
+	}),
 	{
 		$id: '#/$defs/NpcVariant'
 	}
@@ -53,13 +52,13 @@ export const NpcVariant = Type.Composite(
 
 export type NpcVariant = Static<typeof NpcVariant>
 
-export const Npc = Abstract.SourcedNode(
-	Type.Composite([
+export const Npc = Generic.SourcedNode(
+	Merge(
 		NpcMixin,
 		Type.Object({
-			variants: Type.Optional(Abstract.Dictionary(Type.Ref(NpcVariant)))
+			variants: Type.Optional(Generic.Dictionary(Type.Ref(NpcVariant)))
 		})
-	]),
+	),
 	{
 		$id: '#/$defs/Npc',
 		description:
@@ -69,7 +68,7 @@ export const Npc = Abstract.SourcedNode(
 
 export type Npc = Static<typeof Npc>
 
-export const NpcCollection = Abstract.Collection(
+export const NpcCollection = Generic.Collection(
 	Type.Ref(Npc),
 	Type.Ref(ID.NpcCollectionID),
 	{ $id: '#/$defs/NpcCollection' }

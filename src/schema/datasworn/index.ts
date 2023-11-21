@@ -1,18 +1,22 @@
 /**
- * Types from which to derive JSON schemas and JSON typedefs.
+ * TypeBox JSON schema, with annotations so they can be converted to JSON TypeDef.
  */
 
-export { Metadata, ID, Localize, Player, Progress } from './common/index.js'
+export * from './common/localize.js'
+export * from './common/id.js'
+export * from './common/metadata.js'
+export * from './common/player.js'
+export * from './common/progress.js'
 
-export * as Moves from './moves.js'
-export * as Assets from './assets.js'
-export * as Oracles from './oracles.js'
-export * as Npcs from './npcs.js'
-export * as Atlas from './atlas.js'
-export * as Truths from './truths.js'
-export * as DelveSites from './delve-sites.js'
-export * as Rarities from './rarities.js'
-export * as Rules from './rules.js'
+export * from './moves.js'
+export * from './assets.js'
+export * from './oracles.js'
+export * from './npcs.js'
+export * from './atlas.js'
+export * from './truths.js'
+export * from './delve-sites.js'
+export * from './rarities.js'
+export * from './rules.js'
 
 export { Ruleset } from './ruleset.js'
 export { DataswornRoot } from './root.js'

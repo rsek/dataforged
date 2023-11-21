@@ -1,6 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, Abstract, ID } from './common/index.js'
+import { Localize, Generic, ID } from './common/index.js'
 import * as Inputs from './common/inputs.js'
+import { Merge } from './utils/typebox.js'
 
 export const StatRule = Type.Object(
 	{
@@ -11,16 +12,14 @@ export const StatRule = Type.Object(
 )
 export type StatRule = Static<typeof StatRule>
 
-export const ConditionMeterRule = Type.Composite(
-	[
-		Type.Object({
-			description: Type.Ref(Localize.MarkdownString),
-			shared: Type.Boolean({ default: false })
-		}),
-		Type.Omit(Inputs.Meter(Type.Integer(), Type.Integer({ default: 5 })), [
-			'value'
-		])
-	],
+export const ConditionMeterRule = Merge(
+	Type.Object({
+		description: Type.Ref(Localize.MarkdownString),
+		shared: Type.Boolean({ default: false })
+	}),
+	Type.Omit(Inputs.Meter(Type.Integer(), Type.Integer({ default: 5 })), [
+		'value'
+	]),
 	{ $id: '#/$defs/ConditionMeterRule' }
 )
 
@@ -42,7 +41,7 @@ export const ImpactCategory = Type.Object(
 	{
 		name: Type.Ref(Localize.Label),
 		description: Type.Ref(Localize.MarkdownString),
-		contents: Abstract.Dictionary(Type.Ref(ImpactRule))
+		contents: Generic.Dictionary(Type.Ref(ImpactRule))
 	},
 	{
 		$id: '#/$defs/ImpactCategory'
@@ -63,10 +62,10 @@ export type SpecialTrackRule = Static<typeof SpecialTrackRule>
 
 export const Rules = Type.Object(
 	{
-		stats: Abstract.Dictionary(Type.Ref(StatRule)),
-		condition_meters: Abstract.Dictionary(Type.Ref(ConditionMeterRule)),
-		impacts: Abstract.Dictionary(Type.Ref(ImpactCategory)),
-		special_tracks: Abstract.Dictionary(Type.Ref(SpecialTrackRule))
+		stats: Generic.Dictionary(Type.Ref(StatRule)),
+		condition_meters: Generic.Dictionary(Type.Ref(ConditionMeterRule)),
+		impacts: Generic.Dictionary(Type.Ref(ImpactCategory)),
+		special_tracks: Generic.Dictionary(Type.Ref(SpecialTrackRule))
 	},
 	{ $id: '#/$defs/Rules' }
 )

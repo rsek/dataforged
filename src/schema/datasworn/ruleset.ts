@@ -1,67 +1,69 @@
 import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
-
-import { Abstract, ID, Metadata } from './common/index.js'
+import { Merge } from './utils/typebox.js'
 
 import { DELVE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
-import { Rules } from './rules.js'
-import { type TNpcCollection } from './npcs.js'
+import * as Generic from './utils/generic.js'
+
 import { type TAssetType } from './assets.js'
-import { type TRarity } from './rarities.js'
 import { type TAtlas } from './atlas.js'
 import {
-	type TDelveSiteTheme,
+	type TDelveSite,
 	type TDelveSiteDomain,
-	type TDelveSite
+	type TDelveSiteTheme
 } from './delve-sites.js'
-import { type TTruth } from './truths.js'
-import { type OracleCollection } from './oracles.js'
+import { type NamespaceID, type Source } from './index.js'
 import { type TMoveCategory } from './moves.js'
+import { type TNpcCollection } from './npcs.js'
+import { type OracleCollection } from './oracles.js'
+import { type TRarity } from './rarities.js'
+import { type Rules } from './rules.js'
+import { type TTruth } from './truths.js'
 
 const RulesetPrimaryContent = Type.Object({
-	oracles: Abstract.Dictionary(
+	oracles: Generic.Dictionary(
 		Type.Ref<TUnsafe<OracleCollection>>('#/$defs/OracleCollection'),
 		{
 			description:
 				'A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.'
 		}
 	),
-	moves: Abstract.Dictionary(Type.Ref<TMoveCategory>('#/$defs/MoveCategory'), {
+	moves: Generic.Dictionary(Type.Ref<TMoveCategory>('#/$defs/MoveCategory'), {
 		description:
 			'A dictionary object containing move categories, which contain moves.'
 	}),
-	assets: Abstract.Dictionary(Type.Ref<TAssetType>('#/$defs/AssetType'), {
+	assets: Generic.Dictionary(Type.Ref<TAssetType>('#/$defs/AssetType'), {
 		description:
 			'A dictionary object containing asset types, which contain assets.'
 	})
 })
 
 const RulesetSecondaryContent = Type.Object({
-	atlas: Abstract.Dictionary(Type.Ref<TAtlas>('#/$defs/Atlas'), {
+	atlas: Generic.Dictionary(Type.Ref<TAtlas>('#/$defs/Atlas'), {
 		description:
 			'A dictionary object containing atlas collections, which contain atlas entries.'
 	}),
-	npcs: Abstract.Dictionary(Type.Ref<TNpcCollection>('#/$defs/NpcCollection'), {
+	npcs: Generic.Dictionary(Type.Ref<TNpcCollection>('#/$defs/NpcCollection'), {
 		description:
 			'A dictionary object containing NPC collections, which contain NPCs.'
 	}),
-	truths: Abstract.Dictionary(Type.Ref<TTruth>('#/$defs/Truth'), {
+	truths: Generic.Dictionary(Type.Ref<TTruth>('#/$defs/Truth'), {
 		description: 'A dictionary object of truth categories.'
 	}),
-	rarities: Abstract.Dictionary(Type.Ref<TRarity>('#/$defs/Rarity'), {
+	rarities: Generic.Dictionary(Type.Ref<TRarity>('#/$defs/Rarity'), {
 		description:
 			'A dictionary object containing rarities, like those presented in Ironsworn: Delve.'
 	}),
-	delve_sites: Abstract.Dictionary(Type.Ref<TDelveSite>('#/$defs/DelveSite'), {
+	delve_sites: Generic.Dictionary(Type.Ref<TDelveSite>('#/$defs/DelveSite'), {
 		description:
 			'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
 	}),
-	site_themes: Abstract.Dictionary(
+	site_themes: Generic.Dictionary(
 		Type.Ref<TDelveSiteTheme>('#/$defs/DelveSiteTheme'),
 		{
 			description: 'A dictionary object containing delve site themes.'
 		}
 	),
-	site_domains: Abstract.Dictionary(
+	site_domains: Generic.Dictionary(
 		Type.Ref<TDelveSiteDomain>('#/$defs/DelveSiteDomain'),
 		{
 			description: 'A dictionary object containing delve site domains.'
@@ -69,16 +71,16 @@ const RulesetSecondaryContent = Type.Object({
 	)
 })
 
-export const Ruleset = Type.Composite(
-	[
-		Type.Object({
-			id: Type.Ref(ID.NamespaceID),
-			source: Type.Ref(Metadata.Source),
-			rules: Type.Optional(Type.Ref(Rules))
-		}),
+export const Ruleset = Merge(
+	Type.Object({
+		id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
+		source: Type.Ref<typeof Source>('#/$defs/Source'),
+		rules: Type.Optional(Type.Ref<typeof Rules>('#/$defs/Rules'))
+	}),
+	Merge(
 		Type.Partial(RulesetPrimaryContent),
 		Type.Partial(RulesetSecondaryContent)
-	],
+	),
 	{
 		$id: '#/$defs/Ruleset',
 		description:
@@ -87,16 +89,16 @@ export const Ruleset = Type.Composite(
 )
 export type Ruleset = Static<typeof Ruleset>
 
-export const Expansion = Type.Composite(
-	[
-		Type.Object({
-			id: Type.Ref(ID.NamespaceID),
-			source: Type.Ref(Metadata.Source),
-			enhances: Type.Ref(ID.NamespaceID)
-		}),
+export const Expansion = Merge(
+	Type.Object({
+		id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
+		source: Type.Ref<typeof Source>('#/$defs/Source'),
+		enhances: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID')
+	}),
+	Merge(
 		Type.Partial(RulesetPrimaryContent),
 		Type.Partial(RulesetSecondaryContent)
-	],
+	),
 	{ $id: '#/$defs/Expansion' }
 )
 export type Expansion = Static<typeof Expansion>
@@ -108,24 +110,24 @@ export type Expansion = Static<typeof Expansion>
 export const Delve = Type.Object(
 	{
 		rarities: Type.Optional(
-			Abstract.Dictionary(Type.Ref<TRarity>('#/$defs/Rarity'), {
+			Generic.Dictionary(Type.Ref<TRarity>('#/$defs/Rarity'), {
 				description:
 					'A dictionary object containing rarities, like those presented in Ironsworn: Delve.'
 			})
 		),
 		delve_sites: Type.Optional(
-			Abstract.Dictionary(Type.Ref<TDelveSite>('#/$defs/DelveSite'), {
+			Generic.Dictionary(Type.Ref<TDelveSite>('#/$defs/DelveSite'), {
 				description:
 					'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
 			})
 		),
 		site_themes: Type.Optional(
-			Abstract.Dictionary(Type.Ref<TDelveSiteTheme>('#/$defs/DelveSiteTheme'), {
+			Generic.Dictionary(Type.Ref<TDelveSiteTheme>('#/$defs/DelveSiteTheme'), {
 				description: 'A dictionary object containing delve site themes.'
 			})
 		),
 		site_domains: Type.Optional(
-			Abstract.Dictionary(
+			Generic.Dictionary(
 				Type.Ref<TDelveSiteDomain>('#/$defs/DelveSiteDomain'),
 				{
 					description: 'A dictionary object containing delve site domains.'

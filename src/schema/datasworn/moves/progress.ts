@@ -4,12 +4,13 @@ import {
 	type Static
 } from '../../../typebox/index.js'
 import { Localize } from '../common/index.js'
-import { SpecialTrackType } from '../common/progress.js'
+import { type SpecialTrackType } from '../common/progress.js'
+import { Merge } from '../utils/typebox.js'
 import {
-	MoveOutcomes,
+	type MoveOutcomes,
 	MoveRollType,
-	ProgressRollMethod,
-	SpecialTrackRollMethod
+	type ProgressRollMethod,
+	type SpecialTrackRollMethod
 } from './common.js'
 import {
 	Move,
@@ -29,8 +30,10 @@ export const ProgressRollOption = Type.Object(
 export type ProgressRollOption = Static<typeof ProgressRollOption>
 
 export const TriggerProgressRollCondition = TriggerCondition(
-	Type.Ref(ProgressRollMethod, { default: 'progress_roll' }),
-	Type.Ref(ProgressRollOption),
+	Type.Ref<typeof ProgressRollMethod>('#/$defs/ProgressRollMethod', {
+		default: 'progress_roll'
+	}),
+	Type.Ref<typeof ProgressRollOption>('#/$defs/ProgressRollOption'),
 	{ $id: '#/$defs/TriggerProgressRollCondition' }
 )
 
@@ -44,31 +47,28 @@ export const TriggerProgressRoll = Trigger(TriggerProgressRollCondition, {
 
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
-export const MoveProgressRoll = Type.Composite(
-	[
-		Move(
-			ExtractLiteralFromEnum(MoveRollType, 'progress_roll'),
-			Type.Ref(TriggerProgressRoll),
-			Type.Ref(MoveOutcomes)
-		),
-
-		Type.Object({
-			// is_progress_move: Type.Literal(true, { default: true }),
-			track_label: Type.Ref(Localize.Label, {
-				description:
-					'A category label for progress tracks associated with this move.',
-				examples: [
-					'Vow',
-					'Journey',
-					'Combat',
-					'Scene Challenge',
-					'Expedition',
-					'Connection',
-					'Delve'
-				]
-			})
+export const MoveProgressRoll = Merge(
+	Move(
+		ExtractLiteralFromEnum(MoveRollType, 'progress_roll'),
+		Type.Ref<typeof TriggerProgressRoll>('#/$defs/TriggerProgressRoll'),
+		Type.Ref<typeof MoveOutcomes>('#/$defs/MoveOutcomes')
+	),
+	Type.Object({
+		// is_progress_move: Type.Literal(true, { default: true }),
+		track_label: Type.Ref(Localize.Label, {
+			description:
+				'A category label for progress tracks associated with this move.',
+			examples: [
+				'Vow',
+				'Journey',
+				'Combat',
+				'Scene Challenge',
+				'Expedition',
+				'Connection',
+				'Delve'
+			]
 		})
-	],
+	}),
 	{
 		title: 'Progress Move',
 		description:
@@ -90,7 +90,9 @@ export type TriggerProgressRollConditionEnhancement = Static<
 >
 
 export const TriggerProgressRollEnhancement = TriggerEnhancement(
-	Type.Ref(TriggerProgressRollConditionEnhancement),
+	Type.Ref<typeof TriggerProgressRollConditionEnhancement>(
+		'#/$defs/TriggerProgressRollConditionEnhancement'
+	),
 	{
 		$id: '#/$defs/TriggerProgressRollEnhancement'
 	}
@@ -114,7 +116,7 @@ export type MoveProgressRollEnhancement = Static<
 
 export const TriggerSpecialTrackConditionOption = Type.Object(
 	{
-		using: Type.Ref(SpecialTrackType)
+		using: Type.Ref<typeof SpecialTrackType>('#/$defs/SpecialTrackType')
 	},
 	{ $id: '#/$defs/TriggerSpecialTrackConditionOption' }
 )
@@ -123,8 +125,10 @@ export type TriggerSpecialTrackConditionOption = Static<
 >
 
 export const TriggerSpecialTrackCondition = TriggerCondition(
-	Type.Ref(SpecialTrackRollMethod),
-	Type.Ref(TriggerSpecialTrackConditionOption),
+	Type.Ref<typeof SpecialTrackRollMethod>('#/$defs/SpecialTrackRollMethod'),
+	Type.Ref<typeof TriggerSpecialTrackConditionOption>(
+		'#/$defs/TriggerSpecialTrackConditionOption'
+	),
 	{ $id: '#/$defs/TriggerSpecialTrackCondition' }
 )
 export type TriggerSpecialTrackCondition = Static<
@@ -140,8 +144,8 @@ export type TriggerSpecialTrack = Static<typeof TriggerSpecialTrack>
 export const MoveSpecialTrack = Move(
 	ExtractLiteralFromEnum(MoveRollType, 'special_track'),
 	// is_progress_move: Type.Literal(true, { default: true }),
-	Type.Ref(TriggerSpecialTrack),
-	Type.Ref(MoveOutcomes),
+	Type.Ref<typeof TriggerSpecialTrack>('#/$defs/TriggerSpecialTrack'),
+	Type.Ref<typeof MoveOutcomes>('#/$defs/MoveOutcomes'),
 
 	{
 		title: 'Progress Move (special track roll)',
@@ -162,7 +166,9 @@ export type TriggerSpecialTrackConditionEnhancement = Static<
 >
 
 export const TriggerSpecialTrackEnhancement = TriggerEnhancement(
-	Type.Ref(TriggerSpecialTrackConditionEnhancement),
+	Type.Ref<typeof TriggerSpecialTrackConditionEnhancement>(
+		'#/$defs/TriggerSpecialTrackConditionEnhancement'
+	),
 	{
 		$id: '#/$defs/TriggerSpecialTrackEnhancement'
 	}

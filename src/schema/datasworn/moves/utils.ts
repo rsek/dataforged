@@ -12,22 +12,22 @@ import {
 	type TSchema
 } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
-import {
-	ExtractLiteralFromEnum,
-	type TJsonEnum
-} from '../../../typebox/enum.js'
-import { SourcedNode, type EnhanceMany } from '../common/abstract.js'
+import { type TJsonEnum } from '../../../typebox/enum.js'
+import { SourcedNode, type EnhanceMany } from '../utils/generic.js'
 import { MoveIDWildcard } from '../common/id.js'
-import { Abstract, ID } from '../common/index.js'
+import { Generic, ID } from '../common/index.js'
 import { MarkdownString } from '../common/localize.js'
-import { Nullable, type TNullable } from '../common/utils.js'
-import { ActionRollUsing } from './action.js'
-import { MoveOutcomes, MoveRollType, TriggerBy } from './common.js'
+import { Merge, Nullable, type TNullable } from '../utils/typebox.js'
+import {
+	type MoveOutcomes,
+	type MoveRollType,
+	type TriggerBy
+} from './common.js'
 
 const MoveBase = SourcedNode(
 	Type.Object({
 		id: Type.Ref(ID.MoveID),
-		roll_type: Type.Ref(MoveRollType),
+		roll_type: Type.Ref<typeof MoveRollType>('#/$defs/MoveRollType'),
 		replaces: Type.Optional(
 			Type.Ref(ID.MoveID, {
 				description:
@@ -44,7 +44,9 @@ const MoveBase = SourcedNode(
 		text: Type.Ref(MarkdownString, {
 			description: 'The complete rules text of the move.'
 		}),
-		outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
+		outcomes: Type.Optional(
+			Type.Ref<typeof MoveOutcomes>('#/$defs/MoveOutcomes')
+		),
 		oracles: Type.Optional(
 			Type.Array(Type.Ref(ID.OracleTableID), {
 				description:
@@ -60,25 +62,22 @@ export function Move<
 	Trigger extends TSchema,
 	Outcomes extends TSchema
 >(roll_type: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
-	return Type.Composite(
-		[
-			Type.Object({ roll_type, trigger, outcomes }),
-			Type.Omit(MoveBase, ['roll_type', 'outcomes', 'trigger'])
-		],
+	return Merge(
+		Type.Object({ roll_type, trigger, outcomes }),
+		Type.Omit(MoveBase, ['roll_type', 'outcomes', 'trigger']),
 		options
 	)
 }
 
-export const TriggerConditionBase = {
+const TriggerConditionBase = Type.Object({
 	text: Type.Optional(
 		Type.Ref(MarkdownString, {
 			description:
 				'A markdown string of any trigger text specific to this trigger condition.'
 		})
 	),
-	by: Type.Optional(Type.Ref(TriggerBy))
-}
-
+	by: Type.Optional(Type.Ref<typeof TriggerBy>('#/$defs/TriggerBy'))
+})
 export function TriggerCondition<
 	Method extends TSchema,
 	RollOption extends TSchema
@@ -92,15 +91,15 @@ export function TriggerCondition<
 				? TNull
 				: TArray<RollOption>)
 
-	return Type.Object(
-		{
-			...TriggerConditionBase,
+	return Merge(
+		TriggerConditionBase,
+		Type.Object({
 			method,
 			roll_options
 			// roll_options: Type.Array(roll_option, {
 			// 	description: 'The options available when rolling with this trigger.'
 			// })
-		},
+		}),
 		options
 	)
 }
@@ -181,14 +180,14 @@ export function TriggerConditionEnhancement<
 }
 
 export function MoveEnhancement<
-	T extends TObject<{ roll_type: TLiteral<string> } & {}>,
+	T extends TObject<{ roll_type: TLiteral<string> }>,
 	TriggerEnhancement extends TObject
 >(
 	moveSchema: T,
 	triggerEnhanceSchema: TriggerEnhancement,
 	options: ObjectOptions = {}
 ) {
-	const result = Abstract.EnhanceMany(
+	const result = Generic.EnhanceMany(
 		Type.Object({
 			roll_type: moveSchema.properties.roll_type,
 			trigger: Type.Optional(triggerEnhanceSchema)
@@ -202,27 +201,3 @@ export function MoveEnhancement<
 export type MoveEnhancement<T extends { roll_type: string }, E> = Simplify<
 	EnhanceMany<Pick<T, 'roll_type'> & { trigger?: E }>
 >
-
-export function RollOption<
-	Using extends ActionRollUsing,
-	Props extends TObject
->(using: Using, props: Props, options: ObjectOptions = {}) {
-	return Type.Composite(
-		[
-			props,
-			Type.Object({
-				using: ExtractLiteralFromEnum(ActionRollUsing, using)
-			})
-		],
-		{
-			additionalProperties: false,
-			...options
-		}
-	)
-}
-export type RollOption<
-	Using extends string,
-	Props extends Record<string, unknown>
-> = {
-	using: Using
-} & Props

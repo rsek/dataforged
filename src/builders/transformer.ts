@@ -4,11 +4,11 @@ import { cloneDeep, forEach, mapValues, merge } from 'lodash-es'
 import { type SetOptional } from 'type-fest'
 import type * as Out from '../types/io/datasworn.js'
 import {
-	Collection,
-	RecursiveCollection,
-	SourcedNode
-} from '../schema/datasworn/common/abstract.js'
-import { Rules } from '../schema/datasworn/rules.js'
+	type Collection,
+	type RecursiveCollection,
+	type SourcedNode
+} from '../schema/datasworn/utils/generic.js'
+import { type Rules } from '../schema/datasworn/rules.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>

@@ -1,5 +1,5 @@
 import { type TSchema, Type } from '@sinclair/typebox'
-import { Dictionary } from '../common/abstract.js'
+import { Dictionary } from '../utils/generic.js'
 import { Suggestions } from '../common/metadata.js'
 import { type TAssetAttachment } from './enhancement.js'
 

@@ -1,7 +1,8 @@
 import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
-import { ID, Abstract, Fields } from '../common/index.js'
+import { ID, Generic, Fields } from '../common/index.js'
+import { Merge } from '../utils/typebox.js'
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({
@@ -15,14 +16,16 @@ const AssetBooleanFieldMixin = Type.Object({
 			'Does this field disable the asset when its value is set to `true`?'
 	})
 })
-export const AssetCheckboxField = (id: TRef<TString>) =>
-	Type.Composite([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
+function AssetCheckboxField(id: TRef<TString>) {
+	return Merge(Fields.CheckboxField(id), AssetBooleanFieldMixin, {
 		additionalProperties: false
 	})
-export const AssetCardFlipField = (id: TRef<TString>) =>
-	Type.Composite([Fields.CardFlipField(id), AssetBooleanFieldMixin], {
+}
+function AssetCardFlipField(id: TRef<TString>) {
+	return Merge(Fields.CardFlipField(id), AssetBooleanFieldMixin, {
 		additionalProperties: false
 	})
+}
 
 export const AssetConditionMeterControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
@@ -79,15 +82,13 @@ const AssetConditionMeterMixin = Type.Object({
 		)
 	),
 	controls: Type.Optional(
-		Abstract.Dictionary(Type.Ref(AssetConditionMeterControlField))
+		Generic.Dictionary(Type.Ref(AssetConditionMeterControlField))
 	)
 })
 
-export const AssetConditionMeter = Type.Composite(
-	[
-		Fields.ConditionMeterField(Type.Ref(ID.AssetControlFieldID)),
-		AssetConditionMeterMixin
-	],
+export const AssetConditionMeter = Merge(
+	Fields.ConditionMeterField(Type.Ref(ID.AssetControlFieldID)),
+	AssetConditionMeterMixin,
 	{
 		$id: '#/$defs/AssetConditionMeter',
 		description:

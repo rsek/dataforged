@@ -1,7 +1,14 @@
-/** Regular expressions (and regular expression fragments) used to compose IDs and dictionary keys throughout datasworn. */
+/** Utilities to compose regular expressions for IDs and dictionary keys. */
 
-import { type StringOptions, type TString, Type } from '@sinclair/typebox'
+import {
+	type StringOptions,
+	type TString,
+	Type,
+	type ObjectOptions
+} from '@sinclair/typebox'
 import { escapeRegExp } from 'lodash-es'
+import { UnionOneOf } from '../../../typebox/union-oneof.js'
+import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 
 const sep = escapeRegExp('/')
 const wc = escapeRegExp('*')
@@ -42,9 +49,27 @@ type IdElementSymbol =
 	| Collection
 type IdElement = IdElementSymbol | string
 
-const PatternElements = Symbol('PatternElements')
+export const PatternElements = Symbol('PatternElements')
 type IDOptions = StringOptions
-type TID = TString & { [PatternElements]: IdElement[] }
+type TID = TString & { [PatternElements]: IdElement[]; pattern: string }
+
+export function IDUnion(members: TID[], options: ObjectOptions) {
+	const regex = oneOf(
+		...members.map(
+			(item) =>
+				new RegExp(getPatternSubstrings(...item[PatternElements]).join(''))
+		)
+	)
+
+	const extendedOptions = {
+		[JsonTypeDef]: {
+			schema: { type: 'string', metadata: { pattern: `^${regex.source}$` } }
+		},
+		...options
+	}
+
+	return UnionOneOf(members, extendedOptions)
+}
 
 export function ID(elements: IdElement[], options: IDOptions = {}) {
 	const regex = new RegExp(`^${getPatternSubstrings(...elements).join('')}$`)

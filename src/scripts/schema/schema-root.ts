@@ -1,4 +1,4 @@
-import { DataswornRoot } from '../../schema/datasworn/index.js'
+import { DataswornRoot } from '../../schema/datasworn/root.js'
 
 import {
 	prepareInputSchema,

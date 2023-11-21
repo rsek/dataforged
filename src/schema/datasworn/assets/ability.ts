@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Abstract, ID, Localize } from '../common/index.js'
+import { Generic, ID, Localize } from '../common/index.js'
 import * as Moves from '../moves.js'
 import { AssetAbilityControlField, AssetAbilityOptionField } from './fields.js'
 import { AssetEnhancement } from './enhancement.js'
@@ -14,18 +14,18 @@ export const AssetAbility = Type.Object(
 			description: 'Is this asset ability enabled?'
 		}),
 		moves: Type.Optional(
-			Abstract.Dictionary(Type.Ref(Moves.Move), {
+			Generic.Dictionary(Type.Ref(Moves.Move), {
 				description: 'Unique moves added by this asset ability.'
 			})
 		),
 		options: Type.Optional(
-			Abstract.Dictionary(Type.Ref(AssetAbilityOptionField), {
+			Generic.Dictionary(Type.Ref(AssetAbilityOptionField), {
 				description:
 					'Fields that are expected to be set once and remain the same through the life of the asset.'
 			})
 		),
 		controls: Type.Optional(
-			Abstract.Dictionary(Type.Ref(AssetAbilityControlField), {
+			Generic.Dictionary(Type.Ref(AssetAbilityControlField), {
 				description:
 					'Fields whose values are expected to change over the life of the asset.'
 			})
