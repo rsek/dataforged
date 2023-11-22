@@ -30,9 +30,14 @@ export function TDiscriminatedUnion(
 	return (schema as TDiscriminatedUnion)[Hint] === DiscriminatedUnionHint
 }
 
-export type TDiscriminated<Discriminator extends string> = TObject<{
+export type TDiscriminable<Discriminator extends string = string> = TObject<{
 	[K in Discriminator]: TLiteral<string>
-}> & { [JsonTypeDef]?: { skip?: boolean } }
+}>
+
+export type TDiscriminated<
+	Discriminator extends string = string,
+	T extends TDiscriminable<Discriminator> = TDiscriminable<Discriminator>
+> = T & { [JsonTypeDef]?: { skip?: boolean } }
 
 /**
  * A oneOf union schema that converts to a JTD-friendly Discriminator form (AKA tagged union).

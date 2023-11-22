@@ -2,8 +2,8 @@ import { type Static, Type } from '@sinclair/typebox'
 import { Localize, ID, Metadata, Generic } from './common/index.js'
 
 export const Rarity = Generic.SourcedNode(
+	Type.Ref(ID.RarityID),
 	Type.Object({
-		id: Type.Ref(ID.RarityID),
 		asset: Type.Ref(ID.AssetID, {
 			description: 'The asset augmented by this rarity.'
 		}),

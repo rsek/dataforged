@@ -20,7 +20,12 @@ export const NamespaceID = ID([Namespace], {
 })
 export type NamespaceID = Static<typeof NamespaceID>
 
-export const DictKey = ID([Node], { $id: '#/$defs/DictKey' })
+export const DictKey = ID([Node], {
+	$id: '#/$defs/DictKey',
+	description: 'A key used in a Datasworn dictionary object.',
+	$comment:
+		"If you need to generate a key from a user-provided label, it's recommended to use a 'slugify' function/library, e.g. https://www.npmjs.com/package/slugify for NodeJS."
+})
 export type DictKey = Static<typeof DictKey>
 
 export const NpcCollectionID = CollectionID(['npcs'], {

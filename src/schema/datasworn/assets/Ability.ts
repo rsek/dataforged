@@ -1,8 +1,8 @@
 import { Type, type Static } from '@sinclair/typebox'
+import * as Moves from '../Moves.js'
 import { Generic, ID, Localize } from '../common/index.js'
-import * as Moves from '../moves.js'
-import { AssetAbilityControlField, AssetAbilityOptionField } from './fields.js'
-import { AssetEnhancement } from './enhancement.js'
+import { AssetEnhancement } from './Enhancement.js'
+import { AssetAbilityControlField, AssetAbilityOptionField } from './Fields.js'
 
 export const AssetAbility = Type.Object(
 	{

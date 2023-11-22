@@ -2,18 +2,23 @@
  * Regenerates the schemas and write them to file.
  */
 
+import JsonPointer from 'json-pointer'
+import { type JsonSchema } from 'json-schema-library'
+import { type TRoot } from '../../schema/datasworn/Root.js'
+import * as CONST from '../const.js'
+import { getPrettierOptions, writeJSON } from '../datasworn/readWrite.js'
+import { sortSchemaKeys } from '../datasworn/sort.js'
 import { log } from '../utils/logger.js'
 import ajv from '../validation/ajv.js'
-import { getPrettierOptions, writeJSON } from '../datasworn/readWrite.js'
 import * as Schema from './schema-root.js'
-import * as CONST from '../const.js'
-import { Draft07, type JsonSchema } from 'json-schema-library'
-import { sortSchemaKeys } from '../datasworn/sort.js'
-import JsonPointer from 'json-pointer'
+
+import JSL from 'json-schema-library'
+
+const draft7 = new JSL.Draft07()
 
 interface SchemaOptions {
 	name: string
-	draft: Draft07
+	rootSchema: TRoot
 	paths: string[]
 	messages: {
 		writeStart: string
@@ -24,7 +29,7 @@ interface SchemaOptions {
 const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'Datasworn',
-		draft: Schema.Datasworn,
+		rootSchema: Schema.Datasworn,
 		paths: [CONST.SCHEMA_OUT],
 		messages: {
 			writeStart: '✏️  Writing schema for Datasworn',
@@ -33,7 +38,7 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'DataswornInput',
-		draft: Schema.DataswornInput,
+		rootSchema: Schema.DataswornInput,
 		paths: [CONST.SCHEMA_IN],
 		messages: {
 			writeStart: '✏️  Writing schema for Datasworn YAML input',
@@ -45,7 +50,7 @@ const schemaOptions: SchemaOptions[] = [
 const prettierOptions = await getPrettierOptions(CONST.SCHEMA_OUT)
 
 for (const options of schemaOptions) {
-	ajv.addSchema(options.draft.getSchema() as JsonSchema, options.name)
+	ajv.addSchema(options.rootSchema as JsonSchema, options.name)
 
 	log.info(options.messages.writeStart)
 
@@ -53,13 +58,13 @@ for (const options of schemaOptions) {
 		for (const path of options.paths) {
 			let sortedSchema: Record<string, unknown> = {}
 
-			options.draft.eachSchema((schema, hashPointer) => {
-				let pointer = hashPointer.replace(/^#/, '/')
+			draft7.eachSchema((schema, hashPointer) => {
+				const pointer = hashPointer.replace(/^#/, '/')
 				const newSchema = sortSchemaKeys(JSON.parse(JSON.stringify(schema)))
 
 				if (pointer === '/') sortedSchema = newSchema
 				else JsonPointer.set(sortedSchema, pointer, newSchema)
-			})
+			}, options.rootSchema)
 
 			// console.log(sortedSchema)
 
@@ -74,6 +79,6 @@ for (const options of schemaOptions) {
 		log.error(error)
 
 		for (const path of options.paths)
-			writeJSON(path, options.draft.getSchema(), { prettierOptions })
+			writeJSON(path, options.rootSchema, { prettierOptions })
 	}
 }

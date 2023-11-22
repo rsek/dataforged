@@ -1,20 +1,22 @@
-import { DataswornRoot } from '../../schema/datasworn/root.js'
+import { DataswornRoot } from '../../schema/datasworn/Root.js'
 
-import {
-	prepareInputSchema,
-	prepareBaseSchema,
-	prepareDistributableSchema
-} from './transform-schema.js'
 import { INPUT_SCHEMA_ID } from '../const.js'
+import {
+	prepareDistributableSchema,
+	prepareInputSchema
+} from './transform-schema.js'
 
-const DataswornBase = prepareBaseSchema(DataswornRoot)
+export const Datasworn = prepareDistributableSchema(DataswornRoot)
 
-export const Datasworn = prepareDistributableSchema(DataswornBase)
-
-export const DataswornInput = prepareInputSchema(DataswornBase, {
+export const DataswornInput = prepareInputSchema({
+	...DataswornRoot,
 	$id: INPUT_SCHEMA_ID,
-	title: `${Datasworn.getSchema()?.title as string} (data entry)`
+	title: `${Datasworn?.title as string} (data entry)`
 })
+
+for (const rootSchema of [Datasworn, DataswornInput])
+	for (const [k, v] of Object.entries((rootSchema as any).$defs))
+		if (v.title == null) v.title = k
 
 // {
 //   $schema: DataswornDelve.$id as string,

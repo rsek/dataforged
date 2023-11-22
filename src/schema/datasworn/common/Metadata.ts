@@ -24,6 +24,7 @@ export type CSSColor = Static<typeof CSSColor>
 export const Source = Type.Object(
 	{
 		title: Type.String({
+			title: 'Title',
 			description: 'The title of the source document.',
 			examples: [
 				'Ironsworn Rulebook',
@@ -34,15 +35,27 @@ export const Source = Type.Object(
 				'Sundered Isles'
 			]
 		}),
-		page: Type.Optional(Type.Integer({ minimum: 1, title: 'Page number' })),
+		page: Type.Optional(
+			Type.Integer({
+				minimum: 1,
+				description: 'The page number where this item is described in full.'
+			})
+		),
 		authors: Type.Array(
 			Type.Object(
 				{
 					name: Type.String({ examples: ['Shawn Tomkin'] }),
 					email: Type.Optional(
 						Type.String({
+							title: 'Email',
 							format: 'email',
 							description: 'An optional email contact for the author'
+						})
+					),
+					url: Type.Optional(
+						Type.String({
+							format: 'uri',
+							description: "An optional URL for the author's website."
 						})
 					)
 				},
@@ -66,6 +79,8 @@ export const Source = Type.Object(
 				format: 'uri'
 			}),
 			{
+				title: 'License',
+				default: undefined,
 				description:
 					"An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
 				examples: [
@@ -82,15 +97,6 @@ export const Source = Type.Object(
 )
 
 export type Source = Static<typeof Source>
-
-// export const SourceStub = Type.Partial(Source, {
-// 	description:
-// 		'A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.',
-// 	$id: '#/$defs/SourceStub',
-// 	macro: true
-// })
-
-// export type SourceStub = Static<typeof SourceStub>
 
 export const Suggestions = Type.Object(
 	{

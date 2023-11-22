@@ -1,14 +1,13 @@
+import { cloneDeep, forEach, mapValues } from 'lodash-es'
 import { trackID } from './id-tracker.js'
-import { cloneDeep, forEach, mapValues, merge } from 'lodash-es'
 
-import { type SetOptional } from 'type-fest'
-import type * as Out from '../types/io/datasworn.js'
+import { type Rules } from '../schema/datasworn/Rules.js'
 import {
 	type Collection,
 	type RecursiveCollection,
 	type SourcedNode
 } from '../schema/datasworn/utils/generic.js'
-import { type Rules } from '../schema/datasworn/rules.js'
+import type * as Out from '../types/io/datasworn.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>

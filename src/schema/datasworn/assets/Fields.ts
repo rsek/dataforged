@@ -17,14 +17,10 @@ const AssetBooleanFieldMixin = Type.Object({
 	})
 })
 function AssetCheckboxField(id: TRef<TString>) {
-	return Merge(Fields.CheckboxField(id), AssetBooleanFieldMixin, {
-		additionalProperties: false
-	})
+	return Merge(Fields.CheckboxField(id), AssetBooleanFieldMixin)
 }
 function AssetCardFlipField(id: TRef<TString>) {
-	return Merge(Fields.CardFlipField(id), AssetBooleanFieldMixin, {
-		additionalProperties: false
-	})
+	return Merge(Fields.CardFlipField(id), AssetBooleanFieldMixin)
 }
 
 export const AssetConditionMeterControlField = DiscriminatedUnion(

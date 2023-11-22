@@ -1,6 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { Localize, Generic, ID } from './common/index.js'
-import * as Inputs from './common/inputs.js'
+import * as Inputs from './common/Inputs.js'
 import { Merge } from './utils/typebox.js'
 
 export const StatRule = Type.Object(
@@ -17,9 +17,10 @@ export const ConditionMeterRule = Merge(
 		description: Type.Ref(Localize.MarkdownString),
 		shared: Type.Boolean({ default: false })
 	}),
-	Type.Omit(Inputs.Meter(Type.Integer(), Type.Integer({ default: 5 })), [
-		'value'
-	]),
+	Type.Omit(
+		Inputs.Meter(Type.Integer({ default: 0 }), Type.Integer({ default: 5 })),
+		['value']
+	),
 	{ $id: '#/$defs/ConditionMeterRule' }
 )
 
@@ -62,10 +63,16 @@ export type SpecialTrackRule = Static<typeof SpecialTrackRule>
 
 export const Rules = Type.Object(
 	{
-		stats: Generic.Dictionary(Type.Ref(StatRule)),
-		condition_meters: Generic.Dictionary(Type.Ref(ConditionMeterRule)),
-		impacts: Generic.Dictionary(Type.Ref(ImpactCategory)),
-		special_tracks: Generic.Dictionary(Type.Ref(SpecialTrackRule))
+		stats: Generic.Dictionary(Type.Ref(StatRule, { default: undefined })),
+		condition_meters: Generic.Dictionary(
+			Type.Ref(ConditionMeterRule, { default: undefined })
+		),
+		impacts: Generic.Dictionary(
+			Type.Ref(ImpactCategory, { default: undefined })
+		),
+		special_tracks: Generic.Dictionary(
+			Type.Ref(SpecialTrackRule, { default: undefined })
+		)
 	},
 	{ $id: '#/$defs/Rules' }
 )

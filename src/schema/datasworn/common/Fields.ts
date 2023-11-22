@@ -8,11 +8,11 @@ import {
 	type TSchema,
 	type TString
 } from '@sinclair/typebox'
+import { type TMoveEnhancement } from '../Moves.js'
+import { type TAssetEnhancement } from '../assets/Enhancement.js'
 import { LiteralZero, Merge, type TMerge } from '../utils/typebox.js'
-import type * as Player from './player.js'
-import * as Base from './inputs.js'
-import { type TAssetEnhancement } from '../assets/enhancement.js'
-import { type TMoveEnhancement } from '../moves.js'
+import * as Base from './Inputs.js'
+import type * as Player from './Player.js'
 
 export const EnhanceableProperties = Symbol('EnhanceableProperties')
 
@@ -126,7 +126,7 @@ export function SelectStatField(
 		),
 		'select_stat',
 		id,
-		{ title: 'SelectStatField', options }
+		{ title: 'SelectStatField', ...options }
 	)
 }
 export type TSelectStatField = ReturnType<typeof SelectStatField>

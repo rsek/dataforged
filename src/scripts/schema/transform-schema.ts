@@ -3,32 +3,57 @@
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */
-import { type JSONSchema7 } from 'json-schema'
-import { cloneDeep, omit } from 'lodash-es'
-import JsonSchema, { type JsonPointer } from 'json-schema-library'
-import { TRoot } from '../../schema/datasworn/root.js'
+import { TypeGuard, type TSchema, Type } from '@sinclair/typebox'
+import { cloneDeep, mapValues } from 'lodash-es'
+import { type TRoot } from '../../schema/datasworn/Root.js'
+import {
+	SetOptional,
+	keysWithDefaults
+} from '../../schema/datasworn/utils/typebox.js'
 
-const schemaRefHead = '#/$defs/'
+import JsonPointer from 'json-pointer'
+import JSL from 'json-schema-library'
+import { log } from '../utils/logger.js'
+import { OptionalInSourceBrand } from '../../schema/datasworn/utils/generic.js'
 
-export function prepareBaseSchema(root: TRoot) {
-	const draft = new JsonSchema.Draft07(cloneDeep(root))
-	draft.eachSchema(prepareSchemaDef)
-	return draft
-}
+// function recurseSchema(
+// 	schema: TAnySchema | TAnySchema[],
+// 	fn: (subschema: TAnySchema) => void
+// ) {
+// 	if (TypeGuard.TSchema(schema)) fn(schema)
 
-export function prepareDistributableSchema(
-	base: JsonSchema.Draft07,
-	overrides = {}
-) {
-	const distSchema = new JsonSchema.Draft07({
-		...cloneDeep(base.getSchema()),
-		...overrides
-	})
+// 	if (schema == null) return
 
-	const pointersToDelete: string[] = []
-	const sorted: Record<string, unknown> = {}
+// 	switch (true) {
+// 		case Array.isArray(schema):
+// 			return schema.map((subschema) => recurseSchema(subschema, fn))
+// 		case TypeGuard.TIntersect(schema):
+// 			return recurseSchema(schema.allOf, fn)
+// 		case TypeGuard.TUnion(schema):
+// 			return recurseSchema(schema.anyOf, fn)
+// 		case Array.isArray(schema.oneOf):
+// 			return recurseSchema(schema.oneOf, fn)
+// 		case TypeGuard.TArray(schema): {
+// 			if (Array.isArray(schema.items)) return recurseSchema(schema.items, fn)
+// 		}
+// 		case TypeGuard.TObject(schema):
+// 			if (schema.patternProperties)
+// 				recurseSchema(Object.values(schema.patternProperties), fn)
 
-	distSchema.eachSchema((schema, pointer) => {
+// 			if (schema.properties) recurseSchema(Object.values(schema.properties), fn)
+// 	}
+// }
+
+export function prepareDistributableSchema(root: TRoot) {
+	const rootSchema = cloneDeep(root)
+
+	rootSchema.$defs = mapValues(rootSchema.$defs, (v) => prepareSchemaDef(v))
+
+	const draft = new JSL.Draft07(rootSchema)
+	// const pointersToDelete: string[] = []
+	// const sorted: Record<string, unknown> = {}
+
+	draft.eachSchema((schema) => {
 		if (!('properties' in schema)) return
 
 		const props = schema.properties as Record<string, { macro?: boolean }>
@@ -43,205 +68,79 @@ export function prepareDistributableSchema(
 		}
 	})
 
-	return distSchema
+	return draft.getSchema()
 }
 
-export function prepareInputSchema(base: JsonSchema.Draft07, overrides = {}) {
-	const inputSchema = new JsonSchema.Draft07({
-		...cloneDeep(base.getSchema()),
-		...overrides
+function mapSubschemas<T extends TSchema>(
+	schema: T,
+	fn: (schema: TSchema, pointer: string) => TSchema
+): T {
+	const draft = new JSL.Draft07(cloneDeep(schema))
+
+	const subschemaGetter = JsonPointer(schema)
+
+	const updatedSchemas = new Map<string, TSchema>()
+
+	draft.eachSchema((_, pointer) => {
+		if (pointer === '#') return
+		const hasPointer = subschemaGetter.has(pointer)
+		if (!hasPointer) return log.info(`couldn't find pointer: ${pointer}`)
+		const subschema = subschemaGetter.get(pointer)
+		const updatedSubschema = fn(subschema, pointer)
+		updatedSchemas.set(pointer, updatedSubschema)
 	})
 
-	inputSchema.eachSchema(prepareInputSchemaDef)
+	for (const [pointer, subschema] of updatedSchemas) {
+		subschemaGetter.set(pointer, subschema)
+	}
 
-	return inputSchema
+	return schema
+}
+
+export function prepareInputSchema(root: TRoot) {
+	const rootSchema = cloneDeep(root)
+
+	for (const [k, v] of Object.entries(rootSchema.$defs)) v.title = k
+
+	const newSchema = mapSubschemas(root, (subschema, pointer) =>
+		prepareInputSchemaDef(prepareSchemaDef(subschema), pointer)
+	)
+
+	return newSchema
 }
 
 /** Mutates schema */
-function prepareSchemaDef(schema: JsonSchema.JsonSchema, pointer: JsonPointer) {
-	if (schema.$id && !schema.title && !schema.$ref)
-		schema.title = schema.$id.replace(schemaRefHead, '')
-
-	// these are redundant once TypeBox is done with them, excluding the root schema ID
+function prepareSchemaDef(schema: TSchema) {
+	// these are redundant once we have a $defs object
 	if (!(schema.$id as string)?.startsWith('http')) delete schema.$id
 
+	if (TypeGuard.TObject(schema)) schema.additionalProperties ||= false
+
 	return schema
 }
 
 /** Mutates schema */
-// TODO: could this be rewritten with typebox?
-function prepareInputSchemaDef(schema: JSONSchema7) {
-	// inference: its='s the root schema
-	if (!schema.$id?.startsWith('http')) schema = setOptional(schema, 'id')
-	schema = setOptionalWhenDefault(schema)
-	return schema
-}
+function prepareInputSchemaDef(schema: TSchema, pointer: string) {
+	// skip the root schema
+	const defKey = pointer.split('/').pop()
 
-// TODO: add something that sets visibility
+	if (!schema.$id?.startsWith('http')) {
+		if (TypeGuard.TObject(schema)) {
+			// const propsBefore = schema.required
+			schema = SetOptional(schema, [...keysWithDefaults(schema)])
 
-/**
- * Adjust an object schema to make the provided properties optional.
- */
-function setOptional(schema: JSONSchema7, ...keys: string[]) {
-	if (Array.isArray(schema.required))
-		schema.required = schema.required.filter((k) => !keys.includes(k))
+			if ((schema as any)[OptionalInSourceBrand] === 'OptionalInSource') {
+				console.log(schema)
+				schema = Type.Optional(schema)
+			}
 
-	return schema
-}
+			// const propsAfter = schema.required
 
-/**
- * Makes properties that provide a default value optional.
- *
- * Mutates the original schema.
- */
-function setOptionalWhenDefault(schema: JSONSchema7) {
-	if (
-		schema?.type !== 'object' ||
-		schema.properties == null ||
-		!Array.isArray(schema.required)
-	)
-		// doesn't qualify -- no changes required
-		return schema
-
-	const keysWithDefaults: string[] = []
-	for (const key of schema.required) {
-		const property = schema.properties[key]
-		if (typeof property !== 'object' || property.default == null) continue
-		keysWithDefaults.push(key)
+			// console.log(schema.title, propsBefore, propsAfter)
+		}
 	}
-	// no defaultable properties found: no changes required
-	// if (keysWithDefaults?.length === 0) return schema
 
-	schema = setOptional(schema, ...keysWithDefaults)
-	return schema
-}
-
-/**
- * Omits properties from an object schema.
- */
-function omitProperties(schema: JSONSchema7, ...keys: string[]) {
-	if (schema.properties == null) return schema
-	schema = setOptional(schema, ...keys)
-	schema.properties = omit(schema.properties, ...keys)
-	return schema
-}
-
-/**
- * Adjust a schema to inherit a source metadata cascade, if it's eligible. Makes `source` optional, and inserts the optional `_source` key.
- *
- * Mutates the original schema.
- */
-function addSourceCascade(schema: JSONSchema7) {
-	const SOURCE_KEY = 'source'
-	const SOURCE_STUB_KEY = '_source'
-
-	if (
-		Boolean(schema.title?.includes('Datasworn')) ||
-		typeof schema.properties?.source !== 'object'
-	)
-		return schema
-	// if (
-	// 	// sourcebook objects *always* require a source object -- that's what gets cascaded to its descendants
-	// 	// (schema.title && schema.title.includes('Sourcebook')) ||
-	// 	schema.properties?.source == null ||
-	// 	!Array.isArray(schema.required) ||
-	// 	schema.required.includes(SOURCE_KEY)
-	// )
-	// 	// doesn't qualify -- no changes required
-	// 	return schema
-
-	// schema = setOptional(schema, SOURCE_KEY)
-	// schema = set(
-	//   schema,
-	//   `properties.${SOURCE_STUB_KEY}`,
-	//   Type.Optional(Type.Ref(SourceStub, { macro: true }))
-	// )
-	// console.log('SOURCE CASCADE', schema)
+	// if (defKey === 'DelveSiteDomain') console.log(schema)
 
 	return schema
 }
-
-export function recurseObjectSchema(
-	schema: JSONSchema7,
-	fn: (schema: JSONSchema7) => JSONSchema7
-) {
-	if (schema?.type !== 'object') return schema
-	schema = fn(schema)
-	const subschemaKeys: Array<keyof JSONSchema7> = [
-		'oneOf',
-		'anyOf',
-		'allOf',
-		'then'
-	] // TODO: if-then-else
-	for (const k of subschemaKeys) {
-		if (schema[k] == null) continue
-		// @ts-expect-error complex union
-		schema[k] = recurseObjectSchema(schema[k], fn)
-	}
-	return schema
-}
-
-// export function getDataEntryDefinitions(
-// 	defs: Record<string, TSchema>
-// ): Record<string, TSchema> {
-// 	// clone to avoid mutating the original
-// 	const newDefs: Record<string, TSchema> = _.cloneDeep({
-// 		...defs,
-// 		SourceStub: SourceStub as TSchema
-// 	})
-// 	for (let [key, def] of Object.entries(newDefs)) {
-// 		if (
-// 			TypeGuard.TOptional(def) ||
-// 			TypeGuard.TLiteral(def) ||
-// 			TypeGuard.TRef(def)
-// 		)
-// 			continue
-// 		if (
-// 			TypeGuard.TString(def) ||
-// 			TypeGuard.TNumber(def) ||
-// 			TypeGuard.TInteger(def) ||
-// 			TypeGuard.TBoolean(def) ||
-// 			TypeGuard.TUnsafe(def)
-// 		)
-// 			if (def.default != null) {
-// 				def = Type.Optional(def)
-// 			}
-
-// 		if (
-// 			(TypeGuard.TUnsafe(def) && Array.isArray(def.required)) ||
-// 			TypeGuard.TObject(def)
-// 		) {
-// 			const srcKey = 'source'
-// 			const idKey = 'id'
-// 			const objKeys = Object.keys(def.properties)
-// 			const optionalKeys: string[] = []
-// 			if (def.title?.includes('Sourcebook') !== true)
-// 				optionalKeys.push(idKey, srcKey)
-
-// 			for (const key of objKeys) {
-// 				const value = def.properties[key]
-// 				if (value.default != null) optionalKeys.push(key)
-// 			}
-
-// 			def = SetOptional(def as any, optionalKeys)
-// 			// TODO: check if any children have defaults, too
-// 			if (objKeys.includes(srcKey) && optionalKeys.includes(srcKey))
-// 				def = Type.Composite([
-// 					def as TObject,
-// 					Type.Object({
-// 						[SOURCE_PARTIAL_KEY]: Type.Optional(Type.Ref(SourceStub))
-// 					})
-// 				])
-
-// 			// if (TypeGuard.TUnsafe(def) && Array.isArray(def.required)) {
-// 			// 	log.info('UNSAFE TYPE')
-// 			// 	def.required = ((def as any).required as string[]).filter(
-// 			// 		(item) => !optionalKeys.includes(item)
-// 			// 	)
-// 			// }
-// 			newDefs[key] = def
-// 		}
-// 	}
-
-// 	return cloneDeep(newDefs)
-// }

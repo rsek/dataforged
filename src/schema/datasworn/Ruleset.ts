@@ -4,72 +4,87 @@ import { Merge } from './utils/typebox.js'
 import { DELVE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 import * as Generic from './utils/generic.js'
 
-import { type TAssetType } from './assets.js'
-import { type TAtlas } from './atlas.js'
+import { type TAssetType } from './Assets.js'
+import { type TAtlas } from './Atlas.js'
 import {
 	type TDelveSite,
 	type TDelveSiteDomain,
 	type TDelveSiteTheme
-} from './delve-sites.js'
+} from './DelveSites.js'
 import { type NamespaceID, type Source } from './index.js'
-import { type TMoveCategory } from './moves.js'
-import { type TNpcCollection } from './npcs.js'
-import { type OracleCollection } from './oracles.js'
-import { type TRarity } from './rarities.js'
-import { type Rules } from './rules.js'
-import { type TTruth } from './truths.js'
+import { type TMoveCategory } from './Moves.js'
+import { type TNpcCollection } from './Npcs.js'
+import { type OracleCollection } from './Oracles.js'
+import { type TRarity } from './Rarities.js'
+import { type Rules } from './Rules.js'
+import { type TTruth } from './Truths.js'
 
 const RulesetPrimaryContent = Type.Object({
 	oracles: Generic.Dictionary(
 		Type.Ref<TUnsafe<OracleCollection>>('#/$defs/OracleCollection'),
 		{
+			default: undefined,
 			description:
 				'A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.'
 		}
 	),
 	moves: Generic.Dictionary(Type.Ref<TMoveCategory>('#/$defs/MoveCategory'), {
+		default: undefined,
 		description:
 			'A dictionary object containing move categories, which contain moves.'
 	}),
 	assets: Generic.Dictionary(Type.Ref<TAssetType>('#/$defs/AssetType'), {
+		default: undefined,
 		description:
 			'A dictionary object containing asset types, which contain assets.'
 	})
 })
 
-const RulesetSecondaryContent = Type.Object({
-	atlas: Generic.Dictionary(Type.Ref<TAtlas>('#/$defs/Atlas'), {
-		description:
-			'A dictionary object containing atlas collections, which contain atlas entries.'
-	}),
-	npcs: Generic.Dictionary(Type.Ref<TNpcCollection>('#/$defs/NpcCollection'), {
-		description:
-			'A dictionary object containing NPC collections, which contain NPCs.'
-	}),
-	truths: Generic.Dictionary(Type.Ref<TTruth>('#/$defs/Truth'), {
-		description: 'A dictionary object of truth categories.'
-	}),
-	rarities: Generic.Dictionary(Type.Ref<TRarity>('#/$defs/Rarity'), {
-		description:
-			'A dictionary object containing rarities, like those presented in Ironsworn: Delve.'
-	}),
-	delve_sites: Generic.Dictionary(Type.Ref<TDelveSite>('#/$defs/DelveSite'), {
-		description:
-			'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
-	}),
-	site_themes: Generic.Dictionary(
-		Type.Ref<TDelveSiteTheme>('#/$defs/DelveSiteTheme'),
-		{
-			description: 'A dictionary object containing delve site themes.'
-		}
-	),
-	site_domains: Generic.Dictionary(
-		Type.Ref<TDelveSiteDomain>('#/$defs/DelveSiteDomain'),
-		{
-			description: 'A dictionary object containing delve site domains.'
-		}
-	)
-})
+const RulesetSecondaryContent = Type.Partial(
+	Type.Object({
+		atlas: Generic.Dictionary(Type.Ref<TAtlas>('#/$defs/Atlas'), {
+			default: undefined,
+			description:
+				'A dictionary object containing atlas collections, which contain atlas entries.'
+		}),
+		npcs: Generic.Dictionary(
+			Type.Ref<TNpcCollection>('#/$defs/NpcCollection'),
+			{
+				default: undefined,
+				description:
+					'A dictionary object containing NPC collections, which contain NPCs.'
+			}
+		),
+		truths: Generic.Dictionary(Type.Ref<TTruth>('#/$defs/Truth'), {
+			default: undefined,
+			description: 'A dictionary object of truth categories.'
+		}),
+		rarities: Generic.Dictionary(Type.Ref<TRarity>('#/$defs/Rarity'), {
+			default: undefined,
+			description:
+				'A dictionary object containing rarities, like those presented in Ironsworn: Delve.'
+		}),
+		delve_sites: Generic.Dictionary(Type.Ref<TDelveSite>('#/$defs/DelveSite'), {
+			default: undefined,
+			description:
+				'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
+		}),
+		site_themes: Generic.Dictionary(
+			Type.Ref<TDelveSiteTheme>('#/$defs/DelveSiteTheme'),
+			{
+				default: undefined,
+				description: 'A dictionary object containing delve site themes.'
+			}
+		),
+		site_domains: Generic.Dictionary(
+			Type.Ref<TDelveSiteDomain>('#/$defs/DelveSiteDomain'),
+			{
+				default: undefined,
+				description: 'A dictionary object containing delve site domains.'
+			}
+		)
+	})
+)
 
 export const Ruleset = Merge(
 	Type.Object({
@@ -77,10 +92,7 @@ export const Ruleset = Merge(
 		source: Type.Ref<typeof Source>('#/$defs/Source'),
 		rules: Type.Optional(Type.Ref<typeof Rules>('#/$defs/Rules'))
 	}),
-	Merge(
-		Type.Partial(RulesetPrimaryContent),
-		Type.Partial(RulesetSecondaryContent)
-	),
+	Merge(Type.Partial(RulesetPrimaryContent), RulesetSecondaryContent),
 	{
 		$id: '#/$defs/Ruleset',
 		description:
@@ -95,10 +107,7 @@ export const Expansion = Merge(
 		source: Type.Ref<typeof Source>('#/$defs/Source'),
 		enhances: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID')
 	}),
-	Merge(
-		Type.Partial(RulesetPrimaryContent),
-		Type.Partial(RulesetSecondaryContent)
-	),
+	Merge(Type.Partial(RulesetPrimaryContent), RulesetSecondaryContent),
 	{ $id: '#/$defs/Expansion' }
 )
 export type Expansion = Static<typeof Expansion>

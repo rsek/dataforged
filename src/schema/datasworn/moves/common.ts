@@ -5,13 +5,13 @@ import {
 	type TBigInt
 } from '@sinclair/typebox'
 import { JsonEnumFromRecord } from '../../../typebox/index.js'
-import { Localize } from '../common/index.js'
 import {
 	type MoveActionRoll,
 	type MoveNoRoll,
 	type MoveProgressRoll,
 	type MoveSpecialTrack
-} from '../moves.js'
+} from '../Moves.js'
+import { Localize } from '../common/index.js'
 
 enum Outcome {
 	Miss = 'miss',
@@ -98,30 +98,6 @@ export const ProgressRollMethod = JsonEnumFromRecord(
 	{ $id: '#/$defs/ProgressRollMethod' }
 )
 export type ProgressRollMethod = Static<typeof ProgressRollMethod>
-
-// BASE TYPES
-
-export const TriggerBy = Type.Object(
-	{
-		player: Type.Boolean({ default: true }),
-		ally: Type.Boolean({ default: false })
-	},
-	{
-		$id: '#/$defs/TriggerBy',
-		description:
-			"Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
-	}
-)
-export type TriggerBy = Static<typeof TriggerBy>
-
-const TriggerBase = Type.Object({
-	text: Type.Ref(Localize.MarkdownString, {
-		description:
-			'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.',
-		type: 'string',
-		pattern: /.*\.{3}/.source
-	})
-})
 
 export const MoveOutcome = Type.Object(
 	{

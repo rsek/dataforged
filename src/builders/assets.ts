@@ -6,7 +6,7 @@ import {
 	type Transformer,
 	transform
 } from './transformer.js'
-import { cloneDeep, mapValues, omit } from 'lodash-es'
+import { cloneDeep, mapValues } from 'lodash-es'
 import { Move } from './moves.js'
 import { trackID } from './id-tracker.js'
 import { type SourcedNode } from '../schema/datasworn/utils/generic.js'

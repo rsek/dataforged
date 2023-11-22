@@ -6,7 +6,15 @@
 		"editor.defaultFormatter": "redhat.vscode-yaml"
 	},
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
+		"source.fixAll.eslint": "explicit"
+	},
+	"javascriptBooster.formattingOptions": {
+		"quote": "single",
+		"useTabs": true,
+		"trailingComma": true,
+		"arrowParensAlways": true,
+		"objectCurlySpacing": true,
+		"arrayBracketSpacing": false
 	},
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.foldingImportsByDefault": true,
@@ -50,5 +58,7 @@
 	"yaml.schemas": {
 		"source_data/datasworn-input.schema.json": ["source_data/**/*.yaml"]
 	},
-	"yaml.suggest.parentSkeletonSelectedFirst": true
+	"yaml.suggest.parentSkeletonSelectedFirst": true,
+	"editor.formatOnSaveMode": "modificationsIfAvailable",
+	"eslint.codeActionsOnSave.mode": "problems"
 }

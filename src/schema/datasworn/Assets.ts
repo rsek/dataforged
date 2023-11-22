@@ -3,8 +3,8 @@ import { Generic, ID, Localize, Metadata } from './common/index.js'
 import {
 	type TAssetOptionField,
 	type TAssetControlField
-} from './assets/fields.js'
-import { type TAssetAbility } from './assets/ability.js'
+} from './assets/Fields.js'
+import { type TAssetAbility } from './assets/Ability.js'
 import { AssetPropertiesEnhanceable } from './assets/common.js'
 import { Merge } from './utils/typebox.js'
 
@@ -51,7 +51,7 @@ export const Asset = Merge(
 		Type.Ref<TAssetControlField>('#/$defs/AssetControlField')
 	),
 	AssetPropertiesUnenhanceable,
-	{ $id: '#/$defs/Asset', additionalProperties: false }
+	{ $id: '#/$defs/Asset' }
 )
 export type TAsset = typeof Asset
 export type Asset = Static<typeof Asset>
@@ -64,6 +64,6 @@ export const AssetType = Generic.Collection(
 export type AssetType = Static<typeof AssetType>
 export type TAssetType = typeof AssetType
 
-export * from './assets/fields.js'
-export * from './assets/ability.js'
-export * from './assets/enhancement.js'
+export * from './assets/Fields.js'
+export * from './assets/Ability.js'
+export * from './assets/Enhancement.js'

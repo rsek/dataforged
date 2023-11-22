@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonEnumFromRecord } from '../../../typebox/index.js'
-import { DictKey } from './id.js'
+import { DictKey } from './Id.js'
 
 export const ChallengeRank = JsonEnumFromRecord(
 	{

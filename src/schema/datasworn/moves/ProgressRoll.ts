@@ -4,7 +4,7 @@ import {
 	type Static
 } from '../../../typebox/index.js'
 import { Localize } from '../common/index.js'
-import { type SpecialTrackType } from '../common/progress.js'
+import { type SpecialTrackType } from '../common/Progress.js'
 import { Merge } from '../utils/typebox.js'
 import {
 	type MoveOutcomes,
@@ -12,14 +12,13 @@ import {
 	type ProgressRollMethod,
 	type SpecialTrackRollMethod
 } from './common.js'
+import { Move, MoveEnhancement } from './utils.js'
 import {
-	Move,
-	MoveEnhancement,
 	Trigger,
 	TriggerCondition,
 	TriggerConditionEnhancement,
 	TriggerEnhancement
-} from './utils.js'
+} from './Trigger.js'
 
 export const ProgressRollOption = Type.Object(
 	{
@@ -33,7 +32,7 @@ export const TriggerProgressRollCondition = TriggerCondition(
 	Type.Ref<typeof ProgressRollMethod>('#/$defs/ProgressRollMethod', {
 		default: 'progress_roll'
 	}),
-	Type.Ref<typeof ProgressRollOption>('#/$defs/ProgressRollOption'),
+	Type.Array(Type.Ref<typeof ProgressRollOption>('#/$defs/ProgressRollOption')),
 	{ $id: '#/$defs/TriggerProgressRollCondition' }
 )
 
@@ -41,9 +40,12 @@ export type TriggerProgressRollCondition = Static<
 	typeof TriggerProgressRollCondition
 >
 
-export const TriggerProgressRoll = Trigger(TriggerProgressRollCondition, {
-	$id: '#/$defs/TriggerProgressRoll'
-})
+export const TriggerProgressRoll = Trigger(
+	Type.Array(Type.Ref(TriggerProgressRollCondition)),
+	{
+		$id: '#/$defs/TriggerProgressRoll'
+	}
+)
 
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
@@ -103,7 +105,7 @@ export type TriggerProgressRollEnhancement = Static<
 
 export const MoveProgressRollEnhancement = MoveEnhancement(
 	MoveProgressRoll,
-	TriggerProgressRollEnhancement,
+	Type.Ref(TriggerProgressRollEnhancement),
 	{
 		$id: '#/$defs/MoveProgressRollEnhancement'
 	}
@@ -126,8 +128,10 @@ export type TriggerSpecialTrackConditionOption = Static<
 
 export const TriggerSpecialTrackCondition = TriggerCondition(
 	Type.Ref<typeof SpecialTrackRollMethod>('#/$defs/SpecialTrackRollMethod'),
-	Type.Ref<typeof TriggerSpecialTrackConditionOption>(
-		'#/$defs/TriggerSpecialTrackConditionOption'
+	Type.Array(
+		Type.Ref<typeof TriggerSpecialTrackConditionOption>(
+			'#/$defs/TriggerSpecialTrackConditionOption'
+		)
 	),
 	{ $id: '#/$defs/TriggerSpecialTrackCondition' }
 )
@@ -135,9 +139,12 @@ export type TriggerSpecialTrackCondition = Static<
 	typeof TriggerSpecialTrackCondition
 >
 
-export const TriggerSpecialTrack = Trigger(TriggerSpecialTrackCondition, {
-	$id: '#/$defs/TriggerSpecialTrack'
-})
+export const TriggerSpecialTrack = Trigger(
+	Type.Array(Type.Ref(TriggerSpecialTrackCondition)),
+	{
+		$id: '#/$defs/TriggerSpecialTrack'
+	}
+)
 
 export type TriggerSpecialTrack = Static<typeof TriggerSpecialTrack>
 
@@ -179,7 +186,7 @@ export type TriggerSpecialTrackEnhancement = Static<
 
 export const MoveSpecialTrackEnhancement = MoveEnhancement(
 	MoveSpecialTrack,
-	TriggerSpecialTrackEnhancement,
+	Type.Ref(TriggerSpecialTrackEnhancement),
 	{
 		$id: '#/$defs/MoveSpecialTrackEnhancement'
 	}

@@ -10,7 +10,7 @@ import { In, Out } from '../types/index.js'
 import {
 	DelveSiteCardRowType,
 	DelveSiteCardType
-} from '../schema/datasworn/delve-sites.js'
+} from '../schema/datasworn/DelveSites.js'
 
 type FeatureOrDangerData =
 	| In.DelveSiteThemeDangerRow

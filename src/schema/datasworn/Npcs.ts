@@ -27,24 +27,16 @@ export type NpcNature = Static<typeof NpcNature>
 
 const NpcMixin = Generic.Cyclopedia(
 	Type.Object({
-		id: Type.Ref(ID.NpcID),
-
 		rank: Type.Ref(Progress.ChallengeRank),
 		nature: Type.Ref(NpcNature),
-
-		// features: Type.Array(Type.Ref(Localize.MarkdownString)),
 		drives: Type.Array(Type.Ref(Localize.MarkdownString)),
 		tactics: Type.Array(Type.Ref(Localize.MarkdownString))
-
-		// description: Type.Ref(Localize.MarkdownString)
 	})
 )
 
-export const NpcVariant = Merge(
+export const NpcVariant = Generic.IdentifiedNode(
+	Type.Ref(ID.NpcVariantID),
 	Type.Pick(NpcMixin, ['name', 'rank', 'nature', 'summary', 'description']),
-	Type.Object({
-		id: Type.Ref(ID.NpcVariantID)
-	}),
 	{
 		$id: '#/$defs/NpcVariant'
 	}
@@ -52,7 +44,8 @@ export const NpcVariant = Merge(
 
 export type NpcVariant = Static<typeof NpcVariant>
 
-export const Npc = Generic.SourcedNode(
+export const Npc = Generic.Collectable(
+	Type.Ref(ID.NpcID),
 	Merge(
 		NpcMixin,
 		Type.Object({

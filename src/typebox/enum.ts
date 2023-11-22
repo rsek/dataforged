@@ -2,7 +2,7 @@ import {
 	type SchemaOptions,
 	type TSchema,
 	Kind,
-	Static,
+	type Static,
 	Type,
 	TObject,
 	TupleToIntersect,
@@ -24,8 +24,8 @@ export function TJsonEnum(schema: unknown): schema is TJsonEnum {
 	return (schema as TJsonEnum)[Kind] === 'JsonEnum'
 }
 
-export const EnumDescriptions = Symbol()
-export const Description = Symbol()
+export const EnumDescriptions = Symbol('EnumDescriptions')
+export const Description = Symbol('Descriptionx')
 
 export interface TJsonEnum<T extends string[] | number[] = string[] | number[]>
 	extends TSchema {
@@ -44,13 +44,13 @@ export function JsonEnumFromRecord<K extends string>(
 	entries: Record<K, string>,
 	options?: SchemaOptions
 ): TJsonEnum<K[]>
-export function JsonEnumFromRecord<T extends Array<string> | Array<number>>(
+export function JsonEnumFromRecord<T extends string[] | number[]>(
 	entries: Record<T[number], string>,
 	options: SchemaOptions = {}
 ): TJsonEnum<T> {
 	const arr = Object.keys(entries).map((k) =>
 		Number.isInteger(Number(k)) ? Number(k) : k
-	) as (keyof typeof entries)[]
+	) as Array<keyof typeof entries>
 
 	let description = map(
 		entries,
@@ -70,7 +70,7 @@ export function JsonEnumFromRecord<T extends Array<string> | Array<number>>(
 	} as TJsonEnum<T>
 }
 
-export function MergeEnumSchemas<T extends TJsonEnum<string[]>[]>(
+export function MergeEnumSchemas<T extends Array<TJsonEnum<string[]>>>(
 	schemas: [...T],
 	options: SchemaOptions = {}
 ) {

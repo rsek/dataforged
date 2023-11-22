@@ -6,21 +6,29 @@ import {
 	type ObjectOptions,
 	type SchemaOptions,
 	type Static,
+	type TInteger,
+	type TLiteral,
 	type TLiteralValue,
 	type TNull,
+	type TNumber,
 	/** Transform an object of literal values into a schema representing the object. */
 	type TObject,
 	type TOmit,
+	type TOptional,
 	type TPartial,
 	type TPick,
 	type TProperties,
+	type TRef,
 	type TRequired,
 	type TSchema,
+	type TString,
 	type TUnion
 } from '@sinclair/typebox'
 import { cloneDeep, isEmpty, mapValues } from 'lodash-es'
 import type * as TypeFest from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { type TJsonEnum } from '../../../typebox/enum.js'
 
 /** Transform an object of literal values into a schema representing the object. */
 
@@ -28,11 +36,12 @@ export function ObjectLiterals<T extends Record<string, TLiteralValue>>(
 	object: T
 ) {
 	return Type.Object(mapValues(object, (v) => Type.Literal(v)))
-} /** Extracts all properties that can be rendered as Type.Literal with typebox */
+}
+/** Extracts all properties that can be rendered as Type.Literal with typebox */
 export type CanBeLiteral<T> = {
 	[K in keyof T as Required<T>[K] extends TLiteralValue | null | undefined
 		? K
-		: never]: T[K]
+		: never]: Exclude<T[K], null | undefined>
 }
 
 export function Merge<TTarget extends TObject, TSource extends TObject>(
@@ -40,11 +49,30 @@ export function Merge<TTarget extends TObject, TSource extends TObject>(
 	source: TSource,
 	options: ObjectOptions = {}
 ) {
-	const toOmit = Object.keys(source.properties)
-	return Type.Composite([Type.Omit(target, toOmit), source], options) as TMerge<
-		TTarget,
-		TSource
-	>
+	// FIXME: what about brands tho. i think we gotta use composite no matter what, oof
+
+	// omit keys that the source will override on the target
+	// const toOmit = Object.keys(target.properties).filter((k) =>
+	// 	Object.keys(source.properties).includes(k)
+	// )
+
+	// const base = Type.Object(
+	// 	{ ...cloneDeep(target.properties), ...cloneDeep(source.properties) },
+	// 	options
+	// ) as unknown as TMerge<TTarget, TSource>
+
+	// @ts-expect-error
+	const base = {
+		...cloneDeep(source),
+		...options
+	} as TMerge<TTarget, TSource>
+
+	base.properties = {
+		...cloneDeep(target.properties),
+		...base.properties
+	}
+
+	return base
 }
 export type Merge<TTarget, TSource> = Omit<TTarget, keyof TSource> & TSource
 
@@ -57,11 +85,17 @@ export const isNullable = Symbol('isNullable')
 export type TNullable<T extends TSchema = TSchema> = TUnion<[T, TNull]> & {
 	[isNullable]: 'Nullable'
 }
+/**
+ * Also sets options.default to null. Set it to something else if you don't want that.
+ */
 export function Nullable<T extends TSchema>(
 	schema: T,
 	options: SchemaOptions = {}
 ) {
-	const newSchema = Type.Union([schema, Type.Null()], options) as TNullable<T>
+	const newSchema = Type.Union([schema, Type.Null()], {
+		default: null,
+		...options
+	}) as TNullable<T>
 	newSchema[isNullable] = 'Nullable'
 
 	return newSchema
@@ -107,8 +141,8 @@ export function DeepPartial<T extends TObject>(
 			? DeepPartial(property)
 			: property
 		return { ...acc, [key]: Type.Optional(mapped) }
-	}, {}) as TProperties
-	return Type.Object({ ...properties }, options) as TDeepPartial<T> // required
+	}, {}) as TDeepPartial<T>['properties']
+	return Type.Object(properties, options) as TDeepPartial<T> // required
 }
 
 export type SetOptional<
@@ -121,18 +155,36 @@ export type TSetOptional<T extends TObject, K extends keyof Static<T>> = TMerge<
 	TPartial<TPick<T, K>>
 >
 /** Make the provided keys optional */
-
 export function SetOptional<
 	T extends TObject,
 	K extends Array<keyof Static<T>>
 >(schema: T, optionalKeys: [...K], options: ObjectOptions = {}) {
-	return Type.Composite(
+	const schemaKeys = Object.keys(schema.properties ?? {})
+	if (!optionalKeys.some((key) => schemaKeys.includes(key as any)))
+		return TypeClone.Type(schema, options)
+
+	const result = Type.Composite(
 		[
 			Type.Omit(schema, optionalKeys),
 			Type.Partial(Type.Pick(schema, optionalKeys))
 		],
 		options
 	) as unknown as TSetOptional<T, K[number]>
+
+	return result
+}
+
+export function keysWithDefaults(schema: TObject) {
+	const keys: string[] = []
+
+	for (const [key, subschema] of Object.entries(schema.properties)) {
+		// skip if it's already optional
+		if (TypeGuard.TOptional(subschema)) continue
+		if (typeof subschema.default === 'undefined') continue
+		keys.push(key)
+	}
+
+	return keys
 }
 
 export type PartialExcept<T, K extends keyof T> = Pick<T, K> &
@@ -238,3 +290,17 @@ export function setDescriptions<T extends TObject>(
 
 	return schema
 }
+export type TFuzzyRef<T extends TSchema> = T | TRef<T>
+
+export type TFuzzyString = TFuzzyRef<
+	TString | TLiteral<string> | TJsonEnum<string[]>
+>
+export type TFuzzyObject<Props extends TProperties = TProperties> = TFuzzyRef<
+	TObject<Props> | (TDiscriminatedUnion & { static: Static<TObject<Props>> })
+>
+export type TFuzzyNumber = TFuzzyRef<
+	TNumber | TInteger | TLiteral<number> | TJsonEnum<number[]>
+>
+export type TFuzzyOptional<T extends TSchema> = T | TOptional<T>
+
+export type TFuzzyNull<T extends TSchema> = TFuzzyRef<T> | TNullable<T> | TNull

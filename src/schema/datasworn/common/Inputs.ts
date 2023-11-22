@@ -26,8 +26,8 @@ import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { JsonEnum } from '../../../typebox/index.js'
 import * as Generic from '../utils/generic.js'
 
-import { type DictKey } from './id.js'
-import type * as Localize from './localize.js'
+import { type DictKey } from './Id.js'
+import type * as Localize from './Localize.js'
 
 const InputName = Type.Ref<typeof Localize.Label>('#/$defs/Label', {
 	description:

@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { DictKey } from './id.js'
+import { DictKey } from './Id.js'
 
 export const PlayerStat = Type.Ref(DictKey, {
 	examples: ['edge', 'heart', 'iron', 'shadow', 'wits'],

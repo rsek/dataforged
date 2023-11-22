@@ -1,33 +1,25 @@
 import fastGlob from 'fast-glob'
 import fs from 'fs-extra'
-import {
-	intersection,
-	isEqual,
-	isUndefined,
-	merge,
-	omit,
-	pick
-} from 'lodash-es'
+import JsonPointer from 'json-pointer'
+import { type JSONSchema7 } from 'json-schema'
+import { isUndefined, merge, omit, pick } from 'lodash-es'
 import path from 'path'
 import { Datasworn as DataswornBuilder } from '../../builders/datasworn.js'
 import { transform } from '../../builders/transformer.js'
-import type { In, Out } from '../../types/index.js'
-import ajv from '../validation/ajv.js'
-import { log } from '../utils/logger.js'
-import { writeJSON, readSource } from './readWrite.js'
+import { type SourcedNode } from '../../schema/datasworn/utils/generic.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
-import { ROOT_OUTPUT } from '../const.js'
-import * as jsc from '../validation/jsc.js'
-import JsonPointer from 'json-pointer'
+import type { In, Out } from '../../types/index.js'
 import { formatPath } from '../../utils.js'
+import { ROOT_OUTPUT } from '../const.js'
+import { log } from '../utils/logger.js'
+import ajv from '../validation/ajv.js'
+import * as jsc from '../validation/jsc.js'
+import { readSource, writeJSON } from './readWrite.js'
 import {
 	isSortableObjectSchema,
-	unsortableKeys,
 	sortDataswornKeys,
-	sortSchemaKeys
+	unsortableKeys
 } from './sort.js'
-import { type JSONSchema7 } from 'json-schema'
-import { type SourcedNode } from '../../schema/datasworn/utils/generic.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')

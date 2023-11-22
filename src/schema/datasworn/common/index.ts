@@ -1,14 +1,15 @@
 // no dependencies
-export * as Localize from './localize.js'
+export * as Localize from './Localize.js'
 
 // depend on Regex only
-export * as ID from './id.js'
+export * as ID from './Id.js'
 
 // depends on ID
-export * as Metadata from './metadata.js'
+export * as Metadata from './Metadata.js'
 export * as Generic from '../utils/generic.js'
-export * as Player from './player.js'
-export * as Progress from './progress.js'
+export * as Player from './Player.js'
+export * as Progress from './Progress.js'
 
 // depends on Localize, Player
-export * as Fields from './fields.js'
+export * as Fields from './Fields.js'
+export * as Rolls from './Rolls.js'

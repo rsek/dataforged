@@ -7,7 +7,7 @@ import {
 	type Static,
 	type TObject
 } from '../../../typebox/index.js'
-import { AssetIDWildcard, DictKey } from '../common/id.js'
+import { AssetIDWildcard, DictKey } from '../common/Id.js'
 import { Localize, Player } from '../common/index.js'
 import { Merge, Nullable, SetOptional } from '../utils/typebox.js'
 import {
@@ -15,14 +15,13 @@ import {
 	type ActionRollMethod,
 	type MoveOutcomes
 } from './common.js'
+import { Move, MoveEnhancement } from './utils.js'
 import {
-	Move,
-	MoveEnhancement,
 	Trigger,
 	TriggerCondition,
 	TriggerConditionEnhancement,
 	TriggerEnhancement
-} from './utils.js'
+} from './Trigger.js'
 
 export const ActionRollUsing = JsonEnumFromRecord(
 	{
@@ -49,10 +48,7 @@ function ActionRollOptionBase<
 		Type.Object({
 			using: ExtractLiteralFromEnum(ActionRollUsing, using)
 		}),
-		{
-			additionalProperties: false,
-			...options
-		}
+		options
 	)
 }
 
@@ -162,17 +158,19 @@ export type ActionRollOption = Static<typeof ActionRollOption>
 
 export const TriggerActionRollCondition = TriggerCondition(
 	Type.Ref<typeof ActionRollMethod>('#/$defs/ActionRollMethod'),
-	Type.Ref(ActionRollOption),
-
+	Type.Array(Type.Ref(ActionRollOption)),
 	{ $id: '#/$defs/TriggerActionRollCondition' }
 )
 export type TriggerActionRollCondition = Static<
 	typeof TriggerActionRollCondition
 >
 
-export const TriggerActionRoll = Trigger(TriggerActionRollCondition, {
-	$id: '#/$defs/TriggerActionRoll'
-})
+export const TriggerActionRoll = Trigger(
+	Type.Array(Type.Ref(TriggerActionRollCondition)),
+	{
+		$id: '#/$defs/TriggerActionRoll'
+	}
+)
 export type TriggerActionRoll = Static<typeof TriggerActionRoll>
 
 export const MoveActionRoll = Move(
@@ -217,12 +215,9 @@ export const TriggerNoRollCondition = TriggerCondition(
 
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
-export const TriggerNoRoll = SetOptional(
-	Trigger(TriggerNoRollCondition),
-	['conditions'],
-	{
-		$id: '#/$defs/TriggerNoRoll'
-	}
+export const TriggerNoRoll = Trigger(
+	Nullable(Type.Array(Type.Ref(TriggerNoRollCondition))),
+	{ $id: '#/$defs/TriggerNoRoll' }
 )
 
 export type TriggerNoRoll = Static<typeof TriggerNoRoll>
@@ -252,7 +247,7 @@ export type TriggerNoRollEnhancement = Static<typeof TriggerNoRollEnhancement>
 
 export const MoveNoRollEnhancement = MoveEnhancement(
 	MoveNoRoll,
-	TriggerNoRollEnhancement,
+	Type.Ref(TriggerNoRollEnhancement),
 	{
 		$id: '#/$defs/MoveNoRollEnhancement'
 	}
@@ -261,7 +256,7 @@ export type MoveNoRollEnhancement = Static<typeof MoveNoRollEnhancement>
 
 export const MoveActionRollEnhancement = MoveEnhancement(
 	MoveActionRoll,
-	TriggerActionRollEnhancement,
+	Type.Ref(TriggerActionRollEnhancement),
 	{
 		$id: '#/$defs/MoveActionRollEnhancement'
 	}

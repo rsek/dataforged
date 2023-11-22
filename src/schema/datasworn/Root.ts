@@ -1,23 +1,30 @@
 import {
+	TypeClone,
 	type SchemaOptions,
 	type Static,
-	type TSchema,
-	TypeClone
+	type TSchema
 } from '@sinclair/typebox'
 import { SCHEMA_ID, VERSION } from '../../scripts/const.js'
 
-import { Metadata, ID, Localize, Player, Progress } from './common/index.js'
+import {
+	ID,
+	Localize,
+	Metadata,
+	Player,
+	Progress,
+	Rolls
+} from './common/index.js'
 
-import * as Moves from './moves.js'
-import * as Assets from './assets.js'
-import * as Oracles from './oracles.js'
-import * as Npcs from './npcs.js'
-import * as Atlas from './atlas.js'
-import * as Truths from './truths.js'
-import * as DelveSites from './delve-sites.js'
-import * as Rarities from './rarities.js'
-import * as Rules from './rules.js'
-import { Ruleset } from './ruleset.js'
+import * as Assets from './Assets.js'
+import * as Atlas from './Atlas.js'
+import * as DelveSites from './DelveSites.js'
+import * as Moves from './Moves.js'
+import * as Npcs from './Npcs.js'
+import * as Oracles from './Oracles.js'
+import * as Rarities from './Rarities.js'
+import * as Rules from './Rules.js'
+import { Ruleset } from './Ruleset.js'
+import * as Truths from './Truths.js'
 
 export const $schema = 'http://json-schema.org/draft-07/schema#'
 
@@ -37,14 +44,14 @@ export type TRoot<
 	Options extends RootOptions = RootOptions
 > = T & Options
 
-export function Root<T extends TSchema, Options extends RootOptions>(
+export function SchemaRoot<T extends TSchema, Options extends RootOptions>(
 	base: T,
 	options: Options
 ) {
 	return TypeClone.Type(base, options) as TRoot<T, Options>
 }
 
-export const DataswornRoot = Root(Ruleset, {
+export const DataswornRoot = SchemaRoot(Ruleset, {
 	$id: SCHEMA_ID,
 	title: `Datasworn v${VERSION}`,
 	description:
@@ -57,6 +64,7 @@ export const DataswornRoot = Root(Ruleset, {
 		...Rules,
 		...Progress,
 		...Npcs,
+		...Rolls,
 		...Oracles,
 		...Moves,
 		...Assets,
