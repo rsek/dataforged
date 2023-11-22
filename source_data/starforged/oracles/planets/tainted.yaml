@@ -20,27 +20,6 @@ oracles:
           <<: *Source
           page: 317
         summary: A foul planet wracked by a poisonous climate and virulent growths.
-        sample_names:
-          - Achlys
-          - Animus
-          - Bane
-          - Blight
-          - Carrion
-          - Chitin
-          - Datura
-          - Dreck
-          - Erra
-          - Febris
-          - Malacia
-          - Miasma
-          - Morbus
-          - Pathosis
-          - Pestis
-          - Scourge
-          - Telium
-          - Timoris
-          - Verus
-          - Xanthous
         collections:
           settlements:
             name: Settlements
@@ -104,6 +83,72 @@ oracles:
                     max: null
                     result: *Set.4
         contents:
+          name:
+            # not rendered as a table in the text, but commonly requested
+            name: Sample Names
+            dice: 1d20
+            source: *CollectionSource
+            table:
+              - min: 1
+                max: 1
+                result: Achlys
+              - min: 2
+                max: 2
+                result: Animus
+              - min: 3
+                max: 3
+                result: Bane
+              - min: 4
+                max: 4
+                result: Blight
+              - min: 5
+                max: 5
+                result: Carrion
+              - min: 6
+                max: 6
+                result: Chitin
+              - min: 7
+                max: 7
+                result: Datura
+              - min: 8
+                max: 8
+                result: Dreck
+              - min: 9
+                max: 9
+                result: Erra
+              - min: 10
+                max: 10
+                result: Febris
+              - min: 11
+                max: 11
+                result: Malacia
+              - min: 12
+                max: 12
+                result: Miasma
+              - min: 13
+                max: 13
+                result: Morbus
+              - min: 14
+                max: 14
+                result: Pathosis
+              - min: 15
+                max: 15
+                result: Pestis
+              - min: 16
+                max: 16
+                result: Scourge
+              - min: 17
+                max: 17
+                result: Telium
+              - min: 18
+                max: 18
+                result: Timoris
+              - min: 19
+                max: 19
+                result: Verus
+              - min: 20
+                max: 20
+                result: Xanthous
           atmosphere:
             name: Atmosphere
             source: *CollectionSource

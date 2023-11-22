@@ -1198,6 +1198,7 @@ assets:
                 field_type: counter
                 min: 0
                 value: 0
+                max: null
   path:
     source:
       <<: *CollectionSource
@@ -1777,18 +1778,23 @@ assets:
               edge:
                 name: Edge
                 value: edge
+                option_type: option
               heart:
                 name: Heart
                 value: heart
+                option_type: option
               iron:
                 name: Iron
                 value: iron
+                option_type: option
               shadow:
                 name: Shadow
                 value: shadow
+                option_type: option
               wits:
                 name: Wits
                 value: wits
+                option_type: option
         abilities:
           - text: |-
               You worship a god, power, or entity. Give it a name and choose one of your stats to represent its nature. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gain Ground](id:starforged/moves/combat/gain_ground) by calling on it for guidance or aid, roll +linked stat. On a hit, take +1 momentum or +1 spirit. On a strong hit with a match, a miracle or sign manifests; take another +1 momentum or +1 spirit.
@@ -3766,6 +3772,7 @@ assets:
             enhance_asset:
               controls:
                 health:
+                  field_type: condition_meter
                   max: 3
       utility_bot:
         name: Utility Bot

@@ -20,27 +20,6 @@ oracles:
           <<: *Source
           page: 313
         summary: A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.
-        sample_names:
-          - Acacia
-          - Aster
-          - Beryl
-          - Celadon
-          - Ceres
-          - Damu
-          - Dryad
-          - Flora
-          - Iridum
-          - Iris
-          - Kishar
-          - Penumbra
-          - Roris
-          - Sylva
-          - Tangle
-          - Thorn
-          - Venom
-          - Verdure
-          - Veris
-          - Viridian
         collections:
           settlements:
             name: Settlements
@@ -104,6 +83,72 @@ oracles:
                     max: 100
                     result: *Set.4
         contents:
+          name:
+            # not rendered as a table in the text, but commonly requested
+            name: Sample Names
+            dice: 1d20
+            source: *CollectionSource
+            table:
+              - min: 1
+                max: 1
+                result: Acacia
+              - min: 2
+                max: 2
+                result: Aster
+              - min: 3
+                max: 3
+                result: Beryl
+              - min: 4
+                max: 4
+                result: Celadon
+              - min: 5
+                max: 5
+                result: Ceres
+              - min: 6
+                max: 6
+                result: Damu
+              - min: 7
+                max: 7
+                result: Dryad
+              - min: 8
+                max: 8
+                result: Flora
+              - min: 9
+                max: 9
+                result: Iridum
+              - min: 10
+                max: 10
+                result: Iris
+              - min: 11
+                max: 11
+                result: Kishar
+              - min: 12
+                max: 12
+                result: Penumbra
+              - min: 13
+                max: 13
+                result: Roris
+              - min: 14
+                max: 14
+                result: Sylva
+              - min: 15
+                max: 15
+                result: Tangle
+              - min: 16
+                max: 16
+                result: Thorn
+              - min: 17
+                max: 17
+                result: Venom
+              - min: 18
+                max: 18
+                result: Verdure
+              - min: 19
+                max: 19
+                result: Veris
+              - min: 20
+                max: 20
+                result: Viridian
           atmosphere:
             name: Atmosphere
             source: *CollectionSource

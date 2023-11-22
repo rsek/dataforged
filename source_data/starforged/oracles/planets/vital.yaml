@@ -20,27 +20,6 @@ oracles:
           <<: *Source
           page: 318
         summary: This diverse, life-bearing planet might provide some small measure of hope.
-        sample_names:
-          - Chiron
-          - Demeter
-          - Erebos
-          - Erembour
-          - Feronia
-          - Fortuna
-          - Gaia
-          - Harbinger
-          - Haven
-          - Hope
-          - Morpheus
-          - Nemus
-          - Sapphire
-          - Serenity
-          - Sif
-          - Silva
-          - Sirona
-          - Solstice
-          - Vale
-          - Valinor
         collections:
           settlements:
             name: Settlements
@@ -104,6 +83,72 @@ oracles:
                     max: 100
                     result: *Set.4
         contents:
+          name:
+            # not rendered as a table in the text, but commonly requested
+            name: Sample Names
+            dice: 1d20
+            source: *CollectionSource
+            table:
+              - min: 1
+                max: 1
+                result: Chiron
+              - min: 2
+                max: 2
+                result: Demeter
+              - min: 3
+                max: 3
+                result: Erebos
+              - min: 4
+                max: 4
+                result: Erembour
+              - min: 5
+                max: 5
+                result: Feronia
+              - min: 6
+                max: 6
+                result: Fortuna
+              - min: 7
+                max: 7
+                result: Gaia
+              - min: 8
+                max: 8
+                result: Harbinger
+              - min: 9
+                max: 9
+                result: Haven
+              - min: 10
+                max: 10
+                result: Hope
+              - min: 11
+                max: 11
+                result: Morpheus
+              - min: 12
+                max: 12
+                result: Nemus
+              - min: 13
+                max: 13
+                result: Sapphire
+              - min: 14
+                max: 14
+                result: Serenity
+              - min: 15
+                max: 15
+                result: Sif
+              - min: 16
+                max: 16
+                result: Silva
+              - min: 17
+                max: 17
+                result: Sirona
+              - min: 18
+                max: 18
+                result: Solstice
+              - min: 19
+                max: 19
+                result: Vale
+              - min: 20
+                max: 20
+                result: Valinor
           atmosphere:
             name: Atmosphere
             source: *CollectionSource
@@ -240,7 +285,7 @@ oracles:
           diversity:
             name: Diversity
             source: *CollectionSource
-            i18n:
+            _i18n:
               result:
                 part_of_speech: adjective
             summary: To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
@@ -272,7 +317,7 @@ oracles:
           biomes:
             name: Biomes
             source: *CollectionSource
-            i18n:
+            _i18n:
               result:
                 part_of_speech: common_noun
             table:

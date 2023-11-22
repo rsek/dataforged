@@ -28,10 +28,11 @@ assets:
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/saber-toothed-cat-head.html
         # tags: [animal_companion]
-        options:
+        options: &NameOptions
           name:
-            name: Name
+            name: name
             field_type: text
+            value: null
         requirement: Your cat takes down its prey.
         abilities:
           - name: Eager
@@ -94,10 +95,7 @@ assets:
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/carl-olsen/spider-alt.html
         # tags: [beast_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: Your spider uncovers secrets.
         abilities:
           - name: Discreet
@@ -155,10 +153,7 @@ assets:
         # icon not on game-icons
         # sub https://game-icons.net/1x1/lorc/hawk-emblem.html ?
         # tags: [animal_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         controls:
           health:
             <<: *CompanionHealth
@@ -226,10 +221,7 @@ assets:
         name: Horse
         # icon not on game-icons
         # tags: [animal_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: You and your horse ride as one.
         abilities:
           - name: Swift
@@ -291,10 +283,7 @@ assets:
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/hound.html
         # tags: [animal_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: Your hound is your steadfast companion.
         abilities:
           - name: Sharp
@@ -346,10 +335,7 @@ assets:
         name: Kindred
         # icon not on game-icons
         # tags: [ironlander_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         controls:
           health:
             <<: *CompanionHealth
@@ -364,6 +350,7 @@ assets:
               expertise:
                 field_type: text
                 name: Expertise
+                value: null
             enhance_moves:
               - roll_type: action_roll
                 trigger:
@@ -408,10 +395,7 @@ assets:
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/delapouite/mammoth.html
         # tags: [beast_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: Your mammoth walks a resolute path.
         abilities:
           - name: Lumbering
@@ -460,10 +444,7 @@ assets:
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/caro-asercion/barn-owl.html
         # tags: [animal_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: Your owl soars through the darkness.
         abilities:
           - name: Nocturnal
@@ -523,10 +504,7 @@ assets:
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/raven.html
         # tags: [animal_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: Your raven heeds your call.
         abilities:
           - name: Sly
@@ -578,10 +556,7 @@ assets:
         # icon not on game-icons
         # sub? https://game-icons.net/1x1/lorc/wyvern.html
         # tags: [beast_companion]
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: Your wyvern won’t devour you. For now.
         abilities:
           - name: Insatiable
@@ -746,10 +721,7 @@ assets:
           page: 4
         name: Banner-Sworn
         # icon not on game-icons
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: Once you mark a bond with a leader or faction...
         abilities:
           - text: |-
@@ -829,10 +801,7 @@ assets:
           page: 4
         name: Blade-Bound
         # https://game-icons.net/1x1/lorc/rune-sword.html
-        options:
-          name:
-            name: Name
-            field_type: text
+        options: *NameOptions
         requirement: |-
           Once you mark a bond with a kin-blade, a sentient weapon imbued with the spirit of your ancestor...
         abilities:
@@ -1032,25 +1001,32 @@ assets:
           gods_name:
             name: God's name
             field_type: text
+            value: null
           stat:
             name: Stat
             field_type: select_stat
+            value: null
             choices:
               edge:
                 name: Edge
                 value: edge
+                option_type: option
               heart:
                 name: Heart
                 value: heart
+                option_type: option
               iron:
                 name: Iron
                 value: iron
+                option_type: option
               shadow:
                 name: Shadow
                 value: shadow
+                option_type: option
               wits:
                 name: Wits
                 value: wits
+                option_type: option
         abilities:
           - text: |-
               When you say your daily prayers, you may [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by asking your god to grant a blessing. If you do, roll +your god’s stat. On a hit, take +2 momentum.
@@ -1115,6 +1091,7 @@ assets:
           title_lineage:
             name: Title/Lineage
             field_type: text
+            value: null
         abilities:
           - text: |-
               When you [Sojourn](id:classic/moves/relationship/sojourn) and score a weak hit or miss, you may claim the rights of hospitality warranted by your title or lineage. If you do, roll all dice again and add +1. On a miss, you are refused, and your presumption causes significant new trouble.
@@ -1533,19 +1510,24 @@ assets:
           material:
             name: Material
             field_type: select_stat
+            value: null
             choices:
               thunderwood:
                 name: Thunderwood
                 value: edge
+                option_type: option
               bloodwood:
                 name: Bloodwood
                 value: iron
+                option_type: option
               ghostwood:
                 name: Ghostwood
                 value: shadow
+                option_type: option
               whisperwood:
                 name: Whisperwood
                 value: wits
+                option_type: option
         abilities:
           - text: |-
               Choose your mask’s material.
@@ -2367,6 +2349,7 @@ assets:
           specialty:
             name: Specialty
             field_type: text
+            value: null
         abilities:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by crafting a useful item using your specialty, or when you [Face Danger](id:classic/moves/adventure/face_danger) to create or repair an item in a perilous situation, add +1 and take +1 momentum on a hit.
@@ -3222,6 +3205,7 @@ assets:
             enhance_asset:
               controls:
                 health:
+                  field_type: condition_meter
                   max: 6
           - <<: *Ritual.Ability.2
             enhance_moves:
