@@ -1,6 +1,7 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonEnumFromRecord } from '../../../typebox/enum.js'
 import { ID, Localize } from '../common/index.js'
+import { OptionalInSource } from '../utils/generic.js'
 
 export const DiceNotation = Type.RegExp(
 	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
@@ -42,7 +43,7 @@ export const OracleTableRoll = Type.Object(
 					'The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme". If this value is omitted, assume it\'s false.'
 			})
 		),
-		times: Type.Integer({ minimum: 1, default: 1 }),
+		times: OptionalInSource(Type.Integer({ minimum: 1, default: 1 })),
 		method: Type.Optional(Type.Ref(OracleTableRollMethod))
 	},
 	{ $id: '#/$defs/OracleTableRoll' }

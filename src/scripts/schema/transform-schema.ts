@@ -3,11 +3,12 @@
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */
-import { TypeGuard, type TSchema, Type } from '@sinclair/typebox'
+import { TypeGuard, type TSchema, Type, TypeClone } from '@sinclair/typebox'
 import { cloneDeep, mapValues } from 'lodash-es'
 import { type TRoot } from '../../schema/datasworn/Root.js'
 import {
 	SetOptional,
+	SourceData,
 	keysWithDefaults
 } from '../../schema/datasworn/utils/typebox.js'
 
@@ -15,6 +16,7 @@ import JsonPointer from 'json-pointer'
 import JSL from 'json-schema-library'
 import { log } from '../utils/logger.js'
 import { OptionalInSourceBrand } from '../../schema/datasworn/utils/generic.js'
+import { TDiscriminatedUnion } from '../../typebox/discriminated-union.js'
 
 // function recurseSchema(
 // 	schema: TAnySchema | TAnySchema[],
@@ -112,7 +114,7 @@ export function prepareInputSchema(root: TRoot) {
 /** Mutates schema */
 function prepareSchemaDef(schema: TSchema) {
 	// these are redundant once we have a $defs object
-	if (!(schema.$id as string)?.startsWith('http')) delete schema.$id
+	// if (!(schema.$id as string)?.startsWith('http')) delete schema.$id
 
 	if (TypeGuard.TObject(schema)) schema.additionalProperties ||= false
 
@@ -120,27 +122,25 @@ function prepareSchemaDef(schema: TSchema) {
 }
 
 /** Mutates schema */
-function prepareInputSchemaDef(schema: TSchema, pointer: string) {
-	// skip the root schema
-	const defKey = pointer.split('/').pop()
+function prepareInputSchemaDef(schema: TSchema) {
+	let nuSchema = TypeClone.Type(schema)
+	if (!nuSchema.$id?.startsWith('http')) {
+		if (TypeGuard.TObject(nuSchema)) nuSchema = SourceData(nuSchema)
 
-	if (!schema.$id?.startsWith('http')) {
-		if (TypeGuard.TObject(schema)) {
-			// const propsBefore = schema.required
-			schema = SetOptional(schema, [...keysWithDefaults(schema)])
+		if (TypeGuard.TUnion(nuSchema))
+			nuSchema.anyOf = nuSchema.anyOf.map((subschema) =>
+				prepareInputSchemaDef(subschema)
+			)
 
-			if ((schema as any)[OptionalInSourceBrand] === 'OptionalInSource') {
-				console.log(schema)
-				schema = Type.Optional(schema)
-			}
-
-			// const propsAfter = schema.required
-
-			// console.log(schema.title, propsBefore, propsAfter)
-		}
+		if ('oneOf' in nuSchema)
+			nuSchema.oneOf = nuSchema.oneOf.map((subschema) =>
+				prepareInputSchemaDef(subschema)
+			)
 	}
 
-	// if (defKey === 'DelveSiteDomain') console.log(schema)
+	if (schema.$id?.includes('DelveSiteDomain')) console.log(nuSchema)
 
-	return schema
+	return nuSchema
 }
+
+

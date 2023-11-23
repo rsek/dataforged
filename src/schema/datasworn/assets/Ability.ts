@@ -4,9 +4,9 @@ import { Generic, ID, Localize } from '../common/index.js'
 import { AssetEnhancement } from './Enhancement.js'
 import { AssetAbilityControlField, AssetAbilityOptionField } from './Fields.js'
 
-export const AssetAbility = Type.Object(
-	{
-		id: Type.Ref(ID.AssetAbilityID),
+export const AssetAbility = Generic.IdentifiedNode(
+	Type.Ref(ID.AssetAbilityID),
+	Type.Object({
 		name: Type.Optional(Type.Ref(Localize.Label)),
 		text: Type.Ref(Localize.MarkdownString),
 		enabled: Type.Boolean({
@@ -42,7 +42,7 @@ export const AssetAbility = Type.Object(
 				// releaseStage: 'experimental'
 			})
 		)
-	},
+	}),
 	{ $id: '#/$defs/AssetAbility' }
 )
 export type AssetAbility = Static<typeof AssetAbility>

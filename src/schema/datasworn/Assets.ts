@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
 import { Generic, ID, Localize, Metadata } from './common/index.js'
 import {
 	type TAssetOptionField,
@@ -6,11 +6,8 @@ import {
 } from './assets/Fields.js'
 import { type TAssetAbility } from './assets/Ability.js'
 import { AssetPropertiesEnhanceable } from './assets/common.js'
-import { Merge } from './utils/typebox.js'
 
-const AssetPropertiesUnenhanceable = Type.Object({
-	name: Type.Ref(Localize.Label),
-	id: Type.Ref(ID.AssetID),
+const AssetMixin = Type.Object({
 	asset_type: Type.Ref(Localize.Label, {
 		description:
 			"A localized category label for this asset. This is the surtitle above the asset's name on the card.",
@@ -26,7 +23,6 @@ const AssetPropertiesUnenhanceable = Type.Object({
 		]
 		// i18n: true
 	}),
-	source: Type.Ref(Metadata.Source),
 	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 	color: Type.Optional(Type.Ref(Metadata.CSSColor)),
 	options: Type.Optional(
@@ -46,23 +42,31 @@ const AssetPropertiesUnenhanceable = Type.Object({
 	)
 })
 
-export const Asset = Merge(
-	AssetPropertiesEnhanceable(
-		Type.Ref<TAssetControlField>('#/$defs/AssetControlField')
-	),
-	AssetPropertiesUnenhanceable,
+export const Asset = Generic.Collectable(
+	Type.Ref(ID.AssetID),
+	Type.Composite([
+		AssetPropertiesEnhanceable(
+			Type.Ref<TAssetControlField>('#/$defs/AssetControlField')
+		),
+		AssetMixin
+	]),
 	{ $id: '#/$defs/Asset' }
 )
 export type TAsset = typeof Asset
-export type Asset = Static<typeof Asset>
+export type Asset = Generic.Collectable<
+	Static<typeof AssetMixin> &
+		Static<ReturnType<typeof AssetPropertiesEnhanceable<TAssetControlField>>>
+>
 
 export const AssetType = Generic.Collection(
-	Type.Ref<TAsset>('#/$defs/Asset'),
 	Type.Ref(ID.AssetTypeID),
-	{ $id: '#/$defs/AssetType' }
+	Type.Ref<TUnsafe<Asset>>('#/$defs/Asset'),
+	{
+		$id: '#/$defs/AssetType'
+	}
 )
-export type AssetType = Static<typeof AssetType>
 export type TAssetType = typeof AssetType
+export type AssetType = Generic.Collection<Asset>
 
 export * from './assets/Fields.js'
 export * from './assets/Ability.js'

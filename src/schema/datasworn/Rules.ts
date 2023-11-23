@@ -12,15 +12,17 @@ export const StatRule = Type.Object(
 )
 export type StatRule = Static<typeof StatRule>
 
-export const ConditionMeterRule = Merge(
-	Type.Object({
-		description: Type.Ref(Localize.MarkdownString),
-		shared: Type.Boolean({ default: false })
-	}),
-	Type.Omit(
-		Inputs.Meter(Type.Integer({ default: 0 }), Type.Integer({ default: 5 })),
-		['value']
-	),
+export const ConditionMeterRule = Type.Composite(
+	[
+		Type.Object({
+			description: Type.Ref(Localize.MarkdownString),
+			shared: Type.Boolean({ default: false })
+		}),
+		Type.Omit(
+			Inputs.Meter(Type.Integer({ default: 0 }), Type.Integer({ default: 5 })),
+			['value']
+		)
+	],
 	{ $id: '#/$defs/ConditionMeterRule' }
 )
 

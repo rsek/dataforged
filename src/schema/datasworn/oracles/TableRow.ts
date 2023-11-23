@@ -5,18 +5,18 @@ import {
 	type Static,
 	type TObject,
 	type TProperties,
-	type TSchema
+	type TSchema,
+	TypeClone
 } from '@sinclair/typebox'
 import { OracleRollTemplate, OracleTableRoll } from '../common/Rolls.js'
 import { ID, Localize, Metadata } from '../common/index.js'
 import {
-	Merge,
 	ObjectLiterals,
 	WithDefaults,
 	type CanBeLiteral
 } from '../utils/typebox.js'
 
-const TableRowBase = Type.Object({
+const TableRowMixin = Type.Object({
 	result: Type.Ref(Localize.MarkdownString),
 	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
@@ -33,36 +33,28 @@ export function TableRow<
 	Max extends TSchema,
 	Props extends TProperties & { min: Min; max: Max }
 >({ min, max, ...props }: Props, options: ObjectOptions = {}) {
-	min = {
-		description:
-			'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.',
-		...min
-	} as Min
-	max = {
-		description:
-			'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.',
-		...max
-	} as Max
-
+	min.description ||=
+		'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
+	max.description ||=
+		'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
 	// @ts-expect-error
-	return Merge(TableRowBase, Type.Object(props), options) as TTableRow<
-		Min,
-		Max,
-		Props
-	>
+	return Type.Object(
+		{ min, max, ...TypeClone.Type(TableRowMixin).properties, ...props },
+		options
+	) as TTableRow<Min, Max, Props>
 }
 
 type TTableRow<
 	Min extends TSchema = TSchema,
 	Max extends TSchema = TSchema,
 	Props extends TProperties & { min: Min; max: Max } = { min: Min; max: Max }
-> = TObject<ObjectProperties<typeof TableRowBase> & Props>
+> = TObject<ObjectProperties<typeof TableRowMixin> & Props>
 
 type TableRow<
 	Min = number | null,
 	Max = number | null,
 	Props extends { min: Min; max: Max } = { min: Min; max: Max }
-> = Props & Static<typeof TableRowBase>
+> = Props & Static<typeof TableRowMixin>
 
 export function StaticRowPartial<T extends Partial<CanBeLiteral<TableRow>>>(
 	literals: T,

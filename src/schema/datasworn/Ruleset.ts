@@ -1,27 +1,23 @@
-import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
-import { Merge } from './utils/typebox.js'
-
+import { Type, type Static } from '@sinclair/typebox'
 import { DELVE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 import * as Generic from './utils/generic.js'
 
 import { type TAssetType } from './Assets.js'
 import { type TAtlas } from './Atlas.js'
-import {
-	type TDelveSite,
-	type TDelveSiteDomain,
-	type TDelveSiteTheme
-} from './DelveSites.js'
+import { type TDelveSiteDomain } from './delve/DelveSiteDomain.js'
+import { type TDelveSiteTheme } from './delve/DelveSiteTheme.js'
+import { type TDelveSite } from './delve/DelveSite.js'
 import { type NamespaceID, type Source } from './index.js'
 import { type TMoveCategory } from './Moves.js'
 import { type TNpcCollection } from './Npcs.js'
-import { type OracleCollection } from './Oracles.js'
+import { type TOracleCollection } from './Oracles.js'
 import { type TRarity } from './Rarities.js'
 import { type Rules } from './Rules.js'
 import { type TTruth } from './Truths.js'
 
 const RulesetPrimaryContent = Type.Object({
 	oracles: Generic.Dictionary(
-		Type.Ref<TUnsafe<OracleCollection>>('#/$defs/OracleCollection'),
+		Type.Ref<TOracleCollection>('#/$defs/OracleCollection'),
 		{
 			default: undefined,
 			description:
@@ -86,13 +82,17 @@ const RulesetSecondaryContent = Type.Partial(
 	})
 )
 
-export const Ruleset = Merge(
-	Type.Object({
-		id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
-		source: Type.Ref<typeof Source>('#/$defs/Source'),
-		rules: Type.Optional(Type.Ref<typeof Rules>('#/$defs/Rules'))
-	}),
-	Merge(Type.Partial(RulesetPrimaryContent), RulesetSecondaryContent),
+export const Ruleset = Type.Composite(
+	[
+		Type.Object({
+			// ruleset ID isn't optional in source, so we don't flag it with IdentifiedNode
+			id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
+			source: Type.Ref<typeof Source>('#/$defs/Source'),
+			rules: Type.Optional(Type.Ref<typeof Rules>('#/$defs/Rules'))
+		}),
+		Type.Partial(RulesetPrimaryContent),
+		RulesetSecondaryContent
+	],
 	{
 		$id: '#/$defs/Ruleset',
 		description:
@@ -101,13 +101,16 @@ export const Ruleset = Merge(
 )
 export type Ruleset = Static<typeof Ruleset>
 
-export const Expansion = Merge(
-	Type.Object({
-		id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
-		source: Type.Ref<typeof Source>('#/$defs/Source'),
-		enhances: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID')
-	}),
-	Merge(Type.Partial(RulesetPrimaryContent), RulesetSecondaryContent),
+export const Expansion = Type.Composite(
+	[
+		Type.Object({
+			id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
+			source: Type.Ref<typeof Source>('#/$defs/Source'),
+			enhances: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID')
+		}),
+		Type.Partial(RulesetPrimaryContent),
+		RulesetSecondaryContent
+	],
 	{ $id: '#/$defs/Expansion' }
 )
 export type Expansion = Static<typeof Expansion>

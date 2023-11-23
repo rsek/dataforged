@@ -44,6 +44,7 @@ export const MoveRollType = JsonEnumFromRecord(
 )
 
 export type MoveRollType = Static<typeof MoveRollType>
+export type TMoveRollType = typeof MoveRollType
 
 export const MoveOutcomeType = JsonEnumFromRecord(
 	{
@@ -133,6 +134,7 @@ export const MoveOutcomes = Type.Object(
 	}
 )
 export type MoveOutcomes = Static<typeof MoveOutcomes>
+export type TMoveOutcomes = typeof MoveOutcomes
 
 export type SchemaOf<T> = Exclude<TAnySchema, TBigInt> & { static: T }
 

@@ -17,10 +17,10 @@ const AssetBooleanFieldMixin = Type.Object({
 	})
 })
 function AssetCheckboxField(id: TRef<TString>) {
-	return Merge(Fields.CheckboxField(id), AssetBooleanFieldMixin)
+	return Type.Composite([Fields.CheckboxField(id), AssetBooleanFieldMixin])
 }
 function AssetCardFlipField(id: TRef<TString>) {
-	return Merge(Fields.CardFlipField(id), AssetBooleanFieldMixin)
+	return Type.Composite([Fields.CardFlipField(id), AssetBooleanFieldMixin])
 }
 
 export const AssetConditionMeterControlField = DiscriminatedUnion(
@@ -82,9 +82,11 @@ const AssetConditionMeterMixin = Type.Object({
 	)
 })
 
-export const AssetConditionMeter = Merge(
-	Fields.ConditionMeterField(Type.Ref(ID.AssetControlFieldID)),
-	AssetConditionMeterMixin,
+export const AssetConditionMeter = Type.Composite(
+	[
+		Fields.ConditionMeterField(Type.Ref(ID.AssetControlFieldID)),
+		AssetConditionMeterMixin
+	],
 	{
 		$id: '#/$defs/AssetConditionMeter',
 		description:

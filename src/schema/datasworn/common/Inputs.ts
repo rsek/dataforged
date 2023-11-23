@@ -18,7 +18,7 @@ import {
 	Nullable,
 	type TFuzzySchemaOf,
 	setDescriptions,
-	Merge,
+	type Merge,
 	type TMerge
 } from '../utils/typebox.js'
 
@@ -92,12 +92,14 @@ export interface Range<
 	max: Max
 }
 
-export const Counter = Merge(
-	Input(Type.Integer({ default: 0 })),
-	Range({
-		min: LiteralZero,
-		max: Nullable(Type.Integer())
-	}),
+export const Counter = Type.Composite(
+	[
+		Input(Type.Integer({ default: 0 })),
+		Range({
+			min: LiteralZero,
+			max: Nullable(Type.Integer())
+		})
+	],
 	{
 		description:
 			'A counter that starts at zero, with an optional maximum value.',
@@ -107,25 +109,27 @@ export const Counter = Merge(
 export type TCounter = typeof Counter
 export type Counter = Static<typeof Counter>
 
-export const Clock = Merge(
-	Input(
-		Type.Integer({
-			default: 0,
-			description: 'The current number of filled clock segments.'
+export const Clock = Type.Composite(
+	[
+		Input(
+			Type.Integer({
+				default: 0,
+				description: 'The current number of filled clock segments.'
+			})
+		),
+		Range({
+			min: {
+				...LiteralZero,
+				description:
+					'The minimum number of filled clock segments. This is always 0.'
+			},
+			max: JsonEnum([4, 6, 8, 10], {
+				[JsonTypeDef]: { schema: { type: 'uint8' } },
+				description:
+					'The size of the clock -- in other words, the maximum number of filled clock segments.'
+			})
 		})
-	),
-	Range({
-		min: {
-			...LiteralZero,
-			description:
-				'The minimum number of filled clock segments. This is always 0.'
-		},
-		max: JsonEnum([4, 6, 8, 10], {
-			[JsonTypeDef]: { schema: { type: 'uint8' } },
-			description:
-				'The size of the clock -- in other words, the maximum number of filled clock segments.'
-		})
-	}),
+	],
 	{
 		description: 'A clock with 4, 6, 8, or 10 segments.',
 		$comment:
@@ -142,13 +146,15 @@ export type Clock = Static<typeof Clock>
 export function Meter<
 	Min extends TInteger | TLiteral<number> = TInteger,
 	Max extends TInteger | TLiteral<number> = TInteger
->(min: Min, max: Max, options: ObjectOptions = {}): TMeter<Min, Max> {
-	return Merge(
-		Input(Type.Integer({ description: 'The current value of this meter.' })),
-		Range<Min, Max>({
-			min: { description: 'The minimum value of this meter.', ...min },
-			max: { description: 'The maximum value of this meter.', ...max }
-		}),
+>(min: Min, max: Max, options: ObjectOptions = {}) {
+	return Type.Composite(
+		[
+			Input(Type.Integer({ description: 'The current value of this meter.' })),
+			Range<Min, Max>({
+				min: { description: 'The minimum value of this meter.', ...min },
+				max: { description: 'The maximum value of this meter.', ...max }
+			})
+		],
 		options
 	)
 }
@@ -204,7 +210,7 @@ export function SelectOption<Value extends TSchema>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Input(value)
-	return Merge(SelectOptionBase, mixin, {
+	return Type.Composite([SelectOptionBase, mixin], {
 		description: 'Represents an option in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<option>` element.',
 		...options
@@ -242,7 +248,7 @@ export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(optionSchema)
-	return Merge(SelectOptionGroupBase, mixin, {
+	return Type.Composite([SelectOptionGroupBase, mixin], {
 		description: 'Represents a grouping of options in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
 		title: optionSchema.title ? optionSchema.title + 'Group' : undefined,
@@ -284,7 +290,7 @@ export function Select<Option extends TSelectOption<TSchema>>(
 			SelectOptionGroup(optionSchema)
 		])
 	)
-	return Merge(SelectBase, mixin, {
+	return Type.Composite([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',
 		$comment: 'Semantics are similar to the HTML `<select>` element',
 		...options

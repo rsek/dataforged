@@ -46,8 +46,8 @@ export type MoveEnhancement =
 // export type MoveEnhancement = Static<typeof MoveEnhancement>
 
 export const MoveCategory = Generic.Collection(
-	Type.Ref(Move),
 	Type.Ref(ID.MoveCategoryID),
+	Type.Ref(Move),
 	{ $id: '#/$defs/MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>

@@ -1,7 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonEnumFromRecord } from '../../../typebox/enum.js'
 import { Generic, ID, Localize, Metadata } from '../common/index.js'
-import { Merge } from '../utils/typebox.js'
 
 export const OracleTableColumnContentKey = JsonEnumFromRecord(
 	{
@@ -43,14 +42,16 @@ export const OracleTableColumn = Type.Object(
 )
 export type OracleTableColumn = Static<typeof OracleTableColumn>
 
-export const OracleCollectionTableColumn = Merge(
-	OracleTableColumn,
-	Type.Object({
-		table_key: Type.Ref(ID.DictKey, {
-			description:
-				'The key of the OracleTable (within this collection), whose data is used to render this column.'
+export const OracleCollectionTableColumn = Type.Composite(
+	[
+		OracleTableColumn,
+		Type.Object({
+			table_key: Type.Ref(ID.DictKey, {
+				description:
+					'The key of the OracleTable (within this collection), whose data is used to render this column.'
+			})
 		})
-	}),
+	],
 	{
 		$id: '#/$defs/OracleCollectionTableColumn'
 	}
@@ -80,12 +81,14 @@ export const OracleCollectionStyle = JsonEnumFromRecord(
 )
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
-export const OracleCollectionRendering = Merge(
-	OracleRenderingBase,
-	Type.Object({
-		columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn)),
-		table_style: Type.Optional(Type.Ref(OracleCollectionStyle))
-	}),
+export const OracleCollectionRendering = Type.Composite(
+	[
+		Type.Omit(OracleRenderingBase, ['columns']),
+		Type.Object({
+			columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn)),
+			table_style: Type.Optional(Type.Ref(OracleCollectionStyle))
+		})
+	],
 	{ $id: '#/$defs/OracleCollectionRendering' }
 )
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>

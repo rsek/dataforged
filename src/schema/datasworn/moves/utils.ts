@@ -2,39 +2,35 @@ import {
 	Type,
 	type ObjectOptions,
 	type Static,
-	type TLiteral,
-	type TObject,
-	type TSchema
+	type TNull,
+	type TRef
 } from '@sinclair/typebox'
-import { type Simplify } from 'type-fest'
+import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
 import { MoveIDWildcard } from '../common/Id.js'
-import { Generic, ID } from '../common/index.js'
 import { MarkdownString } from '../common/Localize.js'
+import { Generic, ID } from '../common/index.js'
 import { type EnhanceMany } from '../utils/generic.js'
-import { Merge } from '../utils/typebox.js'
-import { type MoveOutcomes, type MoveRollType } from './common.js'
+import {
+	type TTrigger,
+	type TTriggerEnhancement,
+	type Trigger
+} from './Trigger.js'
+import {
+	MoveRollType,
+	type MoveOutcomes,
+	type TMoveOutcomes
+} from './common.js'
 
 const MoveBase = Type.Object({
-	roll_type: Type.Ref<typeof MoveRollType>('#/$defs/MoveRollType'),
 	replaces: Type.Optional(
 		Type.Ref(ID.MoveID, {
 			description:
 				'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
 		})
 	),
-	trigger: Type.Object({
-		text: Type.Ref(MarkdownString, {
-			description:
-				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
-			type: 'string'
-		})
-	}),
 	text: Type.Ref(MarkdownString, {
 		description: 'The complete rules text of the move.'
 	}),
-	outcomes: Type.Optional(
-		Type.Ref<typeof MoveOutcomes>('#/$defs/MoveOutcomes')
-	),
 	oracles: Type.Optional(
 		Type.Array(Type.Ref(ID.OracleTableID), {
 			description:
@@ -42,42 +38,55 @@ const MoveBase = Type.Object({
 		})
 	)
 })
-export type MoveBase = Static<typeof MoveBase>
 
 export function Move<
-	RollType extends TSchema,
-	Trigger extends TSchema,
-	Outcomes extends TSchema
->(roll_type: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
+	RollType extends MoveRollType,
+	Trigger extends TRef<TTrigger>,
+	Outcomes extends TRef<TMoveOutcomes> | TNull
+>(rollType: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
 	return Generic.Collectable(
 		Type.Ref(ID.MoveID),
-		Merge(
-			Type.Object({ roll_type, trigger, outcomes }),
-			Type.Omit(MoveBase, ['roll_type', 'outcomes', 'trigger']),
-			options
-		)
-	)
-}
-
-export function MoveEnhancement<
-	T extends TObject<{ roll_type: TLiteral<string> }>,
-	TriggerEnhancement extends TObject
->(
-	moveSchema: T,
-	triggerEnhanceSchema: TriggerEnhancement,
-	options: ObjectOptions = {}
-) {
-	const result = Generic.EnhanceMany(
-		Type.Object({
-			roll_type: moveSchema.properties.roll_type,
-			trigger: Type.Optional(triggerEnhanceSchema)
-		}),
-		Type.Ref(MoveIDWildcard),
+		Type.Composite([
+			MoveBase,
+			Type.Object({
+				roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
+				trigger,
+				outcomes
+			})
+		]),
 		options
 	)
-
-	return result
 }
-export type MoveEnhancement<T extends { roll_type: string }, E> = Simplify<
-	EnhanceMany<Pick<T, 'roll_type'> & { trigger?: E }>
+export type TMove<
+	RollType extends MoveRollType,
+	MoveTrigger extends TRef<TTrigger>,
+	Outcomes extends TRef<TMoveOutcomes> | TNull
+> = ReturnType<typeof Move<RollType, MoveTrigger, Outcomes>>
+
+export type Move<
+	RollType extends MoveRollType,
+	MoveTrigger extends Trigger,
+	Outcomes extends MoveOutcomes | null
+> = Generic.Collectable<
+	Static<typeof MoveBase> & {
+		roll_type: RollType
+		trigger: MoveTrigger
+		outcomes: Outcomes
+	}
 >
+
+export function MoveEnhancement<
+	RollType extends MoveRollType,
+	Trigger extends TRef<TTriggerEnhancement>
+>(rollType: RollType, trigger: Trigger, options: ObjectOptions = {}) {
+	const base = Type.Object({
+		roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
+		trigger: Type.Optional(trigger)
+	})
+
+	return Generic.EnhanceMany(base, Type.Ref(MoveIDWildcard), options)
+}
+export type MoveEnhancement<T extends MoveRollType, E> = EnhanceMany<{
+	roll_type: T
+	trigger?: E
+}>

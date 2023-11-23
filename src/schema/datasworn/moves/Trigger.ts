@@ -10,7 +10,6 @@ import {
 import { type TJsonEnum } from '../../../typebox/enum.js'
 import { Localize } from '../common/index.js'
 import {
-	Merge,
 	Nullable,
 	TNullable,
 	type TFuzzyNull,
@@ -49,12 +48,14 @@ export function TriggerCondition<
 		description: 'The options available when rolling with this trigger.',
 		...rollOptions
 	}
-	return Merge(
-		TriggerConditionBase,
-		Type.Object({
-			method,
-			roll_options
-		}),
+	return Type.Composite(
+		[
+			TriggerConditionBase,
+			Type.Object({
+				method,
+				roll_options
+			})
+		],
 		options
 	)
 }
@@ -67,15 +68,21 @@ export type TTriggerCondition<
 	> = TFuzzyNull<TArray<TFuzzyObject<{ using: TSchema }>>>
 > = ReturnType<typeof TriggerCondition<Method, RollOptions>>
 
+export type TriggerCondition<
+	Method extends string | null = string | null,
+	RollOptions extends Array<{ using: any }> | null = Array<{
+		using: any
+	}> | null
+> = { roll_options: RollOptions; method: Method }
+
 export function TriggerConditionEnhancement<T extends TTriggerCondition>(
 	triggerCondition: T,
 	options: ObjectOptions
 ) {
-	const RollOptions = triggerCondition.properties.roll_options
+	const RollOptions = Type.Index(triggerCondition, ['roll_options'])
 	type RollOptions = typeof RollOptions
 
-	const Method = triggerCondition.properties.method
-	type Method = T['properties']['method']
+	const Method = Type.Index(triggerCondition, ['method'])
 
 	type TNullableRollOptions = Omit<
 		T['properties'],
@@ -84,10 +91,12 @@ export function TriggerConditionEnhancement<T extends TTriggerCondition>(
 		roll_options: RollOptions extends TNull | TNullable
 			? RollOptions
 			: TNullable<RollOptions>
-		method: Method extends TNull | TNullable ? Method : TNullable<Method>
+		method: typeof Method extends TNull | TNullable
+			? typeof Method
+			: TNullable<typeof Method>
 	}
 
-	const rollOptionsAreNullable = TypeGuard.TNull(Method) ?? TNullable
+	const rollOptionsAreNullable = TypeGuard.TNull(Method) ?? TNullable(Method)
 
 	const roll_options = rollOptionsAreNullable
 		? RollOptions
@@ -123,7 +132,7 @@ const TriggerMixin = Type.Object({
 export function Trigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>>
 >(conditions: T, options: ObjectOptions = {}) {
-	return Merge(TriggerMixin, Type.Object({ conditions }), options)
+	return Type.Composite([TriggerMixin, Type.Object({ conditions })], options)
 }
 export type TTrigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>> = TFuzzyNull<
@@ -131,14 +140,26 @@ export type TTrigger<
 	>
 > = ReturnType<typeof Trigger<T>>
 
-export function TriggerEnhancement<T extends TTrigger>(
-	conditionSchema: TFuzzyRef<T>,
-	options: ObjectOptions
-) {
+export type Trigger<
+	T extends TriggerCondition[] | null = TriggerCondition[] | null
+> = Static<typeof TriggerMixin> & { conditions: T }
+
+export function TriggerEnhancement<
+	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>>
+>(conditions: T, options: ObjectOptions) {
 	return Type.Object(
 		{
-			conditions: Type.Array(conditionSchema)
+			conditions
 		},
 		options
 	)
 }
+
+export type TTriggerEnhancement<
+	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>> = TFuzzyNull<
+		TArray<TFuzzyRef<TTriggerCondition>>
+	>
+> = ReturnType<typeof TriggerEnhancement<T>>
+export type TriggerEnhancement<
+	T extends TriggerCondition[] | null = TriggerCondition[] | null
+> = { conditions: T }

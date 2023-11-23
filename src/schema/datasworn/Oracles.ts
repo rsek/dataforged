@@ -1,22 +1,22 @@
-import { Type, type Static } from '@sinclair/typebox'
+import { Type, type Static, type TRef } from '@sinclair/typebox'
 import { Generic, ID, Localize, Metadata, Rolls } from './common/index.js'
-import { Merge, Nullable } from './utils/typebox.js'
+import { Nullable } from './utils/typebox.js'
 import { TableRow } from './oracles/TableRow.js'
 import {
 	OracleTableRendering,
 	OracleCollectionRendering
 } from './oracles/OracleRendering.js'
 
-export const OracleTableRow = TableRow(
-	{
-		id: Type.Ref(ID.OracleTableRowID),
+export const OracleTableRow = Generic.IdentifiedNode(
+	Type.Ref(ID.OracleTableRowID),
+	TableRow({
 		min: Nullable(Type.Integer(), {
 			default: null
 		}),
 		max: Nullable(Type.Integer(), {
 			default: null
 		})
-	},
+	}),
 	{ $id: '#/$defs/OracleTableRow' }
 )
 export type OracleTableRow = Static<typeof OracleTableRow>
@@ -54,13 +54,18 @@ export const OracleTable = Generic.RecursiveCollectable(
 )
 export type OracleTable = Static<typeof OracleTable>
 
-export const OracleCollection = Generic.RecursiveCollection(
-	Merge(
+const OracleCollectionBase = Type.Composite(
+	[
 		Type.Object({
 			rendering: Type.Optional(Type.Ref(OracleCollectionRendering))
 		}),
-		Generic.Collection(Type.Ref(OracleTable), Type.Ref(ID.OracleCollectionID))
-	),
+		Generic.Collection(Type.Ref(ID.OracleCollectionID), Type.Ref(OracleTable))
+	],
+	{ [Generic.CollectionBrand]: 'Collection' }
+) satisfies Generic.TCollection<TRef<typeof OracleTable>>
+
+export const OracleCollection = Generic.RecursiveCollection(
+	OracleCollectionBase,
 	{
 		$id: '#/$defs/OracleCollection'
 	}

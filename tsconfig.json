@@ -1,7 +1,15 @@
 {
 	"$schema": "http://json.schemastore.org/tsconfig",
 	// "extends": "ts-node/node16/tsconfig.json",
-	"include": ["./src/**/*.ts", "./src/global.d.ts"],
+	"include": [
+		"./src/builders",
+		"./src/schema",
+		"./src/scripts",
+		"./src/typebox",
+		"./src/json-typedef/*.ts",
+		"./src/global.d.ts",
+		"./src/*.ts"
+	],
 	"exclude": [
 		"./src/**/*.d.ts",
 		"./dist",
