@@ -5,16 +5,16 @@
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml"
 	},
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit"
-	},
+
 	"javascriptBooster.formattingOptions": {
 		"quote": "single",
 		"useTabs": true,
 		"trailingComma": true,
 		"arrowParensAlways": true,
 		"objectCurlySpacing": true,
-		"arrayBracketSpacing": false
+		"arrayBracketSpacing": false,
+		"tabWidth": 2,
+		"wrapColumn": 80
 	},
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.foldingImportsByDefault": true,
@@ -60,5 +60,17 @@
 	},
 	"yaml.suggest.parentSkeletonSelectedFirst": true,
 	"editor.formatOnSaveMode": "modificationsIfAvailable",
-	"eslint.codeActionsOnSave.mode": "problems"
+	"eslint.codeActionsOnSave.mode": "problems",
+	"javascript.preferences.quoteStyle": "single",
+	"typescript.preferences.quoteStyle": "single",
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"markdown"
+	],
+	"eslint.useESLintClass": true,
+	"eslint.run": "onSave"
 }

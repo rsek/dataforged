@@ -299,11 +299,13 @@
 			"description": "A move ID, for a standard move or a unique asset move",
 			"oneOf": [
 				{
+					"title": "StandardMoveID",
 					"type": "string",
 					"description": "A move ID for a standard move.",
 					"pattern": "^([a-z0-9_]{3,})\\/moves\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 				},
 				{
+					"title": "AssetMoveID",
 					"type": "string",
 					"description": "A move ID for an asset move.",
 					"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/moves\\/([a-z][a-z_]*)$"
@@ -320,10 +322,12 @@
 			"description": "A move ID with wildcards",
 			"oneOf": [
 				{
+					"title": "StandardMoveID (with wildcard)",
 					"type": "string",
 					"pattern": "^(\\*|([a-z0-9_]{3,}))\\/moves\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 				},
 				{
+					"title": "AssetMoveID (with wildcard)",
 					"type": "string",
 					"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/abilities\\/(\\*|(0|[1-9][0-9]*))\\/moves\\/(\\*|([a-z][a-z_]*))$"
 				}
@@ -999,6 +1003,10 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
+				"enhances": {
+					"$ref": "#/$defs/NpcCollectionID",
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				},
 				"color": {
 					"$ref": "#/$defs/CSSColor"
 				},
@@ -1032,10 +1040,6 @@
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"enhances": {
-					"$ref": "#/$defs/NpcCollectionID",
-					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"replaces": {
 					"$ref": "#/$defs/NpcCollectionID",
@@ -1181,6 +1185,10 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
+				"enhances": {
+					"$ref": "#/$defs/OracleCollectionID",
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				},
 				"color": {
 					"$ref": "#/$defs/CSSColor"
 				},
@@ -1227,10 +1235,6 @@
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"enhances": {
-					"$ref": "#/$defs/OracleCollectionID",
-					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"replaces": {
 					"$ref": "#/$defs/OracleCollectionID",
@@ -1518,27 +1522,120 @@
 		"ActionRollOption": {
 			"$id": "#/$defs/ActionRollOption",
 			"title": "ActionRollOption",
-			"oneOf": [
+			"type": "object",
+			"required": ["using"],
+			"properties": {
+				"using": {
+					"enum": [
+						"stat",
+						"condition_meter",
+						"asset_control",
+						"asset_option",
+						"attached_asset_control",
+						"attached_asset_option",
+						"custom"
+					]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"$ref": "#/$defs/RollOptionStat"
+					"if": {
+						"properties": {
+							"using": {
+								"description": "Roll using a standard player character stat.",
+								"const": "stat",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionStat"
+					}
 				},
 				{
-					"$ref": "#/$defs/RollOptionConditionMeter"
+					"if": {
+						"properties": {
+							"using": {
+								"description": "Roll using the value of a standard player condition meter.",
+								"const": "condition_meter",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionConditionMeter"
+					}
 				},
 				{
-					"$ref": "#/$defs/RollOptionAssetControl"
+					"if": {
+						"properties": {
+							"using": {
+								"description": "Roll using the value of an asset control.",
+								"const": "asset_control",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionAssetControl"
+					}
 				},
 				{
-					"$ref": "#/$defs/RollOptionAssetOption"
+					"if": {
+						"properties": {
+							"using": {
+								"description": "Roll using the value of an asset option.",
+								"const": "asset_option",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionAssetOption"
+					}
 				},
 				{
-					"$ref": "#/$defs/RollOptionAttachedAssetControl"
+					"if": {
+						"properties": {
+							"using": {
+								"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
+								"const": "attached_asset_control",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionAttachedAssetControl"
+					}
 				},
 				{
-					"$ref": "#/$defs/RollOptionAttachedAssetOption"
+					"if": {
+						"properties": {
+							"using": {
+								"description": "Roll using the value of an attached asset option.",
+								"const": "attached_asset_option",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionAttachedAssetOption"
+					}
 				},
 				{
-					"$ref": "#/$defs/RollOptionCustom"
+					"if": {
+						"properties": {
+							"using": {
+								"description": "Roll using an integer value with customizable labels.",
+								"const": "custom",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionCustom"
+					}
 				}
 			]
 		},
@@ -1559,24 +1656,76 @@
 		"Move": {
 			"$id": "#/$defs/Move",
 			"title": "Move",
-			"oneOf": [
+			"type": "object",
+			"required": ["roll_type"],
+			"properties": {
+				"roll_type": {
+					"enum": ["action_roll", "no_roll", "progress_roll", "special_track"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"$ref": "#/$defs/MoveActionRoll"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A move that makes an action roll.",
+								"const": "action_roll",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveActionRoll"
+					}
 				},
 				{
-					"$ref": "#/$defs/MoveNoRoll"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A move that makes no action rolls or progress rolls.",
+								"const": "no_roll",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveNoRoll"
+					}
 				},
 				{
-					"$ref": "#/$defs/MoveProgressRoll"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A progress move that rolls on a standard progress track type (defined by this move).",
+								"const": "progress_roll",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveProgressRoll"
+					}
 				},
 				{
-					"$ref": "#/$defs/MoveSpecialTrack"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+								"const": "special_track",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveSpecialTrack"
+					}
 				}
 			]
 		},
 		"MoveActionRoll": {
 			"$id": "#/$defs/MoveActionRoll",
-			"title": "MoveActionRoll",
+			"title": "Move (action roll)",
 			"type": "object",
 			"description": "A move that makes an action roll.",
 			"required": [
@@ -1643,14 +1792,14 @@
 					"description": "A move that makes an action roll.",
 					"const": "action_roll"
 				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerActionRollEnhancement"
-				},
 				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerActionRollEnhancement"
 				}
 			},
 			"additionalProperties": false
@@ -1669,6 +1818,10 @@
 				},
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
+				},
+				"enhances": {
+					"$ref": "#/$defs/MoveCategoryID",
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
 					"$ref": "#/$defs/CSSColor"
@@ -1704,10 +1857,6 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
-				"enhances": {
-					"$ref": "#/$defs/MoveCategoryID",
-					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
-				},
 				"replaces": {
 					"$ref": "#/$defs/MoveCategoryID",
 					"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
@@ -1718,18 +1867,70 @@
 		"MoveEnhancement": {
 			"$id": "#/$defs/MoveEnhancement",
 			"title": "MoveEnhancement",
-			"oneOf": [
+			"type": "object",
+			"required": ["roll_type"],
+			"properties": {
+				"roll_type": {
+					"enum": ["action_roll", "no_roll", "progress_roll", "special_track"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"$ref": "#/$defs/MoveActionRollEnhancement"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A move that makes an action roll.",
+								"const": "action_roll",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveActionRollEnhancement"
+					}
 				},
 				{
-					"$ref": "#/$defs/MoveNoRollEnhancement"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A move that makes no action rolls or progress rolls.",
+								"const": "no_roll",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveNoRollEnhancement"
+					}
 				},
 				{
-					"$ref": "#/$defs/MoveProgressRollEnhancement"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A progress move that rolls on a standard progress track type (defined by this move).",
+								"const": "progress_roll",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveProgressRollEnhancement"
+					}
 				},
 				{
-					"$ref": "#/$defs/MoveSpecialTrackEnhancement"
+					"if": {
+						"properties": {
+							"roll_type": {
+								"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+								"const": "special_track",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/MoveSpecialTrackEnhancement"
+					}
 				}
 			]
 		},
@@ -1795,14 +1996,14 @@
 					"description": "A move that makes no action rolls or progress rolls.",
 					"const": "no_roll"
 				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerNoRollEnhancement"
-				},
 				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerNoRollEnhancement"
 				}
 			},
 			"additionalProperties": false
@@ -1848,7 +2049,7 @@
 		},
 		"MoveProgressRoll": {
 			"$id": "#/$defs/MoveProgressRoll",
-			"title": "MoveProgressRoll",
+			"title": "Progress Move",
 			"type": "object",
 			"description": "A progress move that rolls on a standard progress track type (defined by the move object).",
 			"required": [
@@ -1929,14 +2130,14 @@
 					"description": "A progress move that rolls on a standard progress track type (defined by this move).",
 					"const": "progress_roll"
 				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerProgressRollEnhancement"
-				},
 				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerProgressRollEnhancement"
 				}
 			},
 			"additionalProperties": false
@@ -1949,7 +2150,7 @@
 		},
 		"MoveSpecialTrack": {
 			"$id": "#/$defs/MoveSpecialTrack",
-			"title": "MoveSpecialTrack",
+			"title": "Progress Move (special track roll)",
 			"type": "object",
 			"required": [
 				"name",
@@ -2015,14 +2216,14 @@
 					"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 					"const": "special_track"
 				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerSpecialTrackEnhancement"
-				},
 				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerSpecialTrackEnhancement"
 				}
 			},
 			"additionalProperties": false
@@ -2790,158 +2991,215 @@
 		"AssetAbilityControlField": {
 			"$id": "#/$defs/AssetAbilityControlField",
 			"title": "AssetAbilityControlField",
-			"oneOf": [
+			"type": "object",
+			"required": ["field_type"],
+			"properties": {
+				"field_type": {
+					"enum": ["clock", "counter", "checkbox"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"title": "ClockField",
-					"type": "object",
-					"$comment": "Semantics are similar to `<input type=\"number\">`, but rendered as a clock (a circle with equally sized wedges).",
-					"description": "A clock with 4, 6, 8, or 10 segments.",
-					"required": ["name", "field_type", "max"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetAbilityControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "clock"
-						},
-						"min": {
-							"type": "number",
-							"description": "The minimum number of filled clock segments. This is always 0.",
-							"const": 0,
-							"default": 0
-						},
-						"max": {
-							"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
-							"enum": [4, 6, 8, 10]
-						},
-						"value": {
-							"type": "integer",
-							"description": "The current number of filled clock segments.",
-							"default": 0
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "clock",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"description": "A clock with 4, 6, 8, or 10 segments.",
+						"$comment": "Semantics are similar to `<input type=\"number\">`, but rendered as a clock (a circle with equally sized wedges).",
+						"title": "ClockField",
+						"type": "object",
+						"required": ["name", "max", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetAbilityControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "The current number of filled clock segments.",
+								"default": 0,
+								"type": "integer"
+							},
+							"min": {
+								"default": 0,
+								"const": 0,
+								"type": "number",
+								"description": "The minimum number of filled clock segments. This is always 0."
+							},
+							"max": {
+								"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
+								"enum": [4, 6, 8, 10]
+							},
+							"field_type": {
+								"const": "clock",
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					}
 				},
 				{
-					"title": "CounterField",
-					"type": "object",
-					"$comment": "Semantics are similar to `<input type=\"number\">`.",
-					"description": "A counter that starts at zero, with an optional maximum value.",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetAbilityControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "counter"
-						},
-						"min": {
-							"type": "number",
-							"description": "The (inclusive) minimum value.",
-							"const": 0,
-							"default": 0
-						},
-						"max": {
-							"description": "The (inclusive) maximum value.",
-							"default": null,
-							"anyOf": [
-								{
-									"type": "integer"
-								},
-								{
-									"type": "null"
-								}
-							]
-						},
-						"value": {
-							"type": "integer",
-							"description": "The current value of this input.",
-							"default": 0
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "counter",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"description": "A counter that starts at zero, with an optional maximum value.",
+						"$comment": "Semantics are similar to `<input type=\"number\">`.",
+						"title": "CounterField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetAbilityControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "The current value of this input.",
+								"default": 0,
+								"type": "integer"
+							},
+							"min": {
+								"default": 0,
+								"const": 0,
+								"type": "number",
+								"description": "The (inclusive) minimum value."
+							},
+							"max": {
+								"default": null,
+								"anyOf": [
+									{
+										"type": "integer"
+									},
+									{
+										"type": "null"
+									}
+								],
+								"description": "The (inclusive) maximum value."
+							},
+							"field_type": {
+								"const": "counter",
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					}
 				},
 				{
-					"type": "object",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetAbilityControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "checkbox"
-						},
-						"value": {
-							"type": "boolean",
-							"description": "Is the box checked?",
-							"default": false
-						},
-						"disables_asset": {
-							"type": "boolean",
-							"description": "Does this field disable the asset when its value is set to `true`?",
-							"default": false
-						},
-						"is_impact": {
-							"type": "boolean",
-							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-							"default": false
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "checkbox",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"title": "AssetCheckboxField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetAbilityControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "Is the box checked?",
+								"default": false,
+								"type": "boolean"
+							},
+							"field_type": {
+								"const": "checkbox",
+								"type": "string"
+							},
+							"is_impact": {
+								"default": false,
+								"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+								"type": "boolean"
+							},
+							"disables_asset": {
+								"default": false,
+								"description": "Does this field disable the asset when its value is set to `true`?",
+								"type": "boolean"
+							}
+						},
+						"additionalProperties": false
+					}
 				}
 			]
 		},
 		"AssetAbilityOptionField": {
 			"$id": "#/$defs/AssetAbilityOptionField",
 			"title": "AssetAbilityOptionField",
-			"oneOf": [
+			"type": "object",
+			"required": ["field_type"],
+			"properties": {
+				"field_type": {
+					"enum": ["text"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"title": "TextField",
-					"type": "object",
-					"$comment": "Semantics are similar to the HTML `<input type=\"text\">` element.",
-					"description": "Represents an input that accepts plain text.",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetAbilityOptionFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "text"
-						},
-						"value": {
-							"description": "The content of this text input, or `null` if it's empty",
-							"default": null,
-							"anyOf": [
-								{
-									"type": "string"
-								},
-								{
-									"type": "null"
-								}
-							]
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "text",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"description": "Represents an input that accepts plain text.",
+						"$comment": "Semantics are similar to the HTML `<input type=\"text\">` element.",
+						"title": "TextField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetAbilityOptionFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "The content of this text input, or `null` if it's empty",
+								"default": null,
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"field_type": {
+								"const": "text",
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					}
 				}
 			]
 		},
@@ -3055,72 +3313,102 @@
 		"AssetConditionMeterControlField": {
 			"$id": "#/$defs/AssetConditionMeterControlField",
 			"title": "AssetConditionMeterControlField",
-			"oneOf": [
+			"type": "object",
+			"required": ["field_type"],
+			"properties": {
+				"field_type": {
+					"enum": ["checkbox", "card_flip"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"type": "object",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetConditionMeterControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "checkbox"
-						},
-						"value": {
-							"type": "boolean",
-							"description": "Is the box checked?",
-							"default": false
-						},
-						"disables_asset": {
-							"type": "boolean",
-							"description": "Does this field disable the asset when its value is set to `true`?",
-							"default": false
-						},
-						"is_impact": {
-							"type": "boolean",
-							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-							"default": false
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "checkbox",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"title": "AssetCheckboxField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetConditionMeterControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "Is the box checked?",
+								"default": false,
+								"type": "boolean"
+							},
+							"field_type": {
+								"const": "checkbox",
+								"type": "string"
+							},
+							"is_impact": {
+								"default": false,
+								"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+								"type": "boolean"
+							},
+							"disables_asset": {
+								"default": false,
+								"description": "Does this field disable the asset when its value is set to `true`?",
+								"type": "boolean"
+							}
+						},
+						"additionalProperties": false
+					}
 				},
 				{
-					"type": "object",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetConditionMeterControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "card_flip"
-						},
-						"value": {
-							"type": "boolean",
-							"description": "Is the card flipped over?",
-							"default": false
-						},
-						"disables_asset": {
-							"type": "boolean",
-							"description": "Does this field disable the asset when its value is set to `true`?",
-							"default": false
-						},
-						"is_impact": {
-							"type": "boolean",
-							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-							"default": false
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "card_flip",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"title": "AssetCardFlipField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetConditionMeterControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "Is the card flipped over?",
+								"default": false,
+								"type": "boolean"
+							},
+							"field_type": {
+								"const": "card_flip",
+								"type": "string"
+							},
+							"is_impact": {
+								"default": false,
+								"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+								"type": "boolean"
+							},
+							"disables_asset": {
+								"default": false,
+								"description": "Does this field disable the asset when its value is set to `true`?",
+								"type": "boolean"
+							}
+						},
+						"additionalProperties": false
+					}
 				}
 			]
 		},
@@ -3145,224 +3433,324 @@
 		"AssetControlField": {
 			"$id": "#/$defs/AssetControlField",
 			"title": "AssetControlField",
-			"oneOf": [
+			"type": "object",
+			"required": ["field_type"],
+			"properties": {
+				"field_type": {
+					"enum": [
+						"condition_meter",
+						"select_enhancement",
+						"checkbox",
+						"card_flip"
+					]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"$ref": "#/$defs/AssetConditionMeter"
-				},
-				{
-					"title": "SelectEnhancementField",
-					"type": "object",
-					"$comment": "Semantics are similar to the HTML `<select>` element",
-					"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
-					"required": ["name", "field_type", "choices"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "select_enhancement"
-						},
-						"value": {
-							"description": "The current value of this input.",
-							"default": null,
-							"anyOf": [
-								{
-									"$ref": "#/$defs/DictKey",
-									"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
-									"default": null
-								},
-								{
-									"type": "null"
-								}
-							]
-						},
-						"choices": {
-							"type": "object",
-							"$comment": "Deserialize as a dictionary object.",
-							"patternProperties": {
-								"^([a-z][a-z_]*)$": {
-									"oneOf": [
-										{
-											"title": "SelectEnhancementOption",
-											"type": "object",
-											"$comment": "Semantics are similar to the HTML `<option>` element.",
-											"description": "Represents an option in a list of choices.",
-											"required": ["name", "value", "option_type"],
-											"properties": {
-												"name": {
-													"$ref": "#/$defs/Label",
-													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-												},
-												"value": {
-													"type": "object",
-													"description": "The current value of this input.",
-													"properties": {
-														"enhance_asset": {
-															"$ref": "#/$defs/AssetEnhancement"
-														},
-														"enhance_moves": {
-															"type": "array",
-															"items": {
-																"$ref": "#/$defs/MoveEnhancement"
-															}
-														}
-													}
-												},
-												"option_type": {
-													"type": "string",
-													"const": "option"
-												},
-												"selected": {
-													"type": "boolean",
-													"description": "Is this option currently selected?"
-												}
-											}
-										},
-										{
-											"title": "SelectEnhancementOptionGroup",
-											"type": "object",
-											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
-											"description": "Represents a grouping of options in a list of choices.",
-											"required": ["name", "choices", "option_type"],
-											"properties": {
-												"name": {
-													"$ref": "#/$defs/Label",
-													"description": "A label for this option group."
-												},
-												"choices": {
-													"type": "object",
-													"$comment": "Deserialize as a dictionary object.",
-													"patternProperties": {
-														"^([a-z][a-z_]*)$": {
-															"title": "SelectEnhancementOption",
-															"type": "object",
-															"$comment": "Semantics are similar to the HTML `<option>` element.",
-															"description": "Represents an option in a list of choices.",
-															"required": ["name", "value", "option_type"],
-															"properties": {
-																"name": {
-																	"$ref": "#/$defs/Label",
-																	"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-																},
-																"value": {
-																	"type": "object",
-																	"description": "The current value of this input.",
-																	"properties": {
-																		"enhance_asset": {
-																			"$ref": "#/$defs/AssetEnhancement"
-																		},
-																		"enhance_moves": {
-																			"type": "array",
-																			"items": {
-																				"$ref": "#/$defs/MoveEnhancement"
-																			}
-																		}
-																	}
-																},
-																"option_type": {
-																	"type": "string",
-																	"const": "option"
-																},
-																"selected": {
-																	"type": "boolean",
-																	"description": "Is this option currently selected?"
-																}
-															}
-														}
-													}
-												},
-												"option_type": {
-													"type": "string",
-													"const": "option_group"
-												}
-											}
-										}
-									]
-								}
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "condition_meter",
+								"type": "string"
 							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"$ref": "#/$defs/AssetConditionMeter"
+					}
 				},
 				{
-					"type": "object",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "checkbox"
-						},
-						"value": {
-							"type": "boolean",
-							"description": "Is the box checked?",
-							"default": false
-						},
-						"disables_asset": {
-							"type": "boolean",
-							"description": "Does this field disable the asset when its value is set to `true`?",
-							"default": false
-						},
-						"is_impact": {
-							"type": "boolean",
-							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-							"default": false
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "select_enhancement",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
+						"$comment": "Semantics are similar to the HTML `<select>` element",
+						"title": "SelectEnhancementField",
+						"type": "object",
+						"required": ["name", "choices", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "The current value of this input.",
+								"default": null,
+								"anyOf": [
+									{
+										"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
+										"default": null,
+										"$ref": "#/$defs/DictKey"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"choices": {
+								"$comment": "Deserialize as a dictionary object.",
+								"type": "object",
+								"patternProperties": {
+									"^([a-z][a-z_]*)$": {
+										"type": "object",
+										"allOf": [
+											{
+												"if": {
+													"properties": {
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"title": "SelectEnhancementOption",
+													"type": "object",
+													"properties": {
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"selected": {
+															"description": "Is this option currently selected?",
+															"type": "boolean"
+														},
+														"name": {
+															"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+															"$ref": "#/$defs/Label"
+														},
+														"value": {
+															"description": "The current value of this input.",
+															"type": "object",
+															"properties": {
+																"enhance_asset": {
+																	"$ref": "#/$defs/AssetEnhancement"
+																},
+																"enhance_moves": {
+																	"type": "array",
+																	"items": {
+																		"$ref": "#/$defs/MoveEnhancement"
+																	}
+																}
+															}
+														}
+													},
+													"required": ["option_type", "name", "value"]
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"option_type": {
+															"const": "option_group",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents a grouping of options in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
+													"title": "SelectEnhancementOptionGroup",
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A label for this option group.",
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option_group",
+															"type": "string"
+														},
+														"choices": {
+															"$comment": "Deserialize as a dictionary object.",
+															"type": "object",
+															"patternProperties": {
+																"^([a-z][a-z_]*)$": {
+																	"description": "Represents an option in a list of choices.",
+																	"$comment": "Semantics are similar to the HTML `<option>` element.",
+																	"title": "SelectEnhancementOption",
+																	"type": "object",
+																	"properties": {
+																		"option_type": {
+																			"const": "option",
+																			"type": "string"
+																		},
+																		"selected": {
+																			"description": "Is this option currently selected?",
+																			"type": "boolean"
+																		},
+																		"name": {
+																			"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+																			"$ref": "#/$defs/Label"
+																		},
+																		"value": {
+																			"description": "The current value of this input.",
+																			"type": "object",
+																			"properties": {
+																				"enhance_asset": {
+																					"$ref": "#/$defs/AssetEnhancement"
+																				},
+																				"enhance_moves": {
+																					"type": "array",
+																					"items": {
+																						"$ref": "#/$defs/MoveEnhancement"
+																					}
+																				}
+																			}
+																		}
+																	},
+																	"required": ["option_type", "name", "value"]
+																}
+															}
+														}
+													},
+													"required": ["name", "option_type", "choices"]
+												}
+											}
+										],
+										"required": ["option_type"],
+										"additionalProperties": true,
+										"properties": {
+											"option_type": {
+												"enum": ["option", "option_group"]
+											}
+										}
+									}
+								}
+							},
+							"field_type": {
+								"const": "select_enhancement",
+								"type": "string"
+							}
+						}
+					}
 				},
 				{
-					"type": "object",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetControlFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "card_flip"
-						},
-						"value": {
-							"type": "boolean",
-							"description": "Is the card flipped over?",
-							"default": false
-						},
-						"disables_asset": {
-							"type": "boolean",
-							"description": "Does this field disable the asset when its value is set to `true`?",
-							"default": false
-						},
-						"is_impact": {
-							"type": "boolean",
-							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-							"default": false
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "checkbox",
+								"type": "string"
+							}
 						}
 					},
-					"additionalProperties": false
+					"then": {
+						"title": "AssetCheckboxField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "Is the box checked?",
+								"default": false,
+								"type": "boolean"
+							},
+							"field_type": {
+								"const": "checkbox",
+								"type": "string"
+							},
+							"is_impact": {
+								"default": false,
+								"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+								"type": "boolean"
+							},
+							"disables_asset": {
+								"default": false,
+								"description": "Does this field disable the asset when its value is set to `true`?",
+								"type": "boolean"
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "card_flip",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"title": "AssetCardFlipField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetControlFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "Is the card flipped over?",
+								"default": false,
+								"type": "boolean"
+							},
+							"field_type": {
+								"const": "card_flip",
+								"type": "string"
+							},
+							"is_impact": {
+								"default": false,
+								"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+								"type": "boolean"
+							},
+							"disables_asset": {
+								"default": false,
+								"description": "Does this field disable the asset when its value is set to `true`?",
+								"type": "boolean"
+							}
+						},
+						"additionalProperties": false
+					}
 				}
 			]
 		},
 		"AssetControlFieldEnhancement": {
 			"$id": "#/$defs/AssetControlFieldEnhancement",
 			"title": "AssetControlFieldEnhancement",
-			"oneOf": [
+			"type": "object",
+			"required": ["field_type"],
+			"properties": {
+				"field_type": {
+					"enum": ["condition_meter"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"$ref": "#/$defs/AssetConditionMeterEnhancement"
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "condition_meter",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/AssetConditionMeterEnhancement"
+					}
 				}
 			]
 		},
@@ -3402,297 +3790,389 @@
 		"AssetOptionField": {
 			"$id": "#/$defs/AssetOptionField",
 			"title": "AssetOptionField",
-			"oneOf": [
+			"type": "object",
+			"required": ["field_type"],
+			"properties": {
+				"field_type": {
+					"enum": ["select_stat", "select_enhancement", "text"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
 				{
-					"title": "SelectStatField",
-					"type": "object",
-					"$comment": "Semantics are similar to the HTML `<select>` element",
-					"description": "Represents a list of mutually exclusive choices.",
-					"required": ["name", "field_type", "choices"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetOptionFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "select_stat"
-						},
-						"value": {
-							"description": "The current value of this input.",
-							"default": null,
-							"anyOf": [
-								{
-									"$ref": "#/$defs/DictKey",
-									"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
-									"default": null
-								},
-								{
-									"type": "null"
-								}
-							]
-						},
-						"choices": {
-							"type": "object",
-							"$comment": "Deserialize as a dictionary object.",
-							"patternProperties": {
-								"^([a-z][a-z_]*)$": {
-									"oneOf": [
-										{
-											"title": "SelectStatOption",
-											"type": "object",
-											"$comment": "Semantics are similar to the HTML `<option>` element.",
-											"description": "Represents an option in a list of choices.",
-											"required": ["name", "value", "option_type"],
-											"properties": {
-												"name": {
-													"$ref": "#/$defs/Label",
-													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-												},
-												"value": {
-													"$ref": "#/$defs/PlayerStat",
-													"description": "The current value of this input."
-												},
-												"option_type": {
-													"type": "string",
-													"const": "option"
-												},
-												"selected": {
-													"type": "boolean",
-													"description": "Is this option currently selected?"
-												}
-											}
-										},
-										{
-											"title": "SelectStatOptionGroup",
-											"type": "object",
-											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
-											"description": "Represents a grouping of options in a list of choices.",
-											"required": ["name", "choices", "option_type"],
-											"properties": {
-												"name": {
-													"$ref": "#/$defs/Label",
-													"description": "A label for this option group."
-												},
-												"choices": {
-													"type": "object",
-													"$comment": "Deserialize as a dictionary object.",
-													"patternProperties": {
-														"^([a-z][a-z_]*)$": {
-															"title": "SelectStatOption",
-															"type": "object",
-															"$comment": "Semantics are similar to the HTML `<option>` element.",
-															"description": "Represents an option in a list of choices.",
-															"required": ["name", "value", "option_type"],
-															"properties": {
-																"name": {
-																	"$ref": "#/$defs/Label",
-																	"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-																},
-																"value": {
-																	"$ref": "#/$defs/PlayerStat",
-																	"description": "The current value of this input."
-																},
-																"option_type": {
-																	"type": "string",
-																	"const": "option"
-																},
-																"selected": {
-																	"type": "boolean",
-																	"description": "Is this option currently selected?"
-																}
-															}
-														}
-													}
-												},
-												"option_type": {
-													"type": "string",
-													"const": "option_group"
-												}
-											}
-										}
-									]
-								}
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "select_stat",
+								"type": "string"
 							}
 						}
 					},
-					"additionalProperties": false
-				},
-				{
-					"title": "SelectEnhancementField",
-					"type": "object",
-					"$comment": "Semantics are similar to the HTML `<select>` element",
-					"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
-					"required": ["name", "field_type", "choices"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetOptionFieldID"
-						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "select_enhancement"
-						},
-						"value": {
-							"description": "The current value of this input.",
-							"default": null,
-							"anyOf": [
-								{
-									"$ref": "#/$defs/DictKey",
-									"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
-									"default": null
-								},
-								{
-									"type": "null"
-								}
-							]
-						},
-						"choices": {
-							"type": "object",
-							"$comment": "Deserialize as a dictionary object.",
-							"patternProperties": {
-								"^([a-z][a-z_]*)$": {
-									"oneOf": [
-										{
-											"title": "SelectEnhancementOption",
-											"type": "object",
-											"$comment": "Semantics are similar to the HTML `<option>` element.",
-											"description": "Represents an option in a list of choices.",
-											"required": ["name", "value", "option_type"],
-											"properties": {
-												"name": {
-													"$ref": "#/$defs/Label",
-													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-												},
-												"value": {
-													"type": "object",
-													"description": "The current value of this input.",
+					"then": {
+						"description": "Represents a list of mutually exclusive choices.",
+						"$comment": "Semantics are similar to the HTML `<select>` element",
+						"title": "SelectStatField",
+						"type": "object",
+						"required": ["name", "choices", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetOptionFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "The current value of this input.",
+								"default": null,
+								"anyOf": [
+									{
+										"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
+										"default": null,
+										"$ref": "#/$defs/DictKey"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"choices": {
+								"$comment": "Deserialize as a dictionary object.",
+								"type": "object",
+								"patternProperties": {
+									"^([a-z][a-z_]*)$": {
+										"type": "object",
+										"allOf": [
+											{
+												"if": {
 													"properties": {
-														"enhance_asset": {
-															"$ref": "#/$defs/AssetEnhancement"
-														},
-														"enhance_moves": {
-															"type": "array",
-															"items": {
-																"$ref": "#/$defs/MoveEnhancement"
-															}
+														"option_type": {
+															"const": "option",
+															"type": "string"
 														}
 													}
 												},
-												"option_type": {
-													"type": "string",
-													"const": "option"
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"title": "SelectStatOption",
+													"type": "object",
+													"properties": {
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"selected": {
+															"description": "Is this option currently selected?",
+															"type": "boolean"
+														},
+														"name": {
+															"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+															"$ref": "#/$defs/Label"
+														},
+														"value": {
+															"description": "The current value of this input.",
+															"$ref": "#/$defs/PlayerStat"
+														}
+													},
+													"required": ["option_type", "name", "value"]
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"option_type": {
+															"const": "option_group",
+															"type": "string"
+														}
+													}
 												},
-												"selected": {
-													"type": "boolean",
-													"description": "Is this option currently selected?"
+												"then": {
+													"description": "Represents a grouping of options in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
+													"title": "SelectStatOptionGroup",
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A label for this option group.",
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option_group",
+															"type": "string"
+														},
+														"choices": {
+															"$comment": "Deserialize as a dictionary object.",
+															"type": "object",
+															"patternProperties": {
+																"^([a-z][a-z_]*)$": {
+																	"description": "Represents an option in a list of choices.",
+																	"$comment": "Semantics are similar to the HTML `<option>` element.",
+																	"title": "SelectStatOption",
+																	"type": "object",
+																	"properties": {
+																		"option_type": {
+																			"const": "option",
+																			"type": "string"
+																		},
+																		"selected": {
+																			"description": "Is this option currently selected?",
+																			"type": "boolean"
+																		},
+																		"name": {
+																			"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+																			"$ref": "#/$defs/Label"
+																		},
+																		"value": {
+																			"description": "The current value of this input.",
+																			"$ref": "#/$defs/PlayerStat"
+																		}
+																	},
+																	"required": ["option_type", "name", "value"]
+																}
+															}
+														}
+													},
+													"required": ["name", "option_type", "choices"]
 												}
 											}
-										},
-										{
-											"title": "SelectEnhancementOptionGroup",
-											"type": "object",
-											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
-											"description": "Represents a grouping of options in a list of choices.",
-											"required": ["name", "choices", "option_type"],
-											"properties": {
-												"name": {
-													"$ref": "#/$defs/Label",
-													"description": "A label for this option group."
+										],
+										"required": ["option_type"],
+										"additionalProperties": true,
+										"properties": {
+											"option_type": {
+												"enum": ["option", "option_group"]
+											}
+										}
+									}
+								}
+							},
+							"field_type": {
+								"const": "select_stat",
+								"type": "string"
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "select_enhancement",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
+						"$comment": "Semantics are similar to the HTML `<select>` element",
+						"title": "SelectEnhancementField",
+						"type": "object",
+						"required": ["name", "choices", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetOptionFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "The current value of this input.",
+								"default": null,
+								"anyOf": [
+									{
+										"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
+										"default": null,
+										"$ref": "#/$defs/DictKey"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"choices": {
+								"$comment": "Deserialize as a dictionary object.",
+								"type": "object",
+								"patternProperties": {
+									"^([a-z][a-z_]*)$": {
+										"type": "object",
+										"allOf": [
+											{
+												"if": {
+													"properties": {
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														}
+													}
 												},
-												"choices": {
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"title": "SelectEnhancementOption",
 													"type": "object",
-													"$comment": "Deserialize as a dictionary object.",
-													"patternProperties": {
-														"^([a-z][a-z_]*)$": {
-															"title": "SelectEnhancementOption",
+													"properties": {
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"selected": {
+															"description": "Is this option currently selected?",
+															"type": "boolean"
+														},
+														"name": {
+															"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+															"$ref": "#/$defs/Label"
+														},
+														"value": {
+															"description": "The current value of this input.",
 															"type": "object",
-															"$comment": "Semantics are similar to the HTML `<option>` element.",
-															"description": "Represents an option in a list of choices.",
-															"required": ["name", "value", "option_type"],
 															"properties": {
-																"name": {
-																	"$ref": "#/$defs/Label",
-																	"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+																"enhance_asset": {
+																	"$ref": "#/$defs/AssetEnhancement"
 																},
-																"value": {
+																"enhance_moves": {
+																	"type": "array",
+																	"items": {
+																		"$ref": "#/$defs/MoveEnhancement"
+																	}
+																}
+															}
+														}
+													},
+													"required": ["option_type", "name", "value"]
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"option_type": {
+															"const": "option_group",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents a grouping of options in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
+													"title": "SelectEnhancementOptionGroup",
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A label for this option group.",
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option_group",
+															"type": "string"
+														},
+														"choices": {
+															"$comment": "Deserialize as a dictionary object.",
+															"type": "object",
+															"patternProperties": {
+																"^([a-z][a-z_]*)$": {
+																	"description": "Represents an option in a list of choices.",
+																	"$comment": "Semantics are similar to the HTML `<option>` element.",
+																	"title": "SelectEnhancementOption",
 																	"type": "object",
-																	"description": "The current value of this input.",
 																	"properties": {
-																		"enhance_asset": {
-																			"$ref": "#/$defs/AssetEnhancement"
+																		"option_type": {
+																			"const": "option",
+																			"type": "string"
 																		},
-																		"enhance_moves": {
-																			"type": "array",
-																			"items": {
-																				"$ref": "#/$defs/MoveEnhancement"
+																		"selected": {
+																			"description": "Is this option currently selected?",
+																			"type": "boolean"
+																		},
+																		"name": {
+																			"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+																			"$ref": "#/$defs/Label"
+																		},
+																		"value": {
+																			"description": "The current value of this input.",
+																			"type": "object",
+																			"properties": {
+																				"enhance_asset": {
+																					"$ref": "#/$defs/AssetEnhancement"
+																				},
+																				"enhance_moves": {
+																					"type": "array",
+																					"items": {
+																						"$ref": "#/$defs/MoveEnhancement"
+																					}
+																				}
 																			}
 																		}
-																	}
-																},
-																"option_type": {
-																	"type": "string",
-																	"const": "option"
-																},
-																"selected": {
-																	"type": "boolean",
-																	"description": "Is this option currently selected?"
+																	},
+																	"required": ["option_type", "name", "value"]
 																}
 															}
 														}
-													}
-												},
-												"option_type": {
-													"type": "string",
-													"const": "option_group"
+													},
+													"required": ["name", "option_type", "choices"]
 												}
 											}
+										],
+										"required": ["option_type"],
+										"additionalProperties": true,
+										"properties": {
+											"option_type": {
+												"enum": ["option", "option_group"]
+											}
 										}
-									]
+									}
 								}
+							},
+							"field_type": {
+								"const": "select_enhancement",
+								"type": "string"
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "text",
+								"type": "string"
 							}
 						}
 					},
-					"additionalProperties": false
-				},
-				{
-					"title": "TextField",
-					"type": "object",
-					"$comment": "Semantics are similar to the HTML `<input type=\"text\">` element.",
-					"description": "Represents an input that accepts plain text.",
-					"required": ["name", "field_type"],
-					"properties": {
-						"id": {
-							"$ref": "#/$defs/AssetOptionFieldID"
+					"then": {
+						"description": "Represents an input that accepts plain text.",
+						"$comment": "Semantics are similar to the HTML `<input type=\"text\">` element.",
+						"title": "TextField",
+						"type": "object",
+						"required": ["name", "field_type"],
+						"properties": {
+							"id": {
+								"$ref": "#/$defs/AssetOptionFieldID"
+							},
+							"name": {
+								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+								"$ref": "#/$defs/Label"
+							},
+							"value": {
+								"description": "The content of this text input, or `null` if it's empty",
+								"default": null,
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"field_type": {
+								"const": "text",
+								"type": "string"
+							}
 						},
-						"name": {
-							"$ref": "#/$defs/Label",
-							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-						},
-						"field_type": {
-							"type": "string",
-							"const": "text"
-						},
-						"value": {
-							"description": "The content of this text input, or `null` if it's empty",
-							"default": null,
-							"anyOf": [
-								{
-									"type": "string"
-								},
-								{
-									"type": "null"
-								}
-							]
-						}
-					},
-					"additionalProperties": false
+						"additionalProperties": false
+					}
 				}
 			]
 		},
@@ -3710,6 +4190,10 @@
 				},
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
+				},
+				"enhances": {
+					"$ref": "#/$defs/AssetTypeID",
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
 					"$ref": "#/$defs/CSSColor"
@@ -3744,10 +4228,6 @@
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"enhances": {
-					"$ref": "#/$defs/AssetTypeID",
-					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"replaces": {
 					"$ref": "#/$defs/AssetTypeID",
@@ -3904,6 +4384,10 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
+				"enhances": {
+					"$ref": "#/$defs/AtlasID",
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				},
 				"color": {
 					"$ref": "#/$defs/CSSColor"
 				},
@@ -3947,10 +4431,6 @@
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"enhances": {
-					"$ref": "#/$defs/AtlasID",
-					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"replaces": {
 					"$ref": "#/$defs/AtlasID",

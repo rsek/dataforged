@@ -16,7 +16,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/OracleCollection"
 				}
 			}
@@ -26,7 +26,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing asset types, which contain assets.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/AssetType"
 				}
 			}
@@ -36,7 +36,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing atlas collections, which contain atlas entries.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/Atlas"
 				}
 			}
@@ -46,7 +46,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/DelveSite"
 				}
 			}
@@ -56,7 +56,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing move categories, which contain moves.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/MoveCategory"
 				}
 			}
@@ -66,7 +66,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing NPC collections, which contain NPCs.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/NpcCollection"
 				}
 			}
@@ -76,7 +76,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/Rarity"
 				}
 			}
@@ -86,7 +86,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing delve site domains.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/DelveSiteDomain"
 				}
 			}
@@ -96,7 +96,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing delve site themes.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/DelveSiteTheme"
 				}
 			}
@@ -106,7 +106,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object of truth categories.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/Truth"
 				}
 			}
@@ -119,165 +119,195 @@
 		"AssetAbilityControlFieldID": {
 			"title": "AssetAbilityControlFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/[0-2]\\/controls\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetAbilityID": {
 			"title": "AssetAbilityID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/[0-2]$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)$"
 		},
 		"AssetAbilityOptionFieldID": {
 			"title": "AssetAbilityOptionFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/[0-2]\\/options\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/options\\/([a-z][a-z_]*)$"
 		},
 		"AssetConditionMeterControlFieldID": {
 			"title": "AssetConditionMeterControlFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetControlFieldID": {
 			"title": "AssetControlFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetControlFieldIDWildcard": {
 			"title": "AssetControlFieldIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/assets(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)\\/controls(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/controls\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetID": {
 			"title": "AssetID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"AssetIDWildcard": {
 			"title": "AssetIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/assets(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetOptionFieldID": {
 			"title": "AssetOptionFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
 		},
 		"AssetOptionFieldIDWildcard": {
 			"title": "AssetOptionFieldIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/assets(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)\\/options(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/options\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetTypeID": {
 			"title": "AssetTypeID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/assets\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/assets\\/([a-z][a-z_]*)$"
 		},
 		"AtlasEntryID": {
 			"title": "AtlasEntryID",
 			"type": "string",
 			"examples": ["classic/atlas/ironlands/hinterlands"],
-			"pattern": "^[a-z0-9_]{3,}\\/atlas(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/atlas\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"AtlasEntryIDWildcard": {
 			"title": "AtlasEntryIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/atlas((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/atlas\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AtlasID": {
 			"title": "AtlasID",
 			"type": "string",
 			"examples": ["classic/collections/atlas/ironlands"],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/atlas(\\/([a-z][a-z_]*)){1,3}$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/atlas\\/([a-z][a-z_]*)$"
 		},
 		"AtlasIDWildcard": {
 			"title": "AtlasIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/atlas((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/collections\\/atlas\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"ConditionMeterRuleID": {
 			"title": "ConditionMeterRuleID",
 			"type": "string",
-			"pattern": "^[a-z][a-z0-9_]{3,}\\/rules\\/condition_meters\\/\\/([a-z][a-z_]*)$"
+			"examples": [
+				"classic/rules/condition_meters/health",
+				"starforged/rules/condition_meters/spirit"
+			],
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/condition_meters\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteDenizenID": {
 			"title": "DelveSiteDenizenID",
 			"type": "string",
 			"examples": ["delve/delve_sites/alvas_rest/denizens/1-27"],
-			"pattern": "^[a-z0-9_]{3,}\\/delve_sites\\/([a-z][a-z_]*)\\/denizens\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)\\/denizens\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"DelveSiteDomainID": {
 			"title": "DelveSiteDomainID",
 			"type": "string",
 			"examples": ["delve/site_domains/shadowfen"],
-			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteID": {
 			"title": "DelveSiteID",
 			"type": "string",
 			"examples": ["delve/delve_sites/alvas_rest"],
-			"pattern": "^[a-z0-9_]{3,}\\/delve_sites\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteThemeID": {
 			"title": "DelveSiteThemeID",
 			"type": "string",
 			"examples": ["delve/site_themes/hallowed"],
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)$"
 		},
 		"DictKey": {
 			"title": "DictKey",
 			"type": "string",
-			"pattern": "^[a-z][a-z_]*$"
+			"pattern": "^([a-z][a-z_]*)$"
 		},
 		"DomainDangerRowID": {
 			"title": "DomainDangerRowID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"DomainFeatureRowID": {
 			"title": "DomainFeatureRowID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"ImpactRuleCollectionID": {
 			"title": "ImpactRuleCollectionID",
 			"type": "string",
-			"pattern": "i"
+			"examples": [
+				"classic/collections/rules/impacts/conditions",
+				"starforged/collections/rules/impacts/vehicle_troubles"
+			],
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/rules\\/impacts\\/([a-z][a-z_]*)$"
 		},
 		"ImpactRuleID": {
 			"title": "ImpactRuleID",
 			"type": "string",
-			"pattern": "i"
+			"examples": [
+				"classic/rules/impacts/conditions/wounded",
+				"starforged/rules/impacts/vehicle_troubles/battered"
+			],
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/impacts\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"MoveCategoryID": {
 			"title": "MoveCategoryID",
 			"type": "string",
 			"examples": ["starforged/collections/moves/adventure"],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/moves\\/([a-z][a-z_]*)$"
 		},
 		"MoveID": {
 			"title": "MoveID",
-			"type": "string",
 			"description": "A move ID, for a standard move or a unique asset move",
+			"oneOf": [
+				{
+					"type": "string",
+					"description": "A move ID for a standard move.",
+					"pattern": "^([a-z0-9_]{3,})\\/moves\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+				},
+				{
+					"type": "string",
+					"description": "A move ID for an asset move.",
+					"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/moves\\/([a-z][a-z_]*)$"
+				}
+			],
 			"examples": [
 				"classic/moves/combat/strike",
 				"starforged/assets/module/grappler/abilities/0/moves/ready_grappler"
-			],
-			"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z][a-z_]*\\/[a-z][a-z_]*|assets\\/[a-z][a-z_]*\\/[a-z][a-z_]*\\/abilities\\/[0-2]\\/moves\\/[a-z][a-z_]*)$"
+			]
 		},
 		"MoveIDWildcard": {
 			"title": "Move ID (with wildcard)",
-			"type": "string",
 			"description": "A move ID with wildcards",
+			"oneOf": [
+				{
+					"type": "string",
+					"pattern": "^(\\*|([a-z0-9_]{3,}))\\/moves\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
+				},
+				{
+					"type": "string",
+					"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/abilities\\/(\\*|(0|[1-9][0-9]*))\\/moves\\/(\\*|([a-z][a-z_]*))$"
+				}
+			],
 			"examples": [
 				"*/moves/*/face_danger",
 				"*/assets/ritual/*/abilities/*/moves/*"
-			],
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/abilities\\/([0-2]|\\*)\\/moves\\/([a-z_]+|\\*))$"
+			]
 		},
 		"NamespaceID": {
 			"title": "NamespaceID",
 			"type": "string",
 			"examples": ["classic", "delve", "starforged", "sundered_isles"],
-			"pattern": "^[a-z0-9_]{3,}$"
+			"pattern": "^([a-z0-9_]{3,})$"
 		},
 		"NpcCollectionID": {
 			"title": "NpcCollectionID",
@@ -286,7 +316,7 @@
 				"classic/collections/npcs/firstborn",
 				"starforged/collections/npcs/sample_npcs"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/npcs\\/[a-z][a-z_]*$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/npcs\\/([a-z][a-z_]*)$"
 		},
 		"NpcID": {
 			"title": "NpcID",
@@ -295,12 +325,12 @@
 				"classic/npcs/firstborn/elf",
 				"starforged/npcs/sample_npcs/chiton"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/[a-z][a-z_]*\\/[a-z][a-z_]*$"
+			"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"NpcIDWildcard": {
 			"title": "NpcIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/npcs(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/npcs\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"NpcVariantID": {
 			"title": "NpcVariantID",
@@ -308,7 +338,7 @@
 			"examples": [
 				"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/[a-z][a-z_]*$"
+			"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/([a-z][a-z_]*)$"
 		},
 		"OracleCollectionID": {
 			"title": "OracleCollectionID",
@@ -318,7 +348,7 @@
 				"starforged/collections/oracles/character/names",
 				"starforged/collections/oracles/planets/furnace/settlements"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/oracles(\\/([a-z][a-z_]*)){1,3}$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/oracles(\\/([a-z][a-z_]*)){1,3}$"
 		},
 		"OracleTableID": {
 			"title": "OracleTableID",
@@ -328,7 +358,7 @@
 				"starforged/oracles/character/names/given",
 				"starforged/oracles/planets/furnace/settlements/terminus"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
 		},
 		"OracleTableIDWildcard": {
 			"title": "OracleTableIDWildcard",
@@ -339,55 +369,68 @@
 				"starforged/oracles/character/names/*",
 				"starforged/oracles/planets/*/settlements/*"
 			],
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/oracles((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/oracles\\/((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*|\\/\\*\\*\\/([a-z][a-z_]*)|\\/([a-z][a-z_]*)\\/\\*\\*)\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"OracleTableRowID": {
 			"title": "OracleTableRowID",
-			"type": "string",
 			"description": "Normally, rows will end with two numbers separated by a dash, indicating their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
+			"oneOf": [
+				{
+					"type": "string",
+					"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+				},
+				{
+					"type": "string",
+					"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
+				}
+			],
 			"examples": [
 				"classic/oracles/action_and_theme/action/1-1",
 				"starforged/oracles/derelicts/zones/starship/0"
-			],
-			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)([1-9][0-9]*-[1-9][0-9]*)|(0|[1-9][0-9]*)$"
+			]
 		},
 		"RarityID": {
 			"title": "RarityID",
 			"type": "string",
 			"examples": ["classic/rarities/ayethins_journal"],
-			"pattern": "^[a-z0-9_]{3,}\\/rarities\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
 		},
 		"SpecialTrackRuleID": {
 			"title": "SpecialTrackRuleID",
 			"type": "string",
-			"pattern": "i"
+			"examples": [
+				"classic/rules/special_tracks/bonds",
+				"delve/rules/special_tracks/failure",
+				"starforged/rules/special_tracks/bonds_legacy"
+			],
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/special_tracks\\/([a-z][a-z_]*)$"
 		},
 		"StatRuleID": {
 			"title": "StatRuleID",
 			"type": "string",
-			"pattern": "i"
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/stats\\/([a-z][a-z_]*)$"
 		},
 		"ThemeDangerRowID": {
 			"title": "ThemeDangerRowID",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"ThemeFeatureRowID": {
 			"title": "ThemeFeatureRowID",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"TruthID": {
 			"title": "TruthID",
 			"type": "string",
 			"examples": ["classic/truths/iron", "starforged/truths/iron"],
-			"pattern": "^[a-z0-9_]{3,}\\/truths\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)$"
 		},
 		"TruthOptionID": {
 			"title": "TruthOptionID",
 			"type": "string",
 			"examples": ["classic/truths/iron/0", "starforged/truths/iron/0"],
-			"pattern": "^[a-z0-9_]{3,}\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 		},
 		"CSSColor": {
 			"title": "CSSColor",
@@ -398,7 +441,8 @@
 			"title": "SVGImageURL",
 			"type": "string",
 			"description": "A relative URL pointing to a vector image in the SVG format.",
-			"format": "uri-reference"
+			"format": "uri-reference",
+			"pattern": "\\.svg$"
 		},
 		"Source": {
 			"title": "Source",
@@ -455,7 +499,7 @@
 				},
 				"license": {
 					"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "string",
 							"format": "uri"
@@ -529,7 +573,8 @@
 			"title": "WEBPImageURL",
 			"type": "string",
 			"description": "A relative URL pointing to a raster image in the WEBP format.",
-			"format": "uri-reference"
+			"format": "uri-reference",
+			"pattern": "\\.webp$"
 		},
 		"I18nHint": {
 			"title": "I18nHint",
@@ -610,14 +655,16 @@
 			"required": ["name", "min", "max", "shared", "description"],
 			"properties": {
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 				},
 				"min": {
 					"type": "integer",
-					"default": 0
+					"description": "The minimum value of this meter."
 				},
 				"max": {
 					"type": "integer",
+					"description": "The maximum value of this meter.",
 					"default": 5
 				},
 				"shared": {
@@ -644,7 +691,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactRule"
 						}
 					}
@@ -694,7 +741,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ConditionMeterRule"
 						}
 					}
@@ -703,7 +750,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactCategory"
 						}
 					}
@@ -712,7 +759,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/SpecialTrackRule"
 						}
 					}
@@ -721,7 +768,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/StatRule"
 						}
 					}
@@ -768,8 +815,7 @@
 			"enum": [1, 2, 3, 4, 5]
 		},
 		"SpecialTrackType": {
-			"title": "SpecialTrackType",
-			"type": "string",
+			"$ref": "#/$defs/DictKey",
 			"description": "Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
 			"examples": [
 				"bonds_track",
@@ -777,8 +823,7 @@
 				"quests_legacy",
 				"bonds_legacy",
 				"discoveries_legacy"
-			],
-			"pattern": "^[a-z][a-z_]*$"
+			]
 		},
 		"Npc": {
 			"title": "Npc",
@@ -837,7 +882,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/NpcVariant"
 						}
 					}
@@ -862,10 +907,10 @@
 		"NpcCollection": {
 			"title": "NpcCollection",
 			"type": "object",
-			"required": ["id", "name", "contents", "source"],
+			"required": ["id", "name", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/NpcCollectionID"
+					"type": "string"
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -895,7 +940,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Npc"
 						}
 					}
@@ -971,7 +1016,7 @@
 			"required": ["id", "name", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/OracleCollectionID"
+					"type": "string"
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -1006,7 +1051,7 @@
 							"type": "object",
 							"$comment": "Deserialize as a dictionary object.",
 							"patternProperties": {
-								"^[a-z][a-z_]*$": {
+								"^([a-z][a-z_]*)$": {
 									"$ref": "#/$defs/OracleCollectionTableColumn"
 								}
 							}
@@ -1023,7 +1068,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleTable"
 						}
 					}
@@ -1032,7 +1077,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleCollection"
 						}
 					}
@@ -1068,7 +1113,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleCollectionTableColumn"
 						}
 					}
@@ -1090,7 +1135,7 @@
 				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
-					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
+					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each OracleTableRow.\n  * result: Column displays the OracleTableRow's `result` key.\n  * summary: Column displays the OracleTableRow's `summary` key.\n  * description: Column displays the OracleTableRow's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
 				},
 				"color": {
@@ -1195,7 +1240,7 @@
 				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
-					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
+					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each OracleTableRow.\n  * result: Column displays the OracleTableRow's `result` key.\n  * summary: Column displays the OracleTableRow's `summary` key.\n  * description: Column displays the OracleTableRow's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
 				},
 				"color": {
@@ -1220,7 +1265,7 @@
 		},
 		"OracleTableColumnContentKey": {
 			"title": "OracleTableColumnContentKey",
-			"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
+			"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each OracleTableRow.\n  * result: Column displays the OracleTableRow's `result` key.\n  * summary: Column displays the OracleTableRow's `summary` key.\n  * description: Column displays the OracleTableRow's `description` key.",
 			"enum": ["roll", "result", "summary", "description"]
 		},
 		"OracleTableMatchBehavior": {
@@ -1255,7 +1300,7 @@
 						}
 					},
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleTableColumn"
 						}
 					}
@@ -1301,14 +1346,28 @@
 					"$ref": "#/$defs/OracleTableRowID"
 				},
 				"min": {
-					"type": ["integer", "null"],
 					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
-					"default": null
+					"default": null,
+					"anyOf": [
+						{
+							"type": "integer"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"max": {
-					"type": ["integer", "null"],
 					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
-					"default": null
+					"default": null,
+					"anyOf": [
+						{
+							"type": "integer"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
@@ -1362,7 +1421,7 @@
 		},
 		"ActionRollOption": {
 			"title": "ActionRollOption",
-			"anyOf": [
+			"oneOf": [
 				{
 					"$ref": "#/$defs/RollOptionStat"
 				},
@@ -1417,7 +1476,7 @@
 			]
 		},
 		"MoveActionRoll": {
-			"title": "Move (action roll)",
+			"title": "MoveActionRoll",
 			"type": "object",
 			"description": "A move that makes an action roll.",
 			"required": [
@@ -1484,7 +1543,9 @@
 					"const": "action_roll"
 				},
 				"trigger": {
+					"title": "TriggerActionRollEnhancement",
 					"type": "object",
+					"required": ["conditions"],
 					"properties": {
 						"conditions": {
 							"type": "array",
@@ -1505,10 +1566,10 @@
 		"MoveCategory": {
 			"title": "MoveCategory",
 			"type": "object",
-			"required": ["id", "name", "contents", "source"],
+			"required": ["id", "name", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/MoveCategoryID"
+					"type": "string"
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -1538,7 +1599,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Move"
 						}
 					}
@@ -1632,7 +1693,9 @@
 					"const": "no_roll"
 				},
 				"trigger": {
+					"title": "TriggerNoRollEnhancement",
 					"type": "object",
+					"required": ["conditions"],
 					"properties": {
 						"conditions": {
 							"type": "array",
@@ -1685,7 +1748,7 @@
 			}
 		},
 		"MoveProgressRoll": {
-			"title": "Progress Move",
+			"title": "MoveProgressRoll",
 			"type": "object",
 			"description": "A progress move that rolls on a standard progress track type (defined by the move object).",
 			"required": [
@@ -1766,7 +1829,9 @@
 					"const": "progress_roll"
 				},
 				"trigger": {
+					"title": "TriggerProgressRollEnhancement",
 					"type": "object",
+					"required": ["conditions"],
 					"properties": {
 						"conditions": {
 							"type": "array",
@@ -1790,7 +1855,7 @@
 			"enum": ["no_roll", "action_roll", "progress_roll", "special_track"]
 		},
 		"MoveSpecialTrack": {
-			"title": "Progress Move (special track roll)",
+			"title": "MoveSpecialTrack",
 			"type": "object",
 			"required": [
 				"id",
@@ -1856,7 +1921,9 @@
 					"const": "special_track"
 				},
 				"trigger": {
+					"title": "TriggerSpecialTrackEnhancement",
 					"type": "object",
+					"required": ["conditions"],
 					"properties": {
 						"conditions": {
 							"type": "array",
@@ -1903,7 +1970,7 @@
 				"assets": {
 					"description": "Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
 					"default": null,
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "array",
 							"items": {
@@ -1936,7 +2003,7 @@
 				"assets": {
 					"description": "Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
 					"default": null,
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "array",
 							"items": {
@@ -2114,24 +2181,24 @@
 					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
 					"anyOf": [
 						{
-							"type": "null"
+							"$ref": "#/$defs/ActionRollMethod"
 						},
 						{
-							"$ref": "#/$defs/ActionRollMethod"
+							"type": "null"
 						}
 					]
 				},
 				"roll_options": {
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"type": "array",
 							"description": "The options available when rolling with this trigger.",
 							"items": {
 								"$ref": "#/$defs/ActionRollOption"
 							}
+						},
+						{
+							"type": "null"
 						}
 					]
 				}
@@ -2278,25 +2345,25 @@
 					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"$ref": "#/$defs/ProgressRollMethod",
 							"default": "progress_roll"
+						},
+						{
+							"type": "null"
 						}
 					]
 				},
 				"roll_options": {
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"type": "array",
 							"description": "The options available when rolling with this trigger.",
 							"items": {
 								"$ref": "#/$defs/ProgressRollOption"
 							}
+						},
+						{
+							"type": "null"
 						}
 					]
 				}
@@ -2375,24 +2442,24 @@
 					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
 					"anyOf": [
 						{
-							"type": "null"
+							"$ref": "#/$defs/SpecialTrackRollMethod"
 						},
 						{
-							"$ref": "#/$defs/SpecialTrackRollMethod"
+							"type": "null"
 						}
 					]
 				},
 				"roll_options": {
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"type": "array",
 							"description": "The options available when rolling with this trigger.",
 							"items": {
 								"$ref": "#/$defs/TriggerSpecialTrackConditionOption"
 							}
+						},
+						{
+							"type": "null"
 						}
 					]
 				}
@@ -2465,7 +2532,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetOptionField"
 						}
 					}
@@ -2498,7 +2565,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetControlField"
 						}
 					}
@@ -2525,13 +2592,15 @@
 				},
 				"enabled": {
 					"type": "boolean",
+					"description": "Is this asset ability enabled?",
 					"default": false
 				},
 				"options": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Fields that are expected to be set once and remain the same through the life of the asset.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetAbilityOptionField"
 						}
 					}
@@ -2542,14 +2611,16 @@
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Fields whose values are expected to change over the life of the asset.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetAbilityControlField"
 						}
 					}
 				},
 				"enhance_asset": {
-					"$ref": "#/$defs/AssetEnhancement"
+					"$ref": "#/$defs/AssetEnhancement",
+					"description": "Changes made to the asset, when this ability is enabled."
 				},
 				"enhance_moves": {
 					"type": "array",
@@ -2563,7 +2634,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"description": "Unique moves added by this asset ability.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Move"
 						}
 					}
@@ -2572,47 +2643,160 @@
 		},
 		"AssetAbilityControlField": {
 			"title": "AssetAbilityControlField",
-			"allOf": [
+			"oneOf": [
 				{
+					"title": "ClockField",
 					"type": "object",
-					"required": ["id"],
+					"$comment": "Semantics are similar to `<input type=\"number\">`, but rendered as a clock (a circle with equally sized wedges).",
+					"description": "A clock with 4, 6, 8, or 10 segments.",
+					"required": ["id", "name", "field_type", "min", "max", "value"],
 					"properties": {
 						"id": {
 							"$ref": "#/$defs/AssetAbilityControlFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "clock"
+						},
+						"min": {
+							"type": "number",
+							"description": "The minimum number of filled clock segments. This is always 0.",
+							"const": 0,
+							"default": 0
+						},
+						"max": {
+							"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
+							"enum": [4, 6, 8, 10]
+						},
+						"value": {
+							"type": "integer",
+							"description": "The current number of filled clock segments.",
+							"default": 0
 						}
-					},
-					"additionalProperties": true
+					}
 				},
 				{
-					"anyOf": [
-						{
-							"$ref": "#/$defs/ClockField"
+					"title": "CounterField",
+					"type": "object",
+					"$comment": "Semantics are similar to `<input type=\"number\">`.",
+					"description": "A counter that starts at zero, with an optional maximum value.",
+					"required": ["id", "name", "field_type", "min", "max", "value"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetAbilityControlFieldID"
 						},
-						{
-							"$ref": "#/$defs/CounterField"
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 						},
-						{
-							"$ref": "#/$defs/AssetCheckboxField"
+						"field_type": {
+							"type": "string",
+							"const": "counter"
+						},
+						"min": {
+							"type": "number",
+							"description": "The (inclusive) minimum value.",
+							"const": 0,
+							"default": 0
+						},
+						"max": {
+							"description": "The (inclusive) maximum value.",
+							"anyOf": [
+								{
+									"type": "integer"
+								},
+								{
+									"type": "null"
+								}
+							]
+						},
+						"value": {
+							"type": "integer",
+							"description": "The current value of this input.",
+							"default": 0
 						}
-					]
+					}
+				},
+				{
+					"type": "object",
+					"required": [
+						"id",
+						"name",
+						"field_type",
+						"value",
+						"disables_asset",
+						"is_impact"
+					],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetAbilityControlFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "checkbox"
+						},
+						"value": {
+							"type": "boolean",
+							"description": "Is the box checked?",
+							"default": false
+						},
+						"disables_asset": {
+							"type": "boolean",
+							"description": "Does this field disable the asset when its value is set to `true`?",
+							"default": false
+						},
+						"is_impact": {
+							"type": "boolean",
+							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+							"default": false
+						}
+					},
+					"additionalProperties": false
 				}
 			]
 		},
 		"AssetAbilityOptionField": {
 			"title": "AssetAbilityOptionField",
-			"allOf": [
+			"oneOf": [
 				{
+					"title": "TextField",
 					"type": "object",
-					"required": ["id"],
+					"$comment": "Semantics are similar to the HTML `<input type=\"text\">` element.",
+					"description": "Represents an input that accepts plain text.",
+					"required": ["id", "name", "field_type", "value"],
 					"properties": {
 						"id": {
 							"$ref": "#/$defs/AssetAbilityOptionFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "text"
+						},
+						"value": {
+							"description": "The content of this text input, or `null` if it's empty",
+							"default": null,
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "null"
+								}
+							]
 						}
-					},
-					"additionalProperties": true
-				},
-				{
-					"$ref": "#/$defs/TextField"
+					}
 				}
 			]
 		},
@@ -2620,12 +2804,20 @@
 			"title": "AssetAttachment",
 			"type": "object",
 			"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
-			"required": ["assets"],
+			"required": ["max", "assets"],
 			"properties": {
 				"max": {
-					"type": "integer",
-					"description": "Omit if there's no upper limit to the number of attached assets.",
-					"minimum": 1
+					"description": "Null if there's no upper limit to the number of attached assets.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "integer",
+							"minimum": 1
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"assets": {
 					"type": "array",
@@ -2636,105 +2828,42 @@
 				}
 			}
 		},
-		"AssetCardFlipField": {
-			"title": "AssetCardFlipField",
-			"type": "object",
-			"description": "This type of input isn't a *field* in the traditional sense. When its value is set to `true` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.\n\n    Otherwise, it behaves similarly to a CheckboxField.\n    ",
-			"required": ["id", "name", "field_type", "disables_asset", "is_impact"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "card_flip"
-				},
-				"value": {
-					"type": "boolean",
-					"description": "Is the card flipped over?",
-					"default": false
-				},
-				"disables_asset": {
-					"type": "boolean",
-					"description": "Does this field disable the asset when its value is set to `true`?",
-					"default": false
-				},
-				"is_impact": {
-					"type": "boolean",
-					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-					"default": false
-				}
-			},
-			"additionalProperties": false
-		},
-		"AssetCheckboxField": {
-			"title": "AssetCheckboxField",
-			"type": "object",
-			"description": "This input represents a checkbox field. It is considered checked when its value is set to `true`.",
-			"required": ["id", "name", "field_type", "disables_asset", "is_impact"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "checkbox"
-				},
-				"value": {
-					"type": "boolean",
-					"description": "Is the box checked?",
-					"default": false
-				},
-				"disables_asset": {
-					"type": "boolean",
-					"description": "Does this field disable the asset when its value is set to `true`?",
-					"default": false
-				},
-				"is_impact": {
-					"type": "boolean",
-					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-					"default": false
-				}
-			},
-			"additionalProperties": false
-		},
 		"AssetConditionMeter": {
 			"title": "AssetConditionMeter",
 			"type": "object",
 			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".",
-			"required": ["id", "name", "field_type", "min", "max"],
+			"required": ["id", "name", "field_type", "min", "max", "value"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/AssetControlFieldID"
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 				},
 				"field_type": {
 					"type": "string",
 					"const": "condition_meter"
 				},
 				"min": {
-					"type": "integer",
+					"type": "number",
+					"description": "The minimum value of this meter.",
+					"const": 0,
 					"default": 0
 				},
 				"max": {
-					"type": "integer"
+					"type": "integer",
+					"description": "The maximum value of this meter."
 				},
 				"value": {
-					"type": "integer"
+					"type": "integer",
+					"description": "The current value of this meter."
 				},
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetConditionMeterControlField"
 						}
 					}
@@ -2776,26 +2905,86 @@
 		},
 		"AssetConditionMeterControlField": {
 			"title": "AssetConditionMeterControlField",
-			"allOf": [
+			"oneOf": [
 				{
 					"type": "object",
-					"required": ["id"],
+					"required": [
+						"id",
+						"name",
+						"field_type",
+						"value",
+						"disables_asset",
+						"is_impact"
+					],
 					"properties": {
 						"id": {
 							"$ref": "#/$defs/AssetConditionMeterControlFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "checkbox"
+						},
+						"value": {
+							"type": "boolean",
+							"description": "Is the box checked?",
+							"default": false
+						},
+						"disables_asset": {
+							"type": "boolean",
+							"description": "Does this field disable the asset when its value is set to `true`?",
+							"default": false
+						},
+						"is_impact": {
+							"type": "boolean",
+							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+							"default": false
 						}
 					},
-					"additionalProperties": true
+					"additionalProperties": false
 				},
 				{
-					"anyOf": [
-						{
-							"$ref": "#/$defs/AssetCheckboxField"
+					"type": "object",
+					"required": [
+						"id",
+						"name",
+						"field_type",
+						"value",
+						"disables_asset",
+						"is_impact"
+					],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetConditionMeterControlFieldID"
 						},
-						{
-							"$ref": "#/$defs/AssetCardFlipField"
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "card_flip"
+						},
+						"value": {
+							"type": "boolean",
+							"description": "Is the card flipped over?",
+							"default": false
+						},
+						"disables_asset": {
+							"type": "boolean",
+							"description": "Does this field disable the asset when its value is set to `true`?",
+							"default": false
+						},
+						"is_impact": {
+							"type": "boolean",
+							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+							"default": false
 						}
-					]
+					},
+					"additionalProperties": false
 				}
 			]
 		},
@@ -2803,40 +2992,249 @@
 			"title": "AssetConditionMeterEnhancement",
 			"type": "object",
 			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".",
+			"required": ["field_type", "max"],
 			"properties": {
+				"field_type": {
+					"type": "string",
+					"const": "condition_meter"
+				},
 				"max": {
-					"type": "integer"
+					"type": "integer",
+					"description": "The maximum value of this meter."
 				}
 			}
 		},
 		"AssetControlField": {
 			"title": "AssetControlField",
-			"allOf": [
+			"oneOf": [
 				{
+					"$ref": "#/$defs/AssetConditionMeter"
+				},
+				{
+					"title": "SelectEnhancementField",
 					"type": "object",
-					"required": ["id"],
+					"$comment": "Semantics are similar to the HTML `<select>` element",
+					"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
+					"required": ["id", "name", "field_type", "value", "choices"],
 					"properties": {
 						"id": {
 							"$ref": "#/$defs/AssetControlFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "select_enhancement"
+						},
+						"value": {
+							"description": "The current value of this input.",
+							"anyOf": [
+								{
+									"$ref": "#/$defs/DictKey",
+									"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
+									"default": null
+								},
+								{
+									"type": "null"
+								}
+							]
+						},
+						"choices": {
+							"type": "object",
+							"$comment": "Deserialize as a dictionary object.",
+							"patternProperties": {
+								"^([a-z][a-z_]*)$": {
+									"oneOf": [
+										{
+											"title": "SelectEnhancementOption",
+											"type": "object",
+											"$comment": "Semantics are similar to the HTML `<option>` element.",
+											"description": "Represents an option in a list of choices.",
+											"required": ["name", "value", "option_type"],
+											"properties": {
+												"name": {
+													"$ref": "#/$defs/Label",
+													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+												},
+												"value": {
+													"type": "object",
+													"description": "The current value of this input.",
+													"properties": {
+														"enhance_asset": {
+															"$ref": "#/$defs/AssetEnhancement"
+														},
+														"enhance_moves": {
+															"type": "array",
+															"items": {
+																"$ref": "#/$defs/MoveEnhancement"
+															}
+														}
+													}
+												},
+												"option_type": {
+													"type": "string",
+													"const": "option"
+												},
+												"selected": {
+													"type": "boolean",
+													"description": "Is this option currently selected?"
+												}
+											}
+										},
+										{
+											"title": "SelectEnhancementOptionGroup",
+											"type": "object",
+											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
+											"description": "Represents a grouping of options in a list of choices.",
+											"required": ["name", "choices", "option_type"],
+											"properties": {
+												"name": {
+													"$ref": "#/$defs/Label",
+													"description": "A label for this option group."
+												},
+												"choices": {
+													"type": "object",
+													"$comment": "Deserialize as a dictionary object.",
+													"patternProperties": {
+														"^([a-z][a-z_]*)$": {
+															"title": "SelectEnhancementOption",
+															"type": "object",
+															"$comment": "Semantics are similar to the HTML `<option>` element.",
+															"description": "Represents an option in a list of choices.",
+															"required": ["name", "value", "option_type"],
+															"properties": {
+																"name": {
+																	"$ref": "#/$defs/Label",
+																	"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+																},
+																"value": {
+																	"type": "object",
+																	"description": "The current value of this input.",
+																	"properties": {
+																		"enhance_asset": {
+																			"$ref": "#/$defs/AssetEnhancement"
+																		},
+																		"enhance_moves": {
+																			"type": "array",
+																			"items": {
+																				"$ref": "#/$defs/MoveEnhancement"
+																			}
+																		}
+																	}
+																},
+																"option_type": {
+																	"type": "string",
+																	"const": "option"
+																},
+																"selected": {
+																	"type": "boolean",
+																	"description": "Is this option currently selected?"
+																}
+															}
+														}
+													}
+												},
+												"option_type": {
+													"type": "string",
+													"const": "option_group"
+												}
+											}
+										}
+									]
+								}
+							}
 						}
-					},
-					"additionalProperties": true
+					}
 				},
 				{
-					"anyOf": [
-						{
-							"$ref": "#/$defs/AssetConditionMeter"
+					"type": "object",
+					"required": [
+						"id",
+						"name",
+						"field_type",
+						"value",
+						"disables_asset",
+						"is_impact"
+					],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetControlFieldID"
 						},
-						{
-							"$ref": "#/$defs/AssetCheckboxField"
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 						},
-						{
-							"$ref": "#/$defs/AssetCardFlipField"
+						"field_type": {
+							"type": "string",
+							"const": "checkbox"
 						},
-						{
-							"$ref": "#/$defs/SelectFieldAssetEnhancement"
+						"value": {
+							"type": "boolean",
+							"description": "Is the box checked?",
+							"default": false
+						},
+						"disables_asset": {
+							"type": "boolean",
+							"description": "Does this field disable the asset when its value is set to `true`?",
+							"default": false
+						},
+						"is_impact": {
+							"type": "boolean",
+							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+							"default": false
 						}
-					]
+					},
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"required": [
+						"id",
+						"name",
+						"field_type",
+						"value",
+						"disables_asset",
+						"is_impact"
+					],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetControlFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "card_flip"
+						},
+						"value": {
+							"type": "boolean",
+							"description": "Is the card flipped over?",
+							"default": false
+						},
+						"disables_asset": {
+							"type": "boolean",
+							"description": "Does this field disable the asset when its value is set to `true`?",
+							"default": false
+						},
+						"is_impact": {
+							"type": "boolean",
+							"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+							"default": false
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
+		"AssetControlFieldEnhancement": {
+			"title": "AssetControlFieldEnhancement",
+			"oneOf": [
+				{
+					"$ref": "#/$defs/AssetConditionMeterEnhancement"
 				}
 			]
 		},
@@ -2859,9 +3257,10 @@
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
-							"$ref": "#/$defs/AssetConditionMeterEnhancement"
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/AssetControlFieldEnhancement"
 						}
 					}
 				},
@@ -2872,36 +3271,303 @@
 		},
 		"AssetOptionField": {
 			"title": "AssetOptionField",
-			"allOf": [
+			"oneOf": [
 				{
+					"title": "SelectStatField",
 					"type": "object",
-					"required": ["id"],
+					"$comment": "Semantics are similar to the HTML `<select>` element",
+					"description": "Represents a list of mutually exclusive choices.",
+					"required": ["id", "name", "field_type", "value", "choices"],
 					"properties": {
 						"id": {
 							"$ref": "#/$defs/AssetOptionFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "select_stat"
+						},
+						"value": {
+							"description": "The current value of this input.",
+							"anyOf": [
+								{
+									"$ref": "#/$defs/DictKey",
+									"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
+									"default": null
+								},
+								{
+									"type": "null"
+								}
+							]
+						},
+						"choices": {
+							"type": "object",
+							"$comment": "Deserialize as a dictionary object.",
+							"patternProperties": {
+								"^([a-z][a-z_]*)$": {
+									"oneOf": [
+										{
+											"title": "SelectStatOption",
+											"type": "object",
+											"$comment": "Semantics are similar to the HTML `<option>` element.",
+											"description": "Represents an option in a list of choices.",
+											"required": ["name", "value", "option_type"],
+											"properties": {
+												"name": {
+													"$ref": "#/$defs/Label",
+													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+												},
+												"value": {
+													"$ref": "#/$defs/PlayerStat",
+													"description": "The current value of this input."
+												},
+												"option_type": {
+													"type": "string",
+													"const": "option"
+												},
+												"selected": {
+													"type": "boolean",
+													"description": "Is this option currently selected?"
+												}
+											}
+										},
+										{
+											"title": "SelectStatOptionGroup",
+											"type": "object",
+											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
+											"description": "Represents a grouping of options in a list of choices.",
+											"required": ["name", "choices", "option_type"],
+											"properties": {
+												"name": {
+													"$ref": "#/$defs/Label",
+													"description": "A label for this option group."
+												},
+												"choices": {
+													"type": "object",
+													"$comment": "Deserialize as a dictionary object.",
+													"patternProperties": {
+														"^([a-z][a-z_]*)$": {
+															"title": "SelectStatOption",
+															"type": "object",
+															"$comment": "Semantics are similar to the HTML `<option>` element.",
+															"description": "Represents an option in a list of choices.",
+															"required": ["name", "value", "option_type"],
+															"properties": {
+																"name": {
+																	"$ref": "#/$defs/Label",
+																	"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+																},
+																"value": {
+																	"$ref": "#/$defs/PlayerStat",
+																	"description": "The current value of this input."
+																},
+																"option_type": {
+																	"type": "string",
+																	"const": "option"
+																},
+																"selected": {
+																	"type": "boolean",
+																	"description": "Is this option currently selected?"
+																}
+															}
+														}
+													}
+												},
+												"option_type": {
+													"type": "string",
+													"const": "option_group"
+												}
+											}
+										}
+									]
+								}
+							}
 						}
 					},
-					"additionalProperties": true
+					"options": {}
 				},
 				{
-					"anyOf": [
-						{
-							"$ref": "#/$defs/SelectFieldStat"
+					"title": "SelectEnhancementField",
+					"type": "object",
+					"$comment": "Semantics are similar to the HTML `<select>` element",
+					"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
+					"required": ["id", "name", "field_type", "value", "choices"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetOptionFieldID"
 						},
-						{
-							"$ref": "#/$defs/TextField"
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "select_enhancement"
+						},
+						"value": {
+							"description": "The current value of this input.",
+							"anyOf": [
+								{
+									"$ref": "#/$defs/DictKey",
+									"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected.",
+									"default": null
+								},
+								{
+									"type": "null"
+								}
+							]
+						},
+						"choices": {
+							"type": "object",
+							"$comment": "Deserialize as a dictionary object.",
+							"patternProperties": {
+								"^([a-z][a-z_]*)$": {
+									"oneOf": [
+										{
+											"title": "SelectEnhancementOption",
+											"type": "object",
+											"$comment": "Semantics are similar to the HTML `<option>` element.",
+											"description": "Represents an option in a list of choices.",
+											"required": ["name", "value", "option_type"],
+											"properties": {
+												"name": {
+													"$ref": "#/$defs/Label",
+													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+												},
+												"value": {
+													"type": "object",
+													"description": "The current value of this input.",
+													"properties": {
+														"enhance_asset": {
+															"$ref": "#/$defs/AssetEnhancement"
+														},
+														"enhance_moves": {
+															"type": "array",
+															"items": {
+																"$ref": "#/$defs/MoveEnhancement"
+															}
+														}
+													}
+												},
+												"option_type": {
+													"type": "string",
+													"const": "option"
+												},
+												"selected": {
+													"type": "boolean",
+													"description": "Is this option currently selected?"
+												}
+											}
+										},
+										{
+											"title": "SelectEnhancementOptionGroup",
+											"type": "object",
+											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
+											"description": "Represents a grouping of options in a list of choices.",
+											"required": ["name", "choices", "option_type"],
+											"properties": {
+												"name": {
+													"$ref": "#/$defs/Label",
+													"description": "A label for this option group."
+												},
+												"choices": {
+													"type": "object",
+													"$comment": "Deserialize as a dictionary object.",
+													"patternProperties": {
+														"^([a-z][a-z_]*)$": {
+															"title": "SelectEnhancementOption",
+															"type": "object",
+															"$comment": "Semantics are similar to the HTML `<option>` element.",
+															"description": "Represents an option in a list of choices.",
+															"required": ["name", "value", "option_type"],
+															"properties": {
+																"name": {
+																	"$ref": "#/$defs/Label",
+																	"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+																},
+																"value": {
+																	"type": "object",
+																	"description": "The current value of this input.",
+																	"properties": {
+																		"enhance_asset": {
+																			"$ref": "#/$defs/AssetEnhancement"
+																		},
+																		"enhance_moves": {
+																			"type": "array",
+																			"items": {
+																				"$ref": "#/$defs/MoveEnhancement"
+																			}
+																		}
+																	}
+																},
+																"option_type": {
+																	"type": "string",
+																	"const": "option"
+																},
+																"selected": {
+																	"type": "boolean",
+																	"description": "Is this option currently selected?"
+																}
+															}
+														}
+													}
+												},
+												"option_type": {
+													"type": "string",
+													"const": "option_group"
+												}
+											}
+										}
+									]
+								}
+							}
 						}
-					]
+					}
+				},
+				{
+					"title": "TextField",
+					"type": "object",
+					"$comment": "Semantics are similar to the HTML `<input type=\"text\">` element.",
+					"description": "Represents an input that accepts plain text.",
+					"required": ["id", "name", "field_type", "value"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetOptionFieldID"
+						},
+						"name": {
+							"$ref": "#/$defs/Label",
+							"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						},
+						"field_type": {
+							"type": "string",
+							"const": "text"
+						},
+						"value": {
+							"description": "The content of this text input, or `null` if it's empty",
+							"default": null,
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "null"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
 		"AssetType": {
 			"title": "AssetType",
 			"type": "object",
-			"required": ["id", "name", "contents", "source"],
+			"required": ["id", "name", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AssetTypeID"
+					"type": "string"
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -2931,7 +3597,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Asset"
 						}
 					}
@@ -2949,189 +3615,6 @@
 				"replaces": {
 					"$ref": "#/$defs/AssetTypeID",
 					"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
-				}
-			}
-		},
-		"CheckboxField": {
-			"title": "CheckboxField",
-			"type": "object",
-			"description": "This input represents a checkbox field. It is considered checked when its value is set to `true`.",
-			"required": ["id", "name", "field_type"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "checkbox"
-				},
-				"value": {
-					"type": "boolean",
-					"description": "Is the box checked?",
-					"default": false
-				}
-			}
-		},
-		"ClockField": {
-			"title": "ClockField",
-			"type": "object",
-			"required": ["id", "name", "field_type", "min", "max", "value"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "clock"
-				},
-				"min": {
-					"type": "number",
-					"const": 0
-				},
-				"max": {
-					"enum": [4, 6, 8, 10]
-				},
-				"value": {
-					"type": "integer",
-					"default": 0
-				}
-			}
-		},
-		"CounterField": {
-			"title": "CounterField",
-			"type": "object",
-			"required": ["id", "name", "field_type", "min", "value"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "counter"
-				},
-				"min": {
-					"type": "number",
-					"const": 0
-				},
-				"max": {
-					"type": "integer"
-				},
-				"value": {
-					"type": "integer",
-					"default": 0
-				}
-			}
-		},
-		"SelectFieldAssetEnhancement": {
-			"title": "Select field (asset enhancement)",
-			"type": "object",
-			"description": "Select from a set of AssetEnhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
-			"required": ["id", "name", "field_type", "choices"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "select_enhancement"
-				},
-				"value": {
-					"$ref": "#/$defs/AssetEnhancement"
-				},
-				"choices": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": {
-							"type": "object",
-							"required": ["name", "value"],
-							"properties": {
-								"name": {
-									"$ref": "#/$defs/Label"
-								},
-								"value": {
-									"$ref": "#/$defs/AssetEnhancement"
-								},
-								"selected": {
-									"type": "boolean"
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"SelectFieldStat": {
-			"title": "Select field (player stat)",
-			"type": "object",
-			"description": "Select a standard player stat.",
-			"required": ["id", "name", "field_type", "choices"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "select_stat"
-				},
-				"value": {
-					"$ref": "#/$defs/PlayerStat"
-				},
-				"choices": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": {
-							"type": "object",
-							"required": ["name", "value"],
-							"properties": {
-								"name": {
-									"$ref": "#/$defs/Label"
-								},
-								"value": {
-									"$ref": "#/$defs/PlayerStat"
-								},
-								"selected": {
-									"type": "boolean"
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"TextField": {
-			"title": "TextField",
-			"type": "object",
-			"required": ["id", "name", "field_type"],
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "text"
-				},
-				"value": {
-					"type": "string"
 				}
 			}
 		},
@@ -3192,7 +3675,7 @@
 			"required": ["id", "name", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AtlasID"
+					"type": "string"
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -3222,7 +3705,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AtlasEntry"
 						}
 					}
@@ -3231,7 +3714,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Atlas"
 						}
 					}
@@ -3303,18 +3786,14 @@
 			"releaseStage": "experimental"
 		},
 		"PlayerConditionMeter": {
-			"title": "PlayerConditionMeter",
-			"type": "string",
+			"$ref": "#/$defs/DictKey",
 			"description": "A basic, rollable player character resource.",
-			"examples": ["health", "spirit", "supply"],
-			"pattern": "^[a-z][a-z_]*$"
+			"examples": ["health", "spirit", "supply"]
 		},
 		"PlayerStat": {
-			"title": "PlayerStat",
-			"type": "string",
+			"$ref": "#/$defs/DictKey",
 			"description": "A basic player character stat.",
-			"examples": ["edge", "heart", "iron", "shadow", "wits"],
-			"pattern": "^[a-z][a-z_]*$"
+			"examples": ["edge", "heart", "iron", "shadow", "wits"]
 		},
 		"Rarity": {
 			"title": "Rarity",
@@ -3633,7 +4112,7 @@
 					"$ref": "#/$defs/DelveSiteDomainID"
 				},
 				"extra_card": {
-					"description": "An additional theme or domain card, for use with optional rules in Ironsworn: Delve.",
+					"description": "An additional theme or domain card ID, for use with optional rules in Ironsworn: Delve.",
 					"oneOf": [
 						{
 							"$ref": "#/$defs/DelveSiteThemeID"
@@ -3687,352 +4166,9 @@
 			"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"]
 		},
 		"DelveSiteDomain": {
-			"title": "Delve site domain",
+			"title": "DelveSiteDomain",
 			"type": "object",
-			"required": [
-				"id",
-				"name",
-				"card_type",
-				"summary",
-				"features",
-				"dangers",
-				"source"
-			],
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/DelveSiteDomainID"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"canonical_name": {
-					"$ref": "#/$defs/Label"
-				},
-				"card_type": {
-					"type": "string",
-					"const": "domain"
-				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownString"
-				},
-				"features": {
-					"allOf": [
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/DelveSiteDomainFeatureRow"
-							}
-						},
-						{
-							"type": "array",
-							"items": [
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 21
-										},
-										"max": {
-											"type": "number",
-											"const": 43
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 44
-										},
-										"max": {
-											"type": "number",
-											"const": 56
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 57
-										},
-										"max": {
-											"type": "number",
-											"const": 64
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 65
-										},
-										"max": {
-											"type": "number",
-											"const": 68
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 69
-										},
-										"max": {
-											"type": "number",
-											"const": 72
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 73
-										},
-										"max": {
-											"type": "number",
-											"const": 76
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 77
-										},
-										"max": {
-											"type": "number",
-											"const": 80
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 81
-										},
-										"max": {
-											"type": "number",
-											"const": 84
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 85
-										},
-										"max": {
-											"type": "number",
-											"const": 88
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max", "result", "suggestions"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 89
-										},
-										"max": {
-											"type": "number",
-											"const": 98
-										},
-										"result": {
-											"default": "Something unusual or unexpected"
-										},
-										"suggestions": {
-											"default": {
-												"oracles": [
-													"delve/oracles/feature/aspect",
-													"delve/oracles/feature/focus"
-												]
-											}
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max", "result", "suggestions"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 99
-										},
-										"max": {
-											"type": "number",
-											"const": 99
-										},
-										"result": {
-											"default": "You transition into a new theme"
-										},
-										"suggestions": {
-											"default": {
-												"oracles": ["delve/oracles/site_nature/theme"]
-											}
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max", "result", "suggestions"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 100
-										},
-										"max": {
-											"type": "number",
-											"const": 100
-										},
-										"result": {
-											"default": "You transition into a new domain"
-										},
-										"suggestions": {
-											"default": {
-												"oracles": ["delve/oracles/site_nature/domain"]
-											}
-										}
-									}
-								}
-							],
-							"additionalItems": false,
-							"maxItems": 12,
-							"minItems": 12
-						}
-					]
-				},
-				"dangers": {
-					"allOf": [
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/DelveSiteDomainDangerRow"
-							}
-						},
-						{
-							"type": "array",
-							"items": [
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 31
-										},
-										"max": {
-											"type": "number",
-											"const": 33
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 34
-										},
-										"max": {
-											"type": "number",
-											"const": 36
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 37
-										},
-										"max": {
-											"type": "number",
-											"const": 39
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 40
-										},
-										"max": {
-											"type": "number",
-											"const": 42
-										}
-									}
-								},
-								{
-									"type": "object",
-									"required": ["min", "max"],
-									"properties": {
-										"min": {
-											"type": "number",
-											"const": 43
-										},
-										"max": {
-											"type": "number",
-											"const": 45
-										}
-									}
-								}
-							],
-							"additionalItems": false,
-							"maxItems": 5,
-							"minItems": 5
-						}
-					]
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownString"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"name_oracle": {
-					"$ref": "#/$defs/OracleTableID",
-					"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites."
-				}
-			}
+			"properties": {}
 		},
 		"DelveSiteDomainDangerRow": {
 			"title": "DelveSiteDomainDangerRow",
@@ -4127,7 +4263,7 @@
 			}
 		},
 		"DelveSiteTheme": {
-			"title": "Delve site theme",
+			"title": "DelveSiteTheme",
 			"type": "object",
 			"required": [
 				"id",
