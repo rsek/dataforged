@@ -3,7 +3,6 @@ import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
 import { Generic, ID, Localize, Metadata } from '../common/index.js'
 import { StaticRowPartial, TableRow } from '../oracles/TableRow.js'
-import { DelveCardMixin } from './DelveCard.js'
 
 export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(ID.ThemeFeatureRowID),
