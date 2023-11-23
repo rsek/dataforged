@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
 import { Generic, ID } from './common/index.js'
 import {
 	MoveActionRoll,
@@ -22,7 +22,11 @@ export const Move = DiscriminatedUnion(
 	}
 )
 
-export type Move = Static<typeof Move>
+export type Move =
+	| MoveActionRoll
+	| MoveNoRoll
+	| MoveProgressRoll
+	| MoveSpecialTrack
 
 export const MoveEnhancement = DiscriminatedUnion(
 	'roll_type',
@@ -42,8 +46,6 @@ export type MoveEnhancement =
 	| MoveActionRollEnhancement
 	| MoveProgressRollEnhancement
 	| MoveSpecialTrackEnhancement
-
-// export type MoveEnhancement = Static<typeof MoveEnhancement>
 
 export const MoveCategory = Generic.Collection(
 	Type.Ref(ID.MoveCategoryID),

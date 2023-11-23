@@ -3,26 +3,14 @@
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */
-import {
-	TypeGuard,
-	type TSchema,
-	Type,
-	TypeClone,
-	Kind
-} from '@sinclair/typebox'
+import { TypeClone, TypeGuard, type TSchema } from '@sinclair/typebox'
 import { cloneDeep, mapValues } from 'lodash-es'
-import { type TRoot } from '../../schema/datasworn/Root.js'
-import {
-	SetOptional,
-	SourceData,
-	keysWithDefaults
-} from '../../schema/datasworn/utils/typebox.js'
 
 import JsonPointer from 'json-pointer'
 import JSL from 'json-schema-library'
 import { log } from '../utils/logger.js'
-import { OptionalInSourceBrand } from '../../schema/datasworn/utils/generic.js'
-import { TDiscriminatedUnion } from '../../typebox/discriminated-union.js'
+import { type TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
+import { SourceData } from '../../schema/datasworn/root/SourceData.js'
 
 // function recurseSchema(
 // 	schema: TAnySchema | TAnySchema[],

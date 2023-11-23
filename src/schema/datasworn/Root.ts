@@ -1,10 +1,5 @@
-import {
-	TypeClone,
-	type SchemaOptions,
-	type Static,
-	type TSchema
-} from '@sinclair/typebox'
-import { SCHEMA_ID, VERSION } from '../../scripts/const.js'
+import { type Static, type TSchema } from '@sinclair/typebox'
+import { SCHEMA_ID, INPUT_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 
 import {
 	ID,
@@ -25,56 +20,46 @@ import * as Rarities from './Rarities.js'
 import * as Rules from './Rules.js'
 import { Ruleset } from './Ruleset.js'
 import * as Truths from './Truths.js'
+import { SchemaRoot, InputSchemaRoot } from './root/SchemaRoot.js'
 
-export const $schema = 'http://json-schema.org/draft-07/schema#'
+const $schema = 'http://json-schema.org/draft-07/schema#'
 
-export type SchemaDefs = Record<string, TSchema>
-
-export interface RootOptions<Defs extends SchemaDefs = SchemaDefs>
-	extends Required<
-		Omit<SchemaOptions, 'default' | 'readOnly' | 'writeOnly' | 'examples'>
-	> {
-	$id: `${'https' | 'http'}://${string}`
-	$defs: Defs
-	$schema: string
+const $defs: Record<string, TSchema> = {
+	...ID,
+	...Metadata,
+	...Localize,
+	...Rules,
+	...Progress,
+	...Npcs,
+	...Rolls,
+	...Oracles,
+	...Moves,
+	...Assets,
+	...Truths,
+	...Atlas,
+	...Player,
+	...Rarities,
+	...DelveSites,
+	...Rules
 }
 
-export type TRoot<
-	T extends TSchema = TSchema,
-	Options extends RootOptions = RootOptions
-> = T & Options
-
-export function SchemaRoot<T extends TSchema, Options extends RootOptions>(
-	base: T,
-	options: Options
-) {
-	return TypeClone.Type(base, options) as TRoot<T, Options>
-}
-
-export const DataswornRoot = SchemaRoot(Ruleset, {
+export const Datasworn = SchemaRoot(Ruleset, {
+	$schema,
 	$id: SCHEMA_ID,
 	title: `Datasworn v${VERSION}`,
 	description:
 		'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
-	$schema,
-	$defs: {
-		...ID,
-		...Metadata,
-		...Localize,
-		...Rules,
-		...Progress,
-		...Npcs,
-		...Rolls,
-		...Oracles,
-		...Moves,
-		...Assets,
-		...Truths,
-		...Atlas,
-		...Player,
-		...Rarities,
-		...DelveSites,
-		...Rules
-	}
+	$defs
 })
 
-export type DataswornRoot = Static<typeof DataswornRoot>
+export const DataswornSource = InputSchemaRoot(Ruleset, {
+	$schema,
+	$id: INPUT_SCHEMA_ID,
+	title: `DataswornSource v${VERSION}`,
+	description:
+		'Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.\n\nThe source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.',
+	$defs
+})
+
+export type Datasworn = Static<typeof Datasworn>
+export type DataswornSource = Static<typeof DataswornSource>

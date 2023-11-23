@@ -5,7 +5,9 @@ import {
 	type Static,
 	type TArray,
 	type TNull,
-	type TSchema
+	type TSchema,
+	ObjectProperties,
+	TObject
 } from '@sinclair/typebox'
 import { type TJsonEnum } from '../../../typebox/enum.js'
 import { Localize } from '../common/index.js'
@@ -133,13 +135,16 @@ const TriggerMixin = Type.Object({
 export function Trigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>>
 >(conditions: T, options: ObjectOptions = {}) {
-	return Flatten([TriggerMixin, Type.Object({ conditions })], options)
+	return Flatten(
+		[TriggerMixin, Type.Object({ conditions })],
+		options
+	) as TTrigger<T>
 }
 export type TTrigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>> = TFuzzyNull<
 		TArray<TFuzzyRef<TTriggerCondition>>
 	>
-> = ReturnType<typeof Trigger<T>>
+> = TObject<ObjectProperties<typeof TriggerMixin> & { conditions: T }>
 
 export type Trigger<
 	T extends TriggerCondition[] | null = TriggerCondition[] | null

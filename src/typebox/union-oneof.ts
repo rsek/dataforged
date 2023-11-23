@@ -22,7 +22,7 @@ function UnionOneOfCheck(schema: TUnionOneOf<TSchema[]>, value: unknown) {
 	)
 }
 
-export interface TUnionOneOf<T extends TSchema[]> extends TSchema {
+export interface TUnionOneOf<T extends TSchema[] = TSchema[]> extends TSchema {
 	[Kind]: typeof UnionOneOfKind
 	static: Static<TUnion<T>>
 	oneOf: T

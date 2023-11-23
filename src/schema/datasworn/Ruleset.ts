@@ -1,18 +1,19 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { DELVE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
-import * as Generic from './utils/generic.js'
+import { Generic, type ID, type Metadata } from './common/index.js'
 
 import { type TAssetType } from './Assets.js'
 import { type TAtlas } from './Atlas.js'
-import { type TDelveSiteDomain } from './delve/DelveSiteDomain.js'
-import { type TDelveSiteTheme } from './delve/DelveSiteTheme.js'
-import { type TDelveSite } from './delve/DelveSite.js'
-import { type NamespaceID, type Source } from './index.js'
-import { type TMoveCategory } from './Moves.js'
+import {
+	type TDelveSiteDomain,
+	type TDelveSiteTheme,
+	type TDelveSite
+} from './DelveSites.js'
+import { type MoveCategory } from './Moves.js'
 import { type TNpcCollection } from './Npcs.js'
 import { type TOracleCollection } from './Oracles.js'
 import { type TRarity } from './Rarities.js'
-import { type Rules } from './Rules.js'
+import { type TRules } from './Rules.js'
 import { type TTruth } from './Truths.js'
 
 const RulesetPrimaryContent = Type.Object({
@@ -24,11 +25,14 @@ const RulesetPrimaryContent = Type.Object({
 				'A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.'
 		}
 	),
-	moves: Generic.Dictionary(Type.Ref<TMoveCategory>('#/$defs/MoveCategory'), {
-		default: undefined,
-		description:
-			'A dictionary object containing move categories, which contain moves.'
-	}),
+	moves: Generic.Dictionary(
+		Type.Ref<TUnsafe<MoveCategory>>('#/$defs/MoveCategory'),
+		{
+			default: undefined,
+			description:
+				'A dictionary object containing move categories, which contain moves.'
+		}
+	),
 	assets: Generic.Dictionary(Type.Ref<TAssetType>('#/$defs/AssetType'), {
 		default: undefined,
 		description:
@@ -86,9 +90,9 @@ export const Ruleset = Type.Composite(
 	[
 		Type.Object({
 			// ruleset ID isn't optional in source, so we don't flag it with IdentifiedNode
-			id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
-			source: Type.Ref<typeof Source>('#/$defs/Source'),
-			rules: Type.Optional(Type.Ref<typeof Rules>('#/$defs/Rules'))
+			id: Type.Ref<typeof ID.NamespaceID>('#/$defs/NamespaceID'),
+			source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
+			rules: Type.Optional(Type.Ref<TRules>('#/$defs/Rules'))
 		}),
 		Type.Partial(RulesetPrimaryContent),
 		RulesetSecondaryContent
@@ -104,9 +108,9 @@ export type Ruleset = Static<typeof Ruleset>
 export const Expansion = Type.Composite(
 	[
 		Type.Object({
-			id: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID'),
-			source: Type.Ref<typeof Source>('#/$defs/Source'),
-			enhances: Type.Ref<typeof NamespaceID>('#/$defs/NamespaceID')
+			id: Type.Ref<typeof ID.NamespaceID>('#/$defs/NamespaceID'),
+			source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
+			enhances: Type.Ref<typeof ID.NamespaceID>('#/$defs/NamespaceID')
 		}),
 		Type.Partial(RulesetPrimaryContent),
 		RulesetSecondaryContent

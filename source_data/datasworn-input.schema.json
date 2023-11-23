@@ -1,8 +1,8 @@
 {
 	"$id": "https://ironswornrpg.com/datasworn-input.schema.json",
-	"title": "Datasworn v2.0.0-dev (data entry)",
+	"title": "DataswornSource v2.0.0-dev",
 	"type": "object",
-	"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
+	"description": "Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.\n\nThe source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.",
 	"required": ["id", "source"],
 	"properties": {
 		"id": {
@@ -316,7 +316,7 @@
 		},
 		"MoveIDWildcard": {
 			"$id": "#/$defs/MoveIDWildcard",
-			"title": "Move ID (with wildcard)",
+			"title": "MoveIDWildcard",
 			"description": "A move ID with wildcards",
 			"oneOf": [
 				{
@@ -545,7 +545,6 @@
 								"format": "email"
 							}
 						},
-						"additionalProperties": false,
 						"examples": [
 							{
 								"name": "Shawn Tomkin"
@@ -675,8 +674,7 @@
 						"description": {
 							"$ref": "#/$defs/I18nHint"
 						}
-					},
-					"additionalProperties": false
+					}
 				}
 			},
 			"additionalProperties": false
@@ -1126,7 +1124,7 @@
 		},
 		"OracleTableMatchBehavior": {
 			"$id": "#/$defs/OracleTableMatchBehavior",
-			"title": "Match behavior",
+			"title": "OracleTableMatchBehavior",
 			"type": "object",
 			"required": ["text"],
 			"properties": {
@@ -3049,7 +3047,6 @@
 							}
 						}
 					},
-					"additionalProperties": false,
 					"releaseStage": "unstable"
 				}
 			},
@@ -3214,8 +3211,7 @@
 																"$ref": "#/$defs/MoveEnhancement"
 															}
 														}
-													},
-													"additionalProperties": false
+													}
 												},
 												"option_type": {
 													"type": "string",
@@ -3225,8 +3221,7 @@
 													"type": "boolean",
 													"description": "Is this option currently selected?"
 												}
-											},
-											"additionalProperties": false
+											}
 										},
 										{
 											"title": "SelectEnhancementOptionGroup",
@@ -3267,8 +3262,7 @@
 																				"$ref": "#/$defs/MoveEnhancement"
 																			}
 																		}
-																	},
-																	"additionalProperties": false
+																	}
 																},
 																"option_type": {
 																	"type": "string",
@@ -3278,8 +3272,7 @@
 																	"type": "boolean",
 																	"description": "Is this option currently selected?"
 																}
-															},
-															"additionalProperties": false
+															}
 														}
 													}
 												},
@@ -3287,8 +3280,7 @@
 													"type": "string",
 													"const": "option_group"
 												}
-											},
-											"additionalProperties": false
+											}
 										}
 									]
 								}
@@ -3472,8 +3464,7 @@
 													"type": "boolean",
 													"description": "Is this option currently selected?"
 												}
-											},
-											"additionalProperties": false
+											}
 										},
 										{
 											"title": "SelectStatOptionGroup",
@@ -3513,8 +3504,7 @@
 																	"type": "boolean",
 																	"description": "Is this option currently selected?"
 																}
-															},
-															"additionalProperties": false
+															}
 														}
 													}
 												},
@@ -3522,8 +3512,7 @@
 													"type": "string",
 													"const": "option_group"
 												}
-											},
-											"additionalProperties": false
+											}
 										}
 									]
 								}
@@ -3594,8 +3583,7 @@
 																"$ref": "#/$defs/MoveEnhancement"
 															}
 														}
-													},
-													"additionalProperties": false
+													}
 												},
 												"option_type": {
 													"type": "string",
@@ -3605,8 +3593,7 @@
 													"type": "boolean",
 													"description": "Is this option currently selected?"
 												}
-											},
-											"additionalProperties": false
+											}
 										},
 										{
 											"title": "SelectEnhancementOptionGroup",
@@ -3647,8 +3634,7 @@
 																				"$ref": "#/$defs/MoveEnhancement"
 																			}
 																		}
-																	},
-																	"additionalProperties": false
+																	}
 																},
 																"option_type": {
 																	"type": "string",
@@ -3658,8 +3644,7 @@
 																	"type": "boolean",
 																	"description": "Is this option currently selected?"
 																}
-															},
-															"additionalProperties": false
+															}
 														}
 													}
 												},
@@ -3667,8 +3652,7 @@
 													"type": "string",
 													"const": "option_group"
 												}
-											},
-											"additionalProperties": false
+											}
 										}
 									]
 								}
@@ -4428,7 +4412,6 @@
 			"title": "DelveSiteDomain",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
 				"card_type",
 				"summary",

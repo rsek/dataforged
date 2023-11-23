@@ -359,7 +359,7 @@ export function Flatten<T extends [TObject, TObject]>(
 	const keysB = Object.keys(obj2.properties)
 	const keys = Array.from(new Set([...keysA, ...keysB]))
 
-	if (log) console.log(obj2)
+	// if (log) console.log(obj2)
 
 	const properties = {} as Record<string, TSchema>
 
@@ -371,7 +371,7 @@ export function Flatten<T extends [TObject, TObject]>(
 	// console.log(properties)
 	const result = Type.Object(properties, options) as TFlatten<T>
 
-	if (log) console.log(result)
+	// if (log) console.log(result)
 
 	return result
 }

@@ -4,15 +4,15 @@
 
 import JsonPointer from 'json-pointer'
 import { type JsonSchema } from 'json-schema-library'
-import { type TRoot } from '../../schema/datasworn/Root.js'
 import * as CONST from '../const.js'
 import { getPrettierOptions, writeJSON } from '../datasworn/readWrite.js'
 import { sortSchemaKeys } from '../datasworn/sort.js'
 import { log } from '../utils/logger.js'
 import ajv from '../validation/ajv.js'
-import * as Schema from './schema-root.js'
+import * as Schema from '../../schema/datasworn/index.js'
 
 import JSL from 'json-schema-library'
+import { TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
 
 const draft7 = new JSL.Draft07()
 
@@ -37,8 +37,8 @@ const schemaOptions: SchemaOptions[] = [
 		}
 	},
 	{
-		name: 'DataswornInput',
-		rootSchema: Schema.DataswornInput,
+		name: 'DataswornSource',
+		rootSchema: Schema.DataswornSource,
 		paths: [CONST.SCHEMA_IN],
 		messages: {
 			writeStart: '✏️  Writing schema for Datasworn YAML input',

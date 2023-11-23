@@ -3,7 +3,10 @@ import {
 	type ObjectOptions,
 	type Static,
 	type TNull,
-	type TRef
+	type TRef,
+	TObject,
+	ObjectProperties,
+	TLiteral
 } from '@sinclair/typebox'
 import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
 import { MoveIDWildcard } from '../common/Id.js'
@@ -45,18 +48,21 @@ export function Move<
 	Trigger extends TRef<TTrigger>,
 	Outcomes extends TRef<TMoveOutcomes> | TNull
 >(rollType: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
-	return Generic.Collectable(
-		Type.Ref(ID.MoveID),
-		Flatten([
-			MoveBase,
-			Type.Object({
-				roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
-				trigger,
-				outcomes
-			})
-		]),
-		options
-	)
+	const base = Flatten([
+		MoveBase,
+		Type.Object({
+			roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
+			trigger,
+			outcomes
+		})
+	]) as TObject<
+		ObjectProperties<typeof MoveBase> & {
+			roll_type: TLiteral<RollType>
+			trigger: Trigger
+			outcomes: Outcomes
+		}
+	>
+	return Generic.Collectable(Type.Ref(ID.MoveID), base, options)
 }
 export type TMove<
 	RollType extends MoveRollType,

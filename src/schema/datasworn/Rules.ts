@@ -1,7 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { Localize, Generic, ID } from './common/index.js'
 import * as Inputs from './common/Inputs.js'
-import { Merge } from './utils/typebox.js'
 import { Flatten } from './utils/generic.js'
 
 export const StatRule = Type.Object(
@@ -80,3 +79,4 @@ export const Rules = Type.Object(
 	{ $id: '#/$defs/Rules' }
 )
 export type Rules = Static<typeof Rules>
+export type TRules = typeof Rules

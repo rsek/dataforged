@@ -28,7 +28,7 @@ import type * as TypeFest from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { type TJsonEnum } from '../../../typebox/enum.js'
-import { Flatten, OptionalInSourceBrand } from './generic.js'
+import { Flatten } from './generic.js'
 
 /** Transform an object of literal values into a schema representing the object. */
 
@@ -280,21 +280,4 @@ export type TFuzzyNumber = TFuzzyRef<
 export type TFuzzyOptional<T extends TSchema> = T | TOptional<T>
 
 export type TFuzzyNull<T extends TSchema> = TFuzzyRef<T> | TNullable<T> | TNull
-
-export function SourceData<T extends TObject>(schema: T) {
-	const optionalProps = keysWithDefaults(schema)
-
-	for (const [key, property] of Object.entries<any>(schema.properties))
-		if (property[OptionalInSourceBrand]) optionalProps.push(key as any)
-
-	if (optionalProps.length === 0) return TypeClone.Type(schema)
-
-	const base = SetOptional(schema, optionalProps)
-
-	// set properties that have a default to optional
-	// omit properties that are branded with OptionalInSource
-
-	return TypeClone.Type(base, { $id: schema.$id }) as T // this isn't correct, but defaults arent part of the type data, so it's close enough
-}
-
 
