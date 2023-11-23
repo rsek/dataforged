@@ -1,6 +1,6 @@
 import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
-import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { nuDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { ID, Generic, Fields } from '../common/index.js'
 import { Flatten } from '../utils/generic.js'
 
@@ -17,13 +17,17 @@ const AssetBooleanFieldMixin = Type.Object({
 	})
 })
 function AssetCheckboxField(id: TRef<TString>) {
-	return Flatten([Fields.CheckboxField(id), AssetBooleanFieldMixin])
+	return Flatten([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
+		title: 'AssetCheckboxField'
+	})
 }
 function AssetCardFlipField(id: TRef<TString>) {
-	return Flatten([Fields.CardFlipField(id), AssetBooleanFieldMixin])
+	return Flatten([Fields.CardFlipField(id), AssetBooleanFieldMixin], {
+		title: 'AssetCardFlipField'
+	})
 }
 
-export const AssetConditionMeterControlField = DiscriminatedUnion(
+export const AssetConditionMeterControlField = nuDiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	[AssetCheckboxField, AssetCardFlipField].map((fn) =>
 		fn(Type.Ref(ID.AssetConditionMeterControlFieldID))
@@ -102,7 +106,7 @@ const AssetOptionFields = [
 	Fields.TextField
 ].map((fn) => fn(Type.Ref(ID.AssetOptionFieldID)))
 
-export const AssetOptionField = DiscriminatedUnion(
+export const AssetOptionField = nuDiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AssetOptionFields,
 	{ $id: '#/$defs/AssetOptionField', title: 'AssetOptionField' }
@@ -119,7 +123,7 @@ const AssetControlFields = [
 	].map((fn) => fn(Type.Ref(ID.AssetControlFieldID)))
 ]
 
-export const AssetControlField = DiscriminatedUnion(
+export const AssetControlField = nuDiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AssetControlFields,
 	{
@@ -136,7 +140,7 @@ const AbilityControlFields = [
 	AssetCheckboxField
 ].map((fn) => fn(Type.Ref(ID.AssetAbilityControlFieldID)))
 
-export const AssetAbilityControlField = DiscriminatedUnion(
+export const AssetAbilityControlField = nuDiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AbilityControlFields,
 	{ $id: '#/$defs/AssetAbilityControlField', title: 'AssetAbilityControlField' }
@@ -148,7 +152,7 @@ const AbilityOptionFields = [Fields.TextField].map((fn) =>
 	fn(Type.Ref(ID.AssetAbilityOptionFieldID))
 )
 
-export const AssetAbilityOptionField = DiscriminatedUnion(
+export const AssetAbilityOptionField = nuDiscriminatedUnion(
 	'field_type',
 	AbilityOptionFields,
 	{ $id: '#/$defs/AssetAbilityOptionField', title: 'AssetAbilityOptionField' }

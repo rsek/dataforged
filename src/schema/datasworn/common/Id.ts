@@ -11,7 +11,8 @@ import {
 	RecursiveCollectionID,
 	UncollectableID,
 	toWildcard,
-	IDUnion
+	IDUnion,
+	RecursiveCollectableID
 } from '../utils/regex.js'
 
 export const NamespaceID = ID([Namespace], {
@@ -187,9 +188,11 @@ export const MoveCategoryID = CollectionID(['moves'], {
 export type MoveCategoryID = Opaque<Static<typeof MoveCategoryID>>
 
 const StandardMoveID = Extend(MoveCategoryID, [Node], {
+	title: 'StandardMoveID',
 	description: 'A move ID for a standard move.'
 })
 const AssetMoveID = Extend(AssetAbilityID, ['moves', Node], {
+	title: 'AssetMoveID',
 	description: 'A move ID for an asset move.'
 })
 
@@ -202,6 +205,7 @@ export const MoveID = IDUnion([StandardMoveID, AssetMoveID], {
 	$id: '#/$defs/MoveID'
 })
 export type MoveID = Opaque<Static<typeof MoveID>>
+
 export const MoveIDWildcard = IDUnion(
 	[StandardMoveID, AssetMoveID].map((id) => toWildcard(id)),
 	{
@@ -226,7 +230,8 @@ export const OracleCollectionID = RecursiveCollectionID(['oracles'], {
 })
 export type OracleCollectionID = Opaque<Static<typeof OracleCollectionID>>
 
-export const OracleTableID = Extend(OracleCollectionID, [Node], {
+export const OracleTableID = RecursiveCollectableID(['oracles'], {
+	title: 'OracleTableID',
 	examples: [
 		'starforged/oracles/core/action',
 		'starforged/oracles/character/names/given',

@@ -23,7 +23,7 @@ import {
 } from '../utils/typebox.js'
 import { Flatten } from '../utils/generic.js'
 
-import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { nuDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { JsonEnum } from '../../../typebox/index.js'
 import * as Generic from '../utils/generic.js'
 
@@ -286,7 +286,7 @@ export function Select<Option extends TSelectOption<TSchema>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(
-		DiscriminatedUnion('option_type', [
+		nuDiscriminatedUnion('option_type', [
 			optionSchema,
 			SelectOptionGroup(optionSchema)
 		])

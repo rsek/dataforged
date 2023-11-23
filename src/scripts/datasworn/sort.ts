@@ -25,6 +25,7 @@ export const dataSwornKeyOrder = [
 	'canonical_name',
 	'rules',
 	...typeKeys,
+	'enhances',
 	'min',
 	'max',
 	'nature',

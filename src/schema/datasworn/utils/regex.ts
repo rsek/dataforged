@@ -50,10 +50,10 @@ type IdElementSymbol =
 type IdElement = IdElementSymbol | string
 
 export const PatternElements = Symbol('PatternElements')
-type IDOptions = StringOptions
-type TID = TString & { [PatternElements]: IdElement[]; pattern: string }
+type IdOptions = StringOptions
+type TId = TString & { [PatternElements]: IdElement[]; pattern: string }
 
-export function IDUnion(members: TID[], options: ObjectOptions) {
+export function IDUnion(members: TId[], options: ObjectOptions) {
 	const regex = oneOf(
 		...members.map(
 			(item) =>
@@ -71,40 +71,36 @@ export function IDUnion(members: TID[], options: ObjectOptions) {
 	return UnionOneOf(members, extendedOptions)
 }
 
-export function ID(elements: IdElement[], options: IDOptions = {}) {
+export function ID(elements: IdElement[], options: IdOptions = {}) {
 	const regex = new RegExp(`^${getPatternSubstrings(...elements).join('')}$`)
-	const result = Type.RegExp(regex, options) as TID
+	const result = Type.RegExp(regex, options) as TId
 	result[PatternElements] = elements
 	return result
 }
 export function RecursiveCollectableID(
 	type: IdElement[],
-	options: IDOptions = {}
+	options: IdOptions = {}
 ) {
 	return ID([Namespace, ...type, NodeRecursive, Node], options)
 }
 export function RecursiveCollectionID(
 	type: IdElement[],
-	options: IDOptions = {}
+	options: IdOptions = {}
 ) {
 	return ID([Namespace, Collection, ...type, NodeRecursive], options)
 }
-export function CollectableID(type: IdElement[], options: IDOptions = {}) {
+export function CollectableID(type: IdElement[], options: IdOptions = {}) {
 	return ID([Namespace, ...type, Node, Node], options)
 }
-export function CollectionID(type: IdElement[], options: IDOptions = {}) {
+export function CollectionID(type: IdElement[], options: IdOptions = {}) {
 	return ID([Namespace, Collection, ...type, Node], options)
 }
 
-export function UncollectableID(type: IdElement[], options: IDOptions = {}) {
+export function UncollectableID(type: IdElement[], options: IdOptions = {}) {
 	return ID([Namespace, ...type, Node], options)
 }
 
-export function Extend(
-	base: TID,
-	append: IdElement[],
-	options: IDOptions = {}
-) {
+export function Extend(base: TId, append: IdElement[], options: IdOptions = {}) {
 	const baseElements = base[PatternElements].filter(
 		(f) => f !== Collection
 	) as [string, ...IdElement[]]
@@ -112,7 +108,9 @@ export function Extend(
 	return ID([...baseElements, ...append], options)
 }
 
-export function toWildcard(base: TID, options: IDOptions = {}) {
+export function toWildcard(base: TId, options: IdOptions = {}) {
+	if (base.title && !options.title)
+		options.title = base.title + ' (with wildcard)'
 	const elements = base[PatternElements].map((item) => _toWildcard(item))
 	return ID(elements, options)
 }

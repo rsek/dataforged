@@ -25,6 +25,7 @@ import { OptionalInSourceBrand } from '../utils/generic.js'
 import { SetOptional, keysWithDefaults } from '../utils/typebox.js'
 import { type SchemaKind, SchemaTransforms } from './SchemaTransform.js'
 import { NiceSchema } from './NiceSchema.js'
+import { TnuDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 
 /**
  * Transform a schema into the more lenient format used for Datasworn source data.
@@ -115,6 +116,19 @@ const transforms: SchemaTransforms = {
 		const result = TypeClone.Type(schema, options)
 
 		result.oneOf = result.oneOf.map((item) => SourceData(item))
+
+		return result
+	},
+	DiscriminatedUnion: <T extends TnuDiscriminatedUnion>(
+		schema: T,
+		options: SchemaOptions
+	) => {
+		const result = TypeClone.Type(schema, options)
+
+		result.allOf = result.allOf.map((ifThen) => ({
+			...ifThen,
+			then: SourceData(ifThen.then)
+		})) as any[]
 
 		return result
 	}

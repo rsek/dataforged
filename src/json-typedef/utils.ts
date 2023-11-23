@@ -27,11 +27,8 @@ import {
 	TAnySchema,
 	TJsonEnum
 } from '../typebox/index.js'
-import {
-	Discriminator,
-	Members,
-	TDiscriminatedUnion
-} from '../typebox/discriminated-union.js'
+import { TDiscriminatedUnion } from '../typebox/discriminated-union.js'
+import { Discriminator, Members } from './symbol.js'
 import { JsonTypeDef } from './symbol.js'
 import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
 

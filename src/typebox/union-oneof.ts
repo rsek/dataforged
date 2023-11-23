@@ -7,6 +7,7 @@ import {
 } from '@sinclair/typebox'
 import { TypeSystem } from '@sinclair/typebox/system'
 import { Value } from '@sinclair/typebox/value'
+import { Members } from '../json-typedef/symbol.js'
 
 const UnionOneOfKind = 'UnionOneOf'
 
@@ -24,6 +25,7 @@ function UnionOneOfCheck(schema: TUnionOneOf<TSchema[]>, value: unknown) {
 
 export interface TUnionOneOf<T extends TSchema[] = TSchema[]> extends TSchema {
 	[Kind]: typeof UnionOneOfKind
+	[Members]: [...T]
 	static: Static<TUnion<T>>
 	oneOf: T
 }
@@ -33,5 +35,10 @@ export function UnionOneOf<T extends TSchema[]>(
 	oneOf: [...T],
 	options: SchemaOptions = {}
 ) {
-	return { ...options, [Kind]: UnionOneOfKind, oneOf } as TUnionOneOf<T>
+	return {
+		...options,
+		[Kind]: UnionOneOfKind,
+		oneOf,
+		[Members]: oneOf
+	} as TUnionOneOf<T>
 }
