@@ -1,5 +1,4 @@
 import {
-	type TComposite,
 	Type,
 	type ObjectOptions,
 	type Static,
@@ -11,10 +10,10 @@ import {
 } from '@sinclair/typebox'
 import { type TMoveEnhancement } from '../Moves.js'
 import { type TAssetEnhancement } from '../assets/Enhancement.js'
+import * as Generic from '../utils/generic.js'
 import { LiteralZero, type Merge } from '../utils/typebox.js'
 import * as Base from './Inputs.js'
 import type * as Player from './Player.js'
-import { IdentifiedNode } from '../utils/generic.js'
 
 export const EnhanceableProperties = Symbol('EnhanceableProperties')
 
@@ -27,38 +26,38 @@ function InputField<
 >(
 	base: T,
 	discriminator: Discriminator,
-	id: AnyID,
+	id: Generic.AnyID,
 	options: ObjectOptions = {}
 ) {
-	const result = IdentifiedNode(
-		id,
-		Type.Object({
-			...base.properties,
-			[DISCRIMINATOR]: Type.Literal(discriminator)
-		}),
+	const mixin = Generic.Flatten([
+		base,
+		Type.Object({ [DISCRIMINATOR]: Type.Literal(discriminator) })
+	]) as unknown as TObject<
+		T['properties'] & { [DISCRIMINATOR]: TLiteral<Discriminator> }
+	>
 
-		{
-			description: base.description,
-			$comment: base.$comment,
-			[EnhanceableProperties]: [] as Array<keyof Static<T>>,
-			...options
-		}
-	)
+	const result = Generic.IdentifiedNode(id, mixin, {
+		description: base.description,
+		$comment: base.$comment,
+		[EnhanceableProperties]: [] as Array<keyof Static<T>>,
+		...options
+	}) as unknown as TInputField<T, Discriminator>
 
-	return result as TInputField<T, Discriminator>
+	return result
 }
 export type TInputField<
 	T extends Base.TInput<TSchema>,
 	Discriminator extends string
-> = TComposite<
-	[
-		T,
-		TObject<{
-			id: TRef<TString>
+> = Generic.TIdentifiedNode<
+	TObject<
+		T['properties'] & {
 			[DISCRIMINATOR]: TLiteral<Discriminator>
-		}>
-	]
-> & { [EnhanceableProperties]: Array<keyof Static<T>> }
+			id: TRef<TString>
+		}
+	>
+> & {
+	[EnhanceableProperties]: Array<keyof Static<T>>
+}
 
 // ReturnType<typeof InputField<T, Discriminator>> & InputFieldOptions<T>
 

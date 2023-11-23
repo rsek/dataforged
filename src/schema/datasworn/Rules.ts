@@ -2,6 +2,7 @@ import { type Static, Type } from '@sinclair/typebox'
 import { Localize, Generic, ID } from './common/index.js'
 import * as Inputs from './common/Inputs.js'
 import { Merge } from './utils/typebox.js'
+import { Flatten } from './utils/generic.js'
 
 export const StatRule = Type.Object(
 	{
@@ -12,7 +13,7 @@ export const StatRule = Type.Object(
 )
 export type StatRule = Static<typeof StatRule>
 
-export const ConditionMeterRule = Type.Composite(
+export const ConditionMeterRule = Flatten(
 	[
 		Type.Object({
 			description: Type.Ref(Localize.MarkdownString),

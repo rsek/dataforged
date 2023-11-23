@@ -16,6 +16,7 @@ import {
 	type TFuzzyObject,
 	type TFuzzyRef
 } from '../utils/typebox.js'
+import { Flatten } from '../utils/generic.js'
 
 export const TriggerBy = Type.Object(
 	{
@@ -48,7 +49,7 @@ export function TriggerCondition<
 		description: 'The options available when rolling with this trigger.',
 		...rollOptions
 	}
-	return Type.Composite(
+	return Flatten(
 		[
 			TriggerConditionBase,
 			Type.Object({
@@ -132,7 +133,7 @@ const TriggerMixin = Type.Object({
 export function Trigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>>
 >(conditions: T, options: ObjectOptions = {}) {
-	return Type.Composite([TriggerMixin, Type.Object({ conditions })], options)
+	return Flatten([TriggerMixin, Type.Object({ conditions })], options)
 }
 export type TTrigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>> = TFuzzyNull<

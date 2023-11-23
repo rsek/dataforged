@@ -3,7 +3,13 @@
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */
-import { TypeGuard, type TSchema, Type, TypeClone } from '@sinclair/typebox'
+import {
+	TypeGuard,
+	type TSchema,
+	Type,
+	TypeClone,
+	Kind
+} from '@sinclair/typebox'
 import { cloneDeep, mapValues } from 'lodash-es'
 import { type TRoot } from '../../schema/datasworn/Root.js'
 import {
@@ -124,21 +130,25 @@ function prepareSchemaDef(schema: TSchema) {
 /** Mutates schema */
 function prepareInputSchemaDef(schema: TSchema) {
 	let nuSchema = TypeClone.Type(schema)
-	if (!nuSchema.$id?.startsWith('http')) {
-		if (TypeGuard.TObject(nuSchema)) nuSchema = SourceData(nuSchema)
 
-		if (TypeGuard.TUnion(nuSchema))
-			nuSchema.anyOf = nuSchema.anyOf.map((subschema) =>
-				prepareInputSchemaDef(subschema)
-			)
+	if (TypeGuard.TObject(nuSchema)) nuSchema = SourceData(nuSchema)
 
-		if ('oneOf' in nuSchema)
-			nuSchema.oneOf = nuSchema.oneOf.map((subschema) =>
-				prepareInputSchemaDef(subschema)
-			)
-	}
+	if (TypeGuard.TUnion(nuSchema))
+		nuSchema.anyOf = nuSchema.anyOf.map((subschema) =>
+			prepareInputSchemaDef(subschema)
+		)
 
-	if (schema.$id?.includes('DelveSiteDomain')) console.log(nuSchema)
+	if ('oneOf' in nuSchema)
+		nuSchema.oneOf = nuSchema.oneOf.map((subschema) =>
+			prepareInputSchemaDef(subschema)
+		)
+
+	if ('allOf' in nuSchema)
+		nuSchema.allOf = nuSchema.allOf.map((subschema) =>
+			prepareInputSchemaDef(subschema)
+		)
+
+	// if (schema.$id?.includes('DelveSiteDomain')) console.log(nuSchema)
 
 	return nuSchema
 }

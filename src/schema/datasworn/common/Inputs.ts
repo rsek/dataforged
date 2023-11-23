@@ -21,6 +21,7 @@ import {
 	type Merge,
 	type TMerge
 } from '../utils/typebox.js'
+import { Flatten } from '../utils/generic.js'
 
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { JsonEnum } from '../../../typebox/index.js'
@@ -92,7 +93,7 @@ export interface Range<
 	max: Max
 }
 
-export const Counter = Type.Composite(
+export const Counter = Flatten(
 	[
 		Input(Type.Integer({ default: 0 })),
 		Range({
@@ -109,7 +110,7 @@ export const Counter = Type.Composite(
 export type TCounter = typeof Counter
 export type Counter = Static<typeof Counter>
 
-export const Clock = Type.Composite(
+export const Clock = Flatten(
 	[
 		Input(
 			Type.Integer({
@@ -147,7 +148,7 @@ export function Meter<
 	Min extends TInteger | TLiteral<number> = TInteger,
 	Max extends TInteger | TLiteral<number> = TInteger
 >(min: Min, max: Max, options: ObjectOptions = {}) {
-	return Type.Composite(
+	return Flatten(
 		[
 			Input(Type.Integer({ description: 'The current value of this meter.' })),
 			Range<Min, Max>({
@@ -210,7 +211,7 @@ export function SelectOption<Value extends TSchema>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Input(value)
-	return Type.Composite([SelectOptionBase, mixin], {
+	return Flatten([SelectOptionBase, mixin], {
 		description: 'Represents an option in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<option>` element.',
 		...options
@@ -248,7 +249,7 @@ export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(optionSchema)
-	return Type.Composite([SelectOptionGroupBase, mixin], {
+	return Flatten([SelectOptionGroupBase, mixin], {
 		description: 'Represents a grouping of options in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
 		title: optionSchema.title ? optionSchema.title + 'Group' : undefined,
@@ -290,7 +291,7 @@ export function Select<Option extends TSelectOption<TSchema>>(
 			SelectOptionGroup(optionSchema)
 		])
 	)
-	return Type.Composite([SelectBase, mixin], {
+	return Flatten([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',
 		$comment: 'Semantics are similar to the HTML `<select>` element',
 		...options

@@ -13,7 +13,8 @@ import {
 	type TSchema,
 	type TString,
 	type TOptional,
-	type ObjectProperties
+	type ObjectProperties,
+	ObjectPropertyKeys
 } from '@sinclair/typebox'
 import type * as TypeFest from 'type-fest'
 import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
@@ -59,15 +60,20 @@ export function IdentifiedNode<T extends TObject>(
 	options: ObjectOptions = {}
 ) {
 	// console.log('BASE', schema)
-	const result =
-		// @ts-expect-error
-		Type.Object(
-			{ id: OptionalInSource(id), ...TypeClone.Type(schema).properties },
-			options
-		) as TIdentifiedNode<T>
+	// const result =
+	// 	// @ts-expect-error
+	// 	Type.Object(
+	// 		{ id: OptionalInSource(id), ...TypeClone.Type(schema).properties },
+	// 		options
+	// 	) as TIdentifiedNode<T>
 	// console.log('ADDED ID', result)
 
-	return result
+	const result = Flatten(
+		[Type.Object({ id: OptionalInSource(id) }), schema],
+		options
+	)
+
+	return result satisfies TIdentifiedNode<T>
 }
 export type TIdentifiedNode<T extends TObject> = TObject<
 	T['properties'] & { id: TOptionalInSource<AnyID> }
@@ -79,17 +85,24 @@ export function SourcedNode<T extends TObject>(
 	schema: T,
 	options: ObjectOptions = {}
 ) {
-	console.log('BASE', schema)
+	// console.log('BASE', schema)
 	// @ts-expect-error
+	// const result = IdentifiedNode(
+	// 	id,
+	// 	Type.Object({
+	// 		...TypeClone.Type(SourcedNodeMixin).properties,
+	// 		...TypeClone.Type(schema).properties
+	// 	}),
+	// 	options
+	// ) as TSourcedNode<T>
+	// console.log('ADDED SOURCEDNODE MIXIN', result)
+
 	const result = IdentifiedNode(
 		id,
-		Type.Object({
-			...TypeClone.Type(SourcedNodeMixin).properties,
-			...TypeClone.Type(schema).properties
-		}),
+		Flatten([SourcedNodeMixin, schema]),
 		options
-	) as TSourcedNode<T>
-	// console.log('ADDED SOURCEDNODE MIXIN', result)
+	) satisfies TSourcedNode<T>
+
 	return result
 }
 export type TSourcedNode<T extends TObject> = TIdentifiedNode<
@@ -159,7 +172,7 @@ export function EnhanceMany<T extends TObject, ID extends TSchema = TString>(
 	const mixin = Type.Object({
 		enhances: Type.Optional(Type.Array(wildcardID))
 	})
-	return Type.Composite([base, mixin], options)
+	return Flatten([mixin, base], options)
 }
 export type TEnhanceMany<
 	T extends TObject,
@@ -255,7 +268,7 @@ export function Collection<T extends TRef>(
 		),
 		contents: Dictionary(collectable, { default: {} })
 	})
-	return SourcedNode(id, Type.Composite([CollectionMixin, idMixin]), {
+	return SourcedNode(id, Flatten([CollectionMixin, idMixin]), {
 		...options,
 		[CollectionBrand]: 'Collection'
 	}) as TSourcedNode<
@@ -290,7 +303,7 @@ export function RecursiveCollection<T extends TCollection<TRef>>(
 	options: TypeFest.SetRequired<SchemaOptions, '$id'>
 ) {
 	// @ts-expect-error
-	return Type.Composite(
+	return Flatten(
 		[
 			collection,
 			Type.Object({
@@ -334,3 +347,36 @@ export type RecursiveCollection<
 				collections?: Dictionary<T>
 		  }
 }[Depth extends -1 ? 'done' : 'recur']
+
+export function Flatten<T extends [TObject, TObject]>(
+	objects: [...T],
+	options: ObjectOptions = {}
+) {
+	const log = options.$id?.endsWith('DelveSiteDomain')
+
+	const [obj1, obj2] = objects
+	const keysA = Object.keys(obj1.properties)
+	const keysB = Object.keys(obj2.properties)
+	const keys = Array.from(new Set([...keysA, ...keysB]))
+
+	if (log) console.log(obj2)
+
+	const properties = {} as Record<string, TSchema>
+
+	for (const key of keys) {
+		const target = keysA.includes(key) ? obj1 : obj2
+		properties[key] = TypeClone.Type(Type.Index(target, [key])) as any
+	}
+
+	// console.log(properties)
+	const result = Type.Object(properties, options) as TFlatten<T>
+
+	if (log) console.log(result)
+
+	return result
+}
+export type TFlatten<T extends [TObject, TObject]> = TObject<
+	Omit<ObjectProperties<T[0]>, ObjectPropertyKeys<T[1]>> &
+		ObjectProperties<T[1]>
+>
+

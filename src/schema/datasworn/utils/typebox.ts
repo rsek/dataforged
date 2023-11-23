@@ -19,22 +19,16 @@ import {
 	type TPick,
 	type TProperties,
 	type TRef,
-	type TRequired,
 	type TSchema,
 	type TString,
-	type TUnion,
-	TAnySchema
+	type TUnion
 } from '@sinclair/typebox'
-import { cloneDeep, isEmpty, mapValues, omit } from 'lodash-es'
+import { isEmpty, mapValues, omit } from 'lodash-es'
 import type * as TypeFest from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { type TJsonEnum } from '../../../typebox/enum.js'
-import {
-	OptionalInSource,
-	OptionalInSourceBrand,
-	TOptionalInSource
-} from './generic.js'
+import { Flatten, OptionalInSourceBrand } from './generic.js'
 
 /** Transform an object of literal values into a schema representing the object. */
 
@@ -50,34 +44,6 @@ export type CanBeLiteral<T> = {
 		: never]: Exclude<T[K], null | undefined>
 }
 
-export function Merge<TTarget extends TObject, TSource extends TObject>(
-	[target, source]: [target: TTarget, source: TSource],
-	options: ObjectOptions = {}
-) {
-	// FIXME: what about brands tho. i think we gotta use composite no matter what, oof
-
-	// omit keys that the source will override on the target
-	// const toOmit = Object.keys(target.properties).filter((k) =>
-	// 	Object.keys(source.properties).includes(k)
-	// )
-
-	// const base = Type.Object(
-	// 	{ ...cloneDeep(target.properties), ...cloneDeep(source.properties) },
-	// 	options
-	// ) as unknown as TMerge<TTarget, TSource>
-
-	// const base = {
-	// 	...cloneDeep(source),
-	// 	...options
-	// } as TMerge<TTarget, TSource>
-
-	// base.properties = {
-	// 	...cloneDeep(target.properties),
-	// 	...base.properties
-	// }
-
-	return Type.Composite([target, source], options)
-}
 export type Merge<TTarget, TSource> = Omit<TTarget, keyof TSource> & TSource
 
 export type TMerge<TTarget extends TObject, TSource extends TObject> = TObject<
@@ -224,28 +190,10 @@ export function PartialExcept<
 	T extends TObject,
 	K extends Array<keyof Static<T>>
 >(schema: T, requiredKeys: [...K], options: SchemaOptions = {}) {
-	return Type.Composite(
+	return Flatten(
 		[
 			Type.Pick(schema, requiredKeys),
 			Type.Partial(Type.Omit(schema, requiredKeys))
-		],
-		options
-	)
-}
-type TSetRequired<T extends TObject, K extends keyof Static<T>> = TMerge<
-	TOmit<T, K>,
-	TRequired<TPick<T, K>>
->
-/** Make the provided keys required */
-
-export function SetRequired<
-	T extends TObject,
-	K extends Array<keyof Static<T>>
->(schema: T, requiredKeys: [...K], options: ObjectOptions = {}) {
-	return Type.Composite(
-		[
-			Type.Omit(schema, requiredKeys),
-			Type.Required(Type.Pick(schema, requiredKeys))
 		],
 		options
 	)
@@ -346,7 +294,7 @@ export function SourceData<T extends TObject>(schema: T) {
 	// set properties that have a default to optional
 	// omit properties that are branded with OptionalInSource
 
-	return TypeClone.Type(base, { $id: schema.$id }) as T
+	return TypeClone.Type(base, { $id: schema.$id }) as T // this isn't correct, but defaults arent part of the type data, so it's close enough
 }
 
 

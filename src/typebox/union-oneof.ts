@@ -1,6 +1,6 @@
 import {
 	Kind,
-	TUnion,
+	type TUnion,
 	type SchemaOptions,
 	type Static,
 	type TSchema

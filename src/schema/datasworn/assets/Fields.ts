@@ -2,7 +2,7 @@ import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { ID, Generic, Fields } from '../common/index.js'
-import { Merge } from '../utils/typebox.js'
+import { Flatten } from '../utils/generic.js'
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({
@@ -17,10 +17,10 @@ const AssetBooleanFieldMixin = Type.Object({
 	})
 })
 function AssetCheckboxField(id: TRef<TString>) {
-	return Type.Composite([Fields.CheckboxField(id), AssetBooleanFieldMixin])
+	return Flatten([Fields.CheckboxField(id), AssetBooleanFieldMixin])
 }
 function AssetCardFlipField(id: TRef<TString>) {
-	return Type.Composite([Fields.CardFlipField(id), AssetBooleanFieldMixin])
+	return Flatten([Fields.CardFlipField(id), AssetBooleanFieldMixin])
 }
 
 export const AssetConditionMeterControlField = DiscriminatedUnion(
@@ -82,7 +82,7 @@ const AssetConditionMeterMixin = Type.Object({
 	)
 })
 
-export const AssetConditionMeter = Type.Composite(
+export const AssetConditionMeter = Flatten(
 	[
 		Fields.ConditionMeterField(Type.Ref(ID.AssetControlFieldID)),
 		AssetConditionMeterMixin

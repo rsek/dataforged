@@ -1,5 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { Generic, ID, Localize, Progress } from './common/index.js'
+import { Flatten } from './utils/generic.js'
 
 export const NpcNature = Type.Ref(Localize.Label, {
 	description:
@@ -24,7 +25,7 @@ export const NpcNature = Type.Ref(Localize.Label, {
 })
 export type NpcNature = Static<typeof NpcNature>
 
-const NpcMixin = Type.Composite([
+const NpcMixin = Flatten([
 	Generic.CyclopediaMixin,
 	Type.Object({
 		rank: Type.Ref(Progress.ChallengeRank),
@@ -46,7 +47,7 @@ export type NpcVariant = Static<typeof NpcVariant>
 
 export const Npc = Generic.Collectable(
 	Type.Ref(ID.NpcID),
-	Type.Composite([
+	Flatten([
 		NpcMixin,
 		Type.Object({
 			variants: Type.Optional(Generic.Dictionary(Type.Ref(NpcVariant)))

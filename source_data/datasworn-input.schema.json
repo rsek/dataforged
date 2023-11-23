@@ -1140,7 +1140,6 @@
 			"$id": "#/$defs/OracleTableRoll",
 			"title": "OracleTableRoll",
 			"type": "object",
-			"required": ["times"],
 			"properties": {
 				"auto": {
 					"type": "boolean",
@@ -1740,14 +1739,7 @@
 			"$id": "#/$defs/MoveNoRoll",
 			"title": "MoveNoRoll",
 			"type": "object",
-			"required": [
-				"name",
-				"roll_type",
-				"trigger",
-				"text",
-				"outcomes",
-				"source"
-			],
+			"required": ["name", "roll_type", "trigger", "text", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/MoveID"
@@ -1771,7 +1763,8 @@
 					"description": "The complete rules text of the move."
 				},
 				"outcomes": {
-					"type": "null"
+					"type": "null",
+					"default": null
 				},
 				"oracles": {
 					"type": "array",
@@ -2394,11 +2387,13 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"type": "null"
+					"type": "null",
+					"default": null
 				},
 				"roll_options": {
 					"type": "null",
-					"description": "The options available when rolling with this trigger."
+					"description": "The options available when rolling with this trigger.",
+					"default": null
 				}
 			},
 			"additionalProperties": false

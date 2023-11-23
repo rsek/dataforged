@@ -10,6 +10,7 @@ import {
 import { AssetIDWildcard, DictKey } from '../common/Id.js'
 import { Localize, Player } from '../common/index.js'
 import { Nullable } from '../utils/typebox.js'
+import { Flatten } from '../utils/generic.js'
 import {
 	Trigger,
 	TriggerCondition,
@@ -39,7 +40,7 @@ function ActionRollOptionBase<
 	Using extends ActionRollUsing,
 	Props extends TObject
 >(using: Using, props: Props, options: ObjectOptions = {}) {
-	return Type.Composite(
+	return Flatten(
 		[
 			props,
 			Type.Object({
@@ -210,8 +211,8 @@ export type TriggerActionRollEnhancement = Static<
 // TRIGGER: NO ROLL
 
 export const TriggerNoRollCondition = TriggerCondition(
-	Type.Null(),
-	Type.Null(),
+	Type.Null({ default: null }),
+	Type.Null({ default: null }),
 	{ $id: '#/$defs/TriggerNoRollCondition' }
 )
 
@@ -227,7 +228,7 @@ export type TriggerNoRoll = Static<typeof TriggerNoRoll>
 export const MoveNoRoll = Move(
 	'no_roll',
 	Type.Ref(TriggerNoRoll),
-	Type.Null(),
+	Type.Null({ default: null }),
 	{
 		$id: '#/$defs/MoveNoRoll'
 	}

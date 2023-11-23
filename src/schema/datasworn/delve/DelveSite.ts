@@ -9,6 +9,7 @@ import { toJtdElements } from '../../../json-typedef/utils.js'
 import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
 import { Generic, ID, Localize, Metadata, Progress } from '../common/index.js'
 import { StaticRowPartial } from '../oracles/TableRow.js'
+import { Flatten } from '../utils/generic.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
@@ -43,7 +44,7 @@ function StaticDenizenRowStub<
 	Max extends number,
 	Frequency extends DelveSiteDenizenFrequency
 >(min: Min, max: Max, frequency: Frequency) {
-	return Type.Composite(
+	return Flatten(
 		[
 			StaticRowPartial({ min, max }),
 			Type.Object({ frequency: Type.Literal(frequency) })

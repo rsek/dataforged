@@ -13,6 +13,7 @@ import {
 	TriggerConditionEnhancement,
 	TriggerEnhancement
 } from './Trigger.js'
+import { Flatten } from '../utils/generic.js'
 
 export const ProgressRollOption = Type.Object(
 	{
@@ -43,7 +44,7 @@ export const TriggerProgressRoll = Trigger(
 
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
-export const MoveProgressRoll = Type.Composite(
+export const MoveProgressRoll = Flatten(
 	[
 		Move(
 			'progress_roll',

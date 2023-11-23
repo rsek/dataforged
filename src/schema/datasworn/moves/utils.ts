@@ -20,6 +20,7 @@ import {
 	type MoveOutcomes,
 	type TMoveOutcomes
 } from './common.js'
+import { Flatten } from '../utils/generic.js'
 
 const MoveBase = Type.Object({
 	replaces: Type.Optional(
@@ -46,7 +47,7 @@ export function Move<
 >(rollType: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
 	return Generic.Collectable(
 		Type.Ref(ID.MoveID),
-		Type.Composite([
+		Flatten([
 			MoveBase,
 			Type.Object({
 				roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
