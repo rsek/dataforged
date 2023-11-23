@@ -33,13 +33,19 @@ assets:
               field_type: text
               name: Name
         controls:
-          integrity: &SupportVehicle.integrity
-            <<: *CommandVehicleIntegrity
-            name: integrity
-            field_type: condition_meter
+          integrity:
             max: 6
             value: 6
-            controls:
+            <<: &SupportVehicle.integrity
+              name: integrity
+              field_type: condition_meter
+              min: 0
+              moves:
+                suffer:
+                  - starforged/moves/suffer/withstand_damage
+                recover:
+                  - starforged/moves/recover/repair
+              controls:
                 battered:
                   name: battered
                   field_type: checkbox
@@ -211,7 +217,6 @@ assets:
                     - roll_options: null
                       method: null
                       text: When you make a move while controlling the pod and push its capabilities to the limit
-
       shuttle:
         name: Shuttle
         <<: *SupportVehicleAsset
