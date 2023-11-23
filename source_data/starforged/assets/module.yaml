@@ -1,0 +1,795 @@
+id: starforged
+source: &Source
+  title: 'Ironsworn: Starforged Rulebook'
+  license: https://creativecommons.org/licenses/by/4.0
+  url: https://ironswornrpg.com
+  date: 2022-05-06
+  authors:
+    - name: Shawn Tomkin
+assets:
+  module:
+    source:
+      <<: *Source
+      page: 55
+    name: Module Assets
+    color: &ModuleAsset.color '#7f5a90'
+    # Summary: Enhanced features or capabilities of your STARSHIP. As with the ship itself, these are shared assets; a module’s abilities can benefit other player characters if it’s reasonable for them to make use of it.
+    description: |-
+      **Modules** are linked to your STARSHIP and offer additional options and advantages when aboard that vehicle.
+
+      These assets are earned and managed by a single character. They can be shared with allies, but only if it's practical for them to make use of it (not everyone may know how to use a RESEARCH LAB).
+
+      When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](id:starforged/moves/recover/repair) it.
+    contents:
+      engine_upgrade:
+        name: Engine Upgrade
+        <<: &ModuleAsset
+          asset_type: Module
+          shared: true
+          color: *ModuleAsset.color
+          source: &AssetSource
+            <<: *Source
+            title: 'Ironsworn: Starforged Assets'
+          controls:
+            broken: &BrokenControl
+              field_type: card_flip
+              name: broken
+              disables_asset: true
+        abilities:
+          - text: |-
+              Your vehicle’s finely-tuned engines speed your travels. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/exploration/undertake_an_expedition
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In your vehicle
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: edge
+          - text: |-
+              When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray), choose one (before rolling).
+
+                * Maneuver: Add +1 and take +1 momentum on a strong hit.
+                * Boost: Take +2 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In your vehicle and you choose to maneuver (before moving)
+                      method: null
+                      roll_options: null
+              - enhances:
+                  - starforged/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In your vehicle and you choose to boost (before rolling)
+                      method: null
+                      roll_options: null
+          - text: |-
+              When you make a desperate move to pursue a foe, escape a threat, or get in range, you may push your engines to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2).
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)
+                      method: null
+                      roll_options: null
+      expanded_hold:
+        name: Expanded Hold
+        <<: *ModuleAsset
+        controls:
+          cargo:
+            field_type: condition_meter
+            name: cargo
+            max: 3
+            value: 0
+            min: 0
+            moves:
+              recover:
+                - starforged/moves/recover/resupply
+              suffer:
+                - starforged/moves/suffer/sacrifice_resources
+        # TODO: key for being interchangeable with supply?
+        abilities:
+          - # TODO: when you gain [condition meter] trigger?
+            # alternately: could happen with some kind of tag system?
+            # the suffer trigger is fairly easy to hit, i guess
+            text: |-
+              Your vehicle carries up to 3 cargo. When you gain +supply, you may convert it to +cargo. When you make a move +supply, you may add +cargo. When you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources), you may instead suffer -cargo for any portion of the cost.
+            enabled: true
+          - text: |-
+              When you score a miss or weak hit as you make a move to barter or negotiate, and you have at least 1 cargo, you may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo.
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: You make a move to barter or negotiate, and you have at least 1 cargo
+                      method: null
+                      roll_options: null
+          - text: |-
+              When you make a move to outrun a threat and have at least 1 cargo, you may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you make a move to outrun a threat and have at least 1 cargo
+                      method: null
+                      roll_options: null
+      grappler:
+        name: Grappler
+        <<: *ModuleAsset
+        abilities:
+          - text: &GrapplerMove |-
+              Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). On a miss, charging fails and you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+            enabled: true
+            moves:
+              ready_grappler:
+                name: Ready Grappler
+                source: *AssetSource
+                roll_type: action_roll
+                trigger:
+                  text: When you take a minute or so to ready the grappler...
+                  conditions:
+                    - method: highest
+                      roll_options:
+                        - using: stat
+                          stat: wits
+                        - using: attached_asset_control
+                          control: integrity
+                text: *GrapplerMove
+                outcomes:
+                  strong_hit:
+                    text: |-
+                      On a **strong hit**, the grappler is charged and may be fired.
+
+                      If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+                  weak_hit:
+                    text: |-
+                      On a **weak hit**, the grappler is charged and may be fired, but charging requires extra time or focus; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
+
+                      If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
+                  miss:
+                    text: |-
+                      On a **miss**, charging fails and you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2).
+          - text: |-
+              If you score a strong hit when readying the grappler, you may [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
+            enhance_moves:
+              - enhances:
+                  - starforged/assets/module/grappler/abilities/0/moves/ready_grappler
+                roll_type: action_roll
+          - text: |-
+              When you [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by firing the grappler, you may reroll one challenge die.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/take_decisive_action
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - text: By firing the grappler
+                      roll_options: null
+                      method: null
+      heavy_cannons:
+        name: Heavy Cannons
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike), choose one.
+
+                * Strafing run: Add +1 and take +1 momentum on a hit.
+                * Focus fire: Mark progress on a hit, but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike)
+                      roll_options: null
+                      method: null
+          - text: |-
+              Once per fight, when you [Clash](id:starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire, add +1, count a weak hit as a strong hit, and mark progress on a hit. On a miss, you must suffer a dire outcome.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Once per fight, when you [Clash](id:starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire
+                      method: null
+                      roll_options: null
+          - text: |-
+              When you [Compel](id:starforged/moves/adventure/compel), [Enter the Fray](id:starforged/moves/combat/enter_the_fray), or [Gain Ground](id:starforged/moves/combat/gain_ground) by bringing your cannons to bear and sending a promise of violence to your foe over communication channels, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/adventure/compel
+                  - starforged/moves/combat/enter_the_fray
+                  - starforged/moves/combat/gain_ground
+                trigger:
+                  conditions:
+                    - text: By bringing your cannons to bear and sending a promise of violence to your foe over communication channels
+                      roll_options: null
+                      method: null
+      internal_refit:
+        name: Internal Refit
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/exploration/undertake_an_expedition
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: On the first leg of your journey (dangerous or greater)
+                      method: null
+                      roll_options: null
+          - text: &InternalRefitMove |-
+              Your vessel is stocked with reserves. When you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
+            moves:
+              draw_reserves:
+                name: Draw Reserves
+                source: *AssetSource
+                roll_type: action_roll
+                trigger:
+                  text: When you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
+                  conditions:
+                    - method: player_choice
+                      roll_options:
+                        - using: attached_asset_control
+                          control: integrity
+                text: *InternalRefitMove
+                outcomes:
+                  strong_hit:
+                    text: On a **strong hit**, you don't need to mark unprepared. Take +1 supply.
+                  weak_hit:
+                    text: On a **weak hit**, mark unprepared as normal.
+                  miss:
+                    text: On a **miss**, mark unprepared as normal.
+          - text: |-
+              When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: To oppose an invader within your vessel
+                      roll_options: null
+                      method: null
+      medbay:
+        name: Medbay
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/recover/heal
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so), you have a shot at making things right. If you [Heal](id:starforged/moves/recover/heal) and score a strong hit, clear the impact (in addition to the other benefits of the move). Then, envision the scar that now serves as a reminder of the incident.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/recover/heal
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so)
+                      roll_options: null
+                      method: null
+                      by:
+                        player: true
+                        ally: true
+          - text: |-
+              When you [Face Danger](id:starforged/moves/adventure/face_danger) by performing a risky medical procedure, or if you [Gather Information](id:starforged/moves/adventure/gather_information) through an autopsy or medical examination, reroll any dice and take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - 'starforged/moves/*/face_danger'
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: By performing a risky medical procedure
+                      method: null
+                      roll_options: null
+              - enhances:
+                  - starforged/moves/adventure/gather_information
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Through an autopsy or medical examination
+                      method: null
+                      roll_options: null
+      missile_array:
+        name: Missile Array
+        <<: *ModuleAsset
+        controls:
+          ammo:
+            field_type: condition_meter
+            name: ammo
+            max: 5
+            value: 5
+            min: 0
+            moves:
+              recover:
+                - starforged/moves/recover/resupply
+        abilities:
+          - text: |-
+              Your missile array is armed with 5 ammo. When you [Strike](id:starforged/moves/combat/strike) or [Clash](id:starforged/moves/combat/clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](id:starforged/moves/recover/resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/strike
+                  - starforged/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: With a missile attack
+                      roll_options: null
+                      method: null
+              - enhances:
+                  - starforged/moves/recover/resupply
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In a place where your missiles can be replenished
+                      method: null
+                      roll_options: null
+          - text: |-
+              When you have at least 1 ammo and [Gain Ground](id:starforged/moves/combat/gain_ground) by locking a missile on target, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/combat/gain_ground
+                trigger:
+                  conditions:
+                    - text: By locking a missile on target (when you have at least 1 ammo)
+                      method: null
+                      roll_options: null
+          - text: |-
+              When you have at least 3 ammo and [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/take_decisive_action
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - text: When you have at least 3 ammo and [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by unleashing all of your missiles
+                      method: null
+                      roll_options: null
+      overseer:
+        name: Overseer
+        options: &Options_Name
+          name:
+            field_type: text
+            name: Name
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gain Ground](id:starforged/moves/combat/gain_ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - 'starforged/moves/*/secure_an_advantage'
+                  - starforged/moves/combat/gain_ground
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: By talking through a situation with the overseer AI
+                      method: player_choice
+                      roll_options:
+                        - using: attached_asset_control
+                          control: integrity
+            enabled: true
+          - text: |-
+              When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage) and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/suffer/withstand_damage
+                roll_type: action_roll
+          - text: |-
+              The overseer can pilot the vehicle independently. When you [Face Danger](id:starforged/moves/adventure/face_danger) by handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation, you may roll +integrity. If you do, take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - 'starforged/moves/*/face_danger'
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
+                      method: player_choice
+                      roll_options:
+                        - using: attached_asset_control
+                          control: integrity
+      reinforced_hull:
+        name: Reinforced Hull
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              Your vehicle is clad in iron. When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), add +1. On a strong hit, take +1 momentum.
+            enabled: true
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/suffer/withstand_damage
+                trigger:
+                  conditions:
+                    - text: To your vehicle with a Reinforced Hull
+                      roll_options: null
+                      method: null
+          - text: |-
+              Your reinforced hull is given a fierce and distinctive color or design. When you arrive at a place where your reputation is a factor, take +1 momentum. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) against a foe who knows your reputation, take +momentum equal to your vehicle’s integrity on a strong hit.
+            # TODO: implement generic trigger/event interface
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Against a foe who knows your reputation
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [React Under Fire](id:starforged/moves/combat/react_under_fire) by letting your reinforced hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, [Pay the Price](id:starforged/moves/fate/pay_the_price) by marking this module as broken.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/combat/react_under_fire
+                trigger:
+                  conditions:
+                    - text: By letting your reinforced hull take the hit
+                      roll_options: null
+                      method: null
+      research_lab:
+        name: Research Lab
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              When you use your lab to [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.
+            enabled: true
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - 'starforged/moves/*/secure_an_advantage'
+                  - starforged/moves/adventure/gather_information
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: Through careful analysis or experimentation (in your research lab)
+          - text: |-
+              When you [Face Danger](id:starforged/moves/adventure/face_danger) to isolate or secure a hazardous specimen, reroll any dice.
+            enhance_moves:
+              - enhances:
+                  - 'starforged/moves/*/face_danger'
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: To isolate or secure a hazardous specimen
+          - text: |-
+              When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to undertake a long-term research project (extreme or greater), reroll any dice. When you obtain crucial samples, equipment, or data, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your lab, [Face Danger](id:starforged/moves/adventure/face_danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, also mark one box on your discoveries legacy track.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/quest/swear_an_iron_vow
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: &ResearchLabVow To undertake a long-term research project (extreme or greater)
+              - enhances:
+                  - 'starforged/moves/*/face_danger'
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: When you devote extended time to the long-term research project (extreme or greater) in your lab
+              - enhances:
+                  - starforged/moves/quest/fulfill_your_vow
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      roll_options: null
+                      text: *ResearchLabVow
+      sensor_array:
+        name: Sensor Array
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits), you may reroll one challenge die.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/exploration/undertake_an_expedition
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In your vehicle
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: wits
+          - text: |-
+              When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) by scanning your vehicle's surroundings or analyzing a nearby object, choose one and take +1 momentum on a hit.
+
+                * Manual scan: Add +1
+                * Automated scan: Instead of rolling the action die, make it the value of your vehicle's integrity
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - 'starforged/moves/*/secure_an_advantage'
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)
+              - enhances:
+                  - starforged/moves/adventure/gather_information
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)
+                # Set dice:
+                #   - dice: action_die_todo_add_to_interface_revise_object_similar_to_reroll
+                #     # ref to stat?
+                # Instead of rolling the action die, make it the value of your vehicle's integrity.
+
+          - text: |-
+              When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) against an ambush, or [Face Danger](id:starforged/moves/adventure/face_danger) to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Against an ambush
+                      method: player_choice
+                      roll_options:
+                        - using: attached_asset_control
+                          control: integrity
+              - enhances:
+                  - 'starforged/moves/*/face_danger'
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: To detect a hidden threat
+                      method: player_choice
+                      roll_options:
+                        - using: attached_asset_control
+                          control: integrity
+      shields:
+        name: Shields
+        <<: *ModuleAsset
+        abilities:
+          - text: &ShieldsMove |-
+              When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
+            enabled: true
+            moves:
+              raise_shields:
+                name: Raise Shields
+                source: *AssetSource
+                roll_type: action_roll
+                trigger:
+                  text: When you raise your shields...
+                  conditions:
+                    - method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: wits
+                        - using: attached_asset_control
+                          control: integrity
+                text: *ShieldsMove
+                outcomes:
+                  strong_hit:
+                    text: |-
+                      On a **strong hit**, set your vehicle's shields to 4.
+
+                      Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
+                  weak_hit:
+                    text: |-
+                      On a **weak hit**, set your vehicle's shields to 3.
+
+                      Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
+                  miss:
+                    text: |-
+                      On a **miss**, set your vehicle's shields to 2, but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
+
+                      Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
+          - text: |-
+              You may [React Under Fire](id:starforged/moves/combat/react_under_fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/react_under_fire
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: By letting your shields take the blow
+                      method: player_choice
+                      roll_options:
+                        - using: asset_control
+                          assets: null
+                          control: shields
+          - text: |-
+              When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: In your vehicle
+        controls:
+          shields:
+            name: shields
+            field_type: condition_meter
+            max: 4
+            value: 0
+            min: 0
+            moves:
+              recover:
+                - starforged/assets/module/shields/abilities/0/moves/raise_shields
+      stealth_tech:
+        name: Stealth Tech
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
+            enabled: true
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: When you make a move against a specific foe or threat to avoid detection (in your vehicle)
+              - enhances:
+                  - starforged/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: By ambushing an unaware foe (in your vehicle)
+          - text: |-
+              When you travel stealthily as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+shadow), you may reroll your action die.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/exploration/undertake_an_expedition
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you travel stealthily (in your vehicle)
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: shadow
+          - text: |-
+              When you are poised to [Strike](id:starforged/moves/combat/strike) from hiding, you may roll +shadow. If you do, choose one (before rolling).
+
+                * Strike true: Reroll any dice.
+                * Strike hard: Mark progress on a hit.
+
+              On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](id:starforged/moves/combat/strike).
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: You are poised to [Strike](id:starforged/moves/combat/strike) from hiding (and choose to strike true)
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: shadow
+              - enhances:
+                  - starforged/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: You are poised to [Strike](id:starforged/moves/combat/strike) from hiding (and choose to strike hard)
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: shadow
+      vehicle_bay:
+        name: Vehicle Bay
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle, spend 1 repair point (instead of 2).
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/recover/repair
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle
+          - text: &Vehicle_Bay.2 |-
+              When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](id:starforged/moves/fate/ask_the_oracle) using the yes/no table if something can be salvaged from the mess. Make it 50/50. On a yes, spend 1 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](id:starforged/moves/recover/repair) and bring it back to full working order, the vehicle is battered with 0 integrity.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/suffer/withstand_damage
+                roll_type: action_roll
+          - text: |-
+              When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: When you make a move to launch from or land on your command vehicle in a perilous situation or environment
+      workshop:
+        name: Workshop
+        <<: *ModuleAsset
+        abilities:
+          - text: |-
+              When you [Repair](id:starforged/moves/recover/repair) in the field, add +1.
+            enabled: true
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/recover/repair
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: In the field (with your workshop)
+          - text: |-
+              When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine, you may reroll your action die if its value is less than your vehicle's integrity.
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine
+          - text: |-
+              When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to undertake a long-term engineering project (extreme or greater), reroll any dice. When you obtain a crucial part or resource, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your workshop, [Face Danger](id:starforged/moves/adventure/face_danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, mark one extra box on your quests legacy track.
+            # TODO: consider a way to explicitly structure marked quests?
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/quest/swear_an_iron_vow
+                roll_type: action_roll
+                trigger: &WorkshopVowTrigger
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: To undertake a long-term engineering project (extreme or greater)
+              - roll_type: action_roll
+                enhances:
+                  - 'starforged/moves/*/face_danger'
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      method: null
+                      text: When you devote extended time to your long-term engineering project (extreme or greater) in your workshop
+              - enhances:
+                  - starforged/moves/quest/fulfill_your_vow
+                roll_type: progress_roll
+                trigger: *WorkshopVowTrigger

@@ -1,0 +1,352 @@
+id: starforged
+source: &Source
+  title: 'Ironsworn: Starforged Rulebook'
+  license: https://creativecommons.org/licenses/by/4.0
+  url: https://ironswornrpg.com
+  date: 2022-05-06
+  authors:
+    - name: Shawn Tomkin
+assets:
+  deed:
+    source:
+      <<: *Source
+      page: 57
+    name: Deed Assets
+    color: &DeedAsset.color '#40834f'
+    # summary: Represent the notable achievement and situations of your story, and how those events change your character.
+    description: |-
+      **Deeds** represent the notable achievement and situations of your story, and how those events change your character.
+
+      Deeds have a requirement listed at the top of the card, phrased as “Once you \[blank\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.
+    contents:
+      bonded:
+        <<: &DeedAsset
+          asset_type: Deed
+          color: *DeedAsset.color
+          source: &AssetSource
+            <<: *Source
+            title: 'Ironsworn: Starforged Assets'
+        name: Bonded
+        options:
+          bond_mate:
+            name: Bond-mate
+            field_type: text
+        requirement: One time only, once you [Forge a Bond](id:starforged/moves/connection/forge_a_bond) with a special individual...
+        abilities:
+          - text: |-
+              This person is your bond-mate. When you [Sojourn](id:starforged/moves/recover/sojourn) at their home, [Hearten](id:starforged/moves/recover/hearten) in their presence, or [Test Your Relationship](id:starforged/moves/connection/test_your_relationship) or [Develop Your Relationship](id:starforged/moves/connection/develop_your_relationship) with them, reroll any dice. On a strong hit, take +1 momentum.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/recover/sojourn
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: At your bond-mate's home
+                      roll_options: null
+                      method: null
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/recover/hearten
+                trigger:
+                  conditions:
+                    - text: In your bond-mate's presence
+                      method: null
+                      roll_options: null
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/connection/test_your_relationship
+                  - starforged/moves/connection/develop_your_relationship
+                trigger:
+                  conditions:
+                    - text: With your bond-mate
+                      method: null
+                      roll_options: null
+          - text: |-
+              When you [Set a Course](id:starforged/moves/exploration/set_a_course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/exploration/set_a_course
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Back to your bond-mate's location
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](id:starforged/moves/threshold/face_desolation).
+            enhance_moves:
+              - roll_type: action_roll
+      homesteader:
+        <<: *DeedAsset
+        name: Homesteader
+        options: &Options_Name
+          name:
+            field_type: text
+            name: Name
+        requirement: Once you fill 4 boxes on your bonds legacy track...
+        abilities:
+          - text: |-
+              You have chosen or established a community as your home. When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (formidable or greater) in service to your home, reroll any dice. On a hit, mark 1 tick on your bonds legacy track. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, also mark 2 ticks on your bonds legacy track.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/quest/swear_an_iron_vow
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In service to your home (formidable or greater)
+                      roll_options: null
+                      method: null
+              - enhances:
+                  - starforged/moves/quest/fulfill_your_vow
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      text: In service to your home (formidable or greater)
+                      roll_options: null
+          - text: |-
+              When you [Sojourn](id:starforged/moves/recover/sojourn) in your home, choose one.
+
+                * Don't linger: Take an automatic weak hit
+                * Stay a bit: Add +1 and take +1 momentum on a hit
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/recover/sojourn
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In your home (and you don't linger)
+                      roll_options: null
+                      method: null
+
+              - enhances:
+                  - starforged/moves/recover/sojourn
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options: null
+                      text: In your home (and you stay a bit)
+                      method: weak_hit
+          - text: |-
+              When you [Set a Course](id:starforged/moves/exploration/set_a_course) for home, you may reroll your action die if its value is less than your spirit.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/exploration/set_a_course
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: For home
+                      roll_options: null
+                      method: null
+      marked:
+        name: Marked
+        <<: *DeedAsset
+        options:
+          identifier:
+            name: Identifier
+            field_type: text
+        requirement: Once you fill 5 boxes on your quests legacy track...
+        abilities:
+          - text: |-
+              Envision the title, sigil, uniform, or tattoo you bear in recognition of your achievements. When you [Compel](id:starforged/moves/adventure/compel) or [Make a Connection](id:starforged/moves/connection/make_a_connection) among those who would know your reputation, add +1. On a strong hit with a match, your notoriety grows; mark 2 ticks on your bonds legacy track.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/adventure/compel
+                  - starforged/moves/connection/make_a_connection
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Among those who would know your reputation
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.
+            enhance_moves:
+              - roll_type: action_roll
+            controls:
+              clock:
+                name: Stained reputation
+                field_type: clock
+                max: 6
+                value: 0
+                min: 0
+          - text: |-
+              Once per fight, when you [Gain Ground](id:starforged/moves/combat/gain_ground) through intimidation or command, reroll any dice and mark progress on a hit.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/gain_ground
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Through intimidation or command (once per fight)
+                      roll_options: null
+                      method: null
+      oathbreaker:
+        name: Oathbreaker
+        <<: *DeedAsset
+        requirement: Once you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow)...
+        count_as_impact: true
+        abilities:
+          - text: |-
+              This asset counts as an impact. One time only, when you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (extreme or greater) to redeem yourself, give that vow a special mark. When you [Reach a Milestone](id:starforged/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum. If you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/quest/swear_an_iron_vow
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: To redeem yourself (extreme or greater, one time only)
+                      roll_options: null
+                      method: null
+              - roll_type: action_roll
+                enhances:
+                  - starforged/moves/quest/forsake_your_vow
+          - text: |-
+              When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Compel](id:starforged/moves/adventure/compel) by reaffirming your commitment to your marked vow, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - 'starforged/moves/*/secure_an_advantage'
+                  - starforged/moves/adventure/compel
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: By reaffirming your commitment to your marked vow
+                      roll_options: null
+                      method: null
+
+          - text: |-
+              When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on the marked quest and score a hit, you find redemption and automatically gain this ability at no cost. You may then improve one of your stats by +1 and discard this asset. Once the asset is discarded, you may not take it again.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/quest/fulfill_your_vow
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      text: On your marked quest
+                      roll_options: null
+      revenant:
+        name: Revenant
+        <<: *DeedAsset
+        requirement: Once you [Face Death](id:starforged/moves/threshold/face_death)...
+        abilities:
+          - text: |-
+              When you are at 0 health, and [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Face Death](id:starforged/moves/threshold/face_death), add +1. You may then reroll your action die if its value is less than your spirit.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/suffer/endure_harm
+                  - starforged/moves/threshold/face_death
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you are at 0 health
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by bringing death to a foe, you may burn momentum to zero out one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/combat/take_decisive_action
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      text: By bringing death to a foe
+                      roll_options: null
+          - text: |-
+              When you [Gather Information](id:starforged/moves/adventure/gather_information) by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/adventure/gather_information
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: By studying a place where death left its mark
+                      roll_options:
+                        - using: stat
+                          stat: heart
+                      method: player_choice
+      survivor:
+        name: Survivor
+        <<: *DeedAsset
+        requirement: Once you mark traumatized or permanently harmed...
+        abilities:
+          - text: |-
+              When you are haunted by past experiences and must [Endure Stress](id:starforged/moves/suffer/endure_stress), you may [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1) before rolling as you attempt to find focus or calm. If you do, reroll any dice. On a strong hit, take +1 momentum.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/suffer/endure_stress
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you are haunted by past experiences
+                      method: null
+                      roll_options: null
+          - text: |-
+              When you make a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach, and burn momentum to improve your result, you may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.
+            # TODO: implement interface for alter momentum burn
+          - text: |-
+              You are learning to live with this impact. The lasting effect (traumatized or permanently harmed, but not both) remains marked, but no longer reduces your max momentum or reset.
+            # TODO: modify impacts interface?
+      vanguard:
+        name: Vanguard
+        <<: *DeedAsset
+        requirement: Once you fill 6 boxes on your discoveries legacy track...
+        abilities:
+          - text: &VanguardMove |-
+              When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.
+            enabled: true
+            moves:
+              seek_safe_haven:
+                source: *AssetSource
+                name: Seek Safe Haven
+                roll_type: special_track
+                trigger:
+                  text: When you seek a safe location in a remote environment...
+                  conditions:
+                    - method: player_choice
+                      roll_options:
+                        - using: discoveries_legacy
+                text: *VanguardMove
+                outcomes:
+                  strong_hit:
+                    text: |-
+                      On a **strong hit**, you establish a haven; add +2 whenever you make a recovery move at that location.
+
+                      If you establish a haven but score a miss on a recovery move, that location is no longer safe.
+                  weak_hit:
+                    text: |-
+                      On a **weak hit**, you establish a haven; add +1 whenever you make a recovery move at that location.
+
+                      If you establish a haven but score a miss on a recovery move, that location is no longer safe.
+                  miss:
+                    text: |-
+                      On a **miss**, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
+          - text: |-
+              When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      roll_options:
+                        - using: stat
+                          stat: wits
+          - text: |-
+              When you [Endure Stress](id:starforged/moves/suffer/endure_stress), you may roll +wits. If you do, take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - starforged/moves/suffer/endure_stress
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: wits
