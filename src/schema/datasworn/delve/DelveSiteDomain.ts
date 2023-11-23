@@ -3,7 +3,6 @@ import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
 import { Generic, ID, Localize, Metadata } from '../common/index.js'
 import { StaticRowPartial, TableRow } from '../oracles/TableRow.js'
-import { DelveCardMixin } from './DelveCard.js'
 
 export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(ID.DomainFeatureRowID),
@@ -60,8 +59,6 @@ export const DelveSiteDomain = Generic.SourcedNode(
 							result: 'Something unusual or unexpected',
 							suggestions: {
 								oracles: [
-									// 'classic/oracles/action_and_theme/action',
-									// 'classic/oracles/action_and_theme/theme',
 									'delve/oracles/feature/aspect',
 									'delve/oracles/feature/focus'
 								]
