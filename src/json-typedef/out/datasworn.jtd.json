@@ -1,4 +1,110 @@
 {
+	"metadata": {
+		"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin."
+	},
+	"properties": {
+		"id": {
+			"ref": "NamespaceId"
+		},
+		"source": {
+			"ref": "Source"
+		}
+	},
+	"optionalProperties": {
+		"rules": {
+			"ref": "Rules"
+		},
+		"oracles": {
+			"metadata": {
+				"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "OracleCollection"
+			}
+		},
+		"moves": {
+			"metadata": {
+				"description": "A dictionary object containing move categories, which contain moves.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "MoveCategory"
+			}
+		},
+		"assets": {
+			"metadata": {
+				"description": "A dictionary object containing asset types, which contain assets.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "AssetType"
+			}
+		},
+		"atlas": {
+			"metadata": {
+				"description": "A dictionary object containing atlas collections, which contain atlas entries.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "Atlas"
+			}
+		},
+		"npcs": {
+			"metadata": {
+				"description": "A dictionary object containing NPC collections, which contain NPCs.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "NpcCollection"
+			}
+		},
+		"truths": {
+			"metadata": {
+				"description": "A dictionary object of truth categories.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "Truth"
+			}
+		},
+		"rarities": {
+			"metadata": {
+				"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "Rarity"
+			}
+		},
+		"delve_sites": {
+			"metadata": {
+				"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "DelveSite"
+			}
+		},
+		"site_themes": {
+			"metadata": {
+				"description": "A dictionary object containing delve site themes.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "DelveSiteTheme"
+			}
+		},
+		"site_domains": {
+			"metadata": {
+				"description": "A dictionary object containing delve site domains.",
+				"propertyPattern": "^([a-z][a-z_]*)$"
+			},
+			"values": {
+				"ref": "DelveSiteDomain"
+			}
+		}
+	},
 	"definitions": {
 		"AssetAbilityControlFieldId": {
 			"type": "string",
@@ -369,6 +475,9 @@
 			}
 		},
 		"Source": {
+			"metadata": {
+				"description": "Metadata describing the original source of this item"
+			},
 			"properties": {
 				"title": {
 					"type": "string",
@@ -386,6 +495,13 @@
 				},
 				"authors": {
 					"elements": {
+						"metadata": {
+							"examples": [
+								{
+									"name": "Shawn Tomkin"
+								}
+							]
+						},
 						"properties": {
 							"name": {
 								"type": "string",
@@ -411,13 +527,6 @@
 									"format": "uri"
 								}
 							}
-						},
-						"metadata": {
-							"examples": [
-								{
-									"name": "Shawn Tomkin"
-								}
-							]
 						}
 					},
 					"metadata": {
@@ -451,15 +560,12 @@
 			},
 			"optionalProperties": {
 				"page": {
-					"type": "int16",
 					"metadata": {
 						"description": "The page number where this item is described in full.",
 						"minimum": 1
-					}
+					},
+					"type": "int16"
 				}
-			},
-			"metadata": {
-				"description": "Metadata describing the original source of this item"
 			}
 		},
 		"Suggestions": {
@@ -613,16 +719,16 @@
 					}
 				},
 				"min": {
-					"type": "int16",
 					"metadata": {
 						"description": "The minimum value of this meter."
-					}
+					},
+					"type": "int16"
 				},
 				"max": {
-					"type": "int16",
 					"metadata": {
 						"description": "The maximum value of this meter."
-					}
+					},
+					"type": "int16"
 				}
 			}
 		},
@@ -635,11 +741,11 @@
 					"ref": "MarkdownString"
 				},
 				"contents": {
-					"values": {
-						"ref": "ImpactRule"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "ImpactRule"
 					}
 				}
 			}
@@ -668,35 +774,35 @@
 		"Rules": {
 			"properties": {
 				"stats": {
-					"values": {
-						"ref": "StatRule"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "StatRule"
 					}
 				},
 				"condition_meters": {
-					"values": {
-						"ref": "ConditionMeterRule"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "ConditionMeterRule"
 					}
 				},
 				"impacts": {
-					"values": {
-						"ref": "ImpactCategory"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "ImpactCategory"
 					}
 				},
 				"special_tracks": {
-					"values": {
-						"ref": "SpecialTrackRule"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "SpecialTrackRule"
 					}
 				}
 			}
@@ -754,6 +860,9 @@
 			}
 		},
 		"Npc": {
+			"metadata": {
+				"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged."
+			},
 			"properties": {
 				"id": {
 					"ref": "NpcId"
@@ -806,16 +915,13 @@
 					"ref": "MarkdownString"
 				},
 				"variants": {
-					"values": {
-						"ref": "NpcVariant"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "NpcVariant"
 					}
 				}
-			},
-			"metadata": {
-				"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged."
 			}
 		},
 		"NpcCollection": {
@@ -830,11 +936,11 @@
 					"ref": "Source"
 				},
 				"contents": {
-					"values": {
-						"ref": "Npc"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "Npc"
 					}
 				}
 			},
@@ -931,6 +1037,9 @@
 			}
 		},
 		"OracleRollTemplate": {
+			"metadata": {
+				"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID."
+			},
 			"properties": {},
 			"optionalProperties": {
 				"result": {
@@ -954,9 +1063,6 @@
 						"description": "A string template that may be used in place of OracleTableRow#description."
 					}
 				}
-			},
-			"metadata": {
-				"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID."
 			}
 		},
 		"OracleTableMatchBehavior": {
@@ -982,10 +1088,10 @@
 					}
 				},
 				"times": {
-					"type": "int16",
 					"metadata": {
 						"minimum": 1
-					}
+					},
+					"type": "int16"
 				},
 				"method": {
 					"ref": "OracleTableRollMethod"
@@ -1019,19 +1125,19 @@
 					"ref": "Source"
 				},
 				"contents": {
-					"values": {
-						"ref": "OracleTable"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "OracleTable"
 					}
 				},
 				"collections": {
-					"values": {
-						"ref": "OracleCollection"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "OracleCollection"
 					}
 				}
 			},
@@ -1079,11 +1185,11 @@
 		"OracleCollectionRendering": {
 			"properties": {
 				"columns": {
-					"values": {
-						"ref": "OracleCollectionTableColumn"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "OracleCollectionTableColumn"
 					}
 				}
 			},
@@ -1197,6 +1303,22 @@
 			}
 		},
 		"OracleTableColumn": {
+			"metadata": {
+				"examples": [
+					{
+						"name": "Roll",
+						"content_type": "roll"
+					},
+					{
+						"name": "Result",
+						"content_type": "result"
+					},
+					{
+						"name": "Summary",
+						"content_type": "summary"
+					}
+				]
+			},
 			"properties": {
 				"content_type": {
 					"ref": "OracleTableColumnContentKey"
@@ -1215,22 +1337,6 @@
 						"description": "The thematic color for this column."
 					}
 				}
-			},
-			"metadata": {
-				"examples": [
-					{
-						"name": "Roll",
-						"content_type": "roll"
-					},
-					{
-						"name": "Result",
-						"content_type": "result"
-					},
-					{
-						"name": "Summary",
-						"content_type": "summary"
-					}
-				]
 			}
 		},
 		"OracleTableColumnContentKey": {
@@ -1253,11 +1359,11 @@
 		"OracleTableRendering": {
 			"properties": {
 				"columns": {
-					"values": {
-						"ref": "OracleTableColumn"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "OracleTableColumn"
 					}
 				}
 			},
@@ -1432,10 +1538,10 @@
 							"ref": "Label"
 						},
 						"value": {
-							"type": "int16",
 							"metadata": {
 								"minimum": 0
-							}
+							},
+							"type": "int16"
 						}
 					}
 				}
@@ -1467,6 +1573,9 @@
 			"discriminator": "roll_type",
 			"mapping": {
 				"action_roll": {
+					"metadata": {
+						"description": "A move that makes an action roll."
+					},
 					"properties": {
 						"id": {
 							"ref": "MoveId"
@@ -1511,9 +1620,6 @@
 								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 							}
 						}
-					},
-					"metadata": {
-						"description": "A move that makes an action roll."
 					}
 				},
 				"no_roll": {
@@ -1564,6 +1670,9 @@
 					}
 				},
 				"progress_roll": {
+					"metadata": {
+						"description": "A progress move that rolls on a standard progress track type (defined by the move object)."
+					},
 					"properties": {
 						"id": {
 							"ref": "MoveId"
@@ -1623,9 +1732,6 @@
 								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 							}
 						}
-					},
-					"metadata": {
-						"description": "A progress move that rolls on a standard progress track type (defined by the move object)."
 					}
 				},
 				"special_track": {
@@ -1689,11 +1795,11 @@
 					"ref": "Source"
 				},
 				"contents": {
-					"values": {
-						"ref": "Move"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "Move"
 					}
 				}
 			},
@@ -1817,6 +1923,9 @@
 			}
 		},
 		"MoveOutcomes": {
+			"metadata": {
+				"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated."
+			},
 			"properties": {
 				"strong_hit": {
 					"ref": "MoveOutcome"
@@ -1827,9 +1936,6 @@
 				"miss": {
 					"ref": "MoveOutcome"
 				}
-			},
-			"metadata": {
-				"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated."
 			}
 		},
 		"MoveRollType": {
@@ -1975,6 +2081,9 @@
 			}
 		},
 		"TriggerBy": {
+			"metadata": {
+				"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
+			},
 			"properties": {
 				"player": {
 					"type": "boolean"
@@ -1982,9 +2091,6 @@
 				"ally": {
 					"type": "boolean"
 				}
-			},
-			"metadata": {
-				"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
 			}
 		},
 		"TriggerNoRoll": {
@@ -2010,10 +2116,10 @@
 					"nullable": true
 				},
 				"roll_options": {
-					"nullable": true,
 					"metadata": {
 						"description": "The options available when rolling with this trigger."
-					}
+					},
+					"nullable": true
 				}
 			},
 			"optionalProperties": {
@@ -2159,6 +2265,9 @@
 			}
 		},
 		"TriggerSpecialTrackConditionEnhancement": {
+			"metadata": {
+				"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged)."
+			},
 			"properties": {
 				"method": {
 					"ref": "SpecialTrackRollMethod",
@@ -2184,9 +2293,6 @@
 				"by": {
 					"ref": "TriggerBy"
 				}
-			},
-			"metadata": {
-				"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged)."
 			}
 		},
 		"TriggerSpecialTrackConditionOption": {
@@ -2267,24 +2373,24 @@
 					"ref": "CssColor"
 				},
 				"options": {
-					"values": {
-						"ref": "AssetOptionField"
-					},
 					"metadata": {
 						"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "AssetOptionField"
 					}
 				},
 				"requirement": {
 					"ref": "MarkdownString"
 				},
 				"controls": {
-					"values": {
-						"ref": "AssetControlField"
-					},
 					"metadata": {
 						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "AssetControlField"
 					}
 				},
 				"attachments": {
@@ -2312,30 +2418,30 @@
 					"ref": "Label"
 				},
 				"moves": {
-					"values": {
-						"ref": "Move"
-					},
 					"metadata": {
 						"description": "Unique moves added by this asset ability.",
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "Move"
 					}
 				},
 				"options": {
-					"values": {
-						"ref": "AssetAbilityOptionField"
-					},
 					"metadata": {
 						"description": "Fields that are expected to be set once and remain the same through the life of the asset.",
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "AssetAbilityOptionField"
 					}
 				},
 				"controls": {
-					"values": {
-						"ref": "AssetAbilityControlField"
-					},
 					"metadata": {
 						"description": "Fields whose values are expected to change over the life of the asset.",
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "AssetAbilityControlField"
 					}
 				},
 				"enhance_asset": {
@@ -2358,6 +2464,9 @@
 			"discriminator": "field_type",
 			"mapping": {
 				"clock": {
+					"metadata": {
+						"description": "A clock with 4, 6, 8, or 10 segments."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetAbilityControlFieldId"
@@ -2369,10 +2478,10 @@
 							}
 						},
 						"value": {
-							"type": "int16",
 							"metadata": {
 								"description": "The current number of filled clock segments."
-							}
+							},
+							"type": "int16"
 						},
 						"min": {
 							"type": "uint8",
@@ -2386,12 +2495,12 @@
 								"description": "The size of the clock -- in other words, the maximum number of filled clock segments."
 							}
 						}
-					},
-					"metadata": {
-						"description": "A clock with 4, 6, 8, or 10 segments."
 					}
 				},
 				"counter": {
+					"metadata": {
+						"description": "A counter that starts at zero, with an optional maximum value."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetAbilityControlFieldId"
@@ -2403,10 +2512,10 @@
 							}
 						},
 						"value": {
-							"type": "int16",
 							"metadata": {
 								"description": "The current value of this input."
-							}
+							},
+							"type": "int16"
 						},
 						"min": {
 							"type": "uint8",
@@ -2418,9 +2527,6 @@
 							"type": "int16",
 							"nullable": true
 						}
-					},
-					"metadata": {
-						"description": "A counter that starts at zero, with an optional maximum value."
 					}
 				},
 				"checkbox": {
@@ -2460,6 +2566,9 @@
 			"discriminator": "field_type",
 			"mapping": {
 				"text": {
+					"metadata": {
+						"description": "Represents an input that accepts plain text."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetAbilityOptionFieldId"
@@ -2474,14 +2583,14 @@
 							"type": "string",
 							"nullable": true
 						}
-					},
-					"metadata": {
-						"description": "Represents an input that accepts plain text."
 					}
 				}
 			}
 		},
 		"AssetAttachment": {
+			"metadata": {
+				"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info."
+			},
 			"properties": {
 				"assets": {
 					"elements": {
@@ -2492,15 +2601,12 @@
 					}
 				},
 				"max": {
-					"type": "int16",
 					"metadata": {
 						"minimum": 1
 					},
+					"type": "int16",
 					"nullable": true
 				}
-			},
-			"metadata": {
-				"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info."
 			}
 		},
 		"AssetConditionMeterControlField": {
@@ -2574,6 +2680,9 @@
 			"discriminator": "field_type",
 			"mapping": {
 				"condition_meter": {
+					"metadata": {
+						"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\"."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetControlFieldId"
@@ -2585,10 +2694,10 @@
 							}
 						},
 						"value": {
-							"type": "int16",
 							"metadata": {
 								"description": "The current value of this meter."
-							}
+							},
+							"type": "int16"
 						},
 						"min": {
 							"type": "uint8",
@@ -2597,14 +2706,17 @@
 							}
 						},
 						"max": {
-							"type": "int16",
 							"metadata": {
 								"description": "The maximum value of this meter."
-							}
+							},
+							"type": "int16"
 						}
 					},
 					"optionalProperties": {
 						"moves": {
+							"metadata": {
+								"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves."
+							},
 							"properties": {},
 							"optionalProperties": {
 								"suffer": {
@@ -2639,25 +2751,22 @@
 										"description": "The ID(s) of recovery moves associated with this meter."
 									}
 								}
-							},
-							"metadata": {
-								"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves."
 							}
 						},
 						"controls": {
-							"values": {
-								"ref": "AssetConditionMeterControlField"
-							},
 							"metadata": {
 								"propertyPattern": "^([a-z][a-z_]*)$"
+							},
+							"values": {
+								"ref": "AssetConditionMeterControlField"
 							}
 						}
-					},
-					"metadata": {
-						"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\"."
 					}
 				},
 				"select_enhancement": {
+					"metadata": {
+						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetControlFieldId"
@@ -2676,10 +2785,16 @@
 							"nullable": true
 						},
 						"choices": {
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
+							},
 							"values": {
 								"discriminator": "option_type",
 								"mapping": {
 									"option": {
+										"metadata": {
+											"description": "Represents an option in a list of choices."
+										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -2688,6 +2803,9 @@
 												}
 											},
 											"value": {
+												"metadata": {
+													"description": "The current value of this input."
+												},
 												"properties": {},
 												"optionalProperties": {
 													"enhance_asset": {
@@ -2698,9 +2816,6 @@
 															"ref": "MoveEnhancement"
 														}
 													}
-												},
-												"metadata": {
-													"description": "The current value of this input."
 												}
 											}
 										},
@@ -2711,12 +2826,12 @@
 													"description": "Is this option currently selected?"
 												}
 											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
 										}
 									},
 									"option_group": {
+										"metadata": {
+											"description": "Represents a grouping of options in a list of choices."
+										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -2725,7 +2840,13 @@
 												}
 											},
 											"choices": {
+												"metadata": {
+													"propertyPattern": "^([a-z][a-z_]*)$"
+												},
 												"values": {
+													"metadata": {
+														"description": "Represents an option in a list of choices."
+													},
 													"properties": {
 														"option_type": {
 															"enum": [
@@ -2739,6 +2860,9 @@
 															}
 														},
 														"value": {
+															"metadata": {
+																"description": "The current value of this input."
+															},
 															"properties": {},
 															"optionalProperties": {
 																"enhance_asset": {
@@ -2749,9 +2873,6 @@
 																		"ref": "MoveEnhancement"
 																	}
 																}
-															},
-															"metadata": {
-																"description": "The current value of this input."
 															}
 														}
 													},
@@ -2762,29 +2883,14 @@
 																"description": "Is this option currently selected?"
 															}
 														}
-													},
-													"metadata": {
-														"description": "Represents an option in a list of choices."
 													}
-												},
-												"metadata": {
-													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
-										},
-										"metadata": {
-											"description": "Represents a grouping of options in a list of choices."
 										}
 									}
 								}
-							},
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
-					},
-					"metadata": {
-						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
 					}
 				},
 				"checkbox": {
@@ -2855,30 +2961,33 @@
 			"discriminator": "field_type",
 			"mapping": {
 				"condition_meter": {
-					"properties": {
-						"max": {
-							"type": "int16",
-							"metadata": {
-								"description": "The maximum value of this meter."
-							}
-						}
-					},
 					"metadata": {
 						"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\"."
+					},
+					"properties": {
+						"max": {
+							"metadata": {
+								"description": "The maximum value of this meter."
+							},
+							"type": "int16"
+						}
 					}
 				}
 			}
 		},
 		"AssetEnhancement": {
+			"metadata": {
+				"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed."
+			},
 			"properties": {},
 			"optionalProperties": {
 				"controls": {
-					"values": {
-						"ref": "AssetControlFieldEnhancement"
-					},
 					"metadata": {
 						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "AssetControlFieldEnhancement"
 					}
 				},
 				"suggestions": {
@@ -2899,15 +3008,15 @@
 						"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 					}
 				}
-			},
-			"metadata": {
-				"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed."
 			}
 		},
 		"AssetOptionField": {
 			"discriminator": "field_type",
 			"mapping": {
 				"select_stat": {
+					"metadata": {
+						"description": "Represents a list of mutually exclusive choices."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetOptionFieldId"
@@ -2926,10 +3035,16 @@
 							"nullable": true
 						},
 						"choices": {
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
+							},
 							"values": {
 								"discriminator": "option_type",
 								"mapping": {
 									"option": {
+										"metadata": {
+											"description": "Represents an option in a list of choices."
+										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -2951,12 +3066,12 @@
 													"description": "Is this option currently selected?"
 												}
 											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
 										}
 									},
 									"option_group": {
+										"metadata": {
+											"description": "Represents a grouping of options in a list of choices."
+										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -2965,7 +3080,13 @@
 												}
 											},
 											"choices": {
+												"metadata": {
+													"propertyPattern": "^([a-z][a-z_]*)$"
+												},
 												"values": {
+													"metadata": {
+														"description": "Represents an option in a list of choices."
+													},
 													"properties": {
 														"option_type": {
 															"enum": [
@@ -2992,32 +3113,20 @@
 																"description": "Is this option currently selected?"
 															}
 														}
-													},
-													"metadata": {
-														"description": "Represents an option in a list of choices."
 													}
-												},
-												"metadata": {
-													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
-										},
-										"metadata": {
-											"description": "Represents a grouping of options in a list of choices."
 										}
 									}
 								}
-							},
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
-					},
-					"metadata": {
-						"description": "Represents a list of mutually exclusive choices."
 					}
 				},
 				"select_enhancement": {
+					"metadata": {
+						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetOptionFieldId"
@@ -3036,10 +3145,16 @@
 							"nullable": true
 						},
 						"choices": {
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
+							},
 							"values": {
 								"discriminator": "option_type",
 								"mapping": {
 									"option": {
+										"metadata": {
+											"description": "Represents an option in a list of choices."
+										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -3048,6 +3163,9 @@
 												}
 											},
 											"value": {
+												"metadata": {
+													"description": "The current value of this input."
+												},
 												"properties": {},
 												"optionalProperties": {
 													"enhance_asset": {
@@ -3058,9 +3176,6 @@
 															"ref": "MoveEnhancement"
 														}
 													}
-												},
-												"metadata": {
-													"description": "The current value of this input."
 												}
 											}
 										},
@@ -3071,12 +3186,12 @@
 													"description": "Is this option currently selected?"
 												}
 											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
 										}
 									},
 									"option_group": {
+										"metadata": {
+											"description": "Represents a grouping of options in a list of choices."
+										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -3085,7 +3200,13 @@
 												}
 											},
 											"choices": {
+												"metadata": {
+													"propertyPattern": "^([a-z][a-z_]*)$"
+												},
 												"values": {
+													"metadata": {
+														"description": "Represents an option in a list of choices."
+													},
 													"properties": {
 														"option_type": {
 															"enum": [
@@ -3099,6 +3220,9 @@
 															}
 														},
 														"value": {
+															"metadata": {
+																"description": "The current value of this input."
+															},
 															"properties": {},
 															"optionalProperties": {
 																"enhance_asset": {
@@ -3109,9 +3233,6 @@
 																		"ref": "MoveEnhancement"
 																	}
 																}
-															},
-															"metadata": {
-																"description": "The current value of this input."
 															}
 														}
 													},
@@ -3122,32 +3243,20 @@
 																"description": "Is this option currently selected?"
 															}
 														}
-													},
-													"metadata": {
-														"description": "Represents an option in a list of choices."
 													}
-												},
-												"metadata": {
-													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
-										},
-										"metadata": {
-											"description": "Represents a grouping of options in a list of choices."
 										}
 									}
 								}
-							},
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
-					},
-					"metadata": {
-						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
 					}
 				},
 				"text": {
+					"metadata": {
+						"description": "Represents an input that accepts plain text."
+					},
 					"properties": {
 						"id": {
 							"ref": "AssetOptionFieldId"
@@ -3162,9 +3271,6 @@
 							"type": "string",
 							"nullable": true
 						}
-					},
-					"metadata": {
-						"description": "Represents an input that accepts plain text."
 					}
 				}
 			}
@@ -3181,11 +3287,11 @@
 					"ref": "Source"
 				},
 				"contents": {
-					"values": {
-						"ref": "Asset"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "Asset"
 					}
 				}
 			},
@@ -3228,6 +3334,9 @@
 			}
 		},
 		"Truth": {
+			"metadata": {
+				"description": "A setting truth category."
+			},
 			"properties": {
 				"id": {
 					"ref": "TruthId"
@@ -3257,9 +3366,6 @@
 				"your_character": {
 					"ref": "MarkdownString"
 				}
-			},
-			"metadata": {
-				"description": "A setting truth category."
 			}
 		},
 		"TruthOption": {
@@ -3346,19 +3452,19 @@
 					"ref": "Source"
 				},
 				"contents": {
-					"values": {
-						"ref": "AtlasEntry"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "AtlasEntry"
 					}
 				},
 				"collections": {
-					"values": {
-						"ref": "Atlas"
-					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"ref": "Atlas"
 					}
 				}
 			},
@@ -3401,6 +3507,9 @@
 			}
 		},
 		"AtlasEntry": {
+			"metadata": {
+				"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn."
+			},
 			"properties": {
 				"id": {
 					"ref": "AtlasEntryId"
@@ -3436,9 +3545,6 @@
 				"your_truth": {
 					"ref": "MarkdownString"
 				}
-			},
-			"metadata": {
-				"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn."
 			}
 		},
 		"PlayerConditionMeter": {
@@ -3466,6 +3572,9 @@
 			}
 		},
 		"Rarity": {
+			"metadata": {
+				"description": "A rarity, as described in Ironsworn: Delve."
+			},
 			"properties": {
 				"id": {
 					"ref": "RarityId"
@@ -3483,12 +3592,12 @@
 					}
 				},
 				"xp_cost": {
-					"type": "int16",
 					"metadata": {
 						"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
 						"maximum": 5,
 						"minimum": 3
-					}
+					},
+					"type": "int16"
 				},
 				"description": {
 					"ref": "MarkdownString"
@@ -3504,12 +3613,12 @@
 				"icon": {
 					"ref": "SvgImageUrl"
 				}
-			},
-			"metadata": {
-				"description": "A rarity, as described in Ironsworn: Delve."
 			}
 		},
 		"DelveSite": {
+			"metadata": {
+				"description": "A delve site with a theme, domain, and denizen table."
+			},
 			"properties": {
 				"id": {
 					"ref": "DelveSiteId"
@@ -3560,9 +3669,6 @@
 						"description": "An additional theme or domain card ID, for use with optional rules in Ironsworn: Delve."
 					}
 				}
-			},
-			"metadata": {
-				"description": "A delve site with a theme, domain, and denizen table."
 			}
 		},
 		"DelveSiteDenizen": {
@@ -3658,16 +3764,16 @@
 					"ref": "DomainDangerRowId"
 				},
 				"min": {
-					"type": "int16",
 					"metadata": {
 						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"max": {
-					"type": "int16",
 					"metadata": {
 						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"result": {
 					"ref": "MarkdownString"
@@ -3708,16 +3814,16 @@
 					"ref": "DomainFeatureRowId"
 				},
 				"min": {
-					"type": "int16",
 					"metadata": {
 						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"max": {
-					"type": "int16",
 					"metadata": {
 						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"result": {
 					"ref": "MarkdownString"
@@ -3803,16 +3909,16 @@
 					"ref": "ThemeDangerRowId"
 				},
 				"min": {
-					"type": "int16",
 					"metadata": {
 						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"max": {
-					"type": "int16",
 					"metadata": {
 						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"result": {
 					"ref": "MarkdownString"
@@ -3853,16 +3959,16 @@
 					"ref": "ThemeFeatureRowId"
 				},
 				"min": {
-					"type": "int16",
 					"metadata": {
 						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"max": {
-					"type": "int16",
 					"metadata": {
 						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					}
+					},
+					"type": "int16"
 				},
 				"result": {
 					"ref": "MarkdownString"

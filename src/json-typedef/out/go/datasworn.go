@@ -7,7 +7,49 @@ import (
 	"fmt"
 )
 
-type Datasworn = interface{}
+// Describes game rules compatible with the Ironsworn tabletop role-playing game
+// by Shawn Tomkin.
+type Ruleset struct {
+	ID NamespaceID `json:"id"`
+
+	Source Source `json:"source"`
+
+	// A dictionary object containing asset types, which contain assets.
+	Assets map[string]AssetType `json:"assets,omitempty"`
+
+	// A dictionary object containing atlas collections, which contain atlas
+	// entries.
+	Atlas map[string]Atlas `json:"atlas,omitempty"`
+
+	// A dictionary object of delve sites, like the premade delve sites presented
+	// in Ironsworn: Delve
+	DelveSites map[string]DelveSite `json:"delve_sites,omitempty"`
+
+	// A dictionary object containing move categories, which contain moves.
+	Moves map[string]MoveCategory `json:"moves,omitempty"`
+
+	// A dictionary object containing NPC collections, which contain NPCs.
+	Npcs map[string]NpcCollection `json:"npcs,omitempty"`
+
+	// A dictionary object containing oracle collections, which may contain oracle
+	// tables and/or oracle collections.
+	Oracles map[string]OracleCollection `json:"oracles,omitempty"`
+
+	// A dictionary object containing rarities, like those presented in Ironsworn:
+	// Delve.
+	Rarities map[string]Rarity `json:"rarities,omitempty"`
+
+	Rules *Rules `json:"rules,omitempty"`
+
+	// A dictionary object containing delve site domains.
+	SiteDomains map[string]DelveSiteDomain `json:"site_domains,omitempty"`
+
+	// A dictionary object containing delve site themes.
+	SiteThemes map[string]DelveSiteTheme `json:"site_themes,omitempty"`
+
+	// A dictionary object of truth categories.
+	Truths map[string]Truth `json:"truths,omitempty"`
+}
 
 type ActionRollMethod string
 

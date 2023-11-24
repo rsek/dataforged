@@ -18,7 +18,7 @@ import {
 } from '@sinclair/typebox'
 import * as JTD from 'jtd'
 
-import { cloneDeep, inRange, merge, pick, set } from 'lodash-es'
+import { cloneDeep, merge, omitBy, pick, set } from 'lodash-es'
 import { TNullable } from '../schema/datasworn/utils/typebox.js'
 import { log } from '../scripts/utils/logger.js'
 import {
@@ -32,9 +32,10 @@ import { Discriminator, Members } from './symbol.js'
 import { JsonTypeDef } from './symbol.js'
 import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
 import { DictionaryBrand } from '../schema/datasworn/utils/Generic.js'
+import { TRoot } from '../schema/datasworn/root/SchemaRoot.js'
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
-export function getMetadata<T extends TAnySchema>(schema: T) {
+export function extractMetadata<T extends TAnySchema>(schema: T) {
 	const metadata = pick(
 		cloneDeep(schema),
 		// general
@@ -85,7 +86,7 @@ export function toJtdEnum<U extends string[], T extends TJsonEnum<U>>(
 ) {
 	return {
 		enum: schema.enum,
-		metadata: getMetadata(schema)
+		metadata: extractMetadata(schema)
 	} as unknown as JTDSchemaType<Static<T>>
 }
 
@@ -93,7 +94,7 @@ export function toJtdRef<T extends TSchema>(schema: TRef<T>) {
 	const ref = schema.$ref.replace('#/$defs/', '')
 	type RefName = typeof ref
 
-	return { ref, metadata: getMetadata(schema) } as unknown as JTDSchemaType<
+	return { ref, metadata: extractMetadata(schema) } as unknown as JTDSchemaType<
 		Static<T>,
 		Record<RefName, T>
 	>
@@ -104,7 +105,7 @@ export function toJtdString<T extends TString>(
 ): JTDSchemaType<string> {
 	return {
 		type: 'string',
-		metadata: getMetadata(schema)
+		metadata: extractMetadata(schema)
 	}
 }
 
@@ -113,7 +114,7 @@ export function toJtdBoolean<T extends TBoolean>(
 ): JTDSchemaType<boolean> {
 	return {
 		type: 'boolean',
-		metadata: getMetadata(schema)
+		metadata: extractMetadata(schema)
 	}
 }
 
@@ -121,7 +122,7 @@ export function toJtdBoolean<T extends TBoolean>(
 export function toJtdElements<T extends TArray>(schema: T) {
 	return {
 		elements: toJtdForm(schema.items as any),
-		metadata: getMetadata(schema)
+		metadata: extractMetadata(schema)
 	} as JTDSchemaType<Array<Static<T>[number]>>
 }
 
@@ -145,13 +146,13 @@ export function toJtdProperties<T extends TObject>(schema: T) {
 	}
 
 	return {
+		metadata: extractMetadata(schema),
 		properties,
 		optionalProperties:
 			Object.keys(optionalProperties).length > 0
 				? optionalProperties
 				: undefined,
-		additionalProperties: schema.additionalProperties,
-		metadata: getMetadata(schema)
+		additionalProperties: schema.additionalProperties
 	} as unknown as JTDSchemaType<Static<T>>
 }
 
@@ -168,11 +169,11 @@ export function toJtdValues<
 	const [propertyPattern, values] = Object.entries(schema.patternProperties)[0]
 
 	return {
-		values: toJtdForm(values as any),
 		metadata: {
-			...getMetadata(schema),
+			...extractMetadata(schema),
 			propertyPattern
-		}
+		},
+		values: toJtdForm(values as any)
 		// TODO: metadata property describing the key pattern w/ patternproperties
 	} as any
 }
@@ -186,15 +187,15 @@ function isStringEnum(schema: TSchema): schema is TJsonEnum<string[]> {
 
 export function toJtdInteger<T extends TInteger>(schema: T) {
 	const typedef: JTDSchemaType<number> = {
-		type: 'int16', // reasonably safe fallback
-		metadata: getMetadata(schema)
+		metadata: extractMetadata(schema),
+		type: 'int16' // reasonably safe fallback
 	}
 	return typedef
 }
 export function toJtdFloat<T extends TNumber>(schema: T) {
 	const typedef: JTDSchemaType<number> = {
-		type: 'float32',
-		metadata: getMetadata(schema)
+		metadata: extractMetadata(schema),
+		type: 'float32'
 	}
 
 	return typedef
@@ -204,9 +205,9 @@ export function toJtdSingleEnum<T extends TLiteral>(schema: T) {
 	if (typeof schema.const === 'number')
 		throw new Error(`Got a number literal from ${schema.$id}`)
 
-	const metadata = getMetadata(schema)
+	const metadata = extractMetadata(schema)
 
-	return { enum: [schema.const], metadata }
+	return { metadata, enum: [schema.const] }
 }
 
 export function toJtdNullable<T extends TNullable<U>, U extends TSchema>(
@@ -222,7 +223,7 @@ export function toJtdNullable<T extends TNullable<U>, U extends TSchema>(
 }
 
 export function toJtdNull(schema: TNull) {
-	return { nullable: true, metadata: getMetadata(schema) }
+	return { metadata: extractMetadata(schema), nullable: true }
 }
 
 export function toJtdDiscriminator<T extends TDiscriminatedUnion<any, any[]>>(
@@ -233,7 +234,7 @@ export function toJtdDiscriminator<T extends TDiscriminatedUnion<any, any[]>>(
 
 	const mapping = {} as Record<string, any>
 
-	const metadata = getMetadata(schema)
+	const metadata = extractMetadata(schema)
 
 	// console.log(schema[Members])
 
@@ -246,9 +247,9 @@ export function toJtdDiscriminator<T extends TDiscriminatedUnion<any, any[]>>(
 	// console.log(mapping)
 
 	const form = {
+		metadata,
 		discriminator,
-		mapping,
-		metadata
+		mapping
 	} as any
 
 	return form as JTDSchemaType<Static<T>>
@@ -311,7 +312,7 @@ function toJtdForm<T extends TSchema>(
 		case schema[JsonTypeDef]?.schema != null:
 			// @ts-expect-error
 			return merge(cloneDeep(schema[JsonTypeDef].schema), {
-				metadata: getMetadata(schema)
+				metadata: extractMetadata(schema)
 			})
 		case TypeGuard.TLiteral(schema):
 			result = toJtdSingleEnum(schema)
@@ -366,7 +367,7 @@ function toJtdForm<T extends TSchema>(
 			)
 				result = {
 					type: 'uint8',
-					metadata: getMetadata(schema)
+					metadata: extractMetadata(schema)
 				} as any
 			break
 	}
@@ -381,18 +382,20 @@ function toJtdForm<T extends TSchema>(
 	return result as any
 }
 
-export function toJtdModule<T extends Record<string, TSchema>>(ns: T) {
-	const result = {} as { [K in keyof T]: JTD.Schema }
+export function toJtdRoot<T extends TRoot>(schemaRoot: T) {
+	const definitions = {} as { [K in keyof T['$defs']]: JTD.Schema }
 
-	for (const k in ns)
+	for (const k in schemaRoot.$defs)
 		try {
-			// @ts-expect-error
-			result[k] = toJtdForm(ns[k])
+			definitions[k] = toJtdForm(schemaRoot.$defs[k])
 		} catch (err) {
-			log.error(`Couldn't convert ${ns[k].$id}`, err)
+			log.error(`Couldn't convert ${schemaRoot.$defs[k].$id}`, err)
 		}
 
-	return result
+	return {
+		...toJtdProperties(schemaRoot),
+		definitions: omitBy(definitions, (v) => typeof v === 'undefined')
+	}
 }
 
 export { toJtdForm }

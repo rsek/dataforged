@@ -4,7 +4,74 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
 
-pub type Datasworn = Option<Value>;
+/// Describes game rules compatible with the Ironsworn tabletop role-playing
+/// game by Shawn Tomkin.
+#[derive(Serialize, Deserialize)]
+pub struct Ruleset {
+    #[serde(rename = "id")]
+    pub id: NamespaceId,
+
+    #[serde(rename = "source")]
+    pub source: Source,
+
+    /// A dictionary object containing asset types, which contain assets.
+    #[serde(rename = "assets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub assets: Option<Box<HashMap<String, AssetType>>>,
+
+    /// A dictionary object containing atlas collections, which contain atlas
+    /// entries.
+    #[serde(rename = "atlas")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub atlas: Option<Box<HashMap<String, Atlas>>>,
+
+    /// A dictionary object of delve sites, like the premade delve sites
+    /// presented in Ironsworn: Delve
+    #[serde(rename = "delve_sites")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub delveSites: Option<Box<HashMap<String, DelveSite>>>,
+
+    /// A dictionary object containing move categories, which contain moves.
+    #[serde(rename = "moves")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub moves: Option<Box<HashMap<String, MoveCategory>>>,
+
+    /// A dictionary object containing NPC collections, which contain NPCs.
+    #[serde(rename = "npcs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub npcs: Option<Box<HashMap<String, NpcCollection>>>,
+
+    /// A dictionary object containing oracle collections, which may contain
+    /// oracle tables and/or oracle collections.
+    #[serde(rename = "oracles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub oracles: Option<Box<HashMap<String, OracleCollection>>>,
+
+    /// A dictionary object containing rarities, like those presented in
+    /// Ironsworn: Delve.
+    #[serde(rename = "rarities")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rarities: Option<Box<HashMap<String, Rarity>>>,
+
+    #[serde(rename = "rules")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rules: Option<Box<Rules>>,
+
+    /// A dictionary object containing delve site domains.
+    #[serde(rename = "site_domains")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub siteDomains: Option<Box<HashMap<String, DelveSiteDomain>>>,
+
+    /// A dictionary object containing delve site themes.
+    #[serde(rename = "site_themes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub siteThemes: Option<Box<HashMap<String, DelveSiteTheme>>>,
+
+    /// A dictionary object of truth categories.
+    #[serde(rename = "truths")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub truths: Option<Box<HashMap<String, Truth>>>,
+}
 
 #[derive(Serialize, Deserialize)]
 pub enum ActionRollMethod {

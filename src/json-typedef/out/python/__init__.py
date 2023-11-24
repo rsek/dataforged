@@ -8,15 +8,115 @@ from typing import Any, Dict, List, Optional, Type, Union, get_args, get_origin
 
 
 @dataclass
-class Datasworn:
-    value: 'Any'
+class Ruleset:
+    """
+    Describes game rules compatible with the Ironsworn tabletop role-playing
+    game by Shawn Tomkin.
+    """
+
+    id: 'NamespaceID'
+    source: 'Source'
+    assets: 'Optional[Dict[str, AssetType]]'
+    """
+    A dictionary object containing asset types, which contain assets.
+    """
+
+    atlas: 'Optional[Dict[str, Atlas]]'
+    """
+    A dictionary object containing atlas collections, which contain atlas
+    entries.
+    """
+
+    delve_sites: 'Optional[Dict[str, DelveSite]]'
+    """
+    A dictionary object of delve sites, like the premade delve sites presented
+    in Ironsworn: Delve
+    """
+
+    moves: 'Optional[Dict[str, MoveCategory]]'
+    """
+    A dictionary object containing move categories, which contain moves.
+    """
+
+    npcs: 'Optional[Dict[str, NpcCollection]]'
+    """
+    A dictionary object containing NPC collections, which contain NPCs.
+    """
+
+    oracles: 'Optional[Dict[str, OracleCollection]]'
+    """
+    A dictionary object containing oracle collections, which may contain oracle
+    tables and/or oracle collections.
+    """
+
+    rarities: 'Optional[Dict[str, Rarity]]'
+    """
+    A dictionary object containing rarities, like those presented in Ironsworn:
+    Delve.
+    """
+
+    rules: 'Optional[Rules]'
+    site_domains: 'Optional[Dict[str, DelveSiteDomain]]'
+    """
+    A dictionary object containing delve site domains.
+    """
+
+    site_themes: 'Optional[Dict[str, DelveSiteTheme]]'
+    """
+    A dictionary object containing delve site themes.
+    """
+
+    truths: 'Optional[Dict[str, Truth]]'
+    """
+    A dictionary object of truth categories.
+    """
+
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Datasworn':
-        return cls(_from_json_data(Any, data))
+    def from_json_data(cls, data: Any) -> 'Ruleset':
+        return cls(
+            _from_json_data(NamespaceID, data.get("id")),
+            _from_json_data(Source, data.get("source")),
+            _from_json_data(Optional[Dict[str, AssetType]], data.get("assets")),
+            _from_json_data(Optional[Dict[str, Atlas]], data.get("atlas")),
+            _from_json_data(Optional[Dict[str, DelveSite]], data.get("delve_sites")),
+            _from_json_data(Optional[Dict[str, MoveCategory]], data.get("moves")),
+            _from_json_data(Optional[Dict[str, NpcCollection]], data.get("npcs")),
+            _from_json_data(Optional[Dict[str, OracleCollection]], data.get("oracles")),
+            _from_json_data(Optional[Dict[str, Rarity]], data.get("rarities")),
+            _from_json_data(Optional[Rules], data.get("rules")),
+            _from_json_data(Optional[Dict[str, DelveSiteDomain]], data.get("site_domains")),
+            _from_json_data(Optional[Dict[str, DelveSiteTheme]], data.get("site_themes")),
+            _from_json_data(Optional[Dict[str, Truth]], data.get("truths")),
+        )
 
     def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
+        data: Dict[str, Any] = {}
+        data["id"] = _to_json_data(self.id)
+        data["source"] = _to_json_data(self.source)
+        if self.assets is not None:
+             data["assets"] = _to_json_data(self.assets)
+        if self.atlas is not None:
+             data["atlas"] = _to_json_data(self.atlas)
+        if self.delve_sites is not None:
+             data["delve_sites"] = _to_json_data(self.delve_sites)
+        if self.moves is not None:
+             data["moves"] = _to_json_data(self.moves)
+        if self.npcs is not None:
+             data["npcs"] = _to_json_data(self.npcs)
+        if self.oracles is not None:
+             data["oracles"] = _to_json_data(self.oracles)
+        if self.rarities is not None:
+             data["rarities"] = _to_json_data(self.rarities)
+        if self.rules is not None:
+             data["rules"] = _to_json_data(self.rules)
+        if self.site_domains is not None:
+             data["site_domains"] = _to_json_data(self.site_domains)
+        if self.site_themes is not None:
+             data["site_themes"] = _to_json_data(self.site_themes)
+        if self.truths is not None:
+             data["truths"] = _to_json_data(self.truths)
+        return data
 
 class ActionRollMethod(Enum):
     ALL = "all"

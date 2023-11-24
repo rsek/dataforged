@@ -5,17 +5,81 @@ require 'time'
 
 module Datasworn
 
-  class Datasworn
-    attr_accessor :value
+  # Describes game rules compatible with the Ironsworn tabletop role-playing
+  # game by Shawn Tomkin.
+  class Ruleset
+    attr_accessor :id
+    attr_accessor :source
+
+    # A dictionary object containing asset types, which contain assets.
+    attr_accessor :assets
+
+    # A dictionary object containing atlas collections, which contain atlas
+    # entries.
+    attr_accessor :atlas
+
+    # A dictionary object of delve sites, like the premade delve sites presented
+    # in Ironsworn: Delve
+    attr_accessor :delve_sites
+
+    # A dictionary object containing move categories, which contain moves.
+    attr_accessor :moves
+
+    # A dictionary object containing NPC collections, which contain NPCs.
+    attr_accessor :npcs
+
+    # A dictionary object containing oracle collections, which may contain
+    # oracle tables and/or oracle collections.
+    attr_accessor :oracles
+
+    # A dictionary object containing rarities, like those presented in
+    # Ironsworn: Delve.
+    attr_accessor :rarities
+    attr_accessor :rules
+
+    # A dictionary object containing delve site domains.
+    attr_accessor :site_domains
+
+    # A dictionary object containing delve site themes.
+    attr_accessor :site_themes
+
+    # A dictionary object of truth categories.
+    attr_accessor :truths
 
     def self.from_json_data(data)
-      out = Datasworn.new
-      out.value = Datasworn.from_json_data(Object, data)
+      out = Ruleset.new
+      out.id = Datasworn::from_json_data(NamespaceID, data["id"])
+      out.source = Datasworn::from_json_data(Source, data["source"])
+      out.assets = Datasworn::from_json_data(Hash[String, AssetType], data["assets"])
+      out.atlas = Datasworn::from_json_data(Hash[String, Atlas], data["atlas"])
+      out.delve_sites = Datasworn::from_json_data(Hash[String, DelveSite], data["delve_sites"])
+      out.moves = Datasworn::from_json_data(Hash[String, MoveCategory], data["moves"])
+      out.npcs = Datasworn::from_json_data(Hash[String, NpcCollection], data["npcs"])
+      out.oracles = Datasworn::from_json_data(Hash[String, OracleCollection], data["oracles"])
+      out.rarities = Datasworn::from_json_data(Hash[String, Rarity], data["rarities"])
+      out.rules = Datasworn::from_json_data(Rules, data["rules"])
+      out.site_domains = Datasworn::from_json_data(Hash[String, DelveSiteDomain], data["site_domains"])
+      out.site_themes = Datasworn::from_json_data(Hash[String, DelveSiteTheme], data["site_themes"])
+      out.truths = Datasworn::from_json_data(Hash[String, Truth], data["truths"])
       out
     end
 
     def to_json_data
-      Datasworn.to_json_data(value)
+      data = {}
+      data["id"] = Datasworn::to_json_data(id)
+      data["source"] = Datasworn::to_json_data(source)
+      data["assets"] = Datasworn::to_json_data(assets) unless assets.nil?
+      data["atlas"] = Datasworn::to_json_data(atlas) unless atlas.nil?
+      data["delve_sites"] = Datasworn::to_json_data(delve_sites) unless delve_sites.nil?
+      data["moves"] = Datasworn::to_json_data(moves) unless moves.nil?
+      data["npcs"] = Datasworn::to_json_data(npcs) unless npcs.nil?
+      data["oracles"] = Datasworn::to_json_data(oracles) unless oracles.nil?
+      data["rarities"] = Datasworn::to_json_data(rarities) unless rarities.nil?
+      data["rules"] = Datasworn::to_json_data(rules) unless rules.nil?
+      data["site_domains"] = Datasworn::to_json_data(site_domains) unless site_domains.nil?
+      data["site_themes"] = Datasworn::to_json_data(site_themes) unless site_themes.nil?
+      data["truths"] = Datasworn::to_json_data(truths) unless truths.nil?
+      data
     end
   end
 
