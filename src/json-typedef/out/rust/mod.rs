@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
 
-pub type Dataforged = Option<Value>;
+pub type Datasworn = Option<Value>;
 
 #[derive(Serialize, Deserialize)]
 pub enum ActionRollMethod {

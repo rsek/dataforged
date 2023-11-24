@@ -10,6 +10,7 @@ import { Datasworn } from '../schema/datasworn/index.js'
 
 const definitions = toJtdModule(Datasworn.$defs) as Record<string, JTD.Schema>
 
+
 const root: JTD.Schema = JSON.parse(JSON.stringify({ definitions }))
 
 const referenceNames = new Set<string>()
@@ -31,7 +32,7 @@ for (const name of referenceNames)
 const json = JSON.stringify(root, undefined, '\t')
 const filePath = path.join(
 	process.cwd(),
-	'src/json-typedef/out/dataforged.jtd.json'
+	'src/json-typedef/out/datasworn.jtd.json'
 )
 
 fs.writeFile(filePath, json).then(() => {

@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-type Dataforged = interface{}
+type Datasworn = interface{}
 
 type ActionRollMethod string
 

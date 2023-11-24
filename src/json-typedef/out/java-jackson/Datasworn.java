@@ -5,15 +5,15 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public class Dataforged {
+public class Datasworn {
     @JsonValue
     private Object value;
 
-    public Dataforged() {
+    public Datasworn() {
     }
 
     @JsonCreator
-    public Dataforged(Object value) {
+    public Datasworn(Object value) {
         this.value = value;
     }
 

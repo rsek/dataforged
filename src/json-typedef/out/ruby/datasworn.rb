@@ -5,11 +5,11 @@ require 'time'
 
 module Datasworn
 
-  class Dataforged
+  class Datasworn
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = Dataforged.new
+      out = Datasworn.new
       out.value = Datasworn.from_json_data(Object, data)
       out
     end

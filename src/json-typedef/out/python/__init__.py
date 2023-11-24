@@ -8,11 +8,11 @@ from typing import Any, Dict, List, Optional, Type, Union, get_args, get_origin
 
 
 @dataclass
-class Dataforged:
+class Datasworn:
     value: 'Any'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Dataforged':
+    def from_json_data(cls, data: Any) -> 'Datasworn':
         return cls(_from_json_data(Any, data))
 
     def to_json_data(self) -> Any:
