@@ -278,9 +278,9 @@ module Datasworn
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.attachments = Datasworn::from_json_data(AssetAttachment, data["attachments"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.controls = Datasworn::from_json_data(Hash[String, AssetControlField], data["controls"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.options = Datasworn::from_json_data(Hash[String, AssetOptionField], data["options"])
       out.requirement = Datasworn::from_json_data(MarkdownString, data["requirement"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
@@ -1499,11 +1499,11 @@ module Datasworn
       out.name = Datasworn::from_json_data(Label, data["name"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.enhances = Datasworn::from_json_data(AssetTypeID, data["enhances"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
-      out.images = Datasworn::from_json_data(Array[WebpimageURL], data["images"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
+      out.images = Datasworn::from_json_data(Array[WebpImageURL], data["images"])
       out.replaces = Datasworn::from_json_data(AssetTypeID, data["replaces"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -1573,11 +1573,11 @@ module Datasworn
       out.name = Datasworn::from_json_data(Label, data["name"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.enhances = Datasworn::from_json_data(AtlasID, data["enhances"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
-      out.images = Datasworn::from_json_data(Array[WebpimageURL], data["images"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
+      out.images = Datasworn::from_json_data(Array[WebpImageURL], data["images"])
       out.replaces = Datasworn::from_json_data(AtlasID, data["replaces"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -1705,22 +1705,6 @@ module Datasworn
     end
   end
 
-  # A CSS color value. See: https://developer.mozilla.org/en-
-  # US/docs/Web/CSS/color_value
-  class Csscolor
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = Csscolor.new
-      out.value = Datasworn.from_json_data(String, data)
-      out
-    end
-
-    def to_json_data
-      Datasworn.to_json_data(value)
-    end
-  end
-
   # Challenge rank, represented as an integer:
   class ChallengeRank
     attr_accessor :value
@@ -1786,6 +1770,22 @@ module Datasworn
     end
   end
 
+  # A CSS color value. See: https://developer.mozilla.org/en-
+  # US/docs/Web/CSS/color_value
+  class CSSColor
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = CSSColor.new
+      out.value = Datasworn.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Datasworn.to_json_data(value)
+    end
+  end
+
   # A delve site with a theme, domain, and denizen table.
   class DelveSite
     attr_accessor :denizens
@@ -1820,7 +1820,7 @@ module Datasworn
       out.theme = Datasworn::from_json_data(DelveSiteThemeID, data["theme"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
       out.extra_card = Datasworn::from_json_data(String, data["extra_card"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.region = Datasworn::from_json_data(AtlasEntryID, data["region"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out
@@ -1975,7 +1975,7 @@ module Datasworn
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.name_oracle = Datasworn::from_json_data(OracleTableID, data["name_oracle"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out
@@ -2028,7 +2028,7 @@ module Datasworn
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.embed_table = Datasworn::from_json_data(OracleTableID, data["embed_table"])
       out.i18n = Datasworn::from_json_data(I18nHints, data["i18n"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.rolls = Datasworn::from_json_data(Array[OracleTableRoll], data["rolls"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -2083,7 +2083,7 @@ module Datasworn
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.embed_table = Datasworn::from_json_data(OracleTableID, data["embed_table"])
       out.i18n = Datasworn::from_json_data(I18nHints, data["i18n"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.rolls = Datasworn::from_json_data(Array[OracleTableRoll], data["rolls"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -2183,7 +2183,7 @@ module Datasworn
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out
     end
@@ -2234,7 +2234,7 @@ module Datasworn
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.embed_table = Datasworn::from_json_data(OracleTableID, data["embed_table"])
       out.i18n = Datasworn::from_json_data(I18nHints, data["i18n"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.rolls = Datasworn::from_json_data(Array[OracleTableRoll], data["rolls"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -2289,7 +2289,7 @@ module Datasworn
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.embed_table = Datasworn::from_json_data(OracleTableID, data["embed_table"])
       out.i18n = Datasworn::from_json_data(I18nHints, data["i18n"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.rolls = Datasworn::from_json_data(Array[OracleTableRoll], data["rolls"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -2784,11 +2784,11 @@ module Datasworn
       out.name = Datasworn::from_json_data(Label, data["name"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.enhances = Datasworn::from_json_data(MoveCategoryID, data["enhances"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
-      out.images = Datasworn::from_json_data(Array[WebpimageURL], data["images"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
+      out.images = Datasworn::from_json_data(Array[WebpImageURL], data["images"])
       out.replaces = Datasworn::from_json_data(MoveCategoryID, data["replaces"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -3153,11 +3153,11 @@ module Datasworn
       out.name = Datasworn::from_json_data(Label, data["name"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.enhances = Datasworn::from_json_data(NpcCollectionID, data["enhances"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
-      out.images = Datasworn::from_json_data(Array[WebpimageURL], data["images"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
+      out.images = Datasworn::from_json_data(Array[WebpImageURL], data["images"])
       out.replaces = Datasworn::from_json_data(NpcCollectionID, data["replaces"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -3321,11 +3321,11 @@ module Datasworn
       out.name = Datasworn::from_json_data(Label, data["name"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.enhances = Datasworn::from_json_data(OracleCollectionID, data["enhances"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
-      out.images = Datasworn::from_json_data(Array[WebpimageURL], data["images"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
+      out.images = Datasworn::from_json_data(Array[WebpImageURL], data["images"])
       out.rendering = Datasworn::from_json_data(OracleCollectionRendering, data["rendering"])
       out.replaces = Datasworn::from_json_data(OracleCollectionID, data["replaces"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
@@ -3376,7 +3376,7 @@ module Datasworn
     def self.from_json_data(data)
       out = OracleCollectionRendering.new
       out.columns = Datasworn::from_json_data(Hash[String, OracleCollectionTableColumn], data["columns"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.table_style = Datasworn::from_json_data(OracleCollectionStyle, data["table_style"])
       out
     end
@@ -3431,7 +3431,7 @@ module Datasworn
       out = OracleCollectionTableColumn.new
       out.content_type = Datasworn::from_json_data(OracleTableColumnContentKey, data["content_type"])
       out.table_key = Datasworn::from_json_data(DictKey, data["table_key"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.name = Datasworn::from_json_data(Label, data["name"])
       out
     end
@@ -3518,8 +3518,8 @@ module Datasworn
       out.table = Datasworn::from_json_data(Array[OracleTableRow], data["table"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
-      out.images = Datasworn::from_json_data(Array[WebpimageURL], data["images"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
+      out.images = Datasworn::from_json_data(Array[WebpImageURL], data["images"])
       out.match = Datasworn::from_json_data(OracleTableMatchBehavior, data["match"])
       out.rendering = Datasworn::from_json_data(OracleTableRendering, data["rendering"])
       out.replaces = Datasworn::from_json_data(OracleTableID, data["replaces"])
@@ -3560,7 +3560,7 @@ module Datasworn
     def self.from_json_data(data)
       out = OracleTableColumn.new
       out.content_type = Datasworn::from_json_data(OracleTableColumnContentKey, data["content_type"])
-      out.color = Datasworn::from_json_data(Csscolor, data["color"])
+      out.color = Datasworn::from_json_data(CSSColor, data["color"])
       out.name = Datasworn::from_json_data(Label, data["name"])
       out
     end
@@ -3754,7 +3754,7 @@ module Datasworn
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.embed_table = Datasworn::from_json_data(OracleTableID, data["embed_table"])
       out.i18n = Datasworn::from_json_data(I18nHints, data["i18n"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.rolls = Datasworn::from_json_data(Array[OracleTableRoll], data["rolls"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -3990,7 +3990,7 @@ module Datasworn
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.xp_cost = Datasworn::from_json_data(Integer, data["xp_cost"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out
     end
@@ -4046,21 +4046,6 @@ module Datasworn
       data["special_tracks"] = Datasworn::to_json_data(special_tracks)
       data["stats"] = Datasworn::to_json_data(stats)
       data
-    end
-  end
-
-  # A relative URL pointing to a vector image in the SVG format.
-  class SvgimageURL
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = SvgimageURL.new
-      out.value = Datasworn.from_json_data(String, data)
-      out
-    end
-
-    def to_json_data
-      Datasworn.to_json_data(value)
     end
   end
 
@@ -4291,6 +4276,21 @@ module Datasworn
       data["site_domains"] = Datasworn::to_json_data(site_domains) unless site_domains.nil?
       data["site_themes"] = Datasworn::to_json_data(site_themes) unless site_themes.nil?
       data
+    end
+  end
+
+  # A relative URL pointing to a vector image in the SVG format.
+  class SvgImageURL
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = SvgImageURL.new
+      out.value = Datasworn.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Datasworn.to_json_data(value)
     end
   end
 
@@ -4762,7 +4762,7 @@ module Datasworn
       out.options = Datasworn::from_json_data(Array[TruthOption], data["options"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.your_character = Datasworn::from_json_data(MarkdownString, data["your_character"])
       out
@@ -4865,7 +4865,7 @@ module Datasworn
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.embed_table = Datasworn::from_json_data(OracleTableID, data["embed_table"])
       out.i18n = Datasworn::from_json_data(I18nHints, data["i18n"])
-      out.icon = Datasworn::from_json_data(SvgimageURL, data["icon"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.rolls = Datasworn::from_json_data(Array[OracleTableRoll], data["rolls"])
       out.suggestions = Datasworn::from_json_data(Suggestions, data["suggestions"])
       out.summary = Datasworn::from_json_data(MarkdownString, data["summary"])
@@ -4891,11 +4891,11 @@ module Datasworn
   end
 
   # A relative URL pointing to a raster image in the WEBP format.
-  class WebpimageURL
+  class WebpImageURL
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = WebpimageURL.new
+      out = WebpImageURL.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end

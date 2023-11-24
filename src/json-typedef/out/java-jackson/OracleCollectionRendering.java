@@ -14,7 +14,7 @@ public class OracleCollectionRendering {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
-    private Csscolor color;
+    private CssColor color;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("table_style")
@@ -40,14 +40,14 @@ public class OracleCollectionRendering {
     /**
      * Getter for color.<p>
      */
-    public Csscolor getColor() {
+    public CssColor getColor() {
         return color;
     }
 
     /**
      * Setter for color.<p>
      */
-    public void setColor(Csscolor color) {
+    public void setColor(CssColor color) {
         this.color = color;
     }
 

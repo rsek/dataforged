@@ -362,18 +362,10 @@
 				"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 			}
 		},
-		"CSSColor": {
+		"CssColor": {
 			"type": "string",
 			"metadata": {
 				"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
-			}
-		},
-		"SVGImageURL": {
-			"type": "string",
-			"metadata": {
-				"description": "A relative URL pointing to a vector image in the SVG format.",
-				"pattern": "\\.svg$",
-				"format": "uri-reference"
 			}
 		},
 		"Source": {
@@ -510,7 +502,15 @@
 				}
 			}
 		},
-		"WEBPImageURL": {
+		"SvgImageUrl": {
+			"type": "string",
+			"metadata": {
+				"description": "A relative URL pointing to a vector image in the SVG format.",
+				"pattern": "\\.svg$",
+				"format": "uri-reference"
+			}
+		},
+		"WebpImageUrl": {
 			"type": "string",
 			"metadata": {
 				"description": "A relative URL pointing to a raster image in the WEBP format.",
@@ -846,7 +846,7 @@
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CSSColor"
+					"ref": "CssColor"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -856,11 +856,11 @@
 				},
 				"images": {
 					"elements": {
-						"ref": "WEBPImageURL"
+						"ref": "WebpImageUrl"
 					}
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"enhances": {
 					"ref": "NpcCollectionID",
@@ -1046,7 +1046,7 @@
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CSSColor"
+					"ref": "CssColor"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -1056,11 +1056,11 @@
 				},
 				"images": {
 					"elements": {
-						"ref": "WEBPImageURL"
+						"ref": "WebpImageUrl"
 					}
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"enhances": {
 					"ref": "OracleCollectionID",
@@ -1089,7 +1089,7 @@
 			},
 			"optionalProperties": {
 				"color": {
-					"ref": "CSSColor"
+					"ref": "CssColor"
 				},
 				"table_style": {
 					"ref": "OracleCollectionStyle"
@@ -1128,7 +1128,7 @@
 					}
 				},
 				"color": {
-					"ref": "CSSColor",
+					"ref": "CssColor",
 					"metadata": {
 						"description": "The thematic color for this column."
 					}
@@ -1163,11 +1163,11 @@
 					"ref": "Suggestions"
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"images": {
 					"elements": {
-						"ref": "WEBPImageURL"
+						"ref": "WebpImageUrl"
 					}
 				},
 				"summary": {
@@ -1210,7 +1210,7 @@
 					}
 				},
 				"color": {
-					"ref": "CSSColor",
+					"ref": "CssColor",
 					"metadata": {
 						"description": "The thematic color for this column."
 					}
@@ -1286,7 +1286,7 @@
 			},
 			"optionalProperties": {
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -1705,7 +1705,7 @@
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CSSColor"
+					"ref": "CssColor"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -1715,11 +1715,11 @@
 				},
 				"images": {
 					"elements": {
-						"ref": "WEBPImageURL"
+						"ref": "WebpImageUrl"
 					}
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"enhances": {
 					"ref": "MoveCategoryID",
@@ -2261,10 +2261,10 @@
 					"ref": "Suggestions"
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"color": {
-					"ref": "CSSColor"
+					"ref": "CssColor"
 				},
 				"options": {
 					"values": {
@@ -3197,7 +3197,7 @@
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CSSColor"
+					"ref": "CssColor"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -3207,11 +3207,11 @@
 				},
 				"images": {
 					"elements": {
-						"ref": "WEBPImageURL"
+						"ref": "WebpImageUrl"
 					}
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"enhances": {
 					"ref": "AssetTypeID",
@@ -3252,7 +3252,7 @@
 					"ref": "Suggestions"
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"your_character": {
 					"ref": "MarkdownString"
@@ -3307,7 +3307,7 @@
 			},
 			"optionalProperties": {
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -3370,7 +3370,7 @@
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CSSColor"
+					"ref": "CssColor"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -3380,11 +3380,11 @@
 				},
 				"images": {
 					"elements": {
-						"ref": "WEBPImageURL"
+						"ref": "WebpImageUrl"
 					}
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"enhances": {
 					"ref": "AtlasID",
@@ -3502,7 +3502,7 @@
 					"ref": "Suggestions"
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				}
 			},
 			"metadata": {
@@ -3546,7 +3546,7 @@
 					"ref": "Suggestions"
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"region": {
 					"ref": "AtlasEntryID",
@@ -3642,7 +3642,7 @@
 					"ref": "MarkdownString"
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"name_oracle": {
 					"ref": "OracleTableID",
@@ -3675,7 +3675,7 @@
 			},
 			"optionalProperties": {
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -3725,7 +3725,7 @@
 			},
 			"optionalProperties": {
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -3793,7 +3793,7 @@
 					"ref": "MarkdownString"
 				},
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				}
 			}
 		},
@@ -3820,7 +3820,7 @@
 			},
 			"optionalProperties": {
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"summary": {
 					"ref": "MarkdownString"
@@ -3870,7 +3870,7 @@
 			},
 			"optionalProperties": {
 				"icon": {
-					"ref": "SVGImageURL"
+					"ref": "SvgImageUrl"
 				},
 				"summary": {
 					"ref": "MarkdownString"

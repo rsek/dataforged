@@ -182,13 +182,13 @@ type Asset struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	// Controls are condition meters, clocks, counters, and other asset input
 	// fields whose values are expected to change throughout the life of the asset.
 	Controls map[string]AssetControlField `json:"controls,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	// Options are asset input fields which are set once, usually when the
 	// character takes the asset. The most common example is the "name" field on
@@ -1109,7 +1109,7 @@ type AssetType struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1117,9 +1117,9 @@ type AssetType struct {
 	// being a standalone collection of its own.
 	Enhances *AssetTypeID `json:"enhances,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
-	Images []WebpimageURL `json:"images,omitempty"`
+	Images []WebpImageURL `json:"images,omitempty"`
 
 	// This collection replaces the identified collection. References to the
 	// replaced collection can be considered equivalent to this collection.
@@ -1145,7 +1145,7 @@ type Atlas struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1153,9 +1153,9 @@ type Atlas struct {
 	// being a standalone collection of its own.
 	Enhances *AtlasID `json:"enhances,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
-	Images []WebpimageURL `json:"images,omitempty"`
+	Images []WebpImageURL `json:"images,omitempty"`
 
 	// This collection replaces the identified collection. References to the
 	// replaced collection can be considered equivalent to this collection.
@@ -1197,10 +1197,6 @@ type AtlasID = string
 
 type AtlasIdwildcard = string
 
-// A CSS color value. See: https://developer.mozilla.org/en-
-// US/docs/Web/CSS/color_value
-type Csscolor = string
-
 // Challenge rank, represented as an integer:
 type ChallengeRank = uint8
 
@@ -1222,6 +1218,10 @@ type ConditionMeterRule struct {
 }
 
 type ConditionMeterRuleID = string
+
+// A CSS color value. See: https://developer.mozilla.org/en-
+// US/docs/Web/CSS/color_value
+type CSSColor = string
 
 // A delve site with a theme, domain, and denizen table.
 type DelveSite struct {
@@ -1247,7 +1247,7 @@ type DelveSite struct {
 	// Ironsworn: Delve.
 	ExtraCard *string `json:"extra_card,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	// The ID of an atlas entry representing the region in which this delve site
 	// is located.
@@ -1312,7 +1312,7 @@ type DelveSiteDomain struct {
 
 	Description *MarkdownString `json:"description,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	// An oracle table ID containing place name elements. For examples, see
 	// oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in
@@ -1343,7 +1343,7 @@ type DelveSiteDomainDangerRow struct {
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
@@ -1373,7 +1373,7 @@ type DelveSiteDomainFeatureRow struct {
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
@@ -1413,7 +1413,7 @@ type DelveSiteTheme struct {
 
 	Description *MarkdownString `json:"description,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
@@ -1437,7 +1437,7 @@ type DelveSiteThemeDangerRow struct {
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
@@ -1467,7 +1467,7 @@ type DelveSiteThemeFeatureRow struct {
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
@@ -1729,7 +1729,7 @@ type MoveCategory struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1737,9 +1737,9 @@ type MoveCategory struct {
 	// being a standalone collection of its own.
 	Enhances *MoveCategoryID `json:"enhances,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
-	Images []WebpimageURL `json:"images,omitempty"`
+	Images []WebpImageURL `json:"images,omitempty"`
 
 	// This collection replaces the identified collection. References to the
 	// replaced collection can be considered equivalent to this collection.
@@ -1926,7 +1926,7 @@ type NpcCollection struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1934,9 +1934,9 @@ type NpcCollection struct {
 	// being a standalone collection of its own.
 	Enhances *NpcCollectionID `json:"enhances,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
-	Images []WebpimageURL `json:"images,omitempty"`
+	Images []WebpImageURL `json:"images,omitempty"`
 
 	// This collection replaces the identified collection. References to the
 	// replaced collection can be considered equivalent to this collection.
@@ -1990,7 +1990,7 @@ type OracleCollection struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1998,9 +1998,9 @@ type OracleCollection struct {
 	// being a standalone collection of its own.
 	Enhances *OracleCollectionID `json:"enhances,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
-	Images []WebpimageURL `json:"images,omitempty"`
+	Images []WebpImageURL `json:"images,omitempty"`
 
 	Rendering *OracleCollectionRendering `json:"rendering,omitempty"`
 
@@ -2018,7 +2018,7 @@ type OracleCollectionID = string
 type OracleCollectionRendering struct {
 	Columns map[string]OracleCollectionTableColumn `json:"columns"`
 
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	TableStyle *OracleCollectionStyle `json:"table_style,omitempty"`
 }
@@ -2039,7 +2039,7 @@ type OracleCollectionTableColumn struct {
 	TableKey DictKey `json:"table_key"`
 
 	// The thematic color for this column.
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	// The column's header text.
 	Name *Label `json:"name,omitempty"`
@@ -2082,9 +2082,9 @@ type OracleTable struct {
 	// `summary` key instead.
 	Description *MarkdownString `json:"description,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
-	Images []WebpimageURL `json:"images,omitempty"`
+	Images []WebpImageURL `json:"images,omitempty"`
 
 	Match *OracleTableMatchBehavior `json:"match,omitempty"`
 
@@ -2107,7 +2107,7 @@ type OracleTableColumn struct {
 	ContentType OracleTableColumnContentKey `json:"content_type"`
 
 	// The thematic color for this column.
-	Color *Csscolor `json:"color,omitempty"`
+	Color *CSSColor `json:"color,omitempty"`
 
 	// The column's header text.
 	Name *Label `json:"name,omitempty"`
@@ -2188,7 +2188,7 @@ type OracleTableRow struct {
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
@@ -2291,7 +2291,7 @@ type Rarity struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
@@ -2307,9 +2307,6 @@ type Rules struct {
 
 	Stats map[string]StatRule `json:"stats"`
 }
-
-// A relative URL pointing to a vector image in the SVG format.
-type SvgimageURL = string
 
 type SourceAuthor struct {
 	Name string `json:"name"`
@@ -2405,6 +2402,9 @@ type Suggestions struct {
 
 	SiteThemes []DelveSiteThemeID `json:"site_themes,omitempty"`
 }
+
+// A relative URL pointing to a vector image in the SVG format.
+type SvgImageURL = string
 
 // A rich text string in Markdown with replaced values from oracle roll results.
 // 
@@ -2583,7 +2583,7 @@ type Truth struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
@@ -2623,7 +2623,7 @@ type TruthOptionTableRow struct {
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
-	Icon *SvgimageURL `json:"icon,omitempty"`
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
@@ -2635,4 +2635,4 @@ type TruthOptionTableRow struct {
 }
 
 // A relative URL pointing to a raster image in the WEBP format.
-type WebpimageURL = string
+type WebpImageURL = string

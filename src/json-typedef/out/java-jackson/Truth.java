@@ -30,7 +30,7 @@ public class Truth {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("icon")
-    private SvgimageUrl icon;
+    private SvgImageUrl icon;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("suggestions")
@@ -116,14 +116,14 @@ public class Truth {
     /**
      * Getter for icon.<p>
      */
-    public SvgimageUrl getIcon() {
+    public SvgImageUrl getIcon() {
         return icon;
     }
 
     /**
      * Setter for icon.<p>
      */
-    public void setIcon(SvgimageUrl icon) {
+    public void setIcon(SvgImageUrl icon) {
         this.icon = icon;
     }
 

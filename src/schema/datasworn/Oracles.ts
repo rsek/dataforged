@@ -28,8 +28,8 @@ export const OracleTable = Generic.RecursiveCollectable(
 	Type.Object({
 		dice: Type.Ref(Rolls.DiceNotation, { default: '1d100' }),
 		_i18n: Type.Optional(Type.Ref(Localize.I18nHints, { macro: true })),
-		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
-		images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
+		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
+		images: Type.Optional(Type.Array(Type.Ref(Metadata.WebpImageUrl))),
 		summary: Type.Optional(
 			Type.Ref(Localize.MarkdownString, {
 				description:

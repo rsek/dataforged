@@ -25,7 +25,7 @@ export type TruthOption = Static<typeof TruthOption>
 export const Truth = Generic.SourcedNode(
 	Type.Ref(Id.TruthID),
 	Type.Object({
-		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
 		options: Type.Array(Type.Ref(TruthOption)),
 		your_character: Type.Optional(Type.Ref(Localize.MarkdownString))
 	}),

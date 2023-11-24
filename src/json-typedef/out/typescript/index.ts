@@ -104,7 +104,7 @@ export interface Asset {
   source: Source;
   attachments?: AssetAttachment;
   canonical_name?: Label;
-  color?: Csscolor;
+  color?: CssColor;
 
   /**
    * Controls are condition meters, clocks, counters, and other asset input
@@ -112,7 +112,7 @@ export interface Asset {
    * asset.
    */
   controls?: { [key: string]: AssetControlField };
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
 
   /**
    * Options are asset input fields which are set once, usually when the
@@ -845,7 +845,7 @@ export interface AssetType {
   name: Label;
   source: Source;
   canonical_name?: Label;
-  color?: Csscolor;
+  color?: CssColor;
   description?: MarkdownString;
 
   /**
@@ -853,8 +853,8 @@ export interface AssetType {
    * being a standalone collection of its own.
    */
   enhances?: AssetTypeId;
-  icon?: SvgimageUrl;
-  images?: WebpimageUrl[];
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
 
   /**
    * This collection replaces the identified collection. References to the
@@ -874,7 +874,7 @@ export interface Atlas {
   name: Label;
   source: Source;
   canonical_name?: Label;
-  color?: Csscolor;
+  color?: CssColor;
   description?: MarkdownString;
 
   /**
@@ -882,8 +882,8 @@ export interface Atlas {
    * being a standalone collection of its own.
    */
   enhances?: AtlasId;
-  icon?: SvgimageUrl;
-  images?: WebpimageUrl[];
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
 
   /**
    * This collection replaces the identified collection. References to the
@@ -919,12 +919,6 @@ export type AtlasId = string;
 export type AtlasIdwildcard = string;
 
 /**
- * A CSS color value. See: https://developer.mozilla.org/en-
- * US/docs/Web/CSS/color_value
- */
-export type Csscolor = string;
-
-/**
  * Challenge rank, represented as an integer:
  */
 export type ChallengeRank = number;
@@ -954,6 +948,12 @@ export interface ConditionMeterRule {
 export type ConditionMeterRuleId = string;
 
 /**
+ * A CSS color value. See: https://developer.mozilla.org/en-
+ * US/docs/Web/CSS/color_value
+ */
+export type CssColor = string;
+
+/**
  * A delve site with a theme, domain, and denizen table.
  */
 export interface DelveSite {
@@ -972,7 +972,7 @@ export interface DelveSite {
    * Ironsworn: Delve.
    */
   extra_card?: string;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
 
   /**
    * The ID of an atlas entry representing the region in which this delve site
@@ -1019,7 +1019,7 @@ export interface DelveSiteDomain {
   summary: MarkdownString;
   canonical_name?: Label;
   description?: MarkdownString;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
 
   /**
    * An oracle table ID containing place name elements. For examples, see
@@ -1050,7 +1050,7 @@ export interface DelveSiteDomainDangerRow {
   description?: MarkdownString;
   embed_table?: OracleTableId;
   i18n?: I18nHints;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   summary?: MarkdownString;
@@ -1075,7 +1075,7 @@ export interface DelveSiteDomainFeatureRow {
   description?: MarkdownString;
   embed_table?: OracleTableId;
   i18n?: I18nHints;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   summary?: MarkdownString;
@@ -1100,7 +1100,7 @@ export interface DelveSiteTheme {
   summary: MarkdownString;
   canonical_name?: Label;
   description?: MarkdownString;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   suggestions?: Suggestions;
 }
 
@@ -1122,7 +1122,7 @@ export interface DelveSiteThemeDangerRow {
   description?: MarkdownString;
   embed_table?: OracleTableId;
   i18n?: I18nHints;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   summary?: MarkdownString;
@@ -1147,7 +1147,7 @@ export interface DelveSiteThemeFeatureRow {
   description?: MarkdownString;
   embed_table?: OracleTableId;
   i18n?: I18nHints;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   summary?: MarkdownString;
@@ -1352,7 +1352,7 @@ export interface MoveCategory {
   name: Label;
   source: Source;
   canonical_name?: Label;
-  color?: Csscolor;
+  color?: CssColor;
   description?: MarkdownString;
 
   /**
@@ -1360,8 +1360,8 @@ export interface MoveCategory {
    * being a standalone collection of its own.
    */
   enhances?: MoveCategoryId;
-  icon?: SvgimageUrl;
-  images?: WebpimageUrl[];
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
 
   /**
    * This collection replaces the identified collection. References to the
@@ -1473,7 +1473,7 @@ export interface NpcCollection {
   name: Label;
   source: Source;
   canonical_name?: Label;
-  color?: Csscolor;
+  color?: CssColor;
   description?: MarkdownString;
 
   /**
@@ -1481,8 +1481,8 @@ export interface NpcCollection {
    * being a standalone collection of its own.
    */
   enhances?: NpcCollectionId;
-  icon?: SvgimageUrl;
-  images?: WebpimageUrl[];
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
 
   /**
    * This collection replaces the identified collection. References to the
@@ -1527,7 +1527,7 @@ export interface OracleCollection {
   name: Label;
   source: Source;
   canonical_name?: Label;
-  color?: Csscolor;
+  color?: CssColor;
   description?: MarkdownString;
 
   /**
@@ -1535,8 +1535,8 @@ export interface OracleCollection {
    * being a standalone collection of its own.
    */
   enhances?: OracleCollectionId;
-  icon?: SvgimageUrl;
-  images?: WebpimageUrl[];
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
   rendering?: OracleCollectionRendering;
 
   /**
@@ -1552,7 +1552,7 @@ export type OracleCollectionId = string;
 
 export interface OracleCollectionRendering {
   columns: { [key: string]: OracleCollectionTableColumn };
-  color?: Csscolor;
+  color?: CssColor;
   table_style?: OracleCollectionStyle;
 }
 
@@ -1573,7 +1573,7 @@ export interface OracleCollectionTableColumn {
   /**
    * The thematic color for this column.
    */
-  color?: Csscolor;
+  color?: CssColor;
 
   /**
    * The column's header text.
@@ -1622,8 +1622,8 @@ export interface OracleTable {
    * `summary` key instead.
    */
   description?: MarkdownString;
-  icon?: SvgimageUrl;
-  images?: WebpimageUrl[];
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
   match?: OracleTableMatchBehavior;
   rendering?: OracleTableRendering;
 
@@ -1649,7 +1649,7 @@ export interface OracleTableColumn {
   /**
    * The thematic color for this column.
    */
-  color?: Csscolor;
+  color?: CssColor;
 
   /**
    * The column's header text.
@@ -1723,7 +1723,7 @@ export interface OracleTableRow {
   description?: MarkdownString;
   embed_table?: OracleTableId;
   i18n?: I18nHints;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   summary?: MarkdownString;
@@ -1808,7 +1808,7 @@ export interface Rarity {
    */
   xp_cost: number;
   canonical_name?: Label;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   suggestions?: Suggestions;
 }
 
@@ -1820,11 +1820,6 @@ export interface Rules {
   special_tracks: { [key: string]: SpecialTrackRule };
   stats: { [key: string]: StatRule };
 }
-
-/**
- * A relative URL pointing to a vector image in the SVG format.
- */
-export type SvgimageUrl = string;
 
 export interface SourceAuthor {
   name: string;
@@ -1917,6 +1912,11 @@ export interface Suggestions {
   site_domains?: DelveSiteDomainId[];
   site_themes?: DelveSiteThemeId[];
 }
+
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl = string;
 
 /**
  * A rich text string in Markdown with replaced values from oracle roll results.
@@ -2126,7 +2126,7 @@ export interface Truth {
   options: TruthOption[];
   source: Source;
   canonical_name?: Label;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   suggestions?: Suggestions;
   your_character?: MarkdownString;
 }
@@ -2152,7 +2152,7 @@ export interface TruthOptionTableRow {
   description?: MarkdownString;
   embed_table?: OracleTableId;
   i18n?: I18nHints;
-  icon?: SvgimageUrl;
+  icon?: SvgImageUrl;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   summary?: MarkdownString;
@@ -2162,4 +2162,4 @@ export interface TruthOptionTableRow {
 /**
  * A relative URL pointing to a raster image in the WEBP format.
  */
-export type WebpimageUrl = string;
+export type WebpImageUrl = string;

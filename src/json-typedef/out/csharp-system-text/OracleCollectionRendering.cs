@@ -12,7 +12,7 @@ namespace Datasworn
 
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Csscolor? Color { get; set; }
+        public CssColor? Color { get; set; }
 
         [JsonPropertyName("table_style")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

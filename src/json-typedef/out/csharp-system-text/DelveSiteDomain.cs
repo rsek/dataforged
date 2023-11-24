@@ -38,7 +38,7 @@ namespace Datasworn
 
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public SvgimageUrl? Icon { get; set; }
+        public SvgImageUrl? Icon { get; set; }
 
         /// <summary>
         /// An oracle table ID containing place name elements. For examples, see

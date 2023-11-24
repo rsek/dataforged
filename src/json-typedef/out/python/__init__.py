@@ -233,14 +233,14 @@ class Asset:
     source: 'Source'
     attachments: 'Optional[AssetAttachment]'
     canonical_name: 'Optional[Label]'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     controls: 'Optional[Dict[str, AssetControlField]]'
     """
     Controls are condition meters, clocks, counters, and other asset input
     fields whose values are expected to change throughout the life of the asset.
     """
 
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     options: 'Optional[Dict[str, AssetOptionField]]'
     """
     Options are asset input fields which are set once, usually when the
@@ -264,9 +264,9 @@ class Asset:
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[AssetAttachment], data.get("attachments")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[Dict[str, AssetControlField]], data.get("controls")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[Dict[str, AssetOptionField]], data.get("options")),
             _from_json_data(Optional[MarkdownString], data.get("requirement")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
@@ -1819,7 +1819,7 @@ class AssetType:
     name: 'Label'
     source: 'Source'
     canonical_name: 'Optional[Label]'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     description: 'Optional[MarkdownString]'
     enhances: 'Optional[AssetTypeID]'
     """
@@ -1827,8 +1827,8 @@ class AssetType:
     being a standalone collection of its own.
     """
 
-    icon: 'Optional[SvgimageURL]'
-    images: 'Optional[List[WebpimageURL]]'
+    icon: 'Optional[SvgImageURL]'
+    images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[AssetTypeID]'
     """
     This collection replaces the identified collection. References to the
@@ -1846,11 +1846,11 @@ class AssetType:
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[AssetTypeID], data.get("enhances")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
-            _from_json_data(Optional[List[WebpimageURL]], data.get("images")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
+            _from_json_data(Optional[List[WebpImageURL]], data.get("images")),
             _from_json_data(Optional[AssetTypeID], data.get("replaces")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -1901,7 +1901,7 @@ class Atlas:
     name: 'Label'
     source: 'Source'
     canonical_name: 'Optional[Label]'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     description: 'Optional[MarkdownString]'
     enhances: 'Optional[AtlasID]'
     """
@@ -1909,8 +1909,8 @@ class Atlas:
     being a standalone collection of its own.
     """
 
-    icon: 'Optional[SvgimageURL]'
-    images: 'Optional[List[WebpimageURL]]'
+    icon: 'Optional[SvgImageURL]'
+    images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[AtlasID]'
     """
     This collection replaces the identified collection. References to the
@@ -1929,11 +1929,11 @@ class Atlas:
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[AtlasID], data.get("enhances")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
-            _from_json_data(Optional[List[WebpimageURL]], data.get("images")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
+            _from_json_data(Optional[List[WebpImageURL]], data.get("images")),
             _from_json_data(Optional[AtlasID], data.get("replaces")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -2062,22 +2062,6 @@ class AtlasIdwildcard:
         return _to_json_data(self.value)
 
 @dataclass
-class Csscolor:
-    """
-    A CSS color value. See: https://developer.mozilla.org/en-
-    US/docs/Web/CSS/color_value
-    """
-
-    value: 'str'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'Csscolor':
-        return cls(_from_json_data(str, data))
-
-    def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
-
-@dataclass
 class ChallengeRank:
     """
     Challenge rank, represented as an integer:
@@ -2145,6 +2129,22 @@ class ConditionMeterRuleID:
         return _to_json_data(self.value)
 
 @dataclass
+class CSSColor:
+    """
+    A CSS color value. See: https://developer.mozilla.org/en-
+    US/docs/Web/CSS/color_value
+    """
+
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'CSSColor':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class DelveSite:
     """
     A delve site with a theme, domain, and denizen table.
@@ -2165,7 +2165,7 @@ class DelveSite:
     Ironsworn: Delve.
     """
 
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     region: 'Optional[AtlasEntryID]'
     """
     The ID of an atlas entry representing the region in which this delve site
@@ -2187,7 +2187,7 @@ class DelveSite:
             _from_json_data(DelveSiteThemeID, data.get("theme")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[str], data.get("extra_card")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[AtlasEntryID], data.get("region")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
         )
@@ -2294,7 +2294,7 @@ class DelveSiteDomain:
     summary: 'MarkdownString'
     canonical_name: 'Optional[Label]'
     description: 'Optional[MarkdownString]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     name_oracle: 'Optional[OracleTableID]'
     """
     An oracle table ID containing place name elements. For examples, see
@@ -2318,7 +2318,7 @@ class DelveSiteDomain:
             _from_json_data(MarkdownString, data.get("summary")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[OracleTableID], data.get("name_oracle")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
         )
@@ -2363,7 +2363,7 @@ class DelveSiteDomainDangerRow:
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'
     i18n: 'Optional[I18nHints]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
@@ -2379,7 +2379,7 @@ class DelveSiteDomainDangerRow:
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),
             _from_json_data(Optional[I18nHints], data.get("i18n")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[List[OracleTableRoll]], data.get("rolls")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -2429,7 +2429,7 @@ class DelveSiteDomainFeatureRow:
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'
     i18n: 'Optional[I18nHints]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
@@ -2445,7 +2445,7 @@ class DelveSiteDomainFeatureRow:
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),
             _from_json_data(Optional[I18nHints], data.get("i18n")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[List[OracleTableRoll]], data.get("rolls")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -2518,7 +2518,7 @@ class DelveSiteTheme:
     summary: 'MarkdownString'
     canonical_name: 'Optional[Label]'
     description: 'Optional[MarkdownString]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     suggestions: 'Optional[Suggestions]'
 
     @classmethod
@@ -2533,7 +2533,7 @@ class DelveSiteTheme:
             _from_json_data(MarkdownString, data.get("summary")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
         )
 
@@ -2575,7 +2575,7 @@ class DelveSiteThemeDangerRow:
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'
     i18n: 'Optional[I18nHints]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
@@ -2591,7 +2591,7 @@ class DelveSiteThemeDangerRow:
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),
             _from_json_data(Optional[I18nHints], data.get("i18n")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[List[OracleTableRoll]], data.get("rolls")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -2641,7 +2641,7 @@ class DelveSiteThemeFeatureRow:
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'
     i18n: 'Optional[I18nHints]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
@@ -2657,7 +2657,7 @@ class DelveSiteThemeFeatureRow:
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),
             _from_json_data(Optional[I18nHints], data.get("i18n")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[List[OracleTableRoll]], data.get("rolls")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -3208,7 +3208,7 @@ class MoveCategory:
     name: 'Label'
     source: 'Source'
     canonical_name: 'Optional[Label]'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     description: 'Optional[MarkdownString]'
     enhances: 'Optional[MoveCategoryID]'
     """
@@ -3216,8 +3216,8 @@ class MoveCategory:
     being a standalone collection of its own.
     """
 
-    icon: 'Optional[SvgimageURL]'
-    images: 'Optional[List[WebpimageURL]]'
+    icon: 'Optional[SvgImageURL]'
+    images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[MoveCategoryID]'
     """
     This collection replaces the identified collection. References to the
@@ -3235,11 +3235,11 @@ class MoveCategory:
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[MoveCategoryID], data.get("enhances")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
-            _from_json_data(Optional[List[WebpimageURL]], data.get("images")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
+            _from_json_data(Optional[List[WebpImageURL]], data.get("images")),
             _from_json_data(Optional[MoveCategoryID], data.get("replaces")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -3569,7 +3569,7 @@ class NpcCollection:
     name: 'Label'
     source: 'Source'
     canonical_name: 'Optional[Label]'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     description: 'Optional[MarkdownString]'
     enhances: 'Optional[NpcCollectionID]'
     """
@@ -3577,8 +3577,8 @@ class NpcCollection:
     being a standalone collection of its own.
     """
 
-    icon: 'Optional[SvgimageURL]'
-    images: 'Optional[List[WebpimageURL]]'
+    icon: 'Optional[SvgImageURL]'
+    images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[NpcCollectionID]'
     """
     This collection replaces the identified collection. References to the
@@ -3596,11 +3596,11 @@ class NpcCollection:
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[NpcCollectionID], data.get("enhances")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
-            _from_json_data(Optional[List[WebpimageURL]], data.get("images")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
+            _from_json_data(Optional[List[WebpImageURL]], data.get("images")),
             _from_json_data(Optional[NpcCollectionID], data.get("replaces")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -3735,7 +3735,7 @@ class OracleCollection:
     name: 'Label'
     source: 'Source'
     canonical_name: 'Optional[Label]'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     description: 'Optional[MarkdownString]'
     enhances: 'Optional[OracleCollectionID]'
     """
@@ -3743,8 +3743,8 @@ class OracleCollection:
     being a standalone collection of its own.
     """
 
-    icon: 'Optional[SvgimageURL]'
-    images: 'Optional[List[WebpimageURL]]'
+    icon: 'Optional[SvgImageURL]'
+    images: 'Optional[List[WebpImageURL]]'
     rendering: 'Optional[OracleCollectionRendering]'
     replaces: 'Optional[OracleCollectionID]'
     """
@@ -3764,11 +3764,11 @@ class OracleCollection:
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleCollectionID], data.get("enhances")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
-            _from_json_data(Optional[List[WebpimageURL]], data.get("images")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
+            _from_json_data(Optional[List[WebpImageURL]], data.get("images")),
             _from_json_data(Optional[OracleCollectionRendering], data.get("rendering")),
             _from_json_data(Optional[OracleCollectionID], data.get("replaces")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
@@ -3818,14 +3818,14 @@ class OracleCollectionID:
 @dataclass
 class OracleCollectionRendering:
     columns: 'Dict[str, OracleCollectionTableColumn]'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     table_style: 'Optional[OracleCollectionStyle]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollectionRendering':
         return cls(
             _from_json_data(Dict[str, OracleCollectionTableColumn], data.get("columns")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[OracleCollectionStyle], data.get("table_style")),
         )
 
@@ -3857,7 +3857,7 @@ class OracleCollectionTableColumn:
     render this column.
     """
 
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     """
     The thematic color for this column.
     """
@@ -3873,7 +3873,7 @@ class OracleCollectionTableColumn:
         return cls(
             _from_json_data(OracleTableColumnContentKey, data.get("content_type")),
             _from_json_data(DictKey, data.get("table_key")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[Label], data.get("name")),
         )
 
@@ -3949,8 +3949,8 @@ class OracleTable:
     `summary` key instead.
     """
 
-    icon: 'Optional[SvgimageURL]'
-    images: 'Optional[List[WebpimageURL]]'
+    icon: 'Optional[SvgImageURL]'
+    images: 'Optional[List[WebpImageURL]]'
     match: 'Optional[OracleTableMatchBehavior]'
     rendering: 'Optional[OracleTableRendering]'
     replaces: 'Optional[OracleTableID]'
@@ -3979,8 +3979,8 @@ class OracleTable:
             _from_json_data(List[OracleTableRow], data.get("table")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
-            _from_json_data(Optional[List[WebpimageURL]], data.get("images")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
+            _from_json_data(Optional[List[WebpImageURL]], data.get("images")),
             _from_json_data(Optional[OracleTableMatchBehavior], data.get("match")),
             _from_json_data(Optional[OracleTableRendering], data.get("rendering")),
             _from_json_data(Optional[OracleTableID], data.get("replaces")),
@@ -4018,7 +4018,7 @@ class OracleTable:
 @dataclass
 class OracleTableColumn:
     content_type: 'OracleTableColumnContentKey'
-    color: 'Optional[Csscolor]'
+    color: 'Optional[CSSColor]'
     """
     The thematic color for this column.
     """
@@ -4033,7 +4033,7 @@ class OracleTableColumn:
     def from_json_data(cls, data: Any) -> 'OracleTableColumn':
         return cls(
             _from_json_data(OracleTableColumnContentKey, data.get("content_type")),
-            _from_json_data(Optional[Csscolor], data.get("color")),
+            _from_json_data(Optional[CSSColor], data.get("color")),
             _from_json_data(Optional[Label], data.get("name")),
         )
 
@@ -4191,7 +4191,7 @@ class OracleTableRow:
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'
     i18n: 'Optional[I18nHints]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
@@ -4207,7 +4207,7 @@ class OracleTableRow:
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),
             _from_json_data(Optional[I18nHints], data.get("i18n")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[List[OracleTableRoll]], data.get("rolls")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -4380,7 +4380,7 @@ class Rarity:
     """
 
     canonical_name: 'Optional[Label]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     suggestions: 'Optional[Suggestions]'
 
     @classmethod
@@ -4393,7 +4393,7 @@ class Rarity:
             _from_json_data(Source, data.get("source")),
             _from_json_data(int, data.get("xp_cost")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
         )
 
@@ -4447,21 +4447,6 @@ class Rules:
         data["special_tracks"] = _to_json_data(self.special_tracks)
         data["stats"] = _to_json_data(self.stats)
         return data
-
-@dataclass
-class SvgimageURL:
-    """
-    A relative URL pointing to a vector image in the SVG format.
-    """
-
-    value: 'str'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'SvgimageURL':
-        return cls(_from_json_data(str, data))
-
-    def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
 
 @dataclass
 class SourceAuthor:
@@ -4687,6 +4672,21 @@ class Suggestions:
         if self.site_themes is not None:
              data["site_themes"] = _to_json_data(self.site_themes)
         return data
+
+@dataclass
+class SvgImageURL:
+    """
+    A relative URL pointing to a vector image in the SVG format.
+    """
+
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SvgImageURL':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class TemplateString:
@@ -5182,7 +5182,7 @@ class Truth:
     options: 'List[TruthOption]'
     source: 'Source'
     canonical_name: 'Optional[Label]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     suggestions: 'Optional[Suggestions]'
     your_character: 'Optional[MarkdownString]'
 
@@ -5194,7 +5194,7 @@ class Truth:
             _from_json_data(List[TruthOption], data.get("options")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("your_character")),
         )
@@ -5282,7 +5282,7 @@ class TruthOptionTableRow:
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'
     i18n: 'Optional[I18nHints]'
-    icon: 'Optional[SvgimageURL]'
+    icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
@@ -5297,7 +5297,7 @@ class TruthOptionTableRow:
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),
             _from_json_data(Optional[I18nHints], data.get("i18n")),
-            _from_json_data(Optional[SvgimageURL], data.get("icon")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[List[OracleTableRoll]], data.get("rolls")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
             _from_json_data(Optional[MarkdownString], data.get("summary")),
@@ -5328,7 +5328,7 @@ class TruthOptionTableRow:
         return data
 
 @dataclass
-class WebpimageURL:
+class WebpImageURL:
     """
     A relative URL pointing to a raster image in the WEBP format.
     """
@@ -5336,7 +5336,7 @@ class WebpimageURL:
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'WebpimageURL':
+    def from_json_data(cls, data: Any) -> 'WebpImageURL':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:

@@ -482,19 +482,11 @@
 			"examples": ["classic/truths/iron/0", "starforged/truths/iron/0"],
 			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 		},
-		"CSSColor": {
-			"$id": "#/$defs/CSSColor",
-			"title": "CSSColor",
+		"CssColor": {
+			"$id": "#/$defs/CssColor",
+			"title": "CssColor",
 			"type": "string",
 			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
-		},
-		"SVGImageURL": {
-			"$id": "#/$defs/SVGImageURL",
-			"title": "SVGImageURL",
-			"type": "string",
-			"description": "A relative URL pointing to a vector image in the SVG format.",
-			"format": "uri-reference",
-			"pattern": "\\.svg$"
 		},
 		"Source": {
 			"$id": "#/$defs/Source",
@@ -631,9 +623,17 @@
 				}
 			}
 		},
-		"WEBPImageURL": {
-			"$id": "#/$defs/WEBPImageURL",
-			"title": "WEBPImageURL",
+		"SvgImageUrl": {
+			"$id": "#/$defs/SvgImageUrl",
+			"title": "SvgImageUrl",
+			"type": "string",
+			"description": "A relative URL pointing to a vector image in the SVG format.",
+			"format": "uri-reference",
+			"pattern": "\\.svg$"
+		},
+		"WebpImageUrl": {
+			"$id": "#/$defs/WebpImageUrl",
+			"title": "WebpImageUrl",
 			"type": "string",
 			"description": "A relative URL pointing to a raster image in the WEBP format.",
 			"format": "uri-reference",
@@ -1004,15 +1004,15 @@
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor"
+					"$ref": "#/$defs/CssColor"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WEBPImageURL"
+						"$ref": "#/$defs/WebpImageUrl"
 					}
 				},
 				"summary": {
@@ -1181,15 +1181,15 @@
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor"
+					"$ref": "#/$defs/CssColor"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WEBPImageURL"
+						"$ref": "#/$defs/WebpImageUrl"
 					}
 				},
 				"rendering": {
@@ -1240,7 +1240,7 @@
 			"required": ["columns"],
 			"properties": {
 				"color": {
-					"$ref": "#/$defs/CSSColor"
+					"$ref": "#/$defs/CssColor"
 				},
 				"table_style": {
 					"$ref": "#/$defs/OracleCollectionStyle"
@@ -1276,7 +1276,7 @@
 					"$ref": "#/$defs/OracleTableColumnContentKey"
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor",
+					"$ref": "#/$defs/CssColor",
 					"description": "The thematic color for this column."
 				},
 				"table_key": {
@@ -1301,12 +1301,12 @@
 					"$ref": "#/$defs/Label"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WEBPImageURL"
+						"$ref": "#/$defs/WebpImageUrl"
 					}
 				},
 				"dice": {
@@ -1363,7 +1363,7 @@
 					"$ref": "#/$defs/OracleTableColumnContentKey"
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor",
+					"$ref": "#/$defs/CssColor",
 					"description": "The thematic color for this column."
 				}
 			},
@@ -1452,7 +1452,7 @@
 					]
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
 					"$ref": "#/$defs/MarkdownString"
@@ -1807,15 +1807,15 @@
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor"
+					"$ref": "#/$defs/CssColor"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WEBPImageURL"
+						"$ref": "#/$defs/WebpImageUrl"
 					}
 				},
 				"summary": {
@@ -2834,10 +2834,10 @@
 					]
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor"
+					"$ref": "#/$defs/CssColor"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"options": {
 					"type": "object",
@@ -4183,15 +4183,15 @@
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor"
+					"$ref": "#/$defs/CssColor"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WEBPImageURL"
+						"$ref": "#/$defs/WebpImageUrl"
 					}
 				},
 				"summary": {
@@ -4239,7 +4239,7 @@
 					"$ref": "#/$defs/Label"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"options": {
 					"type": "array",
@@ -4321,7 +4321,7 @@
 					]
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
 					"$ref": "#/$defs/MarkdownString"
@@ -4372,15 +4372,15 @@
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CSSColor"
+					"$ref": "#/$defs/CssColor"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WEBPImageURL"
+						"$ref": "#/$defs/WebpImageUrl"
 					}
 				},
 				"summary": {
@@ -4502,7 +4502,7 @@
 					"$ref": "#/$defs/Label"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
@@ -4552,7 +4552,7 @@
 					"$ref": "#/$defs/Label"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"rank": {
 					"$ref": "#/$defs/ChallengeRank"
@@ -4895,7 +4895,7 @@
 					"const": "domain"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -5251,7 +5251,7 @@
 					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
 					"$ref": "#/$defs/MarkdownString"
@@ -5300,7 +5300,7 @@
 					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
 					"$ref": "#/$defs/MarkdownString"
@@ -5359,7 +5359,7 @@
 					"const": "theme"
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -5684,7 +5684,7 @@
 					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
 					"$ref": "#/$defs/MarkdownString"
@@ -5733,7 +5733,7 @@
 					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
+					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
 					"$ref": "#/$defs/MarkdownString"

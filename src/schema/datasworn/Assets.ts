@@ -24,7 +24,7 @@ const AssetMixin = Type.Object({
 		]
 		// i18n: true
 	}),
-	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+	icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
 	color: Type.Optional(Type.Ref(Metadata.CssColor)),
 	options: Type.Optional(
 		Generic.Dictionary(

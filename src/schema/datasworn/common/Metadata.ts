@@ -2,18 +2,18 @@ import { type Static, Type } from '@sinclair/typebox'
 import * as Id from '../common/Id.js'
 import { Nullable } from '../utils/typebox.js'
 
-export const SVGImageURL = Type.RegExp(/\.svg$/i, {
-	$id: '#/$defs/SVGImageURL',
+export const SvgImageUrl = Type.RegExp(/\.svg$/i, {
+	$id: '#/$defs/SvgImageUrl',
 	format: 'uri-reference',
 	description: 'A relative URL pointing to a vector image in the SVG format.'
 })
-export type SVGImageURL = Static<typeof SVGImageURL>
-export const WEBPImageURL = Type.RegExp(/\.webp$/i, {
-	$id: '#/$defs/WEBPImageURL',
+export type SvgImageUrl = Static<typeof SvgImageUrl>
+export const WebpImageUrl = Type.RegExp(/\.webp$/i, {
+	$id: '#/$defs/WebpImageUrl',
 	format: 'uri-reference',
 	description: 'A relative URL pointing to a raster image in the WEBP format.'
 })
-export type WEBPImageURL = Static<typeof WEBPImageURL>
+export type WebpImageUrl = Static<typeof WebpImageUrl>
 export const CssColor = Type.String({
 	$id: '#/$defs/CssColor',
 	description:

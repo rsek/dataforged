@@ -222,8 +222,8 @@ const CollectionMixin = Type.Object({
 	color: Type.Optional(Type.Ref(Metadata.CssColor)),
 	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 	description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-	images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
-	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL))
+	images: Type.Optional(Type.Array(Type.Ref(Metadata.WebpImageUrl))),
+	icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl))
 })
 
 export const CollectionBrand = Symbol('Collection')

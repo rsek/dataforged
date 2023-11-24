@@ -51,7 +51,7 @@ namespace Datasworn
 
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Csscolor? Color { get; set; }
+        public CssColor? Color { get; set; }
 
         /// <summary>
         /// Controls are condition meters, clocks, counters, and other asset
@@ -64,7 +64,7 @@ namespace Datasworn
 
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public SvgimageUrl? Icon { get; set; }
+        public SvgImageUrl? Icon { get; set; }
 
         /// <summary>
         /// Options are asset input fields which are set once, usually when the

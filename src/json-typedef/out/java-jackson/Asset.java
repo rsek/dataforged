@@ -41,7 +41,7 @@ public class Asset {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
-    private Csscolor color;
+    private CssColor color;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("controls")
@@ -49,7 +49,7 @@ public class Asset {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("icon")
-    private SvgimageUrl icon;
+    private SvgImageUrl icon;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("options")
@@ -209,14 +209,14 @@ public class Asset {
     /**
      * Getter for color.<p>
      */
-    public Csscolor getColor() {
+    public CssColor getColor() {
         return color;
     }
 
     /**
      * Setter for color.<p>
      */
-    public void setColor(Csscolor color) {
+    public void setColor(CssColor color) {
         this.color = color;
     }
 
@@ -243,14 +243,14 @@ public class Asset {
     /**
      * Getter for icon.<p>
      */
-    public SvgimageUrl getIcon() {
+    public SvgImageUrl getIcon() {
         return icon;
     }
 
     /**
      * Setter for icon.<p>
      */
-    public void setIcon(SvgimageUrl icon) {
+    public void setIcon(SvgImageUrl icon) {
         this.icon = icon;
     }
 

@@ -31,7 +31,7 @@ import { TDiscriminatedUnion } from '../typebox/discriminated-union.js'
 import { Discriminator, Members } from './symbol.js'
 import { JsonTypeDef } from './symbol.js'
 import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
-import { DictionaryBrand } from '../schema/datasworn/utils/generic.js'
+import { DictionaryBrand } from '../schema/datasworn/utils/Generic.js'
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
 export function getMetadata<T extends TAnySchema>(schema: T) {

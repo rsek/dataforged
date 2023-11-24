@@ -174,7 +174,7 @@ pub struct Asset {
 
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     /// Controls are condition meters, clocks, counters, and other asset input
     /// fields whose values are expected to change throughout the life of the
@@ -185,7 +185,7 @@ pub struct Asset {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     /// Options are asset input fields which are set once, usually when the
     /// character takes the asset. The most common example is the "name" field
@@ -993,7 +993,7 @@ pub struct AssetType {
 
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1007,11 +1007,11 @@ pub struct AssetType {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "images")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub images: Option<Box<Vec<WebpimageUrl>>>,
+    pub images: Option<Box<Vec<WebpImageUrl>>>,
 
     /// This collection replaces the identified collection. References to the
     /// replaced collection can be considered equivalent to this collection.
@@ -1053,7 +1053,7 @@ pub struct Atlas {
 
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1067,11 +1067,11 @@ pub struct Atlas {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "images")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub images: Option<Box<Vec<WebpimageUrl>>>,
+    pub images: Option<Box<Vec<WebpImageUrl>>>,
 
     /// This collection replaces the identified collection. References to the
     /// replaced collection can be considered equivalent to this collection.
@@ -1135,10 +1135,6 @@ pub type AtlasId = String;
 
 pub type AtlasIdwildcard = String;
 
-/// A CSS color value. See: https://developer.mozilla.org/en-
-/// US/docs/Web/CSS/color_value
-pub type Csscolor = String;
-
 /// Challenge rank, represented as an integer:
 pub type ChallengeRank = u8;
 
@@ -1166,6 +1162,10 @@ pub struct ConditionMeterRule {
 }
 
 pub type ConditionMeterRuleId = String;
+
+/// A CSS color value. See: https://developer.mozilla.org/en-
+/// US/docs/Web/CSS/color_value
+pub type CssColor = String;
 
 /// A delve site with a theme, domain, and denizen table.
 #[derive(Serialize, Deserialize)]
@@ -1206,7 +1206,7 @@ pub struct DelveSite {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     /// The ID of an atlas entry representing the region in which this delve
     /// site is located.
@@ -1302,7 +1302,7 @@ pub struct DelveSiteDomain {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     /// An oracle table ID containing place name elements. For examples, see
     /// oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in
@@ -1350,7 +1350,7 @@ pub struct DelveSiteDomainDangerRow {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1401,7 +1401,7 @@ pub struct DelveSiteDomainFeatureRow {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1463,7 +1463,7 @@ pub struct DelveSiteTheme {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "suggestions")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1502,7 +1502,7 @@ pub struct DelveSiteThemeDangerRow {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1553,7 +1553,7 @@ pub struct DelveSiteThemeFeatureRow {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1883,7 +1883,7 @@ pub struct MoveCategory {
 
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1897,11 +1897,11 @@ pub struct MoveCategory {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "images")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub images: Option<Box<Vec<WebpimageUrl>>>,
+    pub images: Option<Box<Vec<WebpImageUrl>>>,
 
     /// This collection replaces the identified collection. References to the
     /// replaced collection can be considered equivalent to this collection.
@@ -2116,7 +2116,7 @@ pub struct NpcCollection {
 
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2130,11 +2130,11 @@ pub struct NpcCollection {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "images")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub images: Option<Box<Vec<WebpimageUrl>>>,
+    pub images: Option<Box<Vec<WebpImageUrl>>>,
 
     /// This collection replaces the identified collection. References to the
     /// replaced collection can be considered equivalent to this collection.
@@ -2212,7 +2212,7 @@ pub struct OracleCollection {
 
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2226,11 +2226,11 @@ pub struct OracleCollection {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "images")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub images: Option<Box<Vec<WebpimageUrl>>>,
+    pub images: Option<Box<Vec<WebpImageUrl>>>,
 
     #[serde(rename = "rendering")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2260,7 +2260,7 @@ pub struct OracleCollectionRendering {
 
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     #[serde(rename = "table_style")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2289,7 +2289,7 @@ pub struct OracleCollectionTableColumn {
     /// The thematic color for this column.
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     /// The column's header text.
     #[serde(rename = "name")]
@@ -2354,11 +2354,11 @@ pub struct OracleTable {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "images")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub images: Option<Box<Vec<WebpimageUrl>>>,
+    pub images: Option<Box<Vec<WebpImageUrl>>>,
 
     #[serde(rename = "match")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2395,7 +2395,7 @@ pub struct OracleTableColumn {
     /// The thematic color for this column.
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
+    pub color: Option<Box<CssColor>>,
 
     /// The column's header text.
     #[serde(rename = "name")]
@@ -2511,7 +2511,7 @@ pub struct OracleTableRow {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2647,7 +2647,7 @@ pub struct Rarity {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "suggestions")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2670,9 +2670,6 @@ pub struct Rules {
     #[serde(rename = "stats")]
     pub stats: HashMap<String, StatRule>,
 }
-
-/// A relative URL pointing to a vector image in the SVG format.
-pub type SvgimageUrl = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct SourceAuthor {
@@ -2811,6 +2808,9 @@ pub struct Suggestions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub siteThemes: Option<Box<Vec<DelveSiteThemeId>>>,
 }
+
+/// A relative URL pointing to a vector image in the SVG format.
+pub type SvgImageUrl = String;
 
 /// A rich text string in Markdown with replaced values from oracle roll
 /// results.
@@ -3080,7 +3080,7 @@ pub struct Truth {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "suggestions")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -3148,7 +3148,7 @@ pub struct TruthOptionTableRow {
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub icon: Option<Box<SvgimageUrl>>,
+    pub icon: Option<Box<SvgImageUrl>>,
 
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -3168,4 +3168,4 @@ pub struct TruthOptionTableRow {
 }
 
 /// A relative URL pointing to a raster image in the WEBP format.
-pub type WebpimageUrl = String;
+pub type WebpImageUrl = String;

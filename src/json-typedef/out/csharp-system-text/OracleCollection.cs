@@ -28,7 +28,7 @@ namespace Datasworn
 
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Csscolor? Color { get; set; }
+        public CssColor? Color { get; set; }
 
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -44,11 +44,11 @@ namespace Datasworn
 
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public SvgimageUrl? Icon { get; set; }
+        public SvgImageUrl? Icon { get; set; }
 
         [JsonPropertyName("images")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<WebpimageUrl> Images { get; set; }
+        public IList<WebpImageUrl> Images { get; set; }
 
         [JsonPropertyName("rendering")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

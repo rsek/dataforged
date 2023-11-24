@@ -17,7 +17,7 @@ import {
 
 const TableRowMixin = Type.Object({
 	result: Type.Ref(Localize.MarkdownString),
-	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+	icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
 	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 	description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 	rolls: Type.Optional(Type.Array(Type.Ref(Rolls.OracleTableRoll))),

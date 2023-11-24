@@ -41,7 +41,7 @@ namespace Datasworn
 
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public SvgimageUrl? Icon { get; set; }
+        public SvgImageUrl? Icon { get; set; }
 
         [JsonPropertyName("rolls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

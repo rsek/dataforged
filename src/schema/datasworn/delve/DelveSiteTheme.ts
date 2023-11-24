@@ -33,7 +33,7 @@ export const DelveSiteTheme = Generic.SourcedNode(
 	Type.Object({
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
 		card_type: Type.Literal('theme'),
 		features: Type.Intersect(
 			[

@@ -14,7 +14,7 @@ namespace Datasworn
         /// </summary>
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Csscolor? Color { get; set; }
+        public CssColor? Color { get; set; }
 
         /// <summary>
         /// The column's header text.

@@ -31,7 +31,7 @@ public class OracleCollection {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
-    private Csscolor color;
+    private CssColor color;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -43,11 +43,11 @@ public class OracleCollection {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("icon")
-    private SvgimageUrl icon;
+    private SvgImageUrl icon;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("images")
-    private List<WebpimageUrl> images;
+    private List<WebpImageUrl> images;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("rendering")
@@ -155,14 +155,14 @@ public class OracleCollection {
     /**
      * Getter for color.<p>
      */
-    public Csscolor getColor() {
+    public CssColor getColor() {
         return color;
     }
 
     /**
      * Setter for color.<p>
      */
-    public void setColor(Csscolor color) {
+    public void setColor(CssColor color) {
         this.color = color;
     }
 
@@ -201,28 +201,28 @@ public class OracleCollection {
     /**
      * Getter for icon.<p>
      */
-    public SvgimageUrl getIcon() {
+    public SvgImageUrl getIcon() {
         return icon;
     }
 
     /**
      * Setter for icon.<p>
      */
-    public void setIcon(SvgimageUrl icon) {
+    public void setIcon(SvgImageUrl icon) {
         this.icon = icon;
     }
 
     /**
      * Getter for images.<p>
      */
-    public List<WebpimageUrl> getImages() {
+    public List<WebpImageUrl> getImages() {
         return images;
     }
 
     /**
      * Setter for images.<p>
      */
-    public void setImages(List<WebpimageUrl> images) {
+    public void setImages(List<WebpImageUrl> images) {
         this.images = images;
     }
 

@@ -16,7 +16,7 @@ public class OracleCollectionTableColumn {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
-    private Csscolor color;
+    private CssColor color;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("name")
@@ -61,7 +61,7 @@ public class OracleCollectionTableColumn {
      * Getter for color.<p>
      * The thematic color for this column.
      */
-    public Csscolor getColor() {
+    public CssColor getColor() {
         return color;
     }
 
@@ -69,7 +69,7 @@ public class OracleCollectionTableColumn {
      * Setter for color.<p>
      * The thematic color for this column.
      */
-    public void setColor(Csscolor color) {
+    public void setColor(CssColor color) {
         this.color = color;
     }
 
