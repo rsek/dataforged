@@ -14,7 +14,7 @@ import java.util.List;
 @JsonSerialize
 public class AssetAttachment {
     @JsonProperty("assets")
-    private List<AssetIdwildcard> assets;
+    private List<AssetIdWildcard> assets;
 
     @JsonProperty("max")
     private Short max;
@@ -26,7 +26,7 @@ public class AssetAttachment {
      * Getter for assets.<p>
      * Asset IDs (which may be wildcards) that may be attached to this asset
      */
-    public List<AssetIdwildcard> getAssets() {
+    public List<AssetIdWildcard> getAssets() {
         return assets;
     }
 
@@ -34,7 +34,7 @@ public class AssetAttachment {
      * Setter for assets.<p>
      * Asset IDs (which may be wildcards) that may be attached to this asset
      */
-    public void setAssets(List<AssetIdwildcard> assets) {
+    public void setAssets(List<AssetIdWildcard> assets) {
         this.assets = assets;
     }
 

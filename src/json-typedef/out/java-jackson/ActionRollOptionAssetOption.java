@@ -9,7 +9,7 @@ import java.util.List;
 @JsonSerialize
 public class ActionRollOptionAssetOption extends ActionRollOption {
     @JsonProperty("assets")
-    private List<AssetIdwildcard> assets;
+    private List<AssetIdWildcard> assets;
 
     @JsonProperty("option")
     private DictKey option;
@@ -20,14 +20,14 @@ public class ActionRollOptionAssetOption extends ActionRollOption {
     /**
      * Getter for assets.<p>
      */
-    public List<AssetIdwildcard> getAssets() {
+    public List<AssetIdWildcard> getAssets() {
         return assets;
     }
 
     /**
      * Setter for assets.<p>
      */
-    public void setAssets(List<AssetIdwildcard> assets) {
+    public void setAssets(List<AssetIdWildcard> assets) {
         this.assets = assets;
     }
 

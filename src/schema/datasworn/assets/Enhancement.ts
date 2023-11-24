@@ -7,7 +7,7 @@ import { Fields, Id } from '../common/index.js'
 
 export const AssetAttachment = Type.Object(
 	{
-		assets: Type.Array(Type.Ref(Id.AssetIDWildcard), {
+		assets: Type.Array(Type.Ref(Id.AssetIdWildcard), {
 			description:
 				'Asset IDs (which may be wildcards) that may be attached to this asset'
 		}),

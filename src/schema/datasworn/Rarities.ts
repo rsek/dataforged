@@ -4,9 +4,9 @@ import * as Generic from './utils/Generic.js'
 
 
 export const Rarity = Generic.SourcedNode(
-	Type.Ref(Id.RarityID),
+	Type.Ref(Id.RarityId),
 	Type.Object({
-		asset: Type.Ref(Id.AssetID, {
+		asset: Type.Ref(Id.AssetId, {
 			description: 'The asset augmented by this rarity.'
 		}),
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),

@@ -76,7 +76,7 @@ module Datasworn
     def self.from_json_data(data)
       out = ActionRollOptionAssetControl.new
       out.using = "asset_control"
-      out.assets = Datasworn::from_json_data(Array[AssetIdwildcard], data["assets"])
+      out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
       out.control = Datasworn::from_json_data(DictKey, data["control"])
       out
     end
@@ -96,7 +96,7 @@ module Datasworn
     def self.from_json_data(data)
       out = ActionRollOptionAssetOption.new
       out.using = "asset_option"
-      out.assets = Datasworn::from_json_data(Array[AssetIdwildcard], data["assets"])
+      out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
       out.option = Datasworn::from_json_data(DictKey, data["option"])
       out
     end
@@ -548,7 +548,7 @@ module Datasworn
 
     def self.from_json_data(data)
       out = AssetAttachment.new
-      out.assets = Datasworn::from_json_data(Array[AssetIdwildcard], data["assets"])
+      out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out
     end
@@ -728,8 +728,8 @@ module Datasworn
 
     def self.from_json_data(data)
       out = AssetControlFieldConditionMeterMoves.new
-      out.recover = Datasworn::from_json_data(Array[MoveIdwildcard], data["recover"])
-      out.suffer = Datasworn::from_json_data(Array[MoveIdwildcard], data["suffer"])
+      out.recover = Datasworn::from_json_data(Array[MoveIDWildcard], data["recover"])
+      out.suffer = Datasworn::from_json_data(Array[MoveIDWildcard], data["suffer"])
       out
     end
 
@@ -1005,11 +1005,11 @@ module Datasworn
     end
   end
 
-  class AssetControlFieldIdwildcard
+  class AssetControlFieldIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = AssetControlFieldIdwildcard.new
+      out = AssetControlFieldIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end
@@ -1075,11 +1075,11 @@ module Datasworn
     end
   end
 
-  class AssetIdwildcard
+  class AssetIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = AssetIdwildcard.new
+      out = AssetIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end
@@ -1457,11 +1457,11 @@ module Datasworn
     end
   end
 
-  class AssetOptionFieldIdwildcard
+  class AssetOptionFieldIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = AssetOptionFieldIdwildcard.new
+      out = AssetOptionFieldIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end
@@ -1663,11 +1663,11 @@ module Datasworn
     end
   end
 
-  class AtlasEntryIdwildcard
+  class AtlasEntryIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = AtlasEntryIdwildcard.new
+      out = AtlasEntryIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end
@@ -1691,11 +1691,11 @@ module Datasworn
     end
   end
 
-  class AtlasIdwildcard
+  class AtlasIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = AtlasIdwildcard.new
+      out = AtlasIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end
@@ -2848,7 +2848,7 @@ module Datasworn
     def self.from_json_data(data)
       out = MoveEnhancementActionRoll.new
       out.roll_type = "action_roll"
-      out.enhances = Datasworn::from_json_data(Array[MoveIdwildcard], data["enhances"])
+      out.enhances = Datasworn::from_json_data(Array[MoveIDWildcard], data["enhances"])
       out.trigger = Datasworn::from_json_data(TriggerActionRollEnhancement, data["trigger"])
       out
     end
@@ -2868,7 +2868,7 @@ module Datasworn
     def self.from_json_data(data)
       out = MoveEnhancementNoRoll.new
       out.roll_type = "no_roll"
-      out.enhances = Datasworn::from_json_data(Array[MoveIdwildcard], data["enhances"])
+      out.enhances = Datasworn::from_json_data(Array[MoveIDWildcard], data["enhances"])
       out.trigger = Datasworn::from_json_data(TriggerNoRollEnhancement, data["trigger"])
       out
     end
@@ -2888,7 +2888,7 @@ module Datasworn
     def self.from_json_data(data)
       out = MoveEnhancementProgressRoll.new
       out.roll_type = "progress_roll"
-      out.enhances = Datasworn::from_json_data(Array[MoveIdwildcard], data["enhances"])
+      out.enhances = Datasworn::from_json_data(Array[MoveIDWildcard], data["enhances"])
       out.trigger = Datasworn::from_json_data(TriggerProgressRollEnhancement, data["trigger"])
       out
     end
@@ -2908,7 +2908,7 @@ module Datasworn
     def self.from_json_data(data)
       out = MoveEnhancementSpecialTrack.new
       out.roll_type = "special_track"
-      out.enhances = Datasworn::from_json_data(Array[MoveIdwildcard], data["enhances"])
+      out.enhances = Datasworn::from_json_data(Array[MoveIDWildcard], data["enhances"])
       out.trigger = Datasworn::from_json_data(TriggerSpecialTrackEnhancement, data["trigger"])
       out
     end
@@ -2936,12 +2936,12 @@ module Datasworn
     end
   end
 
-  # A move ID with wildcards
-  class MoveIdwildcard
+  # A move ID with wildcards.
+  class MoveIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = MoveIdwildcard.new
+      out = MoveIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end
@@ -3211,11 +3211,11 @@ module Datasworn
     end
   end
 
-  class NpcIdwildcard
+  class NpcIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = NpcIdwildcard.new
+      out = NpcIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end
@@ -3617,15 +3617,13 @@ module Datasworn
     end
   end
 
-  # Oracle table wildcards can also use '**' to represent any
-  # number of collection levels in the oracle tree. For example,
-  # 'starforged/oracles/**/location' represents any starforged table with the
-  # "location" key.
-  class OracleTableIdwildcard
+  # Oracle table wildcards can also use '**' to represent any number of
+  # collection levels in the oracle tree.
+  class OracleTableIDWildcard
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = OracleTableIdwildcard.new
+      out = OracleTableIDWildcard.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end

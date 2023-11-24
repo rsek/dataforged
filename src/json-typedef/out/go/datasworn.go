@@ -101,14 +101,14 @@ func (v *ActionRollOption) UnmarshalJSON(b []byte) error {
 }
 
 type ActionRollOptionAssetControl struct {
-	Assets []AssetIdwildcard `json:"assets"`
+	Assets []AssetIDWildcard `json:"assets"`
 
 	// The key of the asset control field.
 	Control DictKey `json:"control"`
 }
 
 type ActionRollOptionAssetOption struct {
-	Assets []AssetIdwildcard `json:"assets"`
+	Assets []AssetIDWildcard `json:"assets"`
 
 	// The key of the asset option field.
 	Option DictKey `json:"option"`
@@ -395,7 +395,7 @@ type AssetAbilityOptionFieldID = string
 // Starforged for more info.
 type AssetAttachment struct {
 	// Asset IDs (which may be wildcards) that may be attached to this asset
-	Assets []AssetIdwildcard `json:"assets"`
+	Assets []AssetIDWildcard `json:"assets"`
 
 	Max *int16 `json:"max"`
 }
@@ -580,12 +580,12 @@ type AssetControlFieldCheckbox struct {
 // suffer and recovery moves.
 type AssetControlFieldConditionMeterMoves struct {
 	// The ID(s) of recovery moves associated with this meter.
-	Recover []MoveIdwildcard `json:"recover,omitempty"`
+	Recover []MoveIDWildcard `json:"recover,omitempty"`
 
 	// The ID(s) of suffer moves associated with the condition meter. If the
 	// suffer move makes an action roll, this condition meter value should be made
 	// available as a roll option.
-	Suffer []MoveIdwildcard `json:"suffer,omitempty"`
+	Suffer []MoveIDWildcard `json:"suffer,omitempty"`
 }
 
 // Some assets provide a special condition meter of their own. The most common
@@ -783,7 +783,7 @@ type AssetControlFieldEnhancementConditionMeter struct {
 
 type AssetControlFieldID = string
 
-type AssetControlFieldIdwildcard = string
+type AssetControlFieldIDWildcard = string
 
 // Describes enhancements made to this asset in a partial asset object. The
 // changes should be applied recursively; only the values that are specified
@@ -809,7 +809,7 @@ type AssetEnhancement struct {
 
 type AssetID = string
 
-type AssetIdwildcard = string
+type AssetIDWildcard = string
 
 type AssetOptionField struct {
 	FieldType string
@@ -1096,7 +1096,7 @@ type AssetOptionFieldText struct {
 
 type AssetOptionFieldID = string
 
-type AssetOptionFieldIdwildcard = string
+type AssetOptionFieldIDWildcard = string
 
 type AssetType struct {
 	Contents map[string]Asset `json:"contents"`
@@ -1191,11 +1191,11 @@ type AtlasEntry struct {
 
 type AtlasEntryID = string
 
-type AtlasEntryIdwildcard = string
+type AtlasEntryIDWildcard = string
 
 type AtlasID = string
 
-type AtlasIdwildcard = string
+type AtlasIDWildcard = string
 
 // Challenge rank, represented as an integer:
 type ChallengeRank = uint8
@@ -1808,25 +1808,25 @@ func (v *MoveEnhancement) UnmarshalJSON(b []byte) error {
 }
 
 type MoveEnhancementActionRoll struct {
-	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
 
 	Trigger *TriggerActionRollEnhancement `json:"trigger,omitempty"`
 }
 
 type MoveEnhancementNoRoll struct {
-	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
 
 	Trigger *TriggerNoRollEnhancement `json:"trigger,omitempty"`
 }
 
 type MoveEnhancementProgressRoll struct {
-	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
 
 	Trigger *TriggerProgressRollEnhancement `json:"trigger,omitempty"`
 }
 
 type MoveEnhancementSpecialTrack struct {
-	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
 
 	Trigger *TriggerSpecialTrackEnhancement `json:"trigger,omitempty"`
 }
@@ -1834,8 +1834,8 @@ type MoveEnhancementSpecialTrack struct {
 // A move ID, for a standard move or a unique asset move
 type MoveID = string
 
-// A move ID with wildcards
-type MoveIdwildcard = string
+// A move ID with wildcards.
+type MoveIDWildcard = string
 
 type MoveOutcome struct {
 	Text MarkdownString `json:"text"`
@@ -1951,7 +1951,7 @@ type NpcCollectionID = string
 
 type NpcID = string
 
-type NpcIdwildcard = string
+type NpcIDWildcard = string
 
 // A localized category label describing the nature of this NPC.
 // 
@@ -2128,11 +2128,9 @@ const (
 
 type OracleTableID = string
 
-// Oracle table wildcards can also use '**' to represent any
-// number of collection levels in the oracle tree. For example,
-// 'starforged/oracles/**/location' represents any starforged table with the
-// "location" key.
-type OracleTableIdwildcard = string
+// Oracle table wildcards can also use '**' to represent any number of
+// collection levels in the oracle tree.
+type OracleTableIDWildcard = string
 
 type OracleTableMatchBehavior struct {
 	Text MarkdownString `json:"text"`

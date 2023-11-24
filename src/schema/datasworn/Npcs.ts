@@ -37,7 +37,7 @@ const NpcMixin = Flatten([
 ])
 
 export const NpcVariant = Generic.IdentifiedNode(
-	Type.Ref(Id.NpcVariantID),
+	Type.Ref(Id.NpcVariantId),
 	Type.Pick(NpcMixin, ['name', 'rank', 'nature', 'summary', 'description']),
 	{
 		$id: '#/$defs/NpcVariant'
@@ -47,7 +47,7 @@ export const NpcVariant = Generic.IdentifiedNode(
 export type NpcVariant = Static<typeof NpcVariant>
 
 export const Npc = Generic.Collectable(
-	Type.Ref(Id.NpcID),
+	Type.Ref(Id.NpcId),
 	Flatten([
 		NpcMixin,
 		Type.Object({
@@ -64,7 +64,7 @@ export const Npc = Generic.Collectable(
 export type Npc = Static<typeof Npc>
 
 export const NpcCollection = Generic.Collection(
-	Type.Ref(Id.NpcCollectionID),
+	Type.Ref(Id.NpcCollectionId),
 	Type.Ref(Npc),
 	{
 		$id: '#/$defs/NpcCollection'

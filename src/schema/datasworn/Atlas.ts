@@ -3,7 +3,7 @@ import { Id } from './common/index.js'
 import * as Generic from './utils/Generic.js'
 
 export const AtlasEntry = Generic.RecursiveCollectable(
-	Type.Ref(Id.AtlasEntryID),
+	Type.Ref(Id.AtlasEntryId),
 	Generic.CyclopediaMixin,
 	{
 		$id: '#/$defs/AtlasEntry',
@@ -16,7 +16,7 @@ export const AtlasEntry = Generic.RecursiveCollectable(
 export type TAtlasEntry = typeof AtlasEntry
 export type AtlasEntry = Static<typeof AtlasEntry>
 
-const AtlasBase = Generic.Collection(Type.Ref(Id.AtlasID), Type.Ref(AtlasEntry))
+const AtlasBase = Generic.Collection(Type.Ref(Id.AtlasId), Type.Ref(AtlasEntry))
 
 export const Atlas = Generic.RecursiveCollection(AtlasBase, {
 	$id: '#/$defs/Atlas',

@@ -19,7 +19,7 @@ export const DelveSiteDenizenFrequency = JsonEnum(
 export type DelveSiteDenizenFrequency = Static<typeof DelveSiteDenizenFrequency>
 
 export const DelveSiteDenizen = Generic.IdentifiedNode(
-	Type.Ref(Id.DelveSiteDenizenID),
+	Type.Ref(Id.DelveSiteDenizenId),
 	Type.Object({
 		name: Type.Optional(
 			Type.Ref(
@@ -31,7 +31,7 @@ export const DelveSiteDenizen = Generic.IdentifiedNode(
 		min: Type.Integer(),
 		max: Type.Integer(),
 		npc: Type.Optional(
-			Type.Ref(Id.NpcID, {
+			Type.Ref(Id.NpcId, {
 				description: 'The ID of the relevant NPC entry, if one is specified.'
 			})
 		),
@@ -60,21 +60,21 @@ function StaticDenizenRowStub<
 const DelveSiteDenizens = Type.Array(Type.Ref(DelveSiteDenizen))
 
 export const DelveSite = Generic.SourcedNode(
-	Type.Ref(Id.DelveSiteID),
+	Type.Ref(Id.DelveSiteId),
 	Type.Object({
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
 		rank: Type.Ref(Progress.ChallengeRank),
 		region: Type.Optional(
-			Type.Ref(Id.AtlasEntryID, {
+			Type.Ref(Id.AtlasEntryId, {
 				description:
 					'The ID of an atlas entry representing the region in which this delve site is located.'
 			})
 		),
-		theme: Type.Ref(Id.DelveSiteThemeID),
-		domain: Type.Ref(Id.DelveSiteDomainID),
+		theme: Type.Ref(Id.DelveSiteThemeId),
+		domain: Type.Ref(Id.DelveSiteDomainId),
 		extra_card: Type.Optional(
 			UnionOneOf(
-				[Type.Ref(Id.DelveSiteThemeID), Type.Ref(Id.DelveSiteDomainID)],
+				[Type.Ref(Id.DelveSiteThemeId), Type.Ref(Id.DelveSiteDomainId)],
 				{
 					description:
 						'An additional theme or domain card ID, for use with optional rules in Ironsworn: Delve.',

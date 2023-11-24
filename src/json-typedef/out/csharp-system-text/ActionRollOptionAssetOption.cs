@@ -11,7 +11,7 @@ namespace Datasworn
         public string Using { get => "asset_option"; }
 
         [JsonPropertyName("assets")]
-        public IList<AssetIdwildcard> Assets { get; set; }
+        public IList<AssetIdWildcard> Assets { get; set; }
 
         /// <summary>
         /// The key of the asset option field.

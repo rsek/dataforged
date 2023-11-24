@@ -49,7 +49,7 @@ export type MoveEnhancement =
 	| MoveSpecialTrackEnhancement
 
 export const MoveCategory = Generic.Collection(
-	Type.Ref(Id.MoveCategoryID),
+	Type.Ref(Id.MoveCategoryId),
 	Type.Ref(Move),
 	{ $id: '#/$defs/MoveCategory' }
 )

@@ -44,7 +44,7 @@ const AssetMixin = Type.Object({
 })
 
 export const Asset = Generic.Collectable(
-	Type.Ref(Id.AssetID),
+	Type.Ref(Id.AssetId),
 	Generic.Flatten([
 		AssetMixin,
 		AssetPropertiesEnhanceable(
@@ -60,7 +60,7 @@ export type Asset = Generic.Collectable<
 >
 
 export const AssetType = Generic.Collection(
-	Type.Ref(Id.AssetTypeID),
+	Type.Ref(Id.AssetTypeId),
 	Type.Ref<TUnsafe<Asset>>('#/$defs/Asset'),
 	{
 		$id: '#/$defs/AssetType'

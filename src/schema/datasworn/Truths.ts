@@ -8,7 +8,7 @@ export const TruthOptionTableRow = Type.Omit(Oracles.OracleTableRow, ['id'], {
 })
 
 export const TruthOption = Generic.IdentifiedNode(
-	Type.Ref(Id.TruthOptionID),
+	Type.Ref(Id.TruthOptionId),
 	Type.Object({
 		min: Type.Optional(Type.Integer()),
 		max: Type.Optional(Type.Integer()),
@@ -23,7 +23,7 @@ export const TruthOption = Generic.IdentifiedNode(
 export type TruthOption = Static<typeof TruthOption>
 
 export const Truth = Generic.SourcedNode(
-	Type.Ref(Id.TruthID),
+	Type.Ref(Id.TruthId),
 	Type.Object({
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
 		options: Type.Array(Type.Ref(TruthOption)),

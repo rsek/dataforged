@@ -12,7 +12,7 @@ namespace Datasworn
 
         [JsonPropertyName("enhances")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<MoveIdwildcard> Enhances { get; set; }
+        public IList<MoveIdWildcard> Enhances { get; set; }
 
         [JsonPropertyName("trigger")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

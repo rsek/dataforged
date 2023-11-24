@@ -6,7 +6,7 @@ import { AssetEnhancement } from './Enhancement.js'
 import { AssetAbilityControlField, AssetAbilityOptionField } from './Fields.js'
 
 export const AssetAbility = Generic.IdentifiedNode(
-	Type.Ref(Id.AssetAbilityID),
+	Type.Ref(Id.AssetAbilityId),
 	Type.Object({
 		name: Type.Optional(Type.Ref(Localize.Label)),
 		text: Type.Ref(Localize.MarkdownString),

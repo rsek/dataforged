@@ -16,7 +16,7 @@ export type ActionRollOption = ActionRollOptionAssetControl | ActionRollOptionAs
 
 export interface ActionRollOptionAssetControl {
   using: "asset_control";
-  assets: (AssetIdwildcard[] | null);
+  assets: (AssetIdWildcard[] | null);
 
   /**
    * The key of the asset control field.
@@ -26,7 +26,7 @@ export interface ActionRollOptionAssetControl {
 
 export interface ActionRollOptionAssetOption {
   using: "asset_option";
-  assets: (AssetIdwildcard[] | null);
+  assets: (AssetIdWildcard[] | null);
 
   /**
    * The key of the asset option field.
@@ -282,7 +282,7 @@ export interface AssetAttachment {
   /**
    * Asset IDs (which may be wildcards) that may be attached to this asset
    */
-  assets: AssetIdwildcard[];
+  assets: AssetIdWildcard[];
   max: (number | null);
 }
 
@@ -412,14 +412,14 @@ export interface AssetControlFieldConditionMeterMoves {
   /**
    * The ID(s) of recovery moves associated with this meter.
    */
-  recover?: MoveIdwildcard[];
+  recover?: MoveIdWildcard[];
 
   /**
    * The ID(s) of suffer moves associated with the condition meter. If the
    * suffer move makes an action roll, this condition meter value should be made
    * available as a roll option.
    */
-  suffer?: MoveIdwildcard[];
+  suffer?: MoveIdWildcard[];
 }
 
 /**
@@ -587,7 +587,7 @@ export interface AssetControlFieldEnhancementConditionMeter {
 
 export type AssetControlFieldId = string;
 
-export type AssetControlFieldIdwildcard = string;
+export type AssetControlFieldIdWildcard = string;
 
 /**
  * Describes enhancements made to this asset in a partial asset object. The
@@ -621,7 +621,7 @@ export interface AssetEnhancement {
 
 export type AssetId = string;
 
-export type AssetIdwildcard = string;
+export type AssetIdWildcard = string;
 
 export type AssetOptionField = AssetOptionFieldSelectEnhancement | AssetOptionFieldSelectStat | AssetOptionFieldText;
 
@@ -837,7 +837,7 @@ export interface AssetOptionFieldText {
 
 export type AssetOptionFieldId = string;
 
-export type AssetOptionFieldIdwildcard = string;
+export type AssetOptionFieldIdWildcard = string;
 
 export interface AssetType {
   contents: { [key: string]: Asset };
@@ -912,11 +912,11 @@ export interface AtlasEntry {
 
 export type AtlasEntryId = string;
 
-export type AtlasEntryIdwildcard = string;
+export type AtlasEntryIdWildcard = string;
 
 export type AtlasId = string;
 
-export type AtlasIdwildcard = string;
+export type AtlasIdWildcard = string;
 
 /**
  * Challenge rank, represented as an integer:
@@ -1378,25 +1378,25 @@ export type MoveEnhancement = MoveEnhancementActionRoll | MoveEnhancementNoRoll 
 
 export interface MoveEnhancementActionRoll {
   roll_type: "action_roll";
-  enhances?: MoveIdwildcard[];
+  enhances?: MoveIdWildcard[];
   trigger?: TriggerActionRollEnhancement;
 }
 
 export interface MoveEnhancementNoRoll {
   roll_type: "no_roll";
-  enhances?: MoveIdwildcard[];
+  enhances?: MoveIdWildcard[];
   trigger?: TriggerNoRollEnhancement;
 }
 
 export interface MoveEnhancementProgressRoll {
   roll_type: "progress_roll";
-  enhances?: MoveIdwildcard[];
+  enhances?: MoveIdWildcard[];
   trigger?: TriggerProgressRollEnhancement;
 }
 
 export interface MoveEnhancementSpecialTrack {
   roll_type: "special_track";
-  enhances?: MoveIdwildcard[];
+  enhances?: MoveIdWildcard[];
   trigger?: TriggerSpecialTrackEnhancement;
 }
 
@@ -1406,9 +1406,9 @@ export interface MoveEnhancementSpecialTrack {
 export type MoveId = string;
 
 /**
- * A move ID with wildcards
+ * A move ID with wildcards.
  */
-export type MoveIdwildcard = string;
+export type MoveIdWildcard = string;
 
 export interface MoveOutcome {
   text: MarkdownString;
@@ -1497,7 +1497,7 @@ export type NpcCollectionId = string;
 
 export type NpcId = string;
 
-export type NpcIdwildcard = string;
+export type NpcIdWildcard = string;
 
 /**
  * A localized category label describing the nature of this NPC.
@@ -1670,12 +1670,10 @@ export enum OracleTableColumnContentKey {
 export type OracleTableId = string;
 
 /**
- * Oracle table wildcards can also use '**' to represent any
- * number of collection levels in the oracle tree. For example,
- * 'starforged/oracles/**/location' represents any starforged table with the
- * "location" key.
+ * Oracle table wildcards can also use '**' to represent any number of
+ * collection levels in the oracle tree.
  */
-export type OracleTableIdwildcard = string;
+export type OracleTableIdWildcard = string;
 
 export interface OracleTableMatchBehavior {
   text: MarkdownString;

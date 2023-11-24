@@ -54,7 +54,7 @@ function ActionRollOptionBase<
 export const RollOptionAssetControl = ActionRollOptionBase(
 	'asset_control',
 	Type.Object({
-		assets: Nullable(Type.Array(Type.Ref(Id.AssetIDWildcard)), {
+		assets: Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
@@ -82,7 +82,7 @@ export type RollOptionAttachedAssetControl = Static<
 export const RollOptionAssetOption = ActionRollOptionBase(
 	'asset_option',
 	Type.Object({
-		assets: Nullable(Type.Array(Type.Ref(Id.AssetIDWildcard)), {
+		assets: Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."

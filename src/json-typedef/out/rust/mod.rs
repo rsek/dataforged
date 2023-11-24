@@ -58,7 +58,7 @@ pub enum ActionRollOption {
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionAssetControl {
     #[serde(rename = "assets")]
-    pub assets: Option<Box<Vec<AssetIdwildcard>>>,
+    pub assets: Option<Box<Vec<AssetIdWildcard>>>,
 
     /// The key of the asset control field.
     #[serde(rename = "control")]
@@ -68,7 +68,7 @@ pub struct ActionRollOptionAssetControl {
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionAssetOption {
     #[serde(rename = "assets")]
-    pub assets: Option<Box<Vec<AssetIdwildcard>>>,
+    pub assets: Option<Box<Vec<AssetIdWildcard>>>,
 
     /// The key of the asset option field.
     #[serde(rename = "option")]
@@ -372,7 +372,7 @@ pub type AssetAbilityOptionFieldId = String;
 pub struct AssetAttachment {
     /// Asset IDs (which may be wildcards) that may be attached to this asset
     #[serde(rename = "assets")]
-    pub assets: Vec<AssetIdwildcard>,
+    pub assets: Vec<AssetIdWildcard>,
 
     #[serde(rename = "max")]
     pub max: Option<Box<i16>>,
@@ -513,14 +513,14 @@ pub struct AssetControlFieldConditionMeterMoves {
     /// The ID(s) of recovery moves associated with this meter.
     #[serde(rename = "recover")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub recover: Option<Box<Vec<MoveIdwildcard>>>,
+    pub recover: Option<Box<Vec<MoveIdWildcard>>>,
 
     /// The ID(s) of suffer moves associated with the condition meter. If the
     /// suffer move makes an action roll, this condition meter value should be
     /// made available as a roll option.
     #[serde(rename = "suffer")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub suffer: Option<Box<Vec<MoveIdwildcard>>>,
+    pub suffer: Option<Box<Vec<MoveIdWildcard>>>,
 }
 
 /// Some assets provide a special condition meter of their own. The most common
@@ -696,7 +696,7 @@ pub struct AssetControlFieldEnhancementConditionMeter {
 
 pub type AssetControlFieldId = String;
 
-pub type AssetControlFieldIdwildcard = String;
+pub type AssetControlFieldIdWildcard = String;
 
 /// Describes enhancements made to this asset in a partial asset object. The
 /// changes should be applied recursively; only the values that are specified
@@ -734,7 +734,7 @@ pub struct AssetEnhancement {
 
 pub type AssetId = String;
 
-pub type AssetIdwildcard = String;
+pub type AssetIdWildcard = String;
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "field_type")]
@@ -971,7 +971,7 @@ pub struct AssetOptionFieldText {
 
 pub type AssetOptionFieldId = String;
 
-pub type AssetOptionFieldIdwildcard = String;
+pub type AssetOptionFieldIdWildcard = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetType {
@@ -1129,11 +1129,11 @@ pub struct AtlasEntry {
 
 pub type AtlasEntryId = String;
 
-pub type AtlasEntryIdwildcard = String;
+pub type AtlasEntryIdWildcard = String;
 
 pub type AtlasId = String;
 
-pub type AtlasIdwildcard = String;
+pub type AtlasIdWildcard = String;
 
 /// Challenge rank, represented as an integer:
 pub type ChallengeRank = u8;
@@ -1940,7 +1940,7 @@ pub enum MoveEnhancement {
 pub struct MoveEnhancementActionRoll {
     #[serde(rename = "enhances")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdwildcard>>>,
+    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1951,7 +1951,7 @@ pub struct MoveEnhancementActionRoll {
 pub struct MoveEnhancementNoRoll {
     #[serde(rename = "enhances")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdwildcard>>>,
+    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1962,7 +1962,7 @@ pub struct MoveEnhancementNoRoll {
 pub struct MoveEnhancementProgressRoll {
     #[serde(rename = "enhances")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdwildcard>>>,
+    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1973,7 +1973,7 @@ pub struct MoveEnhancementProgressRoll {
 pub struct MoveEnhancementSpecialTrack {
     #[serde(rename = "enhances")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdwildcard>>>,
+    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1983,8 +1983,8 @@ pub struct MoveEnhancementSpecialTrack {
 /// A move ID, for a standard move or a unique asset move
 pub type MoveId = String;
 
-/// A move ID with wildcards
-pub type MoveIdwildcard = String;
+/// A move ID with wildcards.
+pub type MoveIdWildcard = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct MoveOutcome {
@@ -2155,7 +2155,7 @@ pub type NpcCollectionId = String;
 
 pub type NpcId = String;
 
-pub type NpcIdwildcard = String;
+pub type NpcIdWildcard = String;
 
 /// A localized category label describing the nature of this NPC.
 /// 
@@ -2421,11 +2421,9 @@ pub enum OracleTableColumnContentKey {
 
 pub type OracleTableId = String;
 
-/// Oracle table wildcards can also use '**' to represent any
-/// number of collection levels in the oracle tree. For example,
-/// 'starforged/oracles/**/location' represents any starforged table with the
-/// "location" key.
-pub type OracleTableIdwildcard = String;
+/// Oracle table wildcards can also use '**' to represent any number of
+/// collection levels in the oracle tree.
+pub type OracleTableIdWildcard = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableMatchBehavior {

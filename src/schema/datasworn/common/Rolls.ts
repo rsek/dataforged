@@ -30,7 +30,7 @@ export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
 export const OracleTableRoll = Type.Object(
 	{
 		oracle: Type.Optional(
-			Type.Ref(Id.OracleTableID, {
+			Type.Ref(Id.OracleTableId, {
 				description:
 					'The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.'
 			})

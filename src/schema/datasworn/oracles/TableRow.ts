@@ -22,7 +22,7 @@ const TableRowMixin = Type.Object({
 	description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 	rolls: Type.Optional(Type.Array(Type.Ref(Rolls.OracleTableRoll))),
 	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
-	embed_table: Type.Optional(Type.Ref(Id.OracleTableID)),
+	embed_table: Type.Optional(Type.Ref(Id.OracleTableId)),
 	template: Type.Optional(Type.Ref(Rolls.OracleRollTemplate)),
 	i18n: Type.Optional(Type.Ref(Localize.I18nHints))
 })

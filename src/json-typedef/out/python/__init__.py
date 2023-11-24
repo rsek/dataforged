@@ -56,7 +56,7 @@ class ActionRollOption:
 
 @dataclass
 class ActionRollOptionAssetControl(ActionRollOption):
-    assets: 'Optional[List[AssetIdwildcard]]'
+    assets: 'Optional[List[AssetIDWildcard]]'
     control: 'DictKey'
     """
     The key of the asset control field.
@@ -67,7 +67,7 @@ class ActionRollOptionAssetControl(ActionRollOption):
     def from_json_data(cls, data: Any) -> 'ActionRollOptionAssetControl':
         return cls(
             "asset_control",
-            _from_json_data(Optional[List[AssetIdwildcard]], data.get("assets")),
+            _from_json_data(Optional[List[AssetIDWildcard]], data.get("assets")),
             _from_json_data(DictKey, data.get("control")),
         )
 
@@ -79,7 +79,7 @@ class ActionRollOptionAssetControl(ActionRollOption):
 
 @dataclass
 class ActionRollOptionAssetOption(ActionRollOption):
-    assets: 'Optional[List[AssetIdwildcard]]'
+    assets: 'Optional[List[AssetIDWildcard]]'
     option: 'DictKey'
     """
     The key of the asset option field.
@@ -90,7 +90,7 @@ class ActionRollOptionAssetOption(ActionRollOption):
     def from_json_data(cls, data: Any) -> 'ActionRollOptionAssetOption':
         return cls(
             "asset_option",
-            _from_json_data(Optional[List[AssetIdwildcard]], data.get("assets")),
+            _from_json_data(Optional[List[AssetIDWildcard]], data.get("assets")),
             _from_json_data(DictKey, data.get("option")),
         )
 
@@ -619,7 +619,7 @@ class AssetAttachment:
     Starforged for more info.
     """
 
-    assets: 'List[AssetIdwildcard]'
+    assets: 'List[AssetIDWildcard]'
     """
     Asset IDs (which may be wildcards) that may be attached to this asset
     """
@@ -629,7 +629,7 @@ class AssetAttachment:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAttachment':
         return cls(
-            _from_json_data(List[AssetIdwildcard], data.get("assets")),
+            _from_json_data(List[AssetIDWildcard], data.get("assets")),
             _from_json_data(Optional[int], data.get("max")),
         )
 
@@ -879,12 +879,12 @@ class AssetControlFieldConditionMeterMoves:
     suffer and recovery moves.
     """
 
-    recover: 'Optional[List[MoveIdwildcard]]'
+    recover: 'Optional[List[MoveIDWildcard]]'
     """
     The ID(s) of recovery moves associated with this meter.
     """
 
-    suffer: 'Optional[List[MoveIdwildcard]]'
+    suffer: 'Optional[List[MoveIDWildcard]]'
     """
     The ID(s) of suffer moves associated with the condition meter. If the
     suffer move makes an action roll, this condition meter value should be made
@@ -895,8 +895,8 @@ class AssetControlFieldConditionMeterMoves:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetControlFieldConditionMeterMoves':
         return cls(
-            _from_json_data(Optional[List[MoveIdwildcard]], data.get("recover")),
-            _from_json_data(Optional[List[MoveIdwildcard]], data.get("suffer")),
+            _from_json_data(Optional[List[MoveIDWildcard]], data.get("recover")),
+            _from_json_data(Optional[List[MoveIDWildcard]], data.get("suffer")),
         )
 
     def to_json_data(self) -> Any:
@@ -1253,11 +1253,11 @@ class AssetControlFieldID:
         return _to_json_data(self.value)
 
 @dataclass
-class AssetControlFieldIdwildcard:
+class AssetControlFieldIDWildcard:
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldIdwildcard':
+    def from_json_data(cls, data: Any) -> 'AssetControlFieldIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -1329,11 +1329,11 @@ class AssetID:
         return _to_json_data(self.value)
 
 @dataclass
-class AssetIdwildcard:
+class AssetIDWildcard:
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetIdwildcard':
+    def from_json_data(cls, data: Any) -> 'AssetIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -1802,11 +1802,11 @@ class AssetOptionFieldID:
         return _to_json_data(self.value)
 
 @dataclass
-class AssetOptionFieldIdwildcard:
+class AssetOptionFieldIDWildcard:
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldIdwildcard':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -2029,11 +2029,11 @@ class AtlasEntryID:
         return _to_json_data(self.value)
 
 @dataclass
-class AtlasEntryIdwildcard:
+class AtlasEntryIDWildcard:
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AtlasEntryIdwildcard':
+    def from_json_data(cls, data: Any) -> 'AtlasEntryIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -2051,11 +2051,11 @@ class AtlasID:
         return _to_json_data(self.value)
 
 @dataclass
-class AtlasIdwildcard:
+class AtlasIDWildcard:
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AtlasIdwildcard':
+    def from_json_data(cls, data: Any) -> 'AtlasIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -3302,14 +3302,14 @@ class MoveEnhancement:
 
 @dataclass
 class MoveEnhancementActionRoll(MoveEnhancement):
-    enhances: 'Optional[List[MoveIdwildcard]]'
+    enhances: 'Optional[List[MoveIDWildcard]]'
     trigger: 'Optional[TriggerActionRollEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementActionRoll':
         return cls(
             "action_roll",
-            _from_json_data(Optional[List[MoveIdwildcard]], data.get("enhances")),
+            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
             _from_json_data(Optional[TriggerActionRollEnhancement], data.get("trigger")),
         )
 
@@ -3323,14 +3323,14 @@ class MoveEnhancementActionRoll(MoveEnhancement):
 
 @dataclass
 class MoveEnhancementNoRoll(MoveEnhancement):
-    enhances: 'Optional[List[MoveIdwildcard]]'
+    enhances: 'Optional[List[MoveIDWildcard]]'
     trigger: 'Optional[TriggerNoRollEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementNoRoll':
         return cls(
             "no_roll",
-            _from_json_data(Optional[List[MoveIdwildcard]], data.get("enhances")),
+            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
             _from_json_data(Optional[TriggerNoRollEnhancement], data.get("trigger")),
         )
 
@@ -3344,14 +3344,14 @@ class MoveEnhancementNoRoll(MoveEnhancement):
 
 @dataclass
 class MoveEnhancementProgressRoll(MoveEnhancement):
-    enhances: 'Optional[List[MoveIdwildcard]]'
+    enhances: 'Optional[List[MoveIDWildcard]]'
     trigger: 'Optional[TriggerProgressRollEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementProgressRoll':
         return cls(
             "progress_roll",
-            _from_json_data(Optional[List[MoveIdwildcard]], data.get("enhances")),
+            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
             _from_json_data(Optional[TriggerProgressRollEnhancement], data.get("trigger")),
         )
 
@@ -3365,14 +3365,14 @@ class MoveEnhancementProgressRoll(MoveEnhancement):
 
 @dataclass
 class MoveEnhancementSpecialTrack(MoveEnhancement):
-    enhances: 'Optional[List[MoveIdwildcard]]'
+    enhances: 'Optional[List[MoveIDWildcard]]'
     trigger: 'Optional[TriggerSpecialTrackEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementSpecialTrack':
         return cls(
             "special_track",
-            _from_json_data(Optional[List[MoveIdwildcard]], data.get("enhances")),
+            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
             _from_json_data(Optional[TriggerSpecialTrackEnhancement], data.get("trigger")),
         )
 
@@ -3400,15 +3400,15 @@ class MoveID:
         return _to_json_data(self.value)
 
 @dataclass
-class MoveIdwildcard:
+class MoveIDWildcard:
     """
-    A move ID with wildcards
+    A move ID with wildcards.
     """
 
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'MoveIdwildcard':
+    def from_json_data(cls, data: Any) -> 'MoveIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -3655,11 +3655,11 @@ class NpcID:
         return _to_json_data(self.value)
 
 @dataclass
-class NpcIdwildcard:
+class NpcIDWildcard:
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'NpcIdwildcard':
+    def from_json_data(cls, data: Any) -> 'NpcIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -4074,18 +4074,16 @@ class OracleTableID:
         return _to_json_data(self.value)
 
 @dataclass
-class OracleTableIdwildcard:
+class OracleTableIDWildcard:
     """
-    Oracle table wildcards can also use '**' to represent any
-    number of collection levels in the oracle tree. For example,
-    'starforged/oracles/**/location' represents any starforged table with the
-    "location" key.
+    Oracle table wildcards can also use '**' to represent any number of
+    collection levels in the oracle tree.
     """
 
     value: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'OracleTableIdwildcard':
+    def from_json_data(cls, data: Any) -> 'OracleTableIDWildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:

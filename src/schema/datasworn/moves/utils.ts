@@ -25,7 +25,7 @@ import * as Generic from '../utils/Generic.js'
 
 const MoveBase = Type.Object({
 	replaces: Type.Optional(
-		Type.Ref(Id.MoveID, {
+		Type.Ref(Id.MoveId, {
 			description:
 				'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
 		})
@@ -34,7 +34,7 @@ const MoveBase = Type.Object({
 		description: 'The complete rules text of the move.'
 	}),
 	oracles: Type.Optional(
-		Type.Array(Type.Ref(Id.OracleTableID), {
+		Type.Array(Type.Ref(Id.OracleTableId), {
 			description:
 				"Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 		})
@@ -60,7 +60,7 @@ export function Move<
 			outcomes: Outcomes
 		}
 	>
-	return Generic.Collectable(Type.Ref(Id.MoveID), base, options)
+	return Generic.Collectable(Type.Ref(Id.MoveId), base, options)
 }
 export type TMove<
 	RollType extends MoveRollType,
@@ -89,7 +89,7 @@ export function MoveEnhancement<
 		trigger: Type.Optional(trigger)
 	})
 
-	return Generic.EnhanceMany(base, Type.Ref(Id.MoveIDWildcard), options)
+	return Generic.EnhanceMany(base, Type.Ref(Id.MoveIdWildcard), options)
 }
 export type MoveEnhancement<T extends MoveRollType, E> = Generic.EnhanceMany<{
 	roll_type: T

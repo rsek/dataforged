@@ -10,7 +10,7 @@ import {
 } from './oracles/OracleRendering.js'
 
 export const OracleTableRow = Generic.IdentifiedNode(
-	Type.Ref(Id.OracleTableRowID),
+	Type.Ref(Id.OracleTableRowId),
 	TableRow({
 		min: Nullable(Type.Integer(), {
 			default: null
@@ -24,7 +24,7 @@ export const OracleTableRow = Generic.IdentifiedNode(
 export type OracleTableRow = Static<typeof OracleTableRow>
 
 export const OracleTable = Generic.RecursiveCollectable(
-	Type.Ref(Id.OracleTableID),
+	Type.Ref(Id.OracleTableId),
 	Type.Object({
 		dice: Type.Ref(Rolls.DiceNotation, { default: '1d100' }),
 		_i18n: Type.Optional(Type.Ref(Localize.I18nHints, { macro: true })),
@@ -37,7 +37,7 @@ export const OracleTable = Generic.RecursiveCollectable(
 			})
 		),
 		replaces: Type.Optional(
-			Type.Ref(Id.OracleTableID, {
+			Type.Ref(Id.OracleTableId, {
 				description:
 					'Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.'
 			})
@@ -61,7 +61,7 @@ const OracleCollectionBase = Flatten(
 		Type.Object({
 			rendering: Type.Optional(Type.Ref(OracleCollectionRendering))
 		}),
-		Generic.Collection(Type.Ref(Id.OracleCollectionID), Type.Ref(OracleTable))
+		Generic.Collection(Type.Ref(Id.OracleCollectionId), Type.Ref(OracleTable))
 	],
 	{ [Generic.CollectionBrand]: 'Collection' }
 ) satisfies Generic.TCollection<TRef<typeof OracleTable>>

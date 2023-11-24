@@ -7,7 +7,7 @@ import * as Generic from '../utils/Generic.js'
 
 
 export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
-	Type.Ref(Id.DomainFeatureRowID),
+	Type.Ref(Id.DomainFeatureRowId),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -16,7 +16,7 @@ export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
 export const DelveSiteDomainDangerRow = Generic.IdentifiedNode(
-	Type.Ref(Id.DomainDangerRowID),
+	Type.Ref(Id.DomainDangerRowId),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -30,14 +30,14 @@ const DelveSiteDomainFeatures = Type.Array(Type.Ref(DelveSiteDomainFeatureRow))
 const DelveSiteDomainDangers = Type.Array(Type.Ref(DelveSiteDomainDangerRow))
 
 export const DelveSiteDomain = Generic.SourcedNode(
-	Type.Ref(Id.DelveSiteDomainID),
+	Type.Ref(Id.DelveSiteDomainId),
 	Type.Object({
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
 		card_type: Type.Literal('domain'),
 		name_oracle: Type.Optional(
-			Type.Ref(Id.OracleTableID, {
+			Type.Ref(Id.OracleTableId, {
 				description:
 					'An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.'
 			})

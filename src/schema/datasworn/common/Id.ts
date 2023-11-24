@@ -6,22 +6,22 @@ import {
 	Index,
 	Namespace,
 	Node,
-	CollectionID,
-	ID,
-	RecursiveCollectionID,
-	UncollectableID,
+	CollectionId,
+	Id,
+	RecursiveCollectionId,
+	UncollectableId,
 	toWildcard,
-	IDUnion,
-	RecursiveCollectableID
+	IdUnion,
+	RecursiveCollectableId
 } from '../utils/regex.js'
 
-export const NamespaceID = ID([Namespace], {
-	$id: '#/$defs/NamespaceID',
+export const NamespaceId = Id([Namespace], {
+	$id: '#/$defs/NamespaceId',
 	examples: ['classic', 'delve', 'starforged', 'sundered_isles']
 })
-export type NamespaceID = Static<typeof NamespaceID>
+export type NamespaceId = Static<typeof NamespaceId>
 
-export const DictKey = ID([Node], {
+export const DictKey = Id([Node], {
 	$id: '#/$defs/DictKey',
 	description: 'A key used in a Datasworn dictionary object.',
 	$comment:
@@ -29,353 +29,313 @@ export const DictKey = ID([Node], {
 })
 export type DictKey = Static<typeof DictKey>
 
-export const NpcCollectionID = CollectionID(['npcs'], {
-	$id: '#/$defs/NpcCollectionID',
+export const NpcCollectionId = CollectionId(['npcs'], {
+	$id: '#/$defs/NpcCollectionId',
 	examples: [
 		'classic/collections/npcs/firstborn',
 		'starforged/collections/npcs/sample_npcs'
 	]
 })
 
-export type NpcCollectionID = Opaque<Static<typeof NpcCollectionID>>
+export type NpcCollectionId = Opaque<Static<typeof NpcCollectionId>>
 
-export const NpcID = Extend(NpcCollectionID, [Node], {
-	$id: '#/$defs/NpcID',
+export const NpcId = Extend(NpcCollectionId, [Node], {
+	$id: '#/$defs/NpcId',
 	examples: ['classic/npcs/firstborn/elf', 'starforged/npcs/sample_npcs/chiton']
 })
 
-export type NpcID = Opaque<Static<typeof NpcID>>
+export type NpcId = Opaque<Static<typeof NpcId>>
 
-export const NpcIDWildcard = toWildcard(NpcID, {
-	$id: '#/$defs/NpcIDWildcard'
+export const NpcIdWildcard = toWildcard(NpcId, {
+	$id: '#/$defs/NpcIdWildcard'
 })
-export type NpcIDWildcard = Opaque<Static<typeof NpcIDWildcard>>
+export type NpcIdWildcard = Opaque<Static<typeof NpcIdWildcard>>
 
-export const NpcVariantID = Extend(NpcID, ['variants', Node], {
-	$id: '#/$defs/NpcVariantID',
+export const NpcVariantId = Extend(NpcId, ['variants', Node], {
+	$id: '#/$defs/NpcVariantId',
 	examples: ['starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack']
 })
 
-export type NpcVariantID = Opaque<Static<typeof NpcVariantID>>
+export type NpcVariantId = Opaque<Static<typeof NpcVariantId>>
 
-export const AssetTypeID = CollectionID(['assets'], {
-	$id: '#/$defs/AssetTypeID'
+export const AssetTypeId = CollectionId(['assets'], {
+	$id: '#/$defs/AssetTypeId'
 })
-export type AssetTypeID = Opaque<Static<typeof AssetTypeID>>
+export type AssetTypeId = Opaque<Static<typeof AssetTypeId>>
 
-export const AssetID = Extend(AssetTypeID, [Node], {
-	$id: '#/$defs/AssetID'
+export const AssetId = Extend(AssetTypeId, [Node], {
+	$id: '#/$defs/AssetId'
 })
-export type AssetID = Opaque<Static<typeof AssetID>>
+export type AssetId = Opaque<Static<typeof AssetId>>
 
-export const AssetIDWildcard = toWildcard(AssetID, {
-	$id: '#/$defs/AssetIDWildcard'
+export const AssetIdWildcard = toWildcard(AssetId, {
+	$id: '#/$defs/AssetIdWildcard'
 })
-export type AssetIDWildcard = Opaque<Static<typeof AssetIDWildcard>>
+export type AssetIdWildcard = Opaque<Static<typeof AssetIdWildcard>>
 
-export const AssetOptionFieldID = Extend(AssetID, ['options', Node], {
-	$id: '#/$defs/AssetOptionFieldID'
+export const AssetOptionFieldId = Extend(AssetId, ['options', Node], {
+	$id: '#/$defs/AssetOptionFieldId'
 })
-export type AssetOptionFieldID = Opaque<Static<typeof AssetOptionFieldID>>
+export type AssetOptionFieldId = Opaque<Static<typeof AssetOptionFieldId>>
 
-export const AssetOptionFieldIDWildcard = toWildcard(AssetOptionFieldID, {
-	$id: '#/$defs/AssetOptionFieldIDWildcard'
+export const AssetOptionFieldIdWildcard = toWildcard(AssetOptionFieldId, {
+	$id: '#/$defs/AssetOptionFieldIdWildcard'
 })
-export type AssetOptionFieldIDWildcard = Static<
-	typeof AssetOptionFieldIDWildcard
+export type AssetOptionFieldIdWildcard = Static<
+	typeof AssetOptionFieldIdWildcard
 >
 
-export const AssetControlFieldID = Extend(AssetID, ['controls', Node], {
-	$id: '#/$defs/AssetControlFieldID'
+export const AssetControlFieldId = Extend(AssetId, ['controls', Node], {
+	$id: '#/$defs/AssetControlFieldId'
 })
-export type AssetControlFieldID = Opaque<Static<typeof AssetControlFieldID>>
+export type AssetControlFieldId = Opaque<Static<typeof AssetControlFieldId>>
 
-export const AssetControlFieldIDWildcard = toWildcard(AssetControlFieldID, {
-	$id: '#/$defs/AssetControlFieldIDWildcard'
+export const AssetControlFieldIdWildcard = toWildcard(AssetControlFieldId, {
+	$id: '#/$defs/AssetControlFieldIdWildcard'
 })
-export type AssetControlFieldIDWildcard = Static<
-	typeof AssetControlFieldIDWildcard
+export type AssetControlFieldIdWildcard = Static<
+	typeof AssetControlFieldIdWildcard
 >
 
-export const AssetConditionMeterControlFieldID = Extend(
-	AssetControlFieldID,
+export const AssetConditionMeterControlFieldId = Extend(
+	AssetControlFieldId,
 	['controls', Node],
-	{ $id: '#/$defs/AssetConditionMeterControlFieldID' }
+	{ $id: '#/$defs/AssetConditionMeterControlFieldId' }
 )
-export type AssetConditionMeterControlFieldID = Static<
-	typeof AssetConditionMeterControlFieldID
+export type AssetConditionMeterControlFieldId = Static<
+	typeof AssetConditionMeterControlFieldId
 >
 
-export const AssetAbilityID = Extend(AssetID, ['abilities', Index], {
-	$id: '#/$defs/AssetAbilityID'
+export const AssetAbilityId = Extend(AssetId, ['abilities', Index], {
+	$id: '#/$defs/AssetAbilityId'
 })
-export type AssetAbilityID = Opaque<Static<typeof AssetAbilityID>>
+export type AssetAbilityId = Opaque<Static<typeof AssetAbilityId>>
 
-export const AssetAbilityOptionFieldID = Extend(
-	AssetAbilityID,
-	['options', Node],
-	{ $id: '#/$defs/AssetAbilityOptionFieldID' }
-)
-export type AssetAbilityOptionFieldID = Opaque<
-	Static<typeof AssetAbilityOptionFieldID>
+export const AssetAbilityOptionFieldId = Extend(AssetAbilityId, ['options', Node], {
+	$id: '#/$defs/AssetAbilityOptionFieldId'
+})
+export type AssetAbilityOptionFieldId = Opaque<
+	Static<typeof AssetAbilityOptionFieldId>
 >
 
-export const AssetAbilityControlFieldID = Extend(
-	AssetAbilityID,
-	['controls', Node],
-	{ $id: '#/$defs/AssetAbilityControlFieldID' }
-)
-export type AssetAbilityControlFieldID = Opaque<
-	Static<typeof AssetAbilityControlFieldID>
+export const AssetAbilityControlFieldId = Extend(AssetAbilityId, ['controls', Node], {
+	$id: '#/$defs/AssetAbilityControlFieldId'
+})
+export type AssetAbilityControlFieldId = Opaque<
+	Static<typeof AssetAbilityControlFieldId>
 >
 
-export const DelveSiteID = UncollectableID(['delve_sites'], {
+export const DelveSiteId = UncollectableId(['delve_sites'], {
 	examples: ['delve/delve_sites/alvas_rest'],
-	$id: '#/$defs/DelveSiteID'
+	$id: '#/$defs/DelveSiteId'
 })
-export type DelveSiteID = Opaque<Static<typeof DelveSiteID>>
+export type DelveSiteId = Opaque<Static<typeof DelveSiteId>>
 
-export const DelveSiteDenizenID = Extend(DelveSiteID, ['denizens', DiceRange], {
+export const DelveSiteDenizenId = Extend(DelveSiteId, ['denizens', DiceRange], {
 	examples: ['delve/delve_sites/alvas_rest/denizens/1-27'],
-	$id: '#/$defs/DelveSiteDenizenID'
+	$id: '#/$defs/DelveSiteDenizenId'
 })
-export type DelveSiteDenizenID = Opaque<Static<typeof DelveSiteID>>
+export type DelveSiteDenizenId = Opaque<Static<typeof DelveSiteId>>
 
-export const DelveSiteThemeID = UncollectableID(['site_themes'], {
-	$id: '#/$defs/DelveSiteThemeID',
+export const DelveSiteThemeId = UncollectableId(['site_themes'], {
+	$id: '#/$defs/DelveSiteThemeId',
 	examples: ['delve/site_themes/hallowed']
 })
-export type DelveSiteThemeID = Opaque<Static<typeof DelveSiteThemeID>>
+export type DelveSiteThemeId = Opaque<Static<typeof DelveSiteThemeId>>
 
-export const ThemeFeatureRowID = Extend(
-	DelveSiteThemeID,
-	['features', DiceRange],
-	{ $id: '#/$defs/ThemeFeatureRowID' }
-)
-export type ThemeFeatureRowID = Opaque<Static<typeof ThemeFeatureRowID>>
+export const ThemeFeatureRowId = Extend(DelveSiteThemeId, ['features', DiceRange], {
+	$id: '#/$defs/ThemeFeatureRowId'
+})
+export type ThemeFeatureRowId = Opaque<Static<typeof ThemeFeatureRowId>>
 
-export const ThemeDangerRowID = Extend(
-	DelveSiteThemeID,
-	['dangers', DiceRange],
-	{ $id: '#/$defs/ThemeDangerRowID' }
-)
-export type ThemeDangerRowID = Opaque<Static<typeof ThemeDangerRowID>>
+export const ThemeDangerRowId = Extend(DelveSiteThemeId, ['dangers', DiceRange], {
+	$id: '#/$defs/ThemeDangerRowId'
+})
+export type ThemeDangerRowId = Opaque<Static<typeof ThemeDangerRowId>>
 
-export const DelveSiteDomainID = UncollectableID(['site_domains'], {
-	$id: '#/$defs/DelveSiteDomainID',
+export const DelveSiteDomainId = UncollectableId(['site_domains'], {
+	$id: '#/$defs/DelveSiteDomainId',
 	examples: ['delve/site_domains/shadowfen']
 })
-export type DelveSiteDomainID = Opaque<Static<typeof DelveSiteDomainID>>
+export type DelveSiteDomainId = Opaque<Static<typeof DelveSiteDomainId>>
 
-export const DomainFeatureRowID = Extend(
-	DelveSiteDomainID,
-	['features', DiceRange],
-	{ $id: '#/$defs/DomainFeatureRowID' }
-)
-export type DomainFeatureRowID = Opaque<Static<typeof DomainFeatureRowID>>
-
-export const DomainDangerRowID = Extend(
-	DelveSiteDomainID,
-	['dangers', DiceRange],
-	{ $id: '#/$defs/DomainDangerRowID' }
-)
-export type DomainDangerRowID = Opaque<Static<typeof DomainDangerRowID>>
-
-export const MoveCategoryID = CollectionID(['moves'], {
-	examples: ['starforged/collections/moves/adventure'],
-	$id: '#/$defs/MoveCategoryID'
+export const DomainFeatureRowId = Extend(DelveSiteDomainId, ['features', DiceRange], {
+	$id: '#/$defs/DomainFeatureRowId'
 })
-export type MoveCategoryID = Opaque<Static<typeof MoveCategoryID>>
+export type DomainFeatureRowId = Opaque<Static<typeof DomainFeatureRowId>>
 
-const StandardMoveID = Extend(MoveCategoryID, [Node], {
-	title: 'StandardMoveID',
+export const DomainDangerRowId = Extend(DelveSiteDomainId, ['dangers', DiceRange], {
+	$id: '#/$defs/DomainDangerRowId'
+})
+export type DomainDangerRowId = Opaque<Static<typeof DomainDangerRowId>>
+
+export const MoveCategoryId = CollectionId(['moves'], {
+	examples: ['starforged/collections/moves/adventure'],
+	$id: '#/$defs/MoveCategoryId'
+})
+export type MoveCategoryId = Opaque<Static<typeof MoveCategoryId>>
+
+const StandardMoveId = Extend(MoveCategoryId, [Node], {
+	title: 'StandardMoveId',
 	description: 'A move ID for a standard move.'
 })
-const AssetMoveID = Extend(AssetAbilityID, ['moves', Node], {
-	title: 'AssetMoveID',
+const AssetMoveId = Extend(AssetAbilityId, ['moves', Node], {
+	title: 'AssetMoveId',
 	description: 'A move ID for an asset move.'
 })
 
-export const MoveID = IDUnion([StandardMoveID, AssetMoveID], {
+export const MoveId = IdUnion([StandardMoveId, AssetMoveId], {
 	description: 'A move ID, for a standard move or a unique asset move',
 	examples: [
 		'classic/moves/combat/strike',
 		'starforged/assets/module/grappler/abilities/0/moves/ready_grappler'
 	],
-	$id: '#/$defs/MoveID'
+	$id: '#/$defs/MoveId'
 })
-export type MoveID = Opaque<Static<typeof MoveID>>
+export type MoveId = Opaque<Static<typeof MoveId>>
 
-export const MoveIDWildcard = IDUnion(
-	[StandardMoveID, AssetMoveID].map((id) => toWildcard(id)),
+export const MoveIdWildcard = IdUnion(
+	[StandardMoveId, AssetMoveId].map((id) => toWildcard(id)),
 	{
 		title: 'Move ID (with wildcard)',
-		description: 'A move ID with wildcards',
+		description: 'A move ID with wildcards.',
 		examples: [
 			'*/moves/*/face_danger',
 			'*/assets/ritual/*/abilities/*/moves/*'
 		],
-		$id: '#/$defs/MoveIDWildcard'
+		$id: '#/$defs/MoveIdWildcard'
 	}
 )
-export type MoveIDWildcard = Opaque<Static<typeof MoveIDWildcard>>
+export type MoveIdWildcard = Opaque<Static<typeof MoveIdWildcard>>
 
-export const OracleCollectionID = RecursiveCollectionID(['oracles'], {
+export const OracleCollectionId = RecursiveCollectionId(['oracles'], {
 	examples: [
 		'starforged/collections/oracles/core',
 		'starforged/collections/oracles/character/names',
 		'starforged/collections/oracles/planets/furnace/settlements'
 	],
-	$id: '#/$defs/OracleCollectionID'
+	$id: '#/$defs/OracleCollectionId'
 })
-export type OracleCollectionID = Opaque<Static<typeof OracleCollectionID>>
+export type OracleCollectionId = Opaque<Static<typeof OracleCollectionId>>
 
-export const OracleTableID = RecursiveCollectableID(['oracles'], {
-	title: 'OracleTableID',
+export const OracleTableId = RecursiveCollectableId(['oracles'], {
+	title: 'OracleTableId',
 	examples: [
 		'starforged/oracles/core/action',
 		'starforged/oracles/character/names/given',
 		'starforged/oracles/planets/furnace/settlements/terminus'
 	],
-	$id: '#/$defs/OracleTableID'
+	$id: '#/$defs/OracleTableId'
 })
-export type OracleTableID = Opaque<Static<typeof OracleTableID>>
+export type OracleTableId = Opaque<Static<typeof OracleTableId>>
 
-export const OracleTableIDWildcard = toWildcard(OracleTableID, {
-	description: `Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree. For example, 'starforged/oracles/\*\*/location' represents any starforged table with the "location" key.`,
+export const OracleTableIdWildcard = toWildcard(OracleTableId, {
+	description: `Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree.`,
+  // For example, 'starforged/oracles/\*\*/location' represents any starforged table with the "location" key.`,
+  // the double asterisk messes with JTD here :thinking:
 	examples: [
 		'*/oracles/**/peril',
 		'starforged/oracles/character/names/*',
 		'starforged/oracles/planets/*/settlements/*'
 	],
-	$id: '#/$defs/OracleTableIDWildcard'
+	$id: '#/$defs/OracleTableIdWildcard'
 })
-export type OracleTableIDWildcard = Opaque<Static<typeof OracleTableIDWildcard>>
+export type OracleTableIdWildcard = Opaque<Static<typeof OracleTableIdWildcard>>
 
-const RowWithRange = Extend(OracleTableID, [DiceRange])
-const RowNull = Extend(OracleTableID, [Index])
+const RowWithRange = Extend(OracleTableId, [DiceRange])
+const RowNull = Extend(OracleTableId, [Index])
 
-export const OracleTableRowID = IDUnion([RowWithRange, RowNull], {
+export const OracleTableRowId = IdUnion([RowWithRange, RowNull], {
 	examples: [
 		'classic/oracles/action_and_theme/action/1-1',
 		'starforged/oracles/derelicts/zones/starship/0'
 	],
 	description:
 		"Normally, rows will end with two numbers separated by a dash, indicating their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
-	$id: '#/$defs/OracleTableRowID'
+	$id: '#/$defs/OracleTableRowId'
 })
-export type OracleTableRowID = Opaque<Static<typeof OracleCollectionID>>
+export type OracleTableRowId = Opaque<Static<typeof OracleCollectionId>>
 
-export const RarityID = UncollectableID(['rarities'], {
+export const RarityId = UncollectableId(['rarities'], {
 	examples: ['classic/rarities/ayethins_journal'],
-	$id: '#/$defs/RarityID'
+	$id: '#/$defs/RarityId'
 })
-export type RarityID = Opaque<Static<typeof RarityID>>
+export type RarityId = Opaque<Static<typeof RarityId>>
 
-export const AtlasID = CollectionID(['atlas'], {
+export const AtlasId = CollectionId(['atlas'], {
 	examples: ['classic/collections/atlas/ironlands'],
-	$id: '#/$defs/AtlasID'
+	$id: '#/$defs/AtlasId'
 })
-export type AtlasID = Opaque<Static<typeof AtlasID>>
+export type AtlasId = Opaque<Static<typeof AtlasId>>
 
-export const AtlasIDWildcard = toWildcard(AtlasID, {
-	$id: '#/$defs/AtlasIDWildcard'
+export const AtlasIdWildcard = toWildcard(AtlasId, {
+	$id: '#/$defs/AtlasIdWildcard'
 })
-export type AtlasIDWildcard = Static<typeof AtlasIDWildcard>
+export type AtlasIdWildcard = Static<typeof AtlasIdWildcard>
 
-export const AtlasEntryID = Extend(AtlasID, [Node], {
+export const AtlasEntryId = Extend(AtlasId, [Node], {
 	examples: ['classic/atlas/ironlands/hinterlands'],
-	$id: '#/$defs/AtlasEntryID'
+	$id: '#/$defs/AtlasEntryId'
 })
-export type AtlasEntryID = Opaque<Static<typeof AtlasEntryID>>
+export type AtlasEntryId = Opaque<Static<typeof AtlasEntryId>>
 
-export const AtlasEntryIDWildcard = toWildcard(AtlasEntryID, {
-	$id: '#/$defs/AtlasEntryIDWildcard'
+export const AtlasEntryIdWildcard = toWildcard(AtlasEntryId, {
+	$id: '#/$defs/AtlasEntryIdWildcard'
 })
-export type AtlasEntryIDWildcard = Opaque<Static<typeof AtlasEntryIDWildcard>>
+export type AtlasEntryIdWildcard = Opaque<Static<typeof AtlasEntryIdWildcard>>
 
-export const TruthID = UncollectableID(['truths'], {
+export const TruthId = UncollectableId(['truths'], {
 	examples: ['classic/truths/iron', 'starforged/truths/iron'],
-	$id: '#/$defs/TruthID'
+	$id: '#/$defs/TruthId'
 })
-export type TruthID = Opaque<Static<typeof TruthID>>
+export type TruthId = Opaque<Static<typeof TruthId>>
 
-export const TruthOptionID = Extend(TruthID, [Index], {
+export const TruthOptionId = Extend(TruthId, [Index], {
 	examples: ['classic/truths/iron/0', 'starforged/truths/iron/0'],
-	$id: '#/$defs/TruthOptionID'
+	$id: '#/$defs/TruthOptionId'
 })
-export type TruthOptionID = Opaque<Static<typeof TruthOptionID>>
+export type TruthOptionId = Opaque<Static<typeof TruthOptionId>>
 
-const RuleIdHead = ID([Namespace, 'rules'])
+const RuleIdHead = Id([Namespace, 'rules'])
 
-export const StatRuleID = Extend(RuleIdHead, ['stats', Node], {
-	$id: '#/$defs/StatRuleID'
+export const StatRuleId = Extend(RuleIdHead, ['stats', Node], {
+	$id: '#/$defs/StatRuleId'
 })
-export type StatRuleID = Static<typeof StatRuleID>
+export type StatRuleId = Static<typeof StatRuleId>
 
-export const ConditionMeterRuleID = Extend(
-	RuleIdHead,
-	['condition_meters', Node],
-	{
-		$id: '#/$defs/ConditionMeterRuleID',
-		examples: [
-			'classic/rules/condition_meters/health',
-			'starforged/rules/condition_meters/spirit'
-		]
-	}
-)
-export type ConditionMeterRuleID = Static<typeof ConditionMeterRuleID>
+export const ConditionMeterRuleId = Extend(RuleIdHead, ['condition_meters', Node], {
+	$id: '#/$defs/ConditionMeterRuleId',
+	examples: [
+		'classic/rules/condition_meters/health',
+		'starforged/rules/condition_meters/spirit'
+	]
+})
+export type ConditionMeterRuleId = Static<typeof ConditionMeterRuleId>
 
-export const SpecialTrackRuleID = Extend(RuleIdHead, ['special_tracks', Node], {
-	$id: '#/$defs/SpecialTrackRuleID',
+export const SpecialTrackRuleId = Extend(RuleIdHead, ['special_tracks', Node], {
+	$id: '#/$defs/SpecialTrackRuleId',
 	examples: [
 		'classic/rules/special_tracks/bonds',
 		'delve/rules/special_tracks/failure',
 		'starforged/rules/special_tracks/bonds_legacy'
 	]
 })
-export type SpecialTrackRuleID = Static<typeof SpecialTrackRuleID>
+export type SpecialTrackRuleId = Static<typeof SpecialTrackRuleId>
 
-export const ImpactRuleCollectionID = CollectionID(['rules', 'impacts'], {
-	$id: '#/$defs/ImpactRuleCollectionID',
+export const ImpactRuleCollectionId = CollectionId(['rules', 'impacts'], {
+	$id: '#/$defs/ImpactRuleCollectionId',
 	examples: [
 		'classic/collections/rules/impacts/conditions',
 		'starforged/collections/rules/impacts/vehicle_troubles'
 	]
 })
-export type ImpactRuleCollectionID = Static<typeof ImpactRuleCollectionID>
+export type ImpactRuleCollectionId = Static<typeof ImpactRuleCollectionId>
 
-export const ImpactRuleID = Extend(ImpactRuleCollectionID, [Node], {
-	$id: '#/$defs/ImpactRuleID',
+export const ImpactRuleId = Extend(ImpactRuleCollectionId, [Node], {
+	$id: '#/$defs/ImpactRuleId',
 	examples: [
 		'classic/rules/impacts/conditions/wounded',
 		'starforged/rules/impacts/vehicle_troubles/battered'
 	]
 })
-export type ImpactRuleID = Static<typeof ImpactRuleID>
-
-// type DictType = keyof Omit<Out.Datasworn, 'source' | 'id'>
-// type IdType = 'collections' | DictType
-
-// function parseID(id: string, datasworn: Record<string, Out.Datasworn>) {
-// 	const [namespace, type, ...tail] = id.split('/') as [
-// 		string,
-// 		IdType,
-// 		...string[]
-// 	]
-
-// 	const ruleset = datasworn[namespace]
-
-// 	const isCollection = type === 'collections'
-
-// 	if (isCollection) return _parseCollectionID(tail, ruleset)
-// }
-
-// function _parseCollectionID(path: string[], ruleset: Out.Datasworn) {
-//   const type = path.shift() as DictType
-// 	const dict = ruleset[type]
-
-//   for (const el of path) {
-//     if (el in dict)
-//   }
-// }
+export type ImpactRuleId = Static<typeof ImpactRuleId>

@@ -17,7 +17,7 @@ namespace Datasworn
         /// asset
         /// </summary>
         [JsonPropertyName("assets")]
-        public IList<AssetIdwildcard> Assets { get; set; }
+        public IList<AssetIdWildcard> Assets { get; set; }
 
         [JsonPropertyName("max")]
         public short? Max { get; set; }

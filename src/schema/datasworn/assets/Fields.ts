@@ -31,7 +31,7 @@ function AssetCardFlipField(id: TRef<TString>) {
 export const AssetConditionMeterControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	[AssetCheckboxField, AssetCardFlipField].map((fn) =>
-		fn(Type.Ref(Id.AssetConditionMeterControlFieldID))
+		fn(Type.Ref(Id.AssetConditionMeterControlFieldId))
 	),
 	{ $id: '#/$defs/AssetConditionMeterControlField' }
 )
@@ -44,7 +44,7 @@ const AssetConditionMeterMixin = Type.Object({
 			{
 				suffer: Type.Optional(
 					Type.Array(
-						Type.Ref(Id.MoveIDWildcard, {
+						Type.Ref(Id.MoveIdWildcard, {
 							examples: [
 								'classic/moves/suffer/companion_endure_harm',
 								'starforged/moves/suffer/companion_takes_a_hit',
@@ -59,7 +59,7 @@ const AssetConditionMeterMixin = Type.Object({
 				),
 				recover: Type.Optional(
 					Type.Array(
-						Type.Ref(Id.MoveIDWildcard, {
+						Type.Ref(Id.MoveIdWildcard, {
 							examples: [
 								'classic/moves/adventure/heal',
 								'classic/moves/adventure/make_camp',
@@ -89,7 +89,7 @@ const AssetConditionMeterMixin = Type.Object({
 
 export const AssetConditionMeter = Generic.Flatten(
 	[
-		Fields.ConditionMeterField(Type.Ref(Id.AssetControlFieldID)),
+		Fields.ConditionMeterField(Type.Ref(Id.AssetControlFieldId)),
 		AssetConditionMeterMixin
 	],
 	{
@@ -105,7 +105,7 @@ const AssetOptionFields = [
 	Fields.SelectStatField,
 	Fields.SelectEnhancementField,
 	Fields.TextField
-].map((fn) => fn(Type.Ref(Id.AssetOptionFieldID)))
+].map((fn) => fn(Type.Ref(Id.AssetOptionFieldId)))
 
 export const AssetOptionField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
@@ -121,7 +121,7 @@ const AssetControlFields = [
 		Fields.SelectEnhancementField,
 		AssetCheckboxField,
 		AssetCardFlipField
-	].map((fn) => fn(Type.Ref(Id.AssetControlFieldID)))
+	].map((fn) => fn(Type.Ref(Id.AssetControlFieldId)))
 ]
 
 export const AssetControlField = DiscriminatedUnion(
@@ -142,7 +142,7 @@ const AbilityControlFields = [
 	Fields.ClockField,
 	Fields.CounterField,
 	AssetCheckboxField
-].map((fn) => fn(Type.Ref(Id.AssetAbilityControlFieldID)))
+].map((fn) => fn(Type.Ref(Id.AssetAbilityControlFieldId)))
 
 export const AssetAbilityControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
@@ -153,7 +153,7 @@ export const AssetAbilityControlField = DiscriminatedUnion(
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
 
 const AbilityOptionFields = [Fields.TextField].map((fn) =>
-	fn(Type.Ref(Id.AssetAbilityOptionFieldID))
+	fn(Type.Ref(Id.AssetAbilityOptionFieldId))
 )
 
 export const AssetAbilityOptionField = DiscriminatedUnion(

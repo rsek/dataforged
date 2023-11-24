@@ -7,7 +7,7 @@ import * as Generic from '../utils/Generic.js'
 
 
 export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
-	Type.Ref(Id.ThemeFeatureRowID),
+	Type.Ref(Id.ThemeFeatureRowId),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -17,7 +17,7 @@ export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
 
 export const DelveSiteThemeDangerRow = Generic.IdentifiedNode(
-	Type.Ref(Id.ThemeDangerRowID),
+	Type.Ref(Id.ThemeDangerRowId),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -29,7 +29,7 @@ const DelveSiteThemeDangers = Type.Array(Type.Ref(DelveSiteThemeDangerRow))
 
 export type DelveSiteThemeDangerRow = Static<typeof DelveSiteThemeDangerRow>
 export const DelveSiteTheme = Generic.SourcedNode(
-	Type.Ref(Id.DelveSiteThemeID),
+	Type.Ref(Id.DelveSiteThemeId),
 	Type.Object({
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),

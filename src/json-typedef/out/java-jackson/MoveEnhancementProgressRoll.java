@@ -11,7 +11,7 @@ import java.util.List;
 public class MoveEnhancementProgressRoll extends MoveEnhancement {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("enhances")
-    private List<MoveIdwildcard> enhances;
+    private List<MoveIdWildcard> enhances;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("trigger")
@@ -23,14 +23,14 @@ public class MoveEnhancementProgressRoll extends MoveEnhancement {
     /**
      * Getter for enhances.<p>
      */
-    public List<MoveIdwildcard> getEnhances() {
+    public List<MoveIdWildcard> getEnhances() {
         return enhances;
     }
 
     /**
      * Setter for enhances.<p>
      */
-    public void setEnhances(List<MoveIdwildcard> enhances) {
+    public void setEnhances(List<MoveIdWildcard> enhances) {
         this.enhances = enhances;
     }
 
