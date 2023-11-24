@@ -26,9 +26,9 @@ import {
 import { isEmpty, mapValues, omit } from 'lodash-es'
 import type * as TypeFest from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { type TJsonEnum } from '../../../typebox/enum.js'
 import { Flatten } from './generic.js'
+import { TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 
 /** Transform an object of literal values into a schema representing the object. */
 

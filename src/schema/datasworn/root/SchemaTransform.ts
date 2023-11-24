@@ -18,7 +18,7 @@ import {
 } from '@sinclair/typebox'
 import { type TJsonEnum } from '../../../typebox/enum.js'
 import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
-import { type TnuDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 
 export const SchemaKind = [
 	'Array',
@@ -56,7 +56,7 @@ interface SchemaKindMap extends Record<SchemaKind, TSchema> {
 	Union: TUnion
 	UnionOneOf: TUnionOneOf
 	JsonEnum: TJsonEnum
-	DiscriminatedUnion: TnuDiscriminatedUnion
+	DiscriminatedUnion: TDiscriminatedUnion
 }
 
 export type SchemaKind = (typeof SchemaKind)[number]

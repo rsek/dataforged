@@ -1,6 +1,6 @@
 import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
-import { nuDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { ID, Generic, Fields } from '../common/index.js'
 import { Flatten } from '../utils/generic.js'
 
@@ -27,7 +27,7 @@ function AssetCardFlipField(id: TRef<TString>) {
 	})
 }
 
-export const AssetConditionMeterControlField = nuDiscriminatedUnion(
+export const AssetConditionMeterControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	[AssetCheckboxField, AssetCardFlipField].map((fn) =>
 		fn(Type.Ref(ID.AssetConditionMeterControlFieldID))
@@ -106,7 +106,7 @@ const AssetOptionFields = [
 	Fields.TextField
 ].map((fn) => fn(Type.Ref(ID.AssetOptionFieldID)))
 
-export const AssetOptionField = nuDiscriminatedUnion(
+export const AssetOptionField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AssetOptionFields,
 	{ $id: '#/$defs/AssetOptionField', title: 'AssetOptionField' }
@@ -123,7 +123,7 @@ const AssetControlFields = [
 	].map((fn) => fn(Type.Ref(ID.AssetControlFieldID)))
 ]
 
-export const AssetControlField = nuDiscriminatedUnion(
+export const AssetControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AssetControlFields,
 	{
@@ -140,7 +140,7 @@ const AbilityControlFields = [
 	AssetCheckboxField
 ].map((fn) => fn(Type.Ref(ID.AssetAbilityControlFieldID)))
 
-export const AssetAbilityControlField = nuDiscriminatedUnion(
+export const AssetAbilityControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AbilityControlFields,
 	{ $id: '#/$defs/AssetAbilityControlField', title: 'AssetAbilityControlField' }
@@ -152,7 +152,7 @@ const AbilityOptionFields = [Fields.TextField].map((fn) =>
 	fn(Type.Ref(ID.AssetAbilityOptionFieldID))
 )
 
-export const AssetAbilityOptionField = nuDiscriminatedUnion(
+export const AssetAbilityOptionField = DiscriminatedUnion(
 	'field_type',
 	AbilityOptionFields,
 	{ $id: '#/$defs/AssetAbilityOptionField', title: 'AssetAbilityOptionField' }

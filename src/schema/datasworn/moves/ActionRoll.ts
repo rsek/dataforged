@@ -1,4 +1,4 @@
-import { nuDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import {
 	ExtractLiteralFromEnum,
 	JsonEnumFromRecord,
@@ -147,7 +147,7 @@ const RollOptionSubtypes = [
 	RollOptionCustom
 ]
 
-export const ActionRollOption = nuDiscriminatedUnion(
+export const ActionRollOption = DiscriminatedUnion(
 	'using',
 	RollOptionSubtypes,
 	{ $id: '#/$defs/ActionRollOption' }

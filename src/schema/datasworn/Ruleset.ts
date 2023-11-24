@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
 import { DELVE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 import { Generic, type ID, type Metadata } from './common/index.js'
 

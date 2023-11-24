@@ -6,9 +6,9 @@ import * as JTD from 'jtd'
 import { log } from '../scripts/utils/logger.js'
 import { toJtdModule } from './utils.js'
 
-import * as defs from '../schema/datasworn/index.js'
+import { Datasworn } from '../schema/datasworn/index.js'
 
-const definitions = toJtdModule(defs) as Record<string, JTD.Schema>
+const definitions = toJtdModule(Datasworn.$defs) as Record<string, JTD.Schema>
 
 const root: JTD.Schema = JSON.parse(JSON.stringify({ definitions }))
 

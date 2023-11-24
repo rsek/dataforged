@@ -313,7 +313,7 @@ function toJtdForm<T extends TSchema>(
 
 	if (TypeGuard.TLiteral(schema)) result = toJtdSingleEnum(schema) as any
 	if (TypeGuard.TNull(schema)) result = toJtdNull(schema) as any
-	if (TDiscriminatedUnion(schema)) result = toJtdDiscriminator(schema)
+	if (TnuDiscriminatedUnion(schema)) result = toJtdDiscriminator(schema)
 	if (TNullable(schema)) result = toJtdNullable(schema) as any
 	if (TypeGuard.TRef(schema)) result = toJtdRef(schema) as any
 	if (TypeGuard.TString(schema)) result = toJtdString(schema) as any

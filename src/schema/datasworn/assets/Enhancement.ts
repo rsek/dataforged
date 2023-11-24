@@ -3,7 +3,7 @@ import { DeepPartial, NoDefaults, Nullable } from '../utils/typebox.js'
 import { AssetIDWildcard } from '../common/Id.js'
 import { AssetConditionMeter } from './Fields.js'
 import { AssetPropertiesEnhanceable } from './common.js'
-import { nuDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { Fields } from '../common/index.js'
 
 export const AssetAttachment = Type.Object(
@@ -39,7 +39,7 @@ export type AssetConditionMeterEnhancement = Static<
 	typeof AssetConditionMeterEnhancement
 >
 
-export const AssetControlFieldEnhancement = nuDiscriminatedUnion(
+export const AssetControlFieldEnhancement = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	[AssetConditionMeterEnhancement],
 	{ $id: '#/$defs/AssetControlFieldEnhancement' }

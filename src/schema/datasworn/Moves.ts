@@ -10,10 +10,10 @@ import {
 	MoveSpecialTrack,
 	MoveSpecialTrackEnhancement
 } from './moves/index.js'
-import { nuDiscriminatedUnion } from '../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../../typebox/discriminated-union.js'
 
 // discriminated union of all moves by roll_type
-export const Move = nuDiscriminatedUnion(
+export const Move = DiscriminatedUnion(
 	'roll_type',
 	[MoveActionRoll, MoveNoRoll, MoveProgressRoll, MoveSpecialTrack],
 	{
@@ -28,7 +28,7 @@ export type Move =
 	| MoveProgressRoll
 	| MoveSpecialTrack
 
-export const MoveEnhancement = nuDiscriminatedUnion(
+export const MoveEnhancement = DiscriminatedUnion(
 	'roll_type',
 	[
 		MoveActionRollEnhancement,
