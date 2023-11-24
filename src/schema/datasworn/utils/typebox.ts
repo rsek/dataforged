@@ -27,8 +27,7 @@ import { isEmpty, mapValues, omit } from 'lodash-es'
 import type * as TypeFest from 'type-fest'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { type TJsonEnum } from '../../../typebox/enum.js'
-import { Flatten } from './generic.js'
-import { TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 
 /** Transform an object of literal values into a schema representing the object. */
 
@@ -175,28 +174,6 @@ export function keysWithDefaults<T extends TObject>(schema: T) {
 	}
 
 	return keys as Array<keyof Static<T>>
-}
-
-export type PartialExcept<T, K extends keyof T> = Pick<T, K> &
-	Partial<Omit<T, K>>
-
-export type TPartialExcept<
-	T extends TObject,
-	K extends keyof Static<T>
-> = TMerge<TPick<T, K>, TPartial<TOmit<T, K>>>
-/** Make everything optional except for the provided keys  */
-
-export function PartialExcept<
-	T extends TObject,
-	K extends Array<keyof Static<T>>
->(schema: T, requiredKeys: [...K], options: SchemaOptions = {}) {
-	return Flatten(
-		[
-			Type.Pick(schema, requiredKeys),
-			Type.Partial(Type.Omit(schema, requiredKeys))
-		],
-		options
-	)
 }
 
 export function NoDefaults<T extends TObject>(

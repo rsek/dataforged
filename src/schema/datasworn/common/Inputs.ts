@@ -21,14 +21,13 @@ import {
 	type Merge,
 	type TMerge
 } from '../utils/typebox.js'
-import { Flatten } from '../utils/generic.js'
 
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 import { JsonEnum } from '../../../typebox/index.js'
-import * as Generic from '../utils/generic.js'
 
-import { type DictKey } from './Id.js'
+import type * as Id from './Id.js'
 import type * as Localize from './Localize.js'
+import * as Generic from '../utils/Generic.js'
 
 const InputName = Type.Ref<typeof Localize.Label>('#/$defs/Label', {
 	description:
@@ -93,7 +92,7 @@ export interface Range<
 	max: Max
 }
 
-export const Counter = Flatten(
+export const Counter = Generic.Flatten(
 	[
 		Input(Type.Integer({ default: 0 })),
 		Range({
@@ -110,7 +109,7 @@ export const Counter = Flatten(
 export type TCounter = typeof Counter
 export type Counter = Static<typeof Counter>
 
-export const Clock = Flatten(
+export const Clock = Generic.Flatten(
 	[
 		Input(
 			Type.Integer({
@@ -148,7 +147,7 @@ export function Meter<
 	Min extends TInteger | TLiteral<number> = TInteger,
 	Max extends TInteger | TLiteral<number> = TInteger
 >(min: Min, max: Max, options: ObjectOptions = {}) {
-	return Flatten(
+	return Generic.Flatten(
 		[
 			Input(Type.Integer({ description: 'The current value of this meter.' })),
 			Range<Min, Max>({
@@ -211,7 +210,7 @@ export function SelectOption<Value extends TSchema>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Input(value)
-	return Flatten([SelectOptionBase, mixin], {
+	return Generic.Flatten([SelectOptionBase, mixin], {
 		description: 'Represents an option in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<option>` element.',
 		...options
@@ -249,7 +248,7 @@ export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(optionSchema)
-	return Flatten([SelectOptionGroupBase, mixin], {
+	return Generic.Flatten([SelectOptionGroupBase, mixin], {
 		description: 'Represents a grouping of options in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
 		title: optionSchema.title ? optionSchema.title + 'Group' : undefined,
@@ -269,7 +268,7 @@ export type SelectOptionGroup<Option extends SelectOption<any>> = Static<
 
 const SelectBase = Input(
 	Nullable(
-		Type.Ref<typeof DictKey>('#/$defs/DictKey', {
+		Type.Ref<typeof Id.DictKey>('#/$defs/DictKey', {
 			description:
 				'The key of the currently selected choice from the `choices` property, or `null` if none is selected.',
 			default: null
@@ -291,7 +290,7 @@ export function Select<Option extends TSelectOption<TSchema>>(
 			SelectOptionGroup(optionSchema)
 		])
 	)
-	return Flatten([SelectBase, mixin], {
+	return Generic.Flatten([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',
 		$comment: 'Semantics are similar to the HTML `<select>` element',
 		...options

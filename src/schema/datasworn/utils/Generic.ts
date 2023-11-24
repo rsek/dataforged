@@ -2,25 +2,29 @@
  * Schema functions representing generic and abstract types. Used internally to compose schemas but not part of the final Datasworn schema output.
  */
 import {
-	type ObjectPropertyKeys,
-	Type,
-	TypeClone,
-	type ObjectOptions,
-	type ObjectProperties,
-	type SchemaOptions,
-	type TObject,
-	type TOmit,
-	type TOptional,
-	type TRecord,
-	type TRef,
-	type TSchema,
-	type TString
+  Type,
+  TypeClone,
+  type ObjectOptions,
+  type ObjectProperties,
+  type ObjectPropertyKeys,
+  type SchemaOptions,
+  type Static,
+  type TObject,
+  type TOmit,
+  type TOptional,
+  type TPartial,
+  type TPick,
+  type TRecord,
+  type TRef,
+  type TSchema,
+  type TString
 } from '@sinclair/typebox'
 import type * as TypeFest from 'type-fest'
 import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
 import * as Id from '../common/Id.js'
 import * as Localize from '../common/Localize.js'
 import * as Metadata from '../common/Metadata.js'
+import { type TMerge } from './typebox.js'
 
 export type AnyID = TRef<TString | TUnionOneOf<TString[]>>
 
@@ -357,4 +361,24 @@ export type TFlatten<T extends [TObject, TObject]> = TObject<
 	Omit<ObjectProperties<T[0]>, ObjectPropertyKeys<T[1]>> &
 		ObjectProperties<T[1]>
 >
+export type PartialExcept<T, K extends keyof T> = Pick<T, K> &
+	Partial<Omit<T, K>>
 
+export type TPartialExcept<
+	T extends TObject,
+	K extends keyof Static<T>
+> = TMerge<TPick<T, K>, TPartial<TOmit<T, K>>>
+/** Make everything optional except for the provided keys  */
+
+export function PartialExcept<
+	T extends TObject,
+	K extends Array<keyof Static<T>>
+>(schema: T, requiredKeys: [...K], options: SchemaOptions = {}) {
+	return Flatten(
+		[
+			Type.Pick(schema, requiredKeys),
+			Type.Partial(Type.Omit(schema, requiredKeys))
+		],
+		options
+	)
+}

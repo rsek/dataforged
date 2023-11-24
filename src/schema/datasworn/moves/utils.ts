@@ -9,7 +9,7 @@ import {
 	type TLiteral
 } from '@sinclair/typebox'
 import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
-import { Generic, Id, Localize } from '../common/index.js'
+import { Id, Localize } from '../common/index.js'
 import {
 	type TTrigger,
 	type TTriggerEnhancement,
@@ -20,6 +20,8 @@ import {
 	type MoveOutcomes,
 	type TMoveOutcomes
 } from './common.js'
+import * as Generic from '../utils/Generic.js'
+
 
 const MoveBase = Type.Object({
 	replaces: Type.Optional(

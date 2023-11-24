@@ -1,7 +1,9 @@
 import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
-import { Id, Generic, Fields } from '../common/index.js'
+import { Id, Fields } from '../common/index.js'
+import * as Generic from '../utils/Generic.js'
+
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({

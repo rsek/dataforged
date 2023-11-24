@@ -1,7 +1,9 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, Generic, Id } from './common/index.js'
+import { Localize, Id } from './common/index.js'
 import * as Inputs from './common/Inputs.js'
-import { Flatten } from './utils/generic.js'
+import { Flatten } from './utils/Generic.js'
+import * as Generic from './utils/Generic.js'
+
 
 export const StatRule = Type.Object(
 	{

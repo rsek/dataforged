@@ -7,8 +7,10 @@ import {
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
 import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
-import { Generic, Id, Localize, Metadata, Progress } from '../common/index.js'
+import { Id, Localize, Metadata, Progress } from '../common/index.js'
 import { StaticRowPartial } from '../oracles/TableRow.js'
+import * as Generic from '../utils/Generic.js'
+
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],

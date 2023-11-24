@@ -1,7 +1,8 @@
 import { Type, type Static, type TRef } from '@sinclair/typebox'
-import { Generic, Id, Localize, Metadata, Rolls } from './common/index.js'
+import { Id, Localize, Metadata, Rolls } from './common/index.js'
+import * as Generic from './utils/Generic.js'
 import { Nullable } from './utils/typebox.js'
-import { Flatten } from './utils/generic.js'
+import { Flatten } from './utils/Generic.js'
 import { TableRow } from './oracles/TableRow.js'
 import {
 	OracleTableRendering,

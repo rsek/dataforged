@@ -1,5 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, Id, Metadata, Generic } from './common/index.js'
+import { Localize, Id, Metadata } from './common/index.js'
+import * as Generic from './utils/Generic.js'
+
 
 export const Rarity = Generic.SourcedNode(
 	Type.Ref(Id.RarityID),

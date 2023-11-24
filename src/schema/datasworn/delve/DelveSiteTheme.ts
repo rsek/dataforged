@@ -1,8 +1,10 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
-import { Generic, Id, Localize, Metadata } from '../common/index.js'
+import { Id, Localize, Metadata } from '../common/index.js'
 import { StaticRowPartial, TableRow } from '../oracles/TableRow.js'
+import * as Generic from '../utils/Generic.js'
+
 
 export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.ThemeFeatureRowID),

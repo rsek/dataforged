@@ -21,11 +21,11 @@ import {
 import { mapValues, omit } from 'lodash-es'
 import { type TJsonEnum } from '../../../typebox/enum.js'
 import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
-import { OptionalInSourceBrand } from '../utils/generic.js'
+import { OptionalInSourceBrand } from '../utils/Generic.js'
 import { SetOptional, keysWithDefaults } from '../utils/typebox.js'
 import { type SchemaKind, SchemaTransforms } from './SchemaTransform.js'
 import { NiceSchema } from './NiceSchema.js'
-import { TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 
 /**
  * Transform a schema into the more lenient format used for Datasworn source data.

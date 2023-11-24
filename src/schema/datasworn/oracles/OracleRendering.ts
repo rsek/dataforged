@@ -1,7 +1,7 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonEnumFromRecord } from '../../../typebox/enum.js'
-import { Generic, Id, Localize, Metadata } from '../common/index.js'
-import { Flatten } from '../utils/generic.js'
+import { Id, Localize, Metadata } from '../common/index.js'
+import * as Generic from '../utils/Generic.js'
 
 export const OracleTableColumnContentKey = JsonEnumFromRecord(
 	{
@@ -43,7 +43,7 @@ export const OracleTableColumn = Type.Object(
 )
 export type OracleTableColumn = Static<typeof OracleTableColumn>
 
-export const OracleCollectionTableColumn = Flatten(
+export const OracleCollectionTableColumn = Generic.Flatten(
 	[
 		OracleTableColumn,
 		Type.Object({
@@ -82,7 +82,7 @@ export const OracleCollectionStyle = JsonEnumFromRecord(
 )
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
-export const OracleCollectionRendering = Flatten(
+export const OracleCollectionRendering = Generic.Flatten(
 	[
 		Type.Omit(OracleRenderingBase, ['columns']),
 		Type.Object({

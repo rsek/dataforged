@@ -1,5 +1,7 @@
 import { type TSchema, Type } from '@sinclair/typebox'
-import { Generic, Metadata } from '../common/index.js'
+import { Metadata } from '../common/index.js'
+import * as Generic from '../utils/Generic.js'
+
 import { type TAssetAttachment } from './Enhancement.js'
 
 export function AssetPropertiesEnhanceable<Control extends TSchema>(

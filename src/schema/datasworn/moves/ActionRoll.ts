@@ -7,7 +7,7 @@ import {
 	type Static,
 	type TObject
 } from '../../../typebox/index.js'
-import { Localize, Player, Id, Generic } from '../common/index.js'
+import { Localize, Player, Id } from '../common/index.js'
 import { Nullable } from '../utils/typebox.js'
 import {
 	Trigger,
@@ -17,6 +17,8 @@ import {
 } from './Trigger.js'
 import { type ActionRollMethod, type MoveOutcomes } from './common.js'
 import { Move, MoveEnhancement } from './utils.js'
+import * as Generic from '../utils/Generic.js'
+
 
 export const ActionRollUsing = JsonEnumFromRecord(
 	{

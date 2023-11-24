@@ -13,7 +13,7 @@ import {
 	TriggerConditionEnhancement,
 	TriggerEnhancement
 } from './Trigger.js'
-import * as Generic from '../utils/generic.js'
+import * as Generic from '../utils/Generic.js'
 
 export const ProgressRollOption = Type.Object(
 	{

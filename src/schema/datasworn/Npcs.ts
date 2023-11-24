@@ -1,6 +1,7 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Generic, Id, Localize, Progress } from './common/index.js'
-import { Flatten } from './utils/generic.js'
+import { Id, Localize, Progress } from './common/index.js'
+import * as Generic from './utils/Generic.js'
+import { Flatten } from './utils/Generic.js'
 
 export const NpcNature = Type.Ref(Localize.Label, {
 	description:

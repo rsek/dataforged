@@ -10,7 +10,7 @@ import {
 	type TObject
 } from '@sinclair/typebox'
 import { type TJsonEnum } from '../../../typebox/enum.js'
-import { Localize, Generic } from '../common/index.js'
+import { Localize } from '../common/index.js'
 import {
 	Nullable,
 	TNullable,
@@ -18,6 +18,8 @@ import {
 	type TFuzzyObject,
 	type TFuzzyRef
 } from '../utils/typebox.js'
+import * as Generic from '../utils/Generic.js'
+
 
 export const TriggerBy = Type.Object(
 	{

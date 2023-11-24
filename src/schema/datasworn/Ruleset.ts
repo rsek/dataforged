@@ -1,6 +1,8 @@
 import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
 import { DELVE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
-import { Generic, type Id, type Metadata } from './common/index.js'
+import { type Id, type Metadata } from './common/index.js'
+import * as Generic from './utils/Generic.js'
+
 
 import { type TAssetType } from './Assets.js'
 import { type TAtlas } from './Atlas.js'

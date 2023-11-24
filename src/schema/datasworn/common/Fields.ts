@@ -10,10 +10,10 @@ import {
 } from '@sinclair/typebox'
 import { type TMoveEnhancement } from '../Moves.js'
 import { type TAssetEnhancement } from '../assets/Enhancement.js'
-import * as Generic from '../utils/generic.js'
 import { LiteralZero, type Merge } from '../utils/typebox.js'
 import * as Base from './Inputs.js'
 import type * as Player from './Player.js'
+import * as Generic from '../utils/Generic.js'
 
 export const EnhanceableProperties = Symbol('EnhanceableProperties')
 
