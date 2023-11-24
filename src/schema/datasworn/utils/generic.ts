@@ -2,25 +2,25 @@
  * Schema functions representing generic and abstract types. Used internally to compose schemas but not part of the final Datasworn schema output.
  */
 import {
+	type ObjectPropertyKeys,
 	Type,
 	TypeClone,
 	type ObjectOptions,
+	type ObjectProperties,
 	type SchemaOptions,
 	type TObject,
 	type TOmit,
+	type TOptional,
 	type TRecord,
 	type TRef,
 	type TSchema,
-	type TString,
-	type TOptional,
-	type ObjectProperties,
-	ObjectPropertyKeys
+	type TString
 } from '@sinclair/typebox'
 import type * as TypeFest from 'type-fest'
 import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
-import { DictKey } from '../common/Id.js'
-import type * as Localize from '../common/Localize.js'
-import type * as Metadata from '../common/Metadata.js'
+import * as Id from '../common/Id.js'
+import * as Localize from '../common/Localize.js'
+import * as Metadata from '../common/Metadata.js'
 
 export type AnyID = TRef<TString | TUnionOneOf<TString[]>>
 
@@ -30,7 +30,7 @@ export function Dictionary<T extends TSchema>(
 	schema: T,
 	options: ObjectOptions = {}
 ) {
-	const dict = Type.Record(DictKey, schema, {
+	const dict = Type.Record(Id.DictKey, schema, {
 		...options,
 		$comment: 'Deserialize as a dictionary object.',
 		[DictionaryBrand]: 'Dictionary'
@@ -44,14 +44,10 @@ export type TDictionary<T extends TSchema = TSchema> = TRecord<TString, T> & {
 export type Dictionary<T> = Record<string, T>
 
 const SourcedNodeMixin = Type.Object({
-	name: Type.Ref<typeof Localize.Label>('#/$defs/Label'),
-	canonical_name: Type.Optional(
-		Type.Ref<typeof Localize.Label>('#/$defs/Label')
-	),
-	source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
-	suggestions: Type.Optional(
-		Type.Ref<typeof Metadata.Suggestions>('#/$defs/Suggestions')
-	)
+	name: Type.Ref(Localize.Label),
+	canonical_name: Type.Optional(Type.Ref(Localize.Label)),
+	source: Type.Ref(Metadata.Source),
+	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions))
 })
 
 export function IdentifiedNode<T extends TObject>(
@@ -130,22 +126,12 @@ export type TOptionalInSource<T extends TSchema> = T & {
 	[OptionalInSourceBrand]: 'OptionalInSource'
 }
 export const CyclopediaMixin = Type.Object({
-	name: Type.Ref<typeof Localize.Label>('#/$defs/Label'),
-	features: Type.Array(
-		Type.Ref<typeof Localize.MarkdownString>('#/$defs/MarkdownString')
-	),
-	summary: Type.Optional(
-		Type.Ref<typeof Localize.MarkdownString>('#/$defs/MarkdownString')
-	),
-	description: Type.Ref<typeof Localize.MarkdownString>(
-		'#/$defs/MarkdownString'
-	),
-	quest_starter: Type.Ref<typeof Localize.MarkdownString>(
-		'#/$defs/MarkdownString'
-	),
-	your_truth: Type.Optional(
-		Type.Ref<typeof Localize.MarkdownString>('#/$defs/MarkdownString')
-	)
+	name: Type.Ref(Localize.Label),
+	features: Type.Array(Type.Ref(Localize.MarkdownString)),
+	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+	description: Type.Ref(Localize.MarkdownString),
+	quest_starter: Type.Ref(Localize.MarkdownString),
+	your_truth: Type.Optional(Type.Ref(Localize.MarkdownString))
 })
 
 const MetaKeys = ['id', 'source', 'rendering', 'name', 'suggestions'] as const
@@ -229,19 +215,11 @@ export type TRecursiveCollectable<T extends TObject> = ReturnType<
 	}
 
 const CollectionMixin = Type.Object({
-	color: Type.Optional(Type.Ref<typeof Metadata.CSSColor>('#/$defs/CSSColor')),
-	summary: Type.Optional(
-		Type.Ref<typeof Localize.MarkdownString>('#/$defs/MarkdownString')
-	),
-	description: Type.Optional(
-		Type.Ref<typeof Localize.MarkdownString>('#/$defs/MarkdownString')
-	),
-	images: Type.Optional(
-		Type.Array(Type.Ref<typeof Metadata.WEBPImageURL>('#/$defs/WEBPImageURL'))
-	),
-	icon: Type.Optional(
-		Type.Ref<typeof Metadata.SVGImageURL>('#/$defs/SVGImageURL')
-	)
+	color: Type.Optional(Type.Ref(Metadata.CssColor)),
+	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+	description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+	images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
+	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL))
 })
 
 export const CollectionBrand = Symbol('Collection')

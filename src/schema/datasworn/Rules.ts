@@ -1,5 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, Generic, ID } from './common/index.js'
+import { Localize, Generic, Id } from './common/index.js'
 import * as Inputs from './common/Inputs.js'
 import { Flatten } from './utils/generic.js'
 
@@ -33,7 +33,7 @@ export const ImpactRule = Type.Object(
 		name: Type.Ref(Localize.Label),
 		description: Type.Ref(Localize.MarkdownString),
 		shared: Type.Boolean({ default: false }),
-		prevents_recovery: Type.Array(Type.Ref(ID.DictKey), { default: [] }),
+		prevents_recovery: Type.Array(Type.Ref(Id.DictKey), { default: [] }),
 		permanent: Type.Boolean({ default: false })
 	},
 	{ $id: '#/$defs/ImpactRule' }

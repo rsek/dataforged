@@ -1,5 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { ID } from './index.js'
+import * as Id from '../common/Id.js'
 import { Nullable } from '../utils/typebox.js'
 
 export const SVGImageURL = Type.RegExp(/\.svg$/i, {
@@ -14,12 +14,12 @@ export const WEBPImageURL = Type.RegExp(/\.webp$/i, {
 	description: 'A relative URL pointing to a raster image in the WEBP format.'
 })
 export type WEBPImageURL = Static<typeof WEBPImageURL>
-export const CSSColor = Type.String({
-	$id: '#/$defs/CSSColor',
+export const CssColor = Type.String({
+	$id: '#/$defs/CssColor',
 	description:
 		'A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value'
 })
-export type CSSColor = Static<typeof CSSColor>
+export type CssColor = Static<typeof CssColor>
 
 export const Source = Type.Object(
 	{
@@ -100,13 +100,13 @@ export type Source = Static<typeof Source>
 
 export const Suggestions = Type.Object(
 	{
-		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
-		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
-		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID))),
-		site_domains: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteDomainID))),
-		site_themes: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteThemeID))),
-		npcs: Type.Optional(Type.Array(Type.Ref(ID.NpcID))),
-		atlas: Type.Optional(Type.Array(Type.Ref(ID.AtlasEntryID)))
+		oracles: Type.Optional(Type.Array(Type.Ref(Id.OracleTableID))),
+		assets: Type.Optional(Type.Array(Type.Ref(Id.AssetID))),
+		moves: Type.Optional(Type.Array(Type.Ref(Id.MoveID))),
+		site_domains: Type.Optional(Type.Array(Type.Ref(Id.DelveSiteDomainID))),
+		site_themes: Type.Optional(Type.Array(Type.Ref(Id.DelveSiteThemeID))),
+		npcs: Type.Optional(Type.Array(Type.Ref(Id.NpcID))),
+		atlas: Type.Optional(Type.Array(Type.Ref(Id.AtlasEntryID)))
 	},
 	{ $id: '#/$defs/Suggestions' }
 )

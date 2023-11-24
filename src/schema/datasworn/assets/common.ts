@@ -1,6 +1,5 @@
 import { type TSchema, Type } from '@sinclair/typebox'
-import { Dictionary } from '../utils/generic.js'
-import { Suggestions } from '../common/Metadata.js'
+import { Generic, Metadata } from '../common/index.js'
 import { type TAssetAttachment } from './Enhancement.js'
 
 export function AssetPropertiesEnhanceable<Control extends TSchema>(
@@ -8,12 +7,12 @@ export function AssetPropertiesEnhanceable<Control extends TSchema>(
 ) {
 	return Type.Object({
 		controls: Type.Optional(
-			Dictionary(controlSchema, {
+			Generic.Dictionary(controlSchema, {
 				description:
 					'Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.'
 			})
 		),
-		suggestions: Type.Optional(Type.Ref(Suggestions)),
+		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 		count_as_impact: Type.Boolean({
 			default: false,
 			description:

@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonEnumFromRecord } from '../../../typebox/enum.js'
-import { ID, Localize } from '../common/index.js'
+import { Id, Localize } from '../common/index.js'
 
 export const DiceNotation = Type.RegExp(
 	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
@@ -30,7 +30,7 @@ export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
 export const OracleTableRoll = Type.Object(
 	{
 		oracle: Type.Optional(
-			Type.Ref(ID.OracleTableID, {
+			Type.Ref(Id.OracleTableID, {
 				description:
 					'The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.'
 			})

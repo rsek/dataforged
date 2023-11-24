@@ -7,9 +7,8 @@ import {
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
 import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
-import { Generic, ID, Localize, Metadata, Progress } from '../common/index.js'
+import { Generic, Id, Localize, Metadata, Progress } from '../common/index.js'
 import { StaticRowPartial } from '../oracles/TableRow.js'
-import { Flatten } from '../utils/generic.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
@@ -18,7 +17,7 @@ export const DelveSiteDenizenFrequency = JsonEnum(
 export type DelveSiteDenizenFrequency = Static<typeof DelveSiteDenizenFrequency>
 
 export const DelveSiteDenizen = Generic.IdentifiedNode(
-	Type.Ref(ID.DelveSiteDenizenID),
+	Type.Ref(Id.DelveSiteDenizenID),
 	Type.Object({
 		name: Type.Optional(
 			Type.Ref(
@@ -30,7 +29,7 @@ export const DelveSiteDenizen = Generic.IdentifiedNode(
 		min: Type.Integer(),
 		max: Type.Integer(),
 		npc: Type.Optional(
-			Type.Ref(ID.NpcID, {
+			Type.Ref(Id.NpcID, {
 				description: 'The ID of the relevant NPC entry, if one is specified.'
 			})
 		),
@@ -44,7 +43,7 @@ function StaticDenizenRowStub<
 	Max extends number,
 	Frequency extends DelveSiteDenizenFrequency
 >(min: Min, max: Max, frequency: Frequency) {
-	return Flatten(
+	return Generic.Flatten(
 		[
 			StaticRowPartial({ min, max }),
 			Type.Object({ frequency: Type.Literal(frequency) })
@@ -59,21 +58,21 @@ function StaticDenizenRowStub<
 const DelveSiteDenizens = Type.Array(Type.Ref(DelveSiteDenizen))
 
 export const DelveSite = Generic.SourcedNode(
-	Type.Ref(ID.DelveSiteID),
+	Type.Ref(Id.DelveSiteID),
 	Type.Object({
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 		rank: Type.Ref(Progress.ChallengeRank),
 		region: Type.Optional(
-			Type.Ref(ID.AtlasEntryID, {
+			Type.Ref(Id.AtlasEntryID, {
 				description:
 					'The ID of an atlas entry representing the region in which this delve site is located.'
 			})
 		),
-		theme: Type.Ref(ID.DelveSiteThemeID),
-		domain: Type.Ref(ID.DelveSiteDomainID),
+		theme: Type.Ref(Id.DelveSiteThemeID),
+		domain: Type.Ref(Id.DelveSiteDomainID),
 		extra_card: Type.Optional(
 			UnionOneOf(
-				[Type.Ref(ID.DelveSiteThemeID), Type.Ref(ID.DelveSiteDomainID)],
+				[Type.Ref(Id.DelveSiteThemeID), Type.Ref(Id.DelveSiteDomainID)],
 				{
 					description:
 						'An additional theme or domain card ID, for use with optional rules in Ironsworn: Delve.',

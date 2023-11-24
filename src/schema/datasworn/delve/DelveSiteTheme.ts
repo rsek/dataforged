@@ -1,11 +1,11 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
-import { Generic, ID, Localize, Metadata } from '../common/index.js'
+import { Generic, Id, Localize, Metadata } from '../common/index.js'
 import { StaticRowPartial, TableRow } from '../oracles/TableRow.js'
 
 export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
-	Type.Ref(ID.ThemeFeatureRowID),
+	Type.Ref(Id.ThemeFeatureRowID),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -15,7 +15,7 @@ export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
 
 export const DelveSiteThemeDangerRow = Generic.IdentifiedNode(
-	Type.Ref(ID.ThemeDangerRowID),
+	Type.Ref(Id.ThemeDangerRowID),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -27,7 +27,7 @@ const DelveSiteThemeDangers = Type.Array(Type.Ref(DelveSiteThemeDangerRow))
 
 export type DelveSiteThemeDangerRow = Static<typeof DelveSiteThemeDangerRow>
 export const DelveSiteTheme = Generic.SourcedNode(
-	Type.Ref(ID.DelveSiteThemeID),
+	Type.Ref(Id.DelveSiteThemeID),
 	Type.Object({
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),

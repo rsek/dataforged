@@ -6,11 +6,11 @@ import {
 	type TArray,
 	type TNull,
 	type TSchema,
-	ObjectProperties,
-	TObject
+	type ObjectProperties,
+	type TObject
 } from '@sinclair/typebox'
 import { type TJsonEnum } from '../../../typebox/enum.js'
-import { Localize } from '../common/index.js'
+import { Localize, Generic } from '../common/index.js'
 import {
 	Nullable,
 	TNullable,
@@ -18,7 +18,6 @@ import {
 	type TFuzzyObject,
 	type TFuzzyRef
 } from '../utils/typebox.js'
-import { Flatten } from '../utils/generic.js'
 
 export const TriggerBy = Type.Object(
 	{
@@ -51,7 +50,7 @@ export function TriggerCondition<
 		description: 'The options available when rolling with this trigger.',
 		...rollOptions
 	}
-	return Flatten(
+	return Generic.Flatten(
 		[
 			TriggerConditionBase,
 			Type.Object({
@@ -135,7 +134,7 @@ const TriggerMixin = Type.Object({
 export function Trigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>>
 >(conditions: T, options: ObjectOptions = {}) {
-	return Flatten(
+	return Generic.Flatten(
 		[TriggerMixin, Type.Object({ conditions })],
 		options
 	) as TTrigger<T>

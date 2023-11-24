@@ -1,8 +1,7 @@
 import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
-import { ID, Generic, Fields } from '../common/index.js'
-import { Flatten } from '../utils/generic.js'
+import { Id, Generic, Fields } from '../common/index.js'
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({
@@ -17,12 +16,12 @@ const AssetBooleanFieldMixin = Type.Object({
 	})
 })
 function AssetCheckboxField(id: TRef<TString>) {
-	return Flatten([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
+	return Generic.Flatten([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
 		title: 'AssetCheckboxField'
 	})
 }
 function AssetCardFlipField(id: TRef<TString>) {
-	return Flatten([Fields.CardFlipField(id), AssetBooleanFieldMixin], {
+	return Generic.Flatten([Fields.CardFlipField(id), AssetBooleanFieldMixin], {
 		title: 'AssetCardFlipField'
 	})
 }
@@ -30,7 +29,7 @@ function AssetCardFlipField(id: TRef<TString>) {
 export const AssetConditionMeterControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	[AssetCheckboxField, AssetCardFlipField].map((fn) =>
-		fn(Type.Ref(ID.AssetConditionMeterControlFieldID))
+		fn(Type.Ref(Id.AssetConditionMeterControlFieldID))
 	),
 	{ $id: '#/$defs/AssetConditionMeterControlField' }
 )
@@ -43,7 +42,7 @@ const AssetConditionMeterMixin = Type.Object({
 			{
 				suffer: Type.Optional(
 					Type.Array(
-						Type.Ref(ID.MoveIDWildcard, {
+						Type.Ref(Id.MoveIDWildcard, {
 							examples: [
 								'classic/moves/suffer/companion_endure_harm',
 								'starforged/moves/suffer/companion_takes_a_hit',
@@ -58,7 +57,7 @@ const AssetConditionMeterMixin = Type.Object({
 				),
 				recover: Type.Optional(
 					Type.Array(
-						Type.Ref(ID.MoveIDWildcard, {
+						Type.Ref(Id.MoveIDWildcard, {
 							examples: [
 								'classic/moves/adventure/heal',
 								'classic/moves/adventure/make_camp',
@@ -86,9 +85,9 @@ const AssetConditionMeterMixin = Type.Object({
 	)
 })
 
-export const AssetConditionMeter = Flatten(
+export const AssetConditionMeter = Generic.Flatten(
 	[
-		Fields.ConditionMeterField(Type.Ref(ID.AssetControlFieldID)),
+		Fields.ConditionMeterField(Type.Ref(Id.AssetControlFieldID)),
 		AssetConditionMeterMixin
 	],
 	{
@@ -104,7 +103,7 @@ const AssetOptionFields = [
 	Fields.SelectStatField,
 	Fields.SelectEnhancementField,
 	Fields.TextField
-].map((fn) => fn(Type.Ref(ID.AssetOptionFieldID)))
+].map((fn) => fn(Type.Ref(Id.AssetOptionFieldID)))
 
 export const AssetOptionField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
@@ -120,7 +119,7 @@ const AssetControlFields = [
 		Fields.SelectEnhancementField,
 		AssetCheckboxField,
 		AssetCardFlipField
-	].map((fn) => fn(Type.Ref(ID.AssetControlFieldID)))
+	].map((fn) => fn(Type.Ref(Id.AssetControlFieldID)))
 ]
 
 export const AssetControlField = DiscriminatedUnion(
@@ -141,7 +140,7 @@ const AbilityControlFields = [
 	Fields.ClockField,
 	Fields.CounterField,
 	AssetCheckboxField
-].map((fn) => fn(Type.Ref(ID.AssetAbilityControlFieldID)))
+].map((fn) => fn(Type.Ref(Id.AssetAbilityControlFieldID)))
 
 export const AssetAbilityControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
@@ -152,7 +151,7 @@ export const AssetAbilityControlField = DiscriminatedUnion(
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
 
 const AbilityOptionFields = [Fields.TextField].map((fn) =>
-	fn(Type.Ref(ID.AssetAbilityOptionFieldID))
+	fn(Type.Ref(Id.AssetAbilityOptionFieldID))
 )
 
 export const AssetAbilityOptionField = DiscriminatedUnion(

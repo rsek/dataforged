@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Generic, ID, Localize, Progress } from './common/index.js'
+import { Generic, Id, Localize, Progress } from './common/index.js'
 import { Flatten } from './utils/generic.js'
 
 export const NpcNature = Type.Ref(Localize.Label, {
@@ -36,7 +36,7 @@ const NpcMixin = Flatten([
 ])
 
 export const NpcVariant = Generic.IdentifiedNode(
-	Type.Ref(ID.NpcVariantID),
+	Type.Ref(Id.NpcVariantID),
 	Type.Pick(NpcMixin, ['name', 'rank', 'nature', 'summary', 'description']),
 	{
 		$id: '#/$defs/NpcVariant'
@@ -46,7 +46,7 @@ export const NpcVariant = Generic.IdentifiedNode(
 export type NpcVariant = Static<typeof NpcVariant>
 
 export const Npc = Generic.Collectable(
-	Type.Ref(ID.NpcID),
+	Type.Ref(Id.NpcID),
 	Flatten([
 		NpcMixin,
 		Type.Object({
@@ -63,7 +63,7 @@ export const Npc = Generic.Collectable(
 export type Npc = Static<typeof Npc>
 
 export const NpcCollection = Generic.Collection(
-	Type.Ref(ID.NpcCollectionID),
+	Type.Ref(Id.NpcCollectionID),
 	Type.Ref(Npc),
 	{
 		$id: '#/$defs/NpcCollection'

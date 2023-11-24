@@ -1,5 +1,5 @@
 import { Type, type Static, type TRef } from '@sinclair/typebox'
-import { Generic, ID, Localize, Metadata, Rolls } from './common/index.js'
+import { Generic, Id, Localize, Metadata, Rolls } from './common/index.js'
 import { Nullable } from './utils/typebox.js'
 import { Flatten } from './utils/generic.js'
 import { TableRow } from './oracles/TableRow.js'
@@ -9,7 +9,7 @@ import {
 } from './oracles/OracleRendering.js'
 
 export const OracleTableRow = Generic.IdentifiedNode(
-	Type.Ref(ID.OracleTableRowID),
+	Type.Ref(Id.OracleTableRowID),
 	TableRow({
 		min: Nullable(Type.Integer(), {
 			default: null
@@ -23,7 +23,7 @@ export const OracleTableRow = Generic.IdentifiedNode(
 export type OracleTableRow = Static<typeof OracleTableRow>
 
 export const OracleTable = Generic.RecursiveCollectable(
-	Type.Ref(ID.OracleTableID),
+	Type.Ref(Id.OracleTableID),
 	Type.Object({
 		dice: Type.Ref(Rolls.DiceNotation, { default: '1d100' }),
 		_i18n: Type.Optional(Type.Ref(Localize.I18nHints, { macro: true })),
@@ -36,7 +36,7 @@ export const OracleTable = Generic.RecursiveCollectable(
 			})
 		),
 		replaces: Type.Optional(
-			Type.Ref(ID.OracleTableID, {
+			Type.Ref(Id.OracleTableID, {
 				description:
 					'Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.'
 			})
@@ -60,7 +60,7 @@ const OracleCollectionBase = Flatten(
 		Type.Object({
 			rendering: Type.Optional(Type.Ref(OracleCollectionRendering))
 		}),
-		Generic.Collection(Type.Ref(ID.OracleCollectionID), Type.Ref(OracleTable))
+		Generic.Collection(Type.Ref(Id.OracleCollectionID), Type.Ref(OracleTable))
 	],
 	{ [Generic.CollectionBrand]: 'Collection' }
 ) satisfies Generic.TCollection<TRef<typeof OracleTable>>

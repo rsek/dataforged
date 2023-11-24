@@ -1,5 +1,5 @@
 import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
-import { Generic, ID } from './common/index.js'
+import { Generic, Id } from './common/index.js'
 import {
 	MoveActionRoll,
 	MoveActionRollEnhancement,
@@ -48,7 +48,7 @@ export type MoveEnhancement =
 	| MoveSpecialTrackEnhancement
 
 export const MoveCategory = Generic.Collection(
-	Type.Ref(ID.MoveCategoryID),
+	Type.Ref(Id.MoveCategoryID),
 	Type.Ref(Move),
 	{ $id: '#/$defs/MoveCategory' }
 )

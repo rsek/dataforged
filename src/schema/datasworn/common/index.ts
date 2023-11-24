@@ -2,7 +2,7 @@
 export * as Localize from './Localize.js'
 
 // depend on Regex only
-export * as ID from './Id.js'
+export * as Id from './Id.js'
 
 // depends on ID
 export * as Metadata from './Metadata.js'

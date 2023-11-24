@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonEnumFromRecord } from '../../../typebox/enum.js'
-import { Generic, ID, Localize, Metadata } from '../common/index.js'
+import { Generic, Id, Localize, Metadata } from '../common/index.js'
 import { Flatten } from '../utils/generic.js'
 
 export const OracleTableColumnContentKey = JsonEnumFromRecord(
@@ -27,7 +27,7 @@ export const OracleTableColumn = Type.Object(
 		),
 		content_type: Type.Ref(OracleTableColumnContentKey),
 		color: Type.Optional(
-			Type.Ref(Metadata.CSSColor, {
+			Type.Ref(Metadata.CssColor, {
 				description: 'The thematic color for this column.'
 			})
 		)
@@ -47,7 +47,7 @@ export const OracleCollectionTableColumn = Flatten(
 	[
 		OracleTableColumn,
 		Type.Object({
-			table_key: Type.Ref(ID.DictKey, {
+			table_key: Type.Ref(Id.DictKey, {
 				description:
 					'The key of the OracleTable (within this collection), whose data is used to render this column.'
 			})
@@ -68,7 +68,7 @@ const OracleRenderingBase = Type.Object({
 				'Describes the rendering of this oracle as a standalone table.'
 		})
 	),
-	color: Type.Optional(Type.Ref(Metadata.CSSColor))
+	color: Type.Optional(Type.Ref(Metadata.CssColor))
 })
 
 export const OracleCollectionStyle = JsonEnumFromRecord(

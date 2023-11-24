@@ -8,8 +8,7 @@ import {
 	type TSchema,
 	TypeClone
 } from '@sinclair/typebox'
-import { OracleRollTemplate, OracleTableRoll } from '../common/Rolls.js'
-import { ID, Localize, Metadata } from '../common/index.js'
+import { Id, Localize, Metadata, Rolls } from '../common/index.js'
 import {
 	ObjectLiterals,
 	WithDefaults,
@@ -21,10 +20,10 @@ const TableRowMixin = Type.Object({
 	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 	description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-	rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
+	rolls: Type.Optional(Type.Array(Type.Ref(Rolls.OracleTableRoll))),
 	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
-	embed_table: Type.Optional(Type.Ref(ID.OracleTableID)),
-	template: Type.Optional(Type.Ref(OracleRollTemplate)),
+	embed_table: Type.Optional(Type.Ref(Id.OracleTableID)),
+	template: Type.Optional(Type.Ref(Rolls.OracleRollTemplate)),
 	i18n: Type.Optional(Type.Ref(Localize.I18nHints))
 })
 

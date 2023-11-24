@@ -1,14 +1,13 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { DeepPartial, NoDefaults, Nullable } from '../utils/typebox.js'
-import { AssetIDWildcard } from '../common/Id.js'
 import { AssetConditionMeter } from './Fields.js'
 import { AssetPropertiesEnhanceable } from './common.js'
 import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
-import { Fields } from '../common/index.js'
+import { Fields, Id } from '../common/index.js'
 
 export const AssetAttachment = Type.Object(
 	{
-		assets: Type.Array(Type.Ref(AssetIDWildcard), {
+		assets: Type.Array(Type.Ref(Id.AssetIDWildcard), {
 			description:
 				'Asset IDs (which may be wildcards) that may be attached to this asset'
 		}),

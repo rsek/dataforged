@@ -1,10 +1,10 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, ID, Metadata, Generic } from './common/index.js'
+import { Localize, Id, Metadata, Generic } from './common/index.js'
 
 export const Rarity = Generic.SourcedNode(
-	Type.Ref(ID.RarityID),
+	Type.Ref(Id.RarityID),
 	Type.Object({
-		asset: Type.Ref(ID.AssetID, {
+		asset: Type.Ref(Id.AssetID, {
 			description: 'The asset augmented by this rarity.'
 		}),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),

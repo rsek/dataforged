@@ -4,15 +4,12 @@ import {
 	type Static,
 	type TNull,
 	type TRef,
-	TObject,
-	ObjectProperties,
-	TLiteral
+	type TObject,
+	type ObjectProperties,
+	type TLiteral
 } from '@sinclair/typebox'
 import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
-import { MoveIDWildcard } from '../common/Id.js'
-import { MarkdownString } from '../common/Localize.js'
-import { Generic, ID } from '../common/index.js'
-import { type EnhanceMany } from '../utils/generic.js'
+import { Generic, Id, Localize } from '../common/index.js'
 import {
 	type TTrigger,
 	type TTriggerEnhancement,
@@ -23,20 +20,19 @@ import {
 	type MoveOutcomes,
 	type TMoveOutcomes
 } from './common.js'
-import { Flatten } from '../utils/generic.js'
 
 const MoveBase = Type.Object({
 	replaces: Type.Optional(
-		Type.Ref(ID.MoveID, {
+		Type.Ref(Id.MoveID, {
 			description:
 				'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
 		})
 	),
-	text: Type.Ref(MarkdownString, {
+	text: Type.Ref(Localize.MarkdownString, {
 		description: 'The complete rules text of the move.'
 	}),
 	oracles: Type.Optional(
-		Type.Array(Type.Ref(ID.OracleTableID), {
+		Type.Array(Type.Ref(Id.OracleTableID), {
 			description:
 				"Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 		})
@@ -48,7 +44,7 @@ export function Move<
 	Trigger extends TRef<TTrigger>,
 	Outcomes extends TRef<TMoveOutcomes> | TNull
 >(rollType: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
-	const base = Flatten([
+	const base = Generic.Flatten([
 		MoveBase,
 		Type.Object({
 			roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
@@ -62,7 +58,7 @@ export function Move<
 			outcomes: Outcomes
 		}
 	>
-	return Generic.Collectable(Type.Ref(ID.MoveID), base, options)
+	return Generic.Collectable(Type.Ref(Id.MoveID), base, options)
 }
 export type TMove<
 	RollType extends MoveRollType,
@@ -91,9 +87,9 @@ export function MoveEnhancement<
 		trigger: Type.Optional(trigger)
 	})
 
-	return Generic.EnhanceMany(base, Type.Ref(MoveIDWildcard), options)
+	return Generic.EnhanceMany(base, Type.Ref(Id.MoveIDWildcard), options)
 }
-export type MoveEnhancement<T extends MoveRollType, E> = EnhanceMany<{
+export type MoveEnhancement<T extends MoveRollType, E> = Generic.EnhanceMany<{
 	roll_type: T
 	trigger?: E
 }>

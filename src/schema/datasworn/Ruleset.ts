@@ -1,6 +1,6 @@
 import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
 import { DELVE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
-import { Generic, type ID, type Metadata } from './common/index.js'
+import { Generic, type Id, type Metadata } from './common/index.js'
 
 import { type TAssetType } from './Assets.js'
 import { type TAtlas } from './Atlas.js'
@@ -90,7 +90,7 @@ export const Ruleset = Type.Composite(
 	[
 		Type.Object({
 			// ruleset ID isn't optional in source, so we don't flag it with IdentifiedNode
-			id: Type.Ref<typeof ID.NamespaceID>('#/$defs/NamespaceID'),
+			id: Type.Ref<typeof Id.NamespaceID>('#/$defs/NamespaceID'),
 			source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
 			rules: Type.Optional(Type.Ref<TRules>('#/$defs/Rules'))
 		}),
@@ -108,9 +108,9 @@ export type Ruleset = Static<typeof Ruleset>
 export const Expansion = Type.Composite(
 	[
 		Type.Object({
-			id: Type.Ref<typeof ID.NamespaceID>('#/$defs/NamespaceID'),
+			id: Type.Ref<typeof Id.NamespaceID>('#/$defs/NamespaceID'),
 			source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
-			enhances: Type.Ref<typeof ID.NamespaceID>('#/$defs/NamespaceID')
+			enhances: Type.Ref<typeof Id.NamespaceID>('#/$defs/NamespaceID')
 		}),
 		Type.Partial(RulesetPrimaryContent),
 		RulesetSecondaryContent

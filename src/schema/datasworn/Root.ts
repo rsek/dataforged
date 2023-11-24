@@ -2,7 +2,7 @@ import { type Static, type TSchema } from '@sinclair/typebox'
 import { SCHEMA_ID, INPUT_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 
 import {
-	ID,
+	Id,
 	Localize,
 	Metadata,
 	Player,
@@ -25,7 +25,7 @@ import { SchemaRoot, InputSchemaRoot } from './root/SchemaRoot.js'
 const $schema = 'http://json-schema.org/draft-07/schema#'
 
 const $defs: Record<string, TSchema> = {
-	...ID,
+	...Id,
 	...Metadata,
 	...Localize,
 	...Rules,

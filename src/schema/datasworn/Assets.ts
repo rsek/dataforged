@@ -1,5 +1,5 @@
 import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
-import { Generic, ID, Localize, Metadata } from './common/index.js'
+import { Generic, Id, Localize, Metadata } from './common/index.js'
 import {
 	type TAssetOptionField,
 	type TAssetControlField
@@ -25,7 +25,7 @@ const AssetMixin = Type.Object({
 		// i18n: true
 	}),
 	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
-	color: Type.Optional(Type.Ref(Metadata.CSSColor)),
+	color: Type.Optional(Type.Ref(Metadata.CssColor)),
 	options: Type.Optional(
 		Generic.Dictionary(
 			Type.Ref<TAssetOptionField>('#/$defs/AssetOptionField'),
@@ -44,7 +44,7 @@ const AssetMixin = Type.Object({
 })
 
 export const Asset = Generic.Collectable(
-	Type.Ref(ID.AssetID),
+	Type.Ref(Id.AssetID),
 	Flatten([
 		AssetMixin,
 		AssetPropertiesEnhanceable(
@@ -60,7 +60,7 @@ export type Asset = Generic.Collectable<
 >
 
 export const AssetType = Generic.Collection(
-	Type.Ref(ID.AssetTypeID),
+	Type.Ref(Id.AssetTypeID),
 	Type.Ref<TUnsafe<Asset>>('#/$defs/Asset'),
 	{
 		$id: '#/$defs/AssetType'

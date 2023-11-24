@@ -7,10 +7,8 @@ import {
 	type Static,
 	type TObject
 } from '../../../typebox/index.js'
-import { AssetIDWildcard, DictKey } from '../common/Id.js'
-import { Localize, Player } from '../common/index.js'
+import { Localize, Player, Id, Generic } from '../common/index.js'
 import { Nullable } from '../utils/typebox.js'
-import { Flatten } from '../utils/generic.js'
 import {
 	Trigger,
 	TriggerCondition,
@@ -40,7 +38,7 @@ function ActionRollOptionBase<
 	Using extends ActionRollUsing,
 	Props extends TObject
 >(using: Using, props: Props, options: ObjectOptions = {}) {
-	return Flatten(
+	return Generic.Flatten(
 		[
 			props,
 			Type.Object({
@@ -54,12 +52,12 @@ function ActionRollOptionBase<
 export const RollOptionAssetControl = ActionRollOptionBase(
 	'asset_control',
 	Type.Object({
-		assets: Nullable(Type.Array(Type.Ref(AssetIDWildcard)), {
+		assets: Nullable(Type.Array(Type.Ref(Id.AssetIDWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
 		}),
-		control: Type.Ref(DictKey, {
+		control: Type.Ref(Id.DictKey, {
 			description: 'The key of the asset control field.',
 			examples: ['health', 'integrity']
 		})
@@ -82,12 +80,12 @@ export type RollOptionAttachedAssetControl = Static<
 export const RollOptionAssetOption = ActionRollOptionBase(
 	'asset_option',
 	Type.Object({
-		assets: Nullable(Type.Array(Type.Ref(AssetIDWildcard)), {
+		assets: Nullable(Type.Array(Type.Ref(Id.AssetIDWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
 		}),
-		option: Type.Ref(DictKey, {
+		option: Type.Ref(Id.DictKey, {
 			description: 'The key of the asset option field.'
 		})
 	}),

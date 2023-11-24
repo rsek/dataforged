@@ -1,11 +1,11 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
-import { Generic, ID, Localize, Metadata } from '../common/index.js'
+import { Generic, Id, Localize, Metadata } from '../common/index.js'
 import { StaticRowPartial, TableRow } from '../oracles/TableRow.js'
 
 export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
-	Type.Ref(ID.DomainFeatureRowID),
+	Type.Ref(Id.DomainFeatureRowID),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -14,7 +14,7 @@ export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
 export const DelveSiteDomainDangerRow = Generic.IdentifiedNode(
-	Type.Ref(ID.DomainDangerRowID),
+	Type.Ref(Id.DomainDangerRowID),
 	TableRow({
 		min: Type.Integer(),
 		max: Type.Integer()
@@ -28,14 +28,14 @@ const DelveSiteDomainFeatures = Type.Array(Type.Ref(DelveSiteDomainFeatureRow))
 const DelveSiteDomainDangers = Type.Array(Type.Ref(DelveSiteDomainDangerRow))
 
 export const DelveSiteDomain = Generic.SourcedNode(
-	Type.Ref(ID.DelveSiteDomainID),
+	Type.Ref(Id.DelveSiteDomainID),
 	Type.Object({
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 		card_type: Type.Literal('domain'),
 		name_oracle: Type.Optional(
-			Type.Ref(ID.OracleTableID, {
+			Type.Ref(Id.OracleTableID, {
 				description:
 					'An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.'
 			})

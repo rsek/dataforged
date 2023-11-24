@@ -1,11 +1,11 @@
 import { Type, type Static } from '@sinclair/typebox'
 import * as Moves from '../Moves.js'
-import { Generic, ID, Localize } from '../common/index.js'
+import { Generic, Id, Localize } from '../common/index.js'
 import { AssetEnhancement } from './Enhancement.js'
 import { AssetAbilityControlField, AssetAbilityOptionField } from './Fields.js'
 
 export const AssetAbility = Generic.IdentifiedNode(
-	Type.Ref(ID.AssetAbilityID),
+	Type.Ref(Id.AssetAbilityID),
 	Type.Object({
 		name: Type.Optional(Type.Ref(Localize.Label)),
 		text: Type.Ref(Localize.MarkdownString),
