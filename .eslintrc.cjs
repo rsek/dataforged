@@ -17,7 +17,7 @@ module.exports = {
 		'./*.*',
 		'src/data-in',
 		'src/data-out',
-		'src/json-typedef/out',
+		'./json-typedef',
 		'src/type-gen/results',
 		'.eslintrc.js',
 		'*.d.ts',
