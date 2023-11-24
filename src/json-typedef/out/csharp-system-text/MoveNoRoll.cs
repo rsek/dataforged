@@ -16,6 +16,9 @@ namespace Datasworn
         [JsonPropertyName("name")]
         public Label Name { get; set; }
 
+        [JsonPropertyName("outcomes")]
+        public object Outcomes { get; set; }
+
         [JsonPropertyName("source")]
         public Source Source { get; set; }
 

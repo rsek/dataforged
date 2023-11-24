@@ -15,5 +15,12 @@ namespace Datasworn
         [JsonPropertyName("email")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// An optional URL for the author's website.
+        /// </summary>
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string Url { get; set; }
     }
 }

@@ -7,17 +7,16 @@ namespace Datasworn
 {
     public class TriggerNoRoll
     {
+        [JsonPropertyName("conditions")]
+        public IList<TriggerNoRollCondition> Conditions { get; set; }
+
         /// <summary>
-        /// A markdown string of the primary trigger text for this move.
+        /// A markdown string containing the primary trigger text for this move.
         /// 
         /// Secondary trigger text (for specific stats or uses of an asset
-        /// ability) may be available for individual trigger conditions.
+        /// ability) may be described in individual trigger conditions.
         /// </summary>
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
-
-        [JsonPropertyName("conditions")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<TriggerNoRollCondition> Conditions { get; set; }
     }
 }

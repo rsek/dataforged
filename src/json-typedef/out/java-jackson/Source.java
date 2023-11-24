@@ -114,6 +114,7 @@ public class Source {
 
     /**
      * Getter for page.<p>
+     * The page number where this item is described in full.
      */
     public Short getPage() {
         return page;
@@ -121,6 +122,7 @@ public class Source {
 
     /**
      * Setter for page.<p>
+     * The page number where this item is described in full.
      */
     public void setPage(Short page) {
         this.page = page;

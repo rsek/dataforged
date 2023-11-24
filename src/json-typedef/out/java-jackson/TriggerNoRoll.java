@@ -2,43 +2,19 @@
 
 package Datasworn;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
 @JsonSerialize
 public class TriggerNoRoll {
-    @JsonProperty("text")
-    private MarkdownString text;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("conditions")
     private List<TriggerNoRollCondition> conditions;
 
+    @JsonProperty("text")
+    private MarkdownString text;
+
     public TriggerNoRoll() {
-    }
-
-    /**
-     * Getter for text.<p>
-     * A markdown string of the primary trigger text for this move.
-     * 
-     * Secondary trigger text (for specific stats or uses of an asset ability)
-     * may be available for individual trigger conditions.
-     */
-    public MarkdownString getText() {
-        return text;
-    }
-
-    /**
-     * Setter for text.<p>
-     * A markdown string of the primary trigger text for this move.
-     * 
-     * Secondary trigger text (for specific stats or uses of an asset ability)
-     * may be available for individual trigger conditions.
-     */
-    public void setText(MarkdownString text) {
-        this.text = text;
     }
 
     /**
@@ -53,5 +29,27 @@ public class TriggerNoRoll {
      */
     public void setConditions(List<TriggerNoRollCondition> conditions) {
         this.conditions = conditions;
+    }
+
+    /**
+     * Getter for text.<p>
+     * A markdown string containing the primary trigger text for this move.
+     * 
+     * Secondary trigger text (for specific stats or uses of an asset ability)
+     * may be described in individual trigger conditions.
+     */
+    public MarkdownString getText() {
+        return text;
+    }
+
+    /**
+     * Setter for text.<p>
+     * A markdown string containing the primary trigger text for this move.
+     * 
+     * Secondary trigger text (for specific stats or uses of an asset ability)
+     * may be described in individual trigger conditions.
+     */
+    public void setText(MarkdownString text) {
+        this.text = text;
     }
 }

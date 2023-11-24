@@ -10,9 +10,17 @@ namespace Datasworn
         [JsonPropertyName("id")]
         public ThemeDangerRowId Id { get; set; }
 
+        /// <summary>
+        /// High end of the dice range for this table row. `null` represents an
+        /// unrollable row, included only for rendering purposes.
+        /// </summary>
         [JsonPropertyName("max")]
         public short Max { get; set; }
 
+        /// <summary>
+        /// Low end of the dice range for this table row. `null` represents an
+        /// unrollable row, included only for rendering purposes.
+        /// </summary>
         [JsonPropertyName("min")]
         public short Min { get; set; }
 

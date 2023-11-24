@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class OracleCollectionTableColumn {
     @JsonProperty("content_type")
-    private OracleCollectionTableColumnContentType contentType;
+    private OracleTableColumnContentKey contentType;
 
     @JsonProperty("table_key")
     private DictKey tableKey;
@@ -27,17 +27,15 @@ public class OracleCollectionTableColumn {
 
     /**
      * Getter for contentType.<p>
-     * The value(s) from each OracleTableRow that is rendered in this column.
      */
-    public OracleCollectionTableColumnContentType getContentType() {
+    public OracleTableColumnContentKey getContentType() {
         return contentType;
     }
 
     /**
      * Setter for contentType.<p>
-     * The value(s) from each OracleTableRow that is rendered in this column.
      */
-    public void setContentType(OracleCollectionTableColumnContentType contentType) {
+    public void setContentType(OracleTableColumnContentKey contentType) {
         this.contentType = contentType;
     }
 
@@ -77,7 +75,7 @@ public class OracleCollectionTableColumn {
 
     /**
      * Getter for name.<p>
-     * The table column's header text.
+     * The column's header text.
      */
     public Label getName() {
         return name;
@@ -85,7 +83,7 @@ public class OracleCollectionTableColumn {
 
     /**
      * Setter for name.<p>
-     * The table column's header text.
+     * The column's header text.
      */
     public void setName(Label name) {
         this.name = name;

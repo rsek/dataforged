@@ -1,5 +1,1332 @@
 {
 	"definitions": {
+		"AssetAbilityControlFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/controls\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AssetAbilityID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)$"
+			}
+		},
+		"AssetAbilityOptionFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/options\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AssetConditionMeterControlFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AssetControlFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AssetControlFieldIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/controls\\/(\\*|([a-z][a-z_]*))$"
+			}
+		},
+		"AssetID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AssetIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
+			}
+		},
+		"AssetOptionFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AssetOptionFieldIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/options\\/(\\*|([a-z][a-z_]*))$"
+			}
+		},
+		"AssetTypeID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/collections\\/assets\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AtlasEntryID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/atlas/ironlands/hinterlands"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/atlas\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AtlasEntryIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/atlas\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
+			}
+		},
+		"AtlasID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/collections/atlas/ironlands"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/collections\\/atlas\\/([a-z][a-z_]*)$"
+			}
+		},
+		"AtlasIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/collections\\/atlas\\/(\\*|([a-z][a-z_]*))$"
+			}
+		},
+		"ConditionMeterRuleID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/rules/condition_meters/health",
+					"starforged/rules/condition_meters/spirit"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/rules\\/condition_meters\\/([a-z][a-z_]*)$"
+			}
+		},
+		"DelveSiteDenizenID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"delve/delve_sites/alvas_rest/denizens/1-27"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)\\/denizens\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			}
+		},
+		"DelveSiteDomainID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"delve/site_domains/shadowfen"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)$"
+			}
+		},
+		"DelveSiteID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"delve/delve_sites/alvas_rest"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)$"
+			}
+		},
+		"DelveSiteThemeID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"delve/site_themes/hallowed"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)$"
+			}
+		},
+		"DictKey": {
+			"type": "string",
+			"metadata": {
+				"description": "A key used in a Datasworn dictionary object.",
+				"pattern": "^([a-z][a-z_]*)$"
+			}
+		},
+		"DomainDangerRowID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			}
+		},
+		"DomainFeatureRowID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			}
+		},
+		"ImpactRuleCollectionID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/collections/rules/impacts/conditions",
+					"starforged/collections/rules/impacts/vehicle_troubles"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/collections\\/rules\\/impacts\\/([a-z][a-z_]*)$"
+			}
+		},
+		"ImpactRuleID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/rules/impacts/conditions/wounded",
+					"starforged/rules/impacts/vehicle_troubles/battered"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/rules\\/impacts\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			}
+		},
+		"MoveCategoryID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"starforged/collections/moves/adventure"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/collections\\/moves\\/([a-z][a-z_]*)$"
+			}
+		},
+		"MoveID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(([a-z0-9_]{3,})\\/moves\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)|([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/moves\\/([a-z][a-z_]*))$",
+				"description": "A move ID, for a standard move or a unique asset move",
+				"examples": [
+					"classic/moves/combat/strike",
+					"starforged/assets/module/grappler/abilities/0/moves/ready_grappler"
+				]
+			}
+		},
+		"MoveIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^((\\*|([a-z0-9_]{3,}))\\/moves\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))|(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/abilities\\/(\\*|(0|[1-9][0-9]*))\\/moves\\/(\\*|([a-z][a-z_]*)))$",
+				"description": "A move ID with wildcards",
+				"examples": [
+					"*/moves/*/face_danger",
+					"*/assets/ritual/*/abilities/*/moves/*"
+				]
+			}
+		},
+		"NamespaceID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic",
+					"delve",
+					"starforged",
+					"sundered_isles"
+				],
+				"pattern": "^([a-z0-9_]{3,})$"
+			}
+		},
+		"NpcCollectionID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/collections/npcs/firstborn",
+					"starforged/collections/npcs/sample_npcs"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/collections\\/npcs\\/([a-z][a-z_]*)$"
+			}
+		},
+		"NpcID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/npcs/firstborn/elf",
+					"starforged/npcs/sample_npcs/chiton"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			}
+		},
+		"NpcIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/npcs\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
+			}
+		},
+		"NpcVariantID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/([a-z][a-z_]*)$"
+			}
+		},
+		"OracleCollectionID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"starforged/collections/oracles/core",
+					"starforged/collections/oracles/character/names",
+					"starforged/collections/oracles/planets/furnace/settlements"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/collections\\/oracles(\\/([a-z][a-z_]*)){1,3}$"
+			}
+		},
+		"OracleTableID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"starforged/oracles/core/action",
+					"starforged/oracles/character/names/given",
+					"starforged/oracles/planets/furnace/settlements/terminus"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
+			}
+		},
+		"OracleTableIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"description": "Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree. For example, 'starforged/oracles/**/location' represents any starforged table with the \"location\" key.",
+				"examples": [
+					"*/oracles/**/peril",
+					"starforged/oracles/character/names/*",
+					"starforged/oracles/planets/*/settlements/*"
+				],
+				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/oracles\\/((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*|\\/\\*\\*\\/([a-z][a-z_]*)|\\/([a-z][a-z_]*)\\/\\*\\*)\\/(\\*|([a-z][a-z_]*))$"
+			}
+		},
+		"OracleTableRowID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/([1-9][0-9]*)-([1-9][0-9]*)|([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*))$",
+				"description": "Normally, rows will end with two numbers separated by a dash, indicating their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
+				"examples": [
+					"classic/oracles/action_and_theme/action/1-1",
+					"starforged/oracles/derelicts/zones/starship/0"
+				]
+			}
+		},
+		"RarityID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/rarities/ayethins_journal"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
+			}
+		},
+		"SpecialTrackRuleID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/rules/special_tracks/bonds",
+					"delve/rules/special_tracks/failure",
+					"starforged/rules/special_tracks/bonds_legacy"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/rules\\/special_tracks\\/([a-z][a-z_]*)$"
+			}
+		},
+		"StatRuleID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/rules\\/stats\\/([a-z][a-z_]*)$"
+			}
+		},
+		"ThemeDangerRowID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			}
+		},
+		"ThemeFeatureRowID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			}
+		},
+		"TruthID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/truths/iron",
+					"starforged/truths/iron"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)$"
+			}
+		},
+		"TruthOptionID": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"classic/truths/iron/0",
+					"starforged/truths/iron/0"
+				],
+				"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
+			}
+		},
+		"CSSColor": {
+			"type": "string",
+			"metadata": {
+				"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
+			}
+		},
+		"SVGImageURL": {
+			"type": "string",
+			"metadata": {
+				"description": "A relative URL pointing to a vector image in the SVG format.",
+				"pattern": "\\.svg$",
+				"format": "uri-reference"
+			}
+		},
+		"Source": {
+			"properties": {
+				"title": {
+					"type": "string",
+					"metadata": {
+						"description": "The title of the source document.",
+						"examples": [
+							"Ironsworn Rulebook",
+							"Ironsworn Assets Master Set",
+							"Ironsworn: Delve",
+							"Ironsworn: Starforged Rulebook",
+							"Ironsworn: Starforged Assets",
+							"Sundered Isles"
+						]
+					}
+				},
+				"authors": {
+					"elements": {
+						"properties": {
+							"name": {
+								"type": "string",
+								"metadata": {
+									"examples": [
+										"Shawn Tomkin"
+									]
+								}
+							}
+						},
+						"optionalProperties": {
+							"email": {
+								"type": "string",
+								"metadata": {
+									"description": "An optional email contact for the author",
+									"format": "email"
+								}
+							},
+							"url": {
+								"type": "string",
+								"metadata": {
+									"description": "An optional URL for the author's website.",
+									"format": "uri"
+								}
+							}
+						},
+						"metadata": {
+							"examples": [
+								{
+									"name": "Shawn Tomkin"
+								}
+							]
+						}
+					},
+					"metadata": {
+						"minItems": 1
+					}
+				},
+				"date": {
+					"type": "string",
+					"metadata": {
+						"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
+						"format": "date"
+					}
+				},
+				"url": {
+					"type": "string",
+					"metadata": {
+						"description": "An absolute URL where the source document is available.",
+						"examples": [
+							"https://ironswornrpg.com"
+						],
+						"format": "uri"
+					}
+				},
+				"license": {
+					"type": "string",
+					"metadata": {
+						"format": "uri"
+					},
+					"nullable": true
+				}
+			},
+			"optionalProperties": {
+				"page": {
+					"type": "int16",
+					"metadata": {
+						"description": "The page number where this item is described in full.",
+						"minimum": 1
+					}
+				}
+			},
+			"metadata": {
+				"description": "Metadata describing the original source of this item"
+			}
+		},
+		"Suggestions": {
+			"properties": {},
+			"optionalProperties": {
+				"oracles": {
+					"elements": {
+						"ref": "OracleTableID"
+					}
+				},
+				"assets": {
+					"elements": {
+						"ref": "AssetID"
+					}
+				},
+				"moves": {
+					"elements": {
+						"ref": "MoveID"
+					}
+				},
+				"site_domains": {
+					"elements": {
+						"ref": "DelveSiteDomainID"
+					}
+				},
+				"site_themes": {
+					"elements": {
+						"ref": "DelveSiteThemeID"
+					}
+				},
+				"npcs": {
+					"elements": {
+						"ref": "NpcID"
+					}
+				},
+				"atlas": {
+					"elements": {
+						"ref": "AtlasEntryID"
+					}
+				}
+			}
+		},
+		"WEBPImageURL": {
+			"type": "string",
+			"metadata": {
+				"description": "A relative URL pointing to a raster image in the WEBP format.",
+				"pattern": "\\.webp$",
+				"format": "uri-reference"
+			}
+		},
+		"I18nHint": {
+			"properties": {},
+			"optionalProperties": {
+				"part_of_speech": {
+					"ref": "PartOfSpeech"
+				}
+			}
+		},
+		"I18nHints": {
+			"properties": {},
+			"optionalProperties": {
+				"result": {
+					"ref": "I18nHint"
+				},
+				"summary": {
+					"ref": "I18nHint"
+				},
+				"description": {
+					"ref": "I18nHint"
+				},
+				"template": {
+					"properties": {},
+					"optionalProperties": {
+						"result": {
+							"ref": "I18nHint"
+						},
+						"summary": {
+							"ref": "I18nHint"
+						},
+						"description": {
+							"ref": "I18nHint"
+						}
+					}
+				}
+			}
+		},
+		"Label": {
+			"type": "string",
+			"metadata": {
+				"description": "A localized plain text name or label."
+			}
+		},
+		"MarkdownString": {
+			"type": "string",
+			"metadata": {
+				"description": "Localized text, formatted in Markdown.\n\nIt uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.",
+				"format": "markdown"
+			}
+		},
+		"PartOfSpeech": {
+			"enum": [
+				"common_noun",
+				"proper_noun",
+				"adjunct_common_noun",
+				"adjunct_proper_noun",
+				"verb",
+				"gerund",
+				"adjective",
+				"attributive_verb"
+			],
+			"metadata": {
+				"enumDescriptions": {
+					"common_noun": "A common noun.",
+					"proper_noun": "A proper noun.",
+					"adjunct_common_noun": "A common noun used as an adjective, to modify another noun.",
+					"adjunct_proper_noun": "A proper noun used as an adjective, to modify another noun.",
+					"verb": "A verb in present tense",
+					"gerund": "Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"",
+					"adjective": "An adjective.",
+					"attributive_verb": "A verb used as an adjective, to modify a noun."
+				}
+			}
+		},
+		"TemplateString": {
+			"type": "string",
+			"metadata": {
+				"description": "A rich text string in Markdown with replaced values from oracle roll results.\n\nThe custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`\n",
+				"format": "markdown"
+			}
+		},
+		"ConditionMeterRule": {
+			"properties": {
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"shared": {
+					"type": "boolean"
+				},
+				"name": {
+					"ref": "Label",
+					"metadata": {
+						"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+					}
+				},
+				"min": {
+					"type": "int16",
+					"metadata": {
+						"description": "The minimum value of this meter."
+					}
+				},
+				"max": {
+					"type": "int16",
+					"metadata": {
+						"description": "The maximum value of this meter."
+					}
+				}
+			}
+		},
+		"ImpactCategory": {
+			"properties": {
+				"name": {
+					"ref": "Label"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"contents": {
+					"values": {
+						"ref": "ImpactRule"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			}
+		},
+		"ImpactRule": {
+			"properties": {
+				"name": {
+					"ref": "Label"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"shared": {
+					"type": "boolean"
+				},
+				"prevents_recovery": {
+					"elements": {
+						"ref": "DictKey"
+					}
+				},
+				"permanent": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Rules": {
+			"properties": {
+				"stats": {
+					"values": {
+						"ref": "StatRule"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				},
+				"condition_meters": {
+					"values": {
+						"ref": "ConditionMeterRule"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				},
+				"impacts": {
+					"values": {
+						"ref": "ImpactCategory"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				},
+				"special_tracks": {
+					"values": {
+						"ref": "SpecialTrackRule"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			}
+		},
+		"SpecialTrackRule": {
+			"properties": {
+				"name": {
+					"ref": "Label"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"shared": {
+					"type": "boolean"
+				},
+				"optional": {
+					"type": "boolean"
+				}
+			}
+		},
+		"StatRule": {
+			"properties": {
+				"name": {
+					"ref": "Label"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				}
+			}
+		},
+		"ChallengeRank": {
+			"type": "uint8",
+			"metadata": {
+				"description": "Challenge rank, represented as an integer:",
+				"enumDescriptions": {
+					"1": "Troublesome",
+					"2": "Dangerous",
+					"3": "Formidable",
+					"4": "Extreme",
+					"5": "Epic"
+				}
+			}
+		},
+		"SpecialTrackType": {
+			"ref": "DictKey",
+			"metadata": {
+				"description": "Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
+				"examples": [
+					"bonds_track",
+					"failure_track",
+					"quests_legacy",
+					"bonds_legacy",
+					"discoveries_legacy"
+				]
+			}
+		},
+		"Npc": {
+			"properties": {
+				"id": {
+					"ref": "NpcID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
+				},
+				"features": {
+					"elements": {
+						"ref": "MarkdownString"
+					}
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"quest_starter": {
+					"ref": "MarkdownString"
+				},
+				"rank": {
+					"ref": "ChallengeRank"
+				},
+				"nature": {
+					"ref": "NpcNature"
+				},
+				"drives": {
+					"elements": {
+						"ref": "MarkdownString"
+					}
+				},
+				"tactics": {
+					"elements": {
+						"ref": "MarkdownString"
+					}
+				}
+			},
+			"optionalProperties": {
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"your_truth": {
+					"ref": "MarkdownString"
+				},
+				"variants": {
+					"values": {
+						"ref": "NpcVariant"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			},
+			"metadata": {
+				"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged."
+			}
+		},
+		"NpcCollection": {
+			"properties": {
+				"id": {
+					"ref": "NpcCollectionID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
+				},
+				"contents": {
+					"values": {
+						"ref": "Npc"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			},
+			"optionalProperties": {
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"color": {
+					"ref": "CSSColor"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"images": {
+					"elements": {
+						"ref": "WEBPImageURL"
+					}
+				},
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"enhances": {
+					"ref": "NpcCollectionID",
+					"metadata": {
+						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+					}
+				},
+				"replaces": {
+					"ref": "NpcCollectionID",
+					"metadata": {
+						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				}
+			}
+		},
+		"NpcNature": {
+			"ref": "Label",
+			"metadata": {
+				"description": "A localized category label describing the nature of this NPC.\n\nIn Ironsworn classic, this is probably the singular form of the parent collection's name.\n\nFor Starforged, see the table on p. 258 for examples.",
+				"examples": [
+					"Ironlander",
+					"Firstborn",
+					"Animal",
+					"Beast",
+					"Horror",
+					"Anomaly",
+					"Creature",
+					"Human",
+					"Machine",
+					"Monster",
+					"Vehicle"
+				]
+			}
+		},
+		"NpcVariant": {
+			"properties": {
+				"id": {
+					"ref": "NpcVariantID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"rank": {
+					"ref": "ChallengeRank"
+				},
+				"nature": {
+					"ref": "NpcNature"
+				}
+			},
+			"optionalProperties": {
+				"summary": {
+					"ref": "MarkdownString"
+				}
+			}
+		},
+		"DiceNotation": {
+			"type": "string",
+			"metadata": {
+				"examples": [
+					"1d100",
+					"1d6+2"
+				],
+				"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?",
+				"format": "dice_notation"
+			}
+		},
+		"OracleRollTemplate": {
+			"properties": {},
+			"optionalProperties": {
+				"result": {
+					"ref": "TemplateString",
+					"metadata": {
+						"description": "A string template that may be used in place of OracleTableRow#result.",
+						"examples": [
+							"{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}"
+						]
+					}
+				},
+				"summary": {
+					"ref": "TemplateString",
+					"metadata": {
+						"description": "A string template that may be used in place of OracleTableRow#summary."
+					}
+				},
+				"description": {
+					"ref": "TemplateString",
+					"metadata": {
+						"description": "A string template that may be used in place of OracleTableRow#description."
+					}
+				}
+			},
+			"metadata": {
+				"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID."
+			}
+		},
+		"OracleTableMatchBehavior": {
+			"properties": {
+				"text": {
+					"ref": "MarkdownString"
+				}
+			}
+		},
+		"OracleTableRoll": {
+			"properties": {},
+			"optionalProperties": {
+				"oracle": {
+					"ref": "OracleTableID",
+					"metadata": {
+						"description": "The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table."
+					}
+				},
+				"auto": {
+					"type": "boolean",
+					"metadata": {
+						"description": "The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as \"Action + Theme\". If this value is omitted, assume it's false."
+					}
+				},
+				"times": {
+					"type": "int16",
+					"metadata": {
+						"minimum": 1
+					}
+				},
+				"method": {
+					"ref": "OracleTableRollMethod"
+				}
+			}
+		},
+		"OracleTableRollMethod": {
+			"enum": [
+				"no_duplicates",
+				"keep_duplicates",
+				"make_it_worse"
+			],
+			"metadata": {
+				"description": "Special roll instructions to use when rolling multiple times on a single oracle table.",
+				"enumDescriptions": {
+					"no_duplicates": "Duplicates should be re-rolled.",
+					"keep_duplicates": "Duplicates should be kept.",
+					"make_it_worse": "Duplicates should be kept, and they compound to make things worse."
+				}
+			}
+		},
+		"OracleCollection": {
+			"properties": {
+				"id": {
+					"ref": "OracleCollectionID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
+				},
+				"contents": {
+					"values": {
+						"ref": "OracleTable"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				},
+				"collections": {
+					"values": {
+						"ref": "OracleCollection"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			},
+			"optionalProperties": {
+				"rendering": {
+					"ref": "OracleCollectionRendering"
+				},
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"color": {
+					"ref": "CSSColor"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"images": {
+					"elements": {
+						"ref": "WEBPImageURL"
+					}
+				},
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"enhances": {
+					"ref": "OracleCollectionID",
+					"metadata": {
+						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+					}
+				},
+				"replaces": {
+					"ref": "OracleCollectionID",
+					"metadata": {
+						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				}
+			}
+		},
+		"OracleCollectionRendering": {
+			"properties": {
+				"columns": {
+					"values": {
+						"ref": "OracleCollectionTableColumn"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			},
+			"optionalProperties": {
+				"color": {
+					"ref": "CSSColor"
+				},
+				"table_style": {
+					"ref": "OracleCollectionStyle"
+				}
+			}
+		},
+		"OracleCollectionStyle": {
+			"enum": [
+				"collection",
+				"multi_table"
+			],
+			"metadata": {
+				"enumDescriptions": {
+					"collection": "",
+					"multi_table": ""
+				}
+			}
+		},
+		"OracleCollectionTableColumn": {
+			"properties": {
+				"content_type": {
+					"ref": "OracleTableColumnContentKey"
+				},
+				"table_key": {
+					"ref": "DictKey",
+					"metadata": {
+						"description": "The key of the OracleTable (within this collection), whose data is used to render this column."
+					}
+				}
+			},
+			"optionalProperties": {
+				"name": {
+					"ref": "Label",
+					"metadata": {
+						"description": "The column's header text."
+					}
+				},
+				"color": {
+					"ref": "CSSColor",
+					"metadata": {
+						"description": "The thematic color for this column."
+					}
+				}
+			}
+		},
+		"OracleTable": {
+			"properties": {
+				"id": {
+					"ref": "OracleTableID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
+				},
+				"dice": {
+					"ref": "DiceNotation"
+				},
+				"table": {
+					"elements": {
+						"ref": "OracleTableRow"
+					}
+				}
+			},
+			"optionalProperties": {
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"images": {
+					"elements": {
+						"ref": "WEBPImageURL"
+					}
+				},
+				"summary": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A brief summary of the oracle table's intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
+					}
+				},
+				"replaces": {
+					"ref": "OracleTableID",
+					"metadata": {
+						"description": "Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table."
+					}
+				},
+				"description": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
+					}
+				},
+				"match": {
+					"ref": "OracleTableMatchBehavior"
+				},
+				"rendering": {
+					"ref": "OracleTableRendering"
+				}
+			}
+		},
+		"OracleTableColumn": {
+			"properties": {
+				"content_type": {
+					"ref": "OracleTableColumnContentKey"
+				}
+			},
+			"optionalProperties": {
+				"name": {
+					"ref": "Label",
+					"metadata": {
+						"description": "The column's header text."
+					}
+				},
+				"color": {
+					"ref": "CSSColor",
+					"metadata": {
+						"description": "The thematic color for this column."
+					}
+				}
+			},
+			"metadata": {
+				"examples": [
+					{
+						"name": "Roll",
+						"content_type": "roll"
+					},
+					{
+						"name": "Result",
+						"content_type": "result"
+					},
+					{
+						"name": "Summary",
+						"content_type": "summary"
+					}
+				]
+			}
+		},
+		"OracleTableColumnContentKey": {
+			"enum": [
+				"roll",
+				"result",
+				"summary",
+				"description"
+			],
+			"metadata": {
+				"description": "The value(s) from each OracleTableRow that is rendered in this column.",
+				"enumDescriptions": {
+					"roll": "Column displays the roll range (`min` and `max`) of each OracleTableRow.",
+					"result": "Column displays the OracleTableRow's `result` key.",
+					"summary": "Column displays the OracleTableRow's `summary` key.",
+					"description": "Column displays the OracleTableRow's `description` key."
+				}
+			}
+		},
+		"OracleTableRendering": {
+			"properties": {
+				"columns": {
+					"values": {
+						"ref": "OracleTableColumn"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			},
+			"optionalProperties": {
+				"table_style": {
+					"ref": "OracleTableStyle"
+				}
+			}
+		},
+		"OracleTableRow": {
+			"properties": {
+				"id": {
+					"ref": "OracleTableRowID"
+				},
+				"min": {
+					"type": "int16",
+					"nullable": true
+				},
+				"max": {
+					"type": "int16",
+					"nullable": true
+				},
+				"result": {
+					"ref": "MarkdownString"
+				}
+			},
+			"optionalProperties": {
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"rolls": {
+					"elements": {
+						"ref": "OracleTableRoll"
+					}
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"embed_table": {
+					"ref": "OracleTableID"
+				},
+				"template": {
+					"ref": "OracleRollTemplate"
+				},
+				"i18n": {
+					"ref": "I18nHints"
+				}
+			}
+		},
+		"OracleTableStyle": {
+			"enum": [
+				"standalone_table",
+				"embed_in_row",
+				"embed_as_column"
+			],
+			"metadata": {
+				"enumDescriptions": {
+					"standalone_table": "Render as a standalone table.",
+					"embed_in_row": "Render as a table, within a row in another table.",
+					"embed_as_column": "Render as a single column of a table."
+				}
+			}
+		},
 		"ActionRollMethod": {
 			"enum": [
 				"miss",
@@ -30,16 +1357,14 @@
 						"stat": {
 							"ref": "PlayerStat"
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"condition_meter": {
 					"properties": {
 						"condition_meter": {
 							"ref": "PlayerConditionMeter"
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"asset_control": {
 					"properties": {
@@ -59,8 +1384,7 @@
 								]
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"asset_option": {
 					"properties": {
@@ -76,8 +1400,7 @@
 								"description": "The key of the asset option field."
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"attached_asset_control": {
 					"properties": {
@@ -91,8 +1414,7 @@
 								]
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"attached_asset_option": {
 					"properties": {
@@ -102,8 +1424,7 @@
 								"description": "The key of the asset option field."
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"custom": {
 					"properties": {
@@ -116,8 +1437,7 @@
 								"minimum": 0
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				}
 			}
 		},
@@ -143,25 +1463,758 @@
 				}
 			}
 		},
-		"Asset": {
-			"properties": {
-				"count_as_impact": {
-					"type": "boolean",
+		"Move": {
+			"discriminator": "roll_type",
+			"mapping": {
+				"action_roll": {
+					"properties": {
+						"id": {
+							"ref": "MoveID"
+						},
+						"name": {
+							"ref": "Label"
+						},
+						"source": {
+							"ref": "Source"
+						},
+						"text": {
+							"ref": "MarkdownString",
+							"metadata": {
+								"description": "The complete rules text of the move."
+							}
+						},
+						"trigger": {
+							"ref": "TriggerActionRoll"
+						},
+						"outcomes": {
+							"ref": "MoveOutcomes"
+						}
+					},
+					"optionalProperties": {
+						"canonical_name": {
+							"ref": "Label"
+						},
+						"suggestions": {
+							"ref": "Suggestions"
+						},
+						"replaces": {
+							"ref": "MoveID",
+							"metadata": {
+								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
+							}
+						},
+						"oracles": {
+							"elements": {
+								"ref": "OracleTableID"
+							},
+							"metadata": {
+								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
+							}
+						}
+					},
 					"metadata": {
-						"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
+						"description": "A move that makes an action roll."
 					}
 				},
-				"shared": {
-					"type": "boolean",
-					"metadata": {
-						"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
+				"no_roll": {
+					"properties": {
+						"id": {
+							"ref": "MoveID"
+						},
+						"name": {
+							"ref": "Label"
+						},
+						"source": {
+							"ref": "Source"
+						},
+						"text": {
+							"ref": "MarkdownString",
+							"metadata": {
+								"description": "The complete rules text of the move."
+							}
+						},
+						"trigger": {
+							"ref": "TriggerNoRoll"
+						},
+						"outcomes": {
+							"nullable": true
+						}
+					},
+					"optionalProperties": {
+						"canonical_name": {
+							"ref": "Label"
+						},
+						"suggestions": {
+							"ref": "Suggestions"
+						},
+						"replaces": {
+							"ref": "MoveID",
+							"metadata": {
+								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
+							}
+						},
+						"oracles": {
+							"elements": {
+								"ref": "OracleTableID"
+							},
+							"metadata": {
+								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
+							}
+						}
 					}
+				},
+				"progress_roll": {
+					"properties": {
+						"id": {
+							"ref": "MoveID"
+						},
+						"name": {
+							"ref": "Label"
+						},
+						"source": {
+							"ref": "Source"
+						},
+						"text": {
+							"ref": "MarkdownString",
+							"metadata": {
+								"description": "The complete rules text of the move."
+							}
+						},
+						"trigger": {
+							"ref": "TriggerProgressRoll"
+						},
+						"outcomes": {
+							"ref": "MoveOutcomes"
+						},
+						"track_label": {
+							"ref": "Label",
+							"metadata": {
+								"description": "A category label for progress tracks associated with this move.",
+								"examples": [
+									"Vow",
+									"Journey",
+									"Combat",
+									"Scene Challenge",
+									"Expedition",
+									"Connection",
+									"Delve"
+								]
+							}
+						}
+					},
+					"optionalProperties": {
+						"canonical_name": {
+							"ref": "Label"
+						},
+						"suggestions": {
+							"ref": "Suggestions"
+						},
+						"replaces": {
+							"ref": "MoveID",
+							"metadata": {
+								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
+							}
+						},
+						"oracles": {
+							"elements": {
+								"ref": "OracleTableID"
+							},
+							"metadata": {
+								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
+							}
+						}
+					},
+					"metadata": {
+						"description": "A progress move that rolls on a standard progress track type (defined by the move object)."
+					}
+				},
+				"special_track": {
+					"properties": {
+						"id": {
+							"ref": "MoveID"
+						},
+						"name": {
+							"ref": "Label"
+						},
+						"source": {
+							"ref": "Source"
+						},
+						"text": {
+							"ref": "MarkdownString",
+							"metadata": {
+								"description": "The complete rules text of the move."
+							}
+						},
+						"trigger": {
+							"ref": "TriggerSpecialTrack"
+						},
+						"outcomes": {
+							"ref": "MoveOutcomes"
+						}
+					},
+					"optionalProperties": {
+						"canonical_name": {
+							"ref": "Label"
+						},
+						"suggestions": {
+							"ref": "Suggestions"
+						},
+						"replaces": {
+							"ref": "MoveID",
+							"metadata": {
+								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
+							}
+						},
+						"oracles": {
+							"elements": {
+								"ref": "OracleTableID"
+							},
+							"metadata": {
+								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
+							}
+						}
+					}
+				}
+			}
+		},
+		"MoveCategory": {
+			"properties": {
+				"id": {
+					"ref": "MoveCategoryID"
 				},
 				"name": {
 					"ref": "Label"
 				},
+				"source": {
+					"ref": "Source"
+				},
+				"contents": {
+					"values": {
+						"ref": "Move"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			},
+			"optionalProperties": {
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"color": {
+					"ref": "CSSColor"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"images": {
+					"elements": {
+						"ref": "WEBPImageURL"
+					}
+				},
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"enhances": {
+					"ref": "MoveCategoryID",
+					"metadata": {
+						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+					}
+				},
+				"replaces": {
+					"ref": "MoveCategoryID",
+					"metadata": {
+						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				}
+			}
+		},
+		"MoveEnhancement": {
+			"discriminator": "roll_type",
+			"mapping": {
+				"action_roll": {
+					"properties": {},
+					"optionalProperties": {
+						"enhances": {
+							"elements": {
+								"ref": "MoveIDWildcard"
+							}
+						},
+						"trigger": {
+							"ref": "TriggerActionRollEnhancement"
+						}
+					}
+				},
+				"no_roll": {
+					"properties": {},
+					"optionalProperties": {
+						"enhances": {
+							"elements": {
+								"ref": "MoveIDWildcard"
+							}
+						},
+						"trigger": {
+							"ref": "TriggerNoRollEnhancement"
+						}
+					}
+				},
+				"progress_roll": {
+					"properties": {},
+					"optionalProperties": {
+						"enhances": {
+							"elements": {
+								"ref": "MoveIDWildcard"
+							}
+						},
+						"trigger": {
+							"ref": "TriggerProgressRollEnhancement"
+						}
+					}
+				},
+				"special_track": {
+					"properties": {},
+					"optionalProperties": {
+						"enhances": {
+							"elements": {
+								"ref": "MoveIDWildcard"
+							}
+						},
+						"trigger": {
+							"ref": "TriggerSpecialTrackEnhancement"
+						}
+					}
+				}
+			}
+		},
+		"MoveOutcome": {
+			"properties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"pattern": "On a \\*\\*(strong hit|weak hit|miss)\\*\\*"
+					}
+				}
+			}
+		},
+		"MoveOutcomeType": {
+			"enum": [
+				"miss",
+				"weak_hit",
+				"strong_hit"
+			],
+			"metadata": {
+				"enumDescriptions": {
+					"miss": "The score doesn't beat either challenge die.",
+					"weak_hit": "The score is greater than one challenge die.",
+					"strong_hit": "The score is greater than both challenge dice."
+				}
+			}
+		},
+		"MoveOutcomes": {
+			"properties": {
+				"strong_hit": {
+					"ref": "MoveOutcome"
+				},
+				"weak_hit": {
+					"ref": "MoveOutcome"
+				},
+				"miss": {
+					"ref": "MoveOutcome"
+				}
+			},
+			"metadata": {
+				"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated."
+			}
+		},
+		"MoveRollType": {
+			"enum": [
+				"no_roll",
+				"action_roll",
+				"progress_roll",
+				"special_track"
+			],
+			"metadata": {
+				"enumDescriptions": {
+					"no_roll": "A move that makes no action rolls or progress rolls.",
+					"action_roll": "A move that makes an action roll.",
+					"progress_roll": "A progress move that rolls on a standard progress track type (defined by this move).",
+					"special_track": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged)."
+				}
+			}
+		},
+		"ProgressRollMethod": {
+			"enum": [
+				"miss",
+				"weak_hit",
+				"strong_hit",
+				"progress_roll"
+			],
+			"metadata": {
+				"enumDescriptions": {
+					"miss": "An automatic miss.",
+					"weak_hit": "An automatic weak hit.",
+					"strong_hit": "An automatic strong hit.",
+					"progress_roll": "Make a progress roll on a progress track associated with this move."
+				}
+			}
+		},
+		"ProgressRollOption": {
+			"properties": {
+				"using": {
+					"enum": [
+						"progress_track"
+					]
+				}
+			}
+		},
+		"SpecialTrackRollMethod": {
+			"enum": [
+				"miss",
+				"weak_hit",
+				"strong_hit",
+				"player_choice",
+				"highest",
+				"lowest",
+				"all"
+			],
+			"metadata": {
+				"enumDescriptions": {
+					"miss": "An automatic miss.",
+					"weak_hit": "An automatic weak hit.",
+					"strong_hit": "An automatic strong hit.",
+					"player_choice": "The player chooses which roll option to use.",
+					"highest": "Use the roll option with the best/highest value.",
+					"lowest": "Use the roll option with the worst/lowest value.",
+					"all": "Use **every** roll option at once."
+				}
+			}
+		},
+		"TriggerActionRoll": {
+			"properties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.",
+						"pattern": ".*\\.{3}"
+					}
+				},
+				"conditions": {
+					"elements": {
+						"ref": "TriggerActionRollCondition"
+					}
+				}
+			}
+		},
+		"TriggerActionRollCondition": {
+			"properties": {
+				"method": {
+					"ref": "ActionRollMethod"
+				},
+				"roll_options": {
+					"elements": {
+						"ref": "ActionRollOption"
+					},
+					"metadata": {
+						"description": "The options available when rolling with this trigger."
+					}
+				}
+			},
+			"optionalProperties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string of any trigger text specific to this trigger condition."
+					}
+				},
+				"by": {
+					"ref": "TriggerBy"
+				}
+			}
+		},
+		"TriggerActionRollConditionEnhancement": {
+			"properties": {
+				"method": {
+					"ref": "ActionRollMethod",
+					"nullable": true
+				},
+				"roll_options": {
+					"elements": {
+						"ref": "ActionRollOption"
+					},
+					"metadata": {
+						"description": "The options available when rolling with this trigger."
+					},
+					"nullable": true
+				}
+			},
+			"optionalProperties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string of any trigger text specific to this trigger condition."
+					}
+				},
+				"by": {
+					"ref": "TriggerBy"
+				}
+			}
+		},
+		"TriggerActionRollEnhancement": {
+			"properties": {
+				"conditions": {
+					"elements": {
+						"ref": "TriggerActionRollConditionEnhancement"
+					}
+				}
+			}
+		},
+		"TriggerBy": {
+			"properties": {
+				"player": {
+					"type": "boolean"
+				},
+				"ally": {
+					"type": "boolean"
+				}
+			},
+			"metadata": {
+				"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
+			}
+		},
+		"TriggerNoRoll": {
+			"properties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.",
+						"pattern": ".*\\.{3}"
+					}
+				},
+				"conditions": {
+					"elements": {
+						"ref": "TriggerNoRollCondition"
+					},
+					"nullable": true
+				}
+			}
+		},
+		"TriggerNoRollCondition": {
+			"properties": {
+				"method": {
+					"nullable": true
+				},
+				"roll_options": {
+					"nullable": true,
+					"metadata": {
+						"description": "The options available when rolling with this trigger."
+					}
+				}
+			},
+			"optionalProperties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string of any trigger text specific to this trigger condition."
+					}
+				},
+				"by": {
+					"ref": "TriggerBy"
+				}
+			}
+		},
+		"TriggerNoRollEnhancement": {
+			"properties": {
+				"conditions": {
+					"elements": {
+						"ref": "TriggerNoRollCondition"
+					}
+				}
+			}
+		},
+		"TriggerProgressRoll": {
+			"properties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.",
+						"pattern": ".*\\.{3}"
+					}
+				},
+				"conditions": {
+					"elements": {
+						"ref": "TriggerProgressRollCondition"
+					}
+				}
+			}
+		},
+		"TriggerProgressRollCondition": {
+			"properties": {
+				"method": {
+					"ref": "ProgressRollMethod"
+				},
+				"roll_options": {
+					"elements": {
+						"ref": "ProgressRollOption"
+					},
+					"metadata": {
+						"description": "The options available when rolling with this trigger."
+					}
+				}
+			},
+			"optionalProperties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string of any trigger text specific to this trigger condition."
+					}
+				},
+				"by": {
+					"ref": "TriggerBy"
+				}
+			}
+		},
+		"TriggerProgressRollConditionEnhancement": {
+			"properties": {
+				"method": {
+					"ref": "ProgressRollMethod",
+					"nullable": true
+				},
+				"roll_options": {
+					"elements": {
+						"ref": "ProgressRollOption"
+					},
+					"metadata": {
+						"description": "The options available when rolling with this trigger."
+					},
+					"nullable": true
+				}
+			},
+			"optionalProperties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string of any trigger text specific to this trigger condition."
+					}
+				},
+				"by": {
+					"ref": "TriggerBy"
+				}
+			}
+		},
+		"TriggerProgressRollEnhancement": {
+			"properties": {
+				"conditions": {
+					"elements": {
+						"ref": "TriggerProgressRollConditionEnhancement"
+					}
+				}
+			}
+		},
+		"TriggerSpecialTrack": {
+			"properties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.",
+						"pattern": ".*\\.{3}"
+					}
+				},
+				"conditions": {
+					"elements": {
+						"ref": "TriggerSpecialTrackCondition"
+					}
+				}
+			}
+		},
+		"TriggerSpecialTrackCondition": {
+			"properties": {
+				"method": {
+					"ref": "SpecialTrackRollMethod"
+				},
+				"roll_options": {
+					"elements": {
+						"ref": "TriggerSpecialTrackConditionOption"
+					},
+					"metadata": {
+						"description": "The options available when rolling with this trigger."
+					}
+				}
+			},
+			"optionalProperties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string of any trigger text specific to this trigger condition."
+					}
+				},
+				"by": {
+					"ref": "TriggerBy"
+				}
+			}
+		},
+		"TriggerSpecialTrackConditionEnhancement": {
+			"properties": {
+				"method": {
+					"ref": "SpecialTrackRollMethod",
+					"nullable": true
+				},
+				"roll_options": {
+					"elements": {
+						"ref": "TriggerSpecialTrackConditionOption"
+					},
+					"metadata": {
+						"description": "The options available when rolling with this trigger."
+					},
+					"nullable": true
+				}
+			},
+			"optionalProperties": {
+				"text": {
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A markdown string of any trigger text specific to this trigger condition."
+					}
+				},
+				"by": {
+					"ref": "TriggerBy"
+				}
+			},
+			"metadata": {
+				"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged)."
+			}
+		},
+		"TriggerSpecialTrackConditionOption": {
+			"properties": {
+				"using": {
+					"ref": "SpecialTrackType"
+				}
+			}
+		},
+		"TriggerSpecialTrackEnhancement": {
+			"properties": {
+				"conditions": {
+					"elements": {
+						"ref": "TriggerSpecialTrackConditionEnhancement"
+					}
+				}
+			}
+		},
+		"Asset": {
+			"properties": {
 				"id": {
 					"ref": "AssetID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
 				},
 				"asset_type": {
 					"ref": "Label",
@@ -179,9 +2232,6 @@
 						]
 					}
 				},
-				"source": {
-					"ref": "Source"
-				},
 				"abilities": {
 					"elements": {
 						"ref": "AssetAbility",
@@ -189,23 +2239,26 @@
 							"description": "Abilities provided by this asset. Most assets have 3."
 						}
 					}
+				},
+				"count_as_impact": {
+					"type": "boolean",
+					"metadata": {
+						"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
+					}
+				},
+				"shared": {
+					"type": "boolean",
+					"metadata": {
+						"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
+					}
 				}
 			},
 			"optionalProperties": {
-				"controls": {
-					"values": {
-						"ref": "AssetControlField"
-					},
-					"metadata": {
-						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
+				"canonical_name": {
+					"ref": "Label"
 				},
 				"suggestions": {
 					"ref": "Suggestions"
-				},
-				"attachments": {
-					"ref": "AssetAttachment"
 				},
 				"icon": {
 					"ref": "SVGImageURL"
@@ -224,9 +2277,20 @@
 				},
 				"requirement": {
 					"ref": "MarkdownString"
+				},
+				"controls": {
+					"values": {
+						"ref": "AssetControlField"
+					},
+					"metadata": {
+						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				},
+				"attachments": {
+					"ref": "AssetAttachment"
 				}
-			},
-			"additionalProperties": false
+			}
 		},
 		"AssetAbility": {
 			"properties": {
@@ -295,6 +2359,9 @@
 			"mapping": {
 				"clock": {
 					"properties": {
+						"id": {
+							"ref": "AssetAbilityControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -318,9 +2385,6 @@
 							"metadata": {
 								"description": "The size of the clock -- in other words, the maximum number of filled clock segments."
 							}
-						},
-						"id": {
-							"ref": "AssetAbilityControlFieldID"
 						}
 					},
 					"metadata": {
@@ -329,6 +2393,9 @@
 				},
 				"counter": {
 					"properties": {
+						"id": {
+							"ref": "AssetAbilityControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -350,9 +2417,6 @@
 						"max": {
 							"type": "int16",
 							"nullable": true
-						},
-						"id": {
-							"ref": "AssetAbilityControlFieldID"
 						}
 					},
 					"metadata": {
@@ -361,6 +2425,9 @@
 				},
 				"checkbox": {
 					"properties": {
+						"id": {
+							"ref": "AssetAbilityControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -372,9 +2439,6 @@
 							"metadata": {
 								"description": "Is the box checked?"
 							}
-						},
-						"id": {
-							"ref": "AssetAbilityControlFieldID"
 						},
 						"is_impact": {
 							"type": "boolean",
@@ -388,21 +2452,8 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				}
-			}
-		},
-		"AssetAbilityControlFieldID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/controls\\/([a-z][a-z_]*)$"
-			}
-		},
-		"AssetAbilityID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)$"
 			}
 		},
 		"AssetAbilityOptionField": {
@@ -410,6 +2461,9 @@
 			"mapping": {
 				"text": {
 					"properties": {
+						"id": {
+							"ref": "AssetAbilityOptionFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -419,21 +2473,12 @@
 						"value": {
 							"type": "string",
 							"nullable": true
-						},
-						"id": {
-							"ref": "AssetAbilityOptionFieldID"
 						}
 					},
 					"metadata": {
 						"description": "Represents an input that accepts plain text."
 					}
 				}
-			}
-		},
-		"AssetAbilityOptionFieldID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/options\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetAttachment": {
@@ -463,6 +2508,9 @@
 			"mapping": {
 				"checkbox": {
 					"properties": {
+						"id": {
+							"ref": "AssetConditionMeterControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -475,9 +2523,6 @@
 								"description": "Is the box checked?"
 							}
 						},
-						"id": {
-							"ref": "AssetConditionMeterControlFieldID"
-						},
 						"is_impact": {
 							"type": "boolean",
 							"metadata": {
@@ -490,11 +2535,13 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"card_flip": {
 					"properties": {
+						"id": {
+							"ref": "AssetConditionMeterControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -507,9 +2554,6 @@
 								"description": "Is the card flipped over?"
 							}
 						},
-						"id": {
-							"ref": "AssetConditionMeterControlFieldID"
-						},
 						"is_impact": {
 							"type": "boolean",
 							"metadata": {
@@ -522,15 +2566,8 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				}
-			}
-		},
-		"AssetConditionMeterControlFieldID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetControlField": {
@@ -538,6 +2575,9 @@
 			"mapping": {
 				"condition_meter": {
 					"properties": {
+						"id": {
+							"ref": "AssetControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -561,9 +2601,6 @@
 							"metadata": {
 								"description": "The maximum value of this meter."
 							}
-						},
-						"id": {
-							"ref": "AssetControlFieldID"
 						}
 					},
 					"optionalProperties": {
@@ -622,6 +2659,9 @@
 				},
 				"select_enhancement": {
 					"properties": {
+						"id": {
+							"ref": "AssetControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -741,9 +2781,6 @@
 							"metadata": {
 								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
-						},
-						"id": {
-							"ref": "AssetControlFieldID"
 						}
 					},
 					"metadata": {
@@ -752,6 +2789,9 @@
 				},
 				"checkbox": {
 					"properties": {
+						"id": {
+							"ref": "AssetControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -764,9 +2804,6 @@
 								"description": "Is the box checked?"
 							}
 						},
-						"id": {
-							"ref": "AssetControlFieldID"
-						},
 						"is_impact": {
 							"type": "boolean",
 							"metadata": {
@@ -779,11 +2816,13 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				},
 				"card_flip": {
 					"properties": {
+						"id": {
+							"ref": "AssetControlFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -796,9 +2835,6 @@
 								"description": "Is the card flipped over?"
 							}
 						},
-						"id": {
-							"ref": "AssetControlFieldID"
-						},
 						"is_impact": {
 							"type": "boolean",
 							"metadata": {
@@ -811,8 +2847,7 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
-					},
-					"additionalProperties": false
+					}
 				}
 			}
 		},
@@ -834,29 +2869,12 @@
 				}
 			}
 		},
-		"AssetControlFieldID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
-			}
-		},
-		"AssetControlFieldIDWildcard": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/controls\\/(\\*|([a-z][a-z_]*))$"
-			}
-		},
 		"AssetEnhancement": {
 			"properties": {},
 			"optionalProperties": {
 				"controls": {
 					"values": {
-						"values": {
-							"ref": "AssetControlFieldEnhancement"
-						},
-						"metadata": {
-							"propertyPattern": "^([a-z][a-z_]*)$"
-						}
+						"ref": "AssetControlFieldEnhancement"
 					},
 					"metadata": {
 						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
@@ -886,23 +2904,14 @@
 				"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed."
 			}
 		},
-		"AssetID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
-			}
-		},
-		"AssetIDWildcard": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
-			}
-		},
 		"AssetOptionField": {
 			"discriminator": "field_type",
 			"mapping": {
 				"select_stat": {
 					"properties": {
+						"id": {
+							"ref": "AssetOptionFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -1002,9 +3011,6 @@
 							"metadata": {
 								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
-						},
-						"id": {
-							"ref": "AssetOptionFieldID"
 						}
 					},
 					"metadata": {
@@ -1013,6 +3019,9 @@
 				},
 				"select_enhancement": {
 					"properties": {
+						"id": {
+							"ref": "AssetOptionFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -1132,9 +3141,6 @@
 							"metadata": {
 								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
-						},
-						"id": {
-							"ref": "AssetOptionFieldID"
 						}
 					},
 					"metadata": {
@@ -1143,6 +3149,9 @@
 				},
 				"text": {
 					"properties": {
+						"id": {
+							"ref": "AssetOptionFieldID"
+						},
 						"name": {
 							"ref": "Label",
 							"metadata": {
@@ -1152,9 +3161,6 @@
 						"value": {
 							"type": "string",
 							"nullable": true
-						},
-						"id": {
-							"ref": "AssetOptionFieldID"
 						}
 					},
 					"metadata": {
@@ -1163,42 +3169,16 @@
 				}
 			}
 		},
-		"AssetOptionFieldID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
-			}
-		},
-		"AssetOptionFieldIDWildcard": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/options\\/(\\*|([a-z][a-z_]*))$"
-			}
-		},
 		"AssetType": {
 			"properties": {
 				"id": {
-					"type": "string"
+					"ref": "AssetTypeID"
 				},
 				"name": {
 					"ref": "Label"
 				},
 				"source": {
 					"ref": "Source"
-				}
-			},
-			"optionalProperties": {
-				"enhances": {
-					"ref": "AssetTypeID",
-					"metadata": {
-						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
-					}
-				},
-				"replaces": {
-					"ref": "AssetTypeID",
-					"metadata": {
-						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
-					}
 				},
 				"contents": {
 					"values": {
@@ -1207,7 +3187,9 @@
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
-				},
+				}
+			},
+			"optionalProperties": {
 				"canonical_name": {
 					"ref": "Label"
 				},
@@ -1230,39 +3212,138 @@
 				},
 				"icon": {
 					"ref": "SVGImageURL"
+				},
+				"enhances": {
+					"ref": "AssetTypeID",
+					"metadata": {
+						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+					}
+				},
+				"replaces": {
+					"ref": "AssetTypeID",
+					"metadata": {
+						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
 				}
 			}
 		},
-		"AssetTypeID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/collections\\/assets\\/([a-z][a-z_]*)$"
-			}
-		},
-		"Atlas": {
+		"Truth": {
 			"properties": {
 				"id": {
-					"type": "string"
+					"ref": "TruthID"
 				},
 				"name": {
 					"ref": "Label"
 				},
 				"source": {
 					"ref": "Source"
+				},
+				"options": {
+					"elements": {
+						"ref": "TruthOption"
+					}
 				}
 			},
 			"optionalProperties": {
-				"enhances": {
-					"ref": "AtlasID",
-					"metadata": {
-						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"your_character": {
+					"ref": "MarkdownString"
+				}
+			},
+			"metadata": {
+				"description": "A setting truth category."
+			}
+		},
+		"TruthOption": {
+			"properties": {
+				"id": {
+					"ref": "TruthOptionID"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"quest_starter": {
+					"ref": "MarkdownString"
+				}
+			},
+			"optionalProperties": {
+				"min": {
+					"type": "int16"
+				},
+				"max": {
+					"type": "int16"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"table": {
+					"elements": {
+						"ref": "TruthOptionTableRow"
+					}
+				}
+			}
+		},
+		"TruthOptionTableRow": {
+			"properties": {
+				"min": {
+					"type": "int16",
+					"nullable": true
+				},
+				"max": {
+					"type": "int16",
+					"nullable": true
+				},
+				"result": {
+					"ref": "MarkdownString"
+				}
+			},
+			"optionalProperties": {
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"rolls": {
+					"elements": {
+						"ref": "OracleTableRoll"
 					}
 				},
-				"replaces": {
-					"ref": "AtlasID",
-					"metadata": {
-						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
-					}
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"embed_table": {
+					"ref": "OracleTableID"
+				},
+				"template": {
+					"ref": "OracleRollTemplate"
+				},
+				"i18n": {
+					"ref": "I18nHints"
+				}
+			}
+		},
+		"Atlas": {
+			"properties": {
+				"id": {
+					"ref": "AtlasID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
 				},
 				"contents": {
 					"values": {
@@ -1272,6 +3353,16 @@
 						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				},
+				"collections": {
+					"values": {
+						"ref": "Atlas"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				}
+			},
+			"optionalProperties": {
 				"canonical_name": {
 					"ref": "Label"
 				},
@@ -1295,23 +3386,30 @@
 				"icon": {
 					"ref": "SVGImageURL"
 				},
-				"collections": {
-					"values": {
-						"ref": "Atlas"
-					},
+				"enhances": {
+					"ref": "AtlasID",
 					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+					}
+				},
+				"replaces": {
+					"ref": "AtlasID",
+					"metadata": {
+						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 					}
 				}
 			}
 		},
 		"AtlasEntry": {
 			"properties": {
-				"source": {
-					"ref": "Source"
+				"id": {
+					"ref": "AtlasEntryID"
 				},
 				"name": {
 					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
 				},
 				"features": {
 					"elements": {
@@ -1323,9 +3421,6 @@
 				},
 				"quest_starter": {
 					"ref": "MarkdownString"
-				},
-				"id": {
-					"ref": "AtlasEntryID"
 				}
 			},
 			"optionalProperties": {
@@ -1346,211 +3441,84 @@
 				"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn."
 			}
 		},
-		"AtlasEntryID": {
-			"type": "string",
+		"PlayerConditionMeter": {
+			"ref": "DictKey",
 			"metadata": {
+				"description": "A basic, rollable player character resource.",
 				"examples": [
-					"classic/atlas/ironlands/hinterlands"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/atlas\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+					"health",
+					"spirit",
+					"supply"
+				]
 			}
 		},
-		"AtlasEntryIDWildcard": {
-			"type": "string",
+		"PlayerStat": {
+			"ref": "DictKey",
 			"metadata": {
-				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/atlas\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
-			}
-		},
-		"AtlasID": {
-			"type": "string",
-			"metadata": {
+				"description": "A basic player character stat.",
 				"examples": [
-					"classic/collections/atlas/ironlands"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/collections\\/atlas\\/([a-z][a-z_]*)$"
+					"edge",
+					"heart",
+					"iron",
+					"shadow",
+					"wits"
+				]
 			}
 		},
-		"AtlasIDWildcard": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/collections\\/atlas\\/(\\*|([a-z][a-z_]*))$"
-			}
-		},
-		"CSSColor": {
-			"type": "string",
-			"metadata": {
-				"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
-			}
-		},
-		"ChallengeRank": {
-			"type": "uint8",
-			"metadata": {
-				"description": "Challenge rank, represented as an integer:",
-				"enumDescriptions": {
-					"1": "Troublesome",
-					"2": "Dangerous",
-					"3": "Formidable",
-					"4": "Extreme",
-					"5": "Epic"
-				}
-			}
-		},
-		"ConditionMeterRule": {
-			"properties": {
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"shared": {
-					"type": "boolean"
-				},
-				"name": {
-					"ref": "Label",
-					"metadata": {
-						"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-					}
-				},
-				"min": {
-					"type": "int16",
-					"metadata": {
-						"description": "The minimum value of this meter."
-					}
-				},
-				"max": {
-					"type": "int16",
-					"metadata": {
-						"description": "The maximum value of this meter."
-					}
-				}
-			}
-		},
-		"ConditionMeterRuleID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/rules/condition_meters/health",
-					"starforged/rules/condition_meters/spirit"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/rules\\/condition_meters\\/([a-z][a-z_]*)$"
-			}
-		},
-		"DataswornRoot": {
+		"Rarity": {
 			"properties": {
 				"id": {
-					"ref": "NamespaceID"
+					"ref": "RarityID"
 				},
-				"source": {
-					"ref": "Source"
-				}
-			},
-			"optionalProperties": {
-				"rules": {
-					"ref": "Rules"
-				},
-				"oracles": {
-					"values": {
-						"ref": "OracleCollection"
-					},
-					"metadata": {
-						"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"moves": {
-					"values": {
-						"ref": "MoveCategory"
-					},
-					"metadata": {
-						"description": "A dictionary object containing move categories, which contain moves.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"assets": {
-					"values": {
-						"ref": "AssetType"
-					},
-					"metadata": {
-						"description": "A dictionary object containing asset types, which contain assets.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"atlas": {
-					"values": {
-						"ref": "Atlas"
-					},
-					"metadata": {
-						"description": "A dictionary object containing atlas collections, which contain atlas entries.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"npcs": {
-					"values": {
-						"ref": "NpcCollection"
-					},
-					"metadata": {
-						"description": "A dictionary object containing NPC collections, which contain NPCs.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"truths": {
-					"values": {
-						"ref": "Truth"
-					},
-					"metadata": {
-						"description": "A dictionary object of truth categories.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"rarities": {
-					"values": {
-						"ref": "Rarity"
-					},
-					"metadata": {
-						"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"delve_sites": {
-					"values": {
-						"ref": "DelveSite"
-					},
-					"metadata": {
-						"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"site_themes": {
-					"values": {
-						"ref": "DelveSiteTheme"
-					},
-					"metadata": {
-						"description": "A dictionary object containing delve site themes.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"site_domains": {
-					"values": {
-						"ref": "DelveSiteDomain"
-					},
-					"metadata": {
-						"description": "A dictionary object containing delve site domains.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			},
-			"metadata": {
-				"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin."
-			}
-		},
-		"DelveSite": {
-			"properties": {
 				"name": {
 					"ref": "Label"
 				},
 				"source": {
 					"ref": "Source"
 				},
+				"asset": {
+					"ref": "AssetID",
+					"metadata": {
+						"description": "The asset augmented by this rarity."
+					}
+				},
+				"xp_cost": {
+					"type": "int16",
+					"metadata": {
+						"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
+						"maximum": 5,
+						"minimum": 3
+					}
+				},
+				"description": {
+					"ref": "MarkdownString"
+				}
+			},
+			"optionalProperties": {
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"icon": {
+					"ref": "SVGImageURL"
+				}
+			},
+			"metadata": {
+				"description": "A rarity, as described in Ironsworn: Delve."
+			}
+		},
+		"DelveSite": {
+			"properties": {
 				"id": {
 					"ref": "DelveSiteID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
 				},
 				"rank": {
 					"ref": "ChallengeRank"
@@ -1603,18 +3571,10 @@
 					"ref": "DelveSiteDenizenID"
 				},
 				"min": {
-					"type": "int16",
-					"metadata": {
-						"maximum": 100,
-						"minimum": 1
-					}
+					"type": "int16"
 				},
 				"max": {
-					"type": "int16",
-					"metadata": {
-						"maximum": 100,
-						"minimum": 1
-					}
+					"type": "int16"
 				},
 				"frequency": {
 					"ref": "DelveSiteDenizenFrequency"
@@ -1641,31 +3601,76 @@
 				"unforeseen"
 			]
 		},
-		"DelveSiteDenizenID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"delve/delve_sites/alvas_rest/denizens/1-27"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)\\/denizens\\/([1-9][0-9]*)-([1-9][0-9]*)$"
-			}
-		},
 		"DelveSiteDomain": {
-			"properties": {}
+			"properties": {
+				"id": {
+					"ref": "DelveSiteDomainID"
+				},
+				"name": {
+					"ref": "Label"
+				},
+				"source": {
+					"ref": "Source"
+				},
+				"summary": {
+					"ref": "MarkdownString"
+				},
+				"card_type": {
+					"enum": [
+						"domain"
+					]
+				},
+				"features": {
+					"elements": {
+						"ref": "DelveSiteDomainFeatureRow"
+					}
+				},
+				"dangers": {
+					"elements": {
+						"ref": "DelveSiteDomainDangerRow"
+					}
+				}
+			},
+			"optionalProperties": {
+				"canonical_name": {
+					"ref": "Label"
+				},
+				"suggestions": {
+					"ref": "Suggestions"
+				},
+				"description": {
+					"ref": "MarkdownString"
+				},
+				"icon": {
+					"ref": "SVGImageURL"
+				},
+				"name_oracle": {
+					"ref": "OracleTableID",
+					"metadata": {
+						"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites."
+					}
+				}
+			}
 		},
 		"DelveSiteDomainDangerRow": {
 			"properties": {
-				"result": {
-					"ref": "MarkdownString"
-				},
 				"id": {
 					"ref": "DomainDangerRowID"
 				},
 				"min": {
-					"type": "int16"
+					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					}
 				},
 				"max": {
-					"type": "int16"
+					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					}
+				},
+				"result": {
+					"ref": "MarkdownString"
 				}
 			},
 			"optionalProperties": {
@@ -1699,17 +3704,23 @@
 		},
 		"DelveSiteDomainFeatureRow": {
 			"properties": {
-				"result": {
-					"ref": "MarkdownString"
-				},
 				"id": {
 					"ref": "DomainFeatureRowID"
 				},
 				"min": {
-					"type": "int16"
+					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					}
 				},
 				"max": {
-					"type": "int16"
+					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					}
+				},
+				"result": {
+					"ref": "MarkdownString"
 				}
 			},
 			"optionalProperties": {
@@ -1741,26 +3752,11 @@
 				}
 			}
 		},
-		"DelveSiteDomainID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"delve/site_domains/shadowfen"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)$"
-			}
-		},
-		"DelveSiteID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"delve/delve_sites/alvas_rest"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)$"
-			}
-		},
 		"DelveSiteTheme": {
 			"properties": {
+				"id": {
+					"ref": "DelveSiteThemeID"
+				},
 				"name": {
 					"ref": "Label"
 				},
@@ -1769,9 +3765,6 @@
 				},
 				"summary": {
 					"ref": "MarkdownString"
-				},
-				"id": {
-					"ref": "DelveSiteThemeID"
 				},
 				"card_type": {
 					"enum": [
@@ -1806,17 +3799,23 @@
 		},
 		"DelveSiteThemeDangerRow": {
 			"properties": {
-				"result": {
-					"ref": "MarkdownString"
-				},
 				"id": {
 					"ref": "ThemeDangerRowID"
 				},
 				"min": {
-					"type": "int16"
+					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					}
 				},
 				"max": {
-					"type": "int16"
+					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					}
+				},
+				"result": {
+					"ref": "MarkdownString"
 				}
 			},
 			"optionalProperties": {
@@ -1850,1266 +3849,20 @@
 		},
 		"DelveSiteThemeFeatureRow": {
 			"properties": {
-				"result": {
-					"ref": "MarkdownString"
-				},
 				"id": {
 					"ref": "ThemeFeatureRowID"
 				},
 				"min": {
-					"type": "int16"
-				},
-				"max": {
-					"type": "int16"
-				}
-			},
-			"optionalProperties": {
-				"icon": {
-					"ref": "SVGImageURL"
-				},
-				"summary": {
-					"ref": "MarkdownString"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"rolls": {
-					"elements": {
-						"ref": "OracleTableRoll"
-					}
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"embed_table": {
-					"ref": "OracleTableID"
-				},
-				"template": {
-					"ref": "OracleRollTemplate"
-				},
-				"i18n": {
-					"ref": "I18nHints"
-				}
-			}
-		},
-		"DelveSiteThemeID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"delve/site_themes/hallowed"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)$"
-			}
-		},
-		"DiceNotation": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"1d100",
-					"1d6+2"
-				],
-				"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?",
-				"format": "dice_notation"
-			}
-		},
-		"DictKey": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z][a-z_]*)$"
-			}
-		},
-		"DomainDangerRowID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
-			}
-		},
-		"DomainFeatureRowID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
-			}
-		},
-		"I18nHint": {
-			"properties": {},
-			"optionalProperties": {
-				"part_of_speech": {
-					"ref": "PartOfSpeech"
-				}
-			}
-		},
-		"I18nHints": {
-			"properties": {},
-			"optionalProperties": {
-				"result": {
-					"ref": "I18nHint"
-				},
-				"summary": {
-					"ref": "I18nHint"
-				},
-				"description": {
-					"ref": "I18nHint"
-				},
-				"template": {
-					"properties": {},
-					"optionalProperties": {
-						"result": {
-							"ref": "I18nHint"
-						},
-						"summary": {
-							"ref": "I18nHint"
-						},
-						"description": {
-							"ref": "I18nHint"
-						}
-					}
-				}
-			}
-		},
-		"ImpactCategory": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"contents": {
-					"values": {
-						"ref": "ImpactRule"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			}
-		},
-		"ImpactRule": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"shared": {
-					"type": "boolean"
-				},
-				"prevents_recovery": {
-					"elements": {
-						"ref": "DictKey"
-					}
-				},
-				"permanent": {
-					"type": "boolean"
-				}
-			}
-		},
-		"ImpactRuleCollectionID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/collections/rules/impacts/conditions",
-					"starforged/collections/rules/impacts/vehicle_troubles"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/collections\\/rules\\/impacts\\/([a-z][a-z_]*)$"
-			}
-		},
-		"ImpactRuleID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/rules/impacts/conditions/wounded",
-					"starforged/rules/impacts/vehicle_troubles/battered"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/rules\\/impacts\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
-			}
-		},
-		"Label": {
-			"type": "string",
-			"metadata": {
-				"description": "A localized plain text name or label."
-			}
-		},
-		"MarkdownString": {
-			"type": "string",
-			"metadata": {
-				"description": "Localized text, formatted in Markdown.\n\nIt uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.",
-				"format": "markdown"
-			}
-		},
-		"Move": {
-			"discriminator": "roll_type",
-			"mapping": {
-				"action_roll": {
-					"properties": {
-						"trigger": {
-							"ref": "TriggerActionRoll"
-						},
-						"outcomes": {
-							"ref": "MoveOutcomes"
-						},
-						"name": {
-							"ref": "Label"
-						},
-						"source": {
-							"ref": "Source"
-						},
-						"id": {
-							"ref": "MoveID"
-						},
-						"text": {
-							"ref": "MarkdownString",
-							"metadata": {
-								"description": "The complete rules text of the move."
-							}
-						}
-					},
-					"optionalProperties": {
-						"canonical_name": {
-							"ref": "Label"
-						},
-						"suggestions": {
-							"ref": "Suggestions"
-						},
-						"replaces": {
-							"ref": "MoveID",
-							"metadata": {
-								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-							}
-						},
-						"oracles": {
-							"elements": {
-								"ref": "OracleTableID"
-							},
-							"metadata": {
-								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
-							}
-						}
-					},
-					"metadata": {
-						"description": "A move that makes an action roll."
-					}
-				},
-				"no_roll": {
-					"properties": {
-						"trigger": {
-							"ref": "TriggerNoRoll"
-						},
-						"name": {
-							"ref": "Label"
-						},
-						"source": {
-							"ref": "Source"
-						},
-						"id": {
-							"ref": "MoveID"
-						},
-						"text": {
-							"ref": "MarkdownString",
-							"metadata": {
-								"description": "The complete rules text of the move."
-							}
-						}
-					},
-					"optionalProperties": {
-						"canonical_name": {
-							"ref": "Label"
-						},
-						"suggestions": {
-							"ref": "Suggestions"
-						},
-						"replaces": {
-							"ref": "MoveID",
-							"metadata": {
-								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-							}
-						},
-						"oracles": {
-							"elements": {
-								"ref": "OracleTableID"
-							},
-							"metadata": {
-								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
-							}
-						}
-					}
-				},
-				"progress_roll": {
-					"properties": {
-						"trigger": {
-							"ref": "TriggerProgressRoll"
-						},
-						"outcomes": {
-							"ref": "MoveOutcomes"
-						},
-						"name": {
-							"ref": "Label"
-						},
-						"source": {
-							"ref": "Source"
-						},
-						"id": {
-							"ref": "MoveID"
-						},
-						"text": {
-							"ref": "MarkdownString",
-							"metadata": {
-								"description": "The complete rules text of the move."
-							}
-						},
-						"track_label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A category label for progress tracks associated with this move.",
-								"examples": [
-									"Vow",
-									"Journey",
-									"Combat",
-									"Scene Challenge",
-									"Expedition",
-									"Connection",
-									"Delve"
-								]
-							}
-						}
-					},
-					"optionalProperties": {
-						"canonical_name": {
-							"ref": "Label"
-						},
-						"suggestions": {
-							"ref": "Suggestions"
-						},
-						"replaces": {
-							"ref": "MoveID",
-							"metadata": {
-								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-							}
-						},
-						"oracles": {
-							"elements": {
-								"ref": "OracleTableID"
-							},
-							"metadata": {
-								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
-							}
-						}
-					},
-					"metadata": {
-						"description": "A progress move that rolls on a standard progress track type (defined by the move object)."
-					}
-				},
-				"special_track": {
-					"properties": {
-						"trigger": {
-							"ref": "TriggerSpecialTrack"
-						},
-						"outcomes": {
-							"ref": "MoveOutcomes"
-						},
-						"name": {
-							"ref": "Label"
-						},
-						"source": {
-							"ref": "Source"
-						},
-						"id": {
-							"ref": "MoveID"
-						},
-						"text": {
-							"ref": "MarkdownString",
-							"metadata": {
-								"description": "The complete rules text of the move."
-							}
-						}
-					},
-					"optionalProperties": {
-						"canonical_name": {
-							"ref": "Label"
-						},
-						"suggestions": {
-							"ref": "Suggestions"
-						},
-						"replaces": {
-							"ref": "MoveID",
-							"metadata": {
-								"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-							}
-						},
-						"oracles": {
-							"elements": {
-								"ref": "OracleTableID"
-							},
-							"metadata": {
-								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
-							}
-						}
-					}
-				}
-			}
-		},
-		"MoveCategory": {
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"ref": "Label"
-				},
-				"source": {
-					"ref": "Source"
-				}
-			},
-			"optionalProperties": {
-				"enhances": {
-					"ref": "MoveCategoryID",
-					"metadata": {
-						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
-					}
-				},
-				"replaces": {
-					"ref": "MoveCategoryID",
-					"metadata": {
-						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
-					}
-				},
-				"contents": {
-					"values": {
-						"ref": "Move"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"canonical_name": {
-					"ref": "Label"
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"color": {
-					"ref": "CSSColor"
-				},
-				"summary": {
-					"ref": "MarkdownString"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"images": {
-					"elements": {
-						"ref": "WEBPImageURL"
-					}
-				},
-				"icon": {
-					"ref": "SVGImageURL"
-				}
-			}
-		},
-		"MoveCategoryID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"starforged/collections/moves/adventure"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/collections\\/moves\\/([a-z][a-z_]*)$"
-			}
-		},
-		"MoveEnhancement": {
-			"discriminator": "roll_type",
-			"mapping": {
-				"action_roll": {
-					"properties": {},
-					"optionalProperties": {
-						"trigger": {
-							"properties": {
-								"conditions": {
-									"elements": {
-										"ref": "TriggerActionRollConditionEnhancement"
-									}
-								}
-							}
-						},
-						"enhances": {
-							"elements": {
-								"ref": "MoveIDWildcard"
-							}
-						}
-					}
-				},
-				"no_roll": {
-					"properties": {},
-					"optionalProperties": {
-						"trigger": {
-							"properties": {
-								"conditions": {
-									"elements": {
-										"ref": "TriggerNoRollCondition"
-									}
-								}
-							}
-						},
-						"enhances": {
-							"elements": {
-								"ref": "MoveIDWildcard"
-							}
-						}
-					}
-				},
-				"progress_roll": {
-					"properties": {},
-					"optionalProperties": {
-						"trigger": {
-							"properties": {
-								"conditions": {
-									"elements": {
-										"ref": "TriggerProgressRollConditionEnhancement"
-									}
-								}
-							}
-						},
-						"enhances": {
-							"elements": {
-								"ref": "MoveIDWildcard"
-							}
-						}
-					}
-				},
-				"special_track": {
-					"properties": {},
-					"optionalProperties": {
-						"trigger": {
-							"properties": {
-								"conditions": {
-									"elements": {
-										"ref": "TriggerSpecialTrackConditionEnhancement"
-									}
-								}
-							}
-						},
-						"enhances": {
-							"elements": {
-								"ref": "MoveIDWildcard"
-							}
-						}
-					}
-				}
-			}
-		},
-		"MoveID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^(([a-z0-9_]{3,})\\/moves\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)|([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/moves\\/([a-z][a-z_]*))$",
-				"description": "A move ID, for a standard move or a unique asset move",
-				"examples": [
-					"classic/moves/combat/strike",
-					"starforged/assets/module/grappler/abilities/0/moves/ready_grappler"
-				]
-			}
-		},
-		"MoveIDWildcard": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^((\\*|([a-z0-9_]{3,}))\\/moves\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))|(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/abilities\\/(\\*|(0|[1-9][0-9]*))\\/moves\\/(\\*|([a-z][a-z_]*)))$",
-				"description": "A move ID with wildcards",
-				"examples": [
-					"*/moves/*/face_danger",
-					"*/assets/ritual/*/abilities/*/moves/*"
-				]
-			}
-		},
-		"MoveOutcome": {
-			"properties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"pattern": "On a \\*\\*(strong hit|weak hit|miss)\\*\\*"
-					}
-				}
-			}
-		},
-		"MoveOutcomeType": {
-			"enum": [
-				"miss",
-				"weak_hit",
-				"strong_hit"
-			],
-			"metadata": {
-				"enumDescriptions": {
-					"miss": "The score doesn't beat either challenge die.",
-					"weak_hit": "The score is greater than one challenge die.",
-					"strong_hit": "The score is greater than both challenge dice."
-				}
-			}
-		},
-		"MoveOutcomes": {
-			"properties": {
-				"strong_hit": {
-					"ref": "MoveOutcome"
-				},
-				"weak_hit": {
-					"ref": "MoveOutcome"
-				},
-				"miss": {
-					"ref": "MoveOutcome"
-				}
-			},
-			"metadata": {
-				"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated."
-			}
-		},
-		"MoveRollType": {
-			"enum": [
-				"no_roll",
-				"action_roll",
-				"progress_roll",
-				"special_track"
-			],
-			"metadata": {
-				"enumDescriptions": {
-					"no_roll": "A move that makes no action rolls or progress rolls.",
-					"action_roll": "A move that makes an action roll.",
-					"progress_roll": "A progress move that rolls on a standard progress track type (defined by this move).",
-					"special_track": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged)."
-				}
-			}
-		},
-		"NamespaceID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic",
-					"delve",
-					"starforged",
-					"sundered_isles"
-				],
-				"pattern": "^([a-z0-9_]{3,})$"
-			}
-		},
-		"Npc": {
-			"properties": {
-				"source": {
-					"ref": "Source"
-				},
-				"name": {
-					"ref": "Label"
-				},
-				"features": {
-					"elements": {
-						"ref": "MarkdownString"
-					}
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"quest_starter": {
-					"ref": "MarkdownString"
-				},
-				"id": {
-					"ref": "NpcID"
-				},
-				"rank": {
-					"ref": "ChallengeRank"
-				},
-				"nature": {
-					"ref": "NpcNature"
-				},
-				"drives": {
-					"elements": {
-						"ref": "MarkdownString"
-					}
-				},
-				"tactics": {
-					"elements": {
-						"ref": "MarkdownString"
-					}
-				}
-			},
-			"optionalProperties": {
-				"canonical_name": {
-					"ref": "Label"
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"summary": {
-					"ref": "MarkdownString"
-				},
-				"your_truth": {
-					"ref": "MarkdownString"
-				},
-				"variants": {
-					"values": {
-						"ref": "NpcVariant"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			},
-			"metadata": {
-				"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged."
-			}
-		},
-		"NpcCollection": {
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"ref": "Label"
-				},
-				"source": {
-					"ref": "Source"
-				}
-			},
-			"optionalProperties": {
-				"enhances": {
-					"ref": "NpcCollectionID",
-					"metadata": {
-						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
-					}
-				},
-				"replaces": {
-					"ref": "NpcCollectionID",
-					"metadata": {
-						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
-					}
-				},
-				"contents": {
-					"values": {
-						"ref": "Npc"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"canonical_name": {
-					"ref": "Label"
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"color": {
-					"ref": "CSSColor"
-				},
-				"summary": {
-					"ref": "MarkdownString"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"images": {
-					"elements": {
-						"ref": "WEBPImageURL"
-					}
-				},
-				"icon": {
-					"ref": "SVGImageURL"
-				}
-			}
-		},
-		"NpcCollectionID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/collections/npcs/firstborn",
-					"starforged/collections/npcs/sample_npcs"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/collections\\/npcs\\/([a-z][a-z_]*)$"
-			}
-		},
-		"NpcID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/npcs/firstborn/elf",
-					"starforged/npcs/sample_npcs/chiton"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
-			}
-		},
-		"NpcIDWildcard": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/npcs\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
-			}
-		},
-		"NpcNature": {
-			"ref": "Label",
-			"metadata": {
-				"description": "A localized category label describing the nature of this NPC.\n\nIn Ironsworn classic, this is probably the singular form of the parent collection's name.\n\nFor Starforged, see the table on p. 258 for examples.",
-				"examples": [
-					"Ironlander",
-					"Firstborn",
-					"Animal",
-					"Beast",
-					"Horror",
-					"Anomaly",
-					"Creature",
-					"Human",
-					"Machine",
-					"Monster",
-					"Vehicle"
-				]
-			}
-		},
-		"NpcVariant": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"rank": {
-					"ref": "ChallengeRank"
-				},
-				"nature": {
-					"ref": "NpcNature"
-				},
-				"id": {
-					"ref": "NpcVariantID"
-				}
-			},
-			"optionalProperties": {
-				"summary": {
-					"ref": "MarkdownString"
-				}
-			}
-		},
-		"NpcVariantID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/([a-z][a-z_]*)$"
-			}
-		},
-		"OracleCollection": {
-			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"ref": "Label"
-				},
-				"source": {
-					"ref": "Source"
-				}
-			},
-			"optionalProperties": {
-				"rendering": {
-					"properties": {
-						"columns": {
-							"values": {
-								"ref": "OracleCollectionTableColumn"
-							},
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
-							}
-						}
-					},
-					"optionalProperties": {
-						"color": {
-							"ref": "CSSColor"
-						},
-						"table_style": {
-							"ref": "OracleCollectionStyle"
-						}
-					}
-				},
-				"enhances": {
-					"ref": "OracleCollectionID",
-					"metadata": {
-						"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
-					}
-				},
-				"replaces": {
-					"ref": "OracleCollectionID",
-					"metadata": {
-						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
-					}
-				},
-				"contents": {
-					"values": {
-						"ref": "OracleTable"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"canonical_name": {
-					"ref": "Label"
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"color": {
-					"ref": "CSSColor"
-				},
-				"summary": {
-					"ref": "MarkdownString"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"images": {
-					"elements": {
-						"ref": "WEBPImageURL"
-					}
-				},
-				"icon": {
-					"ref": "SVGImageURL"
-				},
-				"collections": {
-					"values": {
-						"ref": "OracleCollection"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			}
-		},
-		"OracleCollectionID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"starforged/collections/oracles/core",
-					"starforged/collections/oracles/character/names",
-					"starforged/collections/oracles/planets/furnace/settlements"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/collections\\/oracles(\\/([a-z][a-z_]*)){1,3}$"
-			}
-		},
-		"OracleCollectionRendering": {
-			"properties": {
-				"columns": {
-					"values": {
-						"ref": "OracleCollectionTableColumn"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			},
-			"optionalProperties": {
-				"color": {
-					"ref": "CSSColor"
-				},
-				"table_style": {
-					"ref": "OracleCollectionStyle"
-				}
-			}
-		},
-		"OracleCollectionStyle": {
-			"enum": [
-				"multi_table"
-			]
-		},
-		"OracleCollectionTableColumn": {
-			"properties": {
-				"content_type": {
-					"enum": [
-						"roll",
-						"result",
-						"summary",
-						"description"
-					],
-					"metadata": {
-						"description": "The value(s) from each OracleTableRow that is rendered in this column.",
-						"enumDescriptions": {
-							"roll": "Column displays the roll range (`min` and `max`) of each OracleTableRow.",
-							"result": "Column displays the OracleTableRow's `result` key.",
-							"summary": "Column displays the OracleTableRow's `summary` key.",
-							"description": "Column displays the OracleTableRow's `description` key."
-						}
-					}
-				},
-				"table_key": {
-					"ref": "DictKey",
-					"metadata": {
-						"description": "The key of the OracleTable (within this collection), whose data is used to render this column."
-					}
-				}
-			},
-			"optionalProperties": {
-				"name": {
-					"ref": "Label",
-					"metadata": {
-						"description": "The table column's header text."
-					}
-				},
-				"color": {
-					"ref": "CSSColor",
-					"metadata": {
-						"description": "The thematic color for this column."
-					}
-				}
-			}
-		},
-		"OracleRollTemplate": {
-			"properties": {},
-			"optionalProperties": {
-				"result": {
-					"ref": "TemplateString",
-					"metadata": {
-						"description": "A string template that may be used in place of OracleTableRow#result.",
-						"examples": [
-							"{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}"
-						]
-					}
-				},
-				"summary": {
-					"ref": "TemplateString",
-					"metadata": {
-						"description": "A string template that may be used in place of OracleTableRow#summary."
-					}
-				},
-				"description": {
-					"ref": "TemplateString",
-					"metadata": {
-						"description": "A string template that may be used in place of OracleTableRow#description."
-					}
-				}
-			},
-			"metadata": {
-				"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID."
-			}
-		},
-		"OracleTable": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"source": {
-					"ref": "Source"
-				},
-				"id": {
-					"ref": "OracleTableID"
-				},
-				"dice": {
-					"ref": "DiceNotation"
-				},
-				"table": {
-					"elements": {
-						"ref": "OracleTableRow"
-					}
-				}
-			},
-			"optionalProperties": {
-				"canonical_name": {
-					"ref": "Label"
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"icon": {
-					"ref": "SVGImageURL"
-				},
-				"images": {
-					"elements": {
-						"ref": "WEBPImageURL"
-					}
-				},
-				"summary": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A brief summary of the oracle table's intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
-					}
-				},
-				"replaces": {
-					"ref": "OracleTableID",
-					"metadata": {
-						"description": "Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table."
-					}
-				},
-				"description": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
-					}
-				},
-				"match": {
-					"ref": "OracleTableMatchBehavior"
-				},
-				"rendering": {
-					"ref": "OracleTableRendering"
-				}
-			}
-		},
-		"OracleTableColumn": {
-			"properties": {
-				"content_type": {
-					"enum": [
-						"roll",
-						"result",
-						"summary",
-						"description"
-					],
-					"metadata": {
-						"description": "The value(s) from each OracleTableRow that is rendered in this column.",
-						"enumDescriptions": {
-							"roll": "Column displays the roll range (`min` and `max`) of each OracleTableRow.",
-							"result": "Column displays the OracleTableRow's `result` key.",
-							"summary": "Column displays the OracleTableRow's `summary` key.",
-							"description": "Column displays the OracleTableRow's `description` key."
-						}
-					}
-				}
-			},
-			"optionalProperties": {
-				"name": {
-					"ref": "Label",
-					"metadata": {
-						"description": "The table column's header text."
-					}
-				},
-				"color": {
-					"ref": "CSSColor",
-					"metadata": {
-						"description": "The thematic color for this column."
-					}
-				}
-			},
-			"metadata": {
-				"examples": [
-					{
-						"name": "Roll",
-						"content_type": "roll"
-					},
-					{
-						"name": "Result",
-						"content_type": "result"
-					},
-					{
-						"name": "Summary",
-						"content_type": "summary"
-					}
-				]
-			}
-		},
-		"OracleTableColumnContentKey": {
-			"enum": [
-				"roll",
-				"result",
-				"summary",
-				"description"
-			],
-			"metadata": {
-				"description": "The value(s) from each OracleTableRow that is rendered in this column.",
-				"enumDescriptions": {
-					"roll": "Column displays the roll range (`min` and `max`) of each OracleTableRow.",
-					"result": "Column displays the OracleTableRow's `result` key.",
-					"summary": "Column displays the OracleTableRow's `summary` key.",
-					"description": "Column displays the OracleTableRow's `description` key."
-				}
-			}
-		},
-		"OracleTableID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"starforged/oracles/core/action",
-					"starforged/oracles/character/names/given",
-					"starforged/oracles/planets/furnace/settlements/terminus"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
-			}
-		},
-		"OracleTableIDWildcard": {
-			"type": "string",
-			"metadata": {
-				"description": "Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree. For example, 'starforged/oracles/**/location' represents any starforged table with the \"location\" key.",
-				"examples": [
-					"*/oracles/**/peril",
-					"starforged/oracles/character/names/*",
-					"starforged/oracles/planets/*/settlements/*"
-				],
-				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/oracles\\/((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*|\\/\\*\\*\\/([a-z][a-z_]*)|\\/([a-z][a-z_]*)\\/\\*\\*)\\/(\\*|([a-z][a-z_]*))$"
-			}
-		},
-		"OracleTableMatchBehavior": {
-			"properties": {
-				"text": {
-					"ref": "MarkdownString"
-				}
-			}
-		},
-		"OracleTableRendering": {
-			"properties": {
-				"columns": {
-					"values": {
-						"ref": "OracleTableColumn"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			},
-			"optionalProperties": {
-				"table_style": {
-					"ref": "OracleTableStyle"
-				}
-			}
-		},
-		"OracleTableRoll": {
-			"properties": {
-				"times": {
 					"type": "int16",
 					"metadata": {
-						"minimum": 1
+						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 					}
-				}
-			},
-			"optionalProperties": {
-				"oracle": {
-					"ref": "OracleTableID",
-					"metadata": {
-						"description": "The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table."
-					}
-				},
-				"auto": {
-					"type": "boolean",
-					"metadata": {
-						"description": "The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as \"Action + Theme\". If this value is omitted, assume it's false."
-					}
-				},
-				"method": {
-					"ref": "OracleTableRollMethod"
-				}
-			}
-		},
-		"OracleTableRollMethod": {
-			"enum": [
-				"no_duplicates",
-				"keep_duplicates",
-				"make_it_worse"
-			],
-			"metadata": {
-				"description": "Special roll instructions to use when rolling multiple times on a single oracle table.",
-				"enumDescriptions": {
-					"no_duplicates": "Duplicates should be re-rolled.",
-					"keep_duplicates": "Duplicates should be kept.",
-					"make_it_worse": "Duplicates should be kept, and they compound to make things worse."
-				}
-			}
-		},
-		"OracleTableRow": {
-			"properties": {
-				"id": {
-					"ref": "OracleTableRowID"
-				},
-				"min": {
-					"type": "int16",
-					"nullable": true
 				},
 				"max": {
 					"type": "int16",
-					"nullable": true
+					"metadata": {
+						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					}
 				},
 				"result": {
 					"ref": "MarkdownString"
@@ -3142,918 +3895,6 @@
 				"i18n": {
 					"ref": "I18nHints"
 				}
-			}
-		},
-		"OracleTableRowID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^(([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/([1-9][0-9]*)-([1-9][0-9]*)|([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*))$",
-				"description": "Normally, rows will end with two numbers separated by a dash, indicating their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
-				"examples": [
-					"classic/oracles/action_and_theme/action/1-1",
-					"starforged/oracles/derelicts/zones/starship/0"
-				]
-			}
-		},
-		"OracleTableStyle": {
-			"enum": [
-				"standalone_table",
-				"embed_in_row",
-				"embed_as_column"
-			],
-			"metadata": {
-				"enumDescriptions": {
-					"standalone_table": "Render as a standalone table.",
-					"embed_in_row": "Render as a table, within a row in another table.",
-					"embed_as_column": "Render as a single column of a table."
-				}
-			}
-		},
-		"PartOfSpeech": {
-			"enum": [
-				"common_noun",
-				"proper_noun",
-				"adjunct_common_noun",
-				"adjunct_proper_noun",
-				"verb",
-				"gerund",
-				"adjective",
-				"attributive_verb"
-			],
-			"metadata": {
-				"enumDescriptions": {
-					"common_noun": "A common noun.",
-					"proper_noun": "A proper noun.",
-					"adjunct_common_noun": "A common noun used as an adjective, to modify another noun.",
-					"adjunct_proper_noun": "A proper noun used as an adjective, to modify another noun.",
-					"verb": "A verb in present tense",
-					"gerund": "Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"",
-					"adjective": "An adjective.",
-					"attributive_verb": "A verb used as an adjective, to modify a noun."
-				}
-			}
-		},
-		"PlayerConditionMeter": {
-			"ref": "DictKey",
-			"metadata": {
-				"description": "A basic, rollable player character resource.",
-				"examples": [
-					"health",
-					"spirit",
-					"supply"
-				]
-			}
-		},
-		"PlayerStat": {
-			"ref": "DictKey",
-			"metadata": {
-				"description": "A basic player character stat.",
-				"examples": [
-					"edge",
-					"heart",
-					"iron",
-					"shadow",
-					"wits"
-				]
-			}
-		},
-		"ProgressRollMethod": {
-			"enum": [
-				"miss",
-				"weak_hit",
-				"strong_hit",
-				"progress_roll"
-			],
-			"metadata": {
-				"enumDescriptions": {
-					"miss": "An automatic miss.",
-					"weak_hit": "An automatic weak hit.",
-					"strong_hit": "An automatic strong hit.",
-					"progress_roll": "Make a progress roll on a progress track associated with this move."
-				}
-			}
-		},
-		"ProgressRollOption": {
-			"properties": {
-				"using": {
-					"enum": [
-						"progress_track"
-					]
-				}
-			}
-		},
-		"Rarity": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"source": {
-					"ref": "Source"
-				},
-				"id": {
-					"ref": "RarityID"
-				},
-				"asset": {
-					"ref": "AssetID",
-					"metadata": {
-						"description": "The asset augmented by this rarity."
-					}
-				},
-				"xp_cost": {
-					"type": "int16",
-					"metadata": {
-						"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
-						"maximum": 5,
-						"minimum": 3
-					}
-				},
-				"description": {
-					"ref": "MarkdownString"
-				}
-			},
-			"optionalProperties": {
-				"canonical_name": {
-					"ref": "Label"
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"icon": {
-					"ref": "SVGImageURL"
-				}
-			},
-			"metadata": {
-				"description": "A rarity, as described in Ironsworn: Delve."
-			}
-		},
-		"RarityID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/rarities/ayethins_journal"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
-			}
-		},
-		"Rules": {
-			"properties": {
-				"stats": {
-					"values": {
-						"ref": "StatRule"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"condition_meters": {
-					"values": {
-						"ref": "ConditionMeterRule"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"impacts": {
-					"values": {
-						"ref": "ImpactCategory"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"special_tracks": {
-					"values": {
-						"ref": "SpecialTrackRule"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			}
-		},
-		"Ruleset": {
-			"properties": {
-				"id": {
-					"ref": "NamespaceID"
-				},
-				"source": {
-					"ref": "Source"
-				}
-			},
-			"optionalProperties": {
-				"rules": {
-					"ref": "Rules"
-				},
-				"oracles": {
-					"values": {
-						"ref": "OracleCollection"
-					},
-					"metadata": {
-						"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"moves": {
-					"values": {
-						"ref": "MoveCategory"
-					},
-					"metadata": {
-						"description": "A dictionary object containing move categories, which contain moves.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"assets": {
-					"values": {
-						"ref": "AssetType"
-					},
-					"metadata": {
-						"description": "A dictionary object containing asset types, which contain assets.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"atlas": {
-					"values": {
-						"ref": "Atlas"
-					},
-					"metadata": {
-						"description": "A dictionary object containing atlas collections, which contain atlas entries.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"npcs": {
-					"values": {
-						"ref": "NpcCollection"
-					},
-					"metadata": {
-						"description": "A dictionary object containing NPC collections, which contain NPCs.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"truths": {
-					"values": {
-						"ref": "Truth"
-					},
-					"metadata": {
-						"description": "A dictionary object of truth categories.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"rarities": {
-					"values": {
-						"ref": "Rarity"
-					},
-					"metadata": {
-						"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"delve_sites": {
-					"values": {
-						"ref": "DelveSite"
-					},
-					"metadata": {
-						"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"site_themes": {
-					"values": {
-						"ref": "DelveSiteTheme"
-					},
-					"metadata": {
-						"description": "A dictionary object containing delve site themes.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"site_domains": {
-					"values": {
-						"ref": "DelveSiteDomain"
-					},
-					"metadata": {
-						"description": "A dictionary object containing delve site domains.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				}
-			},
-			"metadata": {
-				"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin."
-			}
-		},
-		"SVGImageURL": {
-			"type": "string",
-			"metadata": {
-				"description": "A relative URL pointing to a vector image in the SVG format.",
-				"pattern": "\\.svg$",
-				"format": "uri-reference"
-			}
-		},
-		"Source": {
-			"properties": {
-				"title": {
-					"type": "string",
-					"metadata": {
-						"description": "The title of the source document.",
-						"examples": [
-							"Ironsworn Rulebook",
-							"Ironsworn Assets Master Set",
-							"Ironsworn: Delve",
-							"Ironsworn: Starforged Rulebook",
-							"Ironsworn: Starforged Assets",
-							"Sundered Isles"
-						]
-					}
-				},
-				"authors": {
-					"elements": {
-						"properties": {
-							"name": {
-								"type": "string",
-								"metadata": {
-									"examples": [
-										"Shawn Tomkin"
-									]
-								}
-							}
-						},
-						"optionalProperties": {
-							"email": {
-								"type": "string",
-								"metadata": {
-									"description": "An optional email contact for the author",
-									"format": "email"
-								}
-							}
-						},
-						"metadata": {
-							"examples": [
-								{
-									"name": "Shawn Tomkin"
-								}
-							]
-						}
-					},
-					"metadata": {
-						"minItems": 1
-					}
-				},
-				"date": {
-					"type": "string",
-					"metadata": {
-						"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
-						"format": "date"
-					}
-				},
-				"url": {
-					"type": "string",
-					"metadata": {
-						"description": "An absolute URL where the source document is available.",
-						"examples": [
-							"https://ironswornrpg.com"
-						],
-						"format": "uri"
-					}
-				},
-				"license": {
-					"type": "string",
-					"metadata": {
-						"format": "uri"
-					},
-					"nullable": true
-				}
-			},
-			"optionalProperties": {
-				"page": {
-					"type": "int16",
-					"metadata": {
-						"minimum": 1
-					}
-				}
-			},
-			"metadata": {
-				"description": "Metadata describing the original source of this item"
-			}
-		},
-		"SpecialTrackRollMethod": {
-			"enum": [
-				"miss",
-				"weak_hit",
-				"strong_hit",
-				"player_choice",
-				"highest",
-				"lowest",
-				"all"
-			],
-			"metadata": {
-				"enumDescriptions": {
-					"miss": "An automatic miss.",
-					"weak_hit": "An automatic weak hit.",
-					"strong_hit": "An automatic strong hit.",
-					"player_choice": "The player chooses which roll option to use.",
-					"highest": "Use the roll option with the best/highest value.",
-					"lowest": "Use the roll option with the worst/lowest value.",
-					"all": "Use **every** roll option at once."
-				}
-			}
-		},
-		"SpecialTrackRule": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"shared": {
-					"type": "boolean"
-				},
-				"optional": {
-					"type": "boolean"
-				}
-			}
-		},
-		"SpecialTrackRuleID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/rules/special_tracks/bonds",
-					"delve/rules/special_tracks/failure",
-					"starforged/rules/special_tracks/bonds_legacy"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/rules\\/special_tracks\\/([a-z][a-z_]*)$"
-			}
-		},
-		"SpecialTrackType": {
-			"ref": "DictKey",
-			"metadata": {
-				"description": "Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
-				"examples": [
-					"bonds_track",
-					"failure_track",
-					"quests_legacy",
-					"bonds_legacy",
-					"discoveries_legacy"
-				]
-			}
-		},
-		"StatRule": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				}
-			}
-		},
-		"StatRuleID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/rules\\/stats\\/([a-z][a-z_]*)$"
-			}
-		},
-		"Suggestions": {
-			"properties": {},
-			"optionalProperties": {
-				"oracles": {
-					"elements": {
-						"ref": "OracleTableID"
-					}
-				},
-				"assets": {
-					"elements": {
-						"ref": "AssetID"
-					}
-				},
-				"moves": {
-					"elements": {
-						"ref": "MoveID"
-					}
-				},
-				"site_domains": {
-					"elements": {
-						"ref": "DelveSiteDomainID"
-					}
-				},
-				"site_themes": {
-					"elements": {
-						"ref": "DelveSiteThemeID"
-					}
-				},
-				"npcs": {
-					"elements": {
-						"ref": "NpcID"
-					}
-				},
-				"atlas": {
-					"elements": {
-						"ref": "AtlasEntryID"
-					}
-				}
-			}
-		},
-		"TemplateString": {
-			"type": "string",
-			"metadata": {
-				"description": "A rich text string in Markdown with replaced values from oracle roll results.\n\nThe custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`\n",
-				"format": "markdown"
-			}
-		},
-		"ThemeDangerRowID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
-			}
-		},
-		"ThemeFeatureRowID": {
-			"type": "string",
-			"metadata": {
-				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
-			}
-		},
-		"TriggerActionRoll": {
-			"properties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be available for individual trigger conditions.",
-						"pattern": ".*\\.{3}"
-					}
-				},
-				"conditions": {
-					"elements": {
-						"ref": "TriggerActionRollCondition"
-					}
-				}
-			}
-		},
-		"TriggerActionRollCondition": {
-			"properties": {
-				"method": {
-					"ref": "ActionRollMethod"
-				},
-				"roll_options": {
-					"elements": {
-						"ref": "ActionRollOption"
-					},
-					"metadata": {
-						"description": "The options available when rolling with this trigger."
-					}
-				}
-			},
-			"optionalProperties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of any trigger text specific to this trigger condition."
-					}
-				},
-				"by": {
-					"ref": "TriggerBy"
-				}
-			}
-		},
-		"TriggerActionRollConditionEnhancement": {
-			"properties": {
-				"method": {
-					"ref": "ActionRollMethod",
-					"nullable": true
-				},
-				"roll_options": {
-					"elements": {
-						"ref": "ActionRollOption"
-					},
-					"metadata": {
-						"description": "The options available when rolling with this trigger."
-					},
-					"nullable": true
-				}
-			},
-			"optionalProperties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of any trigger text specific to this trigger condition."
-					}
-				},
-				"by": {
-					"ref": "TriggerBy"
-				}
-			}
-		},
-		"TriggerActionRollEnhancement": {
-			"properties": {
-				"conditions": {
-					"elements": {
-						"ref": "TriggerActionRollConditionEnhancement"
-					}
-				}
-			}
-		},
-		"TriggerBy": {
-			"properties": {
-				"player": {
-					"type": "boolean"
-				},
-				"ally": {
-					"type": "boolean"
-				}
-			},
-			"metadata": {
-				"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
-			}
-		},
-		"TriggerNoRoll": {
-			"properties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be available for individual trigger conditions.",
-						"pattern": ".*\\.{3}"
-					}
-				}
-			},
-			"optionalProperties": {
-				"conditions": {
-					"elements": {
-						"ref": "TriggerNoRollCondition"
-					}
-				}
-			}
-		},
-		"TriggerNoRollCondition": {
-			"properties": {
-				"method": {
-					"nullable": true
-				},
-				"roll_options": {
-					"nullable": true
-				}
-			},
-			"optionalProperties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of any trigger text specific to this trigger condition."
-					}
-				},
-				"by": {
-					"ref": "TriggerBy"
-				}
-			}
-		},
-		"TriggerNoRollEnhancement": {
-			"properties": {
-				"conditions": {
-					"elements": {
-						"ref": "TriggerNoRollCondition"
-					}
-				}
-			}
-		},
-		"TriggerProgressRoll": {
-			"properties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be available for individual trigger conditions.",
-						"pattern": ".*\\.{3}"
-					}
-				},
-				"conditions": {
-					"elements": {
-						"ref": "TriggerProgressRollCondition"
-					}
-				}
-			}
-		},
-		"TriggerProgressRollCondition": {
-			"properties": {
-				"method": {
-					"ref": "ProgressRollMethod"
-				},
-				"roll_options": {
-					"elements": {
-						"ref": "ProgressRollOption"
-					},
-					"metadata": {
-						"description": "The options available when rolling with this trigger."
-					}
-				}
-			},
-			"optionalProperties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of any trigger text specific to this trigger condition."
-					}
-				},
-				"by": {
-					"ref": "TriggerBy"
-				}
-			}
-		},
-		"TriggerProgressRollConditionEnhancement": {
-			"properties": {
-				"method": {
-					"ref": "ProgressRollMethod",
-					"nullable": true
-				},
-				"roll_options": {
-					"elements": {
-						"ref": "ProgressRollOption"
-					},
-					"metadata": {
-						"description": "The options available when rolling with this trigger."
-					},
-					"nullable": true
-				}
-			},
-			"optionalProperties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of any trigger text specific to this trigger condition."
-					}
-				},
-				"by": {
-					"ref": "TriggerBy"
-				}
-			}
-		},
-		"TriggerProgressRollEnhancement": {
-			"properties": {
-				"conditions": {
-					"elements": {
-						"ref": "TriggerProgressRollConditionEnhancement"
-					}
-				}
-			}
-		},
-		"TriggerSpecialTrack": {
-			"properties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be available for individual trigger conditions.",
-						"pattern": ".*\\.{3}"
-					}
-				},
-				"conditions": {
-					"elements": {
-						"ref": "TriggerSpecialTrackCondition"
-					}
-				}
-			}
-		},
-		"TriggerSpecialTrackCondition": {
-			"properties": {
-				"method": {
-					"ref": "SpecialTrackRollMethod"
-				},
-				"roll_options": {
-					"elements": {
-						"ref": "TriggerSpecialTrackConditionOption"
-					},
-					"metadata": {
-						"description": "The options available when rolling with this trigger."
-					}
-				}
-			},
-			"optionalProperties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of any trigger text specific to this trigger condition."
-					}
-				},
-				"by": {
-					"ref": "TriggerBy"
-				}
-			}
-		},
-		"TriggerSpecialTrackConditionEnhancement": {
-			"properties": {
-				"method": {
-					"ref": "SpecialTrackRollMethod",
-					"nullable": true
-				},
-				"roll_options": {
-					"elements": {
-						"ref": "TriggerSpecialTrackConditionOption"
-					},
-					"metadata": {
-						"description": "The options available when rolling with this trigger."
-					},
-					"nullable": true
-				}
-			},
-			"optionalProperties": {
-				"text": {
-					"ref": "MarkdownString",
-					"metadata": {
-						"description": "A markdown string of any trigger text specific to this trigger condition."
-					}
-				},
-				"by": {
-					"ref": "TriggerBy"
-				}
-			},
-			"metadata": {
-				"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged)."
-			}
-		},
-		"TriggerSpecialTrackConditionOption": {
-			"properties": {
-				"using": {
-					"ref": "SpecialTrackType"
-				}
-			}
-		},
-		"TriggerSpecialTrackEnhancement": {
-			"properties": {
-				"conditions": {
-					"elements": {
-						"ref": "TriggerSpecialTrackConditionEnhancement"
-					}
-				}
-			}
-		},
-		"Truth": {
-			"properties": {
-				"name": {
-					"ref": "Label"
-				},
-				"source": {
-					"ref": "Source"
-				},
-				"id": {
-					"ref": "TruthID"
-				},
-				"options": {
-					"elements": {
-						"ref": "TruthOption"
-					}
-				}
-			},
-			"optionalProperties": {
-				"canonical_name": {
-					"ref": "Label"
-				},
-				"suggestions": {
-					"ref": "Suggestions"
-				},
-				"icon": {
-					"ref": "SVGImageURL"
-				}
-			},
-			"metadata": {
-				"description": "A setting truth category."
-			}
-		},
-		"TruthID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/truths/iron",
-					"starforged/truths/iron"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)$"
-			}
-		},
-		"TruthOption": {
-			"properties": {
-				"id": {
-					"ref": "TruthOptionID"
-				},
-				"description": {
-					"ref": "MarkdownString"
-				},
-				"quest_starter": {
-					"ref": "MarkdownString"
-				}
-			},
-			"optionalProperties": {
-				"summary": {
-					"ref": "MarkdownString"
-				}
-			}
-		},
-		"TruthOptionID": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic/truths/iron/0",
-					"starforged/truths/iron/0"
-				],
-				"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
-			}
-		},
-		"WEBPImageURL": {
-			"type": "string",
-			"metadata": {
-				"description": "A relative URL pointing to a raster image in the WEBP format.",
-				"pattern": "\\.webp$",
-				"format": "uri-reference"
 			}
 		}
 	}

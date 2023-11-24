@@ -5,6 +5,7 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.util.List;
 
 @JsonSerialize
 public class TruthOption {
@@ -18,8 +19,20 @@ public class TruthOption {
     private MarkdownString questStarter;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("max")
+    private Short max;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("min")
+    private Short min;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("summary")
     private MarkdownString summary;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("table")
+    private List<TruthOptionTableRow> table;
 
     public TruthOption() {
     }
@@ -67,6 +80,34 @@ public class TruthOption {
     }
 
     /**
+     * Getter for max.<p>
+     */
+    public Short getMax() {
+        return max;
+    }
+
+    /**
+     * Setter for max.<p>
+     */
+    public void setMax(Short max) {
+        this.max = max;
+    }
+
+    /**
+     * Getter for min.<p>
+     */
+    public Short getMin() {
+        return min;
+    }
+
+    /**
+     * Setter for min.<p>
+     */
+    public void setMin(Short min) {
+        this.min = min;
+    }
+
+    /**
      * Getter for summary.<p>
      */
     public MarkdownString getSummary() {
@@ -78,5 +119,19 @@ public class TruthOption {
      */
     public void setSummary(MarkdownString summary) {
         this.summary = summary;
+    }
+
+    /**
+     * Getter for table.<p>
+     */
+    public List<TruthOptionTableRow> getTable() {
+        return table;
+    }
+
+    /**
+     * Setter for table.<p>
+     */
+    public void setTable(List<TruthOptionTableRow> table) {
+        this.table = table;
     }
 }

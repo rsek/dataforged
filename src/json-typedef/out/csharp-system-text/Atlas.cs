@@ -7,8 +7,14 @@ namespace Datasworn
 {
     public class Atlas
     {
+        [JsonPropertyName("collections")]
+        public IDictionary<string, Atlas> Collections { get; set; }
+
+        [JsonPropertyName("contents")]
+        public IDictionary<string, AtlasEntry> Contents { get; set; }
+
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public AtlasId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }
@@ -20,17 +26,9 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }
 
-        [JsonPropertyName("collections")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, Atlas> Collections { get; set; }
-
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Csscolor? Color { get; set; }
-
-        [JsonPropertyName("contents")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, AtlasEntry> Contents { get; set; }
 
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

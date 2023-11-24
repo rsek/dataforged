@@ -7,8 +7,14 @@ namespace Datasworn
 {
     public class OracleCollection
     {
+        [JsonPropertyName("collections")]
+        public IDictionary<string, OracleCollection> Collections { get; set; }
+
+        [JsonPropertyName("contents")]
+        public IDictionary<string, OracleTable> Contents { get; set; }
+
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public OracleCollectionId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }
@@ -20,17 +26,9 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }
 
-        [JsonPropertyName("collections")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, OracleCollection> Collections { get; set; }
-
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Csscolor? Color { get; set; }
-
-        [JsonPropertyName("contents")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, OracleTable> Contents { get; set; }
 
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -54,7 +52,7 @@ namespace Datasworn
 
         [JsonPropertyName("rendering")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleCollectionRendering0 Rendering { get; set; }
+        public OracleCollectionRendering? Rendering { get; set; }
 
         /// <summary>
         /// This collection replaces the identified collection. References

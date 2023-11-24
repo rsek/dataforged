@@ -10,8 +10,14 @@ import java.util.Map;
 
 @JsonSerialize
 public class Atlas {
+    @JsonProperty("collections")
+    private Map<String, Atlas> collections;
+
+    @JsonProperty("contents")
+    private Map<String, AtlasEntry> contents;
+
     @JsonProperty("id")
-    private String id;
+    private AtlasId id;
 
     @JsonProperty("name")
     private Label name;
@@ -24,16 +30,8 @@ public class Atlas {
     private Label canonicalName;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("collections")
-    private Map<String, Atlas> collections;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private Csscolor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("contents")
-    private Map<String, AtlasEntry> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -67,16 +65,44 @@ public class Atlas {
     }
 
     /**
+     * Getter for collections.<p>
+     */
+    public Map<String, Atlas> getCollections() {
+        return collections;
+    }
+
+    /**
+     * Setter for collections.<p>
+     */
+    public void setCollections(Map<String, Atlas> collections) {
+        this.collections = collections;
+    }
+
+    /**
+     * Getter for contents.<p>
+     */
+    public Map<String, AtlasEntry> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, AtlasEntry> contents) {
+        this.contents = contents;
+    }
+
+    /**
      * Getter for id.<p>
      */
-    public String getId() {
+    public AtlasId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(String id) {
+    public void setId(AtlasId id) {
         this.id = id;
     }
 
@@ -123,20 +149,6 @@ public class Atlas {
     }
 
     /**
-     * Getter for collections.<p>
-     */
-    public Map<String, Atlas> getCollections() {
-        return collections;
-    }
-
-    /**
-     * Setter for collections.<p>
-     */
-    public void setCollections(Map<String, Atlas> collections) {
-        this.collections = collections;
-    }
-
-    /**
      * Getter for color.<p>
      */
     public Csscolor getColor() {
@@ -148,20 +160,6 @@ public class Atlas {
      */
     public void setColor(Csscolor color) {
         this.color = color;
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, AtlasEntry> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, AtlasEntry> contents) {
-        this.contents = contents;
     }
 
     /**

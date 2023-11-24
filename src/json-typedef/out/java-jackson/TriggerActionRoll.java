@@ -33,10 +33,10 @@ public class TriggerActionRoll {
 
     /**
      * Getter for text.<p>
-     * A markdown string of the primary trigger text for this move.
+     * A markdown string containing the primary trigger text for this move.
      * 
      * Secondary trigger text (for specific stats or uses of an asset ability)
-     * may be available for individual trigger conditions.
+     * may be described in individual trigger conditions.
      */
     public MarkdownString getText() {
         return text;
@@ -44,10 +44,10 @@ public class TriggerActionRoll {
 
     /**
      * Setter for text.<p>
-     * A markdown string of the primary trigger text for this move.
+     * A markdown string containing the primary trigger text for this move.
      * 
      * Secondary trigger text (for specific stats or uses of an asset ability)
-     * may be available for individual trigger conditions.
+     * may be described in individual trigger conditions.
      */
     public void setText(MarkdownString text) {
         this.text = text;

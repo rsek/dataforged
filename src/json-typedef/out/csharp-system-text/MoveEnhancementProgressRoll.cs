@@ -16,6 +16,6 @@ namespace Datasworn
 
         [JsonPropertyName("trigger")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public MoveEnhancementProgressRollTrigger Trigger { get; set; }
+        public TriggerProgressRollEnhancement? Trigger { get; set; }
     }
 }

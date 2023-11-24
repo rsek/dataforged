@@ -36,6 +36,9 @@ namespace Datasworn
         [JsonPropertyName("url")]
         public string Url { get; set; }
 
+        /// <summary>
+        /// The page number where this item is described in full.
+        /// </summary>
         [JsonPropertyName("page")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public short? Page { get; set; }

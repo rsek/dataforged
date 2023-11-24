@@ -10,8 +10,11 @@ import java.util.Map;
 
 @JsonSerialize
 public class MoveCategory {
+    @JsonProperty("contents")
+    private Map<String, Move> contents;
+
     @JsonProperty("id")
-    private String id;
+    private MoveCategoryId id;
 
     @JsonProperty("name")
     private Label name;
@@ -26,10 +29,6 @@ public class MoveCategory {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private Csscolor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("contents")
-    private Map<String, Move> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -63,16 +62,30 @@ public class MoveCategory {
     }
 
     /**
+     * Getter for contents.<p>
+     */
+    public Map<String, Move> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, Move> contents) {
+        this.contents = contents;
+    }
+
+    /**
      * Getter for id.<p>
      */
-    public String getId() {
+    public MoveCategoryId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(String id) {
+    public void setId(MoveCategoryId id) {
         this.id = id;
     }
 
@@ -130,20 +143,6 @@ public class MoveCategory {
      */
     public void setColor(Csscolor color) {
         this.color = color;
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, Move> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, Move> contents) {
-        this.contents = contents;
     }
 
     /**

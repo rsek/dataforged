@@ -15,7 +15,7 @@ public class MoveEnhancementSpecialTrack extends MoveEnhancement {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("trigger")
-    private MoveEnhancementSpecialTrackTrigger trigger;
+    private TriggerSpecialTrackEnhancement trigger;
 
     public MoveEnhancementSpecialTrack() {
     }
@@ -37,14 +37,14 @@ public class MoveEnhancementSpecialTrack extends MoveEnhancement {
     /**
      * Getter for trigger.<p>
      */
-    public MoveEnhancementSpecialTrackTrigger getTrigger() {
+    public TriggerSpecialTrackEnhancement getTrigger() {
         return trigger;
     }
 
     /**
      * Setter for trigger.<p>
      */
-    public void setTrigger(MoveEnhancementSpecialTrackTrigger trigger) {
+    public void setTrigger(TriggerSpecialTrackEnhancement trigger) {
         this.trigger = trigger;
     }
 }

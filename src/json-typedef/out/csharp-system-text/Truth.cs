@@ -33,5 +33,9 @@ namespace Datasworn
         [JsonPropertyName("suggestions")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Suggestions? Suggestions { get; set; }
+
+        [JsonPropertyName("your_character")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public MarkdownString? YourCharacter { get; set; }
     }
 }

@@ -11,11 +11,7 @@ import {
 	type TUnion
 } from '@sinclair/typebox'
 import { pick } from 'lodash-es'
-import {
-	Discriminator,
-	Members,
-	type JsonTypeDef
-} from '../json-typedef/symbol.js'
+import { Discriminator, Members, JsonTypeDef } from '../json-typedef/symbol.js'
 
 const DiscriminatedUnionHint = 'DiscriminatedUnion'
 
@@ -41,9 +37,9 @@ export function DiscriminatedUnion<
 		}
 
 		// if (member.$id != null) {
-		// 	// brand the original member so that JTD schema generation skips them -- they won't need their own definition
-		// 	member[JsonTypeDef] ||= {}
-		// 	member[JsonTypeDef].skip = true
+		// brand the original member so that JTD schema generation skips them -- they won't need their own definition
+		;(member as any)[JsonTypeDef] ||= {}
+		;(member as any)[JsonTypeDef].skip = true
 		// }
 
 		return result

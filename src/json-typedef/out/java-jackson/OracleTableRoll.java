@@ -8,9 +8,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
 public class OracleTableRoll {
-    @JsonProperty("times")
-    private Short times;
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("auto")
     private Boolean auto;
@@ -23,21 +20,11 @@ public class OracleTableRoll {
     @JsonProperty("oracle")
     private OracleTableId oracle;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("times")
+    private Short times;
+
     public OracleTableRoll() {
-    }
-
-    /**
-     * Getter for times.<p>
-     */
-    public Short getTimes() {
-        return times;
-    }
-
-    /**
-     * Setter for times.<p>
-     */
-    public void setTimes(Short times) {
-        this.times = times;
     }
 
     /**
@@ -94,5 +81,19 @@ public class OracleTableRoll {
      */
     public void setOracle(OracleTableId oracle) {
         this.oracle = oracle;
+    }
+
+    /**
+     * Getter for times.<p>
+     */
+    public Short getTimes() {
+        return times;
+    }
+
+    /**
+     * Setter for times.<p>
+     */
+    public void setTimes(Short times) {
+        this.times = times;
     }
 }

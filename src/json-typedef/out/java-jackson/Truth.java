@@ -36,6 +36,10 @@ public class Truth {
     @JsonProperty("suggestions")
     private Suggestions suggestions;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("your_character")
+    private MarkdownString yourCharacter;
+
     public Truth() {
     }
 
@@ -135,5 +139,19 @@ public class Truth {
      */
     public void setSuggestions(Suggestions suggestions) {
         this.suggestions = suggestions;
+    }
+
+    /**
+     * Getter for yourCharacter.<p>
+     */
+    public MarkdownString getYourCharacter() {
+        return yourCharacter;
+    }
+
+    /**
+     * Setter for yourCharacter.<p>
+     */
+    public void setYourCharacter(MarkdownString yourCharacter) {
+        this.yourCharacter = yourCharacter;
     }
 }

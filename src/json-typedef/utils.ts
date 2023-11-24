@@ -31,6 +31,7 @@ import { TDiscriminatedUnion } from '../typebox/discriminated-union.js'
 import { Discriminator, Members } from './symbol.js'
 import { JsonTypeDef } from './symbol.js'
 import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
+import { DictionaryBrand } from '../schema/datasworn/utils/generic.js'
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
 export function getMetadata<T extends TAnySchema>(schema: T) {
@@ -300,51 +301,78 @@ function toJtdForm<T extends TSchema>(
 ): JTDSchemaType<Static<T>> | undefined {
 	// console.log(schema)
 
-	let result: SomeJTDSchemaType | undefined
+	let result: SomeJTDSchemaType | undefined = undefined
 
-	// @ts-expect-error
-	if (schema[JsonTypeDef]?.skip) return undefined
-	// @ts-expect-error
-	if (schema[JsonTypeDef]?.schema != null)
+	switch (true) {
 		// @ts-expect-error
-		return merge(cloneDeep(schema[JsonTypeDef].schema), {
-			metadata: getMetadata(schema)
-		})
-
-	if (TypeGuard.TLiteral(schema)) result = toJtdSingleEnum(schema) as any
-	if (TypeGuard.TNull(schema)) result = toJtdNull(schema) as any
-	if (TnuDiscriminatedUnion(schema)) result = toJtdDiscriminator(schema)
-	if (TNullable(schema)) result = toJtdNullable(schema) as any
-	if (TypeGuard.TRef(schema)) result = toJtdRef(schema) as any
-	if (TypeGuard.TString(schema)) result = toJtdString(schema) as any
-	if (TypeGuard.TBoolean(schema)) result = toJtdBoolean(schema) as any
-	if (TypeGuard.TInteger(schema)) result = toJtdInteger(schema) as any
-	if (TypeGuard.TNumber(schema)) result = toJtdFloat(schema) as any
-	if (TypeGuard.TRecord(schema)) result = toJtdValues(schema) as any
-	if (TypeGuard.TObject(schema)) result = toJtdProperties(schema) as any
-	if (TypeGuard.TArray(schema)) result = toJtdElements(schema) as any
-
-	if (schema[Kind] === 'JsonEnum') {
-		if (
-			(schema as unknown as TJsonEnum).enum?.every(
-				(member) => typeof member === 'string'
-			)
-		)
-			result = toJtdEnum(schema as any) as any
-		// FIXME: smarter typing for this; only non-string enum is ChallengeRank, which can be handled as an integer
-		if (
-			(schema as unknown as TJsonEnum).enum?.every(
-				(member) => typeof member === 'number'
-			)
-		)
-			result = {
-				type: 'uint8',
+		case schema[JsonTypeDef]?.skip:
+			return undefined
+		// @ts-expect-error
+		case schema[JsonTypeDef]?.schema != null:
+			// @ts-expect-error
+			return merge(cloneDeep(schema[JsonTypeDef].schema), {
 				metadata: getMetadata(schema)
-			} as any
+			})
+		case TypeGuard.TLiteral(schema):
+			result = toJtdSingleEnum(schema)
+			break
+		case TypeGuard.TNull(schema):
+			result = toJtdNull(schema)
+			break
+		case TDiscriminatedUnion(schema):
+			result = toJtdDiscriminator(schema)
+			break
+		case TNullable(schema):
+			result = toJtdNullable(schema)
+			break
+		case TypeGuard.TRef(schema):
+			result = toJtdRef(schema)
+			break
+		case TypeGuard.TString(schema):
+			result = toJtdString(schema)
+			break
+		case TypeGuard.TBoolean(schema):
+			result = toJtdBoolean(schema)
+			break
+		case TypeGuard.TInteger(schema):
+			result = toJtdInteger(schema)
+			break
+		case TypeGuard.TNumber(schema):
+			result = toJtdFloat(schema)
+			break
+		case schema[DictionaryBrand] === 'Dictionary':
+		case TypeGuard.TRecord(schema):
+			result = toJtdValues(schema)
+			break
+		case schema[Kind] === 'Object':
+			result = toJtdProperties(schema)
+			break
+		case TypeGuard.TArray(schema):
+			result = toJtdElements(schema)
+			break
+
+		case TJsonEnum(schema):
+			if (
+				(schema as unknown as TJsonEnum).enum?.every(
+					(member) => typeof member === 'string'
+				)
+			)
+				result = toJtdEnum(schema as any) as any
+			// FIXME: smarter typing for this; only non-string enum is ChallengeRank, which can be handled as an integer
+			if (
+				(schema as unknown as TJsonEnum).enum?.every(
+					(member) => typeof member === 'number'
+				)
+			)
+				result = {
+					type: 'uint8',
+					metadata: getMetadata(schema)
+				} as any
+			break
 	}
 
 	if (result == null) {
-		log.error(schema)
+		console.log(schema)
 		throw new Error(
 			`no transform available for typebox schema kind ${schema[Kind]}`
 		)

@@ -15,7 +15,7 @@ public class MoveEnhancementActionRoll extends MoveEnhancement {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("trigger")
-    private MoveEnhancementActionRollTrigger trigger;
+    private TriggerActionRollEnhancement trigger;
 
     public MoveEnhancementActionRoll() {
     }
@@ -37,14 +37,14 @@ public class MoveEnhancementActionRoll extends MoveEnhancement {
     /**
      * Getter for trigger.<p>
      */
-    public MoveEnhancementActionRollTrigger getTrigger() {
+    public TriggerActionRollEnhancement getTrigger() {
         return trigger;
     }
 
     /**
      * Setter for trigger.<p>
      */
-    public void setTrigger(MoveEnhancementActionRollTrigger trigger) {
+    public void setTrigger(TriggerActionRollEnhancement trigger) {
         this.trigger = trigger;
     }
 }

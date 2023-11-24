@@ -36,6 +36,10 @@ public class Asset {
     private AssetAttachment attachments;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("canonical_name")
+    private Label canonicalName;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private Csscolor color;
 
@@ -186,6 +190,20 @@ public class Asset {
      */
     public void setAttachments(AssetAttachment attachments) {
         this.attachments = attachments;
+    }
+
+    /**
+     * Getter for canonicalName.<p>
+     */
+    public Label getCanonicalName() {
+        return canonicalName;
+    }
+
+    /**
+     * Setter for canonicalName.<p>
+     */
+    public void setCanonicalName(Label canonicalName) {
+        this.canonicalName = canonicalName;
     }
 
     /**

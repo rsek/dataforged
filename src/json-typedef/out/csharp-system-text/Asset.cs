@@ -45,6 +45,10 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AssetAttachment? Attachments { get; set; }
 
+        [JsonPropertyName("canonical_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public Label? CanonicalName { get; set; }
+
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Csscolor? Color { get; set; }

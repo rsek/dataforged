@@ -7,8 +7,11 @@ namespace Datasworn
 {
     public class AssetType
     {
+        [JsonPropertyName("contents")]
+        public IDictionary<string, Asset> Contents { get; set; }
+
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public AssetTypeId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }
@@ -23,10 +26,6 @@ namespace Datasworn
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Csscolor? Color { get; set; }
-
-        [JsonPropertyName("contents")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, Asset> Contents { get; set; }
 
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

@@ -9,6 +9,8 @@ namespace Datasworn
     [JsonConverter(typeof(OracleCollectionStyleJsonConverter))]
     public enum OracleCollectionStyle
     {
+        Collection,
+
         MultiTable,
     }
     public class OracleCollectionStyleJsonConverter : JsonConverter<OracleCollectionStyle>
@@ -18,6 +20,8 @@ namespace Datasworn
             string value = JsonSerializer.Deserialize<string>(ref reader, options);
             switch (value)
             {
+                case "collection":
+                    return OracleCollectionStyle.Collection;
                 case "multi_table":
                     return OracleCollectionStyle.MultiTable;
                 default:
@@ -29,6 +33,9 @@ namespace Datasworn
         {
             switch (value)
             {
+                case OracleCollectionStyle.Collection:
+                    JsonSerializer.Serialize<string>(writer, "collection", options);
+                    return;
                 case OracleCollectionStyle.MultiTable:
                     JsonSerializer.Serialize<string>(writer, "multi_table", options);
                     return;

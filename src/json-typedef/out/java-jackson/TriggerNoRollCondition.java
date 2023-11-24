@@ -41,6 +41,7 @@ public class TriggerNoRollCondition {
 
     /**
      * Getter for rollOptions.<p>
+     * The options available when rolling with this trigger.
      */
     public Object getRollOptions() {
         return rollOptions;
@@ -48,6 +49,7 @@ public class TriggerNoRollCondition {
 
     /**
      * Setter for rollOptions.<p>
+     * The options available when rolling with this trigger.
      */
     public void setRollOptions(Object rollOptions) {
         this.rollOptions = rollOptions;

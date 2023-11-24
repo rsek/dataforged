@@ -103,6 +103,7 @@ export interface Asset {
   shared: boolean;
   source: Source;
   attachments?: AssetAttachment;
+  canonical_name?: Label;
   color?: Csscolor;
 
   /**
@@ -601,7 +602,7 @@ export interface AssetEnhancement {
    * fields whose values are expected to change throughout the life of the
    * asset.
    */
-  controls?: { [key: string]: { [key: string]: AssetControlFieldEnhancement } };
+  controls?: { [key: string]: AssetControlFieldEnhancement };
 
   /**
    * If `true`, this asset counts as an impact (Starforged) or a debility
@@ -839,12 +840,12 @@ export type AssetOptionFieldId = string;
 export type AssetOptionFieldIdwildcard = string;
 
 export interface AssetType {
-  id: string;
+  contents: { [key: string]: Asset };
+  id: AssetTypeId;
   name: Label;
   source: Source;
   canonical_name?: Label;
   color?: Csscolor;
-  contents?: { [key: string]: Asset };
   description?: MarkdownString;
 
   /**
@@ -867,13 +868,13 @@ export interface AssetType {
 export type AssetTypeId = string;
 
 export interface Atlas {
-  id: string;
+  collections: { [key: string]: Atlas };
+  contents: { [key: string]: AtlasEntry };
+  id: AtlasId;
   name: Label;
   source: Source;
   canonical_name?: Label;
-  collections?: { [key: string]: Atlas };
   color?: Csscolor;
-  contents?: { [key: string]: AtlasEntry };
   description?: MarkdownString;
 
   /**
@@ -953,70 +954,6 @@ export interface ConditionMeterRule {
 export type ConditionMeterRuleId = string;
 
 /**
- * Describes game rules compatible with the Ironsworn tabletop role-playing game
- * by Shawn Tomkin.
- */
-export interface DataswornRoot {
-  id: NamespaceId;
-  source: Source;
-
-  /**
-   * A dictionary object containing asset types, which contain assets.
-   */
-  assets?: { [key: string]: AssetType };
-
-  /**
-   * A dictionary object containing atlas collections, which contain atlas
-   * entries.
-   */
-  atlas?: { [key: string]: Atlas };
-
-  /**
-   * A dictionary object of delve sites, like the premade delve sites presented
-   * in Ironsworn: Delve
-   */
-  delve_sites?: { [key: string]: DelveSite };
-
-  /**
-   * A dictionary object containing move categories, which contain moves.
-   */
-  moves?: { [key: string]: MoveCategory };
-
-  /**
-   * A dictionary object containing NPC collections, which contain NPCs.
-   */
-  npcs?: { [key: string]: NpcCollection };
-
-  /**
-   * A dictionary object containing oracle collections, which may contain oracle
-   * tables and/or oracle collections.
-   */
-  oracles?: { [key: string]: OracleCollection };
-
-  /**
-   * A dictionary object containing rarities, like those presented in Ironsworn:
-   * Delve.
-   */
-  rarities?: { [key: string]: Rarity };
-  rules?: Rules;
-
-  /**
-   * A dictionary object containing delve site domains.
-   */
-  site_domains?: { [key: string]: DelveSiteDomain };
-
-  /**
-   * A dictionary object containing delve site themes.
-   */
-  site_themes?: { [key: string]: DelveSiteTheme };
-
-  /**
-   * A dictionary object of truth categories.
-   */
-  truths?: { [key: string]: Truth };
-}
-
-/**
  * A delve site with a theme, domain, and denizen table.
  */
 export interface DelveSite {
@@ -1068,12 +1005,46 @@ export enum DelveSiteDenizenFrequency {
 
 export type DelveSiteDenizenId = string;
 
+export enum DelveSiteDomainCardType {
+  Domain = "domain",
+}
+
 export interface DelveSiteDomain {
+  card_type: DelveSiteDomainCardType;
+  dangers: DelveSiteDomainDangerRow[];
+  features: DelveSiteDomainFeatureRow[];
+  id: DelveSiteDomainId;
+  name: Label;
+  source: Source;
+  summary: MarkdownString;
+  canonical_name?: Label;
+  description?: MarkdownString;
+  icon?: SvgimageUrl;
+
+  /**
+   * An oracle table ID containing place name elements. For examples, see
+   * oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in
+   * oracle collection ID `delve/collections/oracles/site_name/place`. These
+   * oracles are used by the site name oracle from Ironsworn: Delve (ID:
+   * delve/oracles/site_name/format) to create random names for delve sites.
+   */
+  name_oracle?: OracleTableId;
+  suggestions?: Suggestions;
 }
 
 export interface DelveSiteDomainDangerRow {
   id: DomainDangerRowId;
+
+  /**
+   * High end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   max: number;
+
+  /**
+   * Low end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   min: number;
   result: MarkdownString;
   description?: MarkdownString;
@@ -1088,7 +1059,17 @@ export interface DelveSiteDomainDangerRow {
 
 export interface DelveSiteDomainFeatureRow {
   id: DomainFeatureRowId;
+
+  /**
+   * High end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   max: number;
+
+  /**
+   * Low end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   min: number;
   result: MarkdownString;
   description?: MarkdownString;
@@ -1125,7 +1106,17 @@ export interface DelveSiteTheme {
 
 export interface DelveSiteThemeDangerRow {
   id: ThemeDangerRowId;
+
+  /**
+   * High end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   max: number;
+
+  /**
+   * Low end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   min: number;
   result: MarkdownString;
   description?: MarkdownString;
@@ -1140,7 +1131,17 @@ export interface DelveSiteThemeDangerRow {
 
 export interface DelveSiteThemeFeatureRow {
   id: ThemeFeatureRowId;
+
+  /**
+   * High end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   max: number;
+
+  /**
+   * Low end of the dice range for this table row. `null` represents an
+   * unrollable row, included only for rendering purposes.
+   */
   min: number;
   result: MarkdownString;
   description?: MarkdownString;
@@ -1157,6 +1158,9 @@ export type DelveSiteThemeId = string;
 
 export type DiceNotation = string;
 
+/**
+ * A key used in a Datasworn dictionary object.
+ */
 export type DictKey = string;
 
 export type DomainDangerRowId = string;
@@ -1250,6 +1254,7 @@ export interface MoveNoRoll {
   roll_type: "no_roll";
   id: MoveId;
   name: Label;
+  outcomes: any;
   source: Source;
 
   /**
@@ -1342,12 +1347,12 @@ export interface MoveSpecialTrack {
 }
 
 export interface MoveCategory {
-  id: string;
+  contents: { [key: string]: Move };
+  id: MoveCategoryId;
   name: Label;
   source: Source;
   canonical_name?: Label;
   color?: Csscolor;
-  contents?: { [key: string]: Move };
   description?: MarkdownString;
 
   /**
@@ -1371,44 +1376,28 @@ export type MoveCategoryId = string;
 
 export type MoveEnhancement = MoveEnhancementActionRoll | MoveEnhancementNoRoll | MoveEnhancementProgressRoll | MoveEnhancementSpecialTrack;
 
-export interface MoveEnhancementActionRollTrigger {
-  conditions: TriggerActionRollConditionEnhancement[];
-}
-
 export interface MoveEnhancementActionRoll {
   roll_type: "action_roll";
   enhances?: MoveIdwildcard[];
-  trigger?: MoveEnhancementActionRollTrigger;
-}
-
-export interface MoveEnhancementNoRollTrigger {
-  conditions: TriggerNoRollCondition[];
+  trigger?: TriggerActionRollEnhancement;
 }
 
 export interface MoveEnhancementNoRoll {
   roll_type: "no_roll";
   enhances?: MoveIdwildcard[];
-  trigger?: MoveEnhancementNoRollTrigger;
-}
-
-export interface MoveEnhancementProgressRollTrigger {
-  conditions: TriggerProgressRollConditionEnhancement[];
+  trigger?: TriggerNoRollEnhancement;
 }
 
 export interface MoveEnhancementProgressRoll {
   roll_type: "progress_roll";
   enhances?: MoveIdwildcard[];
-  trigger?: MoveEnhancementProgressRollTrigger;
-}
-
-export interface MoveEnhancementSpecialTrackTrigger {
-  conditions: TriggerSpecialTrackConditionEnhancement[];
+  trigger?: TriggerProgressRollEnhancement;
 }
 
 export interface MoveEnhancementSpecialTrack {
   roll_type: "special_track";
   enhances?: MoveIdwildcard[];
-  trigger?: MoveEnhancementSpecialTrackTrigger;
+  trigger?: TriggerSpecialTrackEnhancement;
 }
 
 /**
@@ -1479,12 +1468,12 @@ export interface Npc {
 }
 
 export interface NpcCollection {
-  id: string;
+  contents: { [key: string]: Npc };
+  id: NpcCollectionId;
   name: Label;
   source: Source;
   canonical_name?: Label;
   color?: Csscolor;
-  contents?: { [key: string]: Npc };
   description?: MarkdownString;
 
   /**
@@ -1531,20 +1520,14 @@ export interface NpcVariant {
 
 export type NpcVariantId = string;
 
-export interface OracleCollectionRendering0 {
-  columns: { [key: string]: OracleCollectionTableColumn };
-  color?: Csscolor;
-  table_style?: OracleCollectionStyle;
-}
-
 export interface OracleCollection {
-  id: string;
+  collections: { [key: string]: OracleCollection };
+  contents: { [key: string]: OracleTable };
+  id: OracleCollectionId;
   name: Label;
   source: Source;
   canonical_name?: Label;
-  collections?: { [key: string]: OracleCollection };
   color?: Csscolor;
-  contents?: { [key: string]: OracleTable };
   description?: MarkdownString;
 
   /**
@@ -1554,7 +1537,7 @@ export interface OracleCollection {
   enhances?: OracleCollectionId;
   icon?: SvgimageUrl;
   images?: WebpimageUrl[];
-  rendering?: OracleCollectionRendering0;
+  rendering?: OracleCollectionRendering;
 
   /**
    * This collection replaces the identified collection. References to the
@@ -1574,24 +1557,12 @@ export interface OracleCollectionRendering {
 }
 
 export enum OracleCollectionStyle {
+  Collection = "collection",
   MultiTable = "multi_table",
 }
 
-/**
- * The value(s) from each OracleTableRow that is rendered in this column.
- */
-export enum OracleCollectionTableColumnContentType {
-  Description = "description",
-  Result = "result",
-  Roll = "roll",
-  Summary = "summary",
-}
-
 export interface OracleCollectionTableColumn {
-  /**
-   * The value(s) from each OracleTableRow that is rendered in this column.
-   */
-  content_type: OracleCollectionTableColumnContentType;
+  content_type: OracleTableColumnContentKey;
 
   /**
    * The key of the OracleTable (within this collection), whose data is used to
@@ -1605,7 +1576,7 @@ export interface OracleCollectionTableColumn {
   color?: Csscolor;
 
   /**
-   * The table column's header text.
+   * The column's header text.
    */
   name?: Label;
 }
@@ -1672,21 +1643,8 @@ export interface OracleTable {
   summary?: MarkdownString;
 }
 
-/**
- * The value(s) from each OracleTableRow that is rendered in this column.
- */
-export enum OracleTableColumnContentType {
-  Description = "description",
-  Result = "result",
-  Roll = "roll",
-  Summary = "summary",
-}
-
 export interface OracleTableColumn {
-  /**
-   * The value(s) from each OracleTableRow that is rendered in this column.
-   */
-  content_type: OracleTableColumnContentType;
+  content_type: OracleTableColumnContentKey;
 
   /**
    * The thematic color for this column.
@@ -1694,7 +1652,7 @@ export interface OracleTableColumn {
   color?: Csscolor;
 
   /**
-   * The table column's header text.
+   * The column's header text.
    */
   name?: Label;
 }
@@ -1729,8 +1687,6 @@ export interface OracleTableRendering {
 }
 
 export interface OracleTableRoll {
-  times: number;
-
   /**
    * The rulebook explicitly cautions *against* rolling all details at once,
    * so rolling every referenced oracle automatically is not recommended. That
@@ -1746,6 +1702,7 @@ export interface OracleTableRoll {
    * of this oracle table.
    */
   oracle?: OracleTableId;
+  times?: number;
 }
 
 /**
@@ -1865,70 +1822,6 @@ export interface Rules {
 }
 
 /**
- * Describes game rules compatible with the Ironsworn tabletop role-playing game
- * by Shawn Tomkin.
- */
-export interface Ruleset {
-  id: NamespaceId;
-  source: Source;
-
-  /**
-   * A dictionary object containing asset types, which contain assets.
-   */
-  assets?: { [key: string]: AssetType };
-
-  /**
-   * A dictionary object containing atlas collections, which contain atlas
-   * entries.
-   */
-  atlas?: { [key: string]: Atlas };
-
-  /**
-   * A dictionary object of delve sites, like the premade delve sites presented
-   * in Ironsworn: Delve
-   */
-  delve_sites?: { [key: string]: DelveSite };
-
-  /**
-   * A dictionary object containing move categories, which contain moves.
-   */
-  moves?: { [key: string]: MoveCategory };
-
-  /**
-   * A dictionary object containing NPC collections, which contain NPCs.
-   */
-  npcs?: { [key: string]: NpcCollection };
-
-  /**
-   * A dictionary object containing oracle collections, which may contain oracle
-   * tables and/or oracle collections.
-   */
-  oracles?: { [key: string]: OracleCollection };
-
-  /**
-   * A dictionary object containing rarities, like those presented in Ironsworn:
-   * Delve.
-   */
-  rarities?: { [key: string]: Rarity };
-  rules?: Rules;
-
-  /**
-   * A dictionary object containing delve site domains.
-   */
-  site_domains?: { [key: string]: DelveSiteDomain };
-
-  /**
-   * A dictionary object containing delve site themes.
-   */
-  site_themes?: { [key: string]: DelveSiteTheme };
-
-  /**
-   * A dictionary object of truth categories.
-   */
-  truths?: { [key: string]: Truth };
-}
-
-/**
  * A relative URL pointing to a vector image in the SVG format.
  */
 export type SvgimageUrl = string;
@@ -1940,6 +1833,11 @@ export interface SourceAuthor {
    * An optional email contact for the author
    */
   email?: string;
+
+  /**
+   * An optional URL for the author's website.
+   */
+  url?: string;
 }
 
 /**
@@ -1964,6 +1862,10 @@ export interface Source {
    * An absolute URL where the source document is available.
    */
   url: string;
+
+  /**
+   * The page number where this item is described in full.
+   */
   page?: number;
 }
 
@@ -2033,10 +1935,10 @@ export interface TriggerActionRoll {
   conditions: TriggerActionRollCondition[];
 
   /**
-   * A markdown string of the primary trigger text for this move.
+   * A markdown string containing the primary trigger text for this move.
    * 
    * Secondary trigger text (for specific stats or uses of an asset ability) may
-   * be available for individual trigger conditions.
+   * be described in individual trigger conditions.
    */
   text: MarkdownString;
 }
@@ -2085,18 +1987,23 @@ export interface TriggerBy {
 }
 
 export interface TriggerNoRoll {
+  conditions: (TriggerNoRollCondition[] | null);
+
   /**
-   * A markdown string of the primary trigger text for this move.
+   * A markdown string containing the primary trigger text for this move.
    * 
    * Secondary trigger text (for specific stats or uses of an asset ability) may
-   * be available for individual trigger conditions.
+   * be described in individual trigger conditions.
    */
   text: MarkdownString;
-  conditions?: TriggerNoRollCondition[];
 }
 
 export interface TriggerNoRollCondition {
   method: any;
+
+  /**
+   * The options available when rolling with this trigger.
+   */
   roll_options: any;
   by?: TriggerBy;
 
@@ -2114,10 +2021,10 @@ export interface TriggerProgressRoll {
   conditions: TriggerProgressRollCondition[];
 
   /**
-   * A markdown string of the primary trigger text for this move.
+   * A markdown string containing the primary trigger text for this move.
    * 
    * Secondary trigger text (for specific stats or uses of an asset ability) may
-   * be available for individual trigger conditions.
+   * be described in individual trigger conditions.
    */
   text: MarkdownString;
 }
@@ -2160,10 +2067,10 @@ export interface TriggerSpecialTrack {
   conditions: TriggerSpecialTrackCondition[];
 
   /**
-   * A markdown string of the primary trigger text for this move.
+   * A markdown string containing the primary trigger text for this move.
    * 
    * Secondary trigger text (for specific stats or uses of an asset ability) may
-   * be available for individual trigger conditions.
+   * be described in individual trigger conditions.
    */
   text: MarkdownString;
 }
@@ -2221,6 +2128,7 @@ export interface Truth {
   canonical_name?: Label;
   icon?: SvgimageUrl;
   suggestions?: Suggestions;
+  your_character?: MarkdownString;
 }
 
 export type TruthId = string;
@@ -2229,10 +2137,27 @@ export interface TruthOption {
   description: MarkdownString;
   id: TruthOptionId;
   quest_starter: MarkdownString;
+  max?: number;
+  min?: number;
   summary?: MarkdownString;
+  table?: TruthOptionTableRow[];
 }
 
 export type TruthOptionId = string;
+
+export interface TruthOptionTableRow {
+  max: (number | null);
+  min: (number | null);
+  result: MarkdownString;
+  description?: MarkdownString;
+  embed_table?: OracleTableId;
+  i18n?: I18nHints;
+  icon?: SvgimageUrl;
+  rolls?: OracleTableRoll[];
+  suggestions?: Suggestions;
+  summary?: MarkdownString;
+  template?: OracleRollTemplate;
+}
 
 /**
  * A relative URL pointing to a raster image in the WEBP format.

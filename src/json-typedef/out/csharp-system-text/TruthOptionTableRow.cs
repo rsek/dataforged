@@ -5,24 +5,13 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    public class DelveSiteDomainFeatureRow
+    public class TruthOptionTableRow
     {
-        [JsonPropertyName("id")]
-        public DomainFeatureRowId Id { get; set; }
-
-        /// <summary>
-        /// High end of the dice range for this table row. `null` represents an
-        /// unrollable row, included only for rendering purposes.
-        /// </summary>
         [JsonPropertyName("max")]
-        public short Max { get; set; }
+        public short? Max { get; set; }
 
-        /// <summary>
-        /// Low end of the dice range for this table row. `null` represents an
-        /// unrollable row, included only for rendering purposes.
-        /// </summary>
         [JsonPropertyName("min")]
-        public short Min { get; set; }
+        public short? Min { get; set; }
 
         [JsonPropertyName("result")]
         public MarkdownString Result { get; set; }

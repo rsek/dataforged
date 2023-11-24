@@ -10,8 +10,11 @@ import java.util.Map;
 
 @JsonSerialize
 public class NpcCollection {
+    @JsonProperty("contents")
+    private Map<String, Npc> contents;
+
     @JsonProperty("id")
-    private String id;
+    private NpcCollectionId id;
 
     @JsonProperty("name")
     private Label name;
@@ -26,10 +29,6 @@ public class NpcCollection {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private Csscolor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("contents")
-    private Map<String, Npc> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -63,16 +62,30 @@ public class NpcCollection {
     }
 
     /**
+     * Getter for contents.<p>
+     */
+    public Map<String, Npc> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, Npc> contents) {
+        this.contents = contents;
+    }
+
+    /**
      * Getter for id.<p>
      */
-    public String getId() {
+    public NpcCollectionId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(String id) {
+    public void setId(NpcCollectionId id) {
         this.id = id;
     }
 
@@ -130,20 +143,6 @@ public class NpcCollection {
      */
     public void setColor(Csscolor color) {
         this.color = color;
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, Npc> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, Npc> contents) {
-        this.contents = contents;
     }
 
     /**

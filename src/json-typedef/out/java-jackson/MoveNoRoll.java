@@ -15,6 +15,9 @@ public class MoveNoRoll extends Move {
     @JsonProperty("name")
     private Label name;
 
+    @JsonProperty("outcomes")
+    private Object outcomes;
+
     @JsonProperty("source")
     private Source source;
 
@@ -69,6 +72,20 @@ public class MoveNoRoll extends Move {
      */
     public void setName(Label name) {
         this.name = name;
+    }
+
+    /**
+     * Getter for outcomes.<p>
+     */
+    public Object getOutcomes() {
+        return outcomes;
+    }
+
+    /**
+     * Setter for outcomes.<p>
+     */
+    public void setOutcomes(Object outcomes) {
+        this.outcomes = outcomes;
     }
 
     /**

@@ -4,10 +4,7 @@ package Datasworn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum OracleCollectionStyle {
-    @JsonProperty("collection")
-    COLLECTION,
-
-    @JsonProperty("multi_table")
-    MULTI_TABLE,
+public enum DelveSiteDomainCardType {
+    @JsonProperty("domain")
+    DOMAIN,
 }

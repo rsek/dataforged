@@ -168,6 +168,10 @@ pub struct Asset {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub attachments: Option<Box<AssetAttachment>>,
 
+    #[serde(rename = "canonical_name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub canonicalName: Option<Box<Label>>,
+
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
@@ -708,7 +712,7 @@ pub struct AssetEnhancement {
     /// asset.
     #[serde(rename = "controls")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub controls: Option<Box<HashMap<String, HashMap<String, AssetControlFieldEnhancement>>>>,
+    pub controls: Option<Box<HashMap<String, AssetControlFieldEnhancement>>>,
 
     /// If `true`, this asset counts as an impact (Starforged) or a debility
     /// (classic Ironsworn).
@@ -971,8 +975,11 @@ pub type AssetOptionFieldIdwildcard = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetType {
+    #[serde(rename = "contents")]
+    pub contents: HashMap<String, Asset>,
+
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: AssetTypeId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -987,10 +994,6 @@ pub struct AssetType {
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
-
-    #[serde(rename = "contents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub contents: Option<Box<HashMap<String, Asset>>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1029,8 +1032,14 @@ pub type AssetTypeId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct Atlas {
+    #[serde(rename = "collections")]
+    pub collections: HashMap<String, Atlas>,
+
+    #[serde(rename = "contents")]
+    pub contents: HashMap<String, AtlasEntry>,
+
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: AtlasId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1042,17 +1051,9 @@ pub struct Atlas {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub canonicalName: Option<Box<Label>>,
 
-    #[serde(rename = "collections")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub collections: Option<Box<HashMap<String, Atlas>>>,
-
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
-
-    #[serde(rename = "contents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub contents: Option<Box<HashMap<String, AtlasEntry>>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1166,75 +1167,6 @@ pub struct ConditionMeterRule {
 
 pub type ConditionMeterRuleId = String;
 
-/// Describes game rules compatible with the Ironsworn tabletop role-playing
-/// game by Shawn Tomkin.
-#[derive(Serialize, Deserialize)]
-pub struct DataswornRoot {
-    #[serde(rename = "id")]
-    pub id: NamespaceId,
-
-    #[serde(rename = "source")]
-    pub source: Source,
-
-    /// A dictionary object containing asset types, which contain assets.
-    #[serde(rename = "assets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub assets: Option<Box<HashMap<String, AssetType>>>,
-
-    /// A dictionary object containing atlas collections, which contain atlas
-    /// entries.
-    #[serde(rename = "atlas")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub atlas: Option<Box<HashMap<String, Atlas>>>,
-
-    /// A dictionary object of delve sites, like the premade delve sites
-    /// presented in Ironsworn: Delve
-    #[serde(rename = "delve_sites")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub delveSites: Option<Box<HashMap<String, DelveSite>>>,
-
-    /// A dictionary object containing move categories, which contain moves.
-    #[serde(rename = "moves")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub moves: Option<Box<HashMap<String, MoveCategory>>>,
-
-    /// A dictionary object containing NPC collections, which contain NPCs.
-    #[serde(rename = "npcs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub npcs: Option<Box<HashMap<String, NpcCollection>>>,
-
-    /// A dictionary object containing oracle collections, which may contain
-    /// oracle tables and/or oracle collections.
-    #[serde(rename = "oracles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub oracles: Option<Box<HashMap<String, OracleCollection>>>,
-
-    /// A dictionary object containing rarities, like those presented in
-    /// Ironsworn: Delve.
-    #[serde(rename = "rarities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub rarities: Option<Box<HashMap<String, Rarity>>>,
-
-    #[serde(rename = "rules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub rules: Option<Box<Rules>>,
-
-    /// A dictionary object containing delve site domains.
-    #[serde(rename = "site_domains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub siteDomains: Option<Box<HashMap<String, DelveSiteDomain>>>,
-
-    /// A dictionary object containing delve site themes.
-    #[serde(rename = "site_themes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub siteThemes: Option<Box<HashMap<String, DelveSiteTheme>>>,
-
-    /// A dictionary object of truth categories.
-    #[serde(rename = "truths")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub truths: Option<Box<HashMap<String, Truth>>>,
-}
-
 /// A delve site with a theme, domain, and denizen table.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSite {
@@ -1332,16 +1264,72 @@ pub enum DelveSiteDenizenFrequency {
 pub type DelveSiteDenizenId = String;
 
 #[derive(Serialize, Deserialize)]
-pub struct DelveSiteDomain {}
+pub enum DelveSiteDomainCardType {
+    #[serde(rename = "domain")]
+    Domain,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct DelveSiteDomain {
+    #[serde(rename = "card_type")]
+    pub cardType: DelveSiteDomainCardType,
+
+    #[serde(rename = "dangers")]
+    pub dangers: Vec<DelveSiteDomainDangerRow>,
+
+    #[serde(rename = "features")]
+    pub features: Vec<DelveSiteDomainFeatureRow>,
+
+    #[serde(rename = "id")]
+    pub id: DelveSiteDomainId,
+
+    #[serde(rename = "name")]
+    pub name: Label,
+
+    #[serde(rename = "source")]
+    pub source: Source,
+
+    #[serde(rename = "summary")]
+    pub summary: MarkdownString,
+
+    #[serde(rename = "canonical_name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub canonicalName: Option<Box<Label>>,
+
+    #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<Box<MarkdownString>>,
+
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgimageUrl>>,
+
+    /// An oracle table ID containing place name elements. For examples, see
+    /// oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in
+    /// oracle collection ID `delve/collections/oracles/site_name/place`. These
+    /// oracles are used by the site name oracle from Ironsworn: Delve (ID:
+    /// delve/oracles/site_name/format) to create random names for delve sites.
+    #[serde(rename = "name_oracle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub nameOracle: Option<Box<OracleTableId>>,
+
+    #[serde(rename = "suggestions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub suggestions: Option<Box<Suggestions>>,
+}
 
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteDomainDangerRow {
     #[serde(rename = "id")]
     pub id: DomainDangerRowId,
 
+    /// High end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "max")]
     pub max: i16,
 
+    /// Low end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "min")]
     pub min: i16,
 
@@ -1386,9 +1374,13 @@ pub struct DelveSiteDomainFeatureRow {
     #[serde(rename = "id")]
     pub id: DomainFeatureRowId,
 
+    /// High end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "max")]
     pub max: i16,
 
+    /// Low end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "min")]
     pub min: i16,
 
@@ -1483,9 +1475,13 @@ pub struct DelveSiteThemeDangerRow {
     #[serde(rename = "id")]
     pub id: ThemeDangerRowId,
 
+    /// High end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "max")]
     pub max: i16,
 
+    /// Low end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "min")]
     pub min: i16,
 
@@ -1530,9 +1526,13 @@ pub struct DelveSiteThemeFeatureRow {
     #[serde(rename = "id")]
     pub id: ThemeFeatureRowId,
 
+    /// High end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "max")]
     pub max: i16,
 
+    /// Low end of the dice range for this table row. `null` represents an
+    /// unrollable row, included only for rendering purposes.
     #[serde(rename = "min")]
     pub min: i16,
 
@@ -1576,6 +1576,7 @@ pub type DelveSiteThemeId = String;
 
 pub type DiceNotation = String;
 
+/// A key used in a Datasworn dictionary object.
 pub type DictKey = String;
 
 pub type DomainDangerRowId = String;
@@ -1735,6 +1736,9 @@ pub struct MoveNoRoll {
     #[serde(rename = "name")]
     pub name: Label,
 
+    #[serde(rename = "outcomes")]
+    pub outcomes: Option<Value>,
+
     #[serde(rename = "source")]
     pub source: Source,
 
@@ -1861,8 +1865,11 @@ pub struct MoveSpecialTrack {
 
 #[derive(Serialize, Deserialize)]
 pub struct MoveCategory {
+    #[serde(rename = "contents")]
+    pub contents: HashMap<String, Move>,
+
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: MoveCategoryId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1877,10 +1884,6 @@ pub struct MoveCategory {
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
-
-    #[serde(rename = "contents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub contents: Option<Box<HashMap<String, Move>>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1934,12 +1937,6 @@ pub enum MoveEnhancement {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct MoveEnhancementActionRollTrigger {
-    #[serde(rename = "conditions")]
-    pub conditions: Vec<TriggerActionRollConditionEnhancement>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct MoveEnhancementActionRoll {
     #[serde(rename = "enhances")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1947,13 +1944,7 @@ pub struct MoveEnhancementActionRoll {
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub trigger: Option<Box<MoveEnhancementActionRollTrigger>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct MoveEnhancementNoRollTrigger {
-    #[serde(rename = "conditions")]
-    pub conditions: Vec<TriggerNoRollCondition>,
+    pub trigger: Option<Box<TriggerActionRollEnhancement>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1964,13 +1955,7 @@ pub struct MoveEnhancementNoRoll {
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub trigger: Option<Box<MoveEnhancementNoRollTrigger>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct MoveEnhancementProgressRollTrigger {
-    #[serde(rename = "conditions")]
-    pub conditions: Vec<TriggerProgressRollConditionEnhancement>,
+    pub trigger: Option<Box<TriggerNoRollEnhancement>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1981,13 +1966,7 @@ pub struct MoveEnhancementProgressRoll {
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub trigger: Option<Box<MoveEnhancementProgressRollTrigger>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct MoveEnhancementSpecialTrackTrigger {
-    #[serde(rename = "conditions")]
-    pub conditions: Vec<TriggerSpecialTrackConditionEnhancement>,
+    pub trigger: Option<Box<TriggerProgressRollEnhancement>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1998,7 +1977,7 @@ pub struct MoveEnhancementSpecialTrack {
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub trigger: Option<Box<MoveEnhancementSpecialTrackTrigger>>,
+    pub trigger: Option<Box<TriggerSpecialTrackEnhancement>>,
 }
 
 /// A move ID, for a standard move or a unique asset move
@@ -2119,8 +2098,11 @@ pub struct Npc {
 
 #[derive(Serialize, Deserialize)]
 pub struct NpcCollection {
+    #[serde(rename = "contents")]
+    pub contents: HashMap<String, Npc>,
+
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: NpcCollectionId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -2135,10 +2117,6 @@ pub struct NpcCollection {
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
-
-    #[serde(rename = "contents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub contents: Option<Box<HashMap<String, Npc>>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2212,23 +2190,15 @@ pub struct NpcVariant {
 pub type NpcVariantId = String;
 
 #[derive(Serialize, Deserialize)]
-pub struct OracleCollectionRendering0 {
-    #[serde(rename = "columns")]
-    pub columns: HashMap<String, OracleCollectionTableColumn>,
-
-    #[serde(rename = "color")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub color: Option<Box<Csscolor>>,
-
-    #[serde(rename = "table_style")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub tableStyle: Option<Box<OracleCollectionStyle>>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct OracleCollection {
+    #[serde(rename = "collections")]
+    pub collections: HashMap<String, OracleCollection>,
+
+    #[serde(rename = "contents")]
+    pub contents: HashMap<String, OracleTable>,
+
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: OracleCollectionId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -2240,17 +2210,9 @@ pub struct OracleCollection {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub canonicalName: Option<Box<Label>>,
 
-    #[serde(rename = "collections")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub collections: Option<Box<HashMap<String, OracleCollection>>>,
-
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
-
-    #[serde(rename = "contents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub contents: Option<Box<HashMap<String, OracleTable>>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2272,7 +2234,7 @@ pub struct OracleCollection {
 
     #[serde(rename = "rendering")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rendering: Option<Box<OracleCollectionRendering0>>,
+    pub rendering: Option<Box<OracleCollectionRendering>>,
 
     /// This collection replaces the identified collection. References to the
     /// replaced collection can be considered equivalent to this collection.
@@ -2307,31 +2269,17 @@ pub struct OracleCollectionRendering {
 
 #[derive(Serialize, Deserialize)]
 pub enum OracleCollectionStyle {
+    #[serde(rename = "collection")]
+    Collection,
+
     #[serde(rename = "multi_table")]
     MultiTable,
 }
 
-/// The value(s) from each OracleTableRow that is rendered in this column.
-#[derive(Serialize, Deserialize)]
-pub enum OracleCollectionTableColumnContentType {
-    #[serde(rename = "description")]
-    Description,
-
-    #[serde(rename = "result")]
-    Result,
-
-    #[serde(rename = "roll")]
-    Roll,
-
-    #[serde(rename = "summary")]
-    Summary,
-}
-
 #[derive(Serialize, Deserialize)]
 pub struct OracleCollectionTableColumn {
-    /// The value(s) from each OracleTableRow that is rendered in this column.
     #[serde(rename = "content_type")]
-    pub contentType: OracleCollectionTableColumnContentType,
+    pub contentType: OracleTableColumnContentKey,
 
     /// The key of the OracleTable (within this collection), whose data is used
     /// to render this column.
@@ -2343,7 +2291,7 @@ pub struct OracleCollectionTableColumn {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
 
-    /// The table column's header text.
+    /// The column's header text.
     #[serde(rename = "name")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<Box<Label>>,
@@ -2439,34 +2387,17 @@ pub struct OracleTable {
     pub summary: Option<Box<MarkdownString>>,
 }
 
-/// The value(s) from each OracleTableRow that is rendered in this column.
-#[derive(Serialize, Deserialize)]
-pub enum OracleTableColumnContentType {
-    #[serde(rename = "description")]
-    Description,
-
-    #[serde(rename = "result")]
-    Result,
-
-    #[serde(rename = "roll")]
-    Roll,
-
-    #[serde(rename = "summary")]
-    Summary,
-}
-
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableColumn {
-    /// The value(s) from each OracleTableRow that is rendered in this column.
     #[serde(rename = "content_type")]
-    pub contentType: OracleTableColumnContentType,
+    pub contentType: OracleTableColumnContentKey,
 
     /// The thematic color for this column.
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Csscolor>>,
 
-    /// The table column's header text.
+    /// The column's header text.
     #[serde(rename = "name")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<Box<Label>>,
@@ -2514,9 +2445,6 @@ pub struct OracleTableRendering {
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableRoll {
-    #[serde(rename = "times")]
-    pub times: i16,
-
     /// The rulebook explicitly cautions *against* rolling all details at once,
     /// so rolling every referenced oracle automatically is not recommended.
     /// That said, some oracle results only provide useful information once
@@ -2535,6 +2463,10 @@ pub struct OracleTableRoll {
     #[serde(rename = "oracle")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub oracle: Option<Box<OracleTableId>>,
+
+    #[serde(rename = "times")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub times: Option<Box<i16>>,
 }
 
 /// Special roll instructions to use when rolling multiple times on a single
@@ -2739,75 +2671,6 @@ pub struct Rules {
     pub stats: HashMap<String, StatRule>,
 }
 
-/// Describes game rules compatible with the Ironsworn tabletop role-playing
-/// game by Shawn Tomkin.
-#[derive(Serialize, Deserialize)]
-pub struct Ruleset {
-    #[serde(rename = "id")]
-    pub id: NamespaceId,
-
-    #[serde(rename = "source")]
-    pub source: Source,
-
-    /// A dictionary object containing asset types, which contain assets.
-    #[serde(rename = "assets")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub assets: Option<Box<HashMap<String, AssetType>>>,
-
-    /// A dictionary object containing atlas collections, which contain atlas
-    /// entries.
-    #[serde(rename = "atlas")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub atlas: Option<Box<HashMap<String, Atlas>>>,
-
-    /// A dictionary object of delve sites, like the premade delve sites
-    /// presented in Ironsworn: Delve
-    #[serde(rename = "delve_sites")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub delveSites: Option<Box<HashMap<String, DelveSite>>>,
-
-    /// A dictionary object containing move categories, which contain moves.
-    #[serde(rename = "moves")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub moves: Option<Box<HashMap<String, MoveCategory>>>,
-
-    /// A dictionary object containing NPC collections, which contain NPCs.
-    #[serde(rename = "npcs")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub npcs: Option<Box<HashMap<String, NpcCollection>>>,
-
-    /// A dictionary object containing oracle collections, which may contain
-    /// oracle tables and/or oracle collections.
-    #[serde(rename = "oracles")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub oracles: Option<Box<HashMap<String, OracleCollection>>>,
-
-    /// A dictionary object containing rarities, like those presented in
-    /// Ironsworn: Delve.
-    #[serde(rename = "rarities")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub rarities: Option<Box<HashMap<String, Rarity>>>,
-
-    #[serde(rename = "rules")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub rules: Option<Box<Rules>>,
-
-    /// A dictionary object containing delve site domains.
-    #[serde(rename = "site_domains")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub siteDomains: Option<Box<HashMap<String, DelveSiteDomain>>>,
-
-    /// A dictionary object containing delve site themes.
-    #[serde(rename = "site_themes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub siteThemes: Option<Box<HashMap<String, DelveSiteTheme>>>,
-
-    /// A dictionary object of truth categories.
-    #[serde(rename = "truths")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub truths: Option<Box<HashMap<String, Truth>>>,
-}
-
 /// A relative URL pointing to a vector image in the SVG format.
 pub type SvgimageUrl = String;
 
@@ -2820,6 +2683,11 @@ pub struct SourceAuthor {
     #[serde(rename = "email")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub email: Option<Box<String>>,
+
+    /// An optional URL for the author's website.
+    #[serde(rename = "url")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub url: Option<Box<String>>,
 }
 
 /// Metadata describing the original source of this item
@@ -2844,6 +2712,7 @@ pub struct Source {
     #[serde(rename = "url")]
     pub url: String,
 
+    /// The page number where this item is described in full.
     #[serde(rename = "page")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub page: Option<Box<i16>>,
@@ -2960,10 +2829,10 @@ pub struct TriggerActionRoll {
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerActionRollCondition>,
 
-    /// A markdown string of the primary trigger text for this move.
+    /// A markdown string containing the primary trigger text for this move.
     /// 
     /// Secondary trigger text (for specific stats or uses of an asset ability)
-    /// may be available for individual trigger conditions.
+    /// may be described in individual trigger conditions.
     #[serde(rename = "text")]
     pub text: MarkdownString,
 }
@@ -3027,16 +2896,15 @@ pub struct TriggerBy {
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerNoRoll {
-    /// A markdown string of the primary trigger text for this move.
+    #[serde(rename = "conditions")]
+    pub conditions: Option<Box<Vec<TriggerNoRollCondition>>>,
+
+    /// A markdown string containing the primary trigger text for this move.
     /// 
     /// Secondary trigger text (for specific stats or uses of an asset ability)
-    /// may be available for individual trigger conditions.
+    /// may be described in individual trigger conditions.
     #[serde(rename = "text")]
     pub text: MarkdownString,
-
-    #[serde(rename = "conditions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub conditions: Option<Box<Vec<TriggerNoRollCondition>>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -3044,6 +2912,7 @@ pub struct TriggerNoRollCondition {
     #[serde(rename = "method")]
     pub method: Option<Value>,
 
+    /// The options available when rolling with this trigger.
     #[serde(rename = "roll_options")]
     pub rollOptions: Option<Value>,
 
@@ -3069,10 +2938,10 @@ pub struct TriggerProgressRoll {
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerProgressRollCondition>,
 
-    /// A markdown string of the primary trigger text for this move.
+    /// A markdown string containing the primary trigger text for this move.
     /// 
     /// Secondary trigger text (for specific stats or uses of an asset ability)
-    /// may be available for individual trigger conditions.
+    /// may be described in individual trigger conditions.
     #[serde(rename = "text")]
     pub text: MarkdownString,
 }
@@ -3128,10 +2997,10 @@ pub struct TriggerSpecialTrack {
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerSpecialTrackCondition>,
 
-    /// A markdown string of the primary trigger text for this move.
+    /// A markdown string containing the primary trigger text for this move.
     /// 
     /// Secondary trigger text (for specific stats or uses of an asset ability)
-    /// may be available for individual trigger conditions.
+    /// may be described in individual trigger conditions.
     #[serde(rename = "text")]
     pub text: MarkdownString,
 }
@@ -3216,6 +3085,10 @@ pub struct Truth {
     #[serde(rename = "suggestions")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
+
+    #[serde(rename = "your_character")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub yourCharacter: Option<Box<MarkdownString>>,
 }
 
 pub type TruthId = String;
@@ -3231,12 +3104,68 @@ pub struct TruthOption {
     #[serde(rename = "quest_starter")]
     pub questStarter: MarkdownString,
 
+    #[serde(rename = "max")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max: Option<Box<i16>>,
+
+    #[serde(rename = "min")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min: Option<Box<i16>>,
+
     #[serde(rename = "summary")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<MarkdownString>>,
+
+    #[serde(rename = "table")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub table: Option<Box<Vec<TruthOptionTableRow>>>,
 }
 
 pub type TruthOptionId = String;
+
+#[derive(Serialize, Deserialize)]
+pub struct TruthOptionTableRow {
+    #[serde(rename = "max")]
+    pub max: Option<Box<i16>>,
+
+    #[serde(rename = "min")]
+    pub min: Option<Box<i16>>,
+
+    #[serde(rename = "result")]
+    pub result: MarkdownString,
+
+    #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<Box<MarkdownString>>,
+
+    #[serde(rename = "embed_table")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub embedTable: Option<Box<OracleTableId>>,
+
+    #[serde(rename = "i18n")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub i18n: Option<Box<I18nHints>>,
+
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgimageUrl>>,
+
+    #[serde(rename = "rolls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rolls: Option<Box<Vec<OracleTableRoll>>>,
+
+    #[serde(rename = "suggestions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub suggestions: Option<Box<Suggestions>>,
+
+    #[serde(rename = "summary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub summary: Option<Box<MarkdownString>>,
+
+    #[serde(rename = "template")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub template: Option<Box<OracleRollTemplate>>,
+}
 
 /// A relative URL pointing to a raster image in the WEBP format.
 pub type WebpimageUrl = String;

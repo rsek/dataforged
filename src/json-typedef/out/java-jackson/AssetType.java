@@ -10,8 +10,11 @@ import java.util.Map;
 
 @JsonSerialize
 public class AssetType {
+    @JsonProperty("contents")
+    private Map<String, Asset> contents;
+
     @JsonProperty("id")
-    private String id;
+    private AssetTypeId id;
 
     @JsonProperty("name")
     private Label name;
@@ -26,10 +29,6 @@ public class AssetType {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private Csscolor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("contents")
-    private Map<String, Asset> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -63,16 +62,30 @@ public class AssetType {
     }
 
     /**
+     * Getter for contents.<p>
+     */
+    public Map<String, Asset> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, Asset> contents) {
+        this.contents = contents;
+    }
+
+    /**
      * Getter for id.<p>
      */
-    public String getId() {
+    public AssetTypeId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(String id) {
+    public void setId(AssetTypeId id) {
         this.id = id;
     }
 
@@ -130,20 +143,6 @@ public class AssetType {
      */
     public void setColor(Csscolor color) {
         this.color = color;
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, Asset> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, Asset> contents) {
-        this.contents = contents;
     }
 
     /**

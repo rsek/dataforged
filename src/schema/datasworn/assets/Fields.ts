@@ -131,6 +131,9 @@ export const AssetControlField = DiscriminatedUnion(
 		title: 'AssetControlField'
 	}
 )
+
+console.log(AssetControlField)
+
 export type TAssetControlField = typeof AssetControlField
 export type AssetControlField = Static<typeof AssetControlField>
 

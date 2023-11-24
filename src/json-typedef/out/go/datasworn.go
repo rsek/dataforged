@@ -180,6 +180,8 @@ type Asset struct {
 
 	Attachments *AssetAttachment `json:"attachments,omitempty"`
 
+	CanonicalName *Label `json:"canonical_name,omitempty"`
+
 	Color *Csscolor `json:"color,omitempty"`
 
 	// Controls are condition meters, clocks, counters, and other asset input
@@ -791,7 +793,7 @@ type AssetEnhancement struct {
 
 	// Controls are condition meters, clocks, counters, and other asset input
 	// fields whose values are expected to change throughout the life of the asset.
-	Controls map[string]map[string]AssetControlFieldEnhancement `json:"controls,omitempty"`
+	Controls map[string]AssetControlFieldEnhancement `json:"controls,omitempty"`
 
 	// If `true`, this asset counts as an impact (Starforged) or a debility
 	// (classic Ironsworn).
@@ -1097,7 +1099,9 @@ type AssetOptionFieldID = string
 type AssetOptionFieldIdwildcard = string
 
 type AssetType struct {
-	ID string `json:"id"`
+	Contents map[string]Asset `json:"contents"`
+
+	ID AssetTypeID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1106,8 +1110,6 @@ type AssetType struct {
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Color *Csscolor `json:"color,omitempty"`
-
-	Contents map[string]Asset `json:"contents,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1131,7 +1133,11 @@ type AssetType struct {
 type AssetTypeID = string
 
 type Atlas struct {
-	ID string `json:"id"`
+	Collections map[string]Atlas `json:"collections"`
+
+	Contents map[string]AtlasEntry `json:"contents"`
+
+	ID AtlasID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1139,11 +1145,7 @@ type Atlas struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Collections map[string]Atlas `json:"collections,omitempty"`
-
 	Color *Csscolor `json:"color,omitempty"`
-
-	Contents map[string]AtlasEntry `json:"contents,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1221,50 +1223,6 @@ type ConditionMeterRule struct {
 
 type ConditionMeterRuleID = string
 
-// Describes game rules compatible with the Ironsworn tabletop role-playing game
-// by Shawn Tomkin.
-type DataswornRoot struct {
-	ID NamespaceID `json:"id"`
-
-	Source Source `json:"source"`
-
-	// A dictionary object containing asset types, which contain assets.
-	Assets map[string]AssetType `json:"assets,omitempty"`
-
-	// A dictionary object containing atlas collections, which contain atlas
-	// entries.
-	Atlas map[string]Atlas `json:"atlas,omitempty"`
-
-	// A dictionary object of delve sites, like the premade delve sites presented
-	// in Ironsworn: Delve
-	DelveSites map[string]DelveSite `json:"delve_sites,omitempty"`
-
-	// A dictionary object containing move categories, which contain moves.
-	Moves map[string]MoveCategory `json:"moves,omitempty"`
-
-	// A dictionary object containing NPC collections, which contain NPCs.
-	Npcs map[string]NpcCollection `json:"npcs,omitempty"`
-
-	// A dictionary object containing oracle collections, which may contain oracle
-	// tables and/or oracle collections.
-	Oracles map[string]OracleCollection `json:"oracles,omitempty"`
-
-	// A dictionary object containing rarities, like those presented in Ironsworn:
-	// Delve.
-	Rarities map[string]Rarity `json:"rarities,omitempty"`
-
-	Rules *Rules `json:"rules,omitempty"`
-
-	// A dictionary object containing delve site domains.
-	SiteDomains map[string]DelveSiteDomain `json:"site_domains,omitempty"`
-
-	// A dictionary object containing delve site themes.
-	SiteThemes map[string]DelveSiteTheme `json:"site_themes,omitempty"`
-
-	// A dictionary object of truth categories.
-	Truths map[string]Truth `json:"truths,omitempty"`
-}
-
 // A delve site with a theme, domain, and denizen table.
 type DelveSite struct {
 	Denizens []DelveSiteDenizen `json:"denizens"`
@@ -1329,14 +1287,52 @@ const (
 
 type DelveSiteDenizenID = string
 
+type DelveSiteDomainCardType string
+
+const (
+	DelveSiteDomainCardTypeDomain DelveSiteDomainCardType = "domain"
+)
+
 type DelveSiteDomain struct {
+	CardType DelveSiteDomainCardType `json:"card_type"`
+
+	Dangers []DelveSiteDomainDangerRow `json:"dangers"`
+
+	Features []DelveSiteDomainFeatureRow `json:"features"`
+
+	ID DelveSiteDomainID `json:"id"`
+
+	Name Label `json:"name"`
+
+	Source Source `json:"source"`
+
+	Summary MarkdownString `json:"summary"`
+
+	CanonicalName *Label `json:"canonical_name,omitempty"`
+
+	Description *MarkdownString `json:"description,omitempty"`
+
+	Icon *SvgimageURL `json:"icon,omitempty"`
+
+	// An oracle table ID containing place name elements. For examples, see
+	// oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in
+	// oracle collection ID `delve/collections/oracles/site_name/place`. These
+	// oracles are used by the site name oracle from Ironsworn: Delve (ID:
+	// delve/oracles/site_name/format) to create random names for delve sites.
+	NameOracle *OracleTableID `json:"name_oracle,omitempty"`
+
+	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
 type DelveSiteDomainDangerRow struct {
 	ID DomainDangerRowID `json:"id"`
 
+	// High end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Max int16 `json:"max"`
 
+	// Low end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1361,8 +1357,12 @@ type DelveSiteDomainDangerRow struct {
 type DelveSiteDomainFeatureRow struct {
 	ID DomainFeatureRowID `json:"id"`
 
+	// High end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Max int16 `json:"max"`
 
+	// Low end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1421,8 +1421,12 @@ type DelveSiteTheme struct {
 type DelveSiteThemeDangerRow struct {
 	ID ThemeDangerRowID `json:"id"`
 
+	// High end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Max int16 `json:"max"`
 
+	// Low end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1447,8 +1451,12 @@ type DelveSiteThemeDangerRow struct {
 type DelveSiteThemeFeatureRow struct {
 	ID ThemeFeatureRowID `json:"id"`
 
+	// High end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Max int16 `json:"max"`
 
+	// Low end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1474,6 +1482,7 @@ type DelveSiteThemeID = string
 
 type DiceNotation = string
 
+// A key used in a Datasworn dictionary object.
 type DictKey = string
 
 type DomainDangerRowID = string
@@ -1625,6 +1634,8 @@ type MoveNoRoll struct {
 
 	Name Label `json:"name"`
 
+	Outcomes interface{} `json:"outcomes"`
+
 	Source Source `json:"source"`
 
 	// The complete rules text of the move.
@@ -1708,7 +1719,9 @@ type MoveSpecialTrack struct {
 }
 
 type MoveCategory struct {
-	ID string `json:"id"`
+	Contents map[string]Move `json:"contents"`
+
+	ID MoveCategoryID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1717,8 +1730,6 @@ type MoveCategory struct {
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Color *Csscolor `json:"color,omitempty"`
-
-	Contents map[string]Move `json:"contents,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1796,44 +1807,28 @@ func (v *MoveEnhancement) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-type MoveEnhancementActionRollTrigger struct {
-	Conditions []TriggerActionRollConditionEnhancement `json:"conditions"`
-}
-
 type MoveEnhancementActionRoll struct {
 	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
 
-	Trigger *MoveEnhancementActionRollTrigger `json:"trigger,omitempty"`
-}
-
-type MoveEnhancementNoRollTrigger struct {
-	Conditions []TriggerNoRollCondition `json:"conditions"`
+	Trigger *TriggerActionRollEnhancement `json:"trigger,omitempty"`
 }
 
 type MoveEnhancementNoRoll struct {
 	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
 
-	Trigger *MoveEnhancementNoRollTrigger `json:"trigger,omitempty"`
-}
-
-type MoveEnhancementProgressRollTrigger struct {
-	Conditions []TriggerProgressRollConditionEnhancement `json:"conditions"`
+	Trigger *TriggerNoRollEnhancement `json:"trigger,omitempty"`
 }
 
 type MoveEnhancementProgressRoll struct {
 	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
 
-	Trigger *MoveEnhancementProgressRollTrigger `json:"trigger,omitempty"`
-}
-
-type MoveEnhancementSpecialTrackTrigger struct {
-	Conditions []TriggerSpecialTrackConditionEnhancement `json:"conditions"`
+	Trigger *TriggerProgressRollEnhancement `json:"trigger,omitempty"`
 }
 
 type MoveEnhancementSpecialTrack struct {
 	Enhances []MoveIdwildcard `json:"enhances,omitempty"`
 
-	Trigger *MoveEnhancementSpecialTrackTrigger `json:"trigger,omitempty"`
+	Trigger *TriggerSpecialTrackEnhancement `json:"trigger,omitempty"`
 }
 
 // A move ID, for a standard move or a unique asset move
@@ -1921,7 +1916,9 @@ type Npc struct {
 }
 
 type NpcCollection struct {
-	ID string `json:"id"`
+	Contents map[string]Npc `json:"contents"`
+
+	ID NpcCollectionID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1930,8 +1927,6 @@ type NpcCollection struct {
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Color *Csscolor `json:"color,omitempty"`
-
-	Contents map[string]Npc `json:"contents,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -1982,16 +1977,12 @@ type NpcVariant struct {
 
 type NpcVariantID = string
 
-type OracleCollectionRendering0 struct {
-	Columns map[string]OracleCollectionTableColumn `json:"columns"`
-
-	Color *Csscolor `json:"color,omitempty"`
-
-	TableStyle *OracleCollectionStyle `json:"table_style,omitempty"`
-}
-
 type OracleCollection struct {
-	ID string `json:"id"`
+	Collections map[string]OracleCollection `json:"collections"`
+
+	Contents map[string]OracleTable `json:"contents"`
+
+	ID OracleCollectionID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1999,11 +1990,7 @@ type OracleCollection struct {
 
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
-	Collections map[string]OracleCollection `json:"collections,omitempty"`
-
 	Color *Csscolor `json:"color,omitempty"`
-
-	Contents map[string]OracleTable `json:"contents,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -2015,7 +2002,7 @@ type OracleCollection struct {
 
 	Images []WebpimageURL `json:"images,omitempty"`
 
-	Rendering *OracleCollectionRendering0 `json:"rendering,omitempty"`
+	Rendering *OracleCollectionRendering `json:"rendering,omitempty"`
 
 	// This collection replaces the identified collection. References to the
 	// replaced collection can be considered equivalent to this collection.
@@ -2039,25 +2026,13 @@ type OracleCollectionRendering struct {
 type OracleCollectionStyle string
 
 const (
+	OracleCollectionStyleCollection OracleCollectionStyle = "collection"
+
 	OracleCollectionStyleMultiTable OracleCollectionStyle = "multi_table"
 )
 
-// The value(s) from each OracleTableRow that is rendered in this column.
-type OracleCollectionTableColumnContentType string
-
-const (
-	OracleCollectionTableColumnContentTypeDescription OracleCollectionTableColumnContentType = "description"
-
-	OracleCollectionTableColumnContentTypeResult OracleCollectionTableColumnContentType = "result"
-
-	OracleCollectionTableColumnContentTypeRoll OracleCollectionTableColumnContentType = "roll"
-
-	OracleCollectionTableColumnContentTypeSummary OracleCollectionTableColumnContentType = "summary"
-)
-
 type OracleCollectionTableColumn struct {
-	// The value(s) from each OracleTableRow that is rendered in this column.
-	ContentType OracleCollectionTableColumnContentType `json:"content_type"`
+	ContentType OracleTableColumnContentKey `json:"content_type"`
 
 	// The key of the OracleTable (within this collection), whose data is used to
 	// render this column.
@@ -2066,7 +2041,7 @@ type OracleCollectionTableColumn struct {
 	// The thematic color for this column.
 	Color *Csscolor `json:"color,omitempty"`
 
-	// The table column's header text.
+	// The column's header text.
 	Name *Label `json:"name,omitempty"`
 }
 
@@ -2128,27 +2103,13 @@ type OracleTable struct {
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
-// The value(s) from each OracleTableRow that is rendered in this column.
-type OracleTableColumnContentType string
-
-const (
-	OracleTableColumnContentTypeDescription OracleTableColumnContentType = "description"
-
-	OracleTableColumnContentTypeResult OracleTableColumnContentType = "result"
-
-	OracleTableColumnContentTypeRoll OracleTableColumnContentType = "roll"
-
-	OracleTableColumnContentTypeSummary OracleTableColumnContentType = "summary"
-)
-
 type OracleTableColumn struct {
-	// The value(s) from each OracleTableRow that is rendered in this column.
-	ContentType OracleTableColumnContentType `json:"content_type"`
+	ContentType OracleTableColumnContentKey `json:"content_type"`
 
 	// The thematic color for this column.
 	Color *Csscolor `json:"color,omitempty"`
 
-	// The table column's header text.
+	// The column's header text.
 	Name *Label `json:"name,omitempty"`
 }
 
@@ -2184,8 +2145,6 @@ type OracleTableRendering struct {
 }
 
 type OracleTableRoll struct {
-	Times int16 `json:"times"`
-
 	// The rulebook explicitly cautions *against* rolling all details at once,
 	// so rolling every referenced oracle automatically is not recommended. That
 	// said, some oracle results only provide useful information once a secondary
@@ -2198,6 +2157,8 @@ type OracleTableRoll struct {
 	// The ID of the oracle table to be rolled. If omitted, it defaults to the ID
 	// of this oracle table.
 	Oracle *OracleTableID `json:"oracle,omitempty"`
+
+	Times *int16 `json:"times,omitempty"`
 }
 
 // Special roll instructions to use when rolling multiple times on a single
@@ -2347,50 +2308,6 @@ type Rules struct {
 	Stats map[string]StatRule `json:"stats"`
 }
 
-// Describes game rules compatible with the Ironsworn tabletop role-playing game
-// by Shawn Tomkin.
-type Ruleset struct {
-	ID NamespaceID `json:"id"`
-
-	Source Source `json:"source"`
-
-	// A dictionary object containing asset types, which contain assets.
-	Assets map[string]AssetType `json:"assets,omitempty"`
-
-	// A dictionary object containing atlas collections, which contain atlas
-	// entries.
-	Atlas map[string]Atlas `json:"atlas,omitempty"`
-
-	// A dictionary object of delve sites, like the premade delve sites presented
-	// in Ironsworn: Delve
-	DelveSites map[string]DelveSite `json:"delve_sites,omitempty"`
-
-	// A dictionary object containing move categories, which contain moves.
-	Moves map[string]MoveCategory `json:"moves,omitempty"`
-
-	// A dictionary object containing NPC collections, which contain NPCs.
-	Npcs map[string]NpcCollection `json:"npcs,omitempty"`
-
-	// A dictionary object containing oracle collections, which may contain oracle
-	// tables and/or oracle collections.
-	Oracles map[string]OracleCollection `json:"oracles,omitempty"`
-
-	// A dictionary object containing rarities, like those presented in Ironsworn:
-	// Delve.
-	Rarities map[string]Rarity `json:"rarities,omitempty"`
-
-	Rules *Rules `json:"rules,omitempty"`
-
-	// A dictionary object containing delve site domains.
-	SiteDomains map[string]DelveSiteDomain `json:"site_domains,omitempty"`
-
-	// A dictionary object containing delve site themes.
-	SiteThemes map[string]DelveSiteTheme `json:"site_themes,omitempty"`
-
-	// A dictionary object of truth categories.
-	Truths map[string]Truth `json:"truths,omitempty"`
-}
-
 // A relative URL pointing to a vector image in the SVG format.
 type SvgimageURL = string
 
@@ -2399,6 +2316,9 @@ type SourceAuthor struct {
 
 	// An optional email contact for the author
 	Email *string `json:"email,omitempty"`
+
+	// An optional URL for the author's website.
+	URL *string `json:"url,omitempty"`
 }
 
 // Metadata describing the original source of this item
@@ -2417,6 +2337,7 @@ type Source struct {
 	// An absolute URL where the source document is available.
 	URL string `json:"url"`
 
+	// The page number where this item is described in full.
 	Page *int16 `json:"page,omitempty"`
 }
 
@@ -2499,10 +2420,10 @@ type ThemeFeatureRowID = string
 type TriggerActionRoll struct {
 	Conditions []TriggerActionRollCondition `json:"conditions"`
 
-	// A markdown string of the primary trigger text for this move.
+	// A markdown string containing the primary trigger text for this move.
 	// 
 	// Secondary trigger text (for specific stats or uses of an asset ability) may
-	// be available for individual trigger conditions.
+	// be described in individual trigger conditions.
 	Text MarkdownString `json:"text"`
 }
 
@@ -2543,18 +2464,19 @@ type TriggerBy struct {
 }
 
 type TriggerNoRoll struct {
-	// A markdown string of the primary trigger text for this move.
+	Conditions []TriggerNoRollCondition `json:"conditions"`
+
+	// A markdown string containing the primary trigger text for this move.
 	// 
 	// Secondary trigger text (for specific stats or uses of an asset ability) may
-	// be available for individual trigger conditions.
+	// be described in individual trigger conditions.
 	Text MarkdownString `json:"text"`
-
-	Conditions []TriggerNoRollCondition `json:"conditions,omitempty"`
 }
 
 type TriggerNoRollCondition struct {
 	Method interface{} `json:"method"`
 
+	// The options available when rolling with this trigger.
 	RollOptions interface{} `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
@@ -2570,10 +2492,10 @@ type TriggerNoRollEnhancement struct {
 type TriggerProgressRoll struct {
 	Conditions []TriggerProgressRollCondition `json:"conditions"`
 
-	// A markdown string of the primary trigger text for this move.
+	// A markdown string containing the primary trigger text for this move.
 	// 
 	// Secondary trigger text (for specific stats or uses of an asset ability) may
-	// be available for individual trigger conditions.
+	// be described in individual trigger conditions.
 	Text MarkdownString `json:"text"`
 }
 
@@ -2608,10 +2530,10 @@ type TriggerProgressRollEnhancement struct {
 type TriggerSpecialTrack struct {
 	Conditions []TriggerSpecialTrackCondition `json:"conditions"`
 
-	// A markdown string of the primary trigger text for this move.
+	// A markdown string containing the primary trigger text for this move.
 	// 
 	// Secondary trigger text (for specific stats or uses of an asset ability) may
-	// be available for individual trigger conditions.
+	// be described in individual trigger conditions.
 	Text MarkdownString `json:"text"`
 }
 
@@ -2664,6 +2586,8 @@ type Truth struct {
 	Icon *SvgimageURL `json:"icon,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
+
+	YourCharacter *MarkdownString `json:"your_character,omitempty"`
 }
 
 type TruthID = string
@@ -2675,10 +2599,40 @@ type TruthOption struct {
 
 	QuestStarter MarkdownString `json:"quest_starter"`
 
+	Max *int16 `json:"max,omitempty"`
+
+	Min *int16 `json:"min,omitempty"`
+
 	Summary *MarkdownString `json:"summary,omitempty"`
+
+	Table []TruthOptionTableRow `json:"table,omitempty"`
 }
 
 type TruthOptionID = string
+
+type TruthOptionTableRow struct {
+	Max *int16 `json:"max"`
+
+	Min *int16 `json:"min"`
+
+	Result MarkdownString `json:"result"`
+
+	Description *MarkdownString `json:"description,omitempty"`
+
+	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
+
+	I18n *I18nHints `json:"i18n,omitempty"`
+
+	Icon *SvgimageURL `json:"icon,omitempty"`
+
+	Rolls []OracleTableRoll `json:"rolls,omitempty"`
+
+	Suggestions *Suggestions `json:"suggestions,omitempty"`
+
+	Summary *MarkdownString `json:"summary,omitempty"`
+
+	Template *OracleRollTemplate `json:"template,omitempty"`
+}
 
 // A relative URL pointing to a raster image in the WEBP format.
 type WebpimageURL = string

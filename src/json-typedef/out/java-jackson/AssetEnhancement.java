@@ -20,7 +20,7 @@ public class AssetEnhancement {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("controls")
-    private Map<String, Map<String, AssetControlFieldEnhancement>> controls;
+    private Map<String, AssetControlFieldEnhancement> controls;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("count_as_impact")
@@ -57,7 +57,7 @@ public class AssetEnhancement {
      * fields whose values are expected to change throughout the life of the
      * asset.
      */
-    public Map<String, Map<String, AssetControlFieldEnhancement>> getControls() {
+    public Map<String, AssetControlFieldEnhancement> getControls() {
         return controls;
     }
 
@@ -67,7 +67,7 @@ public class AssetEnhancement {
      * fields whose values are expected to change throughout the life of the
      * asset.
      */
-    public void setControls(Map<String, Map<String, AssetControlFieldEnhancement>> controls) {
+    public void setControls(Map<String, AssetControlFieldEnhancement> controls) {
         this.controls = controls;
     }
 

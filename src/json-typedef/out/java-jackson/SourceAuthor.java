@@ -15,6 +15,10 @@ public class SourceAuthor {
     @JsonProperty("email")
     private String email;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("url")
+    private String url;
+
     public SourceAuthor() {
     }
 
@@ -46,5 +50,21 @@ public class SourceAuthor {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * Getter for url.<p>
+     * An optional URL for the author's website.
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * Setter for url.<p>
+     * An optional URL for the author's website.
+     */
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

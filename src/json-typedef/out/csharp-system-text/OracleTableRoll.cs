@@ -6,9 +6,6 @@ namespace Datasworn
 {
     public class OracleTableRoll
     {
-        [JsonPropertyName("times")]
-        public short Times { get; set; }
-
         /// <summary>
         /// The rulebook explicitly cautions *against* rolling all details
         /// at once, so rolling every referenced oracle automatically is not
@@ -31,5 +28,9 @@ namespace Datasworn
         [JsonPropertyName("oracle")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OracleTableId? Oracle { get; set; }
+
+        [JsonPropertyName("times")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public short? Times { get; set; }
     }
 }

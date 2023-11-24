@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class OracleTableColumn {
     @JsonProperty("content_type")
-    private OracleTableColumnContentType contentType;
+    private OracleTableColumnContentKey contentType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
@@ -24,17 +24,15 @@ public class OracleTableColumn {
 
     /**
      * Getter for contentType.<p>
-     * The value(s) from each OracleTableRow that is rendered in this column.
      */
-    public OracleTableColumnContentType getContentType() {
+    public OracleTableColumnContentKey getContentType() {
         return contentType;
     }
 
     /**
      * Setter for contentType.<p>
-     * The value(s) from each OracleTableRow that is rendered in this column.
      */
-    public void setContentType(OracleTableColumnContentType contentType) {
+    public void setContentType(OracleTableColumnContentKey contentType) {
         this.contentType = contentType;
     }
 
@@ -56,7 +54,7 @@ public class OracleTableColumn {
 
     /**
      * Getter for name.<p>
-     * The table column's header text.
+     * The column's header text.
      */
     public Label getName() {
         return name;
@@ -64,7 +62,7 @@ public class OracleTableColumn {
 
     /**
      * Setter for name.<p>
-     * The table column's header text.
+     * The column's header text.
      */
     public void setName(Label name) {
         this.name = name;

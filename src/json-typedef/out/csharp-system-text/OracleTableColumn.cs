@@ -6,12 +6,8 @@ namespace Datasworn
 {
     public class OracleTableColumn
     {
-        /// <summary>
-        /// The value(s) from each OracleTableRow that is rendered in this
-        /// column.
-        /// </summary>
         [JsonPropertyName("content_type")]
-        public OracleTableColumnContentType ContentType { get; set; }
+        public OracleTableColumnContentKey ContentType { get; set; }
 
         /// <summary>
         /// The thematic color for this column.
@@ -21,7 +17,7 @@ namespace Datasworn
         public Csscolor? Color { get; set; }
 
         /// <summary>
-        /// The table column's header text.
+        /// The column's header text.
         /// </summary>
         [JsonPropertyName("name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

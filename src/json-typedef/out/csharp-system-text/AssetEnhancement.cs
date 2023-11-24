@@ -23,7 +23,7 @@ namespace Datasworn
         /// </summary>
         [JsonPropertyName("controls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, IDictionary<string, AssetControlFieldEnhancement>> Controls { get; set; }
+        public IDictionary<string, AssetControlFieldEnhancement> Controls { get; set; }
 
         /// <summary>
         /// If `true`, this asset counts as an impact (Starforged) or a debility

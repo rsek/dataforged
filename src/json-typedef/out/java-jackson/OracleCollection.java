@@ -10,8 +10,14 @@ import java.util.Map;
 
 @JsonSerialize
 public class OracleCollection {
+    @JsonProperty("collections")
+    private Map<String, OracleCollection> collections;
+
+    @JsonProperty("contents")
+    private Map<String, OracleTable> contents;
+
     @JsonProperty("id")
-    private String id;
+    private OracleCollectionId id;
 
     @JsonProperty("name")
     private Label name;
@@ -24,16 +30,8 @@ public class OracleCollection {
     private Label canonicalName;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("collections")
-    private Map<String, OracleCollection> collections;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private Csscolor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("contents")
-    private Map<String, OracleTable> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -53,7 +51,7 @@ public class OracleCollection {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("rendering")
-    private OracleCollectionRendering0 rendering;
+    private OracleCollectionRendering rendering;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("replaces")
@@ -71,16 +69,44 @@ public class OracleCollection {
     }
 
     /**
+     * Getter for collections.<p>
+     */
+    public Map<String, OracleCollection> getCollections() {
+        return collections;
+    }
+
+    /**
+     * Setter for collections.<p>
+     */
+    public void setCollections(Map<String, OracleCollection> collections) {
+        this.collections = collections;
+    }
+
+    /**
+     * Getter for contents.<p>
+     */
+    public Map<String, OracleTable> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, OracleTable> contents) {
+        this.contents = contents;
+    }
+
+    /**
      * Getter for id.<p>
      */
-    public String getId() {
+    public OracleCollectionId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(String id) {
+    public void setId(OracleCollectionId id) {
         this.id = id;
     }
 
@@ -127,20 +153,6 @@ public class OracleCollection {
     }
 
     /**
-     * Getter for collections.<p>
-     */
-    public Map<String, OracleCollection> getCollections() {
-        return collections;
-    }
-
-    /**
-     * Setter for collections.<p>
-     */
-    public void setCollections(Map<String, OracleCollection> collections) {
-        this.collections = collections;
-    }
-
-    /**
      * Getter for color.<p>
      */
     public Csscolor getColor() {
@@ -152,20 +164,6 @@ public class OracleCollection {
      */
     public void setColor(Csscolor color) {
         this.color = color;
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, OracleTable> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, OracleTable> contents) {
-        this.contents = contents;
     }
 
     /**
@@ -231,14 +229,14 @@ public class OracleCollection {
     /**
      * Getter for rendering.<p>
      */
-    public OracleCollectionRendering0 getRendering() {
+    public OracleCollectionRendering getRendering() {
         return rendering;
     }
 
     /**
      * Setter for rendering.<p>
      */
-    public void setRendering(OracleCollectionRendering0 rendering) {
+    public void setRendering(OracleCollectionRendering rendering) {
         this.rendering = rendering;
     }
 
