@@ -1,15 +1,14 @@
-import path from 'path'
 import fs from 'fs-extra'
 import * as JTD from 'jtd'
+import path from 'path'
 import { log } from '../scripts/utils/logger.js'
 import { toJtdRoot } from './utils.js'
 
 import { Datasworn } from '../schema/datasworn/index.js'
 import { PKG_NAME } from '../scripts/const.js'
-import { ShellCommandParams, shellify } from '../shellify.js'
+import { shellify, type ShellCommandParams } from '../shellify.js'
 
-const JTD_ROOT = path.join(process.cwd(), 'src', 'json-typedef')
-const JTD_TYPES_ROOT = path.join(JTD_ROOT, 'out')
+const JTD_TYPES_ROOT = path.join(process.cwd(), 'json-typedef')
 const JTD_JSON_PATH = path.join(JTD_TYPES_ROOT, 'datasworn.jtd.json')
 
 const root: JTD.Schema = toJtdRoot(Datasworn)
