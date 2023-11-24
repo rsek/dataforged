@@ -15,24 +15,27 @@
 		"campaign_launch": {
 			"id": "starforged/collections/oracles/campaign_launch",
 			"name": "Campaign Launch",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"background_assets": {
 					"id": "starforged/oracles/campaign_launch/background_assets",
 					"name": "Background Assets",
 					"dice": "1d100",
 					"rendering": {
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"background": {
-								"name": "Background",
+								"label": "Background",
 								"content_type": "result"
 							},
 							"assets": {
-								"name": "Assets",
+								"label": "Assets",
 								"content_type": "summary"
 							}
 						}
@@ -930,6 +933,9 @@
 		"characters": {
 			"id": "starforged/collections/oracles/characters",
 			"name": "Characters",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](id:starforged/oracles/characters/first_look) and [Initial Disposition](id:starforged/oracles/characters/initial_disposition). Then envision or generate additional details over time.",
 			"contents": {
 				"first_look": {
@@ -3489,22 +3495,25 @@
 					"id": "starforged/collections/oracles/characters/name",
 					"name": "Character Name",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll",
 								"table_key": "given_name"
 							},
 							"given_name": {
+								"label": "Given Name",
 								"content_type": "result",
 								"table_key": "given_name"
 							},
 							"family_name": {
+								"label": "Family Name",
 								"content_type": "result",
 								"table_key": "family_name"
 							},
 							"callsign": {
+								"label": "Callsign",
 								"content_type": "result",
 								"table_key": "callsign"
 							}
@@ -3517,17 +3526,7 @@
 							"name": "Given Name",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
 							"suggestions": {
@@ -4655,17 +4654,7 @@
 							"name": "Callsign",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.",
 							"suggestions": {
@@ -5793,17 +5782,7 @@
 							"name": "Family Name",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
 							"suggestions": {
@@ -6958,6 +6937,9 @@
 		"core": {
 			"id": "starforged/collections/oracles/core",
 			"name": "Core Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"action": {
 					"id": "starforged/oracles/core/action",
@@ -11469,6 +11451,9 @@
 		"creatures": {
 			"id": "starforged/collections/oracles/creatures",
 			"name": "Creatures",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Roll for a [basic form](id:starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](id:starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](id:starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.",
 			"contents": {
 				"environment": {
@@ -12645,40 +12630,40 @@
 					"id": "starforged/collections/oracles/creatures/basic_form",
 					"name": "Creature Basic Form",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"space": {
-								"name": "Space",
+								"label": "Space",
 								"content_type": "roll",
 								"color": "#121b21",
 								"table_key": "space"
 							},
 							"interior": {
-								"name": "Interior",
+								"label": "Interior",
 								"content_type": "roll",
 								"color": "#707a83",
 								"table_key": "interior"
 							},
 							"land": {
-								"name": "Land",
+								"label": "Land",
 								"content_type": "roll",
 								"color": "#ed1a38",
 								"table_key": "land"
 							},
 							"liquid": {
-								"name": "Liquid",
+								"label": "Liquid",
 								"content_type": "roll",
 								"color": "#0082bf",
 								"table_key": "liquid"
 							},
 							"air": {
-								"name": "Air",
+								"label": "Air",
 								"content_type": "roll",
 								"color": "#90278f",
 								"table_key": "air"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "space"
 							}
@@ -12692,17 +12677,7 @@
 							"icon": "icons/creature/environment/space.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -12855,17 +12830,7 @@
 							"icon": "icons/creature/environment/interior.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13018,17 +12983,7 @@
 							"icon": "icons/creature/environment/land.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13181,17 +13136,7 @@
 							"icon": "icons/creature/environment/liquid.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13344,17 +13289,7 @@
 							"icon": "icons/creature/environment/air.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13533,6 +13468,9 @@
 		"derelicts": {
 			"id": "starforged/collections/oracles/derelicts",
 			"name": "Derelicts",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Derelicts are the forsaken relics of human endeavors.",
 			"description": "Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the [Starship](id:starforged/collections/oracles/starships) or [Settlement](id:starforged/collections/oracles/settlements) oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.",
 			"contents": {
@@ -13950,6 +13888,9 @@
 					"id": "starforged/collections/oracles/derelicts/access",
 					"name": "Access",
 					"icon": "icons/derelicts/access.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/access/area",
@@ -14344,6 +14285,9 @@
 					"id": "starforged/collections/oracles/derelicts/community",
 					"name": "Community",
 					"icon": "icons/derelicts/community.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/community/area",
@@ -14714,6 +14658,9 @@
 					"id": "starforged/collections/oracles/derelicts/engineering",
 					"name": "Engineering",
 					"icon": "icons/derelicts/engineering.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/engineering/area",
@@ -15084,6 +15031,9 @@
 					"id": "starforged/collections/oracles/derelicts/living",
 					"name": "Living",
 					"icon": "icons/derelicts/living.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/living/area",
@@ -15454,6 +15404,9 @@
 					"id": "starforged/collections/oracles/derelicts/medical",
 					"name": "Medical",
 					"icon": "icons/derelicts/medical.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/medical/area",
@@ -15824,6 +15777,9 @@
 					"id": "starforged/collections/oracles/derelicts/operations",
 					"name": "Operations",
 					"icon": "icons/derelicts/operations.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/operations/area",
@@ -16194,6 +16150,9 @@
 					"id": "starforged/collections/oracles/derelicts/production",
 					"name": "Production",
 					"icon": "icons/derelicts/production.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/production/area",
@@ -16564,6 +16523,9 @@
 					"id": "starforged/collections/oracles/derelicts/research",
 					"name": "Research",
 					"icon": "icons/derelicts/research.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/research/area",
@@ -16935,24 +16897,25 @@
 					"name": "Derelict Type (by location)",
 					"canonical_name": "Type (by location)",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"planetside": {
-								"name": "Planetside",
+								"label": "Planetside",
 								"content_type": "roll",
 								"table_key": "planetside"
 							},
 							"orbital": {
-								"name": "Orbital",
+								"label": "Orbital",
 								"content_type": "roll",
 								"table_key": "orbital"
 							},
 							"deep_space": {
-								"name": "Deep Space",
+								"label": "Deep Space",
 								"content_type": "roll",
 								"table_key": "deep_space"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "planetside"
 							}
@@ -16965,17 +16928,7 @@
 							"icon": "icon/oracles/location/planetside.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -17016,17 +16969,7 @@
 							"icon": "icon/oracles/location/orbital.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -17067,17 +17010,7 @@
 							"icon": "icon/oracles/location/deep_space.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -17131,19 +17064,20 @@
 					"id": "starforged/collections/oracles/derelicts/zones",
 					"name": "Derelict Zones",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"starship": {
-								"name": "Starship",
+								"label": "Starship",
 								"content_type": "roll",
 								"table_key": "starship"
 							},
 							"settlement": {
-								"name": "Settlement",
+								"label": "Settlement",
 								"content_type": "roll",
 								"table_key": "settlement"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "starship"
 							}
@@ -17156,17 +17090,7 @@
 							"name": "Starship",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.",
 							"table": [
@@ -17245,17 +17169,7 @@
 							"name": "Settlement",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.",
 							"table": [
@@ -17361,6 +17275,9 @@
 		"factions": {
 			"id": "starforged/collections/oracles/factions",
 			"name": "Factions",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"type": {
 					"id": "starforged/oracles/factions/type",
@@ -17537,14 +17454,14 @@
 					"icon": "icons/factions/dominion.svg",
 					"dice": "1d100",
 					"rendering": {
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result"
 							}
 						}
@@ -17913,14 +17830,14 @@
 					"icon": "icons/factions/guild.svg",
 					"dice": "1d100",
 					"rendering": {
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result"
 							}
 						}
@@ -18117,14 +18034,14 @@
 					"icon": "icons/factions/fringe_group.svg",
 					"dice": "1d100",
 					"rendering": {
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result"
 							}
 						}
@@ -19171,6 +19088,9 @@
 				"name": {
 					"id": "starforged/collections/oracles/factions/name",
 					"name": "Faction Name",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"template": {
 							"id": "starforged/oracles/factions/name/template",
@@ -20720,6 +20640,9 @@
 		"location_themes": {
 			"id": "starforged/collections/oracles/location_themes",
 			"name": "Location Themes",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location.",
 			"description": "Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location.\n\nEach theme on the following pages includes a set of oracles.\n\n  * **Feature:** Use this table to reveal a new aspect of the location.\n  * **Peril:** Use this table to help envision a complication or hazard.\n  * **Opportunity:** Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.\n\nYou can answer questions about a place using only the tables provided for a theme, such as when delving into an **Infested** cave. Or pair a theme with other location oracles for more flavor and variety; for example, you might explore a **Haunted Grave World**, a **Ruined Derelict**, a **Sacred Precursor Vault**, or an **Inhabited Settlement**.\n\nWhen mixing-and-matching a theme with another set of tables, use the techniques described for an **oracle array** (page 384) to determine which oracle you reference for that question or phase of your exploration.",
 			"contents": {
@@ -20813,6 +20736,9 @@
 					"id": "starforged/collections/oracles/location_themes/chaotic",
 					"name": "Chaotic",
 					"icon": "icons/location_theme/chaotic.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Reality is corrupted or warped in this place.",
 					"contents": {
 						"feature": {
@@ -21104,6 +21030,9 @@
 					"id": "starforged/collections/oracles/location_themes/fortified",
 					"name": "Fortified",
 					"icon": "icons/location_theme/fortified.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Enemies defend this place against intruders.",
 					"contents": {
 						"feature": {
@@ -21398,6 +21327,9 @@
 					"id": "starforged/collections/oracles/location_themes/haunted",
 					"name": "Haunted",
 					"icon": "icons/location_theme/haunted.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Restless spirits are bound to this place.",
 					"contents": {
 						"feature": {
@@ -21692,6 +21624,9 @@
 					"id": "starforged/collections/oracles/location_themes/infested",
 					"name": "Infested",
 					"icon": "icons/location_theme/infested.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Foul creatures have overrun this place.",
 					"contents": {
 						"feature": {
@@ -21986,6 +21921,9 @@
 					"id": "starforged/collections/oracles/location_themes/inhabited",
 					"name": "Inhabited",
 					"icon": "icons/location_theme/inhabited.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "People have built a community in this place.",
 					"contents": {
 						"feature": {
@@ -22280,6 +22218,9 @@
 					"id": "starforged/collections/oracles/location_themes/mechanical",
 					"name": "Mechanical",
 					"icon": "icons/location_theme/mechanical.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Machines and technology hold sway in this place.",
 					"contents": {
 						"feature": {
@@ -22574,6 +22515,9 @@
 					"id": "starforged/collections/oracles/location_themes/ruined",
 					"name": "Ruined",
 					"icon": "icons/location_theme/ruined.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Time, disaster, or war have ravaged this place.",
 					"contents": {
 						"feature": {
@@ -22868,6 +22812,9 @@
 					"id": "starforged/collections/oracles/location_themes/sacred",
 					"name": "Sacred",
 					"icon": "icons/location_theme/sacred.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Worshipers glorify strange powers in this place.",
 					"contents": {
 						"feature": {
@@ -23175,6 +23122,9 @@
 		"misc": {
 			"id": "starforged/collections/oracles/misc",
 			"name": "Miscellaneous Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"story_complication": {
 					"id": "starforged/oracles/misc/story_complication",
@@ -24060,6 +24010,9 @@
 		"moves": {
 			"id": "starforged/collections/oracles/moves",
 			"name": "Move Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"begin_a_session": {
 					"id": "starforged/oracles/moves/begin_a_session",
@@ -24824,6 +24777,9 @@
 				"ask_the_oracle": {
 					"id": "starforged/collections/oracles/moves/ask_the_oracle",
 					"name": "Ask the Oracle",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"almost_certain": {
 							"id": "starforged/oracles/moves/ask_the_oracle/almost_certain",
@@ -25026,6 +24982,9 @@
 		"planets": {
 			"id": "starforged/collections/oracles/planets",
 			"name": "Planets",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"class": {
 					"id": "starforged/oracles/planets/class",
@@ -25122,18 +25081,20 @@
 					"id": "starforged/collections/oracles/planets/peril",
 					"name": "Planetside Peril",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"lifebearing": {
-								"name": "Lifebearing",
+								"label": "Lifebearing",
 								"content_type": "roll",
 								"table_key": "lifebearing"
 							},
 							"lifeless": {
-								"name": "Lifeless",
+								"label": "Lifeless",
 								"content_type": "roll",
 								"table_key": "lifeless"
 							},
 							"result": {
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "lifebearing"
 							}
@@ -25146,17 +25107,7 @@
 							"name": "Lifebearing",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -25400,17 +25351,7 @@
 							"name": "Lifeless",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -25668,19 +25609,20 @@
 					"id": "starforged/collections/oracles/planets/opportunity",
 					"name": "Planetside Opportunity",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"lifebearing": {
-								"name": "Lifebearing",
+								"label": "Lifebearing",
 								"content_type": "roll",
 								"table_key": "lifebearing"
 							},
 							"lifeless": {
-								"name": "Lifeless",
+								"label": "Lifeless",
 								"content_type": "roll",
 								"table_key": "lifeless"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "lifebearing"
 							}
@@ -25693,17 +25635,7 @@
 							"name": "Lifebearing",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -25875,17 +25807,7 @@
 							"name": "Lifeless",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -26074,6 +25996,9 @@
 						"images/planets/desert-01.webp",
 						"images/planets/desert-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A pitiless planet of searing heat, blowing sand, and sunbaked rock.",
 					"contents": {
 						"name": {
@@ -26542,6 +26467,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/desert/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/desert/settlements/terminus",
@@ -26726,6 +26654,9 @@
 						"images/planets/furnace-01.webp",
 						"images/planets/furnace-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A planet with relentless volcanic activity, wreathed in fire and ash.",
 					"contents": {
 						"name": {
@@ -27194,6 +27125,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/furnace/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/furnace/settlements/terminus",
@@ -27378,6 +27312,9 @@
 						"images/planets/grave-01.webp",
 						"images/planets/grave-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A once-thriving world—now a grim monument to a fallen civilization.",
 					"contents": {
 						"name": {
@@ -27846,6 +27783,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/grave/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/grave/settlements/terminus",
@@ -28030,6 +27970,9 @@
 						"images/planets/ice-01.webp",
 						"images/planets/ice-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A rugged, frozen world—locked in an unending winter.",
 					"contents": {
 						"name": {
@@ -28498,6 +28441,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/ice/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/ice/settlements/terminus",
@@ -28682,6 +28628,9 @@
 						"images/planets/jovian-01.webp",
 						"images/planets/jovian-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A massive planet with vast layers of dense gases surrounding a rocky core.",
 					"contents": {
 						"name": {
@@ -29150,6 +29099,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/jovian/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/jovian/settlements/terminus",
@@ -29334,6 +29286,9 @@
 						"images/planets/jungle-01.webp",
 						"images/planets/jungle-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.",
 					"contents": {
 						"name": {
@@ -29802,6 +29757,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/jungle/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/jungle/settlements/terminus",
@@ -29986,6 +29944,9 @@
 						"images/planets/ocean-01.webp",
 						"images/planets/ocean-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A planet completely or almost entirely covered by a boundless ocean.",
 					"contents": {
 						"name": {
@@ -30454,6 +30415,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/ocean/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/ocean/settlements/terminus",
@@ -30638,6 +30602,9 @@
 						"images/planets/rocky-01.webp",
 						"images/planets/rocky-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A rugged planet scarred by eons of destructive asteroid impacts.",
 					"contents": {
 						"name": {
@@ -31106,6 +31073,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/rocky/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/rocky/settlements/terminus",
@@ -31290,6 +31260,9 @@
 						"images/planets/shattered-01.webp",
 						"images/planets/shattered-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A planet sundered by cataclysmic destruction.",
 					"contents": {
 						"name": {
@@ -31758,6 +31731,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/shattered/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/shattered/settlements/terminus",
@@ -31942,6 +31918,9 @@
 						"images/planets/tainted-01.webp",
 						"images/planets/tainted-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A foul planet wracked by a poisonous climate and virulent growths.",
 					"contents": {
 						"name": {
@@ -32410,6 +32389,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/tainted/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/tainted/settlements/terminus",
@@ -32594,6 +32576,9 @@
 						"images/planets/vital-01.webp",
 						"images/planets/vital-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "This diverse, life-bearing planet might provide some small measure of hope.",
 					"contents": {
 						"name": {
@@ -33393,6 +33378,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/vital/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/vital/settlements/terminus",
@@ -33587,6 +33575,9 @@
 		"settlements": {
 			"id": "starforged/collections/oracles/settlements",
 			"name": "Settlements",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"location": {
 					"id": "starforged/oracles/settlements/location",
@@ -35723,24 +35714,25 @@
 					"id": "starforged/collections/oracles/settlements/population",
 					"name": "Population",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"terminus": {
-								"name": "Terminus",
+								"label": "Terminus",
 								"content_type": "roll",
 								"table_key": "terminus"
 							},
 							"outlands": {
-								"name": "Outlands",
+								"label": "Outlands",
 								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"expanse": {
-								"name": "Expanse",
+								"label": "Expanse",
 								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"number": {
-								"name": "Number",
+								"label": "Number",
 								"content_type": "result",
 								"table_key": "terminus"
 							}
@@ -35752,17 +35744,7 @@
 							"name": "Terminus",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -35814,17 +35796,7 @@
 							"name": "Outlands",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -35876,17 +35848,7 @@
 							"name": "Expanse",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -35965,6 +35927,9 @@
 		"space": {
 			"id": "starforged/collections/oracles/space",
 			"name": "Space Encounters",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"stellar_object": {
 					"id": "starforged/oracles/space/stellar_object",
@@ -36482,22 +36447,25 @@
 					"id": "starforged/collections/oracles/space/sighting",
 					"name": "Space Sighting",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"terminus": {
+								"label": "Terminus",
 								"content_type": "roll",
 								"table_key": "terminus"
 							},
 							"outlands": {
+								"label": "Outlands",
 								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"expanse": {
+								"label": "Expanse",
 								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "terminus"
 							}
@@ -36510,17 +36478,7 @@
 							"name": "Terminus",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -36701,17 +36659,7 @@
 							"name": "Outlands",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -36885,17 +36833,7 @@
 							"name": "Expanse",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -37083,19 +37021,20 @@
 					"id": "starforged/collections/oracles/space/sector_name",
 					"name": "Sector Name",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"result": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll",
 								"table_key": "prefix"
 							},
 							"prefix": {
-								"name": "Prefix",
+								"label": "Prefix",
 								"content_type": "result",
 								"table_key": "prefix"
 							},
 							"suffix": {
-								"name": "Suffix",
+								"label": "Suffix",
 								"content_type": "result",
 								"table_key": "suffix"
 							}
@@ -37109,17 +37048,7 @@
 							"name": "Prefix",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"suggestions": {
 								"oracles": ["starforged/oracles/space/sector_name/suffix"]
@@ -37694,17 +37623,7 @@
 							"name": "Suffix",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
 							"suggestions": {
@@ -38307,6 +38226,9 @@
 		"starships": {
 			"id": "starforged/collections/oracles/starships",
 			"name": "Starships",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"type": {
 					"id": "starforged/oracles/starships/type",
@@ -38314,18 +38236,18 @@
 					"canonical_name": "Type",
 					"dice": "1d100",
 					"rendering": {
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"class": {
-								"name": "Class",
+								"label": "Class",
 								"content_type": "result"
 							},
 							"typical_role": {
-								"name": "Typical Role",
+								"label": "Typical Role",
 								"content_type": "summary"
 							}
 						}
@@ -40122,25 +40044,25 @@
 					"id": "starforged/collections/oracles/starships/mission",
 					"name": "Starship Mission",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"terminus": {
-								"name": "Terminus",
+								"label": "Terminus",
 								"content_type": "roll",
 								"table_key": "terminus"
 							},
 							"outlands": {
-								"name": "Outlands",
+								"label": "Outlands",
 								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"expanse": {
-								"name": "Expanse",
+								"label": "Expanse",
 								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"mission": {
-								"name": "Mission",
+								"label": "Mission",
 								"content_type": "result",
 								"table_key": "terminus"
 							}
@@ -40153,16 +40075,7 @@
 							"name": "Terminus",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"content_type": "roll"
-									},
-									"mission": {
-										"name": "Mission",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -40394,16 +40307,7 @@
 							"name": "Outlands",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"content_type": "roll"
-									},
-									"mission": {
-										"name": "Mission",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -40635,16 +40539,7 @@
 							"name": "Expanse",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"content_type": "roll"
-									},
-									"mission": {
-										"name": "Mission",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -40903,6 +40798,9 @@
 		"vaults": {
 			"id": "starforged/collections/oracles/vaults",
 			"name": "Precursor Vaults",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.",
 			"contents": {
 				"location": {
@@ -41621,6 +41519,9 @@
 					"id": "starforged/collections/oracles/vaults/interior",
 					"name": "Interior",
 					"icon": "icons/vaults/interior.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "If you enter the site, check the [Inner First Look](id:starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](id:starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.",
 					"contents": {
 						"first_look": {
@@ -42357,6 +42258,9 @@
 					"id": "starforged/collections/oracles/vaults/sanctum",
 					"name": "Sanctum",
 					"icon": "icons/vaults/sanctum.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.",
 					"contents": {
 						"purpose": {

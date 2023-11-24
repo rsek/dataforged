@@ -6,13 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Describes a standard impact/debility.
+ */
 @JsonSerialize
 public class ImpactRule {
     @JsonProperty("description")
     private MarkdownString description;
 
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     @JsonProperty("permanent")
     private Boolean permanent;
@@ -28,6 +31,7 @@ public class ImpactRule {
 
     /**
      * Getter for description.<p>
+     * A description of this impact.
      */
     public MarkdownString getDescription() {
         return description;
@@ -35,27 +39,31 @@ public class ImpactRule {
 
     /**
      * Setter for description.<p>
+     * A description of this impact.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
     }
 
     /**
-     * Getter for name.<p>
+     * Getter for label.<p>
+     * The label for this impact.
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
+     * Setter for label.<p>
+     * The label for this impact.
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     /**
      * Getter for permanent.<p>
+     * Is this impact permanent?
      */
     public Boolean getPermanent() {
         return permanent;
@@ -63,6 +71,7 @@ public class ImpactRule {
 
     /**
      * Setter for permanent.<p>
+     * Is this impact permanent?
      */
     public void setPermanent(Boolean permanent) {
         this.permanent = permanent;
@@ -70,6 +79,7 @@ public class ImpactRule {
 
     /**
      * Getter for preventsRecovery.<p>
+     * Keys of ruleset condition meters, to which this impact prevents recovery.
      */
     public List<DictKey> getPreventsRecovery() {
         return preventsRecovery;
@@ -77,6 +87,7 @@ public class ImpactRule {
 
     /**
      * Setter for preventsRecovery.<p>
+     * Keys of ruleset condition meters, to which this impact prevents recovery.
      */
     public void setPreventsRecovery(List<DictKey> preventsRecovery) {
         this.preventsRecovery = preventsRecovery;
@@ -84,6 +95,7 @@ public class ImpactRule {
 
     /**
      * Getter for shared.<p>
+     * Is this impact applied to all players at once?
      */
     public Boolean getShared() {
         return shared;
@@ -91,6 +103,7 @@ public class ImpactRule {
 
     /**
      * Setter for shared.<p>
+     * Is this impact applied to all players at once?
      */
     public void setShared(Boolean shared) {
         this.shared = shared;

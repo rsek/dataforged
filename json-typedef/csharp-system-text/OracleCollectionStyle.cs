@@ -9,9 +9,16 @@ namespace Datasworn
     [JsonConverter(typeof(OracleCollectionStyleJsonConverter))]
     public enum OracleCollectionStyle
     {
-        Collection,
-
+        /// <summary>
+        /// Presented as a single table, with its OracleTable children rendered
+        /// as columns.
+        /// </summary>
         MultiTable,
+
+        /// <summary>
+        /// Presented as a collection of separate tables.
+        /// </summary>
+        Tables,
     }
     public class OracleCollectionStyleJsonConverter : JsonConverter<OracleCollectionStyle>
     {
@@ -20,10 +27,10 @@ namespace Datasworn
             string value = JsonSerializer.Deserialize<string>(ref reader, options);
             switch (value)
             {
-                case "collection":
-                    return OracleCollectionStyle.Collection;
                 case "multi_table":
                     return OracleCollectionStyle.MultiTable;
+                case "tables":
+                    return OracleCollectionStyle.Tables;
                 default:
                     throw new ArgumentException(String.Format("Bad OracleCollectionStyle value: {0}", value));
             }
@@ -33,11 +40,11 @@ namespace Datasworn
         {
             switch (value)
             {
-                case OracleCollectionStyle.Collection:
-                    JsonSerializer.Serialize<string>(writer, "collection", options);
-                    return;
                 case OracleCollectionStyle.MultiTable:
                     JsonSerializer.Serialize<string>(writer, "multi_table", options);
+                    return;
+                case OracleCollectionStyle.Tables:
+                    JsonSerializer.Serialize<string>(writer, "tables", options);
                     return;
             }
         }

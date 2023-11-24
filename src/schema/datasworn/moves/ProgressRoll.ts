@@ -1,5 +1,4 @@
 import { Type, type Static } from '../../../typebox/index.js'
-import { Localize } from '../common/index.js'
 import { type SpecialTrackType } from '../common/Progress.js'
 import {
 	type MoveOutcomes,
@@ -14,6 +13,7 @@ import {
 	TriggerEnhancement
 } from './Trigger.js'
 import * as Generic from '../utils/Generic.js'
+import { ProgressTrackTypeInfo } from '../common/Progress.js'
 
 export const ProgressRollOption = Type.Object(
 	{
@@ -53,18 +53,9 @@ export const MoveProgressRoll = Generic.Flatten(
 		),
 		Type.Object({
 			// is_progress_move: Type.Literal(true, { default: true }),
-			track_label: Type.Ref(Localize.Label, {
+			tracks: Type.Ref(ProgressTrackTypeInfo, {
 				description:
-					'A category label for progress tracks associated with this move.',
-				examples: [
-					'Vow',
-					'Journey',
-					'Combat',
-					'Scene Challenge',
-					'Expedition',
-					'Connection',
-					'Delve'
-				]
+					'Describes the common features of progress tracks associated with this move.'
 			})
 		})
 	],

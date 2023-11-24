@@ -233,7 +233,15 @@ async function readSourcebookFile(filePath: string, schemaIdIn: string) {
 	const sourceData = await readSource(filePath)
 
 	if (!ajv.validate<In.Datasworn>(schemaIdIn, sourceData)) {
-		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
+    const shortErrors = ajv.errors?.map(
+			({ instancePath, schemaPath, data, parentSchema }) => ({
+				instancePath,
+				schemaPath,
+				parentSchema,
+				data
+			})
+		)
+		log.error(`${JSON.stringify(shortErrors, undefined, '\t')}`)
 		throw new Error(
 			`YAML data in ${filePath} doesn't match the ${schemaIdIn} schema`
 		)

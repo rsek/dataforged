@@ -79,6 +79,7 @@ public class AtlasEntry {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public AtlasEntryId getId() {
         return id;
@@ -86,6 +87,7 @@ public class AtlasEntry {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(AtlasEntryId id) {
         this.id = id;
@@ -93,6 +95,7 @@ public class AtlasEntry {
 
     /**
      * Getter for name.<p>
+     * The primary name/label for this item.
      */
     public Label getName() {
         return name;
@@ -100,6 +103,7 @@ public class AtlasEntry {
 
     /**
      * Setter for name.<p>
+     * The primary name/label for this item.
      */
     public void setName(Label name) {
         this.name = name;
@@ -121,6 +125,8 @@ public class AtlasEntry {
 
     /**
      * Getter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public Source getSource() {
         return source;
@@ -128,6 +134,8 @@ public class AtlasEntry {
 
     /**
      * Setter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public void setSource(Source source) {
         this.source = source;
@@ -135,6 +143,8 @@ public class AtlasEntry {
 
     /**
      * Getter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public Label getCanonicalName() {
         return canonicalName;
@@ -142,6 +152,8 @@ public class AtlasEntry {
 
     /**
      * Setter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public void setCanonicalName(Label canonicalName) {
         this.canonicalName = canonicalName;

@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+/**
+ * A checkbox control field, rendered as part of an asset condition meter.
+ */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "field_type")
 @JsonSubTypes({
     @JsonSubTypes.Type(name = "card_flip", value = AssetConditionMeterControlFieldCardFlip.class),

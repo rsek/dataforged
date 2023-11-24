@@ -1,7 +1,11 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { JsonEnumFromRecord } from '../../../typebox/enum.js'
+import {
+	ExtractLiteralFromEnum,
+	JsonEnumFromRecord
+} from '../../../typebox/enum.js'
 import { Id, Localize, Metadata } from '../common/index.js'
 import * as Generic from '../utils/Generic.js'
+import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 
 export const OracleTableColumnContentKey = JsonEnumFromRecord(
 	{
@@ -20,11 +24,9 @@ type OracleTableColumnContentKey = Static<typeof OracleTableColumnContentKey>
 
 export const OracleTableColumn = Type.Object(
 	{
-		name: Type.Optional(
-			Type.Ref(Localize.Label, {
-				description: "The column's header text."
-			})
-		),
+		label: Type.Ref(Localize.Label, {
+			description: "The column's header text."
+		}),
 		content_type: Type.Ref(OracleTableColumnContentKey),
 		color: Type.Optional(
 			Type.Ref(Metadata.CssColor, {
@@ -35,9 +37,9 @@ export const OracleTableColumn = Type.Object(
 	{
 		$id: '#/$defs/OracleTableColumn',
 		examples: [
-			{ name: 'Roll', content_type: 'roll' },
-			{ name: 'Result', content_type: 'result' },
-			{ name: 'Summary', content_type: 'summary' }
+			{ label: 'Roll', content_type: 'roll' },
+			{ label: 'Result', content_type: 'result' },
+			{ label: 'Summary', content_type: 'summary' }
 		]
 	}
 )
@@ -54,7 +56,8 @@ export const OracleCollectionTableColumn = Generic.Flatten(
 		})
 	],
 	{
-		$id: '#/$defs/OracleCollectionTableColumn'
+		$id: '#/$defs/OracleCollectionTableColumn',
+		default: undefined
 	}
 )
 export type OracleCollectionTableColumn = Static<
@@ -73,8 +76,9 @@ const OracleRenderingBase = Type.Object({
 
 export const OracleCollectionStyle = JsonEnumFromRecord(
 	{
-		collection: '',
-		multi_table: ''
+		tables: 'Presented as a collection of separate tables.',
+		multi_table:
+			'Presented as a single table, with its OracleTable children rendered as columns.'
 	},
 	{
 		$id: '#/$defs/OracleCollectionStyle'
@@ -82,38 +86,71 @@ export const OracleCollectionStyle = JsonEnumFromRecord(
 )
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
-export const OracleCollectionRendering = Generic.Flatten(
-	[
-		Type.Omit(OracleRenderingBase, ['columns']),
-		Type.Object({
-			columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn)),
-			table_style: Type.Optional(Type.Ref(OracleCollectionStyle))
-		})
-	],
-	{ $id: '#/$defs/OracleCollectionRendering' }
+const OracleCollectionRenderingTables = Type.Object({
+	style: ExtractLiteralFromEnum(OracleCollectionStyle, 'tables')
+})
+
+const OracleCollectionRenderingMultiTable = Type.Object({
+	style: ExtractLiteralFromEnum(OracleCollectionStyle, 'multi_table'),
+	columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn))
+})
+
+export const OracleCollectionRendering = DiscriminatedUnion(
+	'style',
+	[OracleCollectionRenderingTables, OracleCollectionRenderingMultiTable],
+	{
+		$id: '#/$defs/OracleCollectionRendering',
+		description:
+			'Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.'
+	}
 )
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
 export const OracleTableStyle = JsonEnumFromRecord(
 	{
-		standalone_table: 'Render as a standalone table.',
+		standalone: 'Render as a standalone table.',
 		embed_in_row: 'Render as a table, within a row in another table.',
-		embed_as_column: 'Render as a single column of a table.'
+		column: 'Render as a single column of a table.'
 	},
 	{ $id: '#/$defs/OracleTableStyle' }
 )
 export type OracleTableStyle = Static<typeof OracleTableStyle>
 
-export const OracleTableRendering = Type.Object(
+const OracleTableRenderingStandalone = Type.Object({
+	style: ExtractLiteralFromEnum(OracleTableStyle, 'standalone'),
+	columns: Generic.Dictionary(Type.Ref(OracleTableColumn), {
+		default: {
+			roll: { label: 'Roll', content_type: 'roll' },
+			result: { label: 'Result', content_type: 'result' }
+		}
+	})
+})
+
+const OracleTableRenderingColumn = Type.Object({
+	style: ExtractLiteralFromEnum(OracleTableStyle, 'column')
+})
+
+const OracleTableRenderingEmbedInRow = Type.Object({
+	style: ExtractLiteralFromEnum(OracleTableStyle, 'embed_in_row')
+})
+
+export const OracleTableRendering = DiscriminatedUnion(
+	'style',
+	[
+		OracleTableRenderingStandalone,
+		OracleTableRenderingColumn,
+		OracleTableRenderingEmbedInRow
+	],
 	{
-		table_style: Type.Optional(Type.Ref(OracleTableStyle)),
-		columns: Generic.Dictionary(Type.Ref(OracleTableColumn), {
-			default: {
-				roll: { name: 'Roll', content_type: 'roll' },
-				result: { name: 'Result', content_type: 'result' }
+		$id: '#/$defs/OracleTableRendering',
+		description: 'Describes the presentation of this table.',
+		default: {
+			style: 'standalone',
+			columns: {
+				roll: { label: 'Roll', content_type: 'roll' },
+				result: { label: 'Result', content_type: 'result' }
 			}
-		})
-	},
-	{ $id: '#/$defs/OracleTableRendering' }
+		}
+	}
 )
 export type OracleTableRendering = Static<typeof OracleTableRendering>

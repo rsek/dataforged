@@ -29,7 +29,9 @@ export type NpcNature = Static<typeof NpcNature>
 const NpcMixin = Flatten([
 	Generic.CyclopediaMixin,
 	Type.Object({
-		rank: Type.Ref(Progress.ChallengeRank),
+		rank: Type.Ref(Progress.ChallengeRank, {
+			description: 'The suggested challenge rank for this NPC.'
+		}),
 		nature: Type.Ref(NpcNature),
 		drives: Type.Array(Type.Ref(Localize.MarkdownString)),
 		tactics: Type.Array(Type.Ref(Localize.MarkdownString))

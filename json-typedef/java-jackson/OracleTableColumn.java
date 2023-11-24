@@ -11,13 +11,12 @@ public class OracleTableColumn {
     @JsonProperty("content_type")
     private OracleTableColumnContentKey contentType;
 
+    @JsonProperty("label")
+    private Label label;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private CssColor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("name")
-    private Label name;
 
     public OracleTableColumn() {
     }
@@ -37,6 +36,22 @@ public class OracleTableColumn {
     }
 
     /**
+     * Getter for label.<p>
+     * The column's header text.
+     */
+    public Label getLabel() {
+        return label;
+    }
+
+    /**
+     * Setter for label.<p>
+     * The column's header text.
+     */
+    public void setLabel(Label label) {
+        this.label = label;
+    }
+
+    /**
      * Getter for color.<p>
      * The thematic color for this column.
      */
@@ -50,21 +65,5 @@ public class OracleTableColumn {
      */
     public void setColor(CssColor color) {
         this.color = color;
-    }
-
-    /**
-     * Getter for name.<p>
-     * The column's header text.
-     */
-    public Label getName() {
-        return name;
-    }
-
-    /**
-     * Setter for name.<p>
-     * The column's header text.
-     */
-    public void setName(Label name) {
-        this.name = name;
     }
 }

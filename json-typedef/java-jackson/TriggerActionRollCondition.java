@@ -42,7 +42,7 @@ public class TriggerActionRollCondition {
 
     /**
      * Getter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public List<ActionRollOption> getRollOptions() {
         return rollOptions;
@@ -50,7 +50,7 @@ public class TriggerActionRollCondition {
 
     /**
      * Setter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public void setRollOptions(List<ActionRollOption> rollOptions) {
         this.rollOptions = rollOptions;

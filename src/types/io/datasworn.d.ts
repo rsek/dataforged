@@ -5,108 +5,164 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type NamespaceID = string;
+export type NamespaceId = string;
 /**
- * A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).
+ * A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).
  */
 export type Label = string;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ * A description of this condition meter.
  */
 export type MarkdownString = string;
 /**
- * A localized plain text name or label.
+ * A label for this impact category.
  */
 export type Label1 = string;
-export type DictKey = string;
 /**
- * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
- */
-export type CSSColor = string;
-/**
- * A relative URL pointing to a vector image in the SVG format.
- */
-export type SVGImageURL = string;
-/**
- * A relative URL pointing to a raster image in the WEBP format.
- */
-export type WEBPImageURL = string;
-export type OracleCollectionStyle = "multi_table";
-/**
- * A localized plain text name or label.
- */
-export type Label2 = string;
-/**
- * The value(s) from each OracleTableRow that is rendered in this column.
- *
- *   * roll: Column displays the roll range (`min` and `max`) of each OracleTableRow.
- *   * result: Column displays the OracleTableRow's `result` key.
- *   * summary: Column displays the OracleTableRow's `summary` key.
- *   * description: Column displays the OracleTableRow's `description` key.
- */
-export type OracleTableColumnContentKey = "roll" | "result" | "summary" | "description";
-/**
- * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
- */
-export type CSSColor1 = string;
-/**
- * The key of the OracleTable (within this collection), whose data is used to render this column.
- */
-export type DictKey1 = string;
-export type OracleTableID = string;
-export type DiceNotation = string;
-/**
- *   * standalone_table: Render as a standalone table.
- *   * embed_in_row: Render as a table, within a row in another table.
- *   * embed_as_column: Render as a single column of a table.
- */
-export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
-/**
- * A localized plain text name or label.
- */
-export type Label3 = string;
-/**
- * The value(s) from each OracleTableRow that is rendered in this column.
- *
- *   * roll: Column displays the roll range (`min` and `max`) of each OracleTableRow.
- *   * result: Column displays the OracleTableRow's `result` key.
- *   * summary: Column displays the OracleTableRow's `summary` key.
- *   * description: Column displays the OracleTableRow's `description` key.
- */
-export type OracleTableColumnContentKey1 = "roll" | "result" | "summary" | "description";
-/**
- * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
- */
-export type CSSColor2 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ * A description of this impact category.
  */
 export type MarkdownString1 = string;
 /**
+ * The label for this impact.
+ */
+export type Label2 = string;
+/**
+ * A description of this impact.
+ */
+export type MarkdownString2 = string;
+/**
+ * A key used in a Datasworn dictionary object.
+ */
+export type DictKey = string;
+/**
+ * A label for this special track.
+ */
+export type Label3 = string;
+/**
+ * A description of this special track.
+ */
+export type MarkdownString3 = string;
+/**
+ * A label for this stat.
+ */
+export type Label4 = string;
+/**
+ * A description of this stat.
+ */
+export type MarkdownString4 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type OracleCollectionId = string;
+/**
+ * The primary name/label for this item.
+ */
+export type Label5 = string;
+/**
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
+ */
+export type Label6 = string;
+/**
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ */
+export type OracleCollectionId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor = string;
+/**
+ * An SVG icon associated with this collection.
+ */
+export type SvgImageUrl = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl = string;
+/**
+ * Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.
+ */
+export type OracleCollectionRendering = {
+  [k: string]: unknown;
+};
+/**
+ * A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the "description" key instead.
+ */
+export type MarkdownString5 = string;
+/**
+ * A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead.
+ */
+export type MarkdownString6 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type OracleTableId = string;
+/**
+ * The primary name/label for this item.
+ */
+export type Label7 = string;
+/**
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
+ */
+export type Label8 = string;
+/**
+ * An icon that represents this table.
+ */
+export type SvgImageUrl1 = string;
+/**
+ * Extra images associated with this table.
+ */
+export type WebpImageUrl1 = string;
+/**
+ * The roll used to select a result on this table.
+ */
+export type DiceNotation = string;
+/**
+ * Describes how how to render this table, when presenting it as a standalone table.
+ */
+export type OracleTableRendering = {
+  [k: string]: unknown;
+};
+/**
+ * A brief summary of the oracle table's intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the "description" key instead.
+ */
+export type MarkdownString7 = string;
+/**
+ * A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead.
+ */
+export type MarkdownString8 = string;
+/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString2 = string;
-export type AssetID = string;
-export type AtlasEntryID = string;
+export type MarkdownString9 = string;
+export type OracleTableId1 = string;
+export type AssetId = string;
+export type AtlasEntryId = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID = string;
-export type NpcID = string;
-export type DelveSiteDomainID = string;
-export type DelveSiteThemeID = string;
+export type MoveId = StandardMoveId | AssetMoveId;
 /**
- * Normally, rows will end with two numbers separated by a dash, indicating their dice range.
- *
- * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
+ * A move ID for a standard move.
  */
-export type OracleTableRowID = string | string;
+export type StandardMoveId = string;
+/**
+ * A move ID for an asset move.
+ */
+export type AssetMoveId = string;
+export type NpcId = string;
+export type RarityId = string;
+export type DelveSiteDomainId = string;
+export type DelveSiteThemeId = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type OracleTableRowId = string | string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl2 = string;
 /**
  * A string template that may be used in place of OracleTableRow#result.
  */
@@ -130,7 +186,7 @@ export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_
 /**
  * The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.
  */
-export type OracleTableID1 = string;
+export type OracleTableId2 = string;
 /**
  *   * common_noun: A common noun.
  *   * proper_noun: A proper noun.
@@ -150,203 +206,110 @@ export type PartOfSpeech =
   | "gerund"
   | "adjective"
   | "attributive_verb";
-export type PageNumber = number;
+/**
+ * The title of the source document.
+ */
+export type Title = string;
+/**
+ * An optional email contact for the author
+ */
+export type Email = string;
+/**
+ * An absolute URL pointing to the location where this element's license can be found.
+ *
+ * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
+ */
+export type License = string | null;
 /**
  * Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.
  */
-export type OracleTableID2 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type OracleCollectionID = string;
+export type OracleTableId3 = string;
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
-export type OracleCollectionID1 = string;
+export type OracleCollectionId2 = string;
 /**
- * A localized plain text name or label.
+ * The unique Datasworn ID for this item.
  */
-export type Label4 = string;
+export type AssetTypeId = string;
 /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export type AssetOptionField = SelectStatField | SelectEnhancementField | TextField;
-export type AssetOptionFieldID = string;
-/**
- * A localized plain text name or label.
- */
-export type Label5 = string;
-/**
- * The key of the currently selected choice from the `choices` property, or `null` if none is selected.
- */
-export type DictKey2 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label6 = string;
-/**
- * The current value of this input.
- */
-export type PlayerStat = string;
-/**
- * A localized plain text name or label.
- */
-export type Label7 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label8 = string;
-/**
- * The current value of this input.
- */
-export type PlayerStat1 = string;
-/**
- * A localized plain text name or label.
+ * The primary name/label for this item.
  */
 export type Label9 = string;
 /**
- * The key of the currently selected choice from the `choices` property, or `null` if none is selected.
- */
-export type DictKey3 = string;
-/**
- * A localized plain text name or label.
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
  */
 export type Label10 = string;
-export type AssetIDWildcard = string;
 /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
-export type AssetControlFieldEnhancement = AssetConditionMeterEnhancement;
-export type MoveEnhancement =
-  | MoveActionRollEnhancement
-  | MoveNoRollEnhancement
-  | MoveProgressRollEnhancement
-  | MoveSpecialTrackEnhancement;
+export type AssetTypeId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor1 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl3 = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl2 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString3 = string;
-/**
- *   * miss: An automatic miss.
- *   * weak_hit: An automatic weak hit.
- *   * strong_hit: An automatic strong hit.
- *   * player_choice: The player chooses which roll option to use.
- *   * highest: Use the roll option with the best/highest value.
- *   * lowest: Use the roll option with the worst/lowest value.
- *   * all: Use **every** roll option at once.
- */
-export type ActionRollMethod = "miss" | "weak_hit" | "strong_hit" | "player_choice" | "highest" | "lowest" | "all";
-export type ActionRollOption =
-  | RollOptionStat
-  | RollOptionConditionMeter
-  | RollOptionAssetControl
-  | RollOptionAssetOption
-  | RollOptionAttachedAssetControl
-  | RollOptionAttachedAssetOption
-  | RollOptionCustom;
-/**
- * A basic player character stat.
- */
-export type PlayerStat2 = string;
-/**
- * A basic, rollable player character resource.
- */
-export type PlayerConditionMeter = string;
-/**
- * The key of the asset control field.
- */
-export type DictKey4 = string;
-/**
- * The key of the asset option field.
- */
-export type DictKey5 = string;
-/**
- * The key of the asset control field.
- */
-export type DictKey6 = string;
-/**
- * The key of the asset option field.
- */
-export type DictKey7 = string;
-/**
- * A move ID with wildcards
- */
-export type MoveIDWithWildcard = string | string;
+export type MarkdownString10 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString4 = string;
+export type MarkdownString11 = string;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ * The unique Datasworn ID for this item.
  */
-export type MarkdownString5 = string;
+export type AssetId1 = string;
 /**
- *   * miss: An automatic miss.
- *   * weak_hit: An automatic weak hit.
- *   * strong_hit: An automatic strong hit.
- *   * progress_roll: Make a progress roll on a progress track associated with this move.
- */
-export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString6 = string;
-/**
- *   * miss: An automatic miss.
- *   * weak_hit: An automatic weak hit.
- *   * strong_hit: An automatic strong hit.
- *   * player_choice: The player chooses which roll option to use.
- *   * highest: Use the roll option with the best/highest value.
- *   * lowest: Use the roll option with the worst/lowest value.
- *   * all: Use **every** roll option at once.
- */
-export type SpecialTrackRollMethod =
-  | "miss"
-  | "weak_hit"
-  | "strong_hit"
-  | "player_choice"
-  | "highest"
-  | "lowest"
-  | "all";
-/**
- * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
- * 'Canonical' examples:
- *   * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.
- *   * `failure_track`, described in Ironsworn: Delve
- *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
- *
- *
- */
-export type SpecialTrackType = string;
-/**
- * A localized plain text name or label.
+ * The primary name/label for this item.
  */
 export type Label11 = string;
 /**
- * A localized plain text name or label.
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
  */
 export type Label12 = string;
 /**
- * A localized plain text name or label.
+ * A localized category label for this asset. This is the surtitle above the asset's name on the card.
  */
 export type Label13 = string;
-export type AssetAbilityID = string;
+/**
+ * A thematic color associated with this asset.
+ */
+export type CssColor2 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl4 = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
-export type AssetAbilityOptionField = TextField1;
-export type AssetAbilityOptionFieldID = string;
+export type AssetOptionField = {
+  [k: string]: unknown;
+};
+export type AssetIdWildcard = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString12 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type AssetAbilityId = string;
 /**
  * A localized plain text name or label.
  */
@@ -355,27 +318,61 @@ export type Label14 = string;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
-export type AssetAbilityControlField =
-  | ClockField
-  | CounterField
-  | {
-      id: AssetAbilityControlFieldID;
-      name: Label17;
-      field_type: "checkbox";
-      /**
-       * Is the box checked?
-       */
-      value: boolean;
-      /**
-       * Does this field disable the asset when its value is set to `true`?
-       */
-      disables_asset: boolean;
-      /**
-       * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
-       */
-      is_impact: boolean;
-    };
-export type AssetAbilityControlFieldID = string;
+export type AssetAbilityOptionField = {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ */
+export type AssetAbilityControlField = {
+  [k: string]: unknown;
+} & {
+  [k: string]: unknown;
+} & {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ */
+export type AssetControlFieldEnhancement = {
+  [k: string]: unknown;
+};
+export type MoveEnhancement = {
+  [k: string]: unknown;
+} & {
+  [k: string]: unknown;
+} & {
+  [k: string]: unknown;
+} & {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ */
+export type Move = {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ */
+export type AssetControlField = {
+  [k: string]: unknown;
+};
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type AssetTypeId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type AtlasId = string;
 /**
  * A localized plain text name or label.
  */
@@ -385,65 +382,21 @@ export type Label15 = string;
  */
 export type Label16 = string;
 /**
- * A localized plain text name or label.
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
-export type Label17 = string;
+export type AtlasId1 = string;
 /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
+ * A thematic color associated with this collection.
  */
-export type Move = MoveActionRoll | MoveNoRoll | MoveProgressRoll | MoveSpecialTrack;
+export type CssColor3 = string;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ * A relative URL pointing to a vector image in the SVG format.
  */
-export type MarkdownString7 = string;
+export type SvgImageUrl5 = string;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ * Extra images associated with this collection.
  */
-export type MarkdownString8 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString9 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString10 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString11 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString12 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID2 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label18 = string;
+export type WebpImageUrl3 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -457,12 +410,84 @@ export type MarkdownString13 = string;
  */
 export type MarkdownString14 = string;
 /**
- *   * miss: An automatic miss.
- *   * weak_hit: An automatic weak hit.
- *   * strong_hit: An automatic strong hit.
- *   * progress_roll: Make a progress roll on a progress track associated with this move.
+ * The unique Datasworn ID for this item.
  */
-export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
+export type AtlasEntryId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label17 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label18 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type AtlasId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DelveSiteId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label19 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label20 = string;
+/**
+ * Challenge rank, represented as an integer.
+ *
+ *   * 1: Troublesome
+ *   * 2: Dangerous
+ *   * 3: Formidable
+ *   * 4: Extreme
+ *   * 5: Epic
+ */
+export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DelveSiteDenizenId = string;
+export type DelveSiteDenizenFrequency = "very_common" | "common" | "uncommon" | "rare" | "unforeseen";
+/**
+ * The ID of the relevant NPC entry, if one is specified.
+ */
+export type NpcId1 = string;
+/**
+ * The ID of an atlas entry representing the region in which this delve site is located.
+ */
+export type AtlasEntryId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type MoveCategoryId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label21 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label22 = string;
+/**
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ */
+export type MoveCategoryId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor4 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl6 = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl4 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -470,15 +495,43 @@ export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress
  */
 export type MarkdownString15 = string;
 /**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID3 = string;
-/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString16 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type MoveCategoryId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type NpcCollectionId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label23 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label24 = string;
+/**
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ */
+export type NpcCollectionId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor5 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl7 = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl5 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -492,127 +545,9 @@ export type MarkdownString17 = string;
  */
 export type MarkdownString18 = string;
 /**
- * A move ID, for a standard move or a unique asset move
+ * The unique Datasworn ID for this item.
  */
-export type MoveID4 = string;
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export type AssetControlField =
-  | AssetConditionMeter
-  | SelectEnhancementField1
-  | {
-      id: AssetControlFieldID;
-      name: Label26;
-      field_type: "checkbox";
-      /**
-       * Is the box checked?
-       */
-      value: boolean;
-      /**
-       * Does this field disable the asset when its value is set to `true`?
-       */
-      disables_asset: boolean;
-      /**
-       * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
-       */
-      is_impact: boolean;
-    }
-  | {
-      id: AssetControlFieldID;
-      name: Label27;
-      field_type: "card_flip";
-      /**
-       * Is the card flipped over?
-       */
-      value: boolean;
-      /**
-       * Does this field disable the asset when its value is set to `true`?
-       */
-      disables_asset: boolean;
-      /**
-       * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
-       */
-      is_impact: boolean;
-    };
-export type AssetControlFieldID = string;
-/**
- * A localized plain text name or label.
- */
-export type Label19 = string;
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export type AssetConditionMeterControlField =
-  | {
-      id: AssetConditionMeterControlFieldID;
-      name: Label20;
-      field_type: "checkbox";
-      /**
-       * Is the box checked?
-       */
-      value: boolean;
-      /**
-       * Does this field disable the asset when its value is set to `true`?
-       */
-      disables_asset: boolean;
-      /**
-       * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
-       */
-      is_impact: boolean;
-    }
-  | {
-      id: AssetConditionMeterControlFieldID;
-      name: Label21;
-      field_type: "card_flip";
-      /**
-       * Is the card flipped over?
-       */
-      value: boolean;
-      /**
-       * Does this field disable the asset when its value is set to `true`?
-       */
-      disables_asset: boolean;
-      /**
-       * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
-       */
-      is_impact: boolean;
-    };
-export type AssetConditionMeterControlFieldID = string;
-/**
- * A localized plain text name or label.
- */
-export type Label20 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label21 = string;
-/**
- * A move ID with wildcards
- */
-export type MoveIDWithWildcard1 = string | string;
-/**
- * A move ID with wildcards
- */
-export type MoveIDWithWildcard2 = string | string;
-/**
- * A localized plain text name or label.
- */
-export type Label22 = string;
-/**
- * The key of the currently selected choice from the `choices` property, or `null` if none is selected.
- */
-export type DictKey8 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label23 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label24 = string;
+export type NpcId2 = string;
 /**
  * A localized plain text name or label.
  */
@@ -622,55 +557,6 @@ export type Label25 = string;
  */
 export type Label26 = string;
 /**
- * A localized plain text name or label.
- */
-export type Label27 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type AssetTypeID = string;
-/**
- * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
- */
-export type AssetTypeID1 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type AtlasID = string;
-/**
- * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
- */
-export type AtlasID1 = string;
-export type DelveSiteID = string;
-/**
- * Challenge rank, represented as an integer:
- *
- *   * 1: Troublesome
- *   * 2: Dangerous
- *   * 3: Formidable
- *   * 4: Extreme
- *   * 5: Epic
- */
-export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
-export type DelveSiteDenizenID = string;
-export type DelveSiteDenizenFrequency = "very_common" | "common" | "uncommon" | "rare" | "unforeseen";
-/**
- * The ID of the relevant NPC entry, if one is specified.
- */
-export type NpcID1 = string;
-/**
- * The ID of an atlas entry representing the region in which this delve site is located.
- */
-export type AtlasEntryID1 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type MoveCategoryID = string;
-/**
- * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
- */
-export type MoveCategoryID1 = string;
-/**
  * A localized category label describing the nature of this NPC.
  *
  * In Ironsworn classic, this is probably the singular form of the parent collection's name.
@@ -678,30 +564,116 @@ export type MoveCategoryID1 = string;
  * For Starforged, see the table on p. 258 for examples.
  */
 export type NpcNature = string;
-export type NpcVariantID = string;
 /**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ * Challenge rank, represented as an integer.
+ *
+ *   * 1: Troublesome
+ *   * 2: Dangerous
+ *   * 3: Formidable
+ *   * 4: Extreme
+ *   * 5: Epic
  */
-export type NpcCollectionID = string;
+export type ChallengeRank1 = 1 | 2 | 3 | 4 | 5;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type NpcVariantId = string;
+/**
+ * Challenge rank, represented as an integer.
+ *
+ *   * 1: Troublesome
+ *   * 2: Dangerous
+ *   * 3: Formidable
+ *   * 4: Extreme
+ *   * 5: Epic
+ */
+export type ChallengeRank2 = 1 | 2 | 3 | 4 | 5;
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
-export type NpcCollectionID1 = string;
-export type RarityID = string;
+export type NpcCollectionId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type RarityId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label27 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label28 = string;
 /**
  * The asset augmented by this rarity.
  */
-export type AssetID1 = string;
-export type ThemeFeatureRowID = string;
-export type ThemeDangerRowID = string;
-export type TruthID = string;
-export type TruthOptionID = string;
+export type AssetId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DelveSiteDomainId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label29 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label30 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DomainFeatureRowId = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DomainDangerRowId = string;
+/**
+ * An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.
+ */
+export type OracleTableId4 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DelveSiteThemeId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label31 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label32 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type ThemeFeatureRowId = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type ThemeDangerRowId = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type TruthId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label33 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label34 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type TruthOptionId = string;
 
 /**
  * Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.
  */
 export interface Datasworn {
-  id: NamespaceID;
+  id: NamespaceId;
   rules?: Rules;
   /**
    * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
@@ -763,28 +735,45 @@ export interface Datasworn {
   truths?: {
     [k: string]: Truth;
   };
-  source: Source;
+  source: Source14;
 }
+/**
+ * Describes rules for player characters in this ruleset, such as stats and condition meters.
+ */
 export interface Rules {
+  /**
+   * Describes the standard condition meters used by player characters in this ruleset.
+   */
   condition_meters: {
     [k: string]: ConditionMeterRule;
   };
+  /**
+   * Describes the standard impacts/debilities used by player characters in this ruleset.
+   */
   impacts: {
     [k: string]: ImpactCategory;
   };
+  /**
+   * Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+   */
   special_tracks: {
     [k: string]: SpecialTrackRule;
   };
+  /**
+   * Describes the standard stats used by player characters in this ruleset.
+   */
   stats: {
     [k: string]: StatRule;
   };
 }
 /**
+ * Describes a standard player character condition meter.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface ConditionMeterRule {
-  name: Label;
+  label: Label;
   /**
    * The minimum value of this meter.
    */
@@ -793,140 +782,149 @@ export interface ConditionMeterRule {
    * The maximum value of this meter.
    */
   max: number;
+  /**
+   * The current value of this meter.
+   */
+  value: number;
+  /**
+   * Is this condition meter shared by all players?
+   */
   shared: boolean;
   description: MarkdownString;
 }
 /**
+ * Describes a category of standard impacts/debilities.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface ImpactCategory {
-  name: Label1;
-  description: MarkdownString;
+  label: Label1;
+  description: MarkdownString1;
+  /**
+   * A dictionary object of the Impacts in this category.
+   */
   contents: {
     [k: string]: ImpactRule;
   };
 }
 /**
+ * Describes a standard impact/debility.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface ImpactRule {
-  name: Label1;
+  label: Label2;
+  /**
+   * Is this impact applied to all players at once?
+   */
   shared: boolean;
-  description: MarkdownString;
+  description: MarkdownString2;
+  /**
+   * Is this impact permanent?
+   */
   permanent: boolean;
+  /**
+   * Keys of ruleset condition meters, to which this impact prevents recovery.
+   */
   prevents_recovery: DictKey[];
 }
 /**
+ * Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface SpecialTrackRule {
-  name: Label1;
+  label: Label3;
+  /**
+   * Is this track shared by all players?
+   */
   shared: boolean;
-  description: MarkdownString;
+  description: MarkdownString3;
+  /**
+   * Is this track an optional rule?
+   */
   optional: boolean;
 }
 /**
+ * Describes a standard player character stat.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface StatRule {
-  name: Label1;
-  description: MarkdownString;
+  label: Label4;
+  description: MarkdownString4;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface OracleCollection {
-  id: string;
-  name: Label1;
-  canonical_name?: Label1;
-  color?: CSSColor;
-  icon?: SVGImageURL;
-  images?: WEBPImageURL[];
+  id: OracleCollectionId;
+  name: Label5;
+  canonical_name?: Label6;
+  enhances?: OracleCollectionId1;
+  color?: CssColor;
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
   rendering?: OracleCollectionRendering;
-  summary?: MarkdownString;
-  description?: MarkdownString;
-  contents?: {
+  summary?: MarkdownString5;
+  description?: MarkdownString6;
+  contents: {
     [k: string]: OracleTable;
   };
-  collections?: {
+  collections: {
     [k: string]: OracleCollection;
   };
   suggestions?: Suggestions;
-  source: Source;
-  enhances?: OracleCollectionID;
-  replaces?: OracleCollectionID1;
-}
-export interface OracleCollectionRendering {
-  color?: CSSColor;
-  table_style?: OracleCollectionStyle;
-  columns: {
-    [k: string]: OracleCollectionTableColumn;
-  };
-}
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface OracleCollectionTableColumn {
-  name?: Label2;
-  content_type: OracleTableColumnContentKey;
-  color?: CSSColor1;
-  table_key: DictKey1;
+  source: Source1;
+  replaces?: OracleCollectionId2;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface OracleTable {
-  id: OracleTableID;
-  name: Label1;
-  canonical_name?: Label1;
-  icon?: SVGImageURL;
-  images?: WEBPImageURL[];
+  id: OracleTableId;
+  name: Label7;
+  canonical_name?: Label8;
+  icon?: SvgImageUrl1;
+  images?: WebpImageUrl1[];
   dice: DiceNotation;
   rendering?: OracleTableRendering;
-  summary?: MarkdownString1;
-  description?: MarkdownString2;
-  match?: MatchBehavior;
+  summary?: MarkdownString7;
+  description?: MarkdownString8;
+  match?: OracleTableMatchBehavior;
   suggestions?: Suggestions;
   table: OracleTableRow[];
   source: Source;
-  replaces?: OracleTableID2;
-}
-export interface OracleTableRendering {
-  table_style?: OracleTableStyle;
-  columns: {
-    [k: string]: OracleTableColumn;
-  };
+  _i18n?: I18NHints1;
+  replaces?: OracleTableId3;
 }
 /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
+ * Most oracle tables are insensitive to matches, but a few define special match behavior.
  */
-export interface OracleTableColumn {
-  name?: Label3;
-  content_type: OracleTableColumnContentKey1;
-  color?: CSSColor2;
-}
-export interface MatchBehavior {
-  text: MarkdownString;
+export interface OracleTableMatchBehavior {
+  text: MarkdownString9;
 }
 export interface Suggestions {
-  oracles?: OracleTableID[];
-  assets?: AssetID[];
-  atlas?: AtlasEntryID[];
-  moves?: MoveID[];
-  npcs?: NpcID[];
-  site_domains?: DelveSiteDomainID[];
-  site_themes?: DelveSiteThemeID[];
+  oracles?: OracleTableId1[];
+  assets?: AssetId[];
+  atlas?: AtlasEntryId[];
+  moves?: MoveId[];
+  npcs?: NpcId[];
+  rarities?: RarityId[];
+  site_domains?: DelveSiteDomainId[];
+  site_themes?: DelveSiteThemeId[];
 }
+/**
+ * An array of objects, each representing a single row of the table.
+ */
 export interface OracleTableRow {
-  id: OracleTableRowID;
+  id: OracleTableRowId;
   /**
    * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
@@ -935,13 +933,13 @@ export interface OracleTableRow {
    * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
   max: number | null;
-  icon?: SVGImageURL;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  icon?: SvgImageUrl2;
+  result: MarkdownString9;
+  summary?: MarkdownString9;
+  description?: MarkdownString9;
   template?: OracleRollTemplate;
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableID;
+  embed_table?: OracleTableId1;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -961,8 +959,8 @@ export interface OracleTableRoll {
    */
   auto?: boolean;
   method?: OracleTableRollMethod;
-  oracle?: OracleTableID1;
-  times: number;
+  oracle?: OracleTableId2;
+  times?: number;
 }
 export interface I18NHints {
   result?: I18NHint;
@@ -978,18 +976,18 @@ export interface I18NHint {
   part_of_speech?: PartOfSpeech;
 }
 /**
- * Metadata describing the original source of this item
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
 export interface Source {
-  /**
-   * The title of the source document.
-   */
-  title: string;
+  title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
    */
   date: string;
-  page?: PageNumber;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
   /**
    * @minItems 1
    */
@@ -997,24 +995,71 @@ export interface Source {
     {
       name: string;
       /**
-       * An optional email contact for the author
+       * An optional URL for the author's website.
        */
-      email?: string;
+      url?: string;
+      email?: Email;
     },
     ...{
       name: string;
       /**
-       * An optional email contact for the author
+       * An optional URL for the author's website.
        */
-      email?: string;
+      url?: string;
+      email?: Email;
     }[]
   ];
+  license: License;
   /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
+   * An absolute URL where the source document is available.
    */
-  license: string | null;
+  url: string;
+}
+export interface I18NHints1 {
+  result?: I18NHint;
+  summary?: I18NHint;
+  description?: I18NHint;
+  template?: {
+    result?: I18NHint;
+    summary?: I18NHint;
+    description?: I18NHint;
+  };
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source1 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
   /**
    * An absolute URL where the source document is available.
    */
@@ -1025,32 +1070,33 @@ export interface Source {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface AssetType {
-  id: string;
-  name: Label1;
-  canonical_name?: Label1;
-  color?: CSSColor;
-  icon?: SVGImageURL;
-  images?: WEBPImageURL[];
-  summary?: MarkdownString;
-  description?: MarkdownString;
-  contents?: {
+  id: AssetTypeId;
+  name: Label9;
+  canonical_name?: Label10;
+  enhances?: AssetTypeId1;
+  color?: CssColor1;
+  icon?: SvgImageUrl3;
+  images?: WebpImageUrl2[];
+  summary?: MarkdownString10;
+  description?: MarkdownString11;
+  contents: {
     [k: string]: Asset;
   };
   suggestions?: Suggestions;
-  source: Source;
-  enhances?: AssetTypeID;
-  replaces?: AssetTypeID1;
+  source: Source3;
+  replaces?: AssetTypeId2;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Asset {
-  id: AssetID;
-  name: Label1;
-  asset_type: Label4;
-  color?: CSSColor;
-  icon?: SVGImageURL;
+  id: AssetId1;
+  name: Label11;
+  canonical_name?: Label12;
+  asset_type: Label13;
+  color?: CssColor2;
+  icon?: SvgImageUrl4;
   /**
    * Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.
    */
@@ -1066,7 +1112,7 @@ export interface Asset {
    */
   shared: boolean;
   attachments?: AssetAttachment;
-  requirement?: MarkdownString;
+  requirement?: MarkdownString12;
   abilities: AssetAbility[];
   /**
    * Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.
@@ -1075,100 +1121,55 @@ export interface Asset {
     [k: string]: AssetControlField;
   };
   suggestions?: Suggestions;
-  source: Source;
+  source: Source2;
 }
 /**
- * Represents a list of mutually exclusive choices.
+ * Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.
  */
-export interface SelectStatField {
-  id: AssetOptionFieldID;
-  name: Label5;
-  field_type: "select_stat";
+export interface AssetAttachment {
   /**
-   * The current value of this input.
+   * Null if there's no upper limit to the number of attached assets.
    */
-  value: DictKey2 | null;
-  choices: {
-    /**
-     * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "^([a-z][a-z_]*)$".
-     */
-    [k: string]: SelectStatOption | SelectStatOptionGroup;
+  max: number | null;
+  /**
+   * Asset IDs (which may be wildcards) that may be attached to this asset
+   */
+  assets: AssetIdWildcard[];
+}
+/**
+ * Abilities provided by this asset. Most assets have 3.
+ */
+export interface AssetAbility {
+  id: AssetAbilityId;
+  name?: Label14;
+  /**
+   * Is this asset ability enabled?
+   */
+  enabled: boolean;
+  /**
+   * Fields that are expected to be set once and remain the same through the life of the asset.
+   */
+  options?: {
+    [k: string]: AssetAbilityOptionField;
   };
-}
-/**
- * Represents an option in a list of choices.
- */
-export interface SelectStatOption {
-  name: Label6;
-  value: PlayerStat;
-  option_type: "option";
+  text: MarkdownString9;
   /**
-   * Is this option currently selected?
+   * Fields whose values are expected to change over the life of the asset.
    */
-  selected?: boolean;
-}
-/**
- * Represents a grouping of options in a list of choices.
- */
-export interface SelectStatOptionGroup {
-  name: Label7;
-  choices: {
-    [k: string]: SelectStatOption1;
+  controls?: {
+    [k: string]: AssetAbilityControlField;
   };
-  option_type: "option_group";
-}
-/**
- * Represents an option in a list of choices.
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface SelectStatOption1 {
-  name: Label8;
-  value: PlayerStat1;
-  option_type: "option";
+  enhance_asset?: AssetEnhancement;
   /**
-   * Is this option currently selected?
+   * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
    */
-  selected?: boolean;
-}
-/**
- * Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
- */
-export interface SelectEnhancementField {
-  id: AssetOptionFieldID;
-  name: Label9;
-  field_type: "select_enhancement";
+  enhance_moves?: MoveEnhancement[];
   /**
-   * The current value of this input.
+   * Unique moves added by this asset ability.
    */
-  value: DictKey3 | null;
-  choices: {
-    /**
-     * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "^([a-z][a-z_]*)$".
-     */
-    [k: string]: SelectEnhancementOption | SelectEnhancementOptionGroup;
+  moves?: {
+    [k: string]: Move;
   };
-}
-/**
- * Represents an option in a list of choices.
- */
-export interface SelectEnhancementOption {
-  name: Label10;
-  /**
-   * The current value of this input.
-   */
-  value: {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-  };
-  option_type: "option";
-  /**
-   * Is this option currently selected?
-   */
-  selected?: boolean;
 }
 /**
  * Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
@@ -1192,595 +1193,108 @@ export interface AssetEnhancement {
   suggestions?: Suggestions;
 }
 /**
- * Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface AssetAttachment {
+export interface Source2 {
+  title: Title;
   /**
-   * Null if there's no upper limit to the number of attached assets.
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
    */
-  max: number | null;
+  date: string;
   /**
-   * Asset IDs (which may be wildcards) that may be attached to this asset
+   * The page number where this item is described in full.
    */
-  assets: AssetIDWildcard[];
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
 }
 /**
- * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface AssetConditionMeterEnhancement {
-  field_type: "condition_meter";
+export interface Source3 {
+  title: Title;
   /**
-   * The maximum value of this meter.
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
    */
-  max: number;
-}
-export interface MoveActionRollEnhancement {
+  date: string;
   /**
-   * A move that makes an action roll.
+   * The page number where this item is described in full.
    */
-  roll_type: "action_roll";
-  trigger?: TriggerActionRollEnhancement;
-  enhances?: MoveIDWithWildcard[];
-}
-export interface TriggerActionRollEnhancement {
-  conditions: TriggerActionRollConditionEnhancement[];
-}
-export interface TriggerActionRollConditionEnhancement {
-  text?: MarkdownString3;
-  by?: TriggerBy;
+  page?: number;
   /**
-   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
+   * @minItems 1
    */
-  method: ActionRollMethod | null;
-  roll_options: ActionRollOption[] | null;
-}
-/**
- * Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.
- */
-export interface TriggerBy {
-  ally: boolean;
-  player: boolean;
-}
-export interface RollOptionStat {
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
   /**
-   * Roll using a standard player character stat.
+   * An absolute URL where the source document is available.
    */
-  using: "stat";
-  stat: PlayerStat2;
-}
-export interface RollOptionConditionMeter {
-  /**
-   * Roll using the value of a standard player condition meter.
-   */
-  using: "condition_meter";
-  condition_meter: PlayerConditionMeter;
-}
-export interface RollOptionAssetControl {
-  /**
-   * Roll using the value of an asset control.
-   */
-  using: "asset_control";
-  /**
-   * Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
-   */
-  assets: AssetIDWildcard[] | null;
-  control: DictKey4;
-}
-export interface RollOptionAssetOption {
-  /**
-   * Roll using the value of an asset option.
-   */
-  using: "asset_option";
-  /**
-   * Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
-   */
-  assets: AssetIDWildcard[] | null;
-  option: DictKey5;
-}
-export interface RollOptionAttachedAssetControl {
-  /**
-   * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
-   */
-  using: "attached_asset_control";
-  control: DictKey6;
-}
-export interface RollOptionAttachedAssetOption {
-  /**
-   * Roll using the value of an attached asset option.
-   */
-  using: "attached_asset_option";
-  option: DictKey7;
-}
-export interface RollOptionCustom {
-  name: Label1;
-  value: number;
-  /**
-   * Roll using an integer value with customizable labels.
-   */
-  using: "custom";
-}
-export interface MoveNoRollEnhancement {
-  /**
-   * A move that makes no action rolls or progress rolls.
-   */
-  roll_type: "no_roll";
-  trigger?: TriggerNoRollEnhancement;
-  enhances?: MoveIDWithWildcard[];
-}
-export interface TriggerNoRollEnhancement {
-  conditions: TriggerNoRollCondition[];
-}
-export interface TriggerNoRollCondition {
-  text?: MarkdownString4;
-  by?: TriggerBy;
-  method: null;
-  roll_options: null;
-}
-export interface MoveProgressRollEnhancement {
-  /**
-   * A progress move that rolls on a standard progress track type (defined by this move).
-   */
-  roll_type: "progress_roll";
-  trigger?: TriggerProgressRollEnhancement;
-  enhances?: MoveIDWithWildcard[];
-}
-export interface TriggerProgressRollEnhancement {
-  conditions: TriggerProgressRollConditionEnhancement[];
-}
-export interface TriggerProgressRollConditionEnhancement {
-  text?: MarkdownString5;
-  by?: TriggerBy;
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
-   */
-  method: ProgressRollMethod | null;
-  roll_options: ProgressRollOption[] | null;
-}
-export interface ProgressRollOption {
-  using: "progress_track";
-}
-export interface MoveSpecialTrackEnhancement {
-  /**
-   * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
-   */
-  roll_type: "special_track";
-  trigger?: TriggerSpecialTrackEnhancement;
-  enhances?: MoveIDWithWildcard[];
-}
-export interface TriggerSpecialTrackEnhancement {
-  conditions: TriggerSpecialTrackConditionEnhancement[];
-}
-/**
- * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
- */
-export interface TriggerSpecialTrackConditionEnhancement {
-  text?: MarkdownString6;
-  by?: TriggerBy;
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
-   */
-  method: SpecialTrackRollMethod | null;
-  roll_options: TriggerSpecialTrackConditionOption[] | null;
-}
-export interface TriggerSpecialTrackConditionOption {
-  using: SpecialTrackType;
-}
-/**
- * Represents a grouping of options in a list of choices.
- */
-export interface SelectEnhancementOptionGroup {
-  name: Label11;
-  choices: {
-    [k: string]: SelectEnhancementOption1;
-  };
-  option_type: "option_group";
-}
-/**
- * Represents an option in a list of choices.
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface SelectEnhancementOption1 {
-  name: Label12;
-  /**
-   * The current value of this input.
-   */
-  value: {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-  };
-  option_type: "option";
-  /**
-   * Is this option currently selected?
-   */
-  selected?: boolean;
-}
-/**
- * Represents an input that accepts plain text.
- */
-export interface TextField {
-  id: AssetOptionFieldID;
-  name: Label13;
-  field_type: "text";
-  /**
-   * The content of this text input, or `null` if it's empty
-   */
-  value: string | null;
-}
-/**
- * Abilities provided by this asset. Most assets have 3.
- */
-export interface AssetAbility {
-  id: AssetAbilityID;
-  name?: Label1;
-  /**
-   * Is this asset ability enabled?
-   */
-  enabled: boolean;
-  /**
-   * Fields that are expected to be set once and remain the same through the life of the asset.
-   */
-  options?: {
-    [k: string]: AssetAbilityOptionField;
-  };
-  text: MarkdownString;
-  /**
-   * Fields whose values are expected to change over the life of the asset.
-   */
-  controls?: {
-    [k: string]: AssetAbilityControlField;
-  };
-  enhance_asset?: AssetEnhancement1;
-  /**
-   * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
-   */
-  enhance_moves?: MoveEnhancement[];
-  /**
-   * Unique moves added by this asset ability.
-   */
-  moves?: {
-    [k: string]: Move;
-  };
-}
-/**
- * Represents an input that accepts plain text.
- */
-export interface TextField1 {
-  id: AssetAbilityOptionFieldID;
-  name: Label14;
-  field_type: "text";
-  /**
-   * The content of this text input, or `null` if it's empty
-   */
-  value: string | null;
-}
-/**
- * A clock with 4, 6, 8, or 10 segments.
- */
-export interface ClockField {
-  id: AssetAbilityControlFieldID;
-  name: Label15;
-  field_type: "clock";
-  /**
-   * The minimum number of filled clock segments. This is always 0.
-   */
-  min: 0;
-  /**
-   * The size of the clock -- in other words, the maximum number of filled clock segments.
-   */
-  max: 4 | 6 | 8 | 10;
-  /**
-   * The current number of filled clock segments.
-   */
-  value: number;
-}
-/**
- * A counter that starts at zero, with an optional maximum value.
- */
-export interface CounterField {
-  id: AssetAbilityControlFieldID;
-  name: Label16;
-  field_type: "counter";
-  /**
-   * The (inclusive) minimum value.
-   */
-  min: 0;
-  /**
-   * The (inclusive) maximum value.
-   */
-  max: number | null;
-  /**
-   * The current value of this input.
-   */
-  value: number;
-}
-/**
- * Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
- */
-export interface AssetEnhancement1 {
-  /**
-   * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
-   */
-  count_as_impact?: boolean;
-  /**
-   * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
-   */
-  shared?: boolean;
-  attachments?: AssetAttachment;
-  /**
-   * Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.
-   */
-  controls?: {
-    [k: string]: AssetControlFieldEnhancement;
-  };
-  suggestions?: Suggestions;
-}
-/**
- * A move that makes an action roll.
- */
-export interface MoveActionRoll {
-  id: MoveID;
-  name: Label1;
-  canonical_name?: Label1;
-  /**
-   * A move that makes an action roll.
-   */
-  roll_type: "action_roll";
-  trigger: TriggerActionRoll;
-  text: MarkdownString9;
-  outcomes: MoveOutcomes;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
-  replaces?: MoveID1;
-}
-export interface TriggerActionRoll {
-  text: MarkdownString7;
-  conditions: TriggerActionRollCondition[];
-}
-export interface TriggerActionRollCondition {
-  text?: MarkdownString8;
-  by?: TriggerBy;
-  method: ActionRollMethod;
-  /**
-   * The options available when rolling with this trigger.
-   */
-  roll_options: ActionRollOption[];
-}
-/**
- * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
- *
- *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
- */
-export interface MoveOutcomes {
-  strong_hit: MoveOutcome;
-  weak_hit: MoveOutcome;
-  miss: MoveOutcome;
-}
-export interface MoveOutcome {
-  text: MarkdownString10;
-}
-export interface MoveNoRoll {
-  id: MoveID;
-  name: Label1;
-  canonical_name?: Label1;
-  /**
-   * A move that makes no action rolls or progress rolls.
-   */
-  roll_type: "no_roll";
-  trigger: TriggerNoRoll;
-  text: MarkdownString12;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
-  replaces?: MoveID2;
-}
-export interface TriggerNoRoll {
-  text: MarkdownString11;
-  conditions?: TriggerNoRollCondition[];
-}
-/**
- * A progress move that rolls on a standard progress track type (defined by the move object).
- */
-export interface MoveProgressRoll {
-  id: MoveID;
-  name: Label1;
-  canonical_name?: Label1;
-  /**
-   * A progress move that rolls on a standard progress track type (defined by this move).
-   */
-  roll_type: "progress_roll";
-  track_label: Label18;
-  trigger: TriggerProgressRoll;
-  text: MarkdownString15;
-  outcomes: MoveOutcomes;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
-  replaces?: MoveID3;
-}
-export interface TriggerProgressRoll {
-  text: MarkdownString13;
-  conditions: TriggerProgressRollCondition[];
-}
-export interface TriggerProgressRollCondition {
-  text?: MarkdownString14;
-  by?: TriggerBy;
-  method: ProgressRollMethod1;
-  /**
-   * The options available when rolling with this trigger.
-   */
-  roll_options: ProgressRollOption[];
-}
-export interface MoveSpecialTrack {
-  id: MoveID;
-  name: Label1;
-  canonical_name?: Label1;
-  /**
-   * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
-   */
-  roll_type: "special_track";
-  trigger: TriggerSpecialTrack;
-  text: MarkdownString18;
-  outcomes: MoveOutcomes;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
-  replaces?: MoveID4;
-}
-export interface TriggerSpecialTrack {
-  text: MarkdownString16;
-  conditions: TriggerSpecialTrackCondition[];
-}
-export interface TriggerSpecialTrackCondition {
-  text?: MarkdownString17;
-  by?: TriggerBy;
-  method: SpecialTrackRollMethod;
-  /**
-   * The options available when rolling with this trigger.
-   */
-  roll_options: TriggerSpecialTrackConditionOption[];
-}
-/**
- * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
- */
-export interface AssetConditionMeter {
-  id: AssetControlFieldID;
-  name: Label19;
-  field_type: "condition_meter";
-  /**
-   * The minimum value of this meter.
-   */
-  min: 0;
-  /**
-   * The maximum value of this meter.
-   */
-  max: number;
-  /**
-   * The current value of this meter.
-   */
-  value: number;
-  controls?: {
-    [k: string]: AssetConditionMeterControlField;
-  };
-  /**
-   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
-   */
-  moves?: {
-    /**
-     * The ID(s) of recovery moves associated with this meter.
-     */
-    recover?: MoveIDWithWildcard1[];
-    /**
-     * The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.
-     */
-    suffer?: MoveIDWithWildcard2[];
-  };
-}
-/**
- * Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
- */
-export interface SelectEnhancementField1 {
-  id: AssetControlFieldID;
-  name: Label22;
-  field_type: "select_enhancement";
-  /**
-   * The current value of this input.
-   */
-  value: DictKey8 | null;
-  choices: {
-    /**
-     * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "^([a-z][a-z_]*)$".
-     */
-    [k: string]: SelectEnhancementOption2 | SelectEnhancementOptionGroup1;
-  };
-}
-/**
- * Represents an option in a list of choices.
- */
-export interface SelectEnhancementOption2 {
-  name: Label23;
-  /**
-   * The current value of this input.
-   */
-  value: {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-  };
-  option_type: "option";
-  /**
-   * Is this option currently selected?
-   */
-  selected?: boolean;
-}
-/**
- * Represents a grouping of options in a list of choices.
- */
-export interface SelectEnhancementOptionGroup1 {
-  name: Label24;
-  choices: {
-    [k: string]: SelectEnhancementOption3;
-  };
-  option_type: "option_group";
-}
-/**
- * Represents an option in a list of choices.
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface SelectEnhancementOption3 {
-  name: Label25;
-  /**
-   * The current value of this input.
-   */
-  value: {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-  };
-  option_type: "option";
-  /**
-   * Is this option currently selected?
-   */
-  selected?: boolean;
+  url: string;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Atlas {
-  id: string;
-  name: Label1;
-  canonical_name?: Label1;
-  color?: CSSColor;
-  icon?: SVGImageURL;
-  images?: WEBPImageURL[];
-  summary?: MarkdownString;
-  description?: MarkdownString;
-  contents?: {
+  id: AtlasId;
+  name: Label15;
+  canonical_name?: Label16;
+  enhances?: AtlasId1;
+  color?: CssColor3;
+  icon?: SvgImageUrl5;
+  images?: WebpImageUrl3[];
+  summary?: MarkdownString13;
+  description?: MarkdownString14;
+  contents: {
     [k: string]: AtlasEntry;
   };
-  collections?: {
+  collections: {
     [k: string]: Atlas;
   };
   suggestions?: Suggestions;
-  source: Source;
-  enhances?: AtlasID;
-  replaces?: AtlasID1;
+  source: Source5;
+  replaces?: AtlasId2;
 }
 /**
  * An atlas entry, like the Ironlands region entries found in classic Ironsworn.
@@ -1789,16 +1303,96 @@ export interface Atlas {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface AtlasEntry {
-  id: AtlasEntryID;
-  name: Label1;
-  canonical_name?: Label1;
-  summary?: MarkdownString;
-  features: MarkdownString[];
-  description: MarkdownString;
-  quest_starter: MarkdownString;
-  your_truth?: MarkdownString;
+  id: AtlasEntryId1;
+  name: Label17;
+  canonical_name?: Label18;
+  summary?: MarkdownString9;
+  features: MarkdownString9[];
+  description: MarkdownString9;
+  quest_starter: MarkdownString9;
+  your_truth?: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source;
+  source: Source4;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source4 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source5 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
 }
 /**
  * A delve site with a theme, domain, and denizen table.
@@ -1807,134 +1401,226 @@ export interface AtlasEntry {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSite {
-  id: DelveSiteID;
-  name: Label1;
-  canonical_name?: Label1;
-  icon?: SVGImageURL;
+  id: DelveSiteId;
+  name: Label19;
+  canonical_name?: Label20;
+  icon?: SvgImageUrl2;
   rank: ChallengeRank;
-  description: MarkdownString;
+  description: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source;
+  source: Source6;
   denizens: DelveSiteDenizen[] &
     [
       {
         min: 1;
         max: 27;
         frequency: "very_common";
+        [k: string]: unknown;
       },
       {
         min: 28;
         max: 41;
         frequency: "common";
+        [k: string]: unknown;
       },
       {
         min: 42;
         max: 55;
         frequency: "common";
+        [k: string]: unknown;
       },
       {
         min: 56;
         max: 69;
         frequency: "common";
+        [k: string]: unknown;
       },
       {
         min: 70;
         max: 75;
         frequency: "uncommon";
+        [k: string]: unknown;
       },
       {
         min: 76;
         max: 81;
         frequency: "uncommon";
+        [k: string]: unknown;
       },
       {
         min: 82;
         max: 87;
         frequency: "uncommon";
+        [k: string]: unknown;
       },
       {
         min: 88;
         max: 93;
         frequency: "uncommon";
+        [k: string]: unknown;
       },
       {
         min: 94;
         max: 95;
         frequency: "rare";
+        [k: string]: unknown;
       },
       {
         min: 96;
         max: 97;
         frequency: "rare";
+        [k: string]: unknown;
       },
       {
         min: 98;
         max: 99;
         frequency: "rare";
+        [k: string]: unknown;
       },
       {
         min: 100;
         max: 100;
         frequency: "unforeseen";
+        [k: string]: unknown;
       }
     ];
-  domain: DelveSiteDomainID;
+  domain: DelveSiteDomainId;
   /**
    * An additional theme or domain card ID, for use with optional rules in Ironsworn: Delve.
    */
-  extra_card?: DelveSiteThemeID | DelveSiteDomainID;
-  region?: AtlasEntryID1;
-  theme: DelveSiteThemeID;
+  extra_card?: DelveSiteThemeId | DelveSiteDomainId;
+  region?: AtlasEntryId2;
+  theme: DelveSiteThemeId;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source6 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
 }
 export interface DelveSiteDenizen {
-  id: DelveSiteDenizenID;
-  name?: Label1;
+  id: DelveSiteDenizenId;
+  name?: Label14;
   min: number;
   max: number;
   frequency: DelveSiteDenizenFrequency;
-  npc?: NpcID1;
+  npc?: NpcId1;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface MoveCategory {
-  id: string;
-  name: Label1;
-  canonical_name?: Label1;
-  color?: CSSColor;
-  icon?: SVGImageURL;
-  images?: WEBPImageURL[];
-  summary?: MarkdownString;
-  description?: MarkdownString;
-  contents?: {
+  id: MoveCategoryId;
+  name: Label21;
+  canonical_name?: Label22;
+  enhances?: MoveCategoryId1;
+  color?: CssColor4;
+  icon?: SvgImageUrl6;
+  images?: WebpImageUrl4[];
+  summary?: MarkdownString15;
+  description?: MarkdownString16;
+  contents: {
     [k: string]: Move;
   };
   suggestions?: Suggestions;
-  source: Source;
-  enhances?: MoveCategoryID;
-  replaces?: MoveCategoryID1;
+  source: Source7;
+  replaces?: MoveCategoryId2;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source7 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface NpcCollection {
-  id: string;
-  name: Label1;
-  canonical_name?: Label1;
-  color?: CSSColor;
-  icon?: SVGImageURL;
-  images?: WEBPImageURL[];
-  summary?: MarkdownString;
-  description?: MarkdownString;
-  contents?: {
+  id: NpcCollectionId;
+  name: Label23;
+  canonical_name?: Label24;
+  enhances?: NpcCollectionId1;
+  color?: CssColor5;
+  icon?: SvgImageUrl7;
+  images?: WebpImageUrl5[];
+  summary?: MarkdownString17;
+  description?: MarkdownString18;
+  contents: {
     [k: string]: Npc;
   };
   suggestions?: Suggestions;
-  source: Source;
-  enhances?: NpcCollectionID;
-  replaces?: NpcCollectionID1;
+  source: Source9;
+  replaces?: NpcCollectionId2;
 }
 /**
  * A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.
@@ -1943,35 +1629,115 @@ export interface NpcCollection {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Npc {
-  id: NpcID;
-  name: Label1;
-  canonical_name?: Label1;
+  id: NpcId2;
+  name: Label25;
+  canonical_name?: Label26;
   nature: NpcNature;
-  rank: ChallengeRank;
-  summary?: MarkdownString;
-  features: MarkdownString[];
-  drives: MarkdownString[];
-  tactics: MarkdownString[];
+  rank: ChallengeRank1;
+  summary?: MarkdownString9;
+  features: MarkdownString9[];
+  drives: MarkdownString9[];
+  tactics: MarkdownString9[];
   variants?: {
     [k: string]: NpcVariant;
   };
-  description: MarkdownString;
-  quest_starter: MarkdownString;
-  your_truth?: MarkdownString;
+  description: MarkdownString9;
+  quest_starter: MarkdownString9;
+  your_truth?: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source;
+  source: Source8;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface NpcVariant {
-  id: NpcVariantID;
-  name: Label1;
+  id: NpcVariantId;
+  name: Label14;
   nature: NpcNature;
-  rank: ChallengeRank;
-  summary?: MarkdownString;
-  description: MarkdownString;
+  rank: ChallengeRank2;
+  summary?: MarkdownString9;
+  description: MarkdownString9;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source8 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source9 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
 }
 /**
  * A rarity, as described in Ironsworn: Delve.
@@ -1980,14 +1746,14 @@ export interface NpcVariant {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Rarity {
-  id: RarityID;
-  name: Label1;
-  canonical_name?: Label1;
-  icon?: SVGImageURL;
-  description: MarkdownString;
+  id: RarityId1;
+  name: Label27;
+  canonical_name?: Label28;
+  icon?: SvgImageUrl2;
+  description: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source;
-  asset: AssetID1;
+  source: Source10;
+  asset: AssetId2;
   /**
    * From Ironsworn: Delve, p. 174:
    *
@@ -1998,42 +1764,287 @@ export interface Rarity {
   xp_cost: number;
 }
 /**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source10 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
-export interface DelveSiteDomain {}
+export interface DelveSiteDomain {
+  id: DelveSiteDomainId1;
+  name: Label29;
+  canonical_name?: Label30;
+  /**
+   * A delve site domain card.
+   */
+  card_type: "domain";
+  icon?: SvgImageUrl2;
+  summary: MarkdownString9;
+  features: DelveSiteDomainFeatureRow[] &
+    [
+      {
+        min: 21;
+        max: 43;
+        [k: string]: unknown;
+      },
+      {
+        min: 44;
+        max: 56;
+        [k: string]: unknown;
+      },
+      {
+        min: 57;
+        max: 64;
+        [k: string]: unknown;
+      },
+      {
+        min: 65;
+        max: 68;
+        [k: string]: unknown;
+      },
+      {
+        min: 69;
+        max: 72;
+        [k: string]: unknown;
+      },
+      {
+        min: 73;
+        max: 76;
+        [k: string]: unknown;
+      },
+      {
+        min: 77;
+        max: 80;
+        [k: string]: unknown;
+      },
+      {
+        min: 81;
+        max: 84;
+        [k: string]: unknown;
+      },
+      {
+        min: 85;
+        max: 88;
+        [k: string]: unknown;
+      },
+      {
+        min: 89;
+        max: 98;
+        result?: string;
+        suggestions?: {
+          [k: string]: unknown;
+        };
+        [k: string]: unknown;
+      },
+      {
+        min: 99;
+        max: 99;
+        result?: string;
+        suggestions?: {
+          [k: string]: unknown;
+        };
+        [k: string]: unknown;
+      },
+      {
+        min: 100;
+        max: 100;
+        result?: string;
+        suggestions?: {
+          [k: string]: unknown;
+        };
+        [k: string]: unknown;
+      }
+    ];
+  dangers: DelveSiteDomainDangerRow[] &
+    [
+      {
+        min: 31;
+        max: 33;
+        [k: string]: unknown;
+      },
+      {
+        min: 34;
+        max: 36;
+        [k: string]: unknown;
+      },
+      {
+        min: 37;
+        max: 39;
+        [k: string]: unknown;
+      },
+      {
+        min: 40;
+        max: 42;
+        [k: string]: unknown;
+      },
+      {
+        min: 43;
+        max: 45;
+        [k: string]: unknown;
+      }
+    ];
+  description?: MarkdownString9;
+  suggestions?: Suggestions;
+  source: Source11;
+  name_oracle?: OracleTableId4;
+}
+export interface DelveSiteDomainFeatureRow {
+  id: DomainFeatureRowId;
+  /**
+   * Low end of the dice range for this table row.
+   */
+  min: number;
+  /**
+   * High end of the dice range for this table row.
+   */
+  max: number;
+  icon?: SvgImageUrl2;
+  result: MarkdownString9;
+  summary?: MarkdownString9;
+  description?: MarkdownString9;
+  template?: OracleRollTemplate;
+  rolls?: OracleTableRoll[];
+  embed_table?: OracleTableId1;
+  suggestions?: Suggestions;
+  i18n?: I18NHints;
+}
+export interface DelveSiteDomainDangerRow {
+  id: DomainDangerRowId;
+  /**
+   * Low end of the dice range for this table row.
+   */
+  min: number;
+  /**
+   * High end of the dice range for this table row.
+   */
+  max: number;
+  icon?: SvgImageUrl2;
+  result: MarkdownString9;
+  summary?: MarkdownString9;
+  description?: MarkdownString9;
+  template?: OracleRollTemplate;
+  rolls?: OracleTableRoll[];
+  embed_table?: OracleTableId1;
+  suggestions?: Suggestions;
+  i18n?: I18NHints;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source11 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSiteTheme {
-  id: DelveSiteThemeID;
-  name: Label1;
-  canonical_name?: Label1;
+  id: DelveSiteThemeId1;
+  name: Label31;
+  canonical_name?: Label32;
+  /**
+   * A delve site theme card.
+   */
   card_type: "theme";
-  icon?: SVGImageURL;
-  summary: MarkdownString;
+  icon?: SvgImageUrl2;
+  summary: MarkdownString9;
   features: DelveSiteThemeFeatureRow[] &
     [
       {
         min: 1;
         max: 4;
+        [k: string]: unknown;
       },
       {
         min: 5;
         max: 8;
+        [k: string]: unknown;
       },
       {
         min: 9;
         max: 12;
+        [k: string]: unknown;
       },
       {
         min: 13;
         max: 16;
+        [k: string]: unknown;
       },
       {
         min: 17;
         max: 20;
+        [k: string]: unknown;
       }
     ];
   dangers: DelveSiteThemeDangerRow[] &
@@ -2041,83 +2052,147 @@ export interface DelveSiteTheme {
       {
         min: 1;
         max: 5;
+        [k: string]: unknown;
       },
       {
         min: 6;
         max: 10;
+        [k: string]: unknown;
       },
       {
         min: 11;
         max: 12;
+        [k: string]: unknown;
       },
       {
         min: 13;
         max: 14;
+        [k: string]: unknown;
       },
       {
         min: 15;
         max: 16;
+        [k: string]: unknown;
       },
       {
         min: 17;
         max: 18;
+        [k: string]: unknown;
       },
       {
         min: 19;
         max: 20;
+        [k: string]: unknown;
       },
       {
         min: 21;
         max: 22;
+        [k: string]: unknown;
       },
       {
         min: 23;
         max: 24;
+        [k: string]: unknown;
       },
       {
         min: 25;
         max: 26;
+        [k: string]: unknown;
       },
       {
         min: 27;
         max: 28;
+        [k: string]: unknown;
       },
       {
         min: 29;
         max: 30;
+        [k: string]: unknown;
       }
     ];
-  description?: MarkdownString;
+  description?: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source;
+  source: Source12;
 }
 export interface DelveSiteThemeFeatureRow {
-  id: ThemeFeatureRowID;
+  id: ThemeFeatureRowId;
+  /**
+   * Low end of the dice range for this table row.
+   */
   min: number;
+  /**
+   * High end of the dice range for this table row.
+   */
   max: number;
-  icon?: SVGImageURL;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  icon?: SvgImageUrl2;
+  result: MarkdownString9;
+  summary?: MarkdownString9;
+  description?: MarkdownString9;
   template?: OracleRollTemplate;
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableID;
+  embed_table?: OracleTableId1;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
 export interface DelveSiteThemeDangerRow {
-  id: ThemeDangerRowID;
+  id: ThemeDangerRowId;
+  /**
+   * Low end of the dice range for this table row.
+   */
   min: number;
+  /**
+   * High end of the dice range for this table row.
+   */
   max: number;
-  icon?: SVGImageURL;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  icon?: SvgImageUrl2;
+  result: MarkdownString9;
+  summary?: MarkdownString9;
+  description?: MarkdownString9;
   template?: OracleRollTemplate;
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableID;
+  embed_table?: OracleTableId1;
   suggestions?: Suggestions;
   i18n?: I18NHints;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source12 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
 }
 /**
  * A setting truth category.
@@ -2126,17 +2201,120 @@ export interface DelveSiteThemeDangerRow {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Truth {
-  id: TruthID;
-  name: Label1;
-  canonical_name?: Label1;
-  icon?: SVGImageURL;
+  id: TruthId;
+  name: Label33;
+  canonical_name?: Label34;
+  icon?: SvgImageUrl2;
   options: TruthOption[];
   suggestions?: Suggestions;
-  source: Source;
+  source: Source13;
+  your_character?: MarkdownString9;
 }
 export interface TruthOption {
-  id: TruthOptionID;
-  summary?: MarkdownString;
-  description: MarkdownString;
-  quest_starter: MarkdownString;
+  id: TruthOptionId;
+  min?: number;
+  max?: number;
+  summary?: MarkdownString9;
+  description: MarkdownString9;
+  quest_starter: MarkdownString9;
+  table?: TruthOptionTableRow[];
+}
+export interface TruthOptionTableRow {
+  /**
+   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  min: number | null;
+  /**
+   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  max: number | null;
+  icon?: SvgImageUrl2;
+  result: MarkdownString9;
+  summary?: MarkdownString9;
+  description?: MarkdownString9;
+  template?: OracleRollTemplate;
+  rolls?: OracleTableRoll[];
+  embed_table?: OracleTableId1;
+  suggestions?: Suggestions;
+  i18n?: I18NHints;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source13 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * Metadata describing the original source of this item
+ */
+export interface Source14 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
 }

@@ -7,21 +7,38 @@ namespace Datasworn
 {
     public class OracleTable
     {
+        /// <summary>
+        /// The roll used to select a result on this table.
+        /// </summary>
         [JsonPropertyName("dice")]
         public DiceNotation Dice { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public OracleTableId Id { get; set; }
 
+        /// <summary>
+        /// The primary name/label for this item.
+        /// </summary>
         [JsonPropertyName("name")]
         public Label Name { get; set; }
 
+        /// <summary>
+        /// Attribution for the original source (such as a book or website) of
+        /// this item, including the author and licensing information.
+        /// </summary>
         [JsonPropertyName("source")]
         public Source Source { get; set; }
 
         [JsonPropertyName("table")]
         public IList<OracleTableRow> Table { get; set; }
 
+        /// <summary>
+        /// The name of this item as it appears on the page in the book, if it's
+        /// different from `name`.
+        /// </summary>
         [JsonPropertyName("canonical_name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }
@@ -35,6 +52,9 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Description { get; set; }
 
+        /// <summary>
+        /// An icon that represents this table.
+        /// </summary>
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SvgImageUrl? Icon { get; set; }
@@ -43,10 +63,18 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<WebpImageUrl> Images { get; set; }
 
+        /// <summary>
+        /// Most oracle tables are insensitive to matches, but a few define
+        /// special match behavior.
+        /// </summary>
         [JsonPropertyName("match")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OracleTableMatchBehavior? Match { get; set; }
 
+        /// <summary>
+        /// Describes how how to render this table, when presenting it as a
+        /// standalone table.
+        /// </summary>
         [JsonPropertyName("rendering")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OracleTableRendering? Rendering { get; set; }

@@ -2,48 +2,17 @@
 
 package Datasworn;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-@JsonSerialize
-public class OracleTableRendering {
-    @JsonProperty("columns")
-    private Map<String, OracleTableColumn> columns;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("table_style")
-    private OracleTableStyle tableStyle;
-
-    public OracleTableRendering() {
-    }
-
-    /**
-     * Getter for columns.<p>
-     */
-    public Map<String, OracleTableColumn> getColumns() {
-        return columns;
-    }
-
-    /**
-     * Setter for columns.<p>
-     */
-    public void setColumns(Map<String, OracleTableColumn> columns) {
-        this.columns = columns;
-    }
-
-    /**
-     * Getter for tableStyle.<p>
-     */
-    public OracleTableStyle getTableStyle() {
-        return tableStyle;
-    }
-
-    /**
-     * Setter for tableStyle.<p>
-     */
-    public void setTableStyle(OracleTableStyle tableStyle) {
-        this.tableStyle = tableStyle;
-    }
+/**
+ * Describes the presentation of this table.
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "style")
+@JsonSubTypes({
+    @JsonSubTypes.Type(name = "column", value = OracleTableRenderingColumn.class),
+    @JsonSubTypes.Type(name = "embed_in_row", value = OracleTableRenderingEmbedInRow.class),
+    @JsonSubTypes.Type(name = "standalone", value = OracleTableRenderingStandalone.class),
+})
+public abstract class OracleTableRendering {
 }

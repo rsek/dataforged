@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
+/**
+ * Describes a category of standard impacts/debilities.
+ */
 @JsonSerialize
 public class ImpactCategory {
     @JsonProperty("contents")
@@ -14,14 +17,15 @@ public class ImpactCategory {
     @JsonProperty("description")
     private MarkdownString description;
 
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     public ImpactCategory() {
     }
 
     /**
      * Getter for contents.<p>
+     * A dictionary object of the Impacts in this category.
      */
     public Map<String, ImpactRule> getContents() {
         return contents;
@@ -29,6 +33,7 @@ public class ImpactCategory {
 
     /**
      * Setter for contents.<p>
+     * A dictionary object of the Impacts in this category.
      */
     public void setContents(Map<String, ImpactRule> contents) {
         this.contents = contents;
@@ -36,6 +41,7 @@ public class ImpactCategory {
 
     /**
      * Getter for description.<p>
+     * A description of this impact category.
      */
     public MarkdownString getDescription() {
         return description;
@@ -43,22 +49,25 @@ public class ImpactCategory {
 
     /**
      * Setter for description.<p>
+     * A description of this impact category.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
     }
 
     /**
-     * Getter for name.<p>
+     * Getter for label.<p>
+     * A label for this impact category.
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
+     * Setter for label.<p>
+     * A label for this impact category.
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 }

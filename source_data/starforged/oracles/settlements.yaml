@@ -22,29 +22,30 @@ oracles:
         #     attributes:
         #       region: null
         rendering:
+          style: multi_table
           columns:
             terminus:
               content_type: roll
               table_key: terminus
-              name: Terminus
+              label: Terminus
             outlands:
               content_type: roll
               table_key: outlands
-              name: Outlands
+              label: Outlands
             expanse:
               content_type: roll
               table_key: expanse
-              name: Expanse
+              label: Expanse
             number:
               content_type: result
               table_key: terminus
-              name: Number
+              label: Number
         contents:
           terminus:
             name: Terminus
             source: *CollectionSource
             rendering: &Pop.rendering
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires:
             #     attributes:

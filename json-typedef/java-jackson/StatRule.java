@@ -5,19 +5,23 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Describes a standard player character stat.
+ */
 @JsonSerialize
 public class StatRule {
     @JsonProperty("description")
     private MarkdownString description;
 
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     public StatRule() {
     }
 
     /**
      * Getter for description.<p>
+     * A description of this stat.
      */
     public MarkdownString getDescription() {
         return description;
@@ -25,22 +29,25 @@ public class StatRule {
 
     /**
      * Setter for description.<p>
+     * A description of this stat.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
     }
 
     /**
-     * Getter for name.<p>
+     * Getter for label.<p>
+     * A label for this stat.
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
+     * Setter for label.<p>
+     * A label for this stat.
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 }

@@ -58,6 +58,7 @@ public class OracleTableRow {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public OracleTableRowId getId() {
         return id;
@@ -65,6 +66,7 @@ public class OracleTableRow {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(OracleTableRowId id) {
         this.id = id;
@@ -72,6 +74,8 @@ public class OracleTableRow {
 
     /**
      * Getter for max.<p>
+     * High end of the dice range for this table row. `null` represents an
+     * unrollable row, included only for rendering purposes.
      */
     public Short getMax() {
         return max;
@@ -79,6 +83,8 @@ public class OracleTableRow {
 
     /**
      * Setter for max.<p>
+     * High end of the dice range for this table row. `null` represents an
+     * unrollable row, included only for rendering purposes.
      */
     public void setMax(Short max) {
         this.max = max;
@@ -86,6 +92,8 @@ public class OracleTableRow {
 
     /**
      * Getter for min.<p>
+     * Low end of the dice range for this table row. `null` represents an
+     * unrollable row, included only for rendering purposes.
      */
     public Short getMin() {
         return min;
@@ -93,6 +101,8 @@ public class OracleTableRow {
 
     /**
      * Setter for min.<p>
+     * Low end of the dice range for this table row. `null` represents an
+     * unrollable row, included only for rendering purposes.
      */
     public void setMin(Short min) {
         this.min = min;

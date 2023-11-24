@@ -9,12 +9,26 @@ namespace Datasworn
     [JsonConverter(typeof(MoveRollTypeJsonConverter))]
     public enum MoveRollType
     {
+        /// <summary>
+        /// A move that makes an action roll.
+        /// </summary>
         ActionRoll,
 
+        /// <summary>
+        /// A move that makes no action rolls or progress rolls.
+        /// </summary>
         NoRoll,
 
+        /// <summary>
+        /// A progress move that rolls on a standard progress track type
+        /// (defined by this move).
+        /// </summary>
         ProgressRoll,
 
+        /// <summary>
+        /// A progress move that rolls on one or more special tracks, like Bonds
+        /// (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+        /// </summary>
         SpecialTrack,
     }
     public class MoveRollTypeJsonConverter : JsonConverter<MoveRollType>

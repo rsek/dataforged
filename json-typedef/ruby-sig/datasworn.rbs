@@ -157,7 +157,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetAbilityControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetAbilityControlFieldCheckbox
@@ -166,9 +166,9 @@ module Datasworn
 
   class AssetAbilityControlFieldClock < AssetAbilityControlField
     attr_accessor id: AssetAbilityControlFieldID
+    attr_accessor label: Label
     attr_accessor max: Integer
     attr_accessor min: Integer
-    attr_accessor name: Label
     attr_accessor value: Integer
 
     def self.from_json_data: (untyped) -> AssetAbilityControlFieldClock
@@ -177,9 +177,9 @@ module Datasworn
 
   class AssetAbilityControlFieldCounter < AssetAbilityControlField
     attr_accessor id: AssetAbilityControlFieldID
+    attr_accessor label: Label
     attr_accessor max: Integer?
     attr_accessor min: Integer
-    attr_accessor name: Label
     attr_accessor value: Integer
 
     def self.from_json_data: (untyped) -> AssetAbilityControlFieldCounter
@@ -209,7 +209,7 @@ module Datasworn
 
   class AssetAbilityOptionFieldText < AssetAbilityOptionField
     attr_accessor id: AssetAbilityOptionFieldID
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: String?
 
     def self.from_json_data: (untyped) -> AssetAbilityOptionFieldText
@@ -242,7 +242,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetConditionMeterControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetConditionMeterControlFieldCardFlip
@@ -253,7 +253,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetConditionMeterControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetConditionMeterControlFieldCheckbox
@@ -278,7 +278,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetControlFieldCardFlip
@@ -289,7 +289,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetControlFieldCheckbox
@@ -306,9 +306,9 @@ module Datasworn
 
   class AssetControlFieldConditionMeter < AssetControlField
     attr_accessor id: AssetControlFieldID
+    attr_accessor label: Label
     attr_accessor max: Integer
     attr_accessor min: Integer
-    attr_accessor name: Label
     attr_accessor value: Integer
     attr_accessor controls: Hash[String, AssetConditionMeterControlField]?
     attr_accessor moves: AssetControlFieldConditionMeterMoves?
@@ -333,7 +333,7 @@ module Datasworn
   end
 
   class AssetControlFieldSelectEnhancementChoiceOption < AssetControlFieldSelectEnhancementChoice
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: AssetControlFieldSelectEnhancementChoiceOptionValue
     attr_accessor selected: bool?
 
@@ -359,7 +359,7 @@ module Datasworn
   end
 
   class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor option_type: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
     attr_accessor value: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue
     attr_accessor selected: bool?
@@ -379,7 +379,7 @@ module Datasworn
   class AssetControlFieldSelectEnhancement < AssetControlField
     attr_accessor choices: Hash[String, AssetControlFieldSelectEnhancementChoice]
     attr_accessor id: AssetControlFieldID
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: DictKey?
 
     def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancement
@@ -462,7 +462,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectEnhancementChoiceOption < AssetOptionFieldSelectEnhancementChoice
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: AssetOptionFieldSelectEnhancementChoiceOptionValue
     attr_accessor selected: bool?
 
@@ -488,7 +488,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor option_type: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
     attr_accessor value: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue
     attr_accessor selected: bool?
@@ -508,7 +508,7 @@ module Datasworn
   class AssetOptionFieldSelectEnhancement < AssetOptionField
     attr_accessor choices: Hash[String, AssetOptionFieldSelectEnhancementChoice]
     attr_accessor id: AssetOptionFieldID
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: DictKey?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancement
@@ -523,7 +523,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectStatChoiceOption < AssetOptionFieldSelectStatChoice
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: PlayerStat
     attr_accessor selected: bool?
 
@@ -541,7 +541,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectStatChoiceOptionGroupChoice
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor option_type: AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType
     attr_accessor value: PlayerStat
     attr_accessor selected: bool?
@@ -561,7 +561,7 @@ module Datasworn
   class AssetOptionFieldSelectStat < AssetOptionField
     attr_accessor choices: Hash[String, AssetOptionFieldSelectStatChoice]
     attr_accessor id: AssetOptionFieldID
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: DictKey?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectStat
@@ -570,7 +570,7 @@ module Datasworn
 
   class AssetOptionFieldText < AssetOptionField
     attr_accessor id: AssetOptionFieldID
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor value: String?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldText
@@ -690,10 +690,11 @@ module Datasworn
 
   class ConditionMeterRule
     attr_accessor description: MarkdownString
+    attr_accessor label: Label
     attr_accessor max: Integer
     attr_accessor min: Integer
-    attr_accessor name: Label
     attr_accessor shared: bool
+    attr_accessor value: Integer
 
     def self.from_json_data: (untyped) -> ConditionMeterRule
     def to_json_data: () -> untyped
@@ -710,6 +711,16 @@ module Datasworn
     attr_accessor value: String
 
     def self.from_json_data: (untyped) -> CSSColor
+    def to_json_data: () -> untyped
+  end
+
+  class DelveCardType
+    attr_accessor value: String
+
+    DOMAIN: DelveCardType
+    THEME: DelveCardType
+
+    def self.from_json_data: (untyped) -> DelveCardType
     def to_json_data: () -> untyped
   end
 
@@ -967,7 +978,7 @@ module Datasworn
   class ImpactCategory
     attr_accessor contents: Hash[String, ImpactRule]
     attr_accessor description: MarkdownString
-    attr_accessor name: Label
+    attr_accessor label: Label
 
     def self.from_json_data: (untyped) -> ImpactCategory
     def to_json_data: () -> untyped
@@ -975,7 +986,7 @@ module Datasworn
 
   class ImpactRule
     attr_accessor description: MarkdownString
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor permanent: bool
     attr_accessor prevents_recovery: Array[DictKey]
     attr_accessor shared: bool
@@ -1038,7 +1049,6 @@ module Datasworn
   class MoveNoRoll < Move
     attr_accessor id: MoveID
     attr_accessor name: Label
-    attr_accessor outcomes: untyped
     attr_accessor source: Source
     attr_accessor text: MarkdownString
     attr_accessor trigger: TriggerNoRoll
@@ -1057,7 +1067,7 @@ module Datasworn
     attr_accessor outcomes: MoveOutcomes
     attr_accessor source: Source
     attr_accessor text: MarkdownString
-    attr_accessor track_label: Label
+    attr_accessor tracks: ProgressTrackTypeInfo
     attr_accessor trigger: TriggerProgressRoll
     attr_accessor canonical_name: Label?
     attr_accessor oracles: Array[OracleTableID]?
@@ -1325,19 +1335,30 @@ module Datasworn
   end
 
   class OracleCollectionRendering
-    attr_accessor columns: Hash[String, OracleCollectionTableColumn]
-    attr_accessor color: CSSColor?
-    attr_accessor table_style: OracleCollectionStyle?
+    attr_accessor style: String
 
     def self.from_json_data: (untyped) -> OracleCollectionRendering
+    def to_json_data: () -> untyped
+  end
+
+  class OracleCollectionRenderingMultiTable < OracleCollectionRendering
+    attr_accessor columns: Hash[String, OracleCollectionTableColumn]
+
+    def self.from_json_data: (untyped) -> OracleCollectionRenderingMultiTable
+    def to_json_data: () -> untyped
+  end
+
+  class OracleCollectionRenderingTables < OracleCollectionRendering
+
+    def self.from_json_data: (untyped) -> OracleCollectionRenderingTables
     def to_json_data: () -> untyped
   end
 
   class OracleCollectionStyle
     attr_accessor value: String
 
-    COLLECTION: OracleCollectionStyle
     MULTI_TABLE: OracleCollectionStyle
+    TABLES: OracleCollectionStyle
 
     def self.from_json_data: (untyped) -> OracleCollectionStyle
     def to_json_data: () -> untyped
@@ -1345,9 +1366,9 @@ module Datasworn
 
   class OracleCollectionTableColumn
     attr_accessor content_type: OracleTableColumnContentKey
+    attr_accessor label: Label
     attr_accessor table_key: DictKey
     attr_accessor color: CSSColor?
-    attr_accessor name: Label?
 
     def self.from_json_data: (untyped) -> OracleCollectionTableColumn
     def to_json_data: () -> untyped
@@ -1384,8 +1405,8 @@ module Datasworn
 
   class OracleTableColumn
     attr_accessor content_type: OracleTableColumnContentKey
+    attr_accessor label: Label
     attr_accessor color: CSSColor?
-    attr_accessor name: Label?
 
     def self.from_json_data: (untyped) -> OracleTableColumn
     def to_json_data: () -> untyped
@@ -1425,10 +1446,28 @@ module Datasworn
   end
 
   class OracleTableRendering
-    attr_accessor columns: Hash[String, OracleTableColumn]
-    attr_accessor table_style: OracleTableStyle?
+    attr_accessor style: String
 
     def self.from_json_data: (untyped) -> OracleTableRendering
+    def to_json_data: () -> untyped
+  end
+
+  class OracleTableRenderingColumn < OracleTableRendering
+
+    def self.from_json_data: (untyped) -> OracleTableRenderingColumn
+    def to_json_data: () -> untyped
+  end
+
+  class OracleTableRenderingEmbedInRow < OracleTableRendering
+
+    def self.from_json_data: (untyped) -> OracleTableRenderingEmbedInRow
+    def to_json_data: () -> untyped
+  end
+
+  class OracleTableRenderingStandalone < OracleTableRendering
+    attr_accessor columns: Hash[String, OracleTableColumn]
+
+    def self.from_json_data: (untyped) -> OracleTableRenderingStandalone
     def to_json_data: () -> untyped
   end
 
@@ -1481,9 +1520,9 @@ module Datasworn
   class OracleTableStyle
     attr_accessor value: String
 
-    EMBED_AS_COLUMN: OracleTableStyle
+    COLUMN: OracleTableStyle
     EMBED_IN_ROW: OracleTableStyle
-    STANDALONE_TABLE: OracleTableStyle
+    STANDALONE: OracleTableStyle
 
     def self.from_json_data: (untyped) -> OracleTableStyle
     def to_json_data: () -> untyped
@@ -1544,6 +1583,20 @@ module Datasworn
     attr_accessor using: ProgressRollOptionUsing
 
     def self.from_json_data: (untyped) -> ProgressRollOption
+    def to_json_data: () -> untyped
+  end
+
+  class ProgressTrackTypeInfoControl
+
+    def self.from_json_data: (untyped) -> ProgressTrackTypeInfoControl
+    def to_json_data: () -> untyped
+  end
+
+  class ProgressTrackTypeInfo
+    attr_accessor category: Label
+    attr_accessor controls: Hash[String, ProgressTrackTypeInfoControl]?
+
+    def self.from_json_data: (untyped) -> ProgressTrackTypeInfo
     def to_json_data: () -> untyped
   end
 
@@ -1617,7 +1670,7 @@ module Datasworn
 
   class SpecialTrackRule
     attr_accessor description: MarkdownString
-    attr_accessor name: Label
+    attr_accessor label: Label
     attr_accessor optional: bool
     attr_accessor shared: bool
 
@@ -1641,7 +1694,7 @@ module Datasworn
 
   class StatRule
     attr_accessor description: MarkdownString
-    attr_accessor name: Label
+    attr_accessor label: Label
 
     def self.from_json_data: (untyped) -> StatRule
     def to_json_data: () -> untyped
@@ -1660,6 +1713,7 @@ module Datasworn
     attr_accessor moves: Array[MoveID]?
     attr_accessor npcs: Array[NpcID]?
     attr_accessor oracles: Array[OracleTableID]?
+    attr_accessor rarities: Array[RarityID]?
     attr_accessor site_domains: Array[DelveSiteDomainID]?
     attr_accessor site_themes: Array[DelveSiteThemeID]?
 
@@ -1747,8 +1801,6 @@ module Datasworn
   end
 
   class TriggerNoRollCondition
-    attr_accessor method: untyped
-    attr_accessor roll_options: untyped
     attr_accessor by: TriggerBy?
     attr_accessor text: MarkdownString?
 

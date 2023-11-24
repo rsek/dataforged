@@ -51,6 +51,7 @@ public class DelveSiteTheme {
 
     /**
      * Getter for cardType.<p>
+     * A delve site theme card.
      */
     public DelveSiteThemeCardType getCardType() {
         return cardType;
@@ -58,6 +59,7 @@ public class DelveSiteTheme {
 
     /**
      * Setter for cardType.<p>
+     * A delve site theme card.
      */
     public void setCardType(DelveSiteThemeCardType cardType) {
         this.cardType = cardType;
@@ -93,6 +95,7 @@ public class DelveSiteTheme {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public DelveSiteThemeId getId() {
         return id;
@@ -100,6 +103,7 @@ public class DelveSiteTheme {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(DelveSiteThemeId id) {
         this.id = id;
@@ -107,6 +111,7 @@ public class DelveSiteTheme {
 
     /**
      * Getter for name.<p>
+     * The primary name/label for this item.
      */
     public Label getName() {
         return name;
@@ -114,6 +119,7 @@ public class DelveSiteTheme {
 
     /**
      * Setter for name.<p>
+     * The primary name/label for this item.
      */
     public void setName(Label name) {
         this.name = name;
@@ -121,6 +127,8 @@ public class DelveSiteTheme {
 
     /**
      * Getter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public Source getSource() {
         return source;
@@ -128,6 +136,8 @@ public class DelveSiteTheme {
 
     /**
      * Setter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public void setSource(Source source) {
         this.source = source;
@@ -149,6 +159,8 @@ public class DelveSiteTheme {
 
     /**
      * Getter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public Label getCanonicalName() {
         return canonicalName;
@@ -156,6 +168,8 @@ public class DelveSiteTheme {
 
     /**
      * Setter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public void setCanonicalName(Label canonicalName) {
         this.canonicalName = canonicalName;

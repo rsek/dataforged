@@ -4,17 +4,33 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Describes a special track like Bonds (classic Ironsworn), Failure
+    /// (Delve), or Legacies (Starforged).
+    /// </summary>
     public class SpecialTrackRule
     {
+        /// <summary>
+        /// A description of this special track.
+        /// </summary>
         [JsonPropertyName("description")]
         public MarkdownString Description { get; set; }
 
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
+        /// <summary>
+        /// A label for this special track.
+        /// </summary>
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
 
+        /// <summary>
+        /// Is this track an optional rule?
+        /// </summary>
         [JsonPropertyName("optional")]
         public bool Optional { get; set; }
 
+        /// <summary>
+        /// Is this track shared by all players?
+        /// </summary>
         [JsonPropertyName("shared")]
         public bool Shared { get; set; }
     }

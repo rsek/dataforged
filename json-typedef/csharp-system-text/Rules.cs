@@ -5,17 +5,38 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Describes rules for player characters in this ruleset, such as stats and
+    /// condition meters.
+    /// </summary>
     public class Rules
     {
+        /// <summary>
+        /// Describes the standard condition meters used by player characters in
+        /// this ruleset.
+        /// </summary>
         [JsonPropertyName("condition_meters")]
         public IDictionary<string, ConditionMeterRule> ConditionMeters { get; set; }
 
+        /// <summary>
+        /// Describes the standard impacts/debilities used by player characters
+        /// in this ruleset.
+        /// </summary>
         [JsonPropertyName("impacts")]
         public IDictionary<string, ImpactCategory> Impacts { get; set; }
 
+        /// <summary>
+        /// Describes the special tracks used by player characters in this
+        /// ruleset, like Bonds (classic Ironsworn), Failure (Delve), or
+        /// Legacies (Starforged).
+        /// </summary>
         [JsonPropertyName("special_tracks")]
         public IDictionary<string, SpecialTrackRule> SpecialTracks { get; set; }
 
+        /// <summary>
+        /// Describes the standard stats used by player characters in this
+        /// ruleset.
+        /// </summary>
         [JsonPropertyName("stats")]
         public IDictionary<string, StatRule> Stats { get; set; }
     }

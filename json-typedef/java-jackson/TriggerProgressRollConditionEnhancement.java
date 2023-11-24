@@ -28,6 +28,9 @@ public class TriggerProgressRollConditionEnhancement {
 
     /**
      * Getter for method.<p>
+     * A `null` value means this condition provides no roll mechanic of its
+     * own; it must be used with another trigger condition that provides a non-
+     * null `method`.
      */
     public ProgressRollMethod getMethod() {
         return method;
@@ -35,6 +38,9 @@ public class TriggerProgressRollConditionEnhancement {
 
     /**
      * Setter for method.<p>
+     * A `null` value means this condition provides no roll mechanic of its
+     * own; it must be used with another trigger condition that provides a non-
+     * null `method`.
      */
     public void setMethod(ProgressRollMethod method) {
         this.method = method;
@@ -42,7 +48,7 @@ public class TriggerProgressRollConditionEnhancement {
 
     /**
      * Getter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public List<ProgressRollOption> getRollOptions() {
         return rollOptions;
@@ -50,7 +56,7 @@ public class TriggerProgressRollConditionEnhancement {
 
     /**
      * Setter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public void setRollOptions(List<ProgressRollOption> rollOptions) {
         this.rollOptions = rollOptions;

@@ -11,11 +11,16 @@ namespace Datasworn
     /// </summary>
     public class TriggerSpecialTrackConditionEnhancement
     {
+        /// <summary>
+        /// A `null` value means this condition provides no roll mechanic of its
+        /// own; it must be used with another trigger condition that provides a
+        /// non-null `method`.
+        /// </summary>
         [JsonPropertyName("method")]
         public SpecialTrackRollMethod? Method { get; set; }
 
         /// <summary>
-        /// The options available when rolling with this trigger.
+        /// The options available when rolling with this trigger condition.
         /// </summary>
         [JsonPropertyName("roll_options")]
         public IList<TriggerSpecialTrackConditionOption> RollOptions { get; set; }

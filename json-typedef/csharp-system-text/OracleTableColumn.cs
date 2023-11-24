@@ -10,17 +10,16 @@ namespace Datasworn
         public OracleTableColumnContentKey ContentType { get; set; }
 
         /// <summary>
+        /// The column's header text.
+        /// </summary>
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
+
+        /// <summary>
         /// The thematic color for this column.
         /// </summary>
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public CssColor? Color { get; set; }
-
-        /// <summary>
-        /// The column's header text.
-        /// </summary>
-        [JsonPropertyName("name")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Label? Name { get; set; }
     }
 }

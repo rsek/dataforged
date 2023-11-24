@@ -27,6 +27,10 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<OracleTableId> Oracles { get; set; }
 
+        [JsonPropertyName("rarities")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<RarityId> Rarities { get; set; }
+
         [JsonPropertyName("site_domains")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<DelveSiteDomainId> SiteDomains { get; set; }

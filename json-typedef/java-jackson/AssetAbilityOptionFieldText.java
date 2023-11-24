@@ -5,16 +5,13 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * Represents an input that accepts plain text.
- */
 @JsonSerialize
 public class AssetAbilityOptionFieldText extends AssetAbilityOptionField {
     @JsonProperty("id")
     private AssetAbilityOptionFieldId id;
 
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     @JsonProperty("value")
     private String value;
@@ -24,6 +21,7 @@ public class AssetAbilityOptionFieldText extends AssetAbilityOptionField {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public AssetAbilityOptionFieldId getId() {
         return id;
@@ -31,33 +29,35 @@ public class AssetAbilityOptionFieldText extends AssetAbilityOptionField {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(AssetAbilityOptionFieldId id) {
         this.id = id;
     }
 
     /**
-     * Getter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Getter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Setter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     /**
      * Getter for value.<p>
+     * The content of this text input, or `null` if it's empty
      */
     public String getValue() {
         return value;
@@ -65,6 +65,7 @@ public class AssetAbilityOptionFieldText extends AssetAbilityOptionField {
 
     /**
      * Setter for value.<p>
+     * The content of this text input, or `null` if it's empty
      */
     public void setValue(String value) {
         this.value = value;

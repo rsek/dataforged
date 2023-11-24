@@ -242,26 +242,26 @@ oracles:
         canonical_name: 'Oracle 19: Challenge Rank'
         name: Challenge Rank
         rendering:
-          table_style: multi_table
+          style: multi_table
           columns:
             roll:
-              name: Roll
+              label: Roll
               content_type: roll
               table_key: quest
             rank:
-              name: Rank
+              label: Rank
               table_key: quest
               content_type: result
             quest:
-              name: Quest
+              label: Quest
               table_key: quest
               content_type: summary
             journey:
-              name: Journey
+              label: Journey
               table_key: journey
               content_type: summary
             foes:
-              name: Foes
+              label: Foes
               table_key: foes
               content_type: summary
         summary: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
@@ -273,7 +273,7 @@ oracles:
             name: Quest
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - &Troublesome
                 min: 1
@@ -304,7 +304,7 @@ oracles:
             name: Journey
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - <<: *Troublesome
                 summary: 'Traveling a moderate distance within a single region'
@@ -320,7 +320,7 @@ oracles:
             name: Foes
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - <<: *Troublesome
                 summary: 'Common enemies'

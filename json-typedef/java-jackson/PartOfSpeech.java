@@ -5,27 +5,51 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum PartOfSpeech {
+    /**
+     * An adjective.
+     */
     @JsonProperty("adjective")
     ADJECTIVE,
 
+    /**
+     * A common noun used as an adjective, to modify another noun.
+     */
     @JsonProperty("adjunct_common_noun")
     ADJUNCT_COMMON_NOUN,
 
+    /**
+     * A proper noun used as an adjective, to modify another noun.
+     */
     @JsonProperty("adjunct_proper_noun")
     ADJUNCT_PROPER_NOUN,
 
+    /**
+     * A verb used as an adjective, to modify a noun.
+     */
     @JsonProperty("attributive_verb")
     ATTRIBUTIVE_VERB,
 
+    /**
+     * A common noun.
+     */
     @JsonProperty("common_noun")
     COMMON_NOUN,
 
+    /**
+     * Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
+     */
     @JsonProperty("gerund")
     GERUND,
 
+    /**
+     * A proper noun.
+     */
     @JsonProperty("proper_noun")
     PROPER_NOUN,
 
+    /**
+     * A verb in present tense
+     */
     @JsonProperty("verb")
     VERB,
 }

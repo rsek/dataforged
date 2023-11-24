@@ -10,6 +10,9 @@ namespace Datasworn
         [JsonPropertyName("description")]
         public MarkdownString Description { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public TruthOptionId Id { get; set; }
 

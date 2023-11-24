@@ -9,20 +9,45 @@ namespace Datasworn
     [JsonConverter(typeof(PartOfSpeechJsonConverter))]
     public enum PartOfSpeech
     {
+        /// <summary>
+        /// An adjective.
+        /// </summary>
         Adjective,
 
+        /// <summary>
+        /// A common noun used as an adjective, to modify another noun.
+        /// </summary>
         AdjunctCommonNoun,
 
+        /// <summary>
+        /// A proper noun used as an adjective, to modify another noun.
+        /// </summary>
         AdjunctProperNoun,
 
+        /// <summary>
+        /// A verb used as an adjective, to modify a noun.
+        /// </summary>
         AttributiveVerb,
 
+        /// <summary>
+        /// A common noun.
+        /// </summary>
         CommonNoun,
 
+        /// <summary>
+        /// Gerund or present participle of a verb, e.g. "going", "seeing",
+        /// "waving"
+        /// </summary>
         Gerund,
 
+        /// <summary>
+        /// A proper noun.
+        /// </summary>
         ProperNoun,
 
+        /// <summary>
+        /// A verb in present tense
+        /// </summary>
         Verb,
     }
     public class PartOfSpeechJsonConverter : JsonConverter<PartOfSpeech>

@@ -2,25 +2,24 @@ import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
 import { Id, Localize, Metadata } from '../common/index.js'
-import { StaticRowPartial, TableRow } from '../oracles/TableRow.js'
+import {
+	StaticRowPartial,
+	TableRow,
+	TableRowMixin
+} from '../oracles/TableRow.js'
 import * as Generic from '../utils/Generic.js'
-
+import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
+import { DelveCardType } from './DelveCard.js'
 
 export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.DomainFeatureRowId),
-	TableRow({
-		min: Type.Integer(),
-		max: Type.Integer()
-	}),
+	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
 export const DelveSiteDomainDangerRow = Generic.IdentifiedNode(
 	Type.Ref(Id.DomainDangerRowId),
-	TableRow({
-		min: Type.Integer(),
-		max: Type.Integer()
-	}),
+	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
 )
 export type DelveSiteDomainDangerRow = Static<typeof DelveSiteDomainDangerRow>
@@ -35,7 +34,7 @@ export const DelveSiteDomain = Generic.SourcedNode(
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
-		card_type: Type.Literal('domain'),
+		card_type: ExtractLiteralFromEnum(DelveCardType, 'domain'),
 		name_oracle: Type.Optional(
 			Type.Ref(Id.OracleTableId, {
 				description:

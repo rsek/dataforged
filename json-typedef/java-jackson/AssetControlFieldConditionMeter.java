@@ -7,28 +7,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
-/**
- * Some assets provide a special condition meter of their own. The most common
- * example is the health meters on companion assets. Asset condition meters
- * may also include their own controls, such as the checkboxes that Starforged
- * companion assets use to indicate they are "out of action".
- */
 @JsonSerialize
 public class AssetControlFieldConditionMeter extends AssetControlField {
     @JsonProperty("id")
     private AssetControlFieldId id;
 
+    @JsonProperty("label")
+    private Label label;
+
     @JsonProperty("max")
-    private Short max;
+    private Byte max;
 
     @JsonProperty("min")
-    private UnsignedByte min;
-
-    @JsonProperty("name")
-    private Label name;
+    private Byte min;
 
     @JsonProperty("value")
-    private Short value;
+    private Byte value;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("controls")
@@ -43,6 +37,7 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public AssetControlFieldId getId() {
         return id;
@@ -50,16 +45,37 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(AssetControlFieldId id) {
         this.id = id;
     }
 
     /**
+     * Getter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
+     */
+    public Label getLabel() {
+        return label;
+    }
+
+    /**
+     * Setter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
+     */
+    public void setLabel(Label label) {
+        this.label = label;
+    }
+
+    /**
      * Getter for max.<p>
      * The maximum value of this meter.
      */
-    public Short getMax() {
+    public Byte getMax() {
         return max;
     }
 
@@ -67,7 +83,7 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
      * Setter for max.<p>
      * The maximum value of this meter.
      */
-    public void setMax(Short max) {
+    public void setMax(Byte max) {
         this.max = max;
     }
 
@@ -75,7 +91,7 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
      * Getter for min.<p>
      * The minimum value of this meter.
      */
-    public UnsignedByte getMin() {
+    public Byte getMin() {
         return min;
     }
 
@@ -83,35 +99,15 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
      * Setter for min.<p>
      * The minimum value of this meter.
      */
-    public void setMin(UnsignedByte min) {
+    public void setMin(Byte min) {
         this.min = min;
-    }
-
-    /**
-     * Getter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
-     */
-    public Label getName() {
-        return name;
-    }
-
-    /**
-     * Setter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
-     */
-    public void setName(Label name) {
-        this.name = name;
     }
 
     /**
      * Getter for value.<p>
      * The current value of this meter.
      */
-    public Short getValue() {
+    public Byte getValue() {
         return value;
     }
 
@@ -119,12 +115,13 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
      * Setter for value.<p>
      * The current value of this meter.
      */
-    public void setValue(Short value) {
+    public void setValue(Byte value) {
         this.value = value;
     }
 
     /**
      * Getter for controls.<p>
+     * Checkbox controls rendered as part of the condition meter.
      */
     public Map<String, AssetConditionMeterControlField> getControls() {
         return controls;
@@ -132,6 +129,7 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
 
     /**
      * Setter for controls.<p>
+     * Checkbox controls rendered as part of the condition meter.
      */
     public void setControls(Map<String, AssetConditionMeterControlField> controls) {
         this.controls = controls;

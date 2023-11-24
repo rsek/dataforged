@@ -5,24 +5,45 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum ActionRollMethod {
+    /**
+     * Use **every** roll option at once.
+     */
     @JsonProperty("all")
     ALL,
 
+    /**
+     * Use the roll option with the best/highest value.
+     */
     @JsonProperty("highest")
     HIGHEST,
 
+    /**
+     * Use the roll option with the worst/lowest value.
+     */
     @JsonProperty("lowest")
     LOWEST,
 
+    /**
+     * An automatic miss.
+     */
     @JsonProperty("miss")
     MISS,
 
+    /**
+     * The player chooses which roll option to use.
+     */
     @JsonProperty("player_choice")
     PLAYER_CHOICE,
 
+    /**
+     * An automatic strong hit.
+     */
     @JsonProperty("strong_hit")
     STRONG_HIT,
 
+    /**
+     * An automatic weak hit.
+     */
     @JsonProperty("weak_hit")
     WEAK_HIT,
 }

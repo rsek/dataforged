@@ -5,12 +5,21 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum MoveOutcomeType {
+    /**
+     * The score doesn't beat either challenge die.
+     */
     @JsonProperty("miss")
     MISS,
 
+    /**
+     * The score is greater than both challenge dice.
+     */
     @JsonProperty("strong_hit")
     STRONG_HIT,
 
+    /**
+     * The score is greater than one challenge die.
+     */
     @JsonProperty("weak_hit")
     WEAK_HIT,
 }

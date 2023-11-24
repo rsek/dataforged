@@ -5,12 +5,21 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum OracleTableStyle {
-    @JsonProperty("embed_as_column")
-    EMBED_AS_COLUMN,
+    /**
+     * Render as a single column of a table.
+     */
+    @JsonProperty("column")
+    COLUMN,
 
+    /**
+     * Render as a table, within a row in another table.
+     */
     @JsonProperty("embed_in_row")
     EMBED_IN_ROW,
 
-    @JsonProperty("standalone_table")
-    STANDALONE_TABLE,
+    /**
+     * Render as a standalone table.
+     */
+    @JsonProperty("standalone")
+    STANDALONE,
 }

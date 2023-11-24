@@ -9,10 +9,19 @@ namespace Datasworn
     [JsonConverter(typeof(MoveOutcomeTypeJsonConverter))]
     public enum MoveOutcomeType
     {
+        /// <summary>
+        /// The score doesn't beat either challenge die.
+        /// </summary>
         Miss,
 
+        /// <summary>
+        /// The score is greater than both challenge dice.
+        /// </summary>
         StrongHit,
 
+        /// <summary>
+        /// The score is greater than one challenge die.
+        /// </summary>
         WeakHit,
     }
     public class MoveOutcomeTypeJsonConverter : JsonConverter<MoveOutcomeType>

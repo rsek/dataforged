@@ -76,6 +76,7 @@ public class Rarity {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public RarityId getId() {
         return id;
@@ -83,6 +84,7 @@ public class Rarity {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(RarityId id) {
         this.id = id;
@@ -90,6 +92,7 @@ public class Rarity {
 
     /**
      * Getter for name.<p>
+     * The primary name/label for this item.
      */
     public Label getName() {
         return name;
@@ -97,6 +100,7 @@ public class Rarity {
 
     /**
      * Setter for name.<p>
+     * The primary name/label for this item.
      */
     public void setName(Label name) {
         this.name = name;
@@ -104,6 +108,8 @@ public class Rarity {
 
     /**
      * Getter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public Source getSource() {
         return source;
@@ -111,6 +117,8 @@ public class Rarity {
 
     /**
      * Setter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public void setSource(Source source) {
         this.source = source;
@@ -150,6 +158,8 @@ public class Rarity {
 
     /**
      * Getter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public Label getCanonicalName() {
         return canonicalName;
@@ -157,6 +167,8 @@ public class Rarity {
 
     /**
      * Setter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public void setCanonicalName(Label canonicalName) {
         this.canonicalName = canonicalName;

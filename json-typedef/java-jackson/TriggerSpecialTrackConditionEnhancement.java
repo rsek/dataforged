@@ -32,6 +32,9 @@ public class TriggerSpecialTrackConditionEnhancement {
 
     /**
      * Getter for method.<p>
+     * A `null` value means this condition provides no roll mechanic of its
+     * own; it must be used with another trigger condition that provides a non-
+     * null `method`.
      */
     public SpecialTrackRollMethod getMethod() {
         return method;
@@ -39,6 +42,9 @@ public class TriggerSpecialTrackConditionEnhancement {
 
     /**
      * Setter for method.<p>
+     * A `null` value means this condition provides no roll mechanic of its
+     * own; it must be used with another trigger condition that provides a non-
+     * null `method`.
      */
     public void setMethod(SpecialTrackRollMethod method) {
         this.method = method;
@@ -46,7 +52,7 @@ public class TriggerSpecialTrackConditionEnhancement {
 
     /**
      * Getter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public List<TriggerSpecialTrackConditionOption> getRollOptions() {
         return rollOptions;
@@ -54,7 +60,7 @@ public class TriggerSpecialTrackConditionEnhancement {
 
     /**
      * Setter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public void setRollOptions(List<TriggerSpecialTrackConditionOption> rollOptions) {
         this.rollOptions = rollOptions;

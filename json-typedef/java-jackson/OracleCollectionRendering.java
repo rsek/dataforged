@@ -2,66 +2,17 @@
 
 package Datasworn;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-@JsonSerialize
-public class OracleCollectionRendering {
-    @JsonProperty("columns")
-    private Map<String, OracleCollectionTableColumn> columns;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("color")
-    private CssColor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("table_style")
-    private OracleCollectionStyle tableStyle;
-
-    public OracleCollectionRendering() {
-    }
-
-    /**
-     * Getter for columns.<p>
-     */
-    public Map<String, OracleCollectionTableColumn> getColumns() {
-        return columns;
-    }
-
-    /**
-     * Setter for columns.<p>
-     */
-    public void setColumns(Map<String, OracleCollectionTableColumn> columns) {
-        this.columns = columns;
-    }
-
-    /**
-     * Getter for color.<p>
-     */
-    public CssColor getColor() {
-        return color;
-    }
-
-    /**
-     * Setter for color.<p>
-     */
-    public void setColor(CssColor color) {
-        this.color = color;
-    }
-
-    /**
-     * Getter for tableStyle.<p>
-     */
-    public OracleCollectionStyle getTableStyle() {
-        return tableStyle;
-    }
-
-    /**
-     * Setter for tableStyle.<p>
-     */
-    public void setTableStyle(OracleCollectionStyle tableStyle) {
-        this.tableStyle = tableStyle;
-    }
+/**
+ * Describes the presentation of this oracle collection, which might represent a
+ * group of separate tables, or a single table with additional columns.
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "style")
+@JsonSubTypes({
+    @JsonSubTypes.Type(name = "multi_table", value = OracleCollectionRenderingMultiTable.class),
+    @JsonSubTypes.Type(name = "tables", value = OracleCollectionRenderingTables.class),
+})
+public abstract class OracleCollectionRendering {
 }

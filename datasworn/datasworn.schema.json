@@ -609,6 +609,12 @@
 						"$ref": "#/$defs/NpcId"
 					}
 				},
+				"rarities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/RarityId"
+					}
+				},
 				"site_domains": {
 					"type": "array",
 					"items": {
@@ -722,11 +728,12 @@
 			"$id": "#/$defs/ConditionMeterRule",
 			"title": "ConditionMeterRule",
 			"type": "object",
-			"required": ["name", "min", "max", "shared", "description"],
+			"description": "Describes a standard player character condition meter.",
+			"required": ["label", "min", "max", "value", "shared", "description"],
 			"properties": {
-				"name": {
+				"label": {
 					"$ref": "#/$defs/Label",
-					"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+					"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 				},
 				"min": {
 					"type": "integer",
@@ -738,12 +745,18 @@
 					"description": "The maximum value of this meter.",
 					"default": 5
 				},
+				"value": {
+					"type": "integer",
+					"description": "The current value of this meter."
+				},
 				"shared": {
 					"type": "boolean",
+					"description": "Is this condition meter shared by all players?",
 					"default": false
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A description of this condition meter."
 				}
 			}
 		},
@@ -751,17 +764,21 @@
 			"$id": "#/$defs/ImpactCategory",
 			"title": "ImpactCategory",
 			"type": "object",
-			"required": ["name", "description", "contents"],
+			"description": "Describes a category of standard impacts/debilities.",
+			"required": ["label", "description", "contents"],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
+				"label": {
+					"$ref": "#/$defs/Label",
+					"description": "A label for this impact category."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A description of this impact category."
 				},
 				"contents": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object of the Impacts in this category.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactRule"
@@ -774,30 +791,36 @@
 			"$id": "#/$defs/ImpactRule",
 			"title": "ImpactRule",
 			"type": "object",
+			"description": "Describes a standard impact/debility.",
 			"required": [
-				"name",
+				"label",
 				"shared",
 				"description",
 				"permanent",
 				"prevents_recovery"
 			],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
+				"label": {
+					"$ref": "#/$defs/Label",
+					"description": "The label for this impact."
 				},
 				"shared": {
 					"type": "boolean",
+					"description": "Is this impact applied to all players at once?",
 					"default": false
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A description of this impact."
 				},
 				"permanent": {
 					"type": "boolean",
+					"description": "Is this impact permanent?",
 					"default": false
 				},
 				"prevents_recovery": {
 					"type": "array",
+					"description": "Keys of ruleset condition meters, to which this impact prevents recovery.",
 					"default": [],
 					"items": {
 						"$ref": "#/$defs/DictKey"
@@ -809,11 +832,13 @@
 			"$id": "#/$defs/Rules",
 			"title": "Rules",
 			"type": "object",
+			"description": "Describes rules for player characters in this ruleset, such as stats and condition meters.",
 			"required": ["condition_meters", "impacts", "special_tracks", "stats"],
 			"properties": {
 				"condition_meters": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the standard condition meters used by player characters in this ruleset.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ConditionMeterRule"
@@ -823,6 +848,7 @@
 				"impacts": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the standard impacts/debilities used by player characters in this ruleset.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactCategory"
@@ -832,6 +858,7 @@
 				"special_tracks": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/SpecialTrackRule"
@@ -841,6 +868,7 @@
 				"stats": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the standard stats used by player characters in this ruleset.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/StatRule"
@@ -853,20 +881,25 @@
 			"$id": "#/$defs/SpecialTrackRule",
 			"title": "SpecialTrackRule",
 			"type": "object",
-			"required": ["name", "shared", "description", "optional"],
+			"description": "Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+			"required": ["label", "shared", "description", "optional"],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
+				"label": {
+					"$ref": "#/$defs/Label",
+					"description": "A label for this special track."
 				},
 				"shared": {
 					"type": "boolean",
+					"description": "Is this track shared by all players?",
 					"default": false
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A description of this special track."
 				},
 				"optional": {
 					"type": "boolean",
+					"description": "Is this track an optional rule?",
 					"default": false
 				}
 			}
@@ -875,21 +908,60 @@
 			"$id": "#/$defs/StatRule",
 			"title": "StatRule",
 			"type": "object",
-			"required": ["name", "description"],
+			"description": "Describes a standard player character stat.",
+			"required": ["label", "description"],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
+				"label": {
+					"$ref": "#/$defs/Label",
+					"description": "A label for this stat.",
+					"examples": ["edge"]
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A description of this stat.",
+					"examples": [
+						"Quickness, agility, and prowess when fighting at a distance."
+					]
 				}
 			}
 		},
 		"ChallengeRank": {
 			"$id": "#/$defs/ChallengeRank",
 			"title": "ChallengeRank",
-			"description": "Challenge rank, represented as an integer:\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
+			"description": "Challenge rank, represented as an integer.\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
 			"enum": [1, 2, 3, 4, 5]
+		},
+		"ProgressTrackTypeInfo": {
+			"$id": "#/$defs/ProgressTrackTypeInfo",
+			"title": "ProgressTrackTypeInfo",
+			"type": "object",
+			"description": "Describes the features of a type of progress track.",
+			"required": ["category"],
+			"properties": {
+				"controls": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"type": "object",
+							"properties": {}
+						}
+					}
+				},
+				"category": {
+					"$ref": "#/$defs/Label",
+					"description": "A category label for progress tracks of this type.",
+					"examples": [
+						"Vow",
+						"Journey",
+						"Combat",
+						"Scene Challenge",
+						"Expedition",
+						"Connection",
+						"Delve"
+					]
+				}
+			}
 		},
 		"SpecialTrackType": {
 			"$id": "#/$defs/SpecialTrackType",
@@ -923,19 +995,23 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/NpcId"
+					"$ref": "#/$defs/NpcId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"nature": {
 					"$ref": "#/$defs/NpcNature"
 				},
 				"rank": {
-					"$ref": "#/$defs/ChallengeRank"
+					"$ref": "#/$defs/ChallengeRank",
+					"description": "The suggested challenge rank for this NPC."
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -980,7 +1056,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				}
 			}
 		},
@@ -991,35 +1068,43 @@
 			"required": ["id", "name", "contents", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/NpcCollectionId"
+					"$ref": "#/$defs/NpcCollectionId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"enhances": {
 					"$ref": "#/$defs/NpcCollectionId",
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CssColor"
+					"$ref": "#/$defs/CssColor",
+					"description": "A thematic color associated with this collection."
 				},
 				"icon": {
-					"$ref": "#/$defs/SvgImageUrl"
+					"$ref": "#/$defs/SvgImageUrl",
+					"description": "An SVG icon associated with this collection."
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WebpImageUrl"
+						"$ref": "#/$defs/WebpImageUrl",
+						"description": "Extra images associated with this collection."
 					}
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 				},
 				"contents": {
 					"type": "object",
@@ -1035,7 +1120,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/NpcCollectionId",
@@ -1069,7 +1155,8 @@
 			"required": ["id", "name", "nature", "rank", "description"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/NpcVariantId"
+					"$ref": "#/$defs/NpcVariantId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -1078,7 +1165,8 @@
 					"$ref": "#/$defs/NpcNature"
 				},
 				"rank": {
-					"$ref": "#/$defs/ChallengeRank"
+					"$ref": "#/$defs/ChallengeRank",
+					"description": "The suggested challenge rank for this NPC."
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -1168,38 +1256,49 @@
 			"required": ["id", "name", "contents", "collections", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/OracleCollectionId"
+					"$ref": "#/$defs/OracleCollectionId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"enhances": {
 					"$ref": "#/$defs/OracleCollectionId",
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CssColor"
+					"$ref": "#/$defs/CssColor",
+					"description": "A thematic color associated with this collection."
 				},
 				"icon": {
-					"$ref": "#/$defs/SvgImageUrl"
+					"$ref": "#/$defs/SvgImageUrl",
+					"description": "An SVG icon associated with this collection."
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WebpImageUrl"
+						"$ref": "#/$defs/WebpImageUrl",
+						"description": "Extra images associated with this collection."
 					}
 				},
 				"rendering": {
-					"$ref": "#/$defs/OracleCollectionRendering"
+					"$ref": "#/$defs/OracleCollectionRendering",
+					"default": {
+						"style": "tables"
+					}
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 				},
 				"contents": {
 					"type": "object",
@@ -1225,7 +1324,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/OracleCollectionId",
@@ -1237,38 +1337,83 @@
 			"$id": "#/$defs/OracleCollectionRendering",
 			"title": "OracleCollectionRendering",
 			"type": "object",
-			"required": ["columns"],
+			"description": "Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.",
+			"required": ["style"],
 			"properties": {
-				"color": {
-					"$ref": "#/$defs/CssColor"
-				},
-				"table_style": {
-					"$ref": "#/$defs/OracleCollectionStyle"
-				},
-				"columns": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/OracleCollectionTableColumn"
+				"style": {
+					"enum": ["tables", "multi_table"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
+				{
+					"if": {
+						"properties": {
+							"style": {
+								"description": "Presented as a collection of separate tables.",
+								"const": "tables",
+								"type": "string"
+							}
 						}
+					},
+					"then": {
+						"type": "object",
+						"properties": {
+							"style": {
+								"description": "Presented as a collection of separate tables.",
+								"const": "tables",
+								"type": "string"
+							}
+						},
+						"required": ["style"]
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"style": {
+								"description": "Presented as a single table, with its OracleTable children rendered as columns.",
+								"const": "multi_table",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"type": "object",
+						"properties": {
+							"style": {
+								"description": "Presented as a single table, with its OracleTable children rendered as columns.",
+								"const": "multi_table",
+								"type": "string"
+							},
+							"columns": {
+								"$comment": "Deserialize as a dictionary object.",
+								"type": "object",
+								"patternProperties": {
+									"^([a-z][a-z_]*)$": {
+										"$ref": "#/$defs/OracleCollectionTableColumn"
+									}
+								}
+							}
+						},
+						"required": ["style", "columns"]
 					}
 				}
-			}
+			]
 		},
 		"OracleCollectionStyle": {
 			"$id": "#/$defs/OracleCollectionStyle",
 			"title": "OracleCollectionStyle",
-			"description": "  * collection: \n  * multi_table: ",
-			"enum": ["collection", "multi_table"]
+			"description": "  * tables: Presented as a collection of separate tables.\n  * multi_table: Presented as a single table, with its OracleTable children rendered as columns.",
+			"enum": ["tables", "multi_table"]
 		},
 		"OracleCollectionTableColumn": {
 			"$id": "#/$defs/OracleCollectionTableColumn",
 			"title": "OracleCollectionTableColumn",
 			"type": "object",
-			"required": ["content_type", "table_key"],
+			"required": ["label", "content_type", "table_key"],
 			"properties": {
-				"name": {
+				"label": {
 					"$ref": "#/$defs/Label",
 					"description": "The column's header text."
 				},
@@ -1292,29 +1437,36 @@
 			"required": ["id", "name", "dice", "table", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/OracleTableId"
+					"$ref": "#/$defs/OracleTableId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"icon": {
-					"$ref": "#/$defs/SvgImageUrl"
+					"$ref": "#/$defs/SvgImageUrl",
+					"description": "An icon that represents this table."
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WebpImageUrl"
+						"$ref": "#/$defs/WebpImageUrl",
+						"description": "Extra images associated with this table."
 					}
 				},
 				"dice": {
 					"$ref": "#/$defs/DiceNotation",
+					"description": "The roll used to select a result on this table.",
 					"default": "1d100"
 				},
 				"rendering": {
-					"$ref": "#/$defs/OracleTableRendering"
+					"$ref": "#/$defs/OracleTableRendering",
+					"description": "Describes how how to render this table, when presenting it as a standalone table."
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString",
@@ -1325,7 +1477,8 @@
 					"description": "A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 				},
 				"match": {
-					"$ref": "#/$defs/OracleTableMatchBehavior"
+					"$ref": "#/$defs/OracleTableMatchBehavior",
+					"description": "Most oracle tables are insensitive to matches, but a few define special match behavior."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -1333,11 +1486,13 @@
 				"table": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/OracleTableRow"
+						"$ref": "#/$defs/OracleTableRow",
+						"description": "An array of objects, each representing a single row of the table."
 					}
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"_i18n": {
 					"$ref": "#/$defs/I18nHints",
@@ -1353,9 +1508,9 @@
 			"$id": "#/$defs/OracleTableColumn",
 			"title": "OracleTableColumn",
 			"type": "object",
-			"required": ["content_type"],
+			"required": ["label", "content_type"],
 			"properties": {
-				"name": {
+				"label": {
 					"$ref": "#/$defs/Label",
 					"description": "The column's header text."
 				},
@@ -1369,15 +1524,15 @@
 			},
 			"examples": [
 				{
-					"name": "Roll",
+					"label": "Roll",
 					"content_type": "roll"
 				},
 				{
-					"name": "Result",
+					"label": "Result",
 					"content_type": "result"
 				},
 				{
-					"name": "Summary",
+					"label": "Summary",
 					"content_type": "summary"
 				}
 			]
@@ -1392,31 +1547,114 @@
 			"$id": "#/$defs/OracleTableRendering",
 			"title": "OracleTableRendering",
 			"type": "object",
-			"required": ["columns"],
-			"properties": {
-				"table_style": {
-					"$ref": "#/$defs/OracleTableStyle"
-				},
+			"description": "Describes the presentation of this table.",
+			"default": {
+				"style": "standalone",
 				"columns": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"default": {
-						"roll": {
-							"name": "Roll",
-							"content_type": "roll"
-						},
-						"result": {
-							"name": "Result",
-							"content_type": "result"
-						}
+					"roll": {
+						"label": "Roll",
+						"content_type": "roll"
 					},
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/OracleTableColumn"
-						}
+					"result": {
+						"label": "Result",
+						"content_type": "result"
 					}
 				}
-			}
+			},
+			"required": ["style"],
+			"properties": {
+				"style": {
+					"enum": ["standalone", "column", "embed_in_row"]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
+				{
+					"if": {
+						"properties": {
+							"style": {
+								"description": "Render as a standalone table.",
+								"const": "standalone",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"type": "object",
+						"properties": {
+							"style": {
+								"description": "Render as a standalone table.",
+								"const": "standalone",
+								"type": "string"
+							},
+							"columns": {
+								"default": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"$comment": "Deserialize as a dictionary object.",
+								"type": "object",
+								"patternProperties": {
+									"^([a-z][a-z_]*)$": {
+										"$ref": "#/$defs/OracleTableColumn"
+									}
+								}
+							}
+						},
+						"required": ["style", "columns"]
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"style": {
+								"description": "Render as a single column of a table.",
+								"const": "column",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"type": "object",
+						"properties": {
+							"style": {
+								"description": "Render as a single column of a table.",
+								"const": "column",
+								"type": "string"
+							}
+						},
+						"required": ["style"]
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"style": {
+								"description": "Render as a table, within a row in another table.",
+								"const": "embed_in_row",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"type": "object",
+						"properties": {
+							"style": {
+								"description": "Render as a table, within a row in another table.",
+								"const": "embed_in_row",
+								"type": "string"
+							}
+						},
+						"required": ["style"]
+					}
+				}
+			]
 		},
 		"OracleTableRow": {
 			"$id": "#/$defs/OracleTableRow",
@@ -1425,14 +1663,16 @@
 			"required": ["id", "min", "max", "result"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/OracleTableRowId"
+					"$ref": "#/$defs/OracleTableRowId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"min": {
 					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
 					"default": null,
 					"anyOf": [
 						{
-							"type": "integer"
+							"type": "integer",
+							"description": "Low end of the dice range for this table row."
 						},
 						{
 							"type": "null"
@@ -1444,7 +1684,8 @@
 					"default": null,
 					"anyOf": [
 						{
-							"type": "integer"
+							"type": "integer",
+							"description": "High end of the dice range for this table row."
 						},
 						{
 							"type": "null"
@@ -1486,8 +1727,8 @@
 		"OracleTableStyle": {
 			"$id": "#/$defs/OracleTableStyle",
 			"title": "OracleTableStyle",
-			"description": "  * standalone_table: Render as a standalone table.\n  * embed_in_row: Render as a table, within a row in another table.\n  * embed_as_column: Render as a single column of a table.",
-			"enum": ["standalone_table", "embed_in_row", "embed_as_column"]
+			"description": "  * standalone: Render as a standalone table.\n  * embed_in_row: Render as a table, within a row in another table.\n  * column: Render as a single column of a table.",
+			"enum": ["standalone", "embed_in_row", "column"]
 		},
 		"ActionRollMethod": {
 			"$id": "#/$defs/ActionRollMethod",
@@ -1723,13 +1964,16 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/MoveId"
+					"$ref": "#/$defs/MoveId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"roll_type": {
 					"type": "string",
@@ -1757,7 +2001,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveId",
@@ -1794,35 +2039,43 @@
 			"required": ["id", "name", "contents", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/MoveCategoryId"
+					"$ref": "#/$defs/MoveCategoryId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"enhances": {
 					"$ref": "#/$defs/MoveCategoryId",
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CssColor"
+					"$ref": "#/$defs/CssColor",
+					"description": "A thematic color associated with this collection."
 				},
 				"icon": {
-					"$ref": "#/$defs/SvgImageUrl"
+					"$ref": "#/$defs/SvgImageUrl",
+					"description": "An SVG icon associated with this collection."
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WebpImageUrl"
+						"$ref": "#/$defs/WebpImageUrl",
+						"description": "Extra images associated with this collection."
 					}
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 				},
 				"contents": {
 					"type": "object",
@@ -1838,7 +2091,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveCategoryId",
@@ -1931,13 +2185,16 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/MoveId"
+					"$ref": "#/$defs/MoveId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"roll_type": {
 					"type": "string",
@@ -1966,7 +2223,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveId",
@@ -2042,39 +2300,29 @@
 				"id",
 				"name",
 				"roll_type",
-				"track_label",
 				"trigger",
 				"text",
 				"outcomes",
-				"source"
+				"source",
+				"tracks"
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/MoveId"
+					"$ref": "#/$defs/MoveId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"roll_type": {
 					"type": "string",
 					"description": "A progress move that rolls on a standard progress track type (defined by this move).",
 					"const": "progress_roll"
-				},
-				"track_label": {
-					"$ref": "#/$defs/Label",
-					"description": "A category label for progress tracks associated with this move.",
-					"examples": [
-						"Vow",
-						"Journey",
-						"Combat",
-						"Scene Challenge",
-						"Expedition",
-						"Connection",
-						"Delve"
-					]
 				},
 				"trigger": {
 					"$ref": "#/$defs/TriggerProgressRoll"
@@ -2097,11 +2345,16 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveId",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
+				},
+				"tracks": {
+					"$ref": "#/$defs/ProgressTrackTypeInfo",
+					"description": "Describes the common features of progress tracks associated with this move."
 				}
 			}
 		},
@@ -2148,13 +2401,16 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/MoveId"
+					"$ref": "#/$defs/MoveId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"roll_type": {
 					"type": "string",
@@ -2182,7 +2438,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveId",
@@ -2434,7 +2691,7 @@
 				},
 				"roll_options": {
 					"type": "array",
-					"description": "The options available when rolling with this trigger.",
+					"description": "The options available when rolling with this trigger condition.",
 					"items": {
 						"$ref": "#/$defs/ActionRollOption"
 					}
@@ -2471,7 +2728,7 @@
 					"anyOf": [
 						{
 							"type": "array",
-							"description": "The options available when rolling with this trigger.",
+							"description": "The options available when rolling with this trigger condition.",
 							"items": {
 								"$ref": "#/$defs/ActionRollOption"
 							}
@@ -2561,7 +2818,7 @@
 				},
 				"roll_options": {
 					"type": "null",
-					"description": "The options available when rolling with this trigger.",
+					"description": "The options available when rolling with this trigger condition.",
 					"default": null
 				}
 			}
@@ -2619,7 +2876,7 @@
 				},
 				"roll_options": {
 					"type": "array",
-					"description": "The options available when rolling with this trigger.",
+					"description": "The options available when rolling with this trigger condition.",
 					"items": {
 						"$ref": "#/$defs/ProgressRollOption"
 					}
@@ -2657,7 +2914,7 @@
 					"anyOf": [
 						{
 							"type": "array",
-							"description": "The options available when rolling with this trigger.",
+							"description": "The options available when rolling with this trigger condition.",
 							"items": {
 								"$ref": "#/$defs/ProgressRollOption"
 							}
@@ -2721,7 +2978,7 @@
 				},
 				"roll_options": {
 					"type": "array",
-					"description": "The options available when rolling with this trigger.",
+					"description": "The options available when rolling with this trigger condition.",
 					"items": {
 						"$ref": "#/$defs/TriggerSpecialTrackConditionOption"
 					}
@@ -2759,7 +3016,7 @@
 					"anyOf": [
 						{
 							"type": "array",
-							"description": "The options available when rolling with this trigger.",
+							"description": "The options available when rolling with this trigger condition.",
 							"items": {
 								"$ref": "#/$defs/TriggerSpecialTrackConditionOption"
 							}
@@ -2811,13 +3068,16 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AssetId"
+					"$ref": "#/$defs/AssetId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"asset_type": {
 					"$ref": "#/$defs/Label",
@@ -2834,10 +3094,12 @@
 					]
 				},
 				"color": {
-					"$ref": "#/$defs/CssColor"
+					"$ref": "#/$defs/CssColor",
+					"description": "A thematic color associated with this asset."
 				},
 				"icon": {
-					"$ref": "#/$defs/SvgImageUrl"
+					"$ref": "#/$defs/SvgImageUrl",
+					"description": "This asset's icon."
 				},
 				"options": {
 					"type": "object",
@@ -2863,7 +3125,8 @@
 					"$ref": "#/$defs/AssetAttachment"
 				},
 				"requirement": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Describes prerequisites for purchasing or using this asset."
 				},
 				"abilities": {
 					"type": "array",
@@ -2886,7 +3149,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				}
 			}
 		},
@@ -2897,7 +3161,8 @@
 			"required": ["id", "enabled", "text"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AssetAbilityId"
+					"$ref": "#/$defs/AssetAbilityId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -2981,10 +3246,11 @@
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetAbilityControlFieldId"
+								"$ref": "#/$defs/AssetAbilityControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -2995,7 +3261,7 @@
 							"min": {
 								"default": 0,
 								"const": 0,
-								"type": "number",
+								"type": "integer",
 								"description": "The minimum number of filled clock segments. This is always 0."
 							},
 							"max": {
@@ -3007,7 +3273,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["id", "name", "value", "min", "max", "field_type"]
+						"required": ["id", "label", "value", "min", "max", "field_type"]
 					}
 				},
 				{
@@ -3026,10 +3292,11 @@
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetAbilityControlFieldId"
+								"$ref": "#/$defs/AssetAbilityControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3040,7 +3307,7 @@
 							"min": {
 								"default": 0,
 								"const": 0,
-								"type": "number",
+								"type": "integer",
 								"description": "The (inclusive) minimum value."
 							},
 							"max": {
@@ -3060,7 +3327,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["id", "name", "value", "min", "max", "field_type"]
+						"required": ["id", "label", "value", "min", "max", "field_type"]
 					}
 				},
 				{
@@ -3073,14 +3340,17 @@
 						}
 					},
 					"then": {
+						"description": "Represents a checkbox.",
+						"$comment": "Semantics are similar to the `<input type=\"checkbox\">` element.",
 						"title": "AssetCheckboxField",
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetAbilityControlFieldId"
+								"$ref": "#/$defs/AssetAbilityControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3105,7 +3375,7 @@
 						},
 						"required": [
 							"id",
-							"name",
+							"label",
 							"value",
 							"field_type",
 							"is_impact",
@@ -3143,10 +3413,11 @@
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetAbilityOptionFieldId"
+								"$ref": "#/$defs/AssetAbilityOptionFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3166,7 +3437,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["id", "name", "value", "field_type"]
+						"required": ["id", "label", "value", "field_type"]
 					}
 				}
 			]
@@ -3205,23 +3476,23 @@
 			"title": "AssetConditionMeter",
 			"type": "object",
 			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".",
-			"required": ["id", "name", "field_type", "min", "max", "value"],
+			"required": ["id", "label", "field_type", "min", "max", "value"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AssetControlFieldId"
+					"$ref": "#/$defs/AssetControlFieldId",
+					"description": "The unique Datasworn ID for this item."
 				},
-				"name": {
+				"label": {
 					"$ref": "#/$defs/Label",
-					"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+					"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 				},
 				"field_type": {
 					"type": "string",
 					"const": "condition_meter"
 				},
 				"min": {
-					"type": "number",
+					"type": "integer",
 					"description": "The minimum value of this meter.",
-					"const": 0,
 					"default": 0
 				},
 				"max": {
@@ -3235,6 +3506,7 @@
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
+					"description": "Checkbox controls rendered as part of the condition meter.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetConditionMeterControlField"
@@ -3280,6 +3552,7 @@
 			"$id": "#/$defs/AssetConditionMeterControlField",
 			"title": "AssetConditionMeterControlField",
 			"type": "object",
+			"description": "A checkbox control field, rendered as part of an asset condition meter.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
@@ -3298,14 +3571,17 @@
 						}
 					},
 					"then": {
+						"description": "Represents a checkbox.",
+						"$comment": "Semantics are similar to the `<input type=\"checkbox\">` element.",
 						"title": "AssetCheckboxField",
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetConditionMeterControlFieldId"
+								"$ref": "#/$defs/AssetConditionMeterControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3330,7 +3606,7 @@
 						},
 						"required": [
 							"id",
-							"name",
+							"label",
 							"value",
 							"field_type",
 							"is_impact",
@@ -3348,14 +3624,16 @@
 						}
 					},
 					"then": {
+						"description": "When its value is set to `true` it means that the card is flipped over. Some assets use this to represent a 'broken' state (e.g. Starforged Module assets).",
 						"title": "AssetCardFlipField",
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetConditionMeterControlFieldId"
+								"$ref": "#/$defs/AssetConditionMeterControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3380,7 +3658,7 @@
 						},
 						"required": [
 							"id",
-							"name",
+							"label",
 							"value",
 							"field_type",
 							"is_impact",
@@ -3453,10 +3731,11 @@
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetControlFieldId"
+								"$ref": "#/$defs/AssetControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3503,8 +3782,8 @@
 															"description": "Is this option currently selected?",
 															"type": "boolean"
 														},
-														"name": {
-															"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+														"label": {
+															"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 															"$ref": "#/$defs/Label"
 														},
 														"value": {
@@ -3523,7 +3802,7 @@
 															}
 														}
 													},
-													"required": ["option_type", "name", "value"]
+													"required": ["option_type", "label", "value"]
 												}
 											},
 											{
@@ -3567,8 +3846,8 @@
 																			"description": "Is this option currently selected?",
 																			"type": "boolean"
 																		},
-																		"name": {
-																			"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+																		"label": {
+																			"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 																			"$ref": "#/$defs/Label"
 																		},
 																		"value": {
@@ -3587,7 +3866,7 @@
 																			}
 																		}
 																	},
-																	"required": ["option_type", "name", "value"]
+																	"required": ["option_type", "label", "value"]
 																}
 															}
 														}
@@ -3611,7 +3890,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["id", "name", "value", "choices", "field_type"]
+						"required": ["id", "label", "value", "choices", "field_type"]
 					}
 				},
 				{
@@ -3624,14 +3903,17 @@
 						}
 					},
 					"then": {
+						"description": "Represents a checkbox.",
+						"$comment": "Semantics are similar to the `<input type=\"checkbox\">` element.",
 						"title": "AssetCheckboxField",
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetControlFieldId"
+								"$ref": "#/$defs/AssetControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3656,7 +3938,7 @@
 						},
 						"required": [
 							"id",
-							"name",
+							"label",
 							"value",
 							"field_type",
 							"is_impact",
@@ -3674,14 +3956,16 @@
 						}
 					},
 					"then": {
+						"description": "When its value is set to `true` it means that the card is flipped over. Some assets use this to represent a 'broken' state (e.g. Starforged Module assets).",
 						"title": "AssetCardFlipField",
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetControlFieldId"
+								"$ref": "#/$defs/AssetControlFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3706,7 +3990,7 @@
 						},
 						"required": [
 							"id",
-							"name",
+							"label",
 							"value",
 							"field_type",
 							"is_impact",
@@ -3803,10 +4087,11 @@
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetOptionFieldId"
+								"$ref": "#/$defs/AssetOptionFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -3853,8 +4138,8 @@
 															"description": "Is this option currently selected?",
 															"type": "boolean"
 														},
-														"name": {
-															"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+														"label": {
+															"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 															"$ref": "#/$defs/Label"
 														},
 														"value": {
@@ -3862,7 +4147,7 @@
 															"$ref": "#/$defs/PlayerStat"
 														}
 													},
-													"required": ["option_type", "name", "value"]
+													"required": ["option_type", "label", "value"]
 												}
 											},
 											{
@@ -3906,8 +4191,8 @@
 																			"description": "Is this option currently selected?",
 																			"type": "boolean"
 																		},
-																		"name": {
-																			"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+																		"label": {
+																			"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 																			"$ref": "#/$defs/Label"
 																		},
 																		"value": {
@@ -3915,7 +4200,7 @@
 																			"$ref": "#/$defs/PlayerStat"
 																		}
 																	},
-																	"required": ["option_type", "name", "value"]
+																	"required": ["option_type", "label", "value"]
 																}
 															}
 														}
@@ -3939,7 +4224,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["id", "name", "value", "choices", "field_type"]
+						"required": ["id", "label", "value", "choices", "field_type"]
 					}
 				},
 				{
@@ -3958,10 +4243,11 @@
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetOptionFieldId"
+								"$ref": "#/$defs/AssetOptionFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -4008,8 +4294,8 @@
 															"description": "Is this option currently selected?",
 															"type": "boolean"
 														},
-														"name": {
-															"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+														"label": {
+															"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 															"$ref": "#/$defs/Label"
 														},
 														"value": {
@@ -4028,7 +4314,7 @@
 															}
 														}
 													},
-													"required": ["option_type", "name", "value"]
+													"required": ["option_type", "label", "value"]
 												}
 											},
 											{
@@ -4072,8 +4358,8 @@
 																			"description": "Is this option currently selected?",
 																			"type": "boolean"
 																		},
-																		"name": {
-																			"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+																		"label": {
+																			"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 																			"$ref": "#/$defs/Label"
 																		},
 																		"value": {
@@ -4092,7 +4378,7 @@
 																			}
 																		}
 																	},
-																	"required": ["option_type", "name", "value"]
+																	"required": ["option_type", "label", "value"]
 																}
 															}
 														}
@@ -4116,7 +4402,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["id", "name", "value", "choices", "field_type"]
+						"required": ["id", "label", "value", "choices", "field_type"]
 					}
 				},
 				{
@@ -4135,10 +4421,11 @@
 						"type": "object",
 						"properties": {
 							"id": {
-								"$ref": "#/$defs/AssetOptionFieldId"
+								"$ref": "#/$defs/AssetOptionFieldId",
+								"description": "The unique Datasworn ID for this item."
 							},
-							"name": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+							"label": {
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
 								"$ref": "#/$defs/Label"
 							},
 							"value": {
@@ -4158,7 +4445,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["id", "name", "value", "field_type"]
+						"required": ["id", "label", "value", "field_type"]
 					}
 				}
 			]
@@ -4170,35 +4457,43 @@
 			"required": ["id", "name", "contents", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AssetTypeId"
+					"$ref": "#/$defs/AssetTypeId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"enhances": {
 					"$ref": "#/$defs/AssetTypeId",
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CssColor"
+					"$ref": "#/$defs/CssColor",
+					"description": "A thematic color associated with this collection."
 				},
 				"icon": {
-					"$ref": "#/$defs/SvgImageUrl"
+					"$ref": "#/$defs/SvgImageUrl",
+					"description": "An SVG icon associated with this collection."
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WebpImageUrl"
+						"$ref": "#/$defs/WebpImageUrl",
+						"description": "Extra images associated with this collection."
 					}
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 				},
 				"contents": {
 					"type": "object",
@@ -4214,7 +4509,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/AssetTypeId",
@@ -4230,13 +4526,16 @@
 			"required": ["id", "name", "options", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/TruthId"
+					"$ref": "#/$defs/TruthId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -4251,7 +4550,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"your_character": {
 					"$ref": "#/$defs/MarkdownString"
@@ -4265,7 +4565,8 @@
 			"required": ["id", "description", "quest_starter"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/TruthOptionId"
+					"$ref": "#/$defs/TruthOptionId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"min": {
 					"type": "integer"
@@ -4301,7 +4602,8 @@
 					"default": null,
 					"anyOf": [
 						{
-							"type": "integer"
+							"type": "integer",
+							"description": "Low end of the dice range for this table row."
 						},
 						{
 							"type": "null"
@@ -4313,7 +4615,8 @@
 					"default": null,
 					"anyOf": [
 						{
-							"type": "integer"
+							"type": "integer",
+							"description": "High end of the dice range for this table row."
 						},
 						{
 							"type": "null"
@@ -4359,35 +4662,43 @@
 			"required": ["id", "name", "contents", "collections", "source"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AtlasId"
+					"$ref": "#/$defs/AtlasId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"enhances": {
 					"$ref": "#/$defs/AtlasId",
 					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"color": {
-					"$ref": "#/$defs/CssColor"
+					"$ref": "#/$defs/CssColor",
+					"description": "A thematic color associated with this collection."
 				},
 				"icon": {
-					"$ref": "#/$defs/SvgImageUrl"
+					"$ref": "#/$defs/SvgImageUrl",
+					"description": "An SVG icon associated with this collection."
 				},
 				"images": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/WebpImageUrl"
+						"$ref": "#/$defs/WebpImageUrl",
+						"description": "Extra images associated with this collection."
 					}
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 				},
 				"contents": {
 					"type": "object",
@@ -4413,7 +4724,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"replaces": {
 					"$ref": "#/$defs/AtlasId",
@@ -4437,13 +4749,16 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AtlasEntryId"
+					"$ref": "#/$defs/AtlasEntryId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -4467,7 +4782,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				}
 			}
 		},
@@ -4493,13 +4809,16 @@
 			"required": ["id", "name", "description", "source", "asset", "xp_cost"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/RarityId"
+					"$ref": "#/$defs/RarityId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -4511,7 +4830,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"asset": {
 					"$ref": "#/$defs/AssetId",
@@ -4525,6 +4845,12 @@
 					"maximum": 5
 				}
 			}
+		},
+		"DelveCardType": {
+			"$id": "#/$defs/DelveCardType",
+			"title": "DelveCardType",
+			"description": "  * theme: A delve site theme card.\n  * domain: A delve site domain card.",
+			"enum": ["theme", "domain"]
 		},
 		"DelveSite": {
 			"$id": "#/$defs/DelveSite",
@@ -4543,13 +4869,16 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/DelveSiteId"
+					"$ref": "#/$defs/DelveSiteId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -4564,7 +4893,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"denizens": {
 					"allOf": [
@@ -4842,7 +5172,8 @@
 			"required": ["id", "min", "max", "frequency"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/DelveSiteDenizenId"
+					"$ref": "#/$defs/DelveSiteDenizenId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -4882,16 +5213,20 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/DelveSiteDomainId"
+					"$ref": "#/$defs/DelveSiteDomainId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"card_type": {
 					"type": "string",
+					"description": "A delve site domain card.",
 					"const": "domain"
 				},
 				"icon": {
@@ -5225,7 +5560,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				},
 				"name_oracle": {
 					"$ref": "#/$defs/OracleTableId",
@@ -5240,15 +5576,16 @@
 			"required": ["id", "min", "max", "result"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/DomainDangerRowId"
+					"$ref": "#/$defs/DomainDangerRowId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"min": {
 					"type": "integer",
-					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "Low end of the dice range for this table row."
 				},
 				"max": {
 					"type": "integer",
-					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "High end of the dice range for this table row."
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -5289,15 +5626,16 @@
 			"required": ["id", "min", "max", "result"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/DomainFeatureRowId"
+					"$ref": "#/$defs/DomainFeatureRowId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"min": {
 					"type": "integer",
-					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "Low end of the dice range for this table row."
 				},
 				"max": {
 					"type": "integer",
-					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "High end of the dice range for this table row."
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -5346,16 +5684,20 @@
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/DelveSiteThemeId"
+					"$ref": "#/$defs/DelveSiteThemeId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The primary name/label for this item."
 				},
 				"canonical_name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
 				},
 				"card_type": {
 					"type": "string",
+					"description": "A delve site theme card.",
 					"const": "theme"
 				},
 				"icon": {
@@ -5662,7 +6004,8 @@
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/$defs/Source",
+					"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 				}
 			}
 		},
@@ -5673,15 +6016,16 @@
 			"required": ["id", "min", "max", "result"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/ThemeDangerRowId"
+					"$ref": "#/$defs/ThemeDangerRowId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"min": {
 					"type": "integer",
-					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "Low end of the dice range for this table row."
 				},
 				"max": {
 					"type": "integer",
-					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "High end of the dice range for this table row."
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -5722,15 +6066,16 @@
 			"required": ["id", "min", "max", "result"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/ThemeFeatureRowId"
+					"$ref": "#/$defs/ThemeFeatureRowId",
+					"description": "The unique Datasworn ID for this item."
 				},
 				"min": {
 					"type": "integer",
-					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "Low end of the dice range for this table row."
 				},
 				"max": {
 					"type": "integer",
-					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					"description": "High end of the dice range for this table row."
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"

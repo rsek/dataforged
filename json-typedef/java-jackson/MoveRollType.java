@@ -5,15 +5,29 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum MoveRollType {
+    /**
+     * A move that makes an action roll.
+     */
     @JsonProperty("action_roll")
     ACTION_ROLL,
 
+    /**
+     * A move that makes no action rolls or progress rolls.
+     */
     @JsonProperty("no_roll")
     NO_ROLL,
 
+    /**
+     * A progress move that rolls on a standard progress track type (defined by
+     * this move).
+     */
     @JsonProperty("progress_roll")
     PROGRESS_ROLL,
 
+    /**
+     * A progress move that rolls on one or more special tracks, like Bonds
+     * (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+     */
     @JsonProperty("special_track")
     SPECIAL_TRACK,
 }

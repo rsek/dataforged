@@ -31,13 +31,13 @@ assets:
           options:
             name:
               field_type: text
-              name: Name
+              label: Name
         controls:
           integrity:
             max: 6
             value: 6
             <<: &SupportVehicle.integrity
-              name: integrity
+              label: integrity
               field_type: condition_meter
               min: 0
               moves:
@@ -47,7 +47,7 @@ assets:
                   - starforged/moves/recover/repair
               controls:
                 battered:
-                  name: battered
+                  label: battered
                   field_type: checkbox
                   is_impact: true
         abilities:
@@ -345,7 +345,7 @@ assets:
               When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.
             controls:
               victory_marks:
-                name: Victory marks
+                label: Victory marks
                 field_type: counter
                 min: 0
                 value: 0

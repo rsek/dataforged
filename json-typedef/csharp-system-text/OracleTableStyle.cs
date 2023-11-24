@@ -9,11 +9,20 @@ namespace Datasworn
     [JsonConverter(typeof(OracleTableStyleJsonConverter))]
     public enum OracleTableStyle
     {
-        EmbedAsColumn,
+        /// <summary>
+        /// Render as a single column of a table.
+        /// </summary>
+        Column,
 
+        /// <summary>
+        /// Render as a table, within a row in another table.
+        /// </summary>
         EmbedInRow,
 
-        StandaloneTable,
+        /// <summary>
+        /// Render as a standalone table.
+        /// </summary>
+        Standalone,
     }
     public class OracleTableStyleJsonConverter : JsonConverter<OracleTableStyle>
     {
@@ -22,12 +31,12 @@ namespace Datasworn
             string value = JsonSerializer.Deserialize<string>(ref reader, options);
             switch (value)
             {
-                case "embed_as_column":
-                    return OracleTableStyle.EmbedAsColumn;
+                case "column":
+                    return OracleTableStyle.Column;
                 case "embed_in_row":
                     return OracleTableStyle.EmbedInRow;
-                case "standalone_table":
-                    return OracleTableStyle.StandaloneTable;
+                case "standalone":
+                    return OracleTableStyle.Standalone;
                 default:
                     throw new ArgumentException(String.Format("Bad OracleTableStyle value: {0}", value));
             }
@@ -37,14 +46,14 @@ namespace Datasworn
         {
             switch (value)
             {
-                case OracleTableStyle.EmbedAsColumn:
-                    JsonSerializer.Serialize<string>(writer, "embed_as_column", options);
+                case OracleTableStyle.Column:
+                    JsonSerializer.Serialize<string>(writer, "column", options);
                     return;
                 case OracleTableStyle.EmbedInRow:
                     JsonSerializer.Serialize<string>(writer, "embed_in_row", options);
                     return;
-                case OracleTableStyle.StandaloneTable:
-                    JsonSerializer.Serialize<string>(writer, "standalone_table", options);
+                case OracleTableStyle.Standalone:
+                    JsonSerializer.Serialize<string>(writer, "standalone", options);
                     return;
             }
         }

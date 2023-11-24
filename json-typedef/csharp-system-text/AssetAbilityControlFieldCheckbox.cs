@@ -15,6 +15,9 @@ namespace Datasworn
         [JsonPropertyName("disables_asset")]
         public bool DisablesAsset { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public AssetAbilityControlFieldId Id { get; set; }
 
@@ -26,12 +29,12 @@ namespace Datasworn
         public bool IsImpact { get; set; }
 
         /// <summary>
-        /// A label for this input. In some contexts it may be undesirable
-        /// to render this text, but it should always be exposed to assistive
-        /// technology (e.g. with `aria-label` in HTML).
+        /// A localized label for this input. In some contexts it may be
+        /// undesirable to render this text, but it should always be exposed to
+        /// assistive technology (e.g. with `aria-label` in HTML).
         /// </summary>
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
 
         /// <summary>
         /// Is the box checked?

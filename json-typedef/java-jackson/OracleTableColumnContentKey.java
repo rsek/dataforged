@@ -8,15 +8,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * The value(s) from each OracleTableRow that is rendered in this column.
  */
 public enum OracleTableColumnContentKey {
+    /**
+     * Column displays the OracleTableRow's `description` key.
+     */
     @JsonProperty("description")
     DESCRIPTION,
 
+    /**
+     * Column displays the OracleTableRow's `result` key.
+     */
     @JsonProperty("result")
     RESULT,
 
+    /**
+     * Column displays the roll range (`min` and `max`) of each OracleTableRow.
+     */
     @JsonProperty("roll")
     ROLL,
 
+    /**
+     * Column displays the OracleTableRow's `summary` key.
+     */
     @JsonProperty("summary")
     SUMMARY,
 }

@@ -42,7 +42,7 @@ public class TriggerProgressRollCondition {
 
     /**
      * Getter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public List<ProgressRollOption> getRollOptions() {
         return rollOptions;
@@ -50,7 +50,7 @@ public class TriggerProgressRollCondition {
 
     /**
      * Setter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public void setRollOptions(List<ProgressRollOption> rollOptions) {
         this.rollOptions = rollOptions;

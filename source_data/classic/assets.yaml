@@ -30,7 +30,7 @@ assets:
         # tags: [animal_companion]
         options: &NameOptions
           name:
-            name: Name
+            label: Name
             field_type: text
             value: null
         requirement: Your cat takes down its prey.
@@ -76,9 +76,8 @@ assets:
             max: 4
             value: 4
             <<: &CompanionHealth
-              min: 0
               field_type: condition_meter
-              name: health
+              label: health
               moves:
                 suffer:
                   - classic/moves/suffer/companion_endure_harm
@@ -348,9 +347,8 @@ assets:
               When you make a move outside of combat aided by your companion’s expertise, add +1.
             options:
               expertise:
+                label: Expertise
                 field_type: text
-                name: Expertise
-                value: null
             enhance_moves:
               - roll_type: action_roll
                 trigger:
@@ -915,10 +913,9 @@ assets:
           strength:
             # FIXME: conditional debility?
             # this *could* be a new feature of the condition meter object
+            label: strength
             field_type: condition_meter
-            name: strength
             max: 4
-            min: 0
             value: 4
             moves:
               recover:
@@ -999,32 +996,32 @@ assets:
         # https://game-icons.net/1x1/lorc/sundial.html
         options:
           gods_name:
-            name: God's name
+            label: God's name
             field_type: text
             value: null
           stat:
-            name: Stat
+            label: Stat
             field_type: select_stat
             value: null
             choices:
               edge:
-                name: Edge
+                label: Edge
                 value: edge
                 option_type: option
               heart:
-                name: Heart
+                label: Heart
                 value: heart
                 option_type: option
               iron:
-                name: Iron
+                label: Iron
                 value: iron
                 option_type: option
               shadow:
-                name: Shadow
+                label: Shadow
                 value: shadow
                 option_type: option
               wits:
-                name: Wits
+                label: Wits
                 value: wits
                 option_type: option
         abilities:
@@ -1089,7 +1086,7 @@ assets:
         # https://game-icons.net/1x1/delapouite/crenel-crown.html
         options:
           title_lineage:
-            name: Title/Lineage
+            label: Title/Lineage
             field_type: text
             value: null
         abilities:
@@ -1218,11 +1215,10 @@ assets:
                       method: null
         controls:
           wealth:
+            label: wealth
             field_type: condition_meter
-            name: wealth
             max: 5
             value: 0
-            min: 0
       herbalist:
         asset_type: Path
         source:
@@ -1508,24 +1504,24 @@ assets:
         requirement: Once you mark a bond with elves, and are gifted a mask of precious elderwood...
         options:
           material:
-            name: Material
+            label: Material
             field_type: select_stat
             value: null
             choices:
               thunderwood:
-                name: Thunderwood
+                label: Thunderwood
                 value: edge
                 option_type: option
               bloodwood:
-                name: Bloodwood
+                label: Bloodwood
                 value: iron
                 option_type: option
               ghostwood:
-                name: Ghostwood
+                label: Ghostwood
                 value: shadow
                 option_type: option
               whisperwood:
-                name: Whisperwood
+                label: Whisperwood
                 value: wits
                 option_type: option
         abilities:
@@ -2347,7 +2343,7 @@ assets:
         # https://game-icons.net/1x1/delapouite/3d-hammer.html
         options:
           specialty:
-            name: Specialty
+            label: Specialty
             field_type: text
             value: null
         abilities:
@@ -3215,10 +3211,9 @@ assets:
         controls:
           health:
             field_type: condition_meter
-            name: health
+            label: health
             max: 3
             value: 3
-            min: 0
       bind:
         asset_type: Ritual
         source:
@@ -3430,10 +3425,9 @@ assets:
         controls:
           essence:
             field_type: condition_meter
-            name: essence
+            label: essence
             max: 6
             value: 0
-            min: 0
       keen:
         asset_type: Ritual
         source:
@@ -3535,11 +3529,10 @@ assets:
         name: Lightbearer
         controls:
           light:
+            label: light
             field_type: condition_meter
-            name: light
             max: 6
             value: 0
-            min: 0
             moves:
               recover:
                 - classic/assets/ritual/lightbearer/abilities/0/moves/capture_light

@@ -17,21 +17,24 @@ oracles:
         name: Space Sighting
         source: *CollectionSource
         rendering:
-          table_style: multi_table
+          style: multi_table
           columns:
             terminus:
               table_key: terminus
+              label: Terminus
               content_type: roll
             outlands:
               table_key: outlands
+              label: Outlands
               content_type: roll
             expanse:
               table_key: expanse
+              label: Expanse
               content_type: roll
             result:
               table_key: terminus
               content_type: result
-              name: Result
+              label: Result
         # content:
         #   part_of_speech: [fragment]
         summary: |-
@@ -47,7 +50,7 @@ oracles:
             name: Terminus
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires:
             #     attributes:
@@ -143,7 +146,7 @@ oracles:
             name: Outlands
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires:
             #     attributes:
@@ -213,7 +216,7 @@ oracles:
             name: Expanse
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires:
             #     attributes:
@@ -287,26 +290,27 @@ oracles:
         summary: To give a sector or region of space a random name, roll once for the first word and once for the second word.
         description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
         rendering:
+          style: multi_table
           columns:
             result:
               content_type: roll
               table_key: prefix
-              name: Roll
+              label: Roll
             prefix:
               content_type: result
               table_key: prefix
-              name: Prefix
+              label: Prefix
             suffix:
               content_type: result
               table_key: suffix
-              name: Suffix
+              label: Suffix
         # template:
         #   result: '{{result:starforged/oracles/space/sector_name/prefix}} {{result:starforged/oracles/space/sector_name/suffix}}'
         contents:
           prefix:
             name: Prefix
             rendering:
-              table_style: embed_as_column
+              style: column
             source: *CollectionSource
             # usage:
             #   initial: true
@@ -542,7 +546,7 @@ oracles:
             name: Suffix
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             summary: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
             # usage:
             #   initial: true

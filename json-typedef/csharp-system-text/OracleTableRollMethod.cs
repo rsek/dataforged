@@ -13,10 +13,19 @@ namespace Datasworn
     [JsonConverter(typeof(OracleTableRollMethodJsonConverter))]
     public enum OracleTableRollMethod
     {
+        /// <summary>
+        /// Duplicates should be kept.
+        /// </summary>
         KeepDuplicates,
 
+        /// <summary>
+        /// Duplicates should be kept, and they compound to make things worse.
+        /// </summary>
         MakeItWorse,
 
+        /// <summary>
+        /// Duplicates should be re-rolled.
+        /// </summary>
         NoDuplicates,
     }
     public class OracleTableRollMethodJsonConverter : JsonConverter<OracleTableRollMethod>

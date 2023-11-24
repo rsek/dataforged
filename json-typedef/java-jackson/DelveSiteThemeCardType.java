@@ -4,6 +4,9 @@ package Datasworn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * A delve site theme card.
+ */
 public enum DelveSiteThemeCardType {
     @JsonProperty("theme")
     THEME,

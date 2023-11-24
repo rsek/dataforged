@@ -15,24 +15,27 @@
 		"campaign_launch": {
 			"id": "starforged/collections/oracles/campaign_launch",
 			"name": "Campaign Launch",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"background_assets": {
 					"id": "starforged/oracles/campaign_launch/background_assets",
 					"name": "Background Assets",
 					"dice": "1d100",
 					"rendering": {
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"background": {
-								"name": "Background",
+								"label": "Background",
 								"content_type": "result"
 							},
 							"assets": {
-								"name": "Assets",
+								"label": "Assets",
 								"content_type": "summary"
 							}
 						}
@@ -914,6 +917,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"date": "2022-05-06",
@@ -929,6 +933,9 @@
 		"characters": {
 			"id": "starforged/collections/oracles/characters",
 			"name": "Characters",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](id:starforged/oracles/characters/first_look) and [Initial Disposition](id:starforged/oracles/characters/initial_disposition). Then envision or generate additional details over time.",
 			"contents": {
 				"first_look": {
@@ -3488,22 +3495,25 @@
 					"id": "starforged/collections/oracles/characters/name",
 					"name": "Character Name",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll",
 								"table_key": "given_name"
 							},
 							"given_name": {
+								"label": "Given Name",
 								"content_type": "result",
 								"table_key": "given_name"
 							},
 							"family_name": {
+								"label": "Family Name",
 								"content_type": "result",
 								"table_key": "family_name"
 							},
 							"callsign": {
+								"label": "Callsign",
 								"content_type": "result",
 								"table_key": "callsign"
 							}
@@ -3516,17 +3526,7 @@
 							"name": "Given Name",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
 							"suggestions": {
@@ -4654,17 +4654,7 @@
 							"name": "Callsign",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.",
 							"suggestions": {
@@ -5792,17 +5782,7 @@
 							"name": "Family Name",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
 							"suggestions": {
@@ -6926,6 +6906,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -6956,6 +6937,9 @@
 		"core": {
 			"id": "starforged/collections/oracles/core",
 			"name": "Core Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"action": {
 					"id": "starforged/oracles/core/action",
@@ -11450,6 +11434,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"date": "2022-05-06",
@@ -11466,6 +11451,9 @@
 		"creatures": {
 			"id": "starforged/collections/oracles/creatures",
 			"name": "Creatures",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Roll for a [basic form](id:starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](id:starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](id:starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.",
 			"contents": {
 				"environment": {
@@ -12642,40 +12630,40 @@
 					"id": "starforged/collections/oracles/creatures/basic_form",
 					"name": "Creature Basic Form",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"space": {
-								"name": "Space",
+								"label": "Space",
 								"content_type": "roll",
 								"color": "#121b21",
 								"table_key": "space"
 							},
 							"interior": {
-								"name": "Interior",
+								"label": "Interior",
 								"content_type": "roll",
 								"color": "#707a83",
 								"table_key": "interior"
 							},
 							"land": {
-								"name": "Land",
+								"label": "Land",
 								"content_type": "roll",
 								"color": "#ed1a38",
 								"table_key": "land"
 							},
 							"liquid": {
-								"name": "Liquid",
+								"label": "Liquid",
 								"content_type": "roll",
 								"color": "#0082bf",
 								"table_key": "liquid"
 							},
 							"air": {
-								"name": "Air",
+								"label": "Air",
 								"content_type": "roll",
 								"color": "#90278f",
 								"table_key": "air"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "space"
 							}
@@ -12686,21 +12674,10 @@
 						"space": {
 							"id": "starforged/oracles/creatures/basic_form/space",
 							"name": "Space",
+							"icon": "icons/creature/environment/space.svg",
 							"dice": "1d100",
 							"rendering": {
-								"color": "#121b21",
-								"icon": "icons/creature/environment/space.svg",
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -12850,21 +12827,10 @@
 						"interior": {
 							"id": "starforged/oracles/creatures/basic_form/interior",
 							"name": "Interior",
+							"icon": "icons/creature/environment/interior.svg",
 							"dice": "1d100",
 							"rendering": {
-								"color": "#707a83",
-								"icon": "icons/creature/environment/interior.svg",
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13014,21 +12980,10 @@
 						"land": {
 							"id": "starforged/oracles/creatures/basic_form/land",
 							"name": "Land",
+							"icon": "icons/creature/environment/land.svg",
 							"dice": "1d100",
 							"rendering": {
-								"color": "#ed1a38",
-								"icon": "icons/creature/environment/land.svg",
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13178,21 +13133,10 @@
 						"liquid": {
 							"id": "starforged/oracles/creatures/basic_form/liquid",
 							"name": "Liquid",
+							"icon": "icons/creature/environment/liquid.svg",
 							"dice": "1d100",
 							"rendering": {
-								"color": "#0082bf",
-								"icon": "icons/creature/environment/liquid.svg",
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13342,21 +13286,10 @@
 						"air": {
 							"id": "starforged/oracles/creatures/basic_form/air",
 							"name": "Air",
+							"icon": "icons/creature/environment/air.svg",
 							"dice": "1d100",
 							"rendering": {
-								"color": "#90278f",
-								"icon": "icons/creature/environment/air.svg",
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -13504,6 +13437,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -13534,6 +13468,9 @@
 		"derelicts": {
 			"id": "starforged/collections/oracles/derelicts",
 			"name": "Derelicts",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Derelicts are the forsaken relics of human endeavors.",
 			"description": "Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the [Starship](id:starforged/collections/oracles/starships) or [Settlement](id:starforged/collections/oracles/settlements) oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.",
 			"contents": {
@@ -13951,6 +13888,9 @@
 					"id": "starforged/collections/oracles/derelicts/access",
 					"name": "Access",
 					"icon": "icons/derelicts/access.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/access/area",
@@ -14327,6 +14267,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -14344,6 +14285,9 @@
 					"id": "starforged/collections/oracles/derelicts/community",
 					"name": "Community",
 					"icon": "icons/derelicts/community.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/community/area",
@@ -14696,6 +14640,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -14713,6 +14658,9 @@
 					"id": "starforged/collections/oracles/derelicts/engineering",
 					"name": "Engineering",
 					"icon": "icons/derelicts/engineering.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/engineering/area",
@@ -15065,6 +15013,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -15082,6 +15031,9 @@
 					"id": "starforged/collections/oracles/derelicts/living",
 					"name": "Living",
 					"icon": "icons/derelicts/living.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/living/area",
@@ -15434,6 +15386,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -15451,6 +15404,9 @@
 					"id": "starforged/collections/oracles/derelicts/medical",
 					"name": "Medical",
 					"icon": "icons/derelicts/medical.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/medical/area",
@@ -15803,6 +15759,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -15820,6 +15777,9 @@
 					"id": "starforged/collections/oracles/derelicts/operations",
 					"name": "Operations",
 					"icon": "icons/derelicts/operations.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/operations/area",
@@ -16172,6 +16132,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -16189,6 +16150,9 @@
 					"id": "starforged/collections/oracles/derelicts/production",
 					"name": "Production",
 					"icon": "icons/derelicts/production.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/production/area",
@@ -16541,6 +16505,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -16558,6 +16523,9 @@
 					"id": "starforged/collections/oracles/derelicts/research",
 					"name": "Research",
 					"icon": "icons/derelicts/research.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"area": {
 							"id": "starforged/oracles/derelicts/research/area",
@@ -16910,6 +16878,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -16928,24 +16897,25 @@
 					"name": "Derelict Type (by location)",
 					"canonical_name": "Type (by location)",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"planetside": {
-								"name": "Planetside",
+								"label": "Planetside",
 								"content_type": "roll",
 								"table_key": "planetside"
 							},
 							"orbital": {
-								"name": "Orbital",
+								"label": "Orbital",
 								"content_type": "roll",
 								"table_key": "orbital"
 							},
 							"deep_space": {
-								"name": "Deep Space",
+								"label": "Deep Space",
 								"content_type": "roll",
 								"table_key": "deep_space"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "planetside"
 							}
@@ -16958,17 +16928,7 @@
 							"icon": "icon/oracles/location/planetside.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -17009,17 +16969,7 @@
 							"icon": "icon/oracles/location/orbital.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -17060,17 +17010,7 @@
 							"icon": "icon/oracles/location/deep_space.svg",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -17106,6 +17046,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -17123,19 +17064,20 @@
 					"id": "starforged/collections/oracles/derelicts/zones",
 					"name": "Derelict Zones",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"starship": {
-								"name": "Starship",
+								"label": "Starship",
 								"content_type": "roll",
 								"table_key": "starship"
 							},
 							"settlement": {
-								"name": "Settlement",
+								"label": "Settlement",
 								"content_type": "roll",
 								"table_key": "settlement"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "starship"
 							}
@@ -17148,17 +17090,7 @@
 							"name": "Starship",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.",
 							"table": [
@@ -17237,17 +17169,7 @@
 							"name": "Settlement",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.",
 							"table": [
@@ -17322,6 +17244,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -17352,6 +17275,9 @@
 		"factions": {
 			"id": "starforged/collections/oracles/factions",
 			"name": "Factions",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"type": {
 					"id": "starforged/oracles/factions/type",
@@ -17525,17 +17451,17 @@
 				"dominion": {
 					"id": "starforged/oracles/factions/dominion",
 					"name": "Dominion",
+					"icon": "icons/factions/dominion.svg",
 					"dice": "1d100",
 					"rendering": {
-						"icon": "icons/factions/dominion.svg",
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result"
 							}
 						}
@@ -17901,17 +17827,17 @@
 				"guild": {
 					"id": "starforged/oracles/factions/guild",
 					"name": "Guild",
+					"icon": "icons/factions/guild.svg",
 					"dice": "1d100",
 					"rendering": {
-						"icon": "icons/factions/guild.svg",
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result"
 							}
 						}
@@ -18105,17 +18031,17 @@
 				"fringe_group": {
 					"id": "starforged/oracles/factions/fringe_group",
 					"name": "Fringe Group",
+					"icon": "icons/factions/fringe_group.svg",
 					"dice": "1d100",
 					"rendering": {
-						"icon": "icons/factions/fringe_group.svg",
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result"
 							}
 						}
@@ -19162,6 +19088,9 @@
 				"name": {
 					"id": "starforged/collections/oracles/factions/name",
 					"name": "Faction Name",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"template": {
 							"id": "starforged/oracles/factions/name/template",
@@ -20680,6 +20609,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -20710,6 +20640,9 @@
 		"location_themes": {
 			"id": "starforged/collections/oracles/location_themes",
 			"name": "Location Themes",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location.",
 			"description": "Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location.\n\nEach theme on the following pages includes a set of oracles.\n\n  * **Feature:** Use this table to reveal a new aspect of the location.\n  * **Peril:** Use this table to help envision a complication or hazard.\n  * **Opportunity:** Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.\n\nYou can answer questions about a place using only the tables provided for a theme, such as when delving into an **Infested** cave. Or pair a theme with other location oracles for more flavor and variety; for example, you might explore a **Haunted Grave World**, a **Ruined Derelict**, a **Sacred Precursor Vault**, or an **Inhabited Settlement**.\n\nWhen mixing-and-matching a theme with another set of tables, use the techniques described for an **oracle array** (page 384) to determine which oracle you reference for that question or phase of your exploration.",
 			"contents": {
@@ -20803,6 +20736,9 @@
 					"id": "starforged/collections/oracles/location_themes/chaotic",
 					"name": "Chaotic",
 					"icon": "icons/location_theme/chaotic.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Reality is corrupted or warped in this place.",
 					"contents": {
 						"feature": {
@@ -21076,6 +21012,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -21093,6 +21030,9 @@
 					"id": "starforged/collections/oracles/location_themes/fortified",
 					"name": "Fortified",
 					"icon": "icons/location_theme/fortified.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Enemies defend this place against intruders.",
 					"contents": {
 						"feature": {
@@ -21369,6 +21309,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -21386,6 +21327,9 @@
 					"id": "starforged/collections/oracles/location_themes/haunted",
 					"name": "Haunted",
 					"icon": "icons/location_theme/haunted.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Restless spirits are bound to this place.",
 					"contents": {
 						"feature": {
@@ -21662,6 +21606,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -21679,6 +21624,9 @@
 					"id": "starforged/collections/oracles/location_themes/infested",
 					"name": "Infested",
 					"icon": "icons/location_theme/infested.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Foul creatures have overrun this place.",
 					"contents": {
 						"feature": {
@@ -21955,6 +21903,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -21972,6 +21921,9 @@
 					"id": "starforged/collections/oracles/location_themes/inhabited",
 					"name": "Inhabited",
 					"icon": "icons/location_theme/inhabited.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "People have built a community in this place.",
 					"contents": {
 						"feature": {
@@ -22248,6 +22200,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -22265,6 +22218,9 @@
 					"id": "starforged/collections/oracles/location_themes/mechanical",
 					"name": "Mechanical",
 					"icon": "icons/location_theme/mechanical.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Machines and technology hold sway in this place.",
 					"contents": {
 						"feature": {
@@ -22541,6 +22497,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -22558,6 +22515,9 @@
 					"id": "starforged/collections/oracles/location_themes/ruined",
 					"name": "Ruined",
 					"icon": "icons/location_theme/ruined.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Time, disaster, or war have ravaged this place.",
 					"contents": {
 						"feature": {
@@ -22834,6 +22794,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -22851,6 +22812,9 @@
 					"id": "starforged/collections/oracles/location_themes/sacred",
 					"name": "Sacred",
 					"icon": "icons/location_theme/sacred.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Worshipers glorify strange powers in this place.",
 					"contents": {
 						"feature": {
@@ -23127,6 +23091,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -23157,6 +23122,9 @@
 		"misc": {
 			"id": "starforged/collections/oracles/misc",
 			"name": "Miscellaneous Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"story_complication": {
 					"id": "starforged/oracles/misc/story_complication",
@@ -24025,6 +23993,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"date": "2022-05-06",
@@ -24041,6 +24010,9 @@
 		"moves": {
 			"id": "starforged/collections/oracles/moves",
 			"name": "Move Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"begin_a_session": {
 					"id": "starforged/oracles/moves/begin_a_session",
@@ -24805,6 +24777,9 @@
 				"ask_the_oracle": {
 					"id": "starforged/collections/oracles/moves/ask_the_oracle",
 					"name": "Ask the Oracle",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"almost_certain": {
 							"id": "starforged/oracles/moves/ask_the_oracle/almost_certain",
@@ -24977,6 +24952,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -25006,6 +24982,9 @@
 		"planets": {
 			"id": "starforged/collections/oracles/planets",
 			"name": "Planets",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"class": {
 					"id": "starforged/oracles/planets/class",
@@ -25102,18 +25081,20 @@
 					"id": "starforged/collections/oracles/planets/peril",
 					"name": "Planetside Peril",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"lifebearing": {
-								"name": "Lifebearing",
+								"label": "Lifebearing",
 								"content_type": "roll",
 								"table_key": "lifebearing"
 							},
 							"lifeless": {
-								"name": "Lifeless",
+								"label": "Lifeless",
 								"content_type": "roll",
 								"table_key": "lifeless"
 							},
 							"result": {
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "lifebearing"
 							}
@@ -25126,17 +25107,7 @@
 							"name": "Lifebearing",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -25380,17 +25351,7 @@
 							"name": "Lifeless",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -25630,6 +25591,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -25647,19 +25609,20 @@
 					"id": "starforged/collections/oracles/planets/opportunity",
 					"name": "Planetside Opportunity",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"lifebearing": {
-								"name": "Lifebearing",
+								"label": "Lifebearing",
 								"content_type": "roll",
 								"table_key": "lifebearing"
 							},
 							"lifeless": {
-								"name": "Lifeless",
+								"label": "Lifeless",
 								"content_type": "roll",
 								"table_key": "lifeless"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "lifebearing"
 							}
@@ -25672,17 +25635,7 @@
 							"name": "Lifebearing",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -25854,17 +25807,7 @@
 							"name": "Lifeless",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -26032,6 +25975,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -26052,8 +25996,150 @@
 						"images/planets/desert-01.webp",
 						"images/planets/desert-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A pitiless planet of searing heat, blowing sand, and sunbaked rock.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/desert/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/desert/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Abalos"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Audun"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Bishop"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Desolation"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Dykuma"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Fallow"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Helios"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Mirage"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Morricone"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Nux"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Ordos"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Petra"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Pyla"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Sabulo"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Saffron"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Sirocco"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Sulis"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Torrid"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Umber"
+								},
+								{
+									"id": "starforged/oracles/planets/desert/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Vermillion"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 308,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/desert/atmosphere",
 							"name": "Atmosphere",
@@ -26381,6 +26467,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/desert/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/desert/settlements/terminus",
@@ -26530,6 +26619,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -26555,29 +26645,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Abalos",
-						"Audun",
-						"Bishop",
-						"Desolation",
-						"Dykuma",
-						"Fallow",
-						"Helios",
-						"Mirage",
-						"Morricone",
-						"Nux",
-						"Ordos",
-						"Petra",
-						"Pyla",
-						"Sabulo",
-						"Saffron",
-						"Sirocco",
-						"Sulis",
-						"Torrid",
-						"Umber",
-						"Vermillion"
-					]
+					}
 				},
 				"furnace": {
 					"id": "starforged/collections/oracles/planets/furnace",
@@ -26586,8 +26654,150 @@
 						"images/planets/furnace-01.webp",
 						"images/planets/furnace-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A planet with relentless volcanic activity, wreathed in fire and ash.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/furnace/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/furnace/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Ash"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Azula"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Cinder"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Cyrus"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Draconus"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Effigy"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Ember"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Flint"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Hades"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Hera"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Ignis"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Inferno"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Ishum"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Kresnik"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Nemesis"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Obsidian"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Scorch"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Tana"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Vesta"
+								},
+								{
+									"id": "starforged/oracles/planets/furnace/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Vesuvius"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 309,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/furnace/atmosphere",
 							"name": "Atmosphere",
@@ -26915,6 +27125,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/furnace/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/furnace/settlements/terminus",
@@ -27064,6 +27277,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -27089,29 +27303,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Ash",
-						"Azula",
-						"Cinder",
-						"Cyrus",
-						"Draconus",
-						"Effigy",
-						"Ember",
-						"Flint",
-						"Hades",
-						"Hera",
-						"Ignis",
-						"Inferno",
-						"Ishum",
-						"Kresnik",
-						"Nemesis",
-						"Obsidian",
-						"Scorch",
-						"Tana",
-						"Vesta",
-						"Vesuvius"
-					]
+					}
 				},
 				"grave": {
 					"id": "starforged/collections/oracles/planets/grave",
@@ -27120,8 +27312,150 @@
 						"images/planets/grave-01.webp",
 						"images/planets/grave-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A once-thriving world—now a grim monument to a fallen civilization.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/grave/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/grave/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Anubis"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Banshee"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Barrow"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Cairn"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Cerberus"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Charon"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Elysia"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Keen"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Kur"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Lament"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Mantus"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Morrigan"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Mourn"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Necropolis"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Orcus"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Osiris"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Requiem"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Stygia"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Tartarus"
+								},
+								{
+									"id": "starforged/oracles/planets/grave/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Thrace"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 310,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/grave/atmosphere",
 							"name": "Atmosphere",
@@ -27449,6 +27783,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/grave/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/grave/settlements/terminus",
@@ -27598,6 +27935,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -27623,29 +27961,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Anubis",
-						"Banshee",
-						"Barrow",
-						"Cairn",
-						"Cerberus",
-						"Charon",
-						"Elysia",
-						"Keen",
-						"Kur",
-						"Lament",
-						"Mantus",
-						"Morrigan",
-						"Mourn",
-						"Necropolis",
-						"Orcus",
-						"Osiris",
-						"Requiem",
-						"Stygia",
-						"Tartarus",
-						"Thrace"
-					]
+					}
 				},
 				"ice": {
 					"id": "starforged/collections/oracles/planets/ice",
@@ -27654,8 +27970,150 @@
 						"images/planets/ice-01.webp",
 						"images/planets/ice-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A rugged, frozen world—locked in an unending winter.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/ice/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/ice/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Beira"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Boreas"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Caradhras"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Cicero"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Demetria"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Enten"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Fissure"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Frost"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Gelida"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Jotunn"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Kanna"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Karn"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Kheimon"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Moroz"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Nix"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Olwen"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Osolok"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Taiga"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Thule"
+								},
+								{
+									"id": "starforged/oracles/planets/ice/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Varnholme"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 311,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/ice/atmosphere",
 							"name": "Atmosphere",
@@ -27983,6 +28441,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/ice/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/ice/settlements/terminus",
@@ -28132,6 +28593,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -28157,29 +28619,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Beira",
-						"Boreas",
-						"Caradhras",
-						"Cicero",
-						"Demetria",
-						"Enten",
-						"Fissure",
-						"Frost",
-						"Gelida",
-						"Jotunn",
-						"Kanna",
-						"Karn",
-						"Kheimon",
-						"Moroz",
-						"Nix",
-						"Olwen",
-						"Osolok",
-						"Taiga",
-						"Thule",
-						"Varnholme"
-					]
+					}
 				},
 				"jovian": {
 					"id": "starforged/collections/oracles/planets/jovian",
@@ -28188,8 +28628,150 @@
 						"images/planets/jovian-01.webp",
 						"images/planets/jovian-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A massive planet with vast layers of dense gases surrounding a rocky core.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/jovian/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/jovian/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Aether"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Arrokoth"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Esen"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Hanish"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Magnus"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Magonia"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Mistral"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Nephele"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Nimbus"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Nuada"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Nubium"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Serein"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Stratus"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Taranis"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Tempest"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Tenzin"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Tyr"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Veil"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Velum"
+								},
+								{
+									"id": "starforged/oracles/planets/jovian/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Zephyr"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 312,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/jovian/atmosphere",
 							"name": "Atmosphere",
@@ -28517,6 +29099,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/jovian/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/jovian/settlements/terminus",
@@ -28666,6 +29251,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -28691,29 +29277,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Aether",
-						"Arrokoth",
-						"Esen",
-						"Hanish",
-						"Magnus",
-						"Magonia",
-						"Mistral",
-						"Nephele",
-						"Nimbus",
-						"Nuada",
-						"Nubium",
-						"Serein",
-						"Stratus",
-						"Taranis",
-						"Tempest",
-						"Tenzin",
-						"Tyr",
-						"Veil",
-						"Velum",
-						"Zephyr"
-					]
+					}
 				},
 				"jungle": {
 					"id": "starforged/collections/oracles/planets/jungle",
@@ -28722,8 +29286,150 @@
 						"images/planets/jungle-01.webp",
 						"images/planets/jungle-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/jungle/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/jungle/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Acacia"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Aster"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Beryl"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Celadon"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Ceres"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Damu"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Dryad"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Flora"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Iridum"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Iris"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Kishar"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Penumbra"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Roris"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Sylva"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Tangle"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Thorn"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Venom"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Verdure"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Veris"
+								},
+								{
+									"id": "starforged/oracles/planets/jungle/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Viridian"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 313,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/jungle/atmosphere",
 							"name": "Atmosphere",
@@ -29051,6 +29757,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/jungle/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/jungle/settlements/terminus",
@@ -29200,6 +29909,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -29225,29 +29935,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Acacia",
-						"Aster",
-						"Beryl",
-						"Celadon",
-						"Ceres",
-						"Damu",
-						"Dryad",
-						"Flora",
-						"Iridum",
-						"Iris",
-						"Kishar",
-						"Penumbra",
-						"Roris",
-						"Sylva",
-						"Tangle",
-						"Thorn",
-						"Venom",
-						"Verdure",
-						"Veris",
-						"Viridian"
-					]
+					}
 				},
 				"ocean": {
 					"id": "starforged/collections/oracles/planets/ocean",
@@ -29256,8 +29944,150 @@
 						"images/planets/ocean-01.webp",
 						"images/planets/ocean-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A planet completely or almost entirely covered by a boundless ocean.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/ocean/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/ocean/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Aegir"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Alon"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Clarion"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Darya"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Eldoris"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Horizon"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Hydra"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Kai"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Larimar"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Lotan"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Mira"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Navini"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Nerida"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Oceanus"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Pelagic"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Proteus"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Russalka"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Siren"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Thalassa"
+								},
+								{
+									"id": "starforged/oracles/planets/ocean/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Triton"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 314,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/ocean/atmosphere",
 							"name": "Atmosphere",
@@ -29585,6 +30415,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/ocean/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/ocean/settlements/terminus",
@@ -29734,6 +30567,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -29759,29 +30593,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Aegir",
-						"Alon",
-						"Clarion",
-						"Darya",
-						"Eldoris",
-						"Horizon",
-						"Hydra",
-						"Kai",
-						"Larimar",
-						"Lotan",
-						"Mira",
-						"Navini",
-						"Nerida",
-						"Oceanus",
-						"Pelagic",
-						"Proteus",
-						"Russalka",
-						"Siren",
-						"Thalassa",
-						"Triton"
-					]
+					}
 				},
 				"rocky": {
 					"id": "starforged/collections/oracles/planets/rocky",
@@ -29790,8 +30602,150 @@
 						"images/planets/rocky-01.webp",
 						"images/planets/rocky-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A rugged planet scarred by eons of destructive asteroid impacts.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/rocky/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/rocky/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Aphelion"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Artemis"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Capella"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Cobalt"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Crag"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Dusk"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Eos"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Hecate"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Imbrium"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Latona"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Losna"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Orpheus"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Ory"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Quietus"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Selene"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Silas"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Silex"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Slate"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Themis"
+								},
+								{
+									"id": "starforged/oracles/planets/rocky/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Umbra"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 315,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/rocky/atmosphere",
 							"name": "Atmosphere",
@@ -30119,6 +31073,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/rocky/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/rocky/settlements/terminus",
@@ -30268,6 +31225,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -30293,29 +31251,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Aphelion",
-						"Artemis",
-						"Capella",
-						"Cobalt",
-						"Crag",
-						"Dusk",
-						"Eos",
-						"Hecate",
-						"Imbrium",
-						"Latona",
-						"Losna",
-						"Orpheus",
-						"Ory",
-						"Quietus",
-						"Selene",
-						"Silas",
-						"Silex",
-						"Slate",
-						"Themis",
-						"Umbra"
-					]
+					}
 				},
 				"shattered": {
 					"id": "starforged/collections/oracles/planets/shattered",
@@ -30324,8 +31260,150 @@
 						"images/planets/shattered-01.webp",
 						"images/planets/shattered-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A planet sundered by cataclysmic destruction.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/shattered/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/shattered/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Cavus"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Chrysalis"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Fragment"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Havoc"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Keres"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Lux"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Nemain"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Praxis"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Riven"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Schism"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Shell"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Slag"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Sliver"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Sunder"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Torment"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Vestige"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Vigrid"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Vortex"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Wrath"
+								},
+								{
+									"id": "starforged/oracles/planets/shattered/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Zix"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 316,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/shattered/atmosphere",
 							"name": "Atmosphere",
@@ -30653,6 +31731,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/shattered/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/shattered/settlements/terminus",
@@ -30802,6 +31883,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -30827,29 +31909,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Cavus",
-						"Chrysalis",
-						"Fragment",
-						"Havoc",
-						"Keres",
-						"Lux",
-						"Nemain",
-						"Praxis",
-						"Riven",
-						"Schism",
-						"Shell",
-						"Slag",
-						"Sliver",
-						"Sunder",
-						"Torment",
-						"Vestige",
-						"Vigrid",
-						"Vortex",
-						"Wrath",
-						"Zix"
-					]
+					}
 				},
 				"tainted": {
 					"id": "starforged/collections/oracles/planets/tainted",
@@ -30858,8 +31918,150 @@
 						"images/planets/tainted-01.webp",
 						"images/planets/tainted-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "A foul planet wracked by a poisonous climate and virulent growths.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/tainted/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/tainted/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Achlys"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Animus"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Bane"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Blight"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Carrion"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Chitin"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Datura"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Dreck"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Erra"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Febris"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Malacia"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Miasma"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Morbus"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Pathosis"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Pestis"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Scourge"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Telium"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Timoris"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Verus"
+								},
+								{
+									"id": "starforged/oracles/planets/tainted/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Xanthous"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 317,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/tainted/atmosphere",
 							"name": "Atmosphere",
@@ -31187,6 +32389,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/tainted/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/tainted/settlements/terminus",
@@ -31336,6 +32541,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -31361,29 +32567,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Achlys",
-						"Animus",
-						"Bane",
-						"Blight",
-						"Carrion",
-						"Chitin",
-						"Datura",
-						"Dreck",
-						"Erra",
-						"Febris",
-						"Malacia",
-						"Miasma",
-						"Morbus",
-						"Pathosis",
-						"Pestis",
-						"Scourge",
-						"Telium",
-						"Timoris",
-						"Verus",
-						"Xanthous"
-					]
+					}
 				},
 				"vital": {
 					"id": "starforged/collections/oracles/planets/vital",
@@ -31392,8 +32576,150 @@
 						"images/planets/vital-01.webp",
 						"images/planets/vital-02.webp"
 					],
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "This diverse, life-bearing planet might provide some small measure of hope.",
 					"contents": {
+						"name": {
+							"id": "starforged/oracles/planets/vital/name",
+							"name": "Sample Names",
+							"dice": "1d20",
+							"table": [
+								{
+									"id": "starforged/oracles/planets/vital/name/1-1",
+									"min": 1,
+									"max": 1,
+									"result": "Chiron"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/2-2",
+									"min": 2,
+									"max": 2,
+									"result": "Demeter"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/3-3",
+									"min": 3,
+									"max": 3,
+									"result": "Erebos"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/4-4",
+									"min": 4,
+									"max": 4,
+									"result": "Erembour"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/5-5",
+									"min": 5,
+									"max": 5,
+									"result": "Feronia"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/6-6",
+									"min": 6,
+									"max": 6,
+									"result": "Fortuna"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/7-7",
+									"min": 7,
+									"max": 7,
+									"result": "Gaia"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/8-8",
+									"min": 8,
+									"max": 8,
+									"result": "Harbinger"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/9-9",
+									"min": 9,
+									"max": 9,
+									"result": "Haven"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/10-10",
+									"min": 10,
+									"max": 10,
+									"result": "Hope"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/11-11",
+									"min": 11,
+									"max": 11,
+									"result": "Morpheus"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/12-12",
+									"min": 12,
+									"max": 12,
+									"result": "Nemus"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/13-13",
+									"min": 13,
+									"max": 13,
+									"result": "Sapphire"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/14-14",
+									"min": 14,
+									"max": 14,
+									"result": "Serenity"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/15-15",
+									"min": 15,
+									"max": 15,
+									"result": "Sif"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/16-16",
+									"min": 16,
+									"max": 16,
+									"result": "Silva"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/17-17",
+									"min": 17,
+									"max": 17,
+									"result": "Sirona"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/18-18",
+									"min": 18,
+									"max": 18,
+									"result": "Solstice"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/19-19",
+									"min": 19,
+									"max": 19,
+									"result": "Vale"
+								},
+								{
+									"id": "starforged/oracles/planets/vital/name/20-20",
+									"min": 20,
+									"max": 20,
+									"result": "Valinor"
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Starforged Rulebook",
+								"date": "2022-05-06",
+								"page": 318,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
 						"atmosphere": {
 							"id": "starforged/oracles/planets/vital/atmosphere",
 							"name": "Atmosphere",
@@ -31733,7 +33059,12 @@
 											"oracle": "starforged/oracles/planets/vital/biomes",
 											"times": 2
 										}
-									]
+									],
+									"i18n": {
+										"result": {
+											"part_of_speech": "adjective"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/diversity/21-70",
@@ -31746,7 +33077,12 @@
 											"oracle": "starforged/oracles/planets/vital/biomes",
 											"times": 3
 										}
-									]
+									],
+									"i18n": {
+										"result": {
+											"part_of_speech": "adjective"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/diversity/71-90",
@@ -31759,7 +33095,12 @@
 											"oracle": "starforged/oracles/planets/vital/biomes",
 											"times": 4
 										}
-									]
+									],
+									"i18n": {
+										"result": {
+											"part_of_speech": "adjective"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/diversity/91-100",
@@ -31772,7 +33113,12 @@
 											"oracle": "starforged/oracles/planets/vital/biomes",
 											"times": 5
 										}
-									]
+									],
+									"i18n": {
+										"result": {
+											"part_of_speech": "adjective"
+										}
+									}
 								}
 							],
 							"source": {
@@ -31786,11 +33132,6 @@
 								],
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
-							},
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
 							}
 						},
 						"biomes": {
@@ -31802,121 +33143,221 @@
 									"id": "starforged/oracles/planets/vital/biomes/1-5",
 									"min": 1,
 									"max": 5,
-									"result": "Caves"
+									"result": "Caves",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/6-10",
 									"min": 6,
 									"max": 10,
-									"result": "Cold forest"
+									"result": "Cold forest",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/11-15",
 									"min": 11,
 									"max": 15,
-									"result": "Fungal"
+									"result": "Fungal",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/16-20",
 									"min": 16,
 									"max": 20,
-									"result": "Glacial or snow"
+									"result": "Glacial or snow",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/21-25",
 									"min": 21,
 									"max": 25,
-									"result": "Grassland"
+									"result": "Grassland",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/26-30",
 									"min": 26,
 									"max": 30,
-									"result": "Islands"
+									"result": "Islands",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/31-35",
 									"min": 31,
 									"max": 35,
-									"result": "Jungle"
+									"result": "Jungle",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/36-40",
 									"min": 36,
 									"max": 40,
-									"result": "Mountainous"
+									"result": "Mountainous",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/41-45",
 									"min": 41,
 									"max": 45,
-									"result": "Ocean"
+									"result": "Ocean",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/46-50",
 									"min": 46,
 									"max": 50,
-									"result": "Rocky desert"
+									"result": "Rocky desert",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/51-55",
 									"min": 51,
 									"max": 55,
-									"result": "Sandy desert"
+									"result": "Sandy desert",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/56-60",
 									"min": 56,
 									"max": 60,
-									"result": "Savanna"
+									"result": "Savanna",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/61-65",
 									"min": 61,
 									"max": 65,
-									"result": "Shallow seas"
+									"result": "Shallow seas",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/66-70",
 									"min": 66,
 									"max": 70,
-									"result": "Shrubland"
+									"result": "Shrubland",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/71-75",
 									"min": 71,
 									"max": 75,
-									"result": "Temperate rainforest"
+									"result": "Temperate rainforest",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/76-80",
 									"min": 76,
 									"max": 80,
-									"result": "Temperate forest"
+									"result": "Temperate forest",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/81-85",
 									"min": 81,
 									"max": 85,
-									"result": "Tundra"
+									"result": "Tundra",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/86-90",
 									"min": 86,
 									"max": 90,
-									"result": "Volcanic"
+									"result": "Volcanic",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/91-95",
 									"min": 91,
 									"max": 95,
-									"result": "Waterways"
+									"result": "Waterways",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								},
 								{
 									"id": "starforged/oracles/planets/vital/biomes/96-100",
 									"min": 96,
 									"max": 100,
-									"result": "Wetland"
+									"result": "Wetland",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
 								}
 							],
 							"source": {
@@ -31930,11 +33371,6 @@
 								],
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
-							},
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
 							}
 						}
 					},
@@ -31942,6 +33378,9 @@
 						"settlements": {
 							"id": "starforged/collections/oracles/planets/vital/settlements",
 							"name": "Settlements",
+							"rendering": {
+								"style": "tables"
+							},
 							"contents": {
 								"terminus": {
 									"id": "starforged/oracles/planets/vital/settlements/terminus",
@@ -32091,6 +33530,7 @@
 									}
 								}
 							},
+							"collections": {},
 							"source": {
 								"title": "Ironsworn: Starforged Rulebook",
 								"date": "2022-05-06",
@@ -32116,29 +33556,7 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"sample_names": [
-						"Chiron",
-						"Demeter",
-						"Erebos",
-						"Erembour",
-						"Feronia",
-						"Fortuna",
-						"Gaia",
-						"Harbinger",
-						"Haven",
-						"Hope",
-						"Morpheus",
-						"Nemus",
-						"Sapphire",
-						"Serenity",
-						"Sif",
-						"Silva",
-						"Sirona",
-						"Solstice",
-						"Vale",
-						"Valinor"
-					]
+					}
 				}
 			},
 			"source": {
@@ -32157,6 +33575,9 @@
 		"settlements": {
 			"id": "starforged/collections/oracles/settlements",
 			"name": "Settlements",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"location": {
 					"id": "starforged/oracles/settlements/location",
@@ -34293,24 +35714,25 @@
 					"id": "starforged/collections/oracles/settlements/population",
 					"name": "Population",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"terminus": {
-								"name": "Terminus",
+								"label": "Terminus",
 								"content_type": "roll",
 								"table_key": "terminus"
 							},
 							"outlands": {
-								"name": "Outlands",
+								"label": "Outlands",
 								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"expanse": {
-								"name": "Expanse",
+								"label": "Expanse",
 								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"number": {
-								"name": "Number",
+								"label": "Number",
 								"content_type": "result",
 								"table_key": "terminus"
 							}
@@ -34322,17 +35744,7 @@
 							"name": "Terminus",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -34384,17 +35796,7 @@
 							"name": "Outlands",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -34446,17 +35848,7 @@
 							"name": "Expanse",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -34504,6 +35896,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -34534,6 +35927,9 @@
 		"space": {
 			"id": "starforged/collections/oracles/space",
 			"name": "Space Encounters",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"stellar_object": {
 					"id": "starforged/oracles/space/stellar_object",
@@ -35051,22 +36447,25 @@
 					"id": "starforged/collections/oracles/space/sighting",
 					"name": "Space Sighting",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"terminus": {
+								"label": "Terminus",
 								"content_type": "roll",
 								"table_key": "terminus"
 							},
 							"outlands": {
+								"label": "Outlands",
 								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"expanse": {
+								"label": "Expanse",
 								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"result": {
-								"name": "Result",
+								"label": "Result",
 								"content_type": "result",
 								"table_key": "terminus"
 							}
@@ -35079,17 +36478,7 @@
 							"name": "Terminus",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -35270,17 +36659,7 @@
 							"name": "Outlands",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -35454,17 +36833,7 @@
 							"name": "Expanse",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -35634,6 +37003,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -35651,19 +37021,20 @@
 					"id": "starforged/collections/oracles/space/sector_name",
 					"name": "Sector Name",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"result": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll",
 								"table_key": "prefix"
 							},
 							"prefix": {
-								"name": "Prefix",
+								"label": "Prefix",
 								"content_type": "result",
 								"table_key": "prefix"
 							},
 							"suffix": {
-								"name": "Suffix",
+								"label": "Suffix",
 								"content_type": "result",
 								"table_key": "suffix"
 							}
@@ -35677,17 +37048,7 @@
 							"name": "Prefix",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"suggestions": {
 								"oracles": ["starforged/oracles/space/sector_name/suffix"]
@@ -36262,17 +37623,7 @@
 							"name": "Suffix",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"summary": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
 							"suggestions": {
@@ -36844,6 +38195,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -36874,6 +38226,9 @@
 		"starships": {
 			"id": "starforged/collections/oracles/starships",
 			"name": "Starships",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"type": {
 					"id": "starforged/oracles/starships/type",
@@ -36881,18 +38236,18 @@
 					"canonical_name": "Type",
 					"dice": "1d100",
 					"rendering": {
-						"table_style": "standalone_table",
+						"style": "standalone",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll"
 							},
 							"class": {
-								"name": "Class",
+								"label": "Class",
 								"content_type": "result"
 							},
 							"typical_role": {
-								"name": "Typical Role",
+								"label": "Typical Role",
 								"content_type": "summary"
 							}
 						}
@@ -38689,25 +40044,25 @@
 					"id": "starforged/collections/oracles/starships/mission",
 					"name": "Starship Mission",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"terminus": {
-								"name": "Terminus",
+								"label": "Terminus",
 								"content_type": "roll",
 								"table_key": "terminus"
 							},
 							"outlands": {
-								"name": "Outlands",
+								"label": "Outlands",
 								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"expanse": {
-								"name": "Expanse",
+								"label": "Expanse",
 								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"mission": {
-								"name": "Mission",
+								"label": "Mission",
 								"content_type": "result",
 								"table_key": "terminus"
 							}
@@ -38720,16 +40075,7 @@
 							"name": "Terminus",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"content_type": "roll"
-									},
-									"mission": {
-										"name": "Mission",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -38961,16 +40307,7 @@
 							"name": "Outlands",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"content_type": "roll"
-									},
-									"mission": {
-										"name": "Mission",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -39202,16 +40539,7 @@
 							"name": "Expanse",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"content_type": "roll"
-									},
-									"mission": {
-										"name": "Mission",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -39439,6 +40767,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -39469,6 +40798,9 @@
 		"vaults": {
 			"id": "starforged/collections/oracles/vaults",
 			"name": "Precursor Vaults",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.",
 			"contents": {
 				"location": {
@@ -40187,6 +41519,9 @@
 					"id": "starforged/collections/oracles/vaults/interior",
 					"name": "Interior",
 					"icon": "icons/vaults/interior.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "If you enter the site, check the [Inner First Look](id:starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](id:starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.",
 					"contents": {
 						"first_look": {
@@ -40905,6 +42240,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -40922,6 +42258,9 @@
 					"id": "starforged/collections/oracles/vaults/sanctum",
 					"name": "Sanctum",
 					"icon": "icons/vaults/sanctum.svg",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.",
 					"contents": {
 						"purpose": {
@@ -41626,6 +42965,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",

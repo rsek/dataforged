@@ -7,8 +7,6 @@ import (
 	"fmt"
 )
 
-// Describes game rules compatible with the Ironsworn tabletop role-playing game
-// by Shawn Tomkin.
 type Ruleset struct {
 	ID NamespaceID `json:"id"`
 
@@ -54,18 +52,25 @@ type Ruleset struct {
 type ActionRollMethod string
 
 const (
+// Use **every** roll option at once.
 	ActionRollMethodAll ActionRollMethod = "all"
 
+// Use the roll option with the best/highest value.
 	ActionRollMethodHighest ActionRollMethod = "highest"
 
+// Use the roll option with the worst/lowest value.
 	ActionRollMethodLowest ActionRollMethod = "lowest"
 
+// An automatic miss.
 	ActionRollMethodMiss ActionRollMethod = "miss"
 
+// The player chooses which roll option to use.
 	ActionRollMethodPlayerChoice ActionRollMethod = "player_choice"
 
+// An automatic strong hit.
 	ActionRollMethodStrongHit ActionRollMethod = "strong_hit"
 
+// An automatic weak hit.
 	ActionRollMethodWeakHit ActionRollMethod = "weak_hit"
 )
 
@@ -143,6 +148,9 @@ func (v *ActionRollOption) UnmarshalJSON(b []byte) error {
 }
 
 type ActionRollOptionAssetControl struct {
+	// Asset IDs (which may be wildcarded) that provide the control field. For
+	// asset ability enhancements, `null` is used to represent the asset's own
+	// control fields.
 	Assets []AssetIDWildcard `json:"assets"`
 
 	// The key of the asset control field.
@@ -150,6 +158,9 @@ type ActionRollOptionAssetControl struct {
 }
 
 type ActionRollOptionAssetOption struct {
+	// Asset IDs (which may be wildcarded) that provide the option field. For asset
+	// ability enhancements, `null` is used to represent the asset's own option
+	// fields.
 	Assets []AssetIDWildcard `json:"assets"`
 
 	// The key of the asset option field.
@@ -183,18 +194,27 @@ type ActionRollOptionStat struct {
 type ActionRollUsing string
 
 const (
+// Roll using the value of an asset control.
 	ActionRollUsingAssetControl ActionRollUsing = "asset_control"
 
+// Roll using the value of an asset option.
 	ActionRollUsingAssetOption ActionRollUsing = "asset_option"
 
+// Roll using the value of an attached asset control. For example, a Module
+// asset could use this to roll using the `integrity` control of an attached
+// Vehicle.
 	ActionRollUsingAttachedAssetControl ActionRollUsing = "attached_asset_control"
 
+// Roll using the value of an attached asset option.
 	ActionRollUsingAttachedAssetOption ActionRollUsing = "attached_asset_option"
 
+// Roll using the value of a standard player condition meter.
 	ActionRollUsingConditionMeter ActionRollUsing = "condition_meter"
 
+// Roll using an integer value with customizable labels.
 	ActionRollUsingCustom ActionRollUsing = "custom"
 
+// Roll using a standard player character stat.
 	ActionRollUsingStat ActionRollUsing = "stat"
 )
 
@@ -209,8 +229,10 @@ type Asset struct {
 	// (classic Ironsworn).
 	CountAsImpact bool `json:"count_as_impact"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	// Most assets only benefit to their owner, but certain assets (like
@@ -218,18 +240,24 @@ type Asset struct {
 	// player's allies, too.
 	Shared bool `json:"shared"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	Attachments *AssetAttachment `json:"attachments,omitempty"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	// A thematic color associated with this asset.
 	Color *CSSColor `json:"color,omitempty"`
 
 	// Controls are condition meters, clocks, counters, and other asset input
 	// fields whose values are expected to change throughout the life of the asset.
 	Controls map[string]AssetControlField `json:"controls,omitempty"`
 
+	// This asset's icon.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	// Options are asset input fields which are set once, usually when the
@@ -238,6 +266,7 @@ type Asset struct {
 	// the Devotant asset.
 	Options map[string]AssetOptionField `json:"options,omitempty"`
 
+	// Describes prerequisites for purchasing or using this asset.
 	Requirement *MarkdownString `json:"requirement,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
@@ -247,6 +276,7 @@ type AssetAbility struct {
 	// Is this asset ability enabled?
 	Enabled bool `json:"enabled"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetAbilityID `json:"id"`
 
 	Text MarkdownString `json:"text"`
@@ -324,54 +354,56 @@ type AssetAbilityControlFieldCheckbox struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
 
 	// Does this field count as an impact (Starforged) or debility (Ironsworn
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// Is the box checked?
 	Value bool `json:"value"`
 }
 
-// A clock with 4, 6, 8, or 10 segments.
 type AssetAbilityControlFieldClock struct {
+	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
+
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// The size of the clock -- in other words, the maximum number of filled clock
 	// segments.
-	Max uint8 `json:"max"`
+	Max int8 `json:"max"`
 
 	// The minimum number of filled clock segments. This is always 0.
-	Min uint8 `json:"min"`
-
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	Min int8 `json:"min"`
 
 	// The current number of filled clock segments.
-	Value int16 `json:"value"`
+	Value int8 `json:"value"`
 }
 
-// A counter that starts at zero, with an optional maximum value.
 type AssetAbilityControlFieldCounter struct {
+	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
 
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
+
+	// The (inclusive) maximum value.
 	Max *int16 `json:"max"`
 
 	// The (inclusive) minimum value.
-	Min uint8 `json:"min"`
-
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	Min int8 `json:"min"`
 
 	// The current value of this input.
 	Value int16 `json:"value"`
@@ -418,15 +450,16 @@ func (v *AssetAbilityOptionField) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Represents an input that accepts plain text.
 type AssetAbilityOptionFieldText struct {
+	// The unique Datasworn ID for this item.
 	ID AssetAbilityOptionFieldID `json:"id"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
+	// The content of this text input, or `null` if it's empty
 	Value *string `json:"value"`
 }
 
@@ -439,9 +472,11 @@ type AssetAttachment struct {
 	// Asset IDs (which may be wildcards) that may be attached to this asset
 	Assets []AssetIDWildcard `json:"assets"`
 
+	// Null if there's no upper limit to the number of attached assets.
 	Max *int16 `json:"max"`
 }
 
+// A checkbox control field, rendered as part of an asset condition meter.
 type AssetConditionMeterControlField struct {
 	FieldType string
 
@@ -489,16 +524,17 @@ type AssetConditionMeterControlFieldCardFlip struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetConditionMeterControlFieldID `json:"id"`
 
 	// Does this field count as an impact (Starforged) or debility (Ironsworn
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// Is the card flipped over?
 	Value bool `json:"value"`
@@ -508,16 +544,17 @@ type AssetConditionMeterControlFieldCheckbox struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetConditionMeterControlFieldID `json:"id"`
 
 	// Does this field count as an impact (Starforged) or debility (Ironsworn
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// Is the box checked?
 	Value bool `json:"value"`
@@ -584,16 +621,17 @@ type AssetControlFieldCardFlip struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetControlFieldID `json:"id"`
 
 	// Does this field count as an impact (Starforged) or debility (Ironsworn
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// Is the card flipped over?
 	Value bool `json:"value"`
@@ -603,16 +641,17 @@ type AssetControlFieldCheckbox struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetControlFieldID `json:"id"`
 
 	// Does this field count as an impact (Starforged) or debility (Ironsworn
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// Is the box checked?
 	Value bool `json:"value"`
@@ -630,27 +669,25 @@ type AssetControlFieldConditionMeterMoves struct {
 	Suffer []MoveIDWildcard `json:"suffer,omitempty"`
 }
 
-// Some assets provide a special condition meter of their own. The most common
-// example is the health meters on companion assets. Asset condition meters
-// may also include their own controls, such as the checkboxes that Starforged
-// companion assets use to indicate they are "out of action".
 type AssetControlFieldConditionMeter struct {
+	// The unique Datasworn ID for this item.
 	ID AssetControlFieldID `json:"id"`
 
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
+
 	// The maximum value of this meter.
-	Max int16 `json:"max"`
+	Max int8 `json:"max"`
 
 	// The minimum value of this meter.
-	Min uint8 `json:"min"`
-
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	Min int8 `json:"min"`
 
 	// The current value of this meter.
-	Value int16 `json:"value"`
+	Value int8 `json:"value"`
 
+	// Checkbox controls rendered as part of the condition meter.
 	Controls map[string]AssetConditionMeterControlField `json:"controls,omitempty"`
 
 	// Provides hints for moves that interact with this condition meter, such as
@@ -708,12 +745,11 @@ type AssetControlFieldSelectEnhancementChoiceOptionValue struct {
 	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
 }
 
-// Represents an option in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOption struct {
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// The current value of this input.
 	Value AssetControlFieldSelectEnhancementChoiceOptionValue `json:"value"`
@@ -737,10 +773,10 @@ type AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue struct {
 
 // Represents an option in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOptionGroupChoice struct {
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	OptionType AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
@@ -751,7 +787,6 @@ type AssetControlFieldSelectEnhancementChoiceOptionGroupChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
-// Represents a grouping of options in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOptionGroup struct {
 	Choices map[string]AssetControlFieldSelectEnhancementChoiceOptionGroupChoice `json:"choices"`
 
@@ -759,21 +794,18 @@ type AssetControlFieldSelectEnhancementChoiceOptionGroup struct {
 	Name Label `json:"name"`
 }
 
-// Select from player and/or asset enhancements. Use it to describe modal
-// abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
-// (Sundered Isles).
 type AssetControlFieldSelectEnhancement struct {
 	Choices map[string]AssetControlFieldSelectEnhancementChoice `json:"choices"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetControlFieldID `json:"id"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
-	// The key of the currently selected choice from the `choices` property, or
-	// `null` if none is selected.
+	// The current value of this input.
 	Value *DictKey `json:"value"`
 }
 
@@ -814,13 +846,9 @@ func (v *AssetControlFieldEnhancement) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Some assets provide a special condition meter of their own. The most common
-// example is the health meters on companion assets. Asset condition meters
-// may also include their own controls, such as the checkboxes that Starforged
-// companion assets use to indicate they are "out of action".
 type AssetControlFieldEnhancementConditionMeter struct {
 	// The maximum value of this meter.
-	Max int16 `json:"max"`
+	Max int8 `json:"max"`
 }
 
 type AssetControlFieldID = string
@@ -952,12 +980,11 @@ type AssetOptionFieldSelectEnhancementChoiceOptionValue struct {
 	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
 }
 
-// Represents an option in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOption struct {
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// The current value of this input.
 	Value AssetOptionFieldSelectEnhancementChoiceOptionValue `json:"value"`
@@ -981,10 +1008,10 @@ type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue struct {
 
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice struct {
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	OptionType AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
@@ -995,7 +1022,6 @@ type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
-// Represents a grouping of options in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOptionGroup struct {
 	Choices map[string]AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice `json:"choices"`
 
@@ -1003,21 +1029,18 @@ type AssetOptionFieldSelectEnhancementChoiceOptionGroup struct {
 	Name Label `json:"name"`
 }
 
-// Select from player and/or asset enhancements. Use it to describe modal
-// abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
-// (Sundered Isles).
 type AssetOptionFieldSelectEnhancement struct {
 	Choices map[string]AssetOptionFieldSelectEnhancementChoice `json:"choices"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
-	// The key of the currently selected choice from the `choices` property, or
-	// `null` if none is selected.
+	// The current value of this input.
 	Value *DictKey `json:"value"`
 }
 
@@ -1064,12 +1087,11 @@ func (v *AssetOptionFieldSelectStatChoice) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// Represents an option in a list of choices.
 type AssetOptionFieldSelectStatChoiceOption struct {
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	// The current value of this input.
 	Value PlayerStat `json:"value"`
@@ -1086,10 +1108,10 @@ const (
 
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectStatChoiceOptionGroupChoice struct {
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
 	OptionType AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
@@ -1100,7 +1122,6 @@ type AssetOptionFieldSelectStatChoiceOptionGroupChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
-// Represents a grouping of options in a list of choices.
 type AssetOptionFieldSelectStatChoiceOptionGroup struct {
 	Choices map[string]AssetOptionFieldSelectStatChoiceOptionGroupChoice `json:"choices"`
 
@@ -1108,31 +1129,31 @@ type AssetOptionFieldSelectStatChoiceOptionGroup struct {
 	Name Label `json:"name"`
 }
 
-// Represents a list of mutually exclusive choices.
 type AssetOptionFieldSelectStat struct {
 	Choices map[string]AssetOptionFieldSelectStatChoice `json:"choices"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
-	// The key of the currently selected choice from the `choices` property, or
-	// `null` if none is selected.
+	// The current value of this input.
 	Value *DictKey `json:"value"`
 }
 
-// Represents an input that accepts plain text.
 type AssetOptionFieldText struct {
+	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
 
+	// The content of this text input, or `null` if it's empty
 	Value *string `json:"value"`
 }
 
@@ -1143,22 +1164,32 @@ type AssetOptionFieldIDWildcard = string
 type AssetType struct {
 	Contents map[string]Asset `json:"contents"`
 
+	// The unique Datasworn ID for this item.
 	ID AssetTypeID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
 
+	// A longer description of this collection, which might include multiple
+	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
 	Description *MarkdownString `json:"description,omitempty"`
 
 	// This collection's content enhances the identified collection, rather than
 	// being a standalone collection of its own.
 	Enhances *AssetTypeID `json:"enhances,omitempty"`
 
+	// An SVG icon associated with this collection.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Images []WebpImageURL `json:"images,omitempty"`
@@ -1169,6 +1200,9 @@ type AssetType struct {
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// A brief summary of this collection, no more than a few sentences in length.
+	// This is intended for use in application tooltips and similar sorts of hints.
+	// Longer text should use the "description" key instead.
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
@@ -1179,22 +1213,32 @@ type Atlas struct {
 
 	Contents map[string]AtlasEntry `json:"contents"`
 
+	// The unique Datasworn ID for this item.
 	ID AtlasID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
 
+	// A longer description of this collection, which might include multiple
+	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
 	Description *MarkdownString `json:"description,omitempty"`
 
 	// This collection's content enhances the identified collection, rather than
 	// being a standalone collection of its own.
 	Enhances *AtlasID `json:"enhances,omitempty"`
 
+	// An SVG icon associated with this collection.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Images []WebpImageURL `json:"images,omitempty"`
@@ -1205,6 +1249,9 @@ type Atlas struct {
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// A brief summary of this collection, no more than a few sentences in length.
+	// This is intended for use in application tooltips and similar sorts of hints.
+	// Longer text should use the "description" key instead.
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
@@ -1214,14 +1261,20 @@ type AtlasEntry struct {
 
 	Features []MarkdownString `json:"features"`
 
+	// The unique Datasworn ID for this item.
 	ID AtlasEntryID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	QuestStarter MarkdownString `json:"quest_starter"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
@@ -1239,24 +1292,30 @@ type AtlasID = string
 
 type AtlasIDWildcard = string
 
-// Challenge rank, represented as an integer:
+// Challenge rank, represented as an integer.
 type ChallengeRank = uint8
 
+// Describes a standard player character condition meter.
 type ConditionMeterRule struct {
+	// A description of this condition meter.
 	Description MarkdownString `json:"description"`
 
+	// A localized label for this input. In some contexts it may be undesirable to
+	// render this text, but it should always be exposed to assistive technology
+	// (e.g. with `aria-label` in HTML).
+	Label Label `json:"label"`
+
 	// The maximum value of this meter.
-	Max int16 `json:"max"`
+	Max int8 `json:"max"`
 
 	// The minimum value of this meter.
-	Min int16 `json:"min"`
+	Min int8 `json:"min"`
 
-	// A label for this input. In some contexts it may be undesirable to render
-	// this text, but it should always be exposed to assistive technology (e.g.
-	// with `aria-label` in HTML).
-	Name Label `json:"name"`
-
+	// Is this condition meter shared by all players?
 	Shared bool `json:"shared"`
+
+	// The current value of this meter.
+	Value int8 `json:"value"`
 }
 
 type ConditionMeterRuleID = string
@@ -1264,6 +1323,16 @@ type ConditionMeterRuleID = string
 // A CSS color value. See: https://developer.mozilla.org/en-
 // US/docs/Web/CSS/color_value
 type CSSColor = string
+
+type DelveCardType string
+
+const (
+// A delve site domain card.
+	DelveCardTypeDomain DelveCardType = "domain"
+
+// A delve site theme card.
+	DelveCardTypeTheme DelveCardType = "theme"
+)
 
 // A delve site with a theme, domain, and denizen table.
 type DelveSite struct {
@@ -1273,16 +1342,22 @@ type DelveSite struct {
 
 	Domain DelveSiteDomainID `json:"domain"`
 
+	// The unique Datasworn ID for this item.
 	ID DelveSiteID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	Rank ChallengeRank `json:"rank"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	Theme DelveSiteThemeID `json:"theme"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	// An additional theme or domain card ID, for use with optional rules in
@@ -1301,6 +1376,7 @@ type DelveSite struct {
 type DelveSiteDenizen struct {
 	Frequency DelveSiteDenizenFrequency `json:"frequency"`
 
+	// The unique Datasworn ID for this item.
 	ID DelveSiteDenizenID `json:"id"`
 
 	Max int16 `json:"max"`
@@ -1329,6 +1405,7 @@ const (
 
 type DelveSiteDenizenID = string
 
+// A delve site domain card.
 type DelveSiteDomainCardType string
 
 const (
@@ -1336,20 +1413,27 @@ const (
 )
 
 type DelveSiteDomain struct {
+	// A delve site domain card.
 	CardType DelveSiteDomainCardType `json:"card_type"`
 
 	Dangers []DelveSiteDomainDangerRow `json:"dangers"`
 
 	Features []DelveSiteDomainFeatureRow `json:"features"`
 
+	// The unique Datasworn ID for this item.
 	ID DelveSiteDomainID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	Summary MarkdownString `json:"summary"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
@@ -1367,14 +1451,13 @@ type DelveSiteDomain struct {
 }
 
 type DelveSiteDomainDangerRow struct {
+	// The unique Datasworn ID for this item.
 	ID DomainDangerRowID `json:"id"`
 
-	// High end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// High end of the dice range for this table row.
 	Max int16 `json:"max"`
 
-	// Low end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1397,14 +1480,13 @@ type DelveSiteDomainDangerRow struct {
 }
 
 type DelveSiteDomainFeatureRow struct {
+	// The unique Datasworn ID for this item.
 	ID DomainFeatureRowID `json:"id"`
 
-	// High end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// High end of the dice range for this table row.
 	Max int16 `json:"max"`
 
-	// Low end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1430,6 +1512,7 @@ type DelveSiteDomainID = string
 
 type DelveSiteID = string
 
+// A delve site theme card.
 type DelveSiteThemeCardType string
 
 const (
@@ -1437,20 +1520,27 @@ const (
 )
 
 type DelveSiteTheme struct {
+	// A delve site theme card.
 	CardType DelveSiteThemeCardType `json:"card_type"`
 
 	Dangers []DelveSiteThemeDangerRow `json:"dangers"`
 
 	Features []DelveSiteThemeFeatureRow `json:"features"`
 
+	// The unique Datasworn ID for this item.
 	ID DelveSiteThemeID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	Summary MarkdownString `json:"summary"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
@@ -1461,14 +1551,13 @@ type DelveSiteTheme struct {
 }
 
 type DelveSiteThemeDangerRow struct {
+	// The unique Datasworn ID for this item.
 	ID ThemeDangerRowID `json:"id"`
 
-	// High end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// High end of the dice range for this table row.
 	Max int16 `json:"max"`
 
-	// Low end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1491,14 +1580,13 @@ type DelveSiteThemeDangerRow struct {
 }
 
 type DelveSiteThemeFeatureRow struct {
+	// The unique Datasworn ID for this item.
 	ID ThemeFeatureRowID `json:"id"`
 
-	// High end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// High end of the dice range for this table row.
 	Max int16 `json:"max"`
 
-	// Low end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
+	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -1553,23 +1641,33 @@ type I18nHints struct {
 	Template *I18nHintsTemplate `json:"template,omitempty"`
 }
 
+// Describes a category of standard impacts/debilities.
 type ImpactCategory struct {
+	// A dictionary object of the Impacts in this category.
 	Contents map[string]ImpactRule `json:"contents"`
 
+	// A description of this impact category.
 	Description MarkdownString `json:"description"`
 
-	Name Label `json:"name"`
+	// A label for this impact category.
+	Label Label `json:"label"`
 }
 
+// Describes a standard impact/debility.
 type ImpactRule struct {
+	// A description of this impact.
 	Description MarkdownString `json:"description"`
 
-	Name Label `json:"name"`
+	// The label for this impact.
+	Label Label `json:"label"`
 
+	// Is this impact permanent?
 	Permanent bool `json:"permanent"`
 
+	// Keys of ruleset condition meters, to which this impact prevents recovery.
 	PreventsRecovery []DictKey `json:"prevents_recovery"`
 
+	// Is this impact applied to all players at once?
 	Shared bool `json:"shared"`
 }
 
@@ -1642,14 +1740,17 @@ func (v *Move) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// A move that makes an action roll.
 type MoveActionRoll struct {
+	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	Outcomes MoveOutcomes `json:"outcomes"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	// The complete rules text of the move.
@@ -1657,6 +1758,8 @@ type MoveActionRoll struct {
 
 	Trigger TriggerActionRoll `json:"trigger"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	// Oracles associated with this move. It's not recommended to roll these
@@ -1672,12 +1775,14 @@ type MoveActionRoll struct {
 }
 
 type MoveNoRoll struct {
+	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
-	Outcomes interface{} `json:"outcomes"`
-
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	// The complete rules text of the move.
@@ -1685,6 +1790,8 @@ type MoveNoRoll struct {
 
 	Trigger TriggerNoRoll `json:"trigger"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	// Oracles associated with this move. It's not recommended to roll these
@@ -1699,25 +1806,29 @@ type MoveNoRoll struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
-// A progress move that rolls on a standard progress track type (defined by the
-// move object).
 type MoveProgressRoll struct {
+	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	Outcomes MoveOutcomes `json:"outcomes"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	// The complete rules text of the move.
 	Text MarkdownString `json:"text"`
 
-	// A category label for progress tracks associated with this move.
-	TrackLabel Label `json:"track_label"`
+	// Describes the common features of progress tracks associated with this move.
+	Tracks ProgressTrackTypeInfo `json:"tracks"`
 
 	Trigger TriggerProgressRoll `json:"trigger"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	// Oracles associated with this move. It's not recommended to roll these
@@ -1733,12 +1844,16 @@ type MoveProgressRoll struct {
 }
 
 type MoveSpecialTrack struct {
+	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	Outcomes MoveOutcomes `json:"outcomes"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	// The complete rules text of the move.
@@ -1746,6 +1861,8 @@ type MoveSpecialTrack struct {
 
 	Trigger TriggerSpecialTrack `json:"trigger"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	// Oracles associated with this move. It's not recommended to roll these
@@ -1763,22 +1880,32 @@ type MoveSpecialTrack struct {
 type MoveCategory struct {
 	Contents map[string]Move `json:"contents"`
 
+	// The unique Datasworn ID for this item.
 	ID MoveCategoryID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
 
+	// A longer description of this collection, which might include multiple
+	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
 	Description *MarkdownString `json:"description,omitempty"`
 
 	// This collection's content enhances the identified collection, rather than
 	// being a standalone collection of its own.
 	Enhances *MoveCategoryID `json:"enhances,omitempty"`
 
+	// An SVG icon associated with this collection.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Images []WebpImageURL `json:"images,omitempty"`
@@ -1789,6 +1916,9 @@ type MoveCategory struct {
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// A brief summary of this collection, no more than a few sentences in length.
+	// This is intended for use in application tooltips and similar sorts of hints.
+	// Longer text should use the "description" key instead.
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
@@ -1886,10 +2016,13 @@ type MoveOutcome struct {
 type MoveOutcomeType string
 
 const (
+// The score doesn't beat either challenge die.
 	MoveOutcomeTypeMiss MoveOutcomeType = "miss"
 
+// The score is greater than both challenge dice.
 	MoveOutcomeTypeStrongHit MoveOutcomeType = "strong_hit"
 
+// The score is greater than one challenge die.
 	MoveOutcomeTypeWeakHit MoveOutcomeType = "weak_hit"
 )
 
@@ -1912,12 +2045,18 @@ type MoveOutcomes struct {
 type MoveRollType string
 
 const (
+// A move that makes an action roll.
 	MoveRollTypeActionRoll MoveRollType = "action_roll"
 
+// A move that makes no action rolls or progress rolls.
 	MoveRollTypeNoRoll MoveRollType = "no_roll"
 
+// A progress move that rolls on a standard progress track type (defined by
+// this move).
 	MoveRollTypeProgressRoll MoveRollType = "progress_roll"
 
+// A progress move that rolls on one or more special tracks, like Bonds (classic
+// Ironsworn), Failure (Delve), or Legacies (Starforged).
 	MoveRollTypeSpecialTrack MoveRollType = "special_track"
 )
 
@@ -1932,20 +2071,27 @@ type Npc struct {
 
 	Features []MarkdownString `json:"features"`
 
+	// The unique Datasworn ID for this item.
 	ID NpcID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	Nature NpcNature `json:"nature"`
 
 	QuestStarter MarkdownString `json:"quest_starter"`
 
+	// The suggested challenge rank for this NPC.
 	Rank ChallengeRank `json:"rank"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	Tactics []MarkdownString `json:"tactics"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
@@ -1960,22 +2106,32 @@ type Npc struct {
 type NpcCollection struct {
 	Contents map[string]Npc `json:"contents"`
 
+	// The unique Datasworn ID for this item.
 	ID NpcCollectionID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
 
+	// A longer description of this collection, which might include multiple
+	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
 	Description *MarkdownString `json:"description,omitempty"`
 
 	// This collection's content enhances the identified collection, rather than
 	// being a standalone collection of its own.
 	Enhances *NpcCollectionID `json:"enhances,omitempty"`
 
+	// An SVG icon associated with this collection.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Images []WebpImageURL `json:"images,omitempty"`
@@ -1986,6 +2142,9 @@ type NpcCollection struct {
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// A brief summary of this collection, no more than a few sentences in length.
+	// This is intended for use in application tooltips and similar sorts of hints.
+	// Longer text should use the "description" key instead.
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
@@ -2006,12 +2165,14 @@ type NpcNature = Label
 type NpcVariant struct {
 	Description MarkdownString `json:"description"`
 
+	// The unique Datasworn ID for this item.
 	ID NpcVariantID `json:"id"`
 
 	Name Label `json:"name"`
 
 	Nature NpcNature `json:"nature"`
 
+	// The suggested challenge rank for this NPC.
 	Rank ChallengeRank `json:"rank"`
 
 	Summary *MarkdownString `json:"summary,omitempty"`
@@ -2024,22 +2185,32 @@ type OracleCollection struct {
 
 	Contents map[string]OracleTable `json:"contents"`
 
+	// The unique Datasworn ID for this item.
 	ID OracleCollectionID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
 
+	// A longer description of this collection, which might include multiple
+	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
 	Description *MarkdownString `json:"description,omitempty"`
 
 	// This collection's content enhances the identified collection, rather than
 	// being a standalone collection of its own.
 	Enhances *OracleCollectionID `json:"enhances,omitempty"`
 
+	// An SVG icon associated with this collection.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Images []WebpImageURL `json:"images,omitempty"`
@@ -2052,29 +2223,82 @@ type OracleCollection struct {
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// A brief summary of this collection, no more than a few sentences in length.
+	// This is intended for use in application tooltips and similar sorts of hints.
+	// Longer text should use the "description" key instead.
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
 type OracleCollectionID = string
 
+// Describes the presentation of this oracle collection, which might represent a
+// group of separate tables, or a single table with additional columns.
 type OracleCollectionRendering struct {
+	Style string
+
+	MultiTable OracleCollectionRenderingMultiTable
+
+	Tables OracleCollectionRenderingTables
+}
+
+func (v OracleCollectionRendering) MarshalJSON() ([]byte, error) {
+	switch v.Style {
+	case "multi_table":
+		return json.Marshal(struct { T string `json:"style"`; OracleCollectionRenderingMultiTable }{ v.Style, v.MultiTable })
+	case "tables":
+		return json.Marshal(struct { T string `json:"style"`; OracleCollectionRenderingTables }{ v.Style, v.Tables })
+	}
+
+	return nil, fmt.Errorf("bad Style value: %s", v.Style)
+}
+
+func (v *OracleCollectionRendering) UnmarshalJSON(b []byte) error {
+	var t struct { T string `json:"style"` }
+	if err := json.Unmarshal(b, &t); err != nil {
+		return err
+	}
+
+	var err error
+	switch t.T {
+	case "multi_table":
+		err = json.Unmarshal(b, &v.MultiTable)
+	case "tables":
+		err = json.Unmarshal(b, &v.Tables)
+	default:
+		err = fmt.Errorf("bad Style value: %s", t.T)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	v.Style = t.T
+	return nil
+}
+
+type OracleCollectionRenderingMultiTable struct {
 	Columns map[string]OracleCollectionTableColumn `json:"columns"`
+}
 
-	Color *CSSColor `json:"color,omitempty"`
-
-	TableStyle *OracleCollectionStyle `json:"table_style,omitempty"`
+type OracleCollectionRenderingTables struct {
 }
 
 type OracleCollectionStyle string
 
 const (
-	OracleCollectionStyleCollection OracleCollectionStyle = "collection"
-
+// Presented as a single table, with its OracleTable children rendered as
+// columns.
 	OracleCollectionStyleMultiTable OracleCollectionStyle = "multi_table"
+
+// Presented as a collection of separate tables.
+	OracleCollectionStyleTables OracleCollectionStyle = "tables"
 )
 
 type OracleCollectionTableColumn struct {
 	ContentType OracleTableColumnContentKey `json:"content_type"`
+
+	// The column's header text.
+	Label Label `json:"label"`
 
 	// The key of the OracleTable (within this collection), whose data is used to
 	// render this column.
@@ -2082,9 +2306,6 @@ type OracleCollectionTableColumn struct {
 
 	// The thematic color for this column.
 	Color *CSSColor `json:"color,omitempty"`
-
-	// The column's header text.
-	Name *Label `json:"name,omitempty"`
 }
 
 // Provides string templates that may be used in place of the static
@@ -2107,16 +2328,23 @@ type OracleRollTemplate struct {
 }
 
 type OracleTable struct {
+	// The roll used to select a result on this table.
 	Dice DiceNotation `json:"dice"`
 
+	// The unique Datasworn ID for this item.
 	ID OracleTableID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	Table []OracleTableRow `json:"table"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	// A longer description of the oracle table's intended usage, which might
@@ -2124,12 +2352,17 @@ type OracleTable struct {
 	// `summary` key instead.
 	Description *MarkdownString `json:"description,omitempty"`
 
+	// An icon that represents this table.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	Images []WebpImageURL `json:"images,omitempty"`
 
+	// Most oracle tables are insensitive to matches, but a few define special
+	// match behavior.
 	Match *OracleTableMatchBehavior `json:"match,omitempty"`
 
+	// Describes how how to render this table, when presenting it as a standalone
+	// table.
 	Rendering *OracleTableRendering `json:"rendering,omitempty"`
 
 	// Indicates that this table replaces the identified table. References to the
@@ -2148,23 +2381,27 @@ type OracleTable struct {
 type OracleTableColumn struct {
 	ContentType OracleTableColumnContentKey `json:"content_type"`
 
+	// The column's header text.
+	Label Label `json:"label"`
+
 	// The thematic color for this column.
 	Color *CSSColor `json:"color,omitempty"`
-
-	// The column's header text.
-	Name *Label `json:"name,omitempty"`
 }
 
 // The value(s) from each OracleTableRow that is rendered in this column.
 type OracleTableColumnContentKey string
 
 const (
+// Column displays the OracleTableRow's `description` key.
 	OracleTableColumnContentKeyDescription OracleTableColumnContentKey = "description"
 
+// Column displays the OracleTableRow's `result` key.
 	OracleTableColumnContentKeyResult OracleTableColumnContentKey = "result"
 
+// Column displays the roll range (`min` and `max`) of each OracleTableRow.
 	OracleTableColumnContentKeyRoll OracleTableColumnContentKey = "roll"
 
+// Column displays the OracleTableRow's `summary` key.
 	OracleTableColumnContentKeySummary OracleTableColumnContentKey = "summary"
 )
 
@@ -2178,10 +2415,64 @@ type OracleTableMatchBehavior struct {
 	Text MarkdownString `json:"text"`
 }
 
+// Describes the presentation of this table.
 type OracleTableRendering struct {
-	Columns map[string]OracleTableColumn `json:"columns"`
+	Style string
 
-	TableStyle *OracleTableStyle `json:"table_style,omitempty"`
+	Column OracleTableRenderingColumn
+
+	EmbedInRow OracleTableRenderingEmbedInRow
+
+	Standalone OracleTableRenderingStandalone
+}
+
+func (v OracleTableRendering) MarshalJSON() ([]byte, error) {
+	switch v.Style {
+	case "column":
+		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingColumn }{ v.Style, v.Column })
+	case "embed_in_row":
+		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingEmbedInRow }{ v.Style, v.EmbedInRow })
+	case "standalone":
+		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingStandalone }{ v.Style, v.Standalone })
+	}
+
+	return nil, fmt.Errorf("bad Style value: %s", v.Style)
+}
+
+func (v *OracleTableRendering) UnmarshalJSON(b []byte) error {
+	var t struct { T string `json:"style"` }
+	if err := json.Unmarshal(b, &t); err != nil {
+		return err
+	}
+
+	var err error
+	switch t.T {
+	case "column":
+		err = json.Unmarshal(b, &v.Column)
+	case "embed_in_row":
+		err = json.Unmarshal(b, &v.EmbedInRow)
+	case "standalone":
+		err = json.Unmarshal(b, &v.Standalone)
+	default:
+		err = fmt.Errorf("bad Style value: %s", t.T)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	v.Style = t.T
+	return nil
+}
+
+type OracleTableRenderingColumn struct {
+}
+
+type OracleTableRenderingEmbedInRow struct {
+}
+
+type OracleTableRenderingStandalone struct {
+	Columns map[string]OracleTableColumn `json:"columns"`
 }
 
 type OracleTableRoll struct {
@@ -2206,18 +2497,26 @@ type OracleTableRoll struct {
 type OracleTableRollMethod string
 
 const (
+// Duplicates should be kept.
 	OracleTableRollMethodKeepDuplicates OracleTableRollMethod = "keep_duplicates"
 
+// Duplicates should be kept, and they compound to make things worse.
 	OracleTableRollMethodMakeItWorse OracleTableRollMethod = "make_it_worse"
 
+// Duplicates should be re-rolled.
 	OracleTableRollMethodNoDuplicates OracleTableRollMethod = "no_duplicates"
 )
 
 type OracleTableRow struct {
+	// The unique Datasworn ID for this item.
 	ID OracleTableRowID `json:"id"`
 
+	// High end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Max *int16 `json:"max"`
 
+	// Low end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Min *int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
@@ -2250,30 +2549,41 @@ type OracleTableRowID = string
 type OracleTableStyle string
 
 const (
-	OracleTableStyleEmbedAsColumn OracleTableStyle = "embed_as_column"
+// Render as a single column of a table.
+	OracleTableStyleColumn OracleTableStyle = "column"
 
+// Render as a table, within a row in another table.
 	OracleTableStyleEmbedInRow OracleTableStyle = "embed_in_row"
 
-	OracleTableStyleStandaloneTable OracleTableStyle = "standalone_table"
+// Render as a standalone table.
+	OracleTableStyleStandalone OracleTableStyle = "standalone"
 )
 
 type PartOfSpeech string
 
 const (
+// An adjective.
 	PartOfSpeechAdjective PartOfSpeech = "adjective"
 
+// A common noun used as an adjective, to modify another noun.
 	PartOfSpeechAdjunctCommonNoun PartOfSpeech = "adjunct_common_noun"
 
+// A proper noun used as an adjective, to modify another noun.
 	PartOfSpeechAdjunctProperNoun PartOfSpeech = "adjunct_proper_noun"
 
+// A verb used as an adjective, to modify a noun.
 	PartOfSpeechAttributiveVerb PartOfSpeech = "attributive_verb"
 
+// A common noun.
 	PartOfSpeechCommonNoun PartOfSpeech = "common_noun"
 
+// Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
 	PartOfSpeechGerund PartOfSpeech = "gerund"
 
+// A proper noun.
 	PartOfSpeechProperNoun PartOfSpeech = "proper_noun"
 
+// A verb in present tense
 	PartOfSpeechVerb PartOfSpeech = "verb"
 )
 
@@ -2286,12 +2596,16 @@ type PlayerStat = DictKey
 type ProgressRollMethod string
 
 const (
+// An automatic miss.
 	ProgressRollMethodMiss ProgressRollMethod = "miss"
 
+// Make a progress roll on a progress track associated with this move.
 	ProgressRollMethodProgressRoll ProgressRollMethod = "progress_roll"
 
+// An automatic strong hit.
 	ProgressRollMethodStrongHit ProgressRollMethod = "strong_hit"
 
+// An automatic weak hit.
 	ProgressRollMethodWeakHit ProgressRollMethod = "weak_hit"
 )
 
@@ -2305,6 +2619,17 @@ type ProgressRollOption struct {
 	Using ProgressRollOptionUsing `json:"using"`
 }
 
+type ProgressTrackTypeInfoControl struct {
+}
+
+// Describes the features of a type of progress track.
+type ProgressTrackTypeInfo struct {
+	// A category label for progress tracks of this type.
+	Category Label `json:"category"`
+
+	Controls map[string]ProgressTrackTypeInfoControl `json:"controls,omitempty"`
+}
+
 // A rarity, as described in Ironsworn: Delve.
 type Rarity struct {
 	// The asset augmented by this rarity.
@@ -2312,10 +2637,14 @@ type Rarity struct {
 
 	Description MarkdownString `json:"description"`
 
+	// The unique Datasworn ID for this item.
 	ID RarityID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
 	// From Ironsworn: Delve, p. 174:
@@ -2329,6 +2658,8 @@ type Rarity struct {
 	// spend 3 experience points to purchase a rarity.
 	XpCost int16 `json:"xp_cost"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
@@ -2338,13 +2669,22 @@ type Rarity struct {
 
 type RarityID = string
 
+// Describes rules for player characters in this ruleset, such as stats and
+// condition meters.
 type Rules struct {
+	// Describes the standard condition meters used by player characters in this
+	// ruleset.
 	ConditionMeters map[string]ConditionMeterRule `json:"condition_meters"`
 
+	// Describes the standard impacts/debilities used by player characters in this
+	// ruleset.
 	Impacts map[string]ImpactCategory `json:"impacts"`
 
+	// Describes the special tracks used by player characters in this ruleset, like
+	// Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
 	SpecialTracks map[string]SpecialTrackRule `json:"special_tracks"`
 
+	// Describes the standard stats used by player characters in this ruleset.
 	Stats map[string]StatRule `json:"stats"`
 }
 
@@ -2366,6 +2706,12 @@ type Source struct {
 	// Required because it's used to determine whether the data needs updating.
 	Date string `json:"date"`
 
+	// An absolute URL pointing to the location where this element's license can
+	// be found.
+	// 
+	// A `null` here indicates that the content provides **no** license, and is
+	// not intended for redistribution.  Datasworn's build process skips unlicensed
+	// content by default.
 	License *string `json:"license"`
 
 	// The title of the source document.
@@ -2381,28 +2727,41 @@ type Source struct {
 type SpecialTrackRollMethod string
 
 const (
+// Use **every** roll option at once.
 	SpecialTrackRollMethodAll SpecialTrackRollMethod = "all"
 
+// Use the roll option with the best/highest value.
 	SpecialTrackRollMethodHighest SpecialTrackRollMethod = "highest"
 
+// Use the roll option with the worst/lowest value.
 	SpecialTrackRollMethodLowest SpecialTrackRollMethod = "lowest"
 
+// An automatic miss.
 	SpecialTrackRollMethodMiss SpecialTrackRollMethod = "miss"
 
+// The player chooses which roll option to use.
 	SpecialTrackRollMethodPlayerChoice SpecialTrackRollMethod = "player_choice"
 
+// An automatic strong hit.
 	SpecialTrackRollMethodStrongHit SpecialTrackRollMethod = "strong_hit"
 
+// An automatic weak hit.
 	SpecialTrackRollMethodWeakHit SpecialTrackRollMethod = "weak_hit"
 )
 
+// Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or
+// Legacies (Starforged).
 type SpecialTrackRule struct {
+	// A description of this special track.
 	Description MarkdownString `json:"description"`
 
-	Name Label `json:"name"`
+	// A label for this special track.
+	Label Label `json:"label"`
 
+	// Is this track an optional rule?
 	Optional bool `json:"optional"`
 
+	// Is this track shared by all players?
 	Shared bool `json:"shared"`
 }
 
@@ -2419,10 +2778,13 @@ type SpecialTrackRuleID = string
 // 
 type SpecialTrackType = DictKey
 
+// Describes a standard player character stat.
 type StatRule struct {
+	// A description of this stat.
 	Description MarkdownString `json:"description"`
 
-	Name Label `json:"name"`
+	// A label for this stat.
+	Label Label `json:"label"`
 }
 
 type StatRuleID = string
@@ -2437,6 +2799,8 @@ type Suggestions struct {
 	Npcs []NpcID `json:"npcs,omitempty"`
 
 	Oracles []OracleTableID `json:"oracles,omitempty"`
+
+	Rarities []RarityID `json:"rarities,omitempty"`
 
 	SiteDomains []DelveSiteDomainID `json:"site_domains,omitempty"`
 
@@ -2470,7 +2834,7 @@ type TriggerActionRoll struct {
 type TriggerActionRollCondition struct {
 	Method ActionRollMethod `json:"method"`
 
-	// The options available when rolling with this trigger.
+	// The options available when rolling with this trigger condition.
 	RollOptions []ActionRollOption `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
@@ -2480,9 +2844,12 @@ type TriggerActionRollCondition struct {
 }
 
 type TriggerActionRollConditionEnhancement struct {
+	// A `null` value means this condition provides no roll mechanic of its own;
+	// it must be used with another trigger condition that provides a non-null
+	// `method`.
 	Method *ActionRollMethod `json:"method"`
 
-	// The options available when rolling with this trigger.
+	// The options available when rolling with this trigger condition.
 	RollOptions []ActionRollOption `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
@@ -2514,11 +2881,6 @@ type TriggerNoRoll struct {
 }
 
 type TriggerNoRollCondition struct {
-	Method interface{} `json:"method"`
-
-	// The options available when rolling with this trigger.
-	RollOptions interface{} `json:"roll_options"`
-
 	By *TriggerBy `json:"by,omitempty"`
 
 	// A markdown string of any trigger text specific to this trigger condition.
@@ -2542,7 +2904,7 @@ type TriggerProgressRoll struct {
 type TriggerProgressRollCondition struct {
 	Method ProgressRollMethod `json:"method"`
 
-	// The options available when rolling with this trigger.
+	// The options available when rolling with this trigger condition.
 	RollOptions []ProgressRollOption `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
@@ -2552,9 +2914,12 @@ type TriggerProgressRollCondition struct {
 }
 
 type TriggerProgressRollConditionEnhancement struct {
+	// A `null` value means this condition provides no roll mechanic of its own;
+	// it must be used with another trigger condition that provides a non-null
+	// `method`.
 	Method *ProgressRollMethod `json:"method"`
 
-	// The options available when rolling with this trigger.
+	// The options available when rolling with this trigger condition.
 	RollOptions []ProgressRollOption `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
@@ -2580,7 +2945,7 @@ type TriggerSpecialTrack struct {
 type TriggerSpecialTrackCondition struct {
 	Method SpecialTrackRollMethod `json:"method"`
 
-	// The options available when rolling with this trigger.
+	// The options available when rolling with this trigger condition.
 	RollOptions []TriggerSpecialTrackConditionOption `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
@@ -2592,9 +2957,12 @@ type TriggerSpecialTrackCondition struct {
 // A progress move that rolls on one or more special tracks, like Bonds (classic
 // Ironsworn), Failure (Delve), or Legacy (Starforged).
 type TriggerSpecialTrackConditionEnhancement struct {
+	// A `null` value means this condition provides no roll mechanic of its own;
+	// it must be used with another trigger condition that provides a non-null
+	// `method`.
 	Method *SpecialTrackRollMethod `json:"method"`
 
-	// The options available when rolling with this trigger.
+	// The options available when rolling with this trigger condition.
 	RollOptions []TriggerSpecialTrackConditionOption `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
@@ -2613,14 +2981,20 @@ type TriggerSpecialTrackEnhancement struct {
 
 // A setting truth category.
 type Truth struct {
+	// The unique Datasworn ID for this item.
 	ID TruthID `json:"id"`
 
+	// The primary name/label for this item.
 	Name Label `json:"name"`
 
 	Options []TruthOption `json:"options"`
 
+	// Attribution for the original source (such as a book or website) of this
+	// item, including the author and licensing information.
 	Source Source `json:"source"`
 
+	// The name of this item as it appears on the page in the book, if it's
+	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
@@ -2635,6 +3009,7 @@ type TruthID = string
 type TruthOption struct {
 	Description MarkdownString `json:"description"`
 
+	// The unique Datasworn ID for this item.
 	ID TruthOptionID `json:"id"`
 
 	QuestStarter MarkdownString `json:"quest_starter"`
@@ -2651,8 +3026,12 @@ type TruthOption struct {
 type TruthOptionID = string
 
 type TruthOptionTableRow struct {
+	// High end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Max *int16 `json:"max"`
 
+	// Low end of the dice range for this table row. `null` represents an
+	// unrollable row, included only for rendering purposes.
 	Min *int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`

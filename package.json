@@ -10,8 +10,7 @@
 		"build:io-types": "ts-node ./src/types/write-io-types.ts",
 		"build:json": "ts-node ./src/scripts/datasworn/writeDatasworn.ts",
 		"build:pkg": "ts-node ./src/scripts/pkg/nodejs/buildPackages.ts",
-		"update": "npm run build:schema && npm run build:io-types && npm run build:json && npm run build:pkg",
-		"build:dts": "ts-node ./src/type-gen/json-schema-to-typescript.ts",
+		"build": "npm run build:schema && npm run build:io-types && npm run build:json && npm run build:jtd && npm run build:pkg",
 		"readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json"
 	},
 	"files": [

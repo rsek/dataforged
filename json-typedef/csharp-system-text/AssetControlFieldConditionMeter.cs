@@ -5,46 +5,46 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    /// <summary>
-    /// Some assets provide a special condition meter of their own. The most
-    /// common example is the health meters on companion assets. Asset condition
-    /// meters may also include their own controls, such as the checkboxes that
-    /// Starforged companion assets use to indicate they are "out of action".
-    /// </summary>
     public class AssetControlFieldConditionMeter : AssetControlField
     {
         [JsonPropertyName("field_type")]
         public string FieldType { get => "condition_meter"; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public AssetControlFieldId Id { get; set; }
+
+        /// <summary>
+        /// A localized label for this input. In some contexts it may be
+        /// undesirable to render this text, but it should always be exposed to
+        /// assistive technology (e.g. with `aria-label` in HTML).
+        /// </summary>
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
 
         /// <summary>
         /// The maximum value of this meter.
         /// </summary>
         [JsonPropertyName("max")]
-        public short Max { get; set; }
+        public sbyte Max { get; set; }
 
         /// <summary>
         /// The minimum value of this meter.
         /// </summary>
         [JsonPropertyName("min")]
-        public byte Min { get; set; }
-
-        /// <summary>
-        /// A label for this input. In some contexts it may be undesirable
-        /// to render this text, but it should always be exposed to assistive
-        /// technology (e.g. with `aria-label` in HTML).
-        /// </summary>
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
+        public sbyte Min { get; set; }
 
         /// <summary>
         /// The current value of this meter.
         /// </summary>
         [JsonPropertyName("value")]
-        public short Value { get; set; }
+        public sbyte Value { get; set; }
 
+        /// <summary>
+        /// Checkbox controls rendered as part of the condition meter.
+        /// </summary>
         [JsonPropertyName("controls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, AssetConditionMeterControlField> Controls { get; set; }

@@ -8,12 +8,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
 public class TriggerNoRollCondition {
-    @JsonProperty("method")
-    private Object method;
-
-    @JsonProperty("roll_options")
-    private Object rollOptions;
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("by")
     private TriggerBy by;
@@ -23,36 +17,6 @@ public class TriggerNoRollCondition {
     private MarkdownString text;
 
     public TriggerNoRollCondition() {
-    }
-
-    /**
-     * Getter for method.<p>
-     */
-    public Object getMethod() {
-        return method;
-    }
-
-    /**
-     * Setter for method.<p>
-     */
-    public void setMethod(Object method) {
-        this.method = method;
-    }
-
-    /**
-     * Getter for rollOptions.<p>
-     * The options available when rolling with this trigger.
-     */
-    public Object getRollOptions() {
-        return rollOptions;
-    }
-
-    /**
-     * Setter for rollOptions.<p>
-     * The options available when rolling with this trigger.
-     */
-    public void setRollOptions(Object rollOptions) {
-        this.rollOptions = rollOptions;
     }
 
     /**

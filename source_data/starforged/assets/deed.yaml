@@ -29,7 +29,7 @@ assets:
         name: Bonded
         options:
           bond_mate:
-            name: Bond-mate
+            label: Bond-mate
             field_type: text
         requirement: One time only, once you [Forge a Bond](id:starforged/moves/connection/forge_a_bond) with a special individual...
         abilities:
@@ -81,9 +81,9 @@ assets:
         <<: *DeedAsset
         name: Homesteader
         options: &Options_Name
-          name:
+          label:
+            label: Name
             field_type: text
-            name: Name
         requirement: Once you fill 4 boxes on your bonds legacy track...
         abilities:
           - text: |-
@@ -145,7 +145,7 @@ assets:
         <<: *DeedAsset
         options:
           identifier:
-            name: Identifier
+            label: Identifier
             field_type: text
         requirement: Once you fill 5 boxes on your quests legacy track...
         abilities:
@@ -168,7 +168,7 @@ assets:
               - roll_type: action_roll
             controls:
               clock:
-                name: Stained reputation
+                label: Stained reputation
                 field_type: clock
                 max: 6
                 value: 0

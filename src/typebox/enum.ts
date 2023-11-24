@@ -11,8 +11,9 @@ import {
 import { TypeSystem } from '@sinclair/typebox/system'
 import { JsonPrimitive, ValueOf, type JsonValue, Simplify } from 'type-fest'
 import { isJsonValue } from './isJsonValue.js'
-import { map } from 'lodash-es'
+import { camelCase, map } from 'lodash-es'
 import { Entries, MapEntries } from 'type-fest/source/entries.js'
+import { JsonTypeDef } from '../json-typedef/symbol.js'
 
 TypeSystem.Type('JsonEnum', JsonEnumCheck)
 
@@ -24,13 +25,13 @@ export function TJsonEnum(schema: unknown): schema is TJsonEnum {
 	return (schema as TJsonEnum)[Kind] === 'JsonEnum'
 }
 
-export const EnumDescriptions = Symbol('EnumDescriptions')
-export const Description = Symbol('Descriptionx')
+export const EnumDescription = Symbol('EnumDescription')
+export const Description = Symbol('Description')
 
 export interface TJsonEnum<T extends string[] | number[] = string[] | number[]>
 	extends TSchema {
 	[Kind]: 'JsonEnum'
-	[EnumDescriptions]: Record<T[number], string>
+	[EnumDescription]: Record<T[number], string>
 	[Description]?: string | undefined
 	static: { [K in keyof T]: T[K] }[number]
 	enum: [...T]
@@ -62,7 +63,7 @@ export function JsonEnumFromRecord<T extends string[] | number[]>(
 
 	return {
 		[Description]: options.description,
-		[EnumDescriptions]: entries,
+		[EnumDescription]: entries,
 		[Kind]: 'JsonEnum',
 		enum: arr,
 		...options,
@@ -75,7 +76,7 @@ export function MergeEnumSchemas<T extends Array<TJsonEnum<string[]>>>(
 	options: SchemaOptions = {}
 ) {
 	const entries = schemas
-		.map((item) => item[EnumDescriptions])
+		.map((item) => item[EnumDescription])
 		.reduce((prev, cur) => Object.assign(prev, cur)) as {
 		[P in Static<T[number]>]: string
 	}
@@ -86,10 +87,16 @@ export function MergeEnumSchemas<T extends Array<TJsonEnum<string[]>>>(
 /** Extracts a literal from a JsonEnum, plus any associated description. */
 export function ExtractLiteralFromEnum<
 	T extends ReturnType<typeof JsonEnumFromRecord>,
-	K extends T['enum'][number]
+	K extends Static<T>
 >(schema: T, key: K, options: SchemaOptions = {}) {
-	const description = schema[EnumDescriptions][key]
+	const description = schema[EnumDescription][key]
 	return Type.Literal<K>(key, {
+		[JsonTypeDef]: {
+			metadata: {
+				typescriptType: `${schema.$id?.split('/').pop()}.${camelCase(key)}`,
+				csharpType: `${schema.$id?.split('/').pop()}.${camelCase(key)}`
+			}
+		},
 		description,
 		...options
 	})

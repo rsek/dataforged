@@ -87,16 +87,18 @@ oracles:
           <<: *Source
           page: 320
         rendering:
+          style: multi_table
           columns:
             lifebearing:
-              name: Lifebearing
+              label: Lifebearing
               content_type: roll
               table_key: lifebearing
             lifeless:
-              name: Lifeless
+              label: Lifeless
               content_type: roll
               table_key: lifeless
             result:
+              label: Result
               content_type: result
               table_key: lifebearing
         # usage:
@@ -114,7 +116,7 @@ oracles:
             source: *CollectionSource
             name: Lifebearing
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires: &attr:Life.Lifebearing
             #     attributes:
@@ -249,7 +251,7 @@ oracles:
             name: Lifeless
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires: &attr:Life.Lifeless
             #     attributes:
@@ -363,19 +365,20 @@ oracles:
           <<: *Source
           page: 321
         rendering:
+          style: multi_table
           columns:
             lifebearing:
               content_type: roll
               table_key: lifebearing
-              name: Lifebearing
+              label: Lifebearing
             lifeless:
               content_type: roll
               table_key: lifeless
-              name: Lifeless
+              label: Lifeless
             result:
               content_type: result
               table_key: lifebearing
-              name: Result
+              label: Result
         # content:
         #   part_of_speech: [fragment]
         #   tags: [opportunity]
@@ -389,7 +392,7 @@ oracles:
         contents:
           lifebearing:
             rendering:
-              table_style: embed_as_column
+              style: column
             name: Lifebearing
             source: *CollectionSource
             # usage:
@@ -483,7 +486,7 @@ oracles:
                 # suggestions: [*roll:Object]
           lifeless:
             rendering:
-              table_style: embed_as_column
+              style: column
             name: Lifeless
             source: *CollectionSource
             # usage:

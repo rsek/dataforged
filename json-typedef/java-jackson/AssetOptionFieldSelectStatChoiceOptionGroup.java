@@ -6,9 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
-/**
- * Represents a grouping of options in a list of choices.
- */
 @JsonSerialize
 public class AssetOptionFieldSelectStatChoiceOptionGroup extends AssetOptionFieldSelectStatChoice {
     @JsonProperty("choices")

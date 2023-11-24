@@ -7,10 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
-/**
- * Describes game rules compatible with the Ironsworn tabletop role-playing game
- * by Shawn Tomkin.
- */
 @JsonSerialize
 public class Ruleset {
     @JsonProperty("id")

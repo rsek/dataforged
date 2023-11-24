@@ -5,23 +5,30 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    /// <summary>
-    /// A move that makes an action roll.
-    /// </summary>
     public class MoveActionRoll : Move
     {
         [JsonPropertyName("roll_type")]
         public string RollType { get => "action_roll"; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public MoveId Id { get; set; }
 
+        /// <summary>
+        /// The primary name/label for this item.
+        /// </summary>
         [JsonPropertyName("name")]
         public Label Name { get; set; }
 
         [JsonPropertyName("outcomes")]
         public MoveOutcomes Outcomes { get; set; }
 
+        /// <summary>
+        /// Attribution for the original source (such as a book or website) of
+        /// this item, including the author and licensing information.
+        /// </summary>
         [JsonPropertyName("source")]
         public Source Source { get; set; }
 
@@ -34,6 +41,10 @@ namespace Datasworn
         [JsonPropertyName("trigger")]
         public TriggerActionRoll Trigger { get; set; }
 
+        /// <summary>
+        /// The name of this item as it appears on the page in the book, if it's
+        /// different from `name`.
+        /// </summary>
         [JsonPropertyName("canonical_name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }

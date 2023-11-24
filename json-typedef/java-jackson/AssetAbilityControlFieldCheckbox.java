@@ -16,8 +16,8 @@ public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
     @JsonProperty("is_impact")
     private Boolean isImpact;
 
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     @JsonProperty("value")
     private Boolean value;
@@ -43,6 +43,7 @@ public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public AssetAbilityControlFieldId getId() {
         return id;
@@ -50,6 +51,7 @@ public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(AssetAbilityControlFieldId id) {
         this.id = id;
@@ -74,23 +76,23 @@ public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
     }
 
     /**
-     * Getter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Getter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Setter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     /**

@@ -11,16 +11,15 @@ public class OracleCollectionTableColumn {
     @JsonProperty("content_type")
     private OracleTableColumnContentKey contentType;
 
+    @JsonProperty("label")
+    private Label label;
+
     @JsonProperty("table_key")
     private DictKey tableKey;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private CssColor color;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("name")
-    private Label name;
 
     public OracleCollectionTableColumn() {
     }
@@ -37,6 +36,22 @@ public class OracleCollectionTableColumn {
      */
     public void setContentType(OracleTableColumnContentKey contentType) {
         this.contentType = contentType;
+    }
+
+    /**
+     * Getter for label.<p>
+     * The column's header text.
+     */
+    public Label getLabel() {
+        return label;
+    }
+
+    /**
+     * Setter for label.<p>
+     * The column's header text.
+     */
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     /**
@@ -71,21 +86,5 @@ public class OracleCollectionTableColumn {
      */
     public void setColor(CssColor color) {
         this.color = color;
-    }
-
-    /**
-     * Getter for name.<p>
-     * The column's header text.
-     */
-    public Label getName() {
-        return name;
-    }
-
-    /**
-     * Setter for name.<p>
-     * The column's header text.
-     */
-    public void setName(Label name) {
-        this.name = name;
     }
 }

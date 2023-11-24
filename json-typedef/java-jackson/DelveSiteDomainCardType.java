@@ -4,6 +4,9 @@ package Datasworn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * A delve site domain card.
+ */
 public enum DelveSiteDomainCardType {
     @JsonProperty("domain")
     DOMAIN,

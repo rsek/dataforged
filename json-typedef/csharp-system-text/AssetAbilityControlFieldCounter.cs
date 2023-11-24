@@ -4,17 +4,28 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    /// <summary>
-    /// A counter that starts at zero, with an optional maximum value.
-    /// </summary>
     public class AssetAbilityControlFieldCounter : AssetAbilityControlField
     {
         [JsonPropertyName("field_type")]
         public string FieldType { get => "counter"; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public AssetAbilityControlFieldId Id { get; set; }
 
+        /// <summary>
+        /// A localized label for this input. In some contexts it may be
+        /// undesirable to render this text, but it should always be exposed to
+        /// assistive technology (e.g. with `aria-label` in HTML).
+        /// </summary>
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
+
+        /// <summary>
+        /// The (inclusive) maximum value.
+        /// </summary>
         [JsonPropertyName("max")]
         public short? Max { get; set; }
 
@@ -22,15 +33,7 @@ namespace Datasworn
         /// The (inclusive) minimum value.
         /// </summary>
         [JsonPropertyName("min")]
-        public byte Min { get; set; }
-
-        /// <summary>
-        /// A label for this input. In some contexts it may be undesirable
-        /// to render this text, but it should always be exposed to assistive
-        /// technology (e.g. with `aria-label` in HTML).
-        /// </summary>
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
+        public sbyte Min { get; set; }
 
         /// <summary>
         /// The current value of this input.

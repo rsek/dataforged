@@ -33,15 +33,15 @@ assets:
             assets:
               - '*/assets/module/*'
           options: &Options_Name
-            name:
+            label:
               field_type: text
-              name: Name
+              label: Name
         controls:
           integrity:
             max: 5
             value: 5
             <<: &CommandVehicleIntegrity
-              name: integrity
+              label: integrity
               field_type: condition_meter
               min: 0
               moves:
@@ -51,11 +51,11 @@ assets:
                   - starforged/moves/recover/repair
               controls:
                 battered: &Vehicle.Battered
-                  name: battered
+                  label: battered
                   field_type: checkbox
                   is_impact: true
                 cursed:
-                  name: cursed
+                  label: cursed
                   field_type: checkbox
                   is_impact: true
         abilities:

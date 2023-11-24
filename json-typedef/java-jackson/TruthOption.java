@@ -53,6 +53,7 @@ public class TruthOption {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public TruthOptionId getId() {
         return id;
@@ -60,6 +61,7 @@ public class TruthOption {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(TruthOptionId id) {
         this.id = id;

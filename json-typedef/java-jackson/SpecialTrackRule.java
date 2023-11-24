@@ -5,13 +5,17 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or
+ * Legacies (Starforged).
+ */
 @JsonSerialize
 public class SpecialTrackRule {
     @JsonProperty("description")
     private MarkdownString description;
 
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     @JsonProperty("optional")
     private Boolean optional;
@@ -24,6 +28,7 @@ public class SpecialTrackRule {
 
     /**
      * Getter for description.<p>
+     * A description of this special track.
      */
     public MarkdownString getDescription() {
         return description;
@@ -31,27 +36,31 @@ public class SpecialTrackRule {
 
     /**
      * Setter for description.<p>
+     * A description of this special track.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
     }
 
     /**
-     * Getter for name.<p>
+     * Getter for label.<p>
+     * A label for this special track.
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
+     * Setter for label.<p>
+     * A label for this special track.
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     /**
      * Getter for optional.<p>
+     * Is this track an optional rule?
      */
     public Boolean getOptional() {
         return optional;
@@ -59,6 +68,7 @@ public class SpecialTrackRule {
 
     /**
      * Setter for optional.<p>
+     * Is this track an optional rule?
      */
     public void setOptional(Boolean optional) {
         this.optional = optional;
@@ -66,6 +76,7 @@ public class SpecialTrackRule {
 
     /**
      * Getter for shared.<p>
+     * Is this track shared by all players?
      */
     public Boolean getShared() {
         return shared;
@@ -73,6 +84,7 @@ public class SpecialTrackRule {
 
     /**
      * Setter for shared.<p>
+     * Is this track shared by all players?
      */
     public void setShared(Boolean shared) {
         this.shared = shared;

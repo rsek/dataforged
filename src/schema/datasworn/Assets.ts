@@ -24,8 +24,14 @@ const AssetMixin = Type.Object({
 		]
 		// i18n: true
 	}),
-	icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
-	color: Type.Optional(Type.Ref(Metadata.CssColor)),
+	icon: Type.Optional(
+		Type.Ref(Metadata.SvgImageUrl, { description: "This asset's icon." })
+	),
+	color: Type.Optional(
+		Type.Ref(Metadata.CssColor, {
+			description: 'A thematic color associated with this asset.'
+		})
+	),
 	options: Type.Optional(
 		Generic.Dictionary(
 			Type.Ref<TAssetOptionField>('#/$defs/AssetOptionField'),
@@ -35,7 +41,11 @@ const AssetMixin = Type.Object({
 			}
 		)
 	),
-	requirement: Type.Optional(Type.Ref(Localize.MarkdownString)),
+	requirement: Type.Optional(
+		Type.Ref(Localize.MarkdownString, {
+			description: 'Describes prerequisites for purchasing or using this asset.'
+		})
+	),
 	abilities: Type.Array(
 		Type.Ref<TAssetAbility>('#/$defs/AssetAbility', {
 			description: 'Abilities provided by this asset. Most assets have 3.'

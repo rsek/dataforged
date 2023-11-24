@@ -15,28 +15,31 @@ oracles:
         source: *Source
         name: Weather Conditions
         rendering:
-          table_style: multi_table
+          style: multi_table
           columns:
             myriads:
               table_key: myriads
+              label: Myriads
               content_type: roll
             margins:
               table_key: margins
+              label: Margins
               content_type: roll
             reaches:
               table_key: reaches
+              label: Reaches
               content_type: roll
             result:
               table_key: myriads
               content_type: result
-              name: Result
+              label: Result
         contents:
           myriads:
             source: *Source
             name: Myriads
             summary: Central Seas
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - min: 1
                 max: 70
@@ -49,7 +52,7 @@ oracles:
             name: Margins
             summary: Outer Seas
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - min: 1
                 max: 60
@@ -62,7 +65,7 @@ oracles:
             name: Reaches
             summary: Remote Seas
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - min: 1
                 max: 50

@@ -9,18 +9,39 @@ namespace Datasworn
     [JsonConverter(typeof(SpecialTrackRollMethodJsonConverter))]
     public enum SpecialTrackRollMethod
     {
+        /// <summary>
+        /// Use **every** roll option at once.
+        /// </summary>
         All,
 
+        /// <summary>
+        /// Use the roll option with the best/highest value.
+        /// </summary>
         Highest,
 
+        /// <summary>
+        /// Use the roll option with the worst/lowest value.
+        /// </summary>
         Lowest,
 
+        /// <summary>
+        /// An automatic miss.
+        /// </summary>
         Miss,
 
+        /// <summary>
+        /// The player chooses which roll option to use.
+        /// </summary>
         PlayerChoice,
 
+        /// <summary>
+        /// An automatic strong hit.
+        /// </summary>
         StrongHit,
 
+        /// <summary>
+        /// An automatic weak hit.
+        /// </summary>
         WeakHit,
     }
     public class SpecialTrackRollMethodJsonConverter : JsonConverter<SpecialTrackRollMethod>

@@ -5,9 +5,16 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum OracleCollectionStyle {
-    @JsonProperty("collection")
-    COLLECTION,
-
+    /**
+     * Presented as a single table, with its OracleTable children rendered as
+     * columns.
+     */
     @JsonProperty("multi_table")
     MULTI_TABLE,
+
+    /**
+     * Presented as a collection of separate tables.
+     */
+    @JsonProperty("tables")
+    TABLES,
 }

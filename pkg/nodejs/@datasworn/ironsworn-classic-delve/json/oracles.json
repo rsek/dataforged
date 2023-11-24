@@ -15,6 +15,10 @@
 		"character": {
 			"id": "delve/collections/oracles/character",
 			"name": "Character",
+			"enhances": "classic/collections/oracles/character",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.",
 			"contents": {
 				"activity": {
@@ -748,6 +752,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -759,12 +764,14 @@
 				],
 				"license": "https://creativecommons.org/licenses/by/4.0",
 				"url": "https://ironswornrpg.com"
-			},
-			"enhances": "classic/collections/oracles/character"
+			}
 		},
 		"combat_event": {
 			"id": "delve/collections/oracles/combat_event",
 			"name": "Combat Event",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Determine the actions of a character, creature, or force during a fight.",
 			"description": "Use the Combat Event oracles to answer questions about the actions of a foe or enemy force. You can use these oracles instead of—or in addition to—the [Combat Action](id:classic/oracles/turning_point/combat_action) oracle.\n\nRoll once each on the [Method](id:delve/oracles/combat_event/method) oracle and the [Target](id:delve/oracles/combat_event/target) oracle. Then, interpret the response as appropriate to the current situation and the nature of your foe.\n\nFor example, you are fighting a rhaskar, a bear-like beast. It has initiative, and you want to know what it does next. You [Ask the Oracle](id:classic/moves/fate/ask_the_oracle), rolling [Method](id:delve/oracles/combat_event/method) and [Target](id:delve/oracles/combat_event/target). The oracle responds, “Await Weakness.” You envision the rhaskar circling you, its keen eyes narrowing as it looks for an opening in your defenses. You must [Face Danger](id:classic/moves/adventure/face_danger) to avoid being outmaneuvered.",
 			"contents": {
@@ -1915,6 +1922,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"suggestions": {
 				"oracles": ["classic/oracles/turning_point/combat_action"]
 			},
@@ -1934,6 +1942,9 @@
 		"feature": {
 			"id": "delve/collections/oracles/feature",
 			"name": "Feature",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Use the [Aspect](id:delve/oracles/feature/aspect) and [Focus](id:delve/oracles/feature/focus) oracles to answer questions or provide inspiration for a location or event within a site.",
 			"description": "Use the [Aspect](id:delve/oracles/feature/aspect) and [Focus](id:delve/oracles/feature/focus) oracles to generate the details of a location or event within a site, or to answer questions about the site’s nature or history.\n\nThe basic function of these oracles is similar to the [Action](id:classic/oracles/action_and_theme/action) and [Theme](id:classic/oracles/action_and_theme/theme) oracles in Ironsworn Core. They are abstract word prompts you can interpret as appropriate to the current situation and setting. For example, you are traveling through a [Wild](id:delve/site_themes/wild) [Tanglewood](id:delve/site_domains/tanglewood) and roll “Something unusual or unexpected” on the domain feature table. You then [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) what you discover using the [Aspect](id:delve/oracles/feature/aspect) and [Focus](id:delve/oracles/feature/focus) tables. The oracle responds, “Depleted Environment.” Interpreting this answer, you envision coming upon an expanse of cleared forest. All that remains of this once thick woodland is rotted stumps. What happened here? Perhaps the answer lies ahead...",
 			"contents": {
@@ -3084,6 +3095,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -3100,6 +3112,9 @@
 		"monstrosity": {
 			"id": "delve/collections/oracles/monstrosity",
 			"name": "Monstrosity",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Discover the nature of a [nightspawn](id:delve/npcs/horrors/nightspawn) or other frightful creature within your world.",
 			"description": "Use the Monstrosity oracle to define the nature of a [Nightspawn](id:delve/npcs/horrors/nightspawn), or to introduce a new type of [animal](id:classic/collections/npcs/animal), [beast](id:classic/collections/npcs/beast), or [horror](id:classic/collections/npcs/horror) in your world.\n\nTo create a monstrosity, start by rolling for its [Size](id:delve/oracles/monstrosity/size) and [Primary Form](id:delve/oracles/monstrosity/primary_form). Then, roll up to four times for [Characteristics](id:delve/oracles/monstrosity/characteristics) and keep up to three of those results. Do the same for [Abilities](id:delve/oracles/monstrosity/abilities).\n\nGive the monstrosity a rank. Choose one appropriate to its features, or use the [Challenge Rank](id:classic/oracles/turning_point/challenge_rank) oracle.\n\nFinally, envision your creation and give it a name. It’s part of your world now.\n\nSome results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.\n\nTo learn more about your creation’s nature, you can roll on additional tables. Use the [Character Goal](id:classic/oracles/character/goal) oracle to give the monstrosity a purpose. Roll on the [Character Disposition](id:classic/oracles/character/disposition) and [Activity](id:delve/oracles/character/activity) oracles to frame your initial encounter. Another roll or two can give your monstrosity nuance and complexity, making it a deeper part of your story.",
 			"contents": {
@@ -3833,6 +3848,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"suggestions": {
 				"oracles": [
 					"classic/oracles/turning_point/challenge_rank",
@@ -3857,6 +3873,10 @@
 		"moves": {
 			"id": "delve/collections/oracles/moves",
 			"name": "Moves",
+			"enhances": "classic/collections/oracles/moves",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"find_an_opportunity": {
 					"id": "delve/oracles/moves/find_an_opportunity",
@@ -4168,24 +4188,25 @@
 					"id": "delve/collections/oracles/moves/delve_the_depths",
 					"name": "Delve the Depths",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"edge": {
-								"name": "Edge",
+								"label": "Edge",
 								"content_type": "roll",
 								"table_key": "edge"
 							},
 							"shadow": {
-								"name": "Shadow",
+								"label": "Shadow",
 								"content_type": "roll",
 								"table_key": "shadow"
 							},
 							"wits": {
-								"name": "Wits",
+								"label": "Wits",
 								"content_type": "roll",
 								"table_key": "wits"
 							},
 							"weak_hit_result": {
-								"name": "Weak Hit Result",
+								"label": "Weak Hit Result",
 								"content_type": "result",
 								"table_key": "edge"
 							}
@@ -4340,6 +4361,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -4364,12 +4386,14 @@
 				],
 				"license": "https://creativecommons.org/licenses/by/4.0",
 				"url": "https://ironswornrpg.com"
-			},
-			"enhances": "classic/collections/oracles/moves"
+			}
 		},
 		"site_name": {
 			"id": "delve/collections/oracles/site_name",
 			"name": "Site Name",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Give a site a name or learn more about its characteristics and history.",
 			"description": "To generate a name for a site, first roll on the [Format](id:delve/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](id:delve/oracles/site_name/description), [Detail](id:delve/oracles/site_name/detail), [Namesake](id:delve/oracles/site_name/namesake), and [Place](id:delve/oracles/site_name/place) oracles.\n\nIf the form of a particular word doesn’t work, try making it plural instead of singular, or vice-versa.\n\nIf you already know the theme and domain, you can pick from the tables instead of rolling. If not, you can use these oracles to help define those aspects of the site. Use the [Place](id:delve/oracles/site_name/place) oracle to roll for a domain, and let the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) oracles inform your selection of a theme.\n\nThe site’s name might be known in your world, or it could just be an evocative label you use to understand its history and nature.\n\nEven without giving a site a name, you can use the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) oracles to help flesh out the theme and nature of that place.\n\nFor example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You [Ask the Oracle](id:classic/moves/fate/ask_the_oracle), using the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) tables. The oracle responds, “Bloodied Banishment.”\n\nInterpreting these keywords, you envision this settlement’s grim method of enacting justice. Anyone sentenced to death for a crime is taken to the ruins. There, under the fading light of the setting sun, they are bloodied by the quick slash of a ceremonial blade. Finally, they are chained to an altar within the central courtyard. The foul creatures who dwell in that place do the rest.",
 			"contents": {
@@ -4398,7 +4422,14 @@
 									"oracle": "delve/oracles/site_name/place",
 									"times": 1
 								}
-							]
+							],
+							"i18n": {
+								"template": {
+									"result": {
+										"part_of_speech": "proper_noun"
+									}
+								}
+							}
 						},
 						{
 							"id": "delve/oracles/site_name/format/26-50",
@@ -4419,7 +4450,14 @@
 									"oracle": "delve/oracles/site_name/detail",
 									"times": 1
 								}
-							]
+							],
+							"i18n": {
+								"template": {
+									"result": {
+										"part_of_speech": "proper_noun"
+									}
+								}
+							}
 						},
 						{
 							"id": "delve/oracles/site_name/format/51-70",
@@ -4445,7 +4483,14 @@
 									"oracle": "delve/oracles/site_name/detail",
 									"times": 1
 								}
-							]
+							],
+							"i18n": {
+								"template": {
+									"result": {
+										"part_of_speech": "proper_noun"
+									}
+								}
+							}
 						},
 						{
 							"id": "delve/oracles/site_name/format/71-80",
@@ -4471,7 +4516,14 @@
 									"oracle": "delve/oracles/site_name/detail",
 									"times": 1
 								}
-							]
+							],
+							"i18n": {
+								"template": {
+									"result": {
+										"part_of_speech": "proper_noun"
+									}
+								}
+							}
 						},
 						{
 							"id": "delve/oracles/site_name/format/81-85",
@@ -4492,7 +4544,14 @@
 									"oracle": "delve/oracles/site_name/place",
 									"times": 1
 								}
-							]
+							],
+							"i18n": {
+								"template": {
+									"result": {
+										"part_of_speech": "proper_noun"
+									}
+								}
+							}
 						},
 						{
 							"id": "delve/oracles/site_name/format/86-95",
@@ -4518,7 +4577,14 @@
 									"oracle": "delve/oracles/site_name/namesake",
 									"times": 1
 								}
-							]
+							],
+							"i18n": {
+								"template": {
+									"result": {
+										"part_of_speech": "proper_noun"
+									}
+								}
+							}
 						},
 						{
 							"id": "delve/oracles/site_name/format/96-100",
@@ -4539,7 +4605,14 @@
 									"oracle": "delve/oracles/site_name/namesake",
 									"times": 1
 								}
-							]
+							],
+							"i18n": {
+								"template": {
+									"result": {
+										"part_of_speech": "proper_noun"
+									}
+								}
+							}
 						}
 					],
 					"source": {
@@ -4552,13 +4625,6 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"i18n": {
-						"part_of_speech": {
-							"template": {
-								"result": "proper_noun"
-							}
-						}
 					}
 				},
 				"description": {
@@ -6466,24 +6532,16 @@
 					"id": "delve/collections/oracles/site_name/place",
 					"name": "Place",
 					"canonical_name": "Site Name: Place",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"barrow": {
 							"id": "delve/oracles/site_name/place/barrow",
 							"name": "Barrow",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/1-6"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -6571,18 +6629,7 @@
 							"name": "Cavern",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/7-18"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -6714,18 +6761,7 @@
 							"name": "Frozen Cavern",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/19-28"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -6857,18 +6893,7 @@
 							"name": "Icereach",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/29-32"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -6956,18 +6981,7 @@
 							"name": "Mine",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/33-38"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7055,18 +7069,7 @@
 							"name": "Pass",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/39-48"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7198,18 +7201,7 @@
 							"name": "Ruin",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/49-58"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7341,18 +7333,7 @@
 							"name": "Sea Cave",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/59-68"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7440,18 +7421,7 @@
 							"name": "Shadowfen",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/69-78"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7583,18 +7553,7 @@
 							"name": "Stronghold",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/79-83"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7726,18 +7685,7 @@
 							"name": "Tanglewood",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/84-95"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7847,18 +7795,7 @@
 							"name": "Underkeep",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/96-100"
+								"style": "embed_in_row"
 							},
 							"table": [
 								{
@@ -7986,6 +7923,7 @@
 							}
 						}
 					},
+					"collections": {},
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8016,6 +7954,9 @@
 		"site_nature": {
 			"id": "delve/collections/oracles/site_nature",
 			"name": "Site Nature",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Randomly select a theme and domain for a perilous location.",
 			"description": "Use these oracles to generate a random theme and domain for a site. Alternatively, you can print out the theme and domain cards and draw a random result. Or use the [Site Name oracles](id:delve/collections/oracles/site_name) to inspire the selection of a theme and domain.",
 			"contents": {
@@ -8180,6 +8121,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -8196,6 +8138,9 @@
 		"threat": {
 			"id": "delve/collections/oracles/threat",
 			"name": "Threat",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "In support of the optional threat mechanics, use these oracles to introduce a threat and determine its actions within your world.",
 			"description": "These oracles support the optional threat mechanics detailed in Chapter 6.\n\nYou can use the [Category](id:delve/oracles/threat/category) oracle above to randomly select a broad type of threat for your campaign. If you are told to roll twice, take both results and decide how these two threats act together or represent a more complex situation. For example, choosing both a [Malignant Plague](id:delve/oracles/threat/malignant_plague) and [Zealous Cult](id:delve/oracles/threat/zealous_cult) might signify an evil sect which has unleashed a sickness upon the Ironlands in service to some dark god.\n\nFor additional detail, use other oracles as appropriate. For example, you can look to the [Action](id:classic/oracles/action_and_theme/action) and [Theme](id:classic/oracles/action_and_theme/theme) oracles (Ironsworn Core, page 174) or [Character Goal](id:classic/oracles/character/goal) oracle (Ironsworn Core, page 182) to define the motivations of a [Scheming Leader](id:delve/oracles/threat/scheming_leader).\n\nOnce you’ve introduced a threat, consider how it endangers something or someone important to you, and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to see its goal undone.\n\nThen, as you [Advance a Threat](id:delve/moves/threat/advance_a_threat), you can roll on the oracle table for your specific threat to generate an action, approach, or complication. Interpret the oracle’s answer as appropriate to the nature of the threat and the current situation.\n\nIf you aren’t using the threat mechanics within your campaign, you can use still these oracles to inspire details for enemies, troubles, and complications.",
 			"contents": {
@@ -9006,6 +8951,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -9022,6 +8968,9 @@
 		"trap": {
 			"id": "delve/collections/oracles/trap",
 			"name": "Trap",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "Identify the characteristics and effects of a trap within a site.",
 			"description": "If you encounter a trap within a site, use these oracles to better understand the nature or function of this obstacle. Roll once for an [Event](id:delve/oracles/trap/event) and once for a [Component](id:delve/oracles/trap/component), and interpret the response as appropriate to the situation and environment. A trap might be a physical, supernatural, or an ambush by a denizen.\n\nIf you are in a position to overcome or avoid the trap, make moves to see what happens. A simple trap might be dealt with in a single action, such as through the [Face Danger](id:classic/moves/adventure/face_danger) move. A complex trap could be represented as a scene challenge (*Ironsworn Core*, page 234).",
 			"contents": {
@@ -9622,6 +9571,7 @@
 					}
 				}
 			},
+			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",

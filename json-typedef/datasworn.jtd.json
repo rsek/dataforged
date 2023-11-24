@@ -1,7 +1,4 @@
 {
-	"metadata": {
-		"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin."
-	},
 	"properties": {
 		"id": {
 			"ref": "NamespaceId"
@@ -16,8 +13,8 @@
 		},
 		"oracles": {
 			"metadata": {
-				"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections."
 			},
 			"values": {
 				"ref": "OracleCollection"
@@ -25,8 +22,8 @@
 		},
 		"moves": {
 			"metadata": {
-				"description": "A dictionary object containing move categories, which contain moves.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing move categories, which contain moves."
 			},
 			"values": {
 				"ref": "MoveCategory"
@@ -34,8 +31,8 @@
 		},
 		"assets": {
 			"metadata": {
-				"description": "A dictionary object containing asset types, which contain assets.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing asset types, which contain assets."
 			},
 			"values": {
 				"ref": "AssetType"
@@ -43,8 +40,8 @@
 		},
 		"atlas": {
 			"metadata": {
-				"description": "A dictionary object containing atlas collections, which contain atlas entries.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing atlas collections, which contain atlas entries."
 			},
 			"values": {
 				"ref": "Atlas"
@@ -52,8 +49,8 @@
 		},
 		"npcs": {
 			"metadata": {
-				"description": "A dictionary object containing NPC collections, which contain NPCs.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing NPC collections, which contain NPCs."
 			},
 			"values": {
 				"ref": "NpcCollection"
@@ -61,8 +58,8 @@
 		},
 		"truths": {
 			"metadata": {
-				"description": "A dictionary object of truth categories.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object of truth categories."
 			},
 			"values": {
 				"ref": "Truth"
@@ -70,8 +67,8 @@
 		},
 		"rarities": {
 			"metadata": {
-				"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve."
 			},
 			"values": {
 				"ref": "Rarity"
@@ -79,8 +76,8 @@
 		},
 		"delve_sites": {
 			"metadata": {
-				"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve"
 			},
 			"values": {
 				"ref": "DelveSite"
@@ -88,8 +85,8 @@
 		},
 		"site_themes": {
 			"metadata": {
-				"description": "A dictionary object containing delve site themes.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing delve site themes."
 			},
 			"values": {
 				"ref": "DelveSiteTheme"
@@ -97,8 +94,8 @@
 		},
 		"site_domains": {
 			"metadata": {
-				"description": "A dictionary object containing delve site domains.",
-				"propertyPattern": "^([a-z][a-z_]*)$"
+				"propertyPattern": "^([a-z][a-z_]*)$",
+				"description": "A dictionary object containing delve site domains."
 			},
 			"values": {
 				"ref": "DelveSiteDomain"
@@ -475,9 +472,6 @@
 			}
 		},
 		"Source": {
-			"metadata": {
-				"description": "Metadata describing the original source of this item"
-			},
 			"properties": {
 				"title": {
 					"type": "string",
@@ -495,13 +489,6 @@
 				},
 				"authors": {
 					"elements": {
-						"metadata": {
-							"examples": [
-								{
-									"name": "Shawn Tomkin"
-								}
-							]
-						},
 						"properties": {
 							"name": {
 								"type": "string",
@@ -527,6 +514,13 @@
 									"format": "uri"
 								}
 							}
+						},
+						"metadata": {
+							"examples": [
+								{
+									"name": "Shawn Tomkin"
+								}
+							]
 						}
 					},
 					"metadata": {
@@ -553,19 +547,27 @@
 				"license": {
 					"type": "string",
 					"metadata": {
-						"format": "uri"
+						"format": "uri",
+						"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
+						"examples": [
+							"https://creativecommons.org/licenses/by/4.0",
+							"https://creativecommons.org/licenses/by-nc-sa/4.0"
+						]
 					},
 					"nullable": true
 				}
 			},
 			"optionalProperties": {
 				"page": {
+					"type": "int16",
 					"metadata": {
 						"description": "The page number where this item is described in full.",
 						"minimum": 1
-					},
-					"type": "int16"
+					}
 				}
+			},
+			"metadata": {
+				"description": "Metadata describing the original source of this item"
 			}
 		},
 		"Suggestions": {
@@ -604,6 +606,11 @@
 				"atlas": {
 					"elements": {
 						"ref": "AtlasEntryId"
+					}
+				},
+				"rarities": {
+					"elements": {
+						"ref": "RarityId"
 					}
 				}
 			}
@@ -685,7 +692,7 @@
 				"attributive_verb"
 			],
 			"metadata": {
-				"enumDescriptions": {
+				"enumDescription": {
 					"common_noun": "A common noun.",
 					"proper_noun": "A proper noun.",
 					"adjunct_common_noun": "A common noun used as an adjective, to modify another noun.",
@@ -707,75 +714,119 @@
 		"ConditionMeterRule": {
 			"properties": {
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A description of this condition meter."
+					}
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"metadata": {
+						"description": "Is this condition meter shared by all players?"
+					}
 				},
-				"name": {
+				"label": {
 					"ref": "Label",
 					"metadata": {
-						"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+						"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+					}
+				},
+				"value": {
+					"type": "int8",
+					"metadata": {
+						"description": "The current value of this meter."
 					}
 				},
 				"min": {
+					"type": "int8",
 					"metadata": {
 						"description": "The minimum value of this meter."
-					},
-					"type": "int16"
+					}
 				},
 				"max": {
+					"type": "int8",
 					"metadata": {
 						"description": "The maximum value of this meter."
-					},
-					"type": "int16"
+					}
 				}
+			},
+			"metadata": {
+				"description": "Describes a standard player character condition meter."
 			}
 		},
 		"ImpactCategory": {
 			"properties": {
-				"name": {
-					"ref": "Label"
+				"label": {
+					"ref": "Label",
+					"metadata": {
+						"description": "A label for this impact category."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A description of this impact category."
+					}
 				},
 				"contents": {
 					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "A dictionary object of the Impacts in this category."
 					},
 					"values": {
 						"ref": "ImpactRule"
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes a category of standard impacts/debilities."
 			}
 		},
 		"ImpactRule": {
 			"properties": {
-				"name": {
-					"ref": "Label"
+				"label": {
+					"ref": "Label",
+					"metadata": {
+						"description": "The label for this impact."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A description of this impact."
+					}
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"metadata": {
+						"description": "Is this impact applied to all players at once?"
+					}
 				},
 				"prevents_recovery": {
 					"elements": {
 						"ref": "DictKey"
+					},
+					"metadata": {
+						"description": "Keys of ruleset condition meters, to which this impact prevents recovery."
 					}
 				},
 				"permanent": {
-					"type": "boolean"
+					"type": "boolean",
+					"metadata": {
+						"description": "Is this impact permanent?"
+					}
 				}
+			},
+			"metadata": {
+				"description": "Describes a standard impact/debility."
 			}
 		},
 		"Rules": {
 			"properties": {
 				"stats": {
 					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Describes the standard stats used by player characters in this ruleset."
 					},
 					"values": {
 						"ref": "StatRule"
@@ -783,7 +834,8 @@
 				},
 				"condition_meters": {
 					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Describes the standard condition meters used by player characters in this ruleset."
 					},
 					"values": {
 						"ref": "ConditionMeterRule"
@@ -791,7 +843,8 @@
 				},
 				"impacts": {
 					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Describes the standard impacts/debilities used by player characters in this ruleset."
 					},
 					"values": {
 						"ref": "ImpactCategory"
@@ -799,51 +852,118 @@
 				},
 				"special_tracks": {
 					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged)."
 					},
 					"values": {
 						"ref": "SpecialTrackRule"
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes rules for player characters in this ruleset, such as stats and condition meters."
 			}
 		},
 		"SpecialTrackRule": {
 			"properties": {
-				"name": {
-					"ref": "Label"
+				"label": {
+					"ref": "Label",
+					"metadata": {
+						"description": "A label for this special track."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A description of this special track."
+					}
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"metadata": {
+						"description": "Is this track shared by all players?"
+					}
 				},
 				"optional": {
-					"type": "boolean"
+					"type": "boolean",
+					"metadata": {
+						"description": "Is this track an optional rule?"
+					}
 				}
+			},
+			"metadata": {
+				"description": "Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged)."
 			}
 		},
 		"StatRule": {
 			"properties": {
-				"name": {
-					"ref": "Label"
+				"label": {
+					"ref": "Label",
+					"metadata": {
+						"description": "A label for this stat.",
+						"examples": [
+							"edge"
+						]
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A description of this stat.",
+						"examples": [
+							"Quickness, agility, and prowess when fighting at a distance."
+						]
+					}
 				}
+			},
+			"metadata": {
+				"description": "Describes a standard player character stat."
 			}
 		},
 		"ChallengeRank": {
 			"type": "uint8",
 			"metadata": {
-				"description": "Challenge rank, represented as an integer:",
-				"enumDescriptions": {
+				"description": "Challenge rank, represented as an integer.",
+				"typescriptType": "1|2|3|4|5",
+				"enumDescription": {
 					"1": "Troublesome",
 					"2": "Dangerous",
 					"3": "Formidable",
 					"4": "Extreme",
 					"5": "Epic"
 				}
+			}
+		},
+		"ProgressTrackTypeInfo": {
+			"properties": {
+				"category": {
+					"ref": "Label",
+					"metadata": {
+						"description": "A category label for progress tracks of this type.",
+						"examples": [
+							"Vow",
+							"Journey",
+							"Combat",
+							"Scene Challenge",
+							"Expedition",
+							"Connection",
+							"Delve"
+						]
+					}
+				}
+			},
+			"optionalProperties": {
+				"controls": {
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					},
+					"values": {
+						"properties": {}
+					}
+				}
+			},
+			"metadata": {
+				"description": "Describes the features of a type of progress track."
 			}
 		},
 		"SpecialTrackType": {
@@ -860,18 +980,24 @@
 			}
 		},
 		"Npc": {
-			"metadata": {
-				"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged."
-			},
 			"properties": {
 				"id": {
-					"ref": "NpcId"
+					"ref": "NpcId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"features": {
 					"elements": {
@@ -885,7 +1011,10 @@
 					"ref": "MarkdownString"
 				},
 				"rank": {
-					"ref": "ChallengeRank"
+					"ref": "ChallengeRank",
+					"metadata": {
+						"description": "The suggested challenge rank for this NPC."
+					}
 				},
 				"nature": {
 					"ref": "NpcNature"
@@ -903,7 +1032,10 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -922,18 +1054,30 @@
 						"ref": "NpcVariant"
 					}
 				}
+			},
+			"metadata": {
+				"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged."
 			}
 		},
 		"NpcCollection": {
 			"properties": {
 				"id": {
-					"ref": "NpcCollectionId"
+					"ref": "NpcCollectionId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"contents": {
 					"metadata": {
@@ -946,27 +1090,45 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CssColor"
+					"ref": "CssColor",
+					"metadata": {
+						"description": "A thematic color associated with this collection."
+					}
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
+					}
 				},
 				"images": {
 					"elements": {
-						"ref": "WebpImageUrl"
+						"ref": "WebpImageUrl",
+						"metadata": {
+							"description": "Extra images associated with this collection."
+						}
 					}
 				},
 				"icon": {
-					"ref": "SvgImageUrl"
+					"ref": "SvgImageUrl",
+					"metadata": {
+						"description": "An SVG icon associated with this collection."
+					}
 				},
 				"enhances": {
 					"ref": "NpcCollectionId",
@@ -980,7 +1142,8 @@
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"NpcNature": {
 			"ref": "Label",
@@ -1004,7 +1167,10 @@
 		"NpcVariant": {
 			"properties": {
 				"id": {
-					"ref": "NpcVariantId"
+					"ref": "NpcVariantId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
 					"ref": "Label"
@@ -1013,7 +1179,10 @@
 					"ref": "MarkdownString"
 				},
 				"rank": {
-					"ref": "ChallengeRank"
+					"ref": "ChallengeRank",
+					"metadata": {
+						"description": "The suggested challenge rank for this NPC."
+					}
 				},
 				"nature": {
 					"ref": "NpcNature"
@@ -1023,7 +1192,8 @@
 				"summary": {
 					"ref": "MarkdownString"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"DiceNotation": {
 			"type": "string",
@@ -1037,9 +1207,6 @@
 			}
 		},
 		"OracleRollTemplate": {
-			"metadata": {
-				"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID."
-			},
 			"properties": {},
 			"optionalProperties": {
 				"result": {
@@ -1063,6 +1230,9 @@
 						"description": "A string template that may be used in place of OracleTableRow#description."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID."
 			}
 		},
 		"OracleTableMatchBehavior": {
@@ -1088,10 +1258,10 @@
 					}
 				},
 				"times": {
+					"type": "int16",
 					"metadata": {
 						"minimum": 1
-					},
-					"type": "int16"
+					}
 				},
 				"method": {
 					"ref": "OracleTableRollMethod"
@@ -1106,7 +1276,7 @@
 			],
 			"metadata": {
 				"description": "Special roll instructions to use when rolling multiple times on a single oracle table.",
-				"enumDescriptions": {
+				"enumDescription": {
 					"no_duplicates": "Duplicates should be re-rolled.",
 					"keep_duplicates": "Duplicates should be kept.",
 					"make_it_worse": "Duplicates should be kept, and they compound to make things worse."
@@ -1116,13 +1286,22 @@
 		"OracleCollection": {
 			"properties": {
 				"id": {
-					"ref": "OracleCollectionId"
+					"ref": "OracleCollectionId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"contents": {
 					"metadata": {
@@ -1146,27 +1325,45 @@
 					"ref": "OracleCollectionRendering"
 				},
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CssColor"
+					"ref": "CssColor",
+					"metadata": {
+						"description": "A thematic color associated with this collection."
+					}
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
+					}
 				},
 				"images": {
 					"elements": {
-						"ref": "WebpImageUrl"
+						"ref": "WebpImageUrl",
+						"metadata": {
+							"description": "Extra images associated with this collection."
+						}
 					}
 				},
 				"icon": {
-					"ref": "SvgImageUrl"
+					"ref": "SvgImageUrl",
+					"metadata": {
+						"description": "An SVG icon associated with this collection."
+					}
 				},
 				"enhances": {
 					"ref": "OracleCollectionId",
@@ -1183,39 +1380,48 @@
 			}
 		},
 		"OracleCollectionRendering": {
-			"properties": {
-				"columns": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
-					"values": {
-						"ref": "OracleCollectionTableColumn"
+			"discriminator": "style",
+			"mapping": {
+				"tables": {
+					"properties": {}
+				},
+				"multi_table": {
+					"properties": {
+						"columns": {
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
+							},
+							"values": {
+								"ref": "OracleCollectionTableColumn"
+							}
+						}
 					}
 				}
 			},
-			"optionalProperties": {
-				"color": {
-					"ref": "CssColor"
-				},
-				"table_style": {
-					"ref": "OracleCollectionStyle"
-				}
+			"metadata": {
+				"description": "Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns."
 			}
 		},
 		"OracleCollectionStyle": {
 			"enum": [
-				"collection",
+				"tables",
 				"multi_table"
 			],
 			"metadata": {
-				"enumDescriptions": {
-					"collection": "",
-					"multi_table": ""
+				"enumDescription": {
+					"tables": "Presented as a collection of separate tables.",
+					"multi_table": "Presented as a single table, with its OracleTable children rendered as columns."
 				}
 			}
 		},
 		"OracleCollectionTableColumn": {
 			"properties": {
+				"label": {
+					"ref": "Label",
+					"metadata": {
+						"description": "The column's header text."
+					}
+				},
 				"content_type": {
 					"ref": "OracleTableColumnContentKey"
 				},
@@ -1227,12 +1433,6 @@
 				}
 			},
 			"optionalProperties": {
-				"name": {
-					"ref": "Label",
-					"metadata": {
-						"description": "The column's header text."
-					}
-				},
 				"color": {
 					"ref": "CssColor",
 					"metadata": {
@@ -1244,36 +1444,60 @@
 		"OracleTable": {
 			"properties": {
 				"id": {
-					"ref": "OracleTableId"
+					"ref": "OracleTableId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"dice": {
-					"ref": "DiceNotation"
+					"ref": "DiceNotation",
+					"metadata": {
+						"description": "The roll used to select a result on this table."
+					}
 				},
 				"table": {
 					"elements": {
-						"ref": "OracleTableRow"
+						"ref": "OracleTableRow",
+						"metadata": {
+							"description": "An array of objects, each representing a single row of the table."
+						}
 					}
 				}
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"icon": {
-					"ref": "SvgImageUrl"
+					"ref": "SvgImageUrl",
+					"metadata": {
+						"description": "An icon that represents this table."
+					}
 				},
 				"images": {
 					"elements": {
-						"ref": "WebpImageUrl"
+						"ref": "WebpImageUrl",
+						"metadata": {
+							"description": "Extra images associated with this table."
+						}
 					}
 				},
 				"summary": {
@@ -1295,48 +1519,55 @@
 					}
 				},
 				"match": {
-					"ref": "OracleTableMatchBehavior"
+					"ref": "OracleTableMatchBehavior",
+					"metadata": {
+						"description": "Most oracle tables are insensitive to matches, but a few define special match behavior."
+					}
 				},
 				"rendering": {
-					"ref": "OracleTableRendering"
+					"ref": "OracleTableRendering",
+					"metadata": {
+						"description": "Describes how how to render this table, when presenting it as a standalone table."
+					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"OracleTableColumn": {
-			"metadata": {
-				"examples": [
-					{
-						"name": "Roll",
-						"content_type": "roll"
-					},
-					{
-						"name": "Result",
-						"content_type": "result"
-					},
-					{
-						"name": "Summary",
-						"content_type": "summary"
-					}
-				]
-			},
 			"properties": {
-				"content_type": {
-					"ref": "OracleTableColumnContentKey"
-				}
-			},
-			"optionalProperties": {
-				"name": {
+				"label": {
 					"ref": "Label",
 					"metadata": {
 						"description": "The column's header text."
 					}
 				},
+				"content_type": {
+					"ref": "OracleTableColumnContentKey"
+				}
+			},
+			"optionalProperties": {
 				"color": {
 					"ref": "CssColor",
 					"metadata": {
 						"description": "The thematic color for this column."
 					}
 				}
+			},
+			"metadata": {
+				"examples": [
+					{
+						"label": "Roll",
+						"content_type": "roll"
+					},
+					{
+						"label": "Result",
+						"content_type": "result"
+					},
+					{
+						"label": "Summary",
+						"content_type": "summary"
+					}
+				]
 			}
 		},
 		"OracleTableColumnContentKey": {
@@ -1348,7 +1579,7 @@
 			],
 			"metadata": {
 				"description": "The value(s) from each OracleTableRow that is rendered in this column.",
-				"enumDescriptions": {
+				"enumDescription": {
 					"roll": "Column displays the roll range (`min` and `max`) of each OracleTableRow.",
 					"result": "Column displays the OracleTableRow's `result` key.",
 					"summary": "Column displays the OracleTableRow's `summary` key.",
@@ -1357,37 +1588,55 @@
 			}
 		},
 		"OracleTableRendering": {
-			"properties": {
-				"columns": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
-					"values": {
-						"ref": "OracleTableColumn"
+			"discriminator": "style",
+			"mapping": {
+				"standalone": {
+					"properties": {
+						"columns": {
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
+							},
+							"values": {
+								"ref": "OracleTableColumn"
+							}
+						}
 					}
+				},
+				"column": {
+					"properties": {}
+				},
+				"embed_in_row": {
+					"properties": {}
 				}
 			},
-			"optionalProperties": {
-				"table_style": {
-					"ref": "OracleTableStyle"
-				}
+			"metadata": {
+				"description": "Describes the presentation of this table."
 			}
 		},
 		"OracleTableRow": {
 			"properties": {
 				"id": {
-					"ref": "OracleTableRowId"
+					"ref": "OracleTableRowId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
+				},
+				"result": {
+					"ref": "MarkdownString"
 				},
 				"min": {
 					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					},
 					"nullable": true
 				},
 				"max": {
 					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					},
 					"nullable": true
-				},
-				"result": {
-					"ref": "MarkdownString"
 				}
 			},
 			"optionalProperties": {
@@ -1417,19 +1666,20 @@
 				"i18n": {
 					"ref": "I18nHints"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"OracleTableStyle": {
 			"enum": [
-				"standalone_table",
+				"standalone",
 				"embed_in_row",
-				"embed_as_column"
+				"column"
 			],
 			"metadata": {
-				"enumDescriptions": {
-					"standalone_table": "Render as a standalone table.",
+				"enumDescription": {
+					"standalone": "Render as a standalone table.",
 					"embed_in_row": "Render as a table, within a row in another table.",
-					"embed_as_column": "Render as a single column of a table."
+					"column": "Render as a single column of a table."
 				}
 			}
 		},
@@ -1444,7 +1694,7 @@
 				"all"
 			],
 			"metadata": {
-				"enumDescriptions": {
+				"enumDescription": {
 					"miss": "An automatic miss.",
 					"weak_hit": "An automatic weak hit.",
 					"strong_hit": "An automatic strong hit.",
@@ -1478,6 +1728,9 @@
 							"elements": {
 								"ref": "AssetIdWildcard"
 							},
+							"metadata": {
+								"description": "Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
+							},
 							"nullable": true
 						},
 						"control": {
@@ -1497,6 +1750,9 @@
 						"assets": {
 							"elements": {
 								"ref": "AssetIdWildcard"
+							},
+							"metadata": {
+								"description": "Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
 							},
 							"nullable": true
 						},
@@ -1538,10 +1794,10 @@
 							"ref": "Label"
 						},
 						"value": {
+							"type": "int16",
 							"metadata": {
 								"minimum": 0
-							},
-							"type": "int16"
+							}
 						}
 					}
 				}
@@ -1558,7 +1814,7 @@
 				"attached_asset_option"
 			],
 			"metadata": {
-				"enumDescriptions": {
+				"enumDescription": {
 					"stat": "Roll using a standard player character stat.",
 					"condition_meter": "Roll using the value of a standard player condition meter.",
 					"asset_control": "Roll using the value of an asset control.",
@@ -1573,18 +1829,24 @@
 			"discriminator": "roll_type",
 			"mapping": {
 				"action_roll": {
-					"metadata": {
-						"description": "A move that makes an action roll."
-					},
 					"properties": {
 						"id": {
-							"ref": "MoveId"
+							"ref": "MoveId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
 						"name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The primary name/label for this item."
+							}
 						},
 						"source": {
-							"ref": "Source"
+							"ref": "Source",
+							"metadata": {
+								"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+							}
 						},
 						"text": {
 							"ref": "MarkdownString",
@@ -1601,7 +1863,10 @@
 					},
 					"optionalProperties": {
 						"canonical_name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+							}
 						},
 						"suggestions": {
 							"ref": "Suggestions"
@@ -1625,13 +1890,22 @@
 				"no_roll": {
 					"properties": {
 						"id": {
-							"ref": "MoveId"
+							"ref": "MoveId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
 						"name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The primary name/label for this item."
+							}
 						},
 						"source": {
-							"ref": "Source"
+							"ref": "Source",
+							"metadata": {
+								"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+							}
 						},
 						"text": {
 							"ref": "MarkdownString",
@@ -1641,14 +1915,14 @@
 						},
 						"trigger": {
 							"ref": "TriggerNoRoll"
-						},
-						"outcomes": {
-							"nullable": true
 						}
 					},
 					"optionalProperties": {
 						"canonical_name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+							}
 						},
 						"suggestions": {
 							"ref": "Suggestions"
@@ -1670,18 +1944,24 @@
 					}
 				},
 				"progress_roll": {
-					"metadata": {
-						"description": "A progress move that rolls on a standard progress track type (defined by the move object)."
-					},
 					"properties": {
 						"id": {
-							"ref": "MoveId"
+							"ref": "MoveId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
 						"name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The primary name/label for this item."
+							}
 						},
 						"source": {
-							"ref": "Source"
+							"ref": "Source",
+							"metadata": {
+								"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+							}
 						},
 						"text": {
 							"ref": "MarkdownString",
@@ -1695,25 +1975,19 @@
 						"outcomes": {
 							"ref": "MoveOutcomes"
 						},
-						"track_label": {
-							"ref": "Label",
+						"tracks": {
+							"ref": "ProgressTrackTypeInfo",
 							"metadata": {
-								"description": "A category label for progress tracks associated with this move.",
-								"examples": [
-									"Vow",
-									"Journey",
-									"Combat",
-									"Scene Challenge",
-									"Expedition",
-									"Connection",
-									"Delve"
-								]
+								"description": "Describes the common features of progress tracks associated with this move."
 							}
 						}
 					},
 					"optionalProperties": {
 						"canonical_name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+							}
 						},
 						"suggestions": {
 							"ref": "Suggestions"
@@ -1737,13 +2011,22 @@
 				"special_track": {
 					"properties": {
 						"id": {
-							"ref": "MoveId"
+							"ref": "MoveId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
 						"name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The primary name/label for this item."
+							}
 						},
 						"source": {
-							"ref": "Source"
+							"ref": "Source",
+							"metadata": {
+								"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+							}
 						},
 						"text": {
 							"ref": "MarkdownString",
@@ -1760,7 +2043,10 @@
 					},
 					"optionalProperties": {
 						"canonical_name": {
-							"ref": "Label"
+							"ref": "Label",
+							"metadata": {
+								"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+							}
 						},
 						"suggestions": {
 							"ref": "Suggestions"
@@ -1786,13 +2072,22 @@
 		"MoveCategory": {
 			"properties": {
 				"id": {
-					"ref": "MoveCategoryId"
+					"ref": "MoveCategoryId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"contents": {
 					"metadata": {
@@ -1805,27 +2100,45 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CssColor"
+					"ref": "CssColor",
+					"metadata": {
+						"description": "A thematic color associated with this collection."
+					}
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
+					}
 				},
 				"images": {
 					"elements": {
-						"ref": "WebpImageUrl"
+						"ref": "WebpImageUrl",
+						"metadata": {
+							"description": "Extra images associated with this collection."
+						}
 					}
 				},
 				"icon": {
-					"ref": "SvgImageUrl"
+					"ref": "SvgImageUrl",
+					"metadata": {
+						"description": "An SVG icon associated with this collection."
+					}
 				},
 				"enhances": {
 					"ref": "MoveCategoryId",
@@ -1839,7 +2152,8 @@
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"MoveEnhancement": {
 			"discriminator": "roll_type",
@@ -1915,7 +2229,7 @@
 				"strong_hit"
 			],
 			"metadata": {
-				"enumDescriptions": {
+				"enumDescription": {
 					"miss": "The score doesn't beat either challenge die.",
 					"weak_hit": "The score is greater than one challenge die.",
 					"strong_hit": "The score is greater than both challenge dice."
@@ -1923,9 +2237,6 @@
 			}
 		},
 		"MoveOutcomes": {
-			"metadata": {
-				"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated."
-			},
 			"properties": {
 				"strong_hit": {
 					"ref": "MoveOutcome"
@@ -1936,6 +2247,9 @@
 				"miss": {
 					"ref": "MoveOutcome"
 				}
+			},
+			"metadata": {
+				"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated."
 			}
 		},
 		"MoveRollType": {
@@ -1946,7 +2260,7 @@
 				"special_track"
 			],
 			"metadata": {
-				"enumDescriptions": {
+				"enumDescription": {
 					"no_roll": "A move that makes no action rolls or progress rolls.",
 					"action_roll": "A move that makes an action roll.",
 					"progress_roll": "A progress move that rolls on a standard progress track type (defined by this move).",
@@ -1962,7 +2276,7 @@
 				"progress_roll"
 			],
 			"metadata": {
-				"enumDescriptions": {
+				"enumDescription": {
 					"miss": "An automatic miss.",
 					"weak_hit": "An automatic weak hit.",
 					"strong_hit": "An automatic strong hit.",
@@ -1990,7 +2304,7 @@
 				"all"
 			],
 			"metadata": {
-				"enumDescriptions": {
+				"enumDescription": {
 					"miss": "An automatic miss.",
 					"weak_hit": "An automatic weak hit.",
 					"strong_hit": "An automatic strong hit.",
@@ -2027,7 +2341,7 @@
 						"ref": "ActionRollOption"
 					},
 					"metadata": {
-						"description": "The options available when rolling with this trigger."
+						"description": "The options available when rolling with this trigger condition."
 					}
 				}
 			},
@@ -2047,6 +2361,9 @@
 			"properties": {
 				"method": {
 					"ref": "ActionRollMethod",
+					"metadata": {
+						"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`."
+					},
 					"nullable": true
 				},
 				"roll_options": {
@@ -2054,7 +2371,7 @@
 						"ref": "ActionRollOption"
 					},
 					"metadata": {
-						"description": "The options available when rolling with this trigger."
+						"description": "The options available when rolling with this trigger condition."
 					},
 					"nullable": true
 				}
@@ -2081,9 +2398,6 @@
 			}
 		},
 		"TriggerBy": {
-			"metadata": {
-				"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
-			},
 			"properties": {
 				"player": {
 					"type": "boolean"
@@ -2091,6 +2405,9 @@
 				"ally": {
 					"type": "boolean"
 				}
+			},
+			"metadata": {
+				"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
 			}
 		},
 		"TriggerNoRoll": {
@@ -2111,17 +2428,7 @@
 			}
 		},
 		"TriggerNoRollCondition": {
-			"properties": {
-				"method": {
-					"nullable": true
-				},
-				"roll_options": {
-					"metadata": {
-						"description": "The options available when rolling with this trigger."
-					},
-					"nullable": true
-				}
-			},
+			"properties": {},
 			"optionalProperties": {
 				"text": {
 					"ref": "MarkdownString",
@@ -2169,7 +2476,7 @@
 						"ref": "ProgressRollOption"
 					},
 					"metadata": {
-						"description": "The options available when rolling with this trigger."
+						"description": "The options available when rolling with this trigger condition."
 					}
 				}
 			},
@@ -2189,6 +2496,9 @@
 			"properties": {
 				"method": {
 					"ref": "ProgressRollMethod",
+					"metadata": {
+						"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`."
+					},
 					"nullable": true
 				},
 				"roll_options": {
@@ -2196,7 +2506,7 @@
 						"ref": "ProgressRollOption"
 					},
 					"metadata": {
-						"description": "The options available when rolling with this trigger."
+						"description": "The options available when rolling with this trigger condition."
 					},
 					"nullable": true
 				}
@@ -2248,7 +2558,7 @@
 						"ref": "TriggerSpecialTrackConditionOption"
 					},
 					"metadata": {
-						"description": "The options available when rolling with this trigger."
+						"description": "The options available when rolling with this trigger condition."
 					}
 				}
 			},
@@ -2265,12 +2575,12 @@
 			}
 		},
 		"TriggerSpecialTrackConditionEnhancement": {
-			"metadata": {
-				"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged)."
-			},
 			"properties": {
 				"method": {
 					"ref": "SpecialTrackRollMethod",
+					"metadata": {
+						"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`."
+					},
 					"nullable": true
 				},
 				"roll_options": {
@@ -2278,7 +2588,7 @@
 						"ref": "TriggerSpecialTrackConditionOption"
 					},
 					"metadata": {
-						"description": "The options available when rolling with this trigger."
+						"description": "The options available when rolling with this trigger condition."
 					},
 					"nullable": true
 				}
@@ -2293,6 +2603,9 @@
 				"by": {
 					"ref": "TriggerBy"
 				}
+			},
+			"metadata": {
+				"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged)."
 			}
 		},
 		"TriggerSpecialTrackConditionOption": {
@@ -2314,13 +2627,22 @@
 		"Asset": {
 			"properties": {
 				"id": {
-					"ref": "AssetId"
+					"ref": "AssetId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"asset_type": {
 					"ref": "Label",
@@ -2361,33 +2683,45 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"icon": {
-					"ref": "SvgImageUrl"
+					"ref": "SvgImageUrl",
+					"metadata": {
+						"description": "This asset's icon."
+					}
 				},
 				"color": {
-					"ref": "CssColor"
+					"ref": "CssColor",
+					"metadata": {
+						"description": "A thematic color associated with this asset."
+					}
 				},
 				"options": {
 					"metadata": {
-						"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset."
 					},
 					"values": {
 						"ref": "AssetOptionField"
 					}
 				},
 				"requirement": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Describes prerequisites for purchasing or using this asset."
+					}
 				},
 				"controls": {
 					"metadata": {
-						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset."
 					},
 					"values": {
 						"ref": "AssetControlField"
@@ -2396,12 +2730,16 @@
 				"attachments": {
 					"ref": "AssetAttachment"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"AssetAbility": {
 			"properties": {
 				"id": {
-					"ref": "AssetAbilityId"
+					"ref": "AssetAbilityId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"text": {
 					"ref": "MarkdownString"
@@ -2419,8 +2757,8 @@
 				},
 				"moves": {
 					"metadata": {
-						"description": "Unique moves added by this asset ability.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Unique moves added by this asset ability."
 					},
 					"values": {
 						"ref": "Move"
@@ -2428,8 +2766,8 @@
 				},
 				"options": {
 					"metadata": {
-						"description": "Fields that are expected to be set once and remain the same through the life of the asset.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Fields that are expected to be set once and remain the same through the life of the asset."
 					},
 					"values": {
 						"ref": "AssetAbilityOptionField"
@@ -2437,8 +2775,8 @@
 				},
 				"controls": {
 					"metadata": {
-						"description": "Fields whose values are expected to change over the life of the asset.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Fields whose values are expected to change over the life of the asset."
 					},
 					"values": {
 						"ref": "AssetAbilityControlField"
@@ -2458,39 +2796,40 @@
 						"description": "Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions."
 					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"AssetAbilityControlField": {
 			"discriminator": "field_type",
 			"mapping": {
 				"clock": {
-					"metadata": {
-						"description": "A clock with 4, 6, 8, or 10 segments."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldId"
+							"ref": "AssetAbilityControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
+							"type": "int8",
 							"metadata": {
 								"description": "The current number of filled clock segments."
-							},
-							"type": "int16"
+							}
 						},
 						"min": {
-							"type": "uint8",
+							"type": "int8",
 							"metadata": {
 								"description": "The minimum number of filled clock segments. This is always 0."
 							}
 						},
 						"max": {
-							"type": "uint8",
+							"type": "int8",
 							"metadata": {
 								"description": "The size of the clock -- in other words, the maximum number of filled clock segments."
 							}
@@ -2498,33 +2837,36 @@
 					}
 				},
 				"counter": {
-					"metadata": {
-						"description": "A counter that starts at zero, with an optional maximum value."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldId"
+							"ref": "AssetAbilityControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
+							"type": "int16",
 							"metadata": {
 								"description": "The current value of this input."
-							},
-							"type": "int16"
+							}
 						},
 						"min": {
-							"type": "uint8",
+							"type": "int8",
 							"metadata": {
 								"description": "The (inclusive) minimum value."
 							}
 						},
 						"max": {
 							"type": "int16",
+							"metadata": {
+								"description": "The (inclusive) maximum value."
+							},
 							"nullable": true
 						}
 					}
@@ -2532,12 +2874,15 @@
 				"checkbox": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldId"
+							"ref": "AssetAbilityControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
@@ -2566,21 +2911,24 @@
 			"discriminator": "field_type",
 			"mapping": {
 				"text": {
-					"metadata": {
-						"description": "Represents an input that accepts plain text."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityOptionFieldId"
+							"ref": "AssetAbilityOptionFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
 							"type": "string",
+							"metadata": {
+								"description": "The content of this text input, or `null` if it's empty"
+							},
 							"nullable": true
 						}
 					}
@@ -2588,9 +2936,6 @@
 			}
 		},
 		"AssetAttachment": {
-			"metadata": {
-				"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info."
-			},
 			"properties": {
 				"assets": {
 					"elements": {
@@ -2601,12 +2946,16 @@
 					}
 				},
 				"max": {
-					"metadata": {
-						"minimum": 1
-					},
 					"type": "int16",
+					"metadata": {
+						"minimum": 1,
+						"description": "Null if there's no upper limit to the number of attached assets."
+					},
 					"nullable": true
 				}
+			},
+			"metadata": {
+				"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info."
 			}
 		},
 		"AssetConditionMeterControlField": {
@@ -2615,12 +2964,15 @@
 				"checkbox": {
 					"properties": {
 						"id": {
-							"ref": "AssetConditionMeterControlFieldId"
+							"ref": "AssetConditionMeterControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
@@ -2646,12 +2998,15 @@
 				"card_flip": {
 					"properties": {
 						"id": {
-							"ref": "AssetConditionMeterControlFieldId"
+							"ref": "AssetConditionMeterControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
@@ -2674,49 +3029,49 @@
 						}
 					}
 				}
+			},
+			"metadata": {
+				"description": "A checkbox control field, rendered as part of an asset condition meter."
 			}
 		},
 		"AssetControlField": {
 			"discriminator": "field_type",
 			"mapping": {
 				"condition_meter": {
-					"metadata": {
-						"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\"."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetControlFieldId"
+							"ref": "AssetControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
+							"type": "int8",
 							"metadata": {
 								"description": "The current value of this meter."
-							},
-							"type": "int16"
+							}
 						},
 						"min": {
-							"type": "uint8",
+							"type": "int8",
 							"metadata": {
 								"description": "The minimum value of this meter."
 							}
 						},
 						"max": {
+							"type": "int8",
 							"metadata": {
 								"description": "The maximum value of this meter."
-							},
-							"type": "int16"
+							}
 						}
 					},
 					"optionalProperties": {
 						"moves": {
-							"metadata": {
-								"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves."
-							},
 							"properties": {},
 							"optionalProperties": {
 								"suffer": {
@@ -2751,11 +3106,15 @@
 										"description": "The ID(s) of recovery moves associated with this meter."
 									}
 								}
+							},
+							"metadata": {
+								"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves."
 							}
 						},
 						"controls": {
 							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
+								"propertyPattern": "^([a-z][a-z_]*)$",
+								"description": "Checkbox controls rendered as part of the condition meter."
 							},
 							"values": {
 								"ref": "AssetConditionMeterControlField"
@@ -2764,23 +3123,23 @@
 					}
 				},
 				"select_enhancement": {
-					"metadata": {
-						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetControlFieldId"
+							"ref": "AssetControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected."
+								"description": "The current value of this input."
 							},
 							"nullable": true
 						},
@@ -2792,20 +3151,14 @@
 								"discriminator": "option_type",
 								"mapping": {
 									"option": {
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										},
 										"properties": {
-											"name": {
+											"label": {
 												"ref": "Label",
 												"metadata": {
-													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+													"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 												}
 											},
 											"value": {
-												"metadata": {
-													"description": "The current value of this input."
-												},
 												"properties": {},
 												"optionalProperties": {
 													"enhance_asset": {
@@ -2816,6 +3169,9 @@
 															"ref": "MoveEnhancement"
 														}
 													}
+												},
+												"metadata": {
+													"description": "The current value of this input."
 												}
 											}
 										},
@@ -2829,9 +3185,6 @@
 										}
 									},
 									"option_group": {
-										"metadata": {
-											"description": "Represents a grouping of options in a list of choices."
-										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -2844,25 +3197,19 @@
 													"propertyPattern": "^([a-z][a-z_]*)$"
 												},
 												"values": {
-													"metadata": {
-														"description": "Represents an option in a list of choices."
-													},
 													"properties": {
 														"option_type": {
 															"enum": [
 																"option"
 															]
 														},
-														"name": {
+														"label": {
 															"ref": "Label",
 															"metadata": {
-																"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+																"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 															}
 														},
 														"value": {
-															"metadata": {
-																"description": "The current value of this input."
-															},
 															"properties": {},
 															"optionalProperties": {
 																"enhance_asset": {
@@ -2873,6 +3220,9 @@
 																		"ref": "MoveEnhancement"
 																	}
 																}
+															},
+															"metadata": {
+																"description": "The current value of this input."
 															}
 														}
 													},
@@ -2883,6 +3233,9 @@
 																"description": "Is this option currently selected?"
 															}
 														}
+													},
+													"metadata": {
+														"description": "Represents an option in a list of choices."
 													}
 												}
 											}
@@ -2896,12 +3249,15 @@
 				"checkbox": {
 					"properties": {
 						"id": {
-							"ref": "AssetControlFieldId"
+							"ref": "AssetControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
@@ -2927,12 +3283,15 @@
 				"card_flip": {
 					"properties": {
 						"id": {
-							"ref": "AssetControlFieldId"
+							"ref": "AssetControlFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
@@ -2961,30 +3320,24 @@
 			"discriminator": "field_type",
 			"mapping": {
 				"condition_meter": {
-					"metadata": {
-						"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\"."
-					},
 					"properties": {
 						"max": {
+							"type": "int8",
 							"metadata": {
 								"description": "The maximum value of this meter."
-							},
-							"type": "int16"
+							}
 						}
 					}
 				}
 			}
 		},
 		"AssetEnhancement": {
-			"metadata": {
-				"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed."
-			},
 			"properties": {},
 			"optionalProperties": {
 				"controls": {
 					"metadata": {
-						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
-						"propertyPattern": "^([a-z][a-z_]*)$"
+						"propertyPattern": "^([a-z][a-z_]*)$",
+						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset."
 					},
 					"values": {
 						"ref": "AssetControlFieldEnhancement"
@@ -3008,29 +3361,32 @@
 						"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed."
 			}
 		},
 		"AssetOptionField": {
 			"discriminator": "field_type",
 			"mapping": {
 				"select_stat": {
-					"metadata": {
-						"description": "Represents a list of mutually exclusive choices."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetOptionFieldId"
+							"ref": "AssetOptionFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected."
+								"description": "The current value of this input."
 							},
 							"nullable": true
 						},
@@ -3042,14 +3398,11 @@
 								"discriminator": "option_type",
 								"mapping": {
 									"option": {
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										},
 										"properties": {
-											"name": {
+											"label": {
 												"ref": "Label",
 												"metadata": {
-													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+													"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 												}
 											},
 											"value": {
@@ -3069,9 +3422,6 @@
 										}
 									},
 									"option_group": {
-										"metadata": {
-											"description": "Represents a grouping of options in a list of choices."
-										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -3084,19 +3434,16 @@
 													"propertyPattern": "^([a-z][a-z_]*)$"
 												},
 												"values": {
-													"metadata": {
-														"description": "Represents an option in a list of choices."
-													},
 													"properties": {
 														"option_type": {
 															"enum": [
 																"option"
 															]
 														},
-														"name": {
+														"label": {
 															"ref": "Label",
 															"metadata": {
-																"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+																"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 															}
 														},
 														"value": {
@@ -3113,6 +3460,9 @@
 																"description": "Is this option currently selected?"
 															}
 														}
+													},
+													"metadata": {
+														"description": "Represents an option in a list of choices."
 													}
 												}
 											}
@@ -3124,23 +3474,23 @@
 					}
 				},
 				"select_enhancement": {
-					"metadata": {
-						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetOptionFieldId"
+							"ref": "AssetOptionFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected."
+								"description": "The current value of this input."
 							},
 							"nullable": true
 						},
@@ -3152,20 +3502,14 @@
 								"discriminator": "option_type",
 								"mapping": {
 									"option": {
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										},
 										"properties": {
-											"name": {
+											"label": {
 												"ref": "Label",
 												"metadata": {
-													"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+													"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 												}
 											},
 											"value": {
-												"metadata": {
-													"description": "The current value of this input."
-												},
 												"properties": {},
 												"optionalProperties": {
 													"enhance_asset": {
@@ -3176,6 +3520,9 @@
 															"ref": "MoveEnhancement"
 														}
 													}
+												},
+												"metadata": {
+													"description": "The current value of this input."
 												}
 											}
 										},
@@ -3189,9 +3536,6 @@
 										}
 									},
 									"option_group": {
-										"metadata": {
-											"description": "Represents a grouping of options in a list of choices."
-										},
 										"properties": {
 											"name": {
 												"ref": "Label",
@@ -3204,25 +3548,19 @@
 													"propertyPattern": "^([a-z][a-z_]*)$"
 												},
 												"values": {
-													"metadata": {
-														"description": "Represents an option in a list of choices."
-													},
 													"properties": {
 														"option_type": {
 															"enum": [
 																"option"
 															]
 														},
-														"name": {
+														"label": {
 															"ref": "Label",
 															"metadata": {
-																"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+																"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 															}
 														},
 														"value": {
-															"metadata": {
-																"description": "The current value of this input."
-															},
 															"properties": {},
 															"optionalProperties": {
 																"enhance_asset": {
@@ -3233,6 +3571,9 @@
 																		"ref": "MoveEnhancement"
 																	}
 																}
+															},
+															"metadata": {
+																"description": "The current value of this input."
 															}
 														}
 													},
@@ -3243,6 +3584,9 @@
 																"description": "Is this option currently selected?"
 															}
 														}
+													},
+													"metadata": {
+														"description": "Represents an option in a list of choices."
 													}
 												}
 											}
@@ -3254,21 +3598,24 @@
 					}
 				},
 				"text": {
-					"metadata": {
-						"description": "Represents an input that accepts plain text."
-					},
 					"properties": {
 						"id": {
-							"ref": "AssetOptionFieldId"
+							"ref": "AssetOptionFieldId",
+							"metadata": {
+								"description": "The unique Datasworn ID for this item."
+							}
 						},
-						"name": {
+						"label": {
 							"ref": "Label",
 							"metadata": {
-								"description": "A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
 							}
 						},
 						"value": {
 							"type": "string",
+							"metadata": {
+								"description": "The content of this text input, or `null` if it's empty"
+							},
 							"nullable": true
 						}
 					}
@@ -3278,13 +3625,22 @@
 		"AssetType": {
 			"properties": {
 				"id": {
-					"ref": "AssetTypeId"
+					"ref": "AssetTypeId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"contents": {
 					"metadata": {
@@ -3297,27 +3653,45 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CssColor"
+					"ref": "CssColor",
+					"metadata": {
+						"description": "A thematic color associated with this collection."
+					}
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
+					}
 				},
 				"images": {
 					"elements": {
-						"ref": "WebpImageUrl"
+						"ref": "WebpImageUrl",
+						"metadata": {
+							"description": "Extra images associated with this collection."
+						}
 					}
 				},
 				"icon": {
-					"ref": "SvgImageUrl"
+					"ref": "SvgImageUrl",
+					"metadata": {
+						"description": "An SVG icon associated with this collection."
+					}
 				},
 				"enhances": {
 					"ref": "AssetTypeId",
@@ -3331,21 +3705,28 @@
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"Truth": {
-			"metadata": {
-				"description": "A setting truth category."
-			},
 			"properties": {
 				"id": {
-					"ref": "TruthId"
+					"ref": "TruthId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"options": {
 					"elements": {
@@ -3355,7 +3736,10 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -3366,12 +3750,18 @@
 				"your_character": {
 					"ref": "MarkdownString"
 				}
+			},
+			"metadata": {
+				"description": "A setting truth category."
 			}
 		},
 		"TruthOption": {
 			"properties": {
 				"id": {
-					"ref": "TruthOptionId"
+					"ref": "TruthOptionId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"description": {
 					"ref": "MarkdownString"
@@ -3395,20 +3785,27 @@
 						"ref": "TruthOptionTableRow"
 					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"TruthOptionTableRow": {
 			"properties": {
+				"result": {
+					"ref": "MarkdownString"
+				},
 				"min": {
 					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					},
 					"nullable": true
 				},
 				"max": {
 					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
+					},
 					"nullable": true
-				},
-				"result": {
-					"ref": "MarkdownString"
 				}
 			},
 			"optionalProperties": {
@@ -3438,18 +3835,28 @@
 				"i18n": {
 					"ref": "I18nHints"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"Atlas": {
 			"properties": {
 				"id": {
-					"ref": "AtlasId"
+					"ref": "AtlasId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"contents": {
 					"metadata": {
@@ -3470,27 +3877,45 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"color": {
-					"ref": "CssColor"
+					"ref": "CssColor",
+					"metadata": {
+						"description": "A thematic color associated with this collection."
+					}
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
+					}
 				},
 				"images": {
 					"elements": {
-						"ref": "WebpImageUrl"
+						"ref": "WebpImageUrl",
+						"metadata": {
+							"description": "Extra images associated with this collection."
+						}
 					}
 				},
 				"icon": {
-					"ref": "SvgImageUrl"
+					"ref": "SvgImageUrl",
+					"metadata": {
+						"description": "An SVG icon associated with this collection."
+					}
 				},
 				"enhances": {
 					"ref": "AtlasId",
@@ -3507,18 +3932,24 @@
 			}
 		},
 		"AtlasEntry": {
-			"metadata": {
-				"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn."
-			},
 			"properties": {
 				"id": {
-					"ref": "AtlasEntryId"
+					"ref": "AtlasEntryId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"features": {
 					"elements": {
@@ -3534,7 +3965,10 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -3545,6 +3979,9 @@
 				"your_truth": {
 					"ref": "MarkdownString"
 				}
+			},
+			"metadata": {
+				"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn."
 			}
 		},
 		"PlayerConditionMeter": {
@@ -3572,18 +4009,24 @@
 			}
 		},
 		"Rarity": {
-			"metadata": {
-				"description": "A rarity, as described in Ironsworn: Delve."
-			},
 			"properties": {
 				"id": {
-					"ref": "RarityId"
+					"ref": "RarityId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"asset": {
 					"ref": "AssetId",
@@ -3592,12 +4035,12 @@
 					}
 				},
 				"xp_cost": {
+					"type": "int16",
 					"metadata": {
 						"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
 						"maximum": 5,
 						"minimum": 3
-					},
-					"type": "int16"
+					}
 				},
 				"description": {
 					"ref": "MarkdownString"
@@ -3605,7 +4048,10 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -3613,21 +4059,42 @@
 				"icon": {
 					"ref": "SvgImageUrl"
 				}
+			},
+			"metadata": {
+				"description": "A rarity, as described in Ironsworn: Delve."
+			}
+		},
+		"DelveCardType": {
+			"enum": [
+				"theme",
+				"domain"
+			],
+			"metadata": {
+				"enumDescription": {
+					"theme": "A delve site theme card.",
+					"domain": "A delve site domain card."
+				}
 			}
 		},
 		"DelveSite": {
-			"metadata": {
-				"description": "A delve site with a theme, domain, and denizen table."
-			},
 			"properties": {
 				"id": {
-					"ref": "DelveSiteId"
+					"ref": "DelveSiteId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"rank": {
 					"ref": "ChallengeRank"
@@ -3649,7 +4116,10 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -3669,12 +4139,18 @@
 						"description": "An additional theme or domain card ID, for use with optional rules in Ironsworn: Delve."
 					}
 				}
+			},
+			"metadata": {
+				"description": "A delve site with a theme, domain, and denizen table."
 			}
 		},
 		"DelveSiteDenizen": {
 			"properties": {
 				"id": {
-					"ref": "DelveSiteDenizenId"
+					"ref": "DelveSiteDenizenId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"min": {
 					"type": "int16"
@@ -3696,7 +4172,8 @@
 						"description": "The ID of the relevant NPC entry, if one is specified."
 					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"DelveSiteDenizenFrequency": {
 			"enum": [
@@ -3710,18 +4187,32 @@
 		"DelveSiteDomain": {
 			"properties": {
 				"id": {
-					"ref": "DelveSiteDomainId"
+					"ref": "DelveSiteDomainId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"summary": {
 					"ref": "MarkdownString"
 				},
 				"card_type": {
+					"metadata": {
+						"description": "A delve site domain card.",
+						"typescriptType": "DelveCardType.domain",
+						"csharpType": "DelveCardType.domain"
+					},
 					"enum": [
 						"domain"
 					]
@@ -3739,7 +4230,10 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -3756,27 +4250,31 @@
 						"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites."
 					}
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"DelveSiteDomainDangerRow": {
 			"properties": {
 				"id": {
-					"ref": "DomainDangerRowId"
-				},
-				"min": {
+					"ref": "DomainDangerRowId",
 					"metadata": {
-						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
-				},
-				"max": {
-					"metadata": {
-						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"result": {
 					"ref": "MarkdownString"
+				},
+				"min": {
+					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row."
+					}
+				},
+				"max": {
+					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row."
+					}
 				}
 			},
 			"optionalProperties": {
@@ -3806,27 +4304,31 @@
 				"i18n": {
 					"ref": "I18nHints"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"DelveSiteDomainFeatureRow": {
 			"properties": {
 				"id": {
-					"ref": "DomainFeatureRowId"
-				},
-				"min": {
+					"ref": "DomainFeatureRowId",
 					"metadata": {
-						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
-				},
-				"max": {
-					"metadata": {
-						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"result": {
 					"ref": "MarkdownString"
+				},
+				"min": {
+					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row."
+					}
+				},
+				"max": {
+					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row."
+					}
 				}
 			},
 			"optionalProperties": {
@@ -3856,23 +4358,38 @@
 				"i18n": {
 					"ref": "I18nHints"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"DelveSiteTheme": {
 			"properties": {
 				"id": {
-					"ref": "DelveSiteThemeId"
+					"ref": "DelveSiteThemeId",
+					"metadata": {
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The primary name/label for this item."
+					}
 				},
 				"source": {
-					"ref": "Source"
+					"ref": "Source",
+					"metadata": {
+						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
+					}
 				},
 				"summary": {
 					"ref": "MarkdownString"
 				},
 				"card_type": {
+					"metadata": {
+						"description": "A delve site theme card.",
+						"typescriptType": "DelveCardType.theme",
+						"csharpType": "DelveCardType.theme"
+					},
 					"enum": [
 						"theme"
 					]
@@ -3890,7 +4407,10 @@
 			},
 			"optionalProperties": {
 				"canonical_name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
+					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -3901,27 +4421,31 @@
 				"icon": {
 					"ref": "SvgImageUrl"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"DelveSiteThemeDangerRow": {
 			"properties": {
 				"id": {
-					"ref": "ThemeDangerRowId"
-				},
-				"min": {
+					"ref": "ThemeDangerRowId",
 					"metadata": {
-						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
-				},
-				"max": {
-					"metadata": {
-						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"result": {
 					"ref": "MarkdownString"
+				},
+				"min": {
+					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row."
+					}
+				},
+				"max": {
+					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row."
+					}
 				}
 			},
 			"optionalProperties": {
@@ -3951,27 +4475,31 @@
 				"i18n": {
 					"ref": "I18nHints"
 				}
-			}
+			},
+			"metadata": {}
 		},
 		"DelveSiteThemeFeatureRow": {
 			"properties": {
 				"id": {
-					"ref": "ThemeFeatureRowId"
-				},
-				"min": {
+					"ref": "ThemeFeatureRowId",
 					"metadata": {
-						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
-				},
-				"max": {
-					"metadata": {
-						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"type": "int16"
+						"description": "The unique Datasworn ID for this item."
+					}
 				},
 				"result": {
 					"ref": "MarkdownString"
+				},
+				"min": {
+					"type": "int16",
+					"metadata": {
+						"description": "Low end of the dice range for this table row."
+					}
+				},
+				"max": {
+					"type": "int16",
+					"metadata": {
+						"description": "High end of the dice range for this table row."
+					}
 				}
 			},
 			"optionalProperties": {
@@ -4001,7 +4529,8 @@
 				"i18n": {
 					"ref": "I18nHints"
 				}
-			}
+			},
+			"metadata": {}
 		}
 	}
 }

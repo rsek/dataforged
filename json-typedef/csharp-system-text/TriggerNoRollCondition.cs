@@ -6,15 +6,6 @@ namespace Datasworn
 {
     public class TriggerNoRollCondition
     {
-        [JsonPropertyName("method")]
-        public object Method { get; set; }
-
-        /// <summary>
-        /// The options available when rolling with this trigger.
-        /// </summary>
-        [JsonPropertyName("roll_options")]
-        public object RollOptions { get; set; }
-
         [JsonPropertyName("by")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TriggerBy? By { get; set; }

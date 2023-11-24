@@ -13,6 +13,9 @@ namespace Datasworn
         [JsonPropertyName("enabled")]
         public bool Enabled { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public AssetAbilityId Id { get; set; }
 

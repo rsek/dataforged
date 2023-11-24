@@ -5,8 +5,6 @@ require 'time'
 
 module Datasworn
 
-  # Describes game rules compatible with the Ironsworn tabletop role-playing
-  # game by Shawn Tomkin.
   class Ruleset
     attr_accessor :id
     attr_accessor :source
@@ -92,12 +90,25 @@ module Datasworn
 
     private_class_method :new
 
+    # Use **every** roll option at once.
     ALL = new("all")
+
+    # Use the roll option with the best/highest value.
     HIGHEST = new("highest")
+
+    # Use the roll option with the worst/lowest value.
     LOWEST = new("lowest")
+
+    # An automatic miss.
     MISS = new("miss")
+
+    # The player chooses which roll option to use.
     PLAYER_CHOICE = new("player_choice")
+
+    # An automatic strong hit.
     STRONG_HIT = new("strong_hit")
+
+    # An automatic weak hit.
     WEAK_HIT = new("weak_hit")
 
     def self.from_json_data(data)
@@ -270,12 +281,27 @@ module Datasworn
 
     private_class_method :new
 
+    # Roll using the value of an asset control.
     ASSET_CONTROL = new("asset_control")
+
+    # Roll using the value of an asset option.
     ASSET_OPTION = new("asset_option")
+
+    # Roll using the value of an attached asset control. For example, a Module
+    # asset could use this to roll using the `integrity` control of an attached
+    # Vehicle.
     ATTACHED_ASSET_CONTROL = new("attached_asset_control")
+
+    # Roll using the value of an attached asset option.
     ATTACHED_ASSET_OPTION = new("attached_asset_option")
+
+    # Roll using the value of a standard player condition meter.
     CONDITION_METER = new("condition_meter")
+
+    # Roll using an integer value with customizable labels.
     CUSTOM = new("custom")
+
+    # Roll using a standard player character stat.
     STAT = new("stat")
 
     def self.from_json_data(data)
@@ -305,22 +331,36 @@ module Datasworn
     # If `true`, this asset counts as an impact (Starforged) or a debility
     # (classic Ironsworn).
     attr_accessor :count_as_impact
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
 
     # Most assets only benefit to their owner, but certain assets (like
     # Starforged's module and command vehicle assets) are shared amongst the
     # player's allies, too.
     attr_accessor :shared
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
     attr_accessor :attachments
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
+
+    # A thematic color associated with this asset.
     attr_accessor :color
 
     # Controls are condition meters, clocks, counters, and other asset input
     # fields whose values are expected to change throughout the life of the
     # asset.
     attr_accessor :controls
+
+    # This asset's icon.
     attr_accessor :icon
 
     # Options are asset input fields which are set once, usually when the
@@ -328,6 +368,8 @@ module Datasworn
     # companion assets. A more complex example is the choice of a god's stat for
     # the Devotant asset.
     attr_accessor :options
+
+    # Describes prerequisites for purchasing or using this asset.
     attr_accessor :requirement
     attr_accessor :suggestions
 
@@ -375,6 +417,8 @@ module Datasworn
   class AssetAbility
     # Is this asset ability enabled?
     attr_accessor :enabled
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
     attr_accessor :text
 
@@ -441,7 +485,7 @@ module Datasworn
     attr_accessor :disables_asset
     attr_accessor :id
     attr_accessor :is_impact
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -450,7 +494,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -460,27 +504,26 @@ module Datasworn
       data["disables_asset"] = Datasworn::to_json_data(disables_asset)
       data["id"] = Datasworn::to_json_data(id)
       data["is_impact"] = Datasworn::to_json_data(is_impact)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
   end
 
-  # A clock with 4, 6, 8, or 10 segments.
   class AssetAbilityControlFieldClock < AssetAbilityControlField
     attr_accessor :id
+    attr_accessor :label
     attr_accessor :max
     attr_accessor :min
-    attr_accessor :name
     attr_accessor :value
 
     def self.from_json_data(data)
       out = AssetAbilityControlFieldClock.new
       out.field_type = "clock"
       out.id = Datasworn::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
       out
     end
@@ -488,29 +531,28 @@ module Datasworn
     def to_json_data
       data = { "field_type" => "clock" }
       data["id"] = Datasworn::to_json_data(id)
+      data["label"] = Datasworn::to_json_data(label)
       data["max"] = Datasworn::to_json_data(max)
       data["min"] = Datasworn::to_json_data(min)
-      data["name"] = Datasworn::to_json_data(name)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
   end
 
-  # A counter that starts at zero, with an optional maximum value.
   class AssetAbilityControlFieldCounter < AssetAbilityControlField
     attr_accessor :id
+    attr_accessor :label
     attr_accessor :max
     attr_accessor :min
-    attr_accessor :name
     attr_accessor :value
 
     def self.from_json_data(data)
       out = AssetAbilityControlFieldCounter.new
       out.field_type = "counter"
       out.id = Datasworn::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
       out
     end
@@ -518,9 +560,9 @@ module Datasworn
     def to_json_data
       data = { "field_type" => "counter" }
       data["id"] = Datasworn::to_json_data(id)
+      data["label"] = Datasworn::to_json_data(label)
       data["max"] = Datasworn::to_json_data(max)
       data["min"] = Datasworn::to_json_data(min)
-      data["name"] = Datasworn::to_json_data(name)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -564,17 +606,16 @@ module Datasworn
     end
   end
 
-  # Represents an input that accepts plain text.
   class AssetAbilityOptionFieldText < AssetAbilityOptionField
     attr_accessor :id
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
       out = AssetAbilityOptionFieldText.new
       out.field_type = "text"
       out.id = Datasworn::from_json_data(AssetAbilityOptionFieldID, data["id"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(String, data["value"])
       out
     end
@@ -582,7 +623,7 @@ module Datasworn
     def to_json_data
       data = { "field_type" => "text" }
       data["id"] = Datasworn::to_json_data(id)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -608,6 +649,8 @@ module Datasworn
   class AssetAttachment
     # Asset IDs (which may be wildcards) that may be attached to this asset
     attr_accessor :assets
+
+    # Null if there's no upper limit to the number of attached assets.
     attr_accessor :max
 
     def self.from_json_data(data)
@@ -625,6 +668,7 @@ module Datasworn
     end
   end
 
+  # A checkbox control field, rendered as part of an asset condition meter.
   class AssetConditionMeterControlField
     attr_accessor :field_type
 
@@ -640,7 +684,7 @@ module Datasworn
     attr_accessor :disables_asset
     attr_accessor :id
     attr_accessor :is_impact
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -649,7 +693,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetConditionMeterControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -659,7 +703,7 @@ module Datasworn
       data["disables_asset"] = Datasworn::to_json_data(disables_asset)
       data["id"] = Datasworn::to_json_data(id)
       data["is_impact"] = Datasworn::to_json_data(is_impact)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -669,7 +713,7 @@ module Datasworn
     attr_accessor :disables_asset
     attr_accessor :id
     attr_accessor :is_impact
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -678,7 +722,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetConditionMeterControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -688,7 +732,7 @@ module Datasworn
       data["disables_asset"] = Datasworn::to_json_data(disables_asset)
       data["id"] = Datasworn::to_json_data(id)
       data["is_impact"] = Datasworn::to_json_data(is_impact)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -725,7 +769,7 @@ module Datasworn
     attr_accessor :disables_asset
     attr_accessor :id
     attr_accessor :is_impact
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -734,7 +778,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -744,7 +788,7 @@ module Datasworn
       data["disables_asset"] = Datasworn::to_json_data(disables_asset)
       data["id"] = Datasworn::to_json_data(id)
       data["is_impact"] = Datasworn::to_json_data(is_impact)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -754,7 +798,7 @@ module Datasworn
     attr_accessor :disables_asset
     attr_accessor :id
     attr_accessor :is_impact
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -763,7 +807,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -773,7 +817,7 @@ module Datasworn
       data["disables_asset"] = Datasworn::to_json_data(disables_asset)
       data["id"] = Datasworn::to_json_data(id)
       data["is_impact"] = Datasworn::to_json_data(is_impact)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -805,15 +849,11 @@ module Datasworn
     end
   end
 
-  # Some assets provide a special condition meter of their own. The most common
-  # example is the health meters on companion assets. Asset condition meters
-  # may also include their own controls, such as the checkboxes that Starforged
-  # companion assets use to indicate they are "out of action".
   class AssetControlFieldConditionMeter < AssetControlField
     attr_accessor :id
+    attr_accessor :label
     attr_accessor :max
     attr_accessor :min
-    attr_accessor :name
     attr_accessor :value
     attr_accessor :controls
     attr_accessor :moves
@@ -822,9 +862,9 @@ module Datasworn
       out = AssetControlFieldConditionMeter.new
       out.field_type = "condition_meter"
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
       out.controls = Datasworn::from_json_data(Hash[String, AssetConditionMeterControlField], data["controls"])
       out.moves = Datasworn::from_json_data(AssetControlFieldConditionMeterMoves, data["moves"])
@@ -834,9 +874,9 @@ module Datasworn
     def to_json_data
       data = { "field_type" => "condition_meter" }
       data["id"] = Datasworn::to_json_data(id)
+      data["label"] = Datasworn::to_json_data(label)
       data["max"] = Datasworn::to_json_data(max)
       data["min"] = Datasworn::to_json_data(min)
-      data["name"] = Datasworn::to_json_data(name)
       data["value"] = Datasworn::to_json_data(value)
       data["controls"] = Datasworn::to_json_data(controls) unless controls.nil?
       data["moves"] = Datasworn::to_json_data(moves) unless moves.nil?
@@ -875,16 +915,15 @@ module Datasworn
     end
   end
 
-  # Represents an option in a list of choices.
   class AssetControlFieldSelectEnhancementChoiceOption < AssetControlFieldSelectEnhancementChoice
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
     attr_accessor :selected
 
     def self.from_json_data(data)
       out = AssetControlFieldSelectEnhancementChoiceOption.new
       out.option_type = "option"
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(AssetControlFieldSelectEnhancementChoiceOptionValue, data["value"])
       out.selected = Datasworn::from_json_data(TrueClass, data["selected"])
       out
@@ -892,7 +931,7 @@ module Datasworn
 
     def to_json_data
       data = { "option_type" => "option" }
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data["selected"] = Datasworn::to_json_data(selected) unless selected.nil?
       data
@@ -943,10 +982,10 @@ module Datasworn
 
   # Represents an option in a list of choices.
   class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice
-    # A label for this input. In some contexts it may be undesirable to render
-    # this text, but it should always be exposed to assistive technology (e.g.
-    # with `aria-label` in HTML).
-    attr_accessor :name
+    # A localized label for this input. In some contexts it may be undesirable
+    # to render this text, but it should always be exposed to assistive
+    # technology (e.g. with `aria-label` in HTML).
+    attr_accessor :label
     attr_accessor :option_type
 
     # The current value of this input.
@@ -957,7 +996,7 @@ module Datasworn
 
     def self.from_json_data(data)
       out = AssetControlFieldSelectEnhancementChoiceOptionGroupChoice.new
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.option_type = Datasworn::from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data["option_type"])
       out.value = Datasworn::from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue, data["value"])
       out.selected = Datasworn::from_json_data(TrueClass, data["selected"])
@@ -966,7 +1005,7 @@ module Datasworn
 
     def to_json_data
       data = {}
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["option_type"] = Datasworn::to_json_data(option_type)
       data["value"] = Datasworn::to_json_data(value)
       data["selected"] = Datasworn::to_json_data(selected) unless selected.nil?
@@ -974,7 +1013,6 @@ module Datasworn
     end
   end
 
-  # Represents a grouping of options in a list of choices.
   class AssetControlFieldSelectEnhancementChoiceOptionGroup < AssetControlFieldSelectEnhancementChoice
     attr_accessor :choices
     attr_accessor :name
@@ -995,13 +1033,10 @@ module Datasworn
     end
   end
 
-  # Select from player and/or asset enhancements. Use it to describe modal
-  # abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
-  # (Sundered Isles).
   class AssetControlFieldSelectEnhancement < AssetControlField
     attr_accessor :choices
     attr_accessor :id
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -1009,7 +1044,7 @@ module Datasworn
       out.field_type = "select_enhancement"
       out.choices = Datasworn::from_json_data(Hash[String, AssetControlFieldSelectEnhancementChoice], data["choices"])
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
       out
     end
@@ -1018,7 +1053,7 @@ module Datasworn
       data = { "field_type" => "select_enhancement" }
       data["choices"] = Datasworn::to_json_data(choices)
       data["id"] = Datasworn::to_json_data(id)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -1034,10 +1069,6 @@ module Datasworn
     end
   end
 
-  # Some assets provide a special condition meter of their own. The most common
-  # example is the health meters on companion assets. Asset condition meters
-  # may also include their own controls, such as the checkboxes that Starforged
-  # companion assets use to indicate they are "out of action".
   class AssetControlFieldEnhancementConditionMeter < AssetControlFieldEnhancement
     attr_accessor :max
 
@@ -1196,16 +1227,15 @@ module Datasworn
     end
   end
 
-  # Represents an option in a list of choices.
   class AssetOptionFieldSelectEnhancementChoiceOption < AssetOptionFieldSelectEnhancementChoice
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
     attr_accessor :selected
 
     def self.from_json_data(data)
       out = AssetOptionFieldSelectEnhancementChoiceOption.new
       out.option_type = "option"
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionValue, data["value"])
       out.selected = Datasworn::from_json_data(TrueClass, data["selected"])
       out
@@ -1213,7 +1243,7 @@ module Datasworn
 
     def to_json_data
       data = { "option_type" => "option" }
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data["selected"] = Datasworn::to_json_data(selected) unless selected.nil?
       data
@@ -1264,10 +1294,10 @@ module Datasworn
 
   # Represents an option in a list of choices.
   class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice
-    # A label for this input. In some contexts it may be undesirable to render
-    # this text, but it should always be exposed to assistive technology (e.g.
-    # with `aria-label` in HTML).
-    attr_accessor :name
+    # A localized label for this input. In some contexts it may be undesirable
+    # to render this text, but it should always be exposed to assistive
+    # technology (e.g. with `aria-label` in HTML).
+    attr_accessor :label
     attr_accessor :option_type
 
     # The current value of this input.
@@ -1278,7 +1308,7 @@ module Datasworn
 
     def self.from_json_data(data)
       out = AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice.new
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data["option_type"])
       out.value = Datasworn::from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue, data["value"])
       out.selected = Datasworn::from_json_data(TrueClass, data["selected"])
@@ -1287,7 +1317,7 @@ module Datasworn
 
     def to_json_data
       data = {}
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["option_type"] = Datasworn::to_json_data(option_type)
       data["value"] = Datasworn::to_json_data(value)
       data["selected"] = Datasworn::to_json_data(selected) unless selected.nil?
@@ -1295,7 +1325,6 @@ module Datasworn
     end
   end
 
-  # Represents a grouping of options in a list of choices.
   class AssetOptionFieldSelectEnhancementChoiceOptionGroup < AssetOptionFieldSelectEnhancementChoice
     attr_accessor :choices
     attr_accessor :name
@@ -1316,13 +1345,10 @@ module Datasworn
     end
   end
 
-  # Select from player and/or asset enhancements. Use it to describe modal
-  # abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
-  # (Sundered Isles).
   class AssetOptionFieldSelectEnhancement < AssetOptionField
     attr_accessor :choices
     attr_accessor :id
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -1330,7 +1356,7 @@ module Datasworn
       out.field_type = "select_enhancement"
       out.choices = Datasworn::from_json_data(Hash[String, AssetOptionFieldSelectEnhancementChoice], data["choices"])
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
       out
     end
@@ -1339,7 +1365,7 @@ module Datasworn
       data = { "field_type" => "select_enhancement" }
       data["choices"] = Datasworn::to_json_data(choices)
       data["id"] = Datasworn::to_json_data(id)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -1356,16 +1382,15 @@ module Datasworn
     end
   end
 
-  # Represents an option in a list of choices.
   class AssetOptionFieldSelectStatChoiceOption < AssetOptionFieldSelectStatChoice
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
     attr_accessor :selected
 
     def self.from_json_data(data)
       out = AssetOptionFieldSelectStatChoiceOption.new
       out.option_type = "option"
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(PlayerStat, data["value"])
       out.selected = Datasworn::from_json_data(TrueClass, data["selected"])
       out
@@ -1373,7 +1398,7 @@ module Datasworn
 
     def to_json_data
       data = { "option_type" => "option" }
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data["selected"] = Datasworn::to_json_data(selected) unless selected.nil?
       data
@@ -1404,10 +1429,10 @@ module Datasworn
 
   # Represents an option in a list of choices.
   class AssetOptionFieldSelectStatChoiceOptionGroupChoice
-    # A label for this input. In some contexts it may be undesirable to render
-    # this text, but it should always be exposed to assistive technology (e.g.
-    # with `aria-label` in HTML).
-    attr_accessor :name
+    # A localized label for this input. In some contexts it may be undesirable
+    # to render this text, but it should always be exposed to assistive
+    # technology (e.g. with `aria-label` in HTML).
+    attr_accessor :label
     attr_accessor :option_type
 
     # The current value of this input.
@@ -1418,7 +1443,7 @@ module Datasworn
 
     def self.from_json_data(data)
       out = AssetOptionFieldSelectStatChoiceOptionGroupChoice.new
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType, data["option_type"])
       out.value = Datasworn::from_json_data(PlayerStat, data["value"])
       out.selected = Datasworn::from_json_data(TrueClass, data["selected"])
@@ -1427,7 +1452,7 @@ module Datasworn
 
     def to_json_data
       data = {}
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["option_type"] = Datasworn::to_json_data(option_type)
       data["value"] = Datasworn::to_json_data(value)
       data["selected"] = Datasworn::to_json_data(selected) unless selected.nil?
@@ -1435,7 +1460,6 @@ module Datasworn
     end
   end
 
-  # Represents a grouping of options in a list of choices.
   class AssetOptionFieldSelectStatChoiceOptionGroup < AssetOptionFieldSelectStatChoice
     attr_accessor :choices
     attr_accessor :name
@@ -1456,11 +1480,10 @@ module Datasworn
     end
   end
 
-  # Represents a list of mutually exclusive choices.
   class AssetOptionFieldSelectStat < AssetOptionField
     attr_accessor :choices
     attr_accessor :id
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
@@ -1468,7 +1491,7 @@ module Datasworn
       out.field_type = "select_stat"
       out.choices = Datasworn::from_json_data(Hash[String, AssetOptionFieldSelectStatChoice], data["choices"])
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
       out
     end
@@ -1477,23 +1500,22 @@ module Datasworn
       data = { "field_type" => "select_stat" }
       data["choices"] = Datasworn::to_json_data(choices)
       data["id"] = Datasworn::to_json_data(id)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
   end
 
-  # Represents an input that accepts plain text.
   class AssetOptionFieldText < AssetOptionField
     attr_accessor :id
-    attr_accessor :name
+    attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
       out = AssetOptionFieldText.new
       out.field_type = "text"
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.value = Datasworn::from_json_data(String, data["value"])
       out
     end
@@ -1501,7 +1523,7 @@ module Datasworn
     def to_json_data
       data = { "field_type" => "text" }
       data["id"] = Datasworn::to_json_data(id)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
       data
     end
@@ -1537,16 +1559,34 @@ module Datasworn
 
   class AssetType
     attr_accessor :contents
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
+
+    # A thematic color associated with this collection.
     attr_accessor :color
+
+    # A longer description of this collection, which might include multiple
+    # paragraphs. If it's only a couple sentences, use the `summary` key
+    # instead.
     attr_accessor :description
 
     # This collection's content enhances the identified collection, rather than
     # being a standalone collection of its own.
     attr_accessor :enhances
+
+    # An SVG icon associated with this collection.
     attr_accessor :icon
     attr_accessor :images
 
@@ -1554,6 +1594,10 @@ module Datasworn
     # replaced collection can be considered equivalent to this collection.
     attr_accessor :replaces
     attr_accessor :suggestions
+
+    # A brief summary of this collection, no more than a few sentences in
+    # length. This is intended for use in application tooltips and similar sorts
+    # of hints. Longer text should use the "description" key instead.
     attr_accessor :summary
 
     def self.from_json_data(data)
@@ -1610,16 +1654,34 @@ module Datasworn
   class Atlas
     attr_accessor :collections
     attr_accessor :contents
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
+
+    # A thematic color associated with this collection.
     attr_accessor :color
+
+    # A longer description of this collection, which might include multiple
+    # paragraphs. If it's only a couple sentences, use the `summary` key
+    # instead.
     attr_accessor :description
 
     # This collection's content enhances the identified collection, rather than
     # being a standalone collection of its own.
     attr_accessor :enhances
+
+    # An SVG icon associated with this collection.
     attr_accessor :icon
     attr_accessor :images
 
@@ -1627,6 +1689,10 @@ module Datasworn
     # replaced collection can be considered equivalent to this collection.
     attr_accessor :replaces
     attr_accessor :suggestions
+
+    # A brief summary of this collection, no more than a few sentences in
+    # length. This is intended for use in application tooltips and similar sorts
+    # of hints. Longer text should use the "description" key instead.
     attr_accessor :summary
 
     def self.from_json_data(data)
@@ -1673,10 +1739,20 @@ module Datasworn
   class AtlasEntry
     attr_accessor :description
     attr_accessor :features
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
     attr_accessor :quest_starter
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
     attr_accessor :suggestions
     attr_accessor :summary
@@ -1769,7 +1845,7 @@ module Datasworn
     end
   end
 
-  # Challenge rank, represented as an integer:
+  # Challenge rank, represented as an integer.
   class ChallengeRank
     attr_accessor :value
 
@@ -1784,8 +1860,15 @@ module Datasworn
     end
   end
 
+  # Describes a standard player character condition meter.
   class ConditionMeterRule
+    # A description of this condition meter.
     attr_accessor :description
+
+    # A localized label for this input. In some contexts it may be undesirable
+    # to render this text, but it should always be exposed to assistive
+    # technology (e.g. with `aria-label` in HTML).
+    attr_accessor :label
 
     # The maximum value of this meter.
     attr_accessor :max
@@ -1793,29 +1876,31 @@ module Datasworn
     # The minimum value of this meter.
     attr_accessor :min
 
-    # A label for this input. In some contexts it may be undesirable to render
-    # this text, but it should always be exposed to assistive technology (e.g.
-    # with `aria-label` in HTML).
-    attr_accessor :name
+    # Is this condition meter shared by all players?
     attr_accessor :shared
+
+    # The current value of this meter.
+    attr_accessor :value
 
     def self.from_json_data(data)
       out = ConditionMeterRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
       out.shared = Datasworn::from_json_data(TrueClass, data["shared"])
+      out.value = Datasworn::from_json_data(Integer, data["value"])
       out
     end
 
     def to_json_data
       data = {}
       data["description"] = Datasworn::to_json_data(description)
+      data["label"] = Datasworn::to_json_data(label)
       data["max"] = Datasworn::to_json_data(max)
       data["min"] = Datasworn::to_json_data(min)
-      data["name"] = Datasworn::to_json_data(name)
       data["shared"] = Datasworn::to_json_data(shared)
+      data["value"] = Datasworn::to_json_data(value)
       data
     end
   end
@@ -1850,16 +1935,53 @@ module Datasworn
     end
   end
 
+  class DelveCardType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    # A delve site domain card.
+    DOMAIN = new("domain")
+
+    # A delve site theme card.
+    THEME = new("theme")
+
+    def self.from_json_data(data)
+      {
+        "domain" => DOMAIN,
+        "theme" => THEME,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
   # A delve site with a theme, domain, and denizen table.
   class DelveSite
     attr_accessor :denizens
     attr_accessor :description
     attr_accessor :domain
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
     attr_accessor :rank
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
     attr_accessor :theme
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
 
     # An additional theme or domain card ID, for use with optional rules in
@@ -1911,6 +2033,8 @@ module Datasworn
 
   class DelveSiteDenizen
     attr_accessor :frequency
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
     attr_accessor :max
     attr_accessor :min
@@ -1986,6 +2110,7 @@ module Datasworn
     end
   end
 
+  # A delve site domain card.
   class DelveSiteDomainCardType
     attr_accessor :value
 
@@ -2009,13 +2134,24 @@ module Datasworn
   end
 
   class DelveSiteDomain
+    # A delve site domain card.
     attr_accessor :card_type
     attr_accessor :dangers
     attr_accessor :features
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
     attr_accessor :summary
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
     attr_accessor :description
     attr_accessor :icon
@@ -2064,14 +2200,13 @@ module Datasworn
   end
 
   class DelveSiteDomainDangerRow
+    # The unique Datasworn ID for this item.
     attr_accessor :id
 
-    # High end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # High end of the dice range for this table row.
     attr_accessor :max
 
-    # Low end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # Low end of the dice range for this table row.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description
@@ -2119,14 +2254,13 @@ module Datasworn
   end
 
   class DelveSiteDomainFeatureRow
+    # The unique Datasworn ID for this item.
     attr_accessor :id
 
-    # High end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # High end of the dice range for this table row.
     attr_accessor :max
 
-    # Low end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # Low end of the dice range for this table row.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description
@@ -2201,6 +2335,7 @@ module Datasworn
     end
   end
 
+  # A delve site theme card.
   class DelveSiteThemeCardType
     attr_accessor :value
 
@@ -2224,13 +2359,24 @@ module Datasworn
   end
 
   class DelveSiteTheme
+    # A delve site theme card.
     attr_accessor :card_type
     attr_accessor :dangers
     attr_accessor :features
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
     attr_accessor :summary
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
     attr_accessor :description
     attr_accessor :icon
@@ -2270,14 +2416,13 @@ module Datasworn
   end
 
   class DelveSiteThemeDangerRow
+    # The unique Datasworn ID for this item.
     attr_accessor :id
 
-    # High end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # High end of the dice range for this table row.
     attr_accessor :max
 
-    # Low end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # Low end of the dice range for this table row.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description
@@ -2325,14 +2470,13 @@ module Datasworn
   end
 
   class DelveSiteThemeFeatureRow
+    # The unique Datasworn ID for this item.
     attr_accessor :id
 
-    # High end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # High end of the dice range for this table row.
     attr_accessor :max
 
-    # Low end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # Low end of the dice range for this table row.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description
@@ -2513,16 +2657,22 @@ module Datasworn
     end
   end
 
+  # Describes a category of standard impacts/debilities.
   class ImpactCategory
+    # A dictionary object of the Impacts in this category.
     attr_accessor :contents
+
+    # A description of this impact category.
     attr_accessor :description
-    attr_accessor :name
+
+    # A label for this impact category.
+    attr_accessor :label
 
     def self.from_json_data(data)
       out = ImpactCategory.new
       out.contents = Datasworn::from_json_data(Hash[String, ImpactRule], data["contents"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out
     end
 
@@ -2530,22 +2680,32 @@ module Datasworn
       data = {}
       data["contents"] = Datasworn::to_json_data(contents)
       data["description"] = Datasworn::to_json_data(description)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data
     end
   end
 
+  # Describes a standard impact/debility.
   class ImpactRule
+    # A description of this impact.
     attr_accessor :description
-    attr_accessor :name
+
+    # The label for this impact.
+    attr_accessor :label
+
+    # Is this impact permanent?
     attr_accessor :permanent
+
+    # Keys of ruleset condition meters, to which this impact prevents recovery.
     attr_accessor :prevents_recovery
+
+    # Is this impact applied to all players at once?
     attr_accessor :shared
 
     def self.from_json_data(data)
       out = ImpactRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.permanent = Datasworn::from_json_data(TrueClass, data["permanent"])
       out.prevents_recovery = Datasworn::from_json_data(Array[DictKey], data["prevents_recovery"])
       out.shared = Datasworn::from_json_data(TrueClass, data["shared"])
@@ -2555,7 +2715,7 @@ module Datasworn
     def to_json_data
       data = {}
       data["description"] = Datasworn::to_json_data(description)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["permanent"] = Datasworn::to_json_data(permanent)
       data["prevents_recovery"] = Datasworn::to_json_data(prevents_recovery)
       data["shared"] = Datasworn::to_json_data(shared)
@@ -2638,7 +2798,6 @@ module Datasworn
     end
   end
 
-  # A move that makes an action roll.
   class MoveActionRoll < Move
     attr_accessor :id
     attr_accessor :name
@@ -2686,7 +2845,6 @@ module Datasworn
   class MoveNoRoll < Move
     attr_accessor :id
     attr_accessor :name
-    attr_accessor :outcomes
     attr_accessor :source
     attr_accessor :text
     attr_accessor :trigger
@@ -2700,7 +2858,6 @@ module Datasworn
       out.roll_type = "no_roll"
       out.id = Datasworn::from_json_data(MoveID, data["id"])
       out.name = Datasworn::from_json_data(Label, data["name"])
-      out.outcomes = Datasworn::from_json_data(Object, data["outcomes"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.text = Datasworn::from_json_data(MarkdownString, data["text"])
       out.trigger = Datasworn::from_json_data(TriggerNoRoll, data["trigger"])
@@ -2715,7 +2872,6 @@ module Datasworn
       data = { "roll_type" => "no_roll" }
       data["id"] = Datasworn::to_json_data(id)
       data["name"] = Datasworn::to_json_data(name)
-      data["outcomes"] = Datasworn::to_json_data(outcomes)
       data["source"] = Datasworn::to_json_data(source)
       data["text"] = Datasworn::to_json_data(text)
       data["trigger"] = Datasworn::to_json_data(trigger)
@@ -2727,15 +2883,13 @@ module Datasworn
     end
   end
 
-  # A progress move that rolls on a standard progress track type (defined by the
-  # move object).
   class MoveProgressRoll < Move
     attr_accessor :id
     attr_accessor :name
     attr_accessor :outcomes
     attr_accessor :source
     attr_accessor :text
-    attr_accessor :track_label
+    attr_accessor :tracks
     attr_accessor :trigger
     attr_accessor :canonical_name
     attr_accessor :oracles
@@ -2750,7 +2904,7 @@ module Datasworn
       out.outcomes = Datasworn::from_json_data(MoveOutcomes, data["outcomes"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.text = Datasworn::from_json_data(MarkdownString, data["text"])
-      out.track_label = Datasworn::from_json_data(Label, data["track_label"])
+      out.tracks = Datasworn::from_json_data(ProgressTrackTypeInfo, data["tracks"])
       out.trigger = Datasworn::from_json_data(TriggerProgressRoll, data["trigger"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
       out.oracles = Datasworn::from_json_data(Array[OracleTableID], data["oracles"])
@@ -2766,7 +2920,7 @@ module Datasworn
       data["outcomes"] = Datasworn::to_json_data(outcomes)
       data["source"] = Datasworn::to_json_data(source)
       data["text"] = Datasworn::to_json_data(text)
-      data["track_label"] = Datasworn::to_json_data(track_label)
+      data["tracks"] = Datasworn::to_json_data(tracks)
       data["trigger"] = Datasworn::to_json_data(trigger)
       data["canonical_name"] = Datasworn::to_json_data(canonical_name) unless canonical_name.nil?
       data["oracles"] = Datasworn::to_json_data(oracles) unless oracles.nil?
@@ -2822,16 +2976,34 @@ module Datasworn
 
   class MoveCategory
     attr_accessor :contents
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
+
+    # A thematic color associated with this collection.
     attr_accessor :color
+
+    # A longer description of this collection, which might include multiple
+    # paragraphs. If it's only a couple sentences, use the `summary` key
+    # instead.
     attr_accessor :description
 
     # This collection's content enhances the identified collection, rather than
     # being a standalone collection of its own.
     attr_accessor :enhances
+
+    # An SVG icon associated with this collection.
     attr_accessor :icon
     attr_accessor :images
 
@@ -2839,6 +3011,10 @@ module Datasworn
     # replaced collection can be considered equivalent to this collection.
     attr_accessor :replaces
     attr_accessor :suggestions
+
+    # A brief summary of this collection, no more than a few sentences in
+    # length. This is intended for use in application tooltips and similar sorts
+    # of hints. Longer text should use the "description" key instead.
     attr_accessor :summary
 
     def self.from_json_data(data)
@@ -3040,8 +3216,13 @@ module Datasworn
 
     private_class_method :new
 
+    # The score doesn't beat either challenge die.
     MISS = new("miss")
+
+    # The score is greater than both challenge dice.
     STRONG_HIT = new("strong_hit")
+
+    # The score is greater than one challenge die.
     WEAK_HIT = new("weak_hit")
 
     def self.from_json_data(data)
@@ -3096,9 +3277,18 @@ module Datasworn
 
     private_class_method :new
 
+    # A move that makes an action roll.
     ACTION_ROLL = new("action_roll")
+
+    # A move that makes no action rolls or progress rolls.
     NO_ROLL = new("no_roll")
+
+    # A progress move that rolls on a standard progress track type (defined by
+    # this move).
     PROGRESS_ROLL = new("progress_roll")
+
+    # A progress move that rolls on one or more special tracks, like Bonds
+    # (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
     SPECIAL_TRACK = new("special_track")
 
     def self.from_json_data(data)
@@ -3135,13 +3325,25 @@ module Datasworn
     attr_accessor :description
     attr_accessor :drives
     attr_accessor :features
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
     attr_accessor :nature
     attr_accessor :quest_starter
+
+    # The suggested challenge rank for this NPC.
     attr_accessor :rank
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
     attr_accessor :tactics
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
     attr_accessor :suggestions
     attr_accessor :summary
@@ -3191,16 +3393,34 @@ module Datasworn
 
   class NpcCollection
     attr_accessor :contents
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
+
+    # A thematic color associated with this collection.
     attr_accessor :color
+
+    # A longer description of this collection, which might include multiple
+    # paragraphs. If it's only a couple sentences, use the `summary` key
+    # instead.
     attr_accessor :description
 
     # This collection's content enhances the identified collection, rather than
     # being a standalone collection of its own.
     attr_accessor :enhances
+
+    # An SVG icon associated with this collection.
     attr_accessor :icon
     attr_accessor :images
 
@@ -3208,6 +3428,10 @@ module Datasworn
     # replaced collection can be considered equivalent to this collection.
     attr_accessor :replaces
     attr_accessor :suggestions
+
+    # A brief summary of this collection, no more than a few sentences in
+    # length. This is intended for use in application tooltips and similar sorts
+    # of hints. Longer text should use the "description" key instead.
     attr_accessor :summary
 
     def self.from_json_data(data)
@@ -3311,9 +3535,13 @@ module Datasworn
 
   class NpcVariant
     attr_accessor :description
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
     attr_accessor :name
     attr_accessor :nature
+
+    # The suggested challenge rank for this NPC.
     attr_accessor :rank
     attr_accessor :summary
 
@@ -3357,16 +3585,34 @@ module Datasworn
   class OracleCollection
     attr_accessor :collections
     attr_accessor :contents
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
+
+    # A thematic color associated with this collection.
     attr_accessor :color
+
+    # A longer description of this collection, which might include multiple
+    # paragraphs. If it's only a couple sentences, use the `summary` key
+    # instead.
     attr_accessor :description
 
     # This collection's content enhances the identified collection, rather than
     # being a standalone collection of its own.
     attr_accessor :enhances
+
+    # An SVG icon associated with this collection.
     attr_accessor :icon
     attr_accessor :images
     attr_accessor :rendering
@@ -3375,6 +3621,10 @@ module Datasworn
     # replaced collection can be considered equivalent to this collection.
     attr_accessor :replaces
     attr_accessor :suggestions
+
+    # A brief summary of this collection, no more than a few sentences in
+    # length. This is intended for use in application tooltips and similar sorts
+    # of hints. Longer text should use the "description" key instead.
     attr_accessor :summary
 
     def self.from_json_data(data)
@@ -3432,24 +3682,46 @@ module Datasworn
     end
   end
 
+  # Describes the presentation of this oracle collection, which might represent
+  # a group of separate tables, or a single table with additional columns.
   class OracleCollectionRendering
-    attr_accessor :columns
-    attr_accessor :color
-    attr_accessor :table_style
+    attr_accessor :style
 
     def self.from_json_data(data)
-      out = OracleCollectionRendering.new
+      {
+        "multi_table" => OracleCollectionRenderingMultiTable,
+        "tables" => OracleCollectionRenderingTables,
+      }[data["style"]].from_json_data(data)
+    end
+  end
+
+  class OracleCollectionRenderingMultiTable < OracleCollectionRendering
+    attr_accessor :columns
+
+    def self.from_json_data(data)
+      out = OracleCollectionRenderingMultiTable.new
+      out.style = "multi_table"
       out.columns = Datasworn::from_json_data(Hash[String, OracleCollectionTableColumn], data["columns"])
-      out.color = Datasworn::from_json_data(CSSColor, data["color"])
-      out.table_style = Datasworn::from_json_data(OracleCollectionStyle, data["table_style"])
       out
     end
 
     def to_json_data
-      data = {}
+      data = { "style" => "multi_table" }
       data["columns"] = Datasworn::to_json_data(columns)
-      data["color"] = Datasworn::to_json_data(color) unless color.nil?
-      data["table_style"] = Datasworn::to_json_data(table_style) unless table_style.nil?
+      data
+    end
+  end
+
+  class OracleCollectionRenderingTables < OracleCollectionRendering
+
+    def self.from_json_data(data)
+      out = OracleCollectionRenderingTables.new
+      out.style = "tables"
+      out
+    end
+
+    def to_json_data
+      data = { "style" => "tables" }
       data
     end
   end
@@ -3463,13 +3735,17 @@ module Datasworn
 
     private_class_method :new
 
-    COLLECTION = new("collection")
+    # Presented as a single table, with its OracleTable children rendered as
+    # columns.
     MULTI_TABLE = new("multi_table")
+
+    # Presented as a collection of separate tables.
+    TABLES = new("tables")
 
     def self.from_json_data(data)
       {
-        "collection" => COLLECTION,
         "multi_table" => MULTI_TABLE,
+        "tables" => TABLES,
       }[data]
     end
 
@@ -3481,6 +3757,9 @@ module Datasworn
   class OracleCollectionTableColumn
     attr_accessor :content_type
 
+    # The column's header text.
+    attr_accessor :label
+
     # The key of the OracleTable (within this collection), whose data is used to
     # render this column.
     attr_accessor :table_key
@@ -3488,24 +3767,21 @@ module Datasworn
     # The thematic color for this column.
     attr_accessor :color
 
-    # The column's header text.
-    attr_accessor :name
-
     def self.from_json_data(data)
       out = OracleCollectionTableColumn.new
       out.content_type = Datasworn::from_json_data(OracleTableColumnContentKey, data["content_type"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.table_key = Datasworn::from_json_data(DictKey, data["table_key"])
       out.color = Datasworn::from_json_data(CSSColor, data["color"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
       out
     end
 
     def to_json_data
       data = {}
       data["content_type"] = Datasworn::to_json_data(content_type)
+      data["label"] = Datasworn::to_json_data(label)
       data["table_key"] = Datasworn::to_json_data(table_key)
       data["color"] = Datasworn::to_json_data(color) unless color.nil?
-      data["name"] = Datasworn::to_json_data(name) unless name.nil?
       data
     end
   end
@@ -3546,20 +3822,39 @@ module Datasworn
   end
 
   class OracleTable
+    # The roll used to select a result on this table.
     attr_accessor :dice
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
     attr_accessor :table
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
 
     # A longer description of the oracle table's intended usage, which might
     # include multiple paragraphs. If it's only a couple sentences, use the
     # `summary` key instead.
     attr_accessor :description
+
+    # An icon that represents this table.
     attr_accessor :icon
     attr_accessor :images
+
+    # Most oracle tables are insensitive to matches, but a few define special
+    # match behavior.
     attr_accessor :match
+
+    # Describes how how to render this table, when presenting it as a standalone
+    # table.
     attr_accessor :rendering
 
     # Indicates that this table replaces the identified table. References to the
@@ -3615,25 +3910,25 @@ module Datasworn
   class OracleTableColumn
     attr_accessor :content_type
 
+    # The column's header text.
+    attr_accessor :label
+
     # The thematic color for this column.
     attr_accessor :color
-
-    # The column's header text.
-    attr_accessor :name
 
     def self.from_json_data(data)
       out = OracleTableColumn.new
       out.content_type = Datasworn::from_json_data(OracleTableColumnContentKey, data["content_type"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.color = Datasworn::from_json_data(CSSColor, data["color"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
       out
     end
 
     def to_json_data
       data = {}
       data["content_type"] = Datasworn::to_json_data(content_type)
+      data["label"] = Datasworn::to_json_data(label)
       data["color"] = Datasworn::to_json_data(color) unless color.nil?
-      data["name"] = Datasworn::to_json_data(name) unless name.nil?
       data
     end
   end
@@ -3648,9 +3943,16 @@ module Datasworn
 
     private_class_method :new
 
+    # Column displays the OracleTableRow's `description` key.
     DESCRIPTION = new("description")
+
+    # Column displays the OracleTableRow's `result` key.
     RESULT = new("result")
+
+    # Column displays the roll range (`min` and `max`) of each OracleTableRow.
     ROLL = new("roll")
+
+    # Column displays the OracleTableRow's `summary` key.
     SUMMARY = new("summary")
 
     def self.from_json_data(data)
@@ -3713,21 +4015,60 @@ module Datasworn
     end
   end
 
+  # Describes the presentation of this table.
   class OracleTableRendering
-    attr_accessor :columns
-    attr_accessor :table_style
+    attr_accessor :style
 
     def self.from_json_data(data)
-      out = OracleTableRendering.new
-      out.columns = Datasworn::from_json_data(Hash[String, OracleTableColumn], data["columns"])
-      out.table_style = Datasworn::from_json_data(OracleTableStyle, data["table_style"])
+      {
+        "column" => OracleTableRenderingColumn,
+        "embed_in_row" => OracleTableRenderingEmbedInRow,
+        "standalone" => OracleTableRenderingStandalone,
+      }[data["style"]].from_json_data(data)
+    end
+  end
+
+  class OracleTableRenderingColumn < OracleTableRendering
+
+    def self.from_json_data(data)
+      out = OracleTableRenderingColumn.new
+      out.style = "column"
       out
     end
 
     def to_json_data
-      data = {}
+      data = { "style" => "column" }
+      data
+    end
+  end
+
+  class OracleTableRenderingEmbedInRow < OracleTableRendering
+
+    def self.from_json_data(data)
+      out = OracleTableRenderingEmbedInRow.new
+      out.style = "embed_in_row"
+      out
+    end
+
+    def to_json_data
+      data = { "style" => "embed_in_row" }
+      data
+    end
+  end
+
+  class OracleTableRenderingStandalone < OracleTableRendering
+    attr_accessor :columns
+
+    def self.from_json_data(data)
+      out = OracleTableRenderingStandalone.new
+      out.style = "standalone"
+      out.columns = Datasworn::from_json_data(Hash[String, OracleTableColumn], data["columns"])
+      out
+    end
+
+    def to_json_data
+      data = { "style" => "standalone" }
       data["columns"] = Datasworn::to_json_data(columns)
-      data["table_style"] = Datasworn::to_json_data(table_style) unless table_style.nil?
       data
     end
   end
@@ -3776,8 +4117,13 @@ module Datasworn
 
     private_class_method :new
 
+    # Duplicates should be kept.
     KEEP_DUPLICATES = new("keep_duplicates")
+
+    # Duplicates should be kept, and they compound to make things worse.
     MAKE_IT_WORSE = new("make_it_worse")
+
+    # Duplicates should be re-rolled.
     NO_DUPLICATES = new("no_duplicates")
 
     def self.from_json_data(data)
@@ -3794,8 +4140,15 @@ module Datasworn
   end
 
   class OracleTableRow
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # High end of the dice range for this table row. `null` represents an
+    # unrollable row, included only for rendering purposes.
     attr_accessor :max
+
+    # Low end of the dice range for this table row. `null` represents an
+    # unrollable row, included only for rendering purposes.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description
@@ -3871,15 +4224,20 @@ module Datasworn
 
     private_class_method :new
 
-    EMBED_AS_COLUMN = new("embed_as_column")
+    # Render as a single column of a table.
+    COLUMN = new("column")
+
+    # Render as a table, within a row in another table.
     EMBED_IN_ROW = new("embed_in_row")
-    STANDALONE_TABLE = new("standalone_table")
+
+    # Render as a standalone table.
+    STANDALONE = new("standalone")
 
     def self.from_json_data(data)
       {
-        "embed_as_column" => EMBED_AS_COLUMN,
+        "column" => COLUMN,
         "embed_in_row" => EMBED_IN_ROW,
-        "standalone_table" => STANDALONE_TABLE,
+        "standalone" => STANDALONE,
       }[data]
     end
 
@@ -3897,13 +4255,28 @@ module Datasworn
 
     private_class_method :new
 
+    # An adjective.
     ADJECTIVE = new("adjective")
+
+    # A common noun used as an adjective, to modify another noun.
     ADJUNCT_COMMON_NOUN = new("adjunct_common_noun")
+
+    # A proper noun used as an adjective, to modify another noun.
     ADJUNCT_PROPER_NOUN = new("adjunct_proper_noun")
+
+    # A verb used as an adjective, to modify a noun.
     ATTRIBUTIVE_VERB = new("attributive_verb")
+
+    # A common noun.
     COMMON_NOUN = new("common_noun")
+
+    # Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
     GERUND = new("gerund")
+
+    # A proper noun.
     PROPER_NOUN = new("proper_noun")
+
+    # A verb in present tense
     VERB = new("verb")
 
     def self.from_json_data(data)
@@ -3963,9 +4336,16 @@ module Datasworn
 
     private_class_method :new
 
+    # An automatic miss.
     MISS = new("miss")
+
+    # Make a progress roll on a progress track associated with this move.
     PROGRESS_ROLL = new("progress_roll")
+
+    # An automatic strong hit.
     STRONG_HIT = new("strong_hit")
+
+    # An automatic weak hit.
     WEAK_HIT = new("weak_hit")
 
     def self.from_json_data(data)
@@ -4020,13 +4400,54 @@ module Datasworn
     end
   end
 
+  class ProgressTrackTypeInfoControl
+
+    def self.from_json_data(data)
+      out = ProgressTrackTypeInfoControl.new
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data
+    end
+  end
+
+  # Describes the features of a type of progress track.
+  class ProgressTrackTypeInfo
+    # A category label for progress tracks of this type.
+    attr_accessor :category
+    attr_accessor :controls
+
+    def self.from_json_data(data)
+      out = ProgressTrackTypeInfo.new
+      out.category = Datasworn::from_json_data(Label, data["category"])
+      out.controls = Datasworn::from_json_data(Hash[String, ProgressTrackTypeInfoControl], data["controls"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["category"] = Datasworn::to_json_data(category)
+      data["controls"] = Datasworn::to_json_data(controls) unless controls.nil?
+      data
+    end
+  end
+
   # A rarity, as described in Ironsworn: Delve.
   class Rarity
     # The asset augmented by this rarity.
     attr_accessor :asset
     attr_accessor :description
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
 
     # From Ironsworn: Delve, p. 174:
@@ -4039,6 +4460,9 @@ module Datasworn
     # balance of rarity abilities, you can ignore these variable costs. If so,
     # spend 3 experience points to purchase a rarity.
     attr_accessor :xp_cost
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
     attr_accessor :icon
     attr_accessor :suggestions
@@ -4086,10 +4510,22 @@ module Datasworn
     end
   end
 
+  # Describes rules for player characters in this ruleset, such as stats and
+  # condition meters.
   class Rules
+    # Describes the standard condition meters used by player characters in this
+    # ruleset.
     attr_accessor :condition_meters
+
+    # Describes the standard impacts/debilities used by player characters in
+    # this ruleset.
     attr_accessor :impacts
+
+    # Describes the special tracks used by player characters in this ruleset,
+    # like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
     attr_accessor :special_tracks
+
+    # Describes the standard stats used by player characters in this ruleset.
     attr_accessor :stats
 
     def self.from_json_data(data)
@@ -4144,6 +4580,13 @@ module Datasworn
     # The date of the source documents's last update, formatted YYYY-MM-DD.
     # Required because it's used to determine whether the data needs updating.
     attr_accessor :date
+
+    # An absolute URL pointing to the location where this element's license can
+    # be found.
+    # 
+    # A `null` here indicates that the content provides **no** license, and
+    # is not intended for redistribution.  Datasworn's build process skips
+    # unlicensed content by default.
     attr_accessor :license
 
     # The title of the source document.
@@ -4187,12 +4630,25 @@ module Datasworn
 
     private_class_method :new
 
+    # Use **every** roll option at once.
     ALL = new("all")
+
+    # Use the roll option with the best/highest value.
     HIGHEST = new("highest")
+
+    # Use the roll option with the worst/lowest value.
     LOWEST = new("lowest")
+
+    # An automatic miss.
     MISS = new("miss")
+
+    # The player chooses which roll option to use.
     PLAYER_CHOICE = new("player_choice")
+
+    # An automatic strong hit.
     STRONG_HIT = new("strong_hit")
+
+    # An automatic weak hit.
     WEAK_HIT = new("weak_hit")
 
     def self.from_json_data(data)
@@ -4212,16 +4668,25 @@ module Datasworn
     end
   end
 
+  # Describes a special track like Bonds (classic Ironsworn), Failure (Delve),
+  # or Legacies (Starforged).
   class SpecialTrackRule
+    # A description of this special track.
     attr_accessor :description
-    attr_accessor :name
+
+    # A label for this special track.
+    attr_accessor :label
+
+    # Is this track an optional rule?
     attr_accessor :optional
+
+    # Is this track shared by all players?
     attr_accessor :shared
 
     def self.from_json_data(data)
       out = SpecialTrackRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out.optional = Datasworn::from_json_data(TrueClass, data["optional"])
       out.shared = Datasworn::from_json_data(TrueClass, data["shared"])
       out
@@ -4230,7 +4695,7 @@ module Datasworn
     def to_json_data
       data = {}
       data["description"] = Datasworn::to_json_data(description)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data["optional"] = Datasworn::to_json_data(optional)
       data["shared"] = Datasworn::to_json_data(shared)
       data
@@ -4274,21 +4739,25 @@ module Datasworn
     end
   end
 
+  # Describes a standard player character stat.
   class StatRule
+    # A description of this stat.
     attr_accessor :description
-    attr_accessor :name
+
+    # A label for this stat.
+    attr_accessor :label
 
     def self.from_json_data(data)
       out = StatRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out.label = Datasworn::from_json_data(Label, data["label"])
       out
     end
 
     def to_json_data
       data = {}
       data["description"] = Datasworn::to_json_data(description)
-      data["name"] = Datasworn::to_json_data(name)
+      data["label"] = Datasworn::to_json_data(label)
       data
     end
   end
@@ -4313,6 +4782,7 @@ module Datasworn
     attr_accessor :moves
     attr_accessor :npcs
     attr_accessor :oracles
+    attr_accessor :rarities
     attr_accessor :site_domains
     attr_accessor :site_themes
 
@@ -4323,6 +4793,7 @@ module Datasworn
       out.moves = Datasworn::from_json_data(Array[MoveID], data["moves"])
       out.npcs = Datasworn::from_json_data(Array[NpcID], data["npcs"])
       out.oracles = Datasworn::from_json_data(Array[OracleTableID], data["oracles"])
+      out.rarities = Datasworn::from_json_data(Array[RarityID], data["rarities"])
       out.site_domains = Datasworn::from_json_data(Array[DelveSiteDomainID], data["site_domains"])
       out.site_themes = Datasworn::from_json_data(Array[DelveSiteThemeID], data["site_themes"])
       out
@@ -4335,6 +4806,7 @@ module Datasworn
       data["moves"] = Datasworn::to_json_data(moves) unless moves.nil?
       data["npcs"] = Datasworn::to_json_data(npcs) unless npcs.nil?
       data["oracles"] = Datasworn::to_json_data(oracles) unless oracles.nil?
+      data["rarities"] = Datasworn::to_json_data(rarities) unless rarities.nil?
       data["site_domains"] = Datasworn::to_json_data(site_domains) unless site_domains.nil?
       data["site_themes"] = Datasworn::to_json_data(site_themes) unless site_themes.nil?
       data
@@ -4431,7 +4903,7 @@ module Datasworn
   class TriggerActionRollCondition
     attr_accessor :method
 
-    # The options available when rolling with this trigger.
+    # The options available when rolling with this trigger condition.
     attr_accessor :roll_options
     attr_accessor :by
 
@@ -4458,9 +4930,12 @@ module Datasworn
   end
 
   class TriggerActionRollConditionEnhancement
+    # A `null` value means this condition provides no roll mechanic of its own;
+    # it must be used with another trigger condition that provides a non-null
+    # `method`.
     attr_accessor :method
 
-    # The options available when rolling with this trigger.
+    # The options available when rolling with this trigger condition.
     attr_accessor :roll_options
     attr_accessor :by
 
@@ -4548,10 +5023,6 @@ module Datasworn
   end
 
   class TriggerNoRollCondition
-    attr_accessor :method
-
-    # The options available when rolling with this trigger.
-    attr_accessor :roll_options
     attr_accessor :by
 
     # A markdown string of any trigger text specific to this trigger condition.
@@ -4559,8 +5030,6 @@ module Datasworn
 
     def self.from_json_data(data)
       out = TriggerNoRollCondition.new
-      out.method = Datasworn::from_json_data(Object, data["method"])
-      out.roll_options = Datasworn::from_json_data(Object, data["roll_options"])
       out.by = Datasworn::from_json_data(TriggerBy, data["by"])
       out.text = Datasworn::from_json_data(MarkdownString, data["text"])
       out
@@ -4568,8 +5037,6 @@ module Datasworn
 
     def to_json_data
       data = {}
-      data["method"] = Datasworn::to_json_data(method)
-      data["roll_options"] = Datasworn::to_json_data(roll_options)
       data["by"] = Datasworn::to_json_data(by) unless by.nil?
       data["text"] = Datasworn::to_json_data(text) unless text.nil?
       data
@@ -4619,7 +5086,7 @@ module Datasworn
   class TriggerProgressRollCondition
     attr_accessor :method
 
-    # The options available when rolling with this trigger.
+    # The options available when rolling with this trigger condition.
     attr_accessor :roll_options
     attr_accessor :by
 
@@ -4646,9 +5113,12 @@ module Datasworn
   end
 
   class TriggerProgressRollConditionEnhancement
+    # A `null` value means this condition provides no roll mechanic of its own;
+    # it must be used with another trigger condition that provides a non-null
+    # `method`.
     attr_accessor :method
 
-    # The options available when rolling with this trigger.
+    # The options available when rolling with this trigger condition.
     attr_accessor :roll_options
     attr_accessor :by
 
@@ -4717,7 +5187,7 @@ module Datasworn
   class TriggerSpecialTrackCondition
     attr_accessor :method
 
-    # The options available when rolling with this trigger.
+    # The options available when rolling with this trigger condition.
     attr_accessor :roll_options
     attr_accessor :by
 
@@ -4746,9 +5216,12 @@ module Datasworn
   # A progress move that rolls on one or more special tracks, like Bonds
   # (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
   class TriggerSpecialTrackConditionEnhancement
+    # A `null` value means this condition provides no roll mechanic of its own;
+    # it must be used with another trigger condition that provides a non-null
+    # `method`.
     attr_accessor :method
 
-    # The options available when rolling with this trigger.
+    # The options available when rolling with this trigger condition.
     attr_accessor :roll_options
     attr_accessor :by
 
@@ -4808,10 +5281,19 @@ module Datasworn
 
   # A setting truth category.
   class Truth
+    # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The primary name/label for this item.
     attr_accessor :name
     attr_accessor :options
+
+    # Attribution for the original source (such as a book or website) of this
+    # item, including the author and licensing information.
     attr_accessor :source
+
+    # The name of this item as it appears on the page in the book, if it's
+    # different from `name`.
     attr_accessor :canonical_name
     attr_accessor :icon
     attr_accessor :suggestions
@@ -4860,6 +5342,8 @@ module Datasworn
 
   class TruthOption
     attr_accessor :description
+
+    # The unique Datasworn ID for this item.
     attr_accessor :id
     attr_accessor :quest_starter
     attr_accessor :max
@@ -4907,7 +5391,12 @@ module Datasworn
   end
 
   class TruthOptionTableRow
+    # High end of the dice range for this table row. `null` represents an
+    # unrollable row, included only for rendering purposes.
     attr_accessor :max
+
+    # Low end of the dice range for this table row. `null` represents an
+    # unrollable row, included only for rendering purposes.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description

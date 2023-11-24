@@ -49,7 +49,8 @@ export function TriggerCondition<
 	RollOptions extends TFuzzyNull<TArray<TFuzzyObject<{ using: TSchema }>>>
 >(method: Method, rollOptions: RollOptions, options: ObjectOptions = {}) {
 	const roll_options: RollOptions = {
-		description: 'The options available when rolling with this trigger.',
+		description:
+			'The options available when rolling with this trigger condition.',
 		...rollOptions
 	}
 	return Generic.Flatten(

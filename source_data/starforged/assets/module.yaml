@@ -32,8 +32,8 @@ assets:
             title: 'Ironsworn: Starforged Assets'
           controls:
             broken:
+              label: broken
               field_type: card_flip
-              name: broken
               disables_asset: true
         abilities:
           - text: |-
@@ -87,7 +87,7 @@ assets:
         controls:
           cargo:
             field_type: condition_meter
-            name: cargo
+            label: cargo
             max: 3
             value: 0
             min: 0
@@ -322,7 +322,7 @@ assets:
         controls:
           ammo:
             field_type: condition_meter
-            name: ammo
+            label: ammo
             max: 5
             value: 5
             min: 0
@@ -377,8 +377,8 @@ assets:
         name: Overseer
         options: &Options_Name
           name:
+            label: Name
             field_type: text
-            name: Name
         <<: *ModuleAsset
         abilities:
           - text: |-
@@ -642,7 +642,7 @@ assets:
                       text: In your vehicle
         controls:
           shields:
-            name: shields
+            label: shields
             field_type: condition_meter
             max: 4
             value: 0

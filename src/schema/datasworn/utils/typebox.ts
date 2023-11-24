@@ -205,8 +205,10 @@ export function WithDefaults<T extends TObject>(
 
 export const LiteralZero = Type.Literal(0, {
 	default: 0,
-	[JsonTypeDef]: { schema: { type: 'uint8' } }
+	[JsonTypeDef]: { schema: { type: 'int8' } }
 })
+// manually set to "integer" b/c Type.Literal defaults to "number"
+LiteralZero.type = 'integer'
 export type LiteralZero = 0
 /**
  * A schema that resolves to a given type.
@@ -237,6 +239,7 @@ export function setDescriptions<T extends TObject>(
 	override = true
 ) {
 	for (const [property, description] of Object.entries(descriptions)) {
+		if (schema.properties[property] == null) continue
 		if (!override && !isEmpty(schema.properties[property].description)) continue
 		schema.properties[property].description = description
 	}

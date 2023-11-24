@@ -9,12 +9,24 @@ namespace Datasworn
     [JsonConverter(typeof(ProgressRollMethodJsonConverter))]
     public enum ProgressRollMethod
     {
+        /// <summary>
+        /// An automatic miss.
+        /// </summary>
         Miss,
 
+        /// <summary>
+        /// Make a progress roll on a progress track associated with this move.
+        /// </summary>
         ProgressRoll,
 
+        /// <summary>
+        /// An automatic strong hit.
+        /// </summary>
         StrongHit,
 
+        /// <summary>
+        /// An automatic weak hit.
+        /// </summary>
         WeakHit,
     }
     public class ProgressRollMethodJsonConverter : JsonConverter<ProgressRollMethod>

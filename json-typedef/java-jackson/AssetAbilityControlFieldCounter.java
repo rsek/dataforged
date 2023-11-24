@@ -5,22 +5,19 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * A counter that starts at zero, with an optional maximum value.
- */
 @JsonSerialize
 public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
     @JsonProperty("id")
     private AssetAbilityControlFieldId id;
 
+    @JsonProperty("label")
+    private Label label;
+
     @JsonProperty("max")
     private Short max;
 
     @JsonProperty("min")
-    private UnsignedByte min;
-
-    @JsonProperty("name")
-    private Label name;
+    private Byte min;
 
     @JsonProperty("value")
     private Short value;
@@ -30,6 +27,7 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public AssetAbilityControlFieldId getId() {
         return id;
@@ -37,13 +35,35 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(AssetAbilityControlFieldId id) {
         this.id = id;
     }
 
     /**
+     * Getter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
+     */
+    public Label getLabel() {
+        return label;
+    }
+
+    /**
+     * Setter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
+     */
+    public void setLabel(Label label) {
+        this.label = label;
+    }
+
+    /**
      * Getter for max.<p>
+     * The (inclusive) maximum value.
      */
     public Short getMax() {
         return max;
@@ -51,6 +71,7 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
 
     /**
      * Setter for max.<p>
+     * The (inclusive) maximum value.
      */
     public void setMax(Short max) {
         this.max = max;
@@ -60,7 +81,7 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
      * Getter for min.<p>
      * The (inclusive) minimum value.
      */
-    public UnsignedByte getMin() {
+    public Byte getMin() {
         return min;
     }
 
@@ -68,28 +89,8 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
      * Setter for min.<p>
      * The (inclusive) minimum value.
      */
-    public void setMin(UnsignedByte min) {
+    public void setMin(Byte min) {
         this.min = min;
-    }
-
-    /**
-     * Getter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
-     */
-    public Label getName() {
-        return name;
-    }
-
-    /**
-     * Setter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
-     */
-    public void setName(Label name) {
-        this.name = name;
     }
 
     /**

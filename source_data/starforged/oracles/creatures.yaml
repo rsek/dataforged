@@ -568,37 +568,37 @@ oracles:
         # content:
         # part_of_speech: [fragment]
         rendering:
-          table_style: multi_table
+          style: multi_table
           columns:
             space:
               content_type: roll
               table_key: space
-              name: Space
+              label: Space
               color: &color.Space '#121b21'
             interior:
               content_type: roll
               table_key: interior
-              name: Interior
+              label: Interior
               color: &color.Interior '#707a83'
             land:
               content_type: roll
               table_key: land
-              name: Land
+              label: Land
               color: &color.Land '#ed1a38'
             liquid:
               content_type: roll
               table_key: liquid
-              name: Liquid
+              label: Liquid
               color: &color.Liquid '#0082bf'
             air:
               content_type: roll
               table_key: air
-              name: Air
+              label: Air
               color: &color.Air '#90278f'
             result:
               content_type: result
               table_key: space
-              name: Result
+              label: Result
         summary: |-
           Roll for a basic form, and flesh out the creature’s appearance using the [First Look](id:starforged/oracles/creatures/first_look) table.
         contents:
@@ -609,7 +609,7 @@ oracles:
             icon: *icon.Space
             # color: *color.Space
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             # requires:
             #   attributes:
@@ -696,7 +696,7 @@ oracles:
               <<: *Source
             icon: *icon.Interior
             rendering:
-              table_style: embed_as_column
+              style: column
               # color: *color.Interior
             # usage:
             #   requires:
@@ -779,7 +779,7 @@ oracles:
             # color: *color.Land
             icon: *icon.Land
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires:
             #     attributes:
@@ -859,7 +859,7 @@ oracles:
             source:
               <<: *Source
             rendering:
-              table_style: embed_as_column
+              style: column
             # color: *color.Liquid
             icon: *icon.Liquid
             # usage:
@@ -941,7 +941,7 @@ oracles:
             source:
               <<: *Source
             rendering:
-              table_style: embed_as_column
+              style: column
             # color: *color.Air
             icon: *icon.Air
             # usage:

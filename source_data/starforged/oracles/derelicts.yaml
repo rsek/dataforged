@@ -26,30 +26,31 @@ oracles:
         #   initial: true
         #   requires: *attr:Location.Any
         rendering:
+          style: multi_table
           columns:
             planetside:
               content_type: roll
               table_key: planetside
-              name: Planetside
+              label: Planetside
             orbital:
               content_type: roll
               table_key: orbital
-              name: Orbital
+              label: Orbital
             deep_space:
               content_type: roll
               table_key: deep_space
-              name: Deep Space
+              label: Deep Space
             result:
               content_type: result
               table_key: planetside
-              name: Result
+              label: Result
         contents:
           planetside:
             name: Planetside
             source: *CollectionSource
             icon: icon/oracles/location/planetside.svg
             rendering: &derelictTypeDisplay
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires: *attr:Location.Planetside
             table:
@@ -92,7 +93,7 @@ oracles:
             source: *CollectionSource
             icon: icon/oracles/location/deep_space.svg
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires: *attr:Location.DeepSpace
             table:
@@ -115,19 +116,20 @@ oracles:
           page: 351
         summary: &Zones.Summary If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.
         rendering:
+          style: multi_table
           columns:
             starship:
               content_type: roll
               table_key: starship
-              name: Starship
+              label: Starship
             settlement:
               content_type: roll
               table_key: settlement
-              name: Settlement
+              label: Settlement
             result:
               content_type: result
               table_key: starship
-              name: Result
+              label: Result
         # usage:
         #   repeatable: true
         #   requires:
@@ -139,7 +141,7 @@ oracles:
             source: *CollectionSource
             summary: *Zones.Summary
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires:
             #     attributes:
@@ -191,7 +193,7 @@ oracles:
             source: *CollectionSource
             summary: *Zones.Summary
             rendering:
-              table_style: embed_as_column
+              style: column
             # usage:
             #   requires:
             #     attributes:

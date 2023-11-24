@@ -545,19 +545,19 @@ oracles:
         name: Quick Settlement Name Generator
         summary: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
         rendering:
-          table_style: multi_table
+          style: multi_table
           columns:
             roll:
               content_type: roll
-              name: Roll
+              label: Roll
               table_key: prefix
             prefix:
               content_type: result
-              name: Prefix
+              label: Prefix
               table_key: prefix
             suffix:
               content_type: result
-              name: Suffix
+              label: Suffix
               table_key: suffix
         # template:
         #   result: '{{result:classic/oracles/settlement/quick_name/prefix}}{{result:classic/oracles/settlement/quick_name/suffix}}'
@@ -569,7 +569,7 @@ oracles:
             name: Prefix
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               # - [1, 4, Bleak-]
               # - [5, 8, Green-]
@@ -710,7 +710,7 @@ oracles:
             name: Suffix
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               # - [1, 4, -moor]
               # - [5, 8, -ford]

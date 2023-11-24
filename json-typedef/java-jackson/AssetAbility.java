@@ -64,6 +64,7 @@ public class AssetAbility {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public AssetAbilityId getId() {
         return id;
@@ -71,6 +72,7 @@ public class AssetAbility {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(AssetAbilityId id) {
         this.id = id;

@@ -42,7 +42,7 @@ public class TriggerSpecialTrackCondition {
 
     /**
      * Getter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public List<TriggerSpecialTrackConditionOption> getRollOptions() {
         return rollOptions;
@@ -50,7 +50,7 @@ public class TriggerSpecialTrackCondition {
 
     /**
      * Setter for rollOptions.<p>
-     * The options available when rolling with this trigger.
+     * The options available when rolling with this trigger condition.
      */
     public void setRollOptions(List<TriggerSpecialTrackConditionOption> rollOptions) {
         this.rollOptions = rollOptions;

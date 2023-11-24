@@ -7,19 +7,20 @@ namespace Datasworn
 {
     public class DelveSiteThemeDangerRow
     {
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public ThemeDangerRowId Id { get; set; }
 
         /// <summary>
-        /// High end of the dice range for this table row. `null` represents an
-        /// unrollable row, included only for rendering purposes.
+        /// High end of the dice range for this table row.
         /// </summary>
         [JsonPropertyName("max")]
         public short Max { get; set; }
 
         /// <summary>
-        /// Low end of the dice range for this table row. `null` represents an
-        /// unrollable row, included only for rendering purposes.
+        /// Low end of the dice range for this table row.
         /// </summary>
         [JsonPropertyName("min")]
         public short Min { get; set; }

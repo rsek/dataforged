@@ -4,12 +4,21 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Describes a standard player character stat.
+    /// </summary>
     public class StatRule
     {
+        /// <summary>
+        /// A description of this stat.
+        /// </summary>
         [JsonPropertyName("description")]
         public MarkdownString Description { get; set; }
 
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
+        /// <summary>
+        /// A label for this stat.
+        /// </summary>
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
     }
 }

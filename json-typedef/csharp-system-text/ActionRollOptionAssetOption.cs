@@ -10,6 +10,11 @@ namespace Datasworn
         [JsonPropertyName("using")]
         public string Using { get => "asset_option"; }
 
+        /// <summary>
+        /// Asset IDs (which may be wildcarded) that provide the option field.
+        /// For asset ability enhancements, `null` is used to represent the
+        /// asset's own option fields.
+        /// </summary>
         [JsonPropertyName("assets")]
         public IList<AssetIdWildcard> Assets { get; set; }
 

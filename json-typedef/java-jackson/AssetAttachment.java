@@ -40,6 +40,7 @@ public class AssetAttachment {
 
     /**
      * Getter for max.<p>
+     * Null if there's no upper limit to the number of attached assets.
      */
     public Short getMax() {
         return max;
@@ -47,6 +48,7 @@ public class AssetAttachment {
 
     /**
      * Setter for max.<p>
+     * Null if there's no upper limit to the number of attached assets.
      */
     public void setMax(Short max) {
         this.max = max;

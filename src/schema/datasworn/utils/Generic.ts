@@ -24,7 +24,7 @@ import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
 import * as Id from '../common/Id.js'
 import * as Localize from '../common/Localize.js'
 import * as Metadata from '../common/Metadata.js'
-import { type TMerge } from './typebox.js'
+import { Nullable, setDescriptions, TNullable, type TMerge } from './typebox.js'
 
 export type AnyID = TRef<TString | TUnionOneOf<TString[]>>
 
@@ -48,9 +48,19 @@ export type TDictionary<T extends TSchema = TSchema> = TRecord<TString, T> & {
 export type Dictionary<T> = Record<string, T>
 
 const SourcedNodeMixin = Type.Object({
-	name: Type.Ref(Localize.Label),
-	canonical_name: Type.Optional(Type.Ref(Localize.Label)),
-	source: Type.Ref(Metadata.Source),
+	name: Type.Ref(Localize.Label, {
+		description: 'The primary name/label for this item.'
+	}),
+	canonical_name: Type.Optional(
+		Type.Ref(Localize.Label, {
+			description:
+				"The name of this item as it appears on the page in the book, if it's different from `name`."
+		})
+	),
+	source: Type.Ref(Metadata.Source, {
+		description:
+			'Attribution for the original source (such as a book or website) of this item, including the author and licensing information.'
+	}),
 	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions))
 })
 
@@ -67,20 +77,24 @@ export function IdentifiedNode<T extends TObject>(
 	// 		options
 	// 	) as TIdentifiedNode<T>
 	// console.log('ADDED ID', result)
+	const { description, $comment } = schema
 
-	const result = Flatten(
-		[Type.Object({ id: OptionalInSource(id) }), schema],
-		options
-	)
+	const result = Flatten([Type.Object({ id: OptionalInSource(id) }), schema], {
+		description,
+		$comment,
+		...options
+	})
 
-	return result satisfies TIdentifiedNode<T>
+	return setDescriptions(result, {
+		id: 'The unique Datasworn ID for this item.'
+	}) satisfies TIdentifiedNode<T>
 }
 export type TIdentifiedNode<T extends TObject> = TObject<
 	T['properties'] & { id: TOptionalInSource<AnyID> }
 >
 export type IdentifiedNode<T extends object = object> = T & { id: string }
 
-export function SourcedNode<T extends TObject>(
+export function SourcedNode<T extends TObject = TObject>(
 	id: AnyID,
 	schema: T,
 	options: ObjectOptions = {}
@@ -108,7 +122,7 @@ export function SourcedNode<T extends TObject>(
 export type TSourcedNode<T extends TObject> = TIdentifiedNode<
 	TObject<(typeof SourcedNodeMixin)['properties'] & T['properties']>
 >
-export type SourcedNode<T extends object> = IdentifiedNode<T> & {
+export type SourcedNode<T extends object = object> = IdentifiedNode<T> & {
 	name: string
 	canonical_name?: string
 	source: Metadata.Source
@@ -219,11 +233,35 @@ export type TRecursiveCollectable<T extends TObject> = ReturnType<
 	}
 
 const CollectionMixin = Type.Object({
-	color: Type.Optional(Type.Ref(Metadata.CssColor)),
-	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-	description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-	images: Type.Optional(Type.Array(Type.Ref(Metadata.WebpImageUrl))),
-	icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl))
+	color: Type.Optional(
+		Type.Ref(Metadata.CssColor, {
+			description: 'A thematic color associated with this collection.'
+		})
+	),
+	summary: Type.Optional(
+		Type.Ref(Localize.MarkdownString, {
+			description:
+				'A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the "description" key instead.'
+		})
+	),
+	description: Type.Optional(
+		Type.Ref(Localize.MarkdownString, {
+			description:
+				"A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
+		})
+	),
+	images: Type.Optional(
+		Type.Array(
+			Type.Ref(Metadata.WebpImageUrl, {
+				description: 'Extra images associated with this collection.'
+			})
+		)
+	),
+	icon: Type.Optional(
+		Type.Ref(Metadata.SvgImageUrl, {
+			description: 'An SVG icon associated with this collection.'
+		})
+	)
 })
 
 export const CollectionBrand = Symbol('Collection')
@@ -382,3 +420,28 @@ export function PartialExcept<
 		options
 	)
 }
+export function SetNullable<
+	T extends TObject,
+	K extends Array<keyof Static<T>>
+>(schema: T, keys: [...K], options: ObjectOptions = {}) {
+	// @ts-expect-error
+	const base = TypeClone.Type(schema, options) as TSetNullable<T, K>
+
+	for (const key of keys as Array<keyof T['properties']>) {
+		if (!(key in base.properties)) continue
+		// @ts-expect-error
+		base.properties[key] = Nullable(base.properties[key])
+	}
+
+	return base
+}
+
+export type TSetNullable<
+	T extends TObject,
+	K extends Array<keyof Static<T>>
+> = TObject<
+	Omit<ObjectProperties<T>, K[number]> & {
+		[P in K[number]]: TNullable<ObjectProperties<T>[P]>
+	}
+>
+

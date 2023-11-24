@@ -9,12 +9,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * oracle table.
  */
 public enum OracleTableRollMethod {
+    /**
+     * Duplicates should be kept.
+     */
     @JsonProperty("keep_duplicates")
     KEEP_DUPLICATES,
 
+    /**
+     * Duplicates should be kept, and they compound to make things worse.
+     */
     @JsonProperty("make_it_worse")
     MAKE_IT_WORSE,
 
+    /**
+     * Duplicates should be re-rolled.
+     */
     @JsonProperty("no_duplicates")
     NO_DUPLICATES,
 }

@@ -12,12 +12,25 @@ namespace Datasworn
     [JsonConverter(typeof(OracleTableColumnContentKeyJsonConverter))]
     public enum OracleTableColumnContentKey
     {
+        /// <summary>
+        /// Column displays the OracleTableRow's `description` key.
+        /// </summary>
         Description,
 
+        /// <summary>
+        /// Column displays the OracleTableRow's `result` key.
+        /// </summary>
         Result,
 
+        /// <summary>
+        /// Column displays the roll range (`min` and `max`) of each
+        /// OracleTableRow.
+        /// </summary>
         Roll,
 
+        /// <summary>
+        /// Column displays the OracleTableRow's `summary` key.
+        /// </summary>
         Summary,
     }
     public class OracleTableColumnContentKeyJsonConverter : JsonConverter<OracleTableColumnContentKey>

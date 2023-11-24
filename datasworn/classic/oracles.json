@@ -15,6 +15,9 @@
 		"action_and_theme": {
 			"id": "classic/collections/oracles/action_and_theme",
 			"name": "Action and Theme Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"action": {
 					"id": "classic/oracles/action_and_theme/action",
@@ -2282,6 +2285,9 @@
 		"character": {
 			"id": "classic/collections/oracles/character",
 			"name": "Character",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"role": {
 					"id": "classic/oracles/character/role",
@@ -4004,6 +4010,9 @@
 		"moves": {
 			"id": "classic/collections/oracles/moves",
 			"name": "Moves",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"endure_harm": {
 					"id": "classic/oracles/moves/endure_harm",
@@ -4224,6 +4233,9 @@
 				"ask_the_oracle": {
 					"id": "classic/collections/oracles/moves/ask_the_oracle",
 					"name": "Ask the Oracle",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"almost_certain": {
 							"id": "classic/oracles/moves/ask_the_oracle/almost_certain",
@@ -4426,6 +4438,9 @@
 		"name": {
 			"id": "classic/collections/oracles/name",
 			"name": "Name",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"elf": {
 					"id": "classic/oracles/name/elf",
@@ -5004,6 +5019,9 @@
 					"id": "classic/collections/oracles/name/ironlander",
 					"name": "Ironlander Names",
 					"canonical_name": "Oracle 13: Ironlander Names",
+					"rendering": {
+						"style": "tables"
+					},
 					"summary": "Use this oracle to quickly generate a name for an Ironlander character. Roll on either table. Surnames are not used in the Ironlands, and names are often gender-neutral.",
 					"contents": {
 						"a": {
@@ -7266,24 +7284,25 @@
 					"name": "Other Names",
 					"canonical_name": "Oracle 15: Other Names",
 					"rendering": {
+						"style": "multi_table",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll",
 								"table_key": "giants"
 							},
 							"giants": {
-								"name": "Giants",
+								"label": "Giants",
 								"content_type": "result",
 								"table_key": "giants"
 							},
 							"varou": {
-								"name": "Varou",
+								"label": "Varou",
 								"content_type": "result",
 								"table_key": "varou"
 							},
 							"trolls": {
-								"name": "Trolls",
+								"label": "Trolls",
 								"content_type": "result",
 								"table_key": "trolls"
 							}
@@ -7296,17 +7315,7 @@
 							"name": "Giants",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -7603,17 +7612,7 @@
 							"name": "Varou",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -7910,17 +7909,7 @@
 							"name": "Trolls",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -8244,6 +8233,9 @@
 		"place": {
 			"id": "classic/collections/oracles/place",
 			"name": "Place Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"region": {
 					"id": "classic/oracles/place/region",
@@ -9705,6 +9697,9 @@
 		"settlement": {
 			"id": "classic/collections/oracles/settlement",
 			"name": "Settlement Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"summary": "To give the settlement additional detail, roll on the [Location Descriptor](classic/oracles/place/descriptor) oracle. To spark an idea for an event or feature related to the settlement, roll on the [Action](id:classic/oracles/action_and_theme/action) and [Theme](id:classic/oracles/action_and_theme/theme) oracles.",
 			"contents": {
 				"trouble": {
@@ -10134,6 +10129,9 @@
 					"id": "classic/collections/oracles/settlement/name",
 					"name": "Settlement Name",
 					"canonical_name": "Oracle 7: Settlement Name",
+					"rendering": {
+						"style": "tables"
+					},
 					"contents": {
 						"landscape_feature": {
 							"id": "classic/oracles/settlement/name/landscape_feature",
@@ -11020,20 +11018,20 @@
 					"name": "Quick Settlement Name Generator",
 					"canonical_name": "Oracle 8: Quick Settlement Name Generator",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll",
 								"table_key": "prefix"
 							},
 							"prefix": {
-								"name": "Prefix",
+								"label": "Prefix",
 								"content_type": "result",
 								"table_key": "prefix"
 							},
 							"suffix": {
-								"name": "Suffix",
+								"label": "Suffix",
 								"content_type": "result",
 								"table_key": "suffix"
 							}
@@ -11046,17 +11044,7 @@
 							"name": "Prefix",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -11353,17 +11341,7 @@
 							"name": "Suffix",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -11687,6 +11665,9 @@
 		"turning_point": {
 			"id": "classic/collections/oracles/turning_point",
 			"name": "Turning Point Oracles",
+			"rendering": {
+				"style": "tables"
+			},
 			"contents": {
 				"combat_action": {
 					"id": "classic/oracles/turning_point/combat_action",
@@ -12150,30 +12131,30 @@
 					"name": "Challenge Rank",
 					"canonical_name": "Oracle 19: Challenge Rank",
 					"rendering": {
-						"table_style": "multi_table",
+						"style": "multi_table",
 						"columns": {
 							"roll": {
-								"name": "Roll",
+								"label": "Roll",
 								"content_type": "roll",
 								"table_key": "quest"
 							},
 							"rank": {
-								"name": "Rank",
+								"label": "Rank",
 								"content_type": "result",
 								"table_key": "quest"
 							},
 							"quest": {
-								"name": "Quest",
+								"label": "Quest",
 								"content_type": "summary",
 								"table_key": "quest"
 							},
 							"journey": {
-								"name": "Journey",
+								"label": "Journey",
 								"content_type": "summary",
 								"table_key": "journey"
 							},
 							"foes": {
-								"name": "Foes",
+								"label": "Foes",
 								"content_type": "summary",
 								"table_key": "foes"
 							}
@@ -12186,17 +12167,7 @@
 							"name": "Quest",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -12253,17 +12224,7 @@
 							"name": "Journey",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{
@@ -12320,17 +12281,7 @@
 							"name": "Foes",
 							"dice": "1d100",
 							"rendering": {
-								"table_style": "embed_as_column",
-								"columns": {
-									"roll": {
-										"name": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"name": "Result",
-										"content_type": "result"
-									}
-								}
+								"style": "column"
 							},
 							"table": [
 								{

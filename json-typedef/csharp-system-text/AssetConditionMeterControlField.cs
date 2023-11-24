@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A checkbox control field, rendered as part of an asset condition meter.
+    /// </summary>
     [JsonConverter(typeof(AssetConditionMeterControlFieldJsonConverter))]
     public abstract class AssetConditionMeterControlField
     {

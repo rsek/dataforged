@@ -11,7 +11,7 @@ namespace Datasworn
         public ProgressRollMethod Method { get; set; }
 
         /// <summary>
-        /// The options available when rolling with this trigger.
+        /// The options available when rolling with this trigger condition.
         /// </summary>
         [JsonPropertyName("roll_options")]
         public IList<ProgressRollOption> RollOptions { get; set; }

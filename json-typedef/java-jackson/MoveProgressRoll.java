@@ -7,10 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
-/**
- * A progress move that rolls on a standard progress track type (defined by the
- * move object).
- */
 @JsonSerialize
 public class MoveProgressRoll extends Move {
     @JsonProperty("id")
@@ -28,8 +24,8 @@ public class MoveProgressRoll extends Move {
     @JsonProperty("text")
     private MarkdownString text;
 
-    @JsonProperty("track_label")
-    private Label trackLabel;
+    @JsonProperty("tracks")
+    private ProgressTrackTypeInfo tracks;
 
     @JsonProperty("trigger")
     private TriggerProgressRoll trigger;
@@ -55,6 +51,7 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public MoveId getId() {
         return id;
@@ -62,6 +59,7 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(MoveId id) {
         this.id = id;
@@ -69,6 +67,7 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Getter for name.<p>
+     * The primary name/label for this item.
      */
     public Label getName() {
         return name;
@@ -76,6 +75,7 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Setter for name.<p>
+     * The primary name/label for this item.
      */
     public void setName(Label name) {
         this.name = name;
@@ -97,6 +97,8 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Getter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public Source getSource() {
         return source;
@@ -104,6 +106,8 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Setter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public void setSource(Source source) {
         this.source = source;
@@ -126,19 +130,21 @@ public class MoveProgressRoll extends Move {
     }
 
     /**
-     * Getter for trackLabel.<p>
-     * A category label for progress tracks associated with this move.
+     * Getter for tracks.<p>
+     * Describes the common features of progress tracks associated with this
+     * move.
      */
-    public Label getTrackLabel() {
-        return trackLabel;
+    public ProgressTrackTypeInfo getTracks() {
+        return tracks;
     }
 
     /**
-     * Setter for trackLabel.<p>
-     * A category label for progress tracks associated with this move.
+     * Setter for tracks.<p>
+     * Describes the common features of progress tracks associated with this
+     * move.
      */
-    public void setTrackLabel(Label trackLabel) {
-        this.trackLabel = trackLabel;
+    public void setTracks(ProgressTrackTypeInfo tracks) {
+        this.tracks = tracks;
     }
 
     /**
@@ -157,6 +163,8 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Getter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public Label getCanonicalName() {
         return canonicalName;
@@ -164,6 +172,8 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Setter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public void setCanonicalName(Label canonicalName) {
         this.canonicalName = canonicalName;

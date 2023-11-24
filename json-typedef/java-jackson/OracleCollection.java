@@ -98,6 +98,7 @@ public class OracleCollection {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public OracleCollectionId getId() {
         return id;
@@ -105,6 +106,7 @@ public class OracleCollection {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(OracleCollectionId id) {
         this.id = id;
@@ -112,6 +114,7 @@ public class OracleCollection {
 
     /**
      * Getter for name.<p>
+     * The primary name/label for this item.
      */
     public Label getName() {
         return name;
@@ -119,6 +122,7 @@ public class OracleCollection {
 
     /**
      * Setter for name.<p>
+     * The primary name/label for this item.
      */
     public void setName(Label name) {
         this.name = name;
@@ -126,6 +130,8 @@ public class OracleCollection {
 
     /**
      * Getter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public Source getSource() {
         return source;
@@ -133,6 +139,8 @@ public class OracleCollection {
 
     /**
      * Setter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public void setSource(Source source) {
         this.source = source;
@@ -140,6 +148,8 @@ public class OracleCollection {
 
     /**
      * Getter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public Label getCanonicalName() {
         return canonicalName;
@@ -147,6 +157,8 @@ public class OracleCollection {
 
     /**
      * Setter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public void setCanonicalName(Label canonicalName) {
         this.canonicalName = canonicalName;
@@ -154,6 +166,7 @@ public class OracleCollection {
 
     /**
      * Getter for color.<p>
+     * A thematic color associated with this collection.
      */
     public CssColor getColor() {
         return color;
@@ -161,6 +174,7 @@ public class OracleCollection {
 
     /**
      * Setter for color.<p>
+     * A thematic color associated with this collection.
      */
     public void setColor(CssColor color) {
         this.color = color;
@@ -168,6 +182,9 @@ public class OracleCollection {
 
     /**
      * Getter for description.<p>
+     * A longer description of this collection, which might include multiple
+     * paragraphs. If it's only a couple sentences, use the `summary` key
+     * instead.
      */
     public MarkdownString getDescription() {
         return description;
@@ -175,6 +192,9 @@ public class OracleCollection {
 
     /**
      * Setter for description.<p>
+     * A longer description of this collection, which might include multiple
+     * paragraphs. If it's only a couple sentences, use the `summary` key
+     * instead.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
@@ -200,6 +220,7 @@ public class OracleCollection {
 
     /**
      * Getter for icon.<p>
+     * An SVG icon associated with this collection.
      */
     public SvgImageUrl getIcon() {
         return icon;
@@ -207,6 +228,7 @@ public class OracleCollection {
 
     /**
      * Setter for icon.<p>
+     * An SVG icon associated with this collection.
      */
     public void setIcon(SvgImageUrl icon) {
         this.icon = icon;
@@ -274,6 +296,9 @@ public class OracleCollection {
 
     /**
      * Getter for summary.<p>
+     * A brief summary of this collection, no more than a few sentences in
+     * length. This is intended for use in application tooltips and similar
+     * sorts of hints. Longer text should use the "description" key instead.
      */
     public MarkdownString getSummary() {
         return summary;
@@ -281,6 +306,9 @@ public class OracleCollection {
 
     /**
      * Setter for summary.<p>
+     * A brief summary of this collection, no more than a few sentences in
+     * length. This is intended for use in application tooltips and similar
+     * sorts of hints. Longer text should use the "description" key instead.
      */
     public void setSummary(MarkdownString summary) {
         this.summary = summary;

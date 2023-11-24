@@ -46,6 +46,7 @@ public class NpcVariant {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public NpcVariantId getId() {
         return id;
@@ -53,6 +54,7 @@ public class NpcVariant {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(NpcVariantId id) {
         this.id = id;
@@ -88,6 +90,7 @@ public class NpcVariant {
 
     /**
      * Getter for rank.<p>
+     * The suggested challenge rank for this NPC.
      */
     public ChallengeRank getRank() {
         return rank;
@@ -95,6 +98,7 @@ public class NpcVariant {
 
     /**
      * Setter for rank.<p>
+     * The suggested challenge rank for this NPC.
      */
     public void setRank(ChallengeRank rank) {
         this.rank = rank;

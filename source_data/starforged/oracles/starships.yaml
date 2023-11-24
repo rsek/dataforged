@@ -19,24 +19,24 @@ oracles:
           <<: *Source
           page: 328
         rendering:
-          table_style: multi_table
+          style: multi_table
           columns:
             terminus:
               content_type: roll
               table_key: terminus
-              name: Terminus
+              label: Terminus
             outlands:
               content_type: roll
               table_key: outlands
-              name: Outlands
+              label: Outlands
             expanse:
               content_type: roll
               table_key: expanse
-              name: Expanse
+              label: Expanse
             mission:
               content_type: result
               table_key: terminus
-              name: Mission
+              label: Mission
         # content:
         #   part_of_speech: [fragment]
         #   tags: [objective]
@@ -51,13 +51,7 @@ oracles:
             name: Terminus
             source: *CollectionSource
             rendering: &display:Mission
-              table_style: embed_as_column
-              columns:
-                roll:
-                  content_type: roll
-                mission:
-                  name: Mission
-                  content_type: result
+              style: column
             # usage:
             #   requires:
             #     attributes:
@@ -429,16 +423,16 @@ oracles:
           result:
             part_of_speech: common_noun
         rendering:
-          table_style: standalone_table
+          style: standalone
           columns:
             roll:
-              name: Roll
+              label: Roll
               content_type: roll
             class:
-              name: Class
+              label: Class
               content_type: result
             typical_role:
-              name: Typical Role
+              label: Typical Role
               content_type: summary
         table:
           - min: 1

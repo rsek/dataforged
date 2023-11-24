@@ -10,7 +10,7 @@ import {
 } from '@sinclair/typebox'
 import { type TMoveEnhancement } from '../Moves.js'
 import { type TAssetEnhancement } from '../assets/Enhancement.js'
-import { LiteralZero, type Merge } from '../utils/typebox.js'
+import { type Merge } from '../utils/typebox.js'
 import * as Base from './Inputs.js'
 import type * as Player from './Player.js'
 import * as Generic from '../utils/Generic.js'
@@ -29,6 +29,8 @@ function InputField<
 	id: Generic.AnyID,
 	options: ObjectOptions = {}
 ) {
+	const { description, $comment } = base
+
 	const mixin = Generic.Flatten([
 		base,
 		Type.Object({ [DISCRIMINATOR]: Type.Literal(discriminator) })
@@ -37,8 +39,8 @@ function InputField<
 	>
 
 	const result = Generic.IdentifiedNode(id, mixin, {
-		description: base.description,
-		$comment: base.$comment,
+		description,
+		$comment,
 		[EnhanceableProperties]: [] as Array<keyof Static<T>>,
 		...options
 	}) as unknown as TInputField<T, Discriminator>
@@ -87,10 +89,14 @@ export function CounterField(id: TRef<TString>) {
 export type TCounterField = ReturnType<typeof CounterField>
 export type CounterField = Static<TCounterField>
 
-export function ClockField(id: TRef<TString>) {
+export function ClockField(id: TRef<TString>, options: ObjectOptions = {}) {
+	const { $comment, description } = Base.Clock
 	return InputField(Base.Clock, 'clock', id, {
 		[EnhanceableProperties]: ['max'],
-		title: 'ClockField'
+		title: 'ClockField',
+		description,
+		$comment,
+		...options
 	})
 }
 export type TClockField = ReturnType<typeof ClockField>
@@ -98,7 +104,7 @@ export type ClockField = Static<TClockField>
 
 export function ConditionMeterField(id: TRef<TString>) {
 	return InputField(
-		Base.Meter(LiteralZero, Type.Integer()),
+		Base.Meter(Type.Integer({ default: 0 }), Type.Integer()),
 		'condition_meter',
 		id,
 		{

@@ -847,23 +847,24 @@ oracles:
         canonical_name: 'Oracle 15: Other Names'
         summary: Use this oracle to generate names for other firstborn characters.
         rendering:
+          style: multi_table
           columns:
             roll:
               content_type: roll
               table_key: giants
-              name: Roll
+              label: Roll
             giants:
               content_type: result
               table_key: giants
-              name: Giants
+              label: Giants
             varou:
               content_type: result
               table_key: varou
-              name: Varou
+              label: Varou
             trolls:
               content_type: result
               table_key: trolls
-              name: Trolls
+              label: Trolls
         source: &CollectionSource
           <<: *Source
           page: 187
@@ -872,7 +873,7 @@ oracles:
             name: Giants
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - <<: *i18n.proper_noun
                 min: 1
@@ -978,7 +979,7 @@ oracles:
             name: Varou
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - <<: *i18n.proper_noun
                 min: 1
@@ -1084,7 +1085,7 @@ oracles:
             name: Trolls
             source: *CollectionSource
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - <<: *i18n.proper_noun
                 min: 1

@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A delve site domain card.
+    /// </summary>
     [JsonConverter(typeof(DelveSiteDomainCardTypeJsonConverter))]
     public enum DelveSiteDomainCardType
     {

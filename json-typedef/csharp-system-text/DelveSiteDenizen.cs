@@ -9,6 +9,9 @@ namespace Datasworn
         [JsonPropertyName("frequency")]
         public DelveSiteDenizenFrequency Frequency { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public DelveSiteDenizenId Id { get; set; }
 

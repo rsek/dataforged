@@ -28,19 +28,19 @@ assets:
             <<: *Source
             title: 'Ironsworn: Starforged Assets'
           options:
-            name:
+            label:
               field_type: text
-              name: Name
+              label: Name
         # tags: [biological_companion]
         controls:
           health:
             <<: &BiologicalCompanionHealth
-              name: health
+              label: health
               min: 0
               field_type: condition_meter
               controls:
                 out_of_action:
-                  name: Out of action
+                  label: Out of action
                   field_type: checkbox
                   disables_asset: true
               moves: &BiologicalCompanionHealth.moves
@@ -257,10 +257,10 @@ assets:
         # tags: [biological_companion]
         options:
           name:
-            name: Name
+            label: Name
             field_type: text
           expertise:
-            name: Expertise
+            label: Expertise
             field_type: text
         controls:
           health:

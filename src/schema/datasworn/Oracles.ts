@@ -1,9 +1,8 @@
 import { Type, type Static, type TRef } from '@sinclair/typebox'
 import { Id, Localize, Metadata, Rolls } from './common/index.js'
 import * as Generic from './utils/Generic.js'
-import { Nullable } from './utils/typebox.js'
 import { Flatten } from './utils/Generic.js'
-import { TableRow } from './oracles/TableRow.js'
+import { TableRowNullableMixin } from './oracles/TableRow.js'
 import {
 	OracleTableRendering,
 	OracleCollectionRendering
@@ -11,14 +10,7 @@ import {
 
 export const OracleTableRow = Generic.IdentifiedNode(
 	Type.Ref(Id.OracleTableRowId),
-	TableRow({
-		min: Nullable(Type.Integer(), {
-			default: null
-		}),
-		max: Nullable(Type.Integer(), {
-			default: null
-		})
-	}),
+	TableRowNullableMixin,
 	{ $id: '#/$defs/OracleTableRow' }
 )
 export type OracleTableRow = Static<typeof OracleTableRow>
@@ -26,10 +18,23 @@ export type OracleTableRow = Static<typeof OracleTableRow>
 export const OracleTable = Generic.RecursiveCollectable(
 	Type.Ref(Id.OracleTableId),
 	Type.Object({
-		dice: Type.Ref(Rolls.DiceNotation, { default: '1d100' }),
+		dice: Type.Ref(Rolls.DiceNotation, {
+			default: '1d100',
+			description: 'The roll used to select a result on this table.'
+		}),
 		_i18n: Type.Optional(Type.Ref(Localize.I18nHints, { macro: true })),
-		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
-		images: Type.Optional(Type.Array(Type.Ref(Metadata.WebpImageUrl))),
+		icon: Type.Optional(
+			Type.Ref(Metadata.SvgImageUrl, {
+				description: 'An icon that represents this table.'
+			})
+		),
+		images: Type.Optional(
+			Type.Array(
+				Type.Ref(Metadata.WebpImageUrl, {
+					description: 'Extra images associated with this table.'
+				})
+			)
+		),
 		summary: Type.Optional(
 			Type.Ref(Localize.MarkdownString, {
 				description:
@@ -48,9 +53,24 @@ export const OracleTable = Generic.RecursiveCollectable(
 					"A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 			})
 		),
-		match: Type.Optional(Type.Ref(Rolls.OracleTableMatchBehavior)),
-		table: Type.Array(Type.Ref(OracleTableRow)),
-		rendering: Type.Optional(Type.Ref(OracleTableRendering))
+		match: Type.Optional(
+			Type.Ref(Rolls.OracleTableMatchBehavior, {
+				description:
+					'Most oracle tables are insensitive to matches, but a few define special match behavior.'
+			})
+		),
+		table: Type.Array(
+			Type.Ref(OracleTableRow, {
+				description:
+					'An array of objects, each representing a single row of the table.'
+			})
+		),
+		rendering: Type.Optional(
+			Type.Ref(OracleTableRendering, {
+				description:
+					'Describes how how to render this table, when presenting it as a standalone table.'
+			})
+		)
 	}),
 	{ $id: '#/$defs/OracleTable' }
 )
@@ -59,7 +79,13 @@ export type OracleTable = Static<typeof OracleTable>
 const OracleCollectionBase = Flatten(
 	[
 		Type.Object({
-			rendering: Type.Optional(Type.Ref(OracleCollectionRendering))
+			rendering: Type.Optional(
+				Type.Ref(OracleCollectionRendering, {
+					default: {
+						style: 'tables'
+					}
+				})
+			)
 		}),
 		Generic.Collection(Type.Ref(Id.OracleCollectionId), Type.Ref(OracleTable))
 	],

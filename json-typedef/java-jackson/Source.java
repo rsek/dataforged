@@ -68,6 +68,12 @@ public class Source {
 
     /**
      * Getter for license.<p>
+     * An absolute URL pointing to the location where this element's license can
+     * be found.
+     * 
+     * A `null` here indicates that the content provides **no** license, and
+     * is not intended for redistribution.  Datasworn's build process skips
+     * unlicensed content by default.
      */
     public String getLicense() {
         return license;
@@ -75,6 +81,12 @@ public class Source {
 
     /**
      * Setter for license.<p>
+     * An absolute URL pointing to the location where this element's license can
+     * be found.
+     * 
+     * A `null` here indicates that the content provides **no** license, and
+     * is not intended for redistribution.  Datasworn's build process skips
+     * unlicensed content by default.
      */
     public void setLicense(String license) {
         this.license = license;

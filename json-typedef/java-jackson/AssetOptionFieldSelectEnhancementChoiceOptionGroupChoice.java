@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  */
 @JsonSerialize
 public class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     @JsonProperty("option_type")
     private AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType optionType;
@@ -28,23 +28,23 @@ public class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
     }
 
     /**
-     * Getter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Getter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Setter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     /**

@@ -2,26 +2,21 @@ import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
 import { Id, Localize, Metadata } from '../common/index.js'
-import { StaticRowPartial, TableRow } from '../oracles/TableRow.js'
+import { StaticRowPartial, TableRowMixin } from '../oracles/TableRow.js'
 import * as Generic from '../utils/Generic.js'
-
+import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
+import { DelveCardType } from './DelveCard.js'
 
 export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.ThemeFeatureRowId),
-	TableRow({
-		min: Type.Integer(),
-		max: Type.Integer()
-	}),
+	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteThemeFeatureRow' }
 )
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
 
 export const DelveSiteThemeDangerRow = Generic.IdentifiedNode(
 	Type.Ref(Id.ThemeDangerRowId),
-	TableRow({
-		min: Type.Integer(),
-		max: Type.Integer()
-	}),
+	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteThemeDangerRow' }
 )
 const DelveSiteThemeFeatures = Type.Array(Type.Ref(DelveSiteThemeFeatureRow))
@@ -34,7 +29,7 @@ export const DelveSiteTheme = Generic.SourcedNode(
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
-		card_type: Type.Literal('theme'),
+		card_type: ExtractLiteralFromEnum(DelveCardType, 'theme'),
 		features: Type.Intersect(
 			[
 				DelveSiteThemeFeatures,

@@ -5,24 +5,30 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    /// <summary>
-    /// A progress move that rolls on a standard progress track type (defined by
-    /// the move object).
-    /// </summary>
     public class MoveProgressRoll : Move
     {
         [JsonPropertyName("roll_type")]
         public string RollType { get => "progress_roll"; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public MoveId Id { get; set; }
 
+        /// <summary>
+        /// The primary name/label for this item.
+        /// </summary>
         [JsonPropertyName("name")]
         public Label Name { get; set; }
 
         [JsonPropertyName("outcomes")]
         public MoveOutcomes Outcomes { get; set; }
 
+        /// <summary>
+        /// Attribution for the original source (such as a book or website) of
+        /// this item, including the author and licensing information.
+        /// </summary>
         [JsonPropertyName("source")]
         public Source Source { get; set; }
 
@@ -33,14 +39,19 @@ namespace Datasworn
         public MarkdownString Text { get; set; }
 
         /// <summary>
-        /// A category label for progress tracks associated with this move.
+        /// Describes the common features of progress tracks associated with
+        /// this move.
         /// </summary>
-        [JsonPropertyName("track_label")]
-        public Label TrackLabel { get; set; }
+        [JsonPropertyName("tracks")]
+        public ProgressTrackTypeInfo Tracks { get; set; }
 
         [JsonPropertyName("trigger")]
         public TriggerProgressRoll Trigger { get; set; }
 
+        /// <summary>
+        /// The name of this item as it appears on the page in the book, if it's
+        /// different from `name`.
+        /// </summary>
         [JsonPropertyName("canonical_name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }

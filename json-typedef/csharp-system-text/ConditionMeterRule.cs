@@ -4,32 +4,47 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Describes a standard player character condition meter.
+    /// </summary>
     public class ConditionMeterRule
     {
+        /// <summary>
+        /// A description of this condition meter.
+        /// </summary>
         [JsonPropertyName("description")]
         public MarkdownString Description { get; set; }
+
+        /// <summary>
+        /// A localized label for this input. In some contexts it may be
+        /// undesirable to render this text, but it should always be exposed to
+        /// assistive technology (e.g. with `aria-label` in HTML).
+        /// </summary>
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
 
         /// <summary>
         /// The maximum value of this meter.
         /// </summary>
         [JsonPropertyName("max")]
-        public short Max { get; set; }
+        public sbyte Max { get; set; }
 
         /// <summary>
         /// The minimum value of this meter.
         /// </summary>
         [JsonPropertyName("min")]
-        public short Min { get; set; }
+        public sbyte Min { get; set; }
 
         /// <summary>
-        /// A label for this input. In some contexts it may be undesirable
-        /// to render this text, but it should always be exposed to assistive
-        /// technology (e.g. with `aria-label` in HTML).
+        /// Is this condition meter shared by all players?
         /// </summary>
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
-
         [JsonPropertyName("shared")]
         public bool Shared { get; set; }
+
+        /// <summary>
+        /// The current value of this meter.
+        /// </summary>
+        [JsonPropertyName("value")]
+        public sbyte Value { get; set; }
     }
 }

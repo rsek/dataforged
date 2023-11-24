@@ -9,11 +9,6 @@ from typing import Any, Dict, List, Optional, Type, Union, get_args, get_origin
 
 @dataclass
 class Ruleset:
-    """
-    Describes game rules compatible with the Ironsworn tabletop role-playing
-    game by Shawn Tomkin.
-    """
-
     id: 'NamespaceID'
     source: 'Source'
     assets: 'Optional[Dict[str, AssetType]]'
@@ -120,12 +115,40 @@ class Ruleset:
 
 class ActionRollMethod(Enum):
     ALL = "all"
+    """
+    Use **every** roll option at once.
+    """
+
     HIGHEST = "highest"
+    """
+    Use the roll option with the best/highest value.
+    """
+
     LOWEST = "lowest"
+    """
+    Use the roll option with the worst/lowest value.
+    """
+
     MISS = "miss"
+    """
+    An automatic miss.
+    """
+
     PLAYER_CHOICE = "player_choice"
+    """
+    The player chooses which roll option to use.
+    """
+
     STRONG_HIT = "strong_hit"
+    """
+    An automatic strong hit.
+    """
+
     WEAK_HIT = "weak_hit"
+    """
+    An automatic weak hit.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'ActionRollMethod':
         return cls(data)
@@ -157,6 +180,12 @@ class ActionRollOption:
 @dataclass
 class ActionRollOptionAssetControl(ActionRollOption):
     assets: 'Optional[List[AssetIDWildcard]]'
+    """
+    Asset IDs (which may be wildcarded) that provide the control field. For
+    asset ability enhancements, `null` is used to represent the asset's own
+    control fields.
+    """
+
     control: 'DictKey'
     """
     The key of the asset control field.
@@ -180,6 +209,12 @@ class ActionRollOptionAssetControl(ActionRollOption):
 @dataclass
 class ActionRollOptionAssetOption(ActionRollOption):
     assets: 'Optional[List[AssetIDWildcard]]'
+    """
+    Asset IDs (which may be wildcarded) that provide the option field. For asset
+    ability enhancements, `null` is used to represent the asset's own option
+    fields.
+    """
+
     option: 'DictKey'
     """
     The key of the asset option field.
@@ -293,12 +328,42 @@ class ActionRollOptionStat(ActionRollOption):
 
 class ActionRollUsing(Enum):
     ASSET_CONTROL = "asset_control"
+    """
+    Roll using the value of an asset control.
+    """
+
     ASSET_OPTION = "asset_option"
+    """
+    Roll using the value of an asset option.
+    """
+
     ATTACHED_ASSET_CONTROL = "attached_asset_control"
+    """
+    Roll using the value of an attached asset control. For example, a Module
+    asset could use this to roll using the `integrity` control of an attached
+    Vehicle.
+    """
+
     ATTACHED_ASSET_OPTION = "attached_asset_option"
+    """
+    Roll using the value of an attached asset option.
+    """
+
     CONDITION_METER = "condition_meter"
+    """
+    Roll using the value of a standard player condition meter.
+    """
+
     CUSTOM = "custom"
+    """
+    Roll using an integer value with customizable labels.
+    """
+
     STAT = "stat"
+    """
+    Roll using a standard player character stat.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'ActionRollUsing':
         return cls(data)
@@ -322,7 +387,15 @@ class Asset:
     """
 
     id: 'AssetID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     shared: 'bool'
     """
     Most assets only benefit to their owner, but certain assets (like
@@ -331,9 +404,23 @@ class Asset:
     """
 
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     attachments: 'Optional[AssetAttachment]'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     color: 'Optional[CSSColor]'
+    """
+    A thematic color associated with this asset.
+    """
+
     controls: 'Optional[Dict[str, AssetControlField]]'
     """
     Controls are condition meters, clocks, counters, and other asset input
@@ -341,6 +428,10 @@ class Asset:
     """
 
     icon: 'Optional[SvgImageURL]'
+    """
+    This asset's icon.
+    """
+
     options: 'Optional[Dict[str, AssetOptionField]]'
     """
     Options are asset input fields which are set once, usually when the
@@ -350,6 +441,10 @@ class Asset:
     """
 
     requirement: 'Optional[MarkdownString]'
+    """
+    Describes prerequisites for purchasing or using this asset.
+    """
+
     suggestions: 'Optional[Suggestions]'
 
     @classmethod
@@ -407,6 +502,10 @@ class AssetAbility:
     """
 
     id: 'AssetAbilityID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     text: 'MarkdownString'
     controls: 'Optional[Dict[str, AssetAbilityControlField]]'
     """
@@ -495,17 +594,21 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
     """
 
     id: 'AssetAbilityControlFieldID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     is_impact: 'bool'
     """
     Does this field count as an impact (Starforged) or debility (Ironsworn
     classic) when its value is set to `true`?
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'bool'
@@ -521,7 +624,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -530,17 +633,24 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
         data["disables_asset"] = _to_json_data(self.disables_asset)
         data["id"] = _to_json_data(self.id)
         data["is_impact"] = _to_json_data(self.is_impact)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
 class AssetAbilityControlFieldClock(AssetAbilityControlField):
+    id: 'AssetAbilityControlFieldID'
     """
-    A clock with 4, 6, 8, or 10 segments.
+    The unique Datasworn ID for this item.
     """
 
-    id: 'AssetAbilityControlFieldID'
+    label: 'Label'
+    """
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
+    """
+
     max: 'int'
     """
     The size of the clock -- in other words, the maximum number of filled clock
@@ -550,13 +660,6 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
     min: 'int'
     """
     The minimum number of filled clock segments. This is always 0.
-    """
-
-    name: 'Label'
-    """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
     """
 
     value: 'int'
@@ -570,39 +673,43 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
         return cls(
             "clock",
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
-            _from_json_data(Label, data.get("name")),
             _from_json_data(int, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
         data = { "field_type": "clock" }
         data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
-        data["name"] = _to_json_data(self.name)
         data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
 class AssetAbilityControlFieldCounter(AssetAbilityControlField):
+    id: 'AssetAbilityControlFieldID'
     """
-    A counter that starts at zero, with an optional maximum value.
+    The unique Datasworn ID for this item.
     """
 
-    id: 'AssetAbilityControlFieldID'
+    label: 'Label'
+    """
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
+    """
+
     max: 'Optional[int]'
+    """
+    The (inclusive) maximum value.
+    """
+
     min: 'int'
     """
     The (inclusive) minimum value.
-    """
-
-    name: 'Label'
-    """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
     """
 
     value: 'int'
@@ -616,18 +723,18 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
         return cls(
             "counter",
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[int], data.get("max")),
             _from_json_data(int, data.get("min")),
-            _from_json_data(Label, data.get("name")),
             _from_json_data(int, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
         data = { "field_type": "counter" }
         data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
-        data["name"] = _to_json_data(self.name)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -670,33 +777,37 @@ class AssetAbilityOptionField:
 
 @dataclass
 class AssetAbilityOptionFieldText(AssetAbilityOptionField):
+    id: 'AssetAbilityOptionFieldID'
     """
-    Represents an input that accepts plain text.
+    The unique Datasworn ID for this item.
     """
 
-    id: 'AssetAbilityOptionFieldID'
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'Optional[str]'
+    """
+    The content of this text input, or `null` if it's empty
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldText':
         return cls(
             "text",
             _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[str], data.get("value")),
         )
 
     def to_json_data(self) -> Any:
         data = { "field_type": "text" }
         data["id"] = _to_json_data(self.id)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -725,6 +836,10 @@ class AssetAttachment:
     """
 
     max: 'Optional[int]'
+    """
+    Null if there's no upper limit to the number of attached assets.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAttachment':
@@ -741,6 +856,10 @@ class AssetAttachment:
 
 @dataclass
 class AssetConditionMeterControlField:
+    """
+    A checkbox control field, rendered as part of an asset condition meter.
+    """
+
     field_type: 'str'
 
     @classmethod
@@ -763,17 +882,21 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
     """
 
     id: 'AssetConditionMeterControlFieldID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     is_impact: 'bool'
     """
     Does this field count as an impact (Starforged) or debility (Ironsworn
     classic) when its value is set to `true`?
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'bool'
@@ -789,7 +912,7 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetConditionMeterControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -798,7 +921,7 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
         data["disables_asset"] = _to_json_data(self.disables_asset)
         data["id"] = _to_json_data(self.id)
         data["is_impact"] = _to_json_data(self.is_impact)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -810,17 +933,21 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
     """
 
     id: 'AssetConditionMeterControlFieldID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     is_impact: 'bool'
     """
     Does this field count as an impact (Starforged) or debility (Ironsworn
     classic) when its value is set to `true`?
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'bool'
@@ -836,7 +963,7 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetConditionMeterControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -845,7 +972,7 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
         data["disables_asset"] = _to_json_data(self.disables_asset)
         data["id"] = _to_json_data(self.id)
         data["is_impact"] = _to_json_data(self.is_impact)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -886,17 +1013,21 @@ class AssetControlFieldCardFlip(AssetControlField):
     """
 
     id: 'AssetControlFieldID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     is_impact: 'bool'
     """
     Does this field count as an impact (Starforged) or debility (Ironsworn
     classic) when its value is set to `true`?
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'bool'
@@ -912,7 +1043,7 @@ class AssetControlFieldCardFlip(AssetControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -921,7 +1052,7 @@ class AssetControlFieldCardFlip(AssetControlField):
         data["disables_asset"] = _to_json_data(self.disables_asset)
         data["id"] = _to_json_data(self.id)
         data["is_impact"] = _to_json_data(self.is_impact)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -933,17 +1064,21 @@ class AssetControlFieldCheckbox(AssetControlField):
     """
 
     id: 'AssetControlFieldID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     is_impact: 'bool'
     """
     Does this field count as an impact (Starforged) or debility (Ironsworn
     classic) when its value is set to `true`?
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'bool'
@@ -959,7 +1094,7 @@ class AssetControlFieldCheckbox(AssetControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -968,7 +1103,7 @@ class AssetControlFieldCheckbox(AssetControlField):
         data["disables_asset"] = _to_json_data(self.disables_asset)
         data["id"] = _to_json_data(self.id)
         data["is_impact"] = _to_json_data(self.is_impact)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -1009,14 +1144,18 @@ class AssetControlFieldConditionMeterMoves:
 
 @dataclass
 class AssetControlFieldConditionMeter(AssetControlField):
+    id: 'AssetControlFieldID'
     """
-    Some assets provide a special condition meter of their own. The most common
-    example is the health meters on companion assets. Asset condition meters
-    may also include their own controls, such as the checkboxes that Starforged
-    companion assets use to indicate they are "out of action".
+    The unique Datasworn ID for this item.
     """
 
-    id: 'AssetControlFieldID'
+    label: 'Label'
+    """
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
+    """
+
     max: 'int'
     """
     The maximum value of this meter.
@@ -1027,19 +1166,16 @@ class AssetControlFieldConditionMeter(AssetControlField):
     The minimum value of this meter.
     """
 
-    name: 'Label'
-    """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
-    """
-
     value: 'int'
     """
     The current value of this meter.
     """
 
     controls: 'Optional[Dict[str, AssetConditionMeterControlField]]'
+    """
+    Checkbox controls rendered as part of the condition meter.
+    """
+
     moves: 'Optional[AssetControlFieldConditionMeterMoves]'
     """
     Provides hints for moves that interact with this condition meter, such as
@@ -1052,9 +1188,9 @@ class AssetControlFieldConditionMeter(AssetControlField):
         return cls(
             "condition_meter",
             _from_json_data(AssetControlFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
-            _from_json_data(Label, data.get("name")),
             _from_json_data(int, data.get("value")),
             _from_json_data(Optional[Dict[str, AssetConditionMeterControlField]], data.get("controls")),
             _from_json_data(Optional[AssetControlFieldConditionMeterMoves], data.get("moves")),
@@ -1063,9 +1199,9 @@ class AssetControlFieldConditionMeter(AssetControlField):
     def to_json_data(self) -> Any:
         data = { "field_type": "condition_meter" }
         data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
-        data["name"] = _to_json_data(self.name)
         data["value"] = _to_json_data(self.value)
         if self.controls is not None:
              data["controls"] = _to_json_data(self.controls)
@@ -1115,15 +1251,11 @@ class AssetControlFieldSelectEnhancementChoiceOptionValue:
 
 @dataclass
 class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnhancementChoice):
+    label: 'Label'
     """
-    Represents an option in a list of choices.
-    """
-
-    name: 'Label'
-    """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'AssetControlFieldSelectEnhancementChoiceOptionValue'
@@ -1141,14 +1273,14 @@ class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnha
     def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOption':
         return cls(
             "option",
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(AssetControlFieldSelectEnhancementChoiceOptionValue, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
         )
 
     def to_json_data(self) -> Any:
         data = { "option_type": "option" }
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
              data["selected"] = _to_json_data(self.selected)
@@ -1193,11 +1325,11 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
     Represents an option in a list of choices.
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     option_type: 'AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType'
@@ -1215,7 +1347,7 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOptionGroupChoice':
         return cls(
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data.get("option_type")),
             _from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
@@ -1223,7 +1355,7 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["option_type"] = _to_json_data(self.option_type)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
@@ -1232,10 +1364,6 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
 
 @dataclass
 class AssetControlFieldSelectEnhancementChoiceOptionGroup(AssetControlFieldSelectEnhancementChoice):
-    """
-    Represents a grouping of options in a list of choices.
-    """
-
     choices: 'Dict[str, AssetControlFieldSelectEnhancementChoiceOptionGroupChoice]'
     name: 'Label'
     """
@@ -1259,25 +1387,22 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroup(AssetControlFieldSelec
 
 @dataclass
 class AssetControlFieldSelectEnhancement(AssetControlField):
-    """
-    Select from player and/or asset enhancements. Use it to describe modal
-    abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
-    (Sundered Isles).
-    """
-
     choices: 'Dict[str, AssetControlFieldSelectEnhancementChoice]'
     id: 'AssetControlFieldID'
-    name: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    The unique Datasworn ID for this item.
+    """
+
+    label: 'Label'
+    """
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'Optional[DictKey]'
     """
-    The key of the currently selected choice from the `choices` property, or
-    `null` if none is selected.
+    The current value of this input.
     """
 
 
@@ -1287,7 +1412,7 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
             "select_enhancement",
             _from_json_data(Dict[str, AssetControlFieldSelectEnhancementChoice], data.get("choices")),
             _from_json_data(AssetControlFieldID, data.get("id")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[DictKey], data.get("value")),
         )
 
@@ -1295,7 +1420,7 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
         data = { "field_type": "select_enhancement" }
         data["choices"] = _to_json_data(self.choices)
         data["id"] = _to_json_data(self.id)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -1316,13 +1441,6 @@ class AssetControlFieldEnhancement:
 
 @dataclass
 class AssetControlFieldEnhancementConditionMeter(AssetControlFieldEnhancement):
-    """
-    Some assets provide a special condition meter of their own. The most common
-    example is the health meters on companion assets. Asset condition meters
-    may also include their own controls, such as the checkboxes that Starforged
-    companion assets use to indicate they are "out of action".
-    """
-
     max: 'int'
     """
     The maximum value of this meter.
@@ -1498,15 +1616,11 @@ class AssetOptionFieldSelectEnhancementChoiceOptionValue:
 
 @dataclass
 class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhancementChoice):
+    label: 'Label'
     """
-    Represents an option in a list of choices.
-    """
-
-    name: 'Label'
-    """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'AssetOptionFieldSelectEnhancementChoiceOptionValue'
@@ -1524,14 +1638,14 @@ class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhanc
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOption':
         return cls(
             "option",
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionValue, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
         )
 
     def to_json_data(self) -> Any:
         data = { "option_type": "option" }
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
              data["selected"] = _to_json_data(self.selected)
@@ -1576,11 +1690,11 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
     Represents an option in a list of choices.
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     option_type: 'AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType'
@@ -1598,7 +1712,7 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice':
         return cls(
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data.get("option_type")),
             _from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
@@ -1606,7 +1720,7 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["option_type"] = _to_json_data(self.option_type)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
@@ -1615,10 +1729,6 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
 
 @dataclass
 class AssetOptionFieldSelectEnhancementChoiceOptionGroup(AssetOptionFieldSelectEnhancementChoice):
-    """
-    Represents a grouping of options in a list of choices.
-    """
-
     choices: 'Dict[str, AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice]'
     name: 'Label'
     """
@@ -1642,25 +1752,22 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroup(AssetOptionFieldSelectE
 
 @dataclass
 class AssetOptionFieldSelectEnhancement(AssetOptionField):
-    """
-    Select from player and/or asset enhancements. Use it to describe modal
-    abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
-    (Sundered Isles).
-    """
-
     choices: 'Dict[str, AssetOptionFieldSelectEnhancementChoice]'
     id: 'AssetOptionFieldID'
-    name: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    The unique Datasworn ID for this item.
+    """
+
+    label: 'Label'
+    """
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'Optional[DictKey]'
     """
-    The key of the currently selected choice from the `choices` property, or
-    `null` if none is selected.
+    The current value of this input.
     """
 
 
@@ -1670,7 +1777,7 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
             "select_enhancement",
             _from_json_data(Dict[str, AssetOptionFieldSelectEnhancementChoice], data.get("choices")),
             _from_json_data(AssetOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[DictKey], data.get("value")),
         )
 
@@ -1678,7 +1785,7 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
         data = { "field_type": "select_enhancement" }
         data["choices"] = _to_json_data(self.choices)
         data["id"] = _to_json_data(self.id)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -1700,15 +1807,11 @@ class AssetOptionFieldSelectStatChoice:
 
 @dataclass
 class AssetOptionFieldSelectStatChoiceOption(AssetOptionFieldSelectStatChoice):
+    label: 'Label'
     """
-    Represents an option in a list of choices.
-    """
-
-    name: 'Label'
-    """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'PlayerStat'
@@ -1726,14 +1829,14 @@ class AssetOptionFieldSelectStatChoiceOption(AssetOptionFieldSelectStatChoice):
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectStatChoiceOption':
         return cls(
             "option",
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(PlayerStat, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
         )
 
     def to_json_data(self) -> Any:
         data = { "option_type": "option" }
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
              data["selected"] = _to_json_data(self.selected)
@@ -1754,11 +1857,11 @@ class AssetOptionFieldSelectStatChoiceOptionGroupChoice:
     Represents an option in a list of choices.
     """
 
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     option_type: 'AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType'
@@ -1776,7 +1879,7 @@ class AssetOptionFieldSelectStatChoiceOptionGroupChoice:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectStatChoiceOptionGroupChoice':
         return cls(
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType, data.get("option_type")),
             _from_json_data(PlayerStat, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
@@ -1784,7 +1887,7 @@ class AssetOptionFieldSelectStatChoiceOptionGroupChoice:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["option_type"] = _to_json_data(self.option_type)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
@@ -1793,10 +1896,6 @@ class AssetOptionFieldSelectStatChoiceOptionGroupChoice:
 
 @dataclass
 class AssetOptionFieldSelectStatChoiceOptionGroup(AssetOptionFieldSelectStatChoice):
-    """
-    Represents a grouping of options in a list of choices.
-    """
-
     choices: 'Dict[str, AssetOptionFieldSelectStatChoiceOptionGroupChoice]'
     name: 'Label'
     """
@@ -1820,23 +1919,22 @@ class AssetOptionFieldSelectStatChoiceOptionGroup(AssetOptionFieldSelectStatChoi
 
 @dataclass
 class AssetOptionFieldSelectStat(AssetOptionField):
-    """
-    Represents a list of mutually exclusive choices.
-    """
-
     choices: 'Dict[str, AssetOptionFieldSelectStatChoice]'
     id: 'AssetOptionFieldID'
-    name: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    The unique Datasworn ID for this item.
+    """
+
+    label: 'Label'
+    """
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'Optional[DictKey]'
     """
-    The key of the currently selected choice from the `choices` property, or
-    `null` if none is selected.
+    The current value of this input.
     """
 
 
@@ -1846,7 +1944,7 @@ class AssetOptionFieldSelectStat(AssetOptionField):
             "select_stat",
             _from_json_data(Dict[str, AssetOptionFieldSelectStatChoice], data.get("choices")),
             _from_json_data(AssetOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[DictKey], data.get("value")),
         )
 
@@ -1854,39 +1952,43 @@ class AssetOptionFieldSelectStat(AssetOptionField):
         data = { "field_type": "select_stat" }
         data["choices"] = _to_json_data(self.choices)
         data["id"] = _to_json_data(self.id)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
 class AssetOptionFieldText(AssetOptionField):
+    id: 'AssetOptionFieldID'
     """
-    Represents an input that accepts plain text.
+    The unique Datasworn ID for this item.
     """
 
-    id: 'AssetOptionFieldID'
-    name: 'Label'
+    label: 'Label'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
     """
 
     value: 'Optional[str]'
+    """
+    The content of this text input, or `null` if it's empty
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldText':
         return cls(
             "text",
             _from_json_data(AssetOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[str], data.get("value")),
         )
 
     def to_json_data(self) -> Any:
         data = { "field_type": "text" }
         data["id"] = _to_json_data(self.id)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
@@ -1916,11 +2018,38 @@ class AssetOptionFieldIDWildcard:
 class AssetType:
     contents: 'Dict[str, Asset]'
     id: 'AssetTypeID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     color: 'Optional[CSSColor]'
+    """
+    A thematic color associated with this collection.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    A longer description of this collection, which might include multiple
+    paragraphs. If it's only a couple sentences, use the `summary` key instead.
+    """
+
     enhances: 'Optional[AssetTypeID]'
     """
     This collection's content enhances the identified collection, rather than
@@ -1928,6 +2057,10 @@ class AssetType:
     """
 
     icon: 'Optional[SvgImageURL]'
+    """
+    An SVG icon associated with this collection.
+    """
+
     images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[AssetTypeID]'
     """
@@ -1937,6 +2070,12 @@ class AssetType:
 
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    A brief summary of this collection, no more than a few sentences in length.
+    This is intended for use in application tooltips and similar sorts of hints.
+    Longer text should use the "description" key instead.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetType':
@@ -1998,11 +2137,38 @@ class Atlas:
     collections: 'Dict[str, Atlas]'
     contents: 'Dict[str, AtlasEntry]'
     id: 'AtlasID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     color: 'Optional[CSSColor]'
+    """
+    A thematic color associated with this collection.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    A longer description of this collection, which might include multiple
+    paragraphs. If it's only a couple sentences, use the `summary` key instead.
+    """
+
     enhances: 'Optional[AtlasID]'
     """
     This collection's content enhances the identified collection, rather than
@@ -2010,6 +2176,10 @@ class Atlas:
     """
 
     icon: 'Optional[SvgImageURL]'
+    """
+    An SVG icon associated with this collection.
+    """
+
     images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[AtlasID]'
     """
@@ -2019,6 +2189,12 @@ class Atlas:
 
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    A brief summary of this collection, no more than a few sentences in length.
+    This is intended for use in application tooltips and similar sorts of hints.
+    Longer text should use the "description" key instead.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'Atlas':
@@ -2076,10 +2252,28 @@ class AtlasEntry:
     description: 'MarkdownString'
     features: 'List[MarkdownString]'
     id: 'AtlasEntryID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     quest_starter: 'MarkdownString'
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
     your_truth: 'Optional[MarkdownString]'
@@ -2164,7 +2358,7 @@ class AtlasIDWildcard:
 @dataclass
 class ChallengeRank:
     """
-    Challenge rank, represented as an integer:
+    Challenge rank, represented as an integer.
     """
 
     value: 'int'
@@ -2178,7 +2372,22 @@ class ChallengeRank:
 
 @dataclass
 class ConditionMeterRule:
+    """
+    Describes a standard player character condition meter.
+    """
+
     description: 'MarkdownString'
+    """
+    A description of this condition meter.
+    """
+
+    label: 'Label'
+    """
+    A localized label for this input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
+    """
+
     max: 'int'
     """
     The maximum value of this meter.
@@ -2189,32 +2398,36 @@ class ConditionMeterRule:
     The minimum value of this meter.
     """
 
-    name: 'Label'
+    shared: 'bool'
     """
-    A label for this input. In some contexts it may be undesirable to render
-    this text, but it should always be exposed to assistive technology (e.g.
-    with `aria-label` in HTML).
+    Is this condition meter shared by all players?
     """
 
-    shared: 'bool'
+    value: 'int'
+    """
+    The current value of this meter.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'ConditionMeterRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
-            _from_json_data(Label, data.get("name")),
             _from_json_data(bool, data.get("shared")),
+            _from_json_data(int, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["description"] = _to_json_data(self.description)
+        data["label"] = _to_json_data(self.label)
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
-        data["name"] = _to_json_data(self.name)
         data["shared"] = _to_json_data(self.shared)
+        data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
@@ -2244,6 +2457,24 @@ class CSSColor:
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
 
+class DelveCardType(Enum):
+    DOMAIN = "domain"
+    """
+    A delve site domain card.
+    """
+
+    THEME = "theme"
+    """
+    A delve site theme card.
+    """
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'DelveCardType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
 @dataclass
 class DelveSite:
     """
@@ -2254,11 +2485,29 @@ class DelveSite:
     description: 'MarkdownString'
     domain: 'DelveSiteDomainID'
     id: 'DelveSiteID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     rank: 'ChallengeRank'
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     theme: 'DelveSiteThemeID'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     extra_card: 'Optional[str]'
     """
     An additional theme or domain card ID, for use with optional rules in
@@ -2318,6 +2567,10 @@ class DelveSite:
 class DelveSiteDenizen:
     frequency: 'DelveSiteDenizenFrequency'
     id: 'DelveSiteDenizenID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     max: 'int'
     min: 'int'
     name: 'Optional[Label]'
@@ -2375,6 +2628,10 @@ class DelveSiteDenizenID:
         return _to_json_data(self.value)
 
 class DelveSiteDomainCardType(Enum):
+    """
+    A delve site domain card.
+    """
+
     DOMAIN = "domain"
     @classmethod
     def from_json_data(cls, data: Any) -> 'DelveSiteDomainCardType':
@@ -2386,13 +2643,35 @@ class DelveSiteDomainCardType(Enum):
 @dataclass
 class DelveSiteDomain:
     card_type: 'DelveSiteDomainCardType'
+    """
+    A delve site domain card.
+    """
+
     dangers: 'List[DelveSiteDomainDangerRow]'
     features: 'List[DelveSiteDomainFeatureRow]'
     id: 'DelveSiteDomainID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     summary: 'MarkdownString'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     description: 'Optional[MarkdownString]'
     icon: 'Optional[SvgImageURL]'
     name_oracle: 'Optional[OracleTableID]'
@@ -2447,16 +2726,18 @@ class DelveSiteDomain:
 @dataclass
 class DelveSiteDomainDangerRow:
     id: 'DomainDangerRowID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     max: 'int'
     """
-    High end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    High end of the dice range for this table row.
     """
 
     min: 'int'
     """
-    Low end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    Low end of the dice range for this table row.
     """
 
     result: 'MarkdownString'
@@ -2513,16 +2794,18 @@ class DelveSiteDomainDangerRow:
 @dataclass
 class DelveSiteDomainFeatureRow:
     id: 'DomainFeatureRowID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     max: 'int'
     """
-    High end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    High end of the dice range for this table row.
     """
 
     min: 'int'
     """
-    Low end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    Low end of the dice range for this table row.
     """
 
     result: 'MarkdownString'
@@ -2599,6 +2882,10 @@ class DelveSiteID:
         return _to_json_data(self.value)
 
 class DelveSiteThemeCardType(Enum):
+    """
+    A delve site theme card.
+    """
+
     THEME = "theme"
     @classmethod
     def from_json_data(cls, data: Any) -> 'DelveSiteThemeCardType':
@@ -2610,13 +2897,35 @@ class DelveSiteThemeCardType(Enum):
 @dataclass
 class DelveSiteTheme:
     card_type: 'DelveSiteThemeCardType'
+    """
+    A delve site theme card.
+    """
+
     dangers: 'List[DelveSiteThemeDangerRow]'
     features: 'List[DelveSiteThemeFeatureRow]'
     id: 'DelveSiteThemeID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     summary: 'MarkdownString'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     description: 'Optional[MarkdownString]'
     icon: 'Optional[SvgImageURL]'
     suggestions: 'Optional[Suggestions]'
@@ -2659,16 +2968,18 @@ class DelveSiteTheme:
 @dataclass
 class DelveSiteThemeDangerRow:
     id: 'ThemeDangerRowID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     max: 'int'
     """
-    High end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    High end of the dice range for this table row.
     """
 
     min: 'int'
     """
-    Low end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    Low end of the dice range for this table row.
     """
 
     result: 'MarkdownString'
@@ -2725,16 +3036,18 @@ class DelveSiteThemeDangerRow:
 @dataclass
 class DelveSiteThemeFeatureRow:
     id: 'ThemeFeatureRowID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     max: 'int'
     """
-    High end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    High end of the dice range for this table row.
     """
 
     min: 'int'
     """
-    Low end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    Low end of the dice range for this table row.
     """
 
     result: 'MarkdownString'
@@ -2917,38 +3230,78 @@ class I18nHints:
 
 @dataclass
 class ImpactCategory:
+    """
+    Describes a category of standard impacts/debilities.
+    """
+
     contents: 'Dict[str, ImpactRule]'
+    """
+    A dictionary object of the Impacts in this category.
+    """
+
     description: 'MarkdownString'
-    name: 'Label'
+    """
+    A description of this impact category.
+    """
+
+    label: 'Label'
+    """
+    A label for this impact category.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'ImpactCategory':
         return cls(
             _from_json_data(Dict[str, ImpactRule], data.get("contents")),
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["contents"] = _to_json_data(self.contents)
         data["description"] = _to_json_data(self.description)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         return data
 
 @dataclass
 class ImpactRule:
+    """
+    Describes a standard impact/debility.
+    """
+
     description: 'MarkdownString'
-    name: 'Label'
+    """
+    A description of this impact.
+    """
+
+    label: 'Label'
+    """
+    The label for this impact.
+    """
+
     permanent: 'bool'
+    """
+    Is this impact permanent?
+    """
+
     prevents_recovery: 'List[DictKey]'
+    """
+    Keys of ruleset condition meters, to which this impact prevents recovery.
+    """
+
     shared: 'bool'
+    """
+    Is this impact applied to all players at once?
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'ImpactRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("permanent")),
             _from_json_data(List[DictKey], data.get("prevents_recovery")),
             _from_json_data(bool, data.get("shared")),
@@ -2957,7 +3310,7 @@ class ImpactRule:
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["description"] = _to_json_data(self.description)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["permanent"] = _to_json_data(self.permanent)
         data["prevents_recovery"] = _to_json_data(self.prevents_recovery)
         data["shared"] = _to_json_data(self.shared)
@@ -3039,14 +3392,23 @@ class Move:
 
 @dataclass
 class MoveActionRoll(Move):
+    id: 'MoveID'
     """
-    A move that makes an action roll.
+    The unique Datasworn ID for this item.
     """
 
-    id: 'MoveID'
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     outcomes: 'MoveOutcomes'
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     text: 'MarkdownString'
     """
     The complete rules text of the move.
@@ -3054,6 +3416,11 @@ class MoveActionRoll(Move):
 
     trigger: 'TriggerActionRoll'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     oracles: 'Optional[List[OracleTableID]]'
     """
     Oracles associated with this move. It's not recommended to roll these
@@ -3106,9 +3473,21 @@ class MoveActionRoll(Move):
 @dataclass
 class MoveNoRoll(Move):
     id: 'MoveID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
-    outcomes: 'Any'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     text: 'MarkdownString'
     """
     The complete rules text of the move.
@@ -3116,6 +3495,11 @@ class MoveNoRoll(Move):
 
     trigger: 'TriggerNoRoll'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     oracles: 'Optional[List[OracleTableID]]'
     """
     Oracles associated with this move. It's not recommended to roll these
@@ -3137,7 +3521,6 @@ class MoveNoRoll(Move):
             "no_roll",
             _from_json_data(MoveID, data.get("id")),
             _from_json_data(Label, data.get("name")),
-            _from_json_data(Any, data.get("outcomes")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("text")),
             _from_json_data(TriggerNoRoll, data.get("trigger")),
@@ -3151,7 +3534,6 @@ class MoveNoRoll(Move):
         data = { "roll_type": "no_roll" }
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
-        data["outcomes"] = _to_json_data(self.outcomes)
         data["source"] = _to_json_data(self.source)
         data["text"] = _to_json_data(self.text)
         data["trigger"] = _to_json_data(self.trigger)
@@ -3167,27 +3549,40 @@ class MoveNoRoll(Move):
 
 @dataclass
 class MoveProgressRoll(Move):
+    id: 'MoveID'
     """
-    A progress move that rolls on a standard progress track type (defined by the
-    move object).
+    The unique Datasworn ID for this item.
     """
 
-    id: 'MoveID'
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     outcomes: 'MoveOutcomes'
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     text: 'MarkdownString'
     """
     The complete rules text of the move.
     """
 
-    track_label: 'Label'
+    tracks: 'ProgressTrackTypeInfo'
     """
-    A category label for progress tracks associated with this move.
+    Describes the common features of progress tracks associated with this move.
     """
 
     trigger: 'TriggerProgressRoll'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     oracles: 'Optional[List[OracleTableID]]'
     """
     Oracles associated with this move. It's not recommended to roll these
@@ -3212,7 +3607,7 @@ class MoveProgressRoll(Move):
             _from_json_data(MoveOutcomes, data.get("outcomes")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("text")),
-            _from_json_data(Label, data.get("track_label")),
+            _from_json_data(ProgressTrackTypeInfo, data.get("tracks")),
             _from_json_data(TriggerProgressRoll, data.get("trigger")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[List[OracleTableID]], data.get("oracles")),
@@ -3227,7 +3622,7 @@ class MoveProgressRoll(Move):
         data["outcomes"] = _to_json_data(self.outcomes)
         data["source"] = _to_json_data(self.source)
         data["text"] = _to_json_data(self.text)
-        data["track_label"] = _to_json_data(self.track_label)
+        data["tracks"] = _to_json_data(self.tracks)
         data["trigger"] = _to_json_data(self.trigger)
         if self.canonical_name is not None:
              data["canonical_name"] = _to_json_data(self.canonical_name)
@@ -3242,9 +3637,22 @@ class MoveProgressRoll(Move):
 @dataclass
 class MoveSpecialTrack(Move):
     id: 'MoveID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     outcomes: 'MoveOutcomes'
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     text: 'MarkdownString'
     """
     The complete rules text of the move.
@@ -3252,6 +3660,11 @@ class MoveSpecialTrack(Move):
 
     trigger: 'TriggerSpecialTrack'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     oracles: 'Optional[List[OracleTableID]]'
     """
     Oracles associated with this move. It's not recommended to roll these
@@ -3305,11 +3718,38 @@ class MoveSpecialTrack(Move):
 class MoveCategory:
     contents: 'Dict[str, Move]'
     id: 'MoveCategoryID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     color: 'Optional[CSSColor]'
+    """
+    A thematic color associated with this collection.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    A longer description of this collection, which might include multiple
+    paragraphs. If it's only a couple sentences, use the `summary` key instead.
+    """
+
     enhances: 'Optional[MoveCategoryID]'
     """
     This collection's content enhances the identified collection, rather than
@@ -3317,6 +3757,10 @@ class MoveCategory:
     """
 
     icon: 'Optional[SvgImageURL]'
+    """
+    An SVG icon associated with this collection.
+    """
+
     images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[MoveCategoryID]'
     """
@@ -3326,6 +3770,12 @@ class MoveCategory:
 
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    A brief summary of this collection, no more than a few sentences in length.
+    This is intended for use in application tooltips and similar sorts of hints.
+    Longer text should use the "description" key instead.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveCategory':
@@ -3531,8 +3981,20 @@ class MoveOutcome:
 
 class MoveOutcomeType(Enum):
     MISS = "miss"
+    """
+    The score doesn't beat either challenge die.
+    """
+
     STRONG_HIT = "strong_hit"
+    """
+    The score is greater than both challenge dice.
+    """
+
     WEAK_HIT = "weak_hit"
+    """
+    The score is greater than one challenge die.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveOutcomeType':
         return cls(data)
@@ -3574,9 +4036,27 @@ class MoveOutcomes:
 
 class MoveRollType(Enum):
     ACTION_ROLL = "action_roll"
+    """
+    A move that makes an action roll.
+    """
+
     NO_ROLL = "no_roll"
+    """
+    A move that makes no action rolls or progress rolls.
+    """
+
     PROGRESS_ROLL = "progress_roll"
+    """
+    A progress move that rolls on a standard progress track type (defined by
+    this move).
+    """
+
     SPECIAL_TRACK = "special_track"
+    """
+    A progress move that rolls on one or more special tracks, like Bonds
+    (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveRollType':
         return cls(data)
@@ -3606,13 +4086,35 @@ class Npc:
     drives: 'List[MarkdownString]'
     features: 'List[MarkdownString]'
     id: 'NpcID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     nature: 'NpcNature'
     quest_starter: 'MarkdownString'
     rank: 'ChallengeRank'
+    """
+    The suggested challenge rank for this NPC.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     tactics: 'List[MarkdownString]'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
     variants: 'Optional[Dict[str, NpcVariant]]'
@@ -3666,11 +4168,38 @@ class Npc:
 class NpcCollection:
     contents: 'Dict[str, Npc]'
     id: 'NpcCollectionID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     color: 'Optional[CSSColor]'
+    """
+    A thematic color associated with this collection.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    A longer description of this collection, which might include multiple
+    paragraphs. If it's only a couple sentences, use the `summary` key instead.
+    """
+
     enhances: 'Optional[NpcCollectionID]'
     """
     This collection's content enhances the identified collection, rather than
@@ -3678,6 +4207,10 @@ class NpcCollection:
     """
 
     icon: 'Optional[SvgImageURL]'
+    """
+    An SVG icon associated with this collection.
+    """
+
     images: 'Optional[List[WebpImageURL]]'
     replaces: 'Optional[NpcCollectionID]'
     """
@@ -3687,6 +4220,12 @@ class NpcCollection:
 
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    A brief summary of this collection, no more than a few sentences in length.
+    This is intended for use in application tooltips and similar sorts of hints.
+    Longer text should use the "description" key instead.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'NpcCollection':
@@ -3789,9 +4328,17 @@ class NpcNature:
 class NpcVariant:
     description: 'MarkdownString'
     id: 'NpcVariantID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
     nature: 'NpcNature'
     rank: 'ChallengeRank'
+    """
+    The suggested challenge rank for this NPC.
+    """
+
     summary: 'Optional[MarkdownString]'
 
     @classmethod
@@ -3832,11 +4379,38 @@ class OracleCollection:
     collections: 'Dict[str, OracleCollection]'
     contents: 'Dict[str, OracleTable]'
     id: 'OracleCollectionID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     color: 'Optional[CSSColor]'
+    """
+    A thematic color associated with this collection.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    A longer description of this collection, which might include multiple
+    paragraphs. If it's only a couple sentences, use the `summary` key instead.
+    """
+
     enhances: 'Optional[OracleCollectionID]'
     """
     This collection's content enhances the identified collection, rather than
@@ -3844,6 +4418,10 @@ class OracleCollection:
     """
 
     icon: 'Optional[SvgImageURL]'
+    """
+    An SVG icon associated with this collection.
+    """
+
     images: 'Optional[List[WebpImageURL]]'
     rendering: 'Optional[OracleCollectionRendering]'
     replaces: 'Optional[OracleCollectionID]'
@@ -3854,6 +4432,12 @@ class OracleCollection:
 
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    A brief summary of this collection, no more than a few sentences in length.
+    This is intended for use in application tooltips and similar sorts of hints.
+    Longer text should use the "description" key instead.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollection':
@@ -3917,30 +4501,66 @@ class OracleCollectionID:
 
 @dataclass
 class OracleCollectionRendering:
-    columns: 'Dict[str, OracleCollectionTableColumn]'
-    color: 'Optional[CSSColor]'
-    table_style: 'Optional[OracleCollectionStyle]'
+    """
+    Describes the presentation of this oracle collection, which might represent
+    a group of separate tables, or a single table with additional columns.
+    """
+
+    style: 'str'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollectionRendering':
+        variants: Dict[str, Type[OracleCollectionRendering]] = {
+            "multi_table": OracleCollectionRenderingMultiTable,
+            "tables": OracleCollectionRenderingTables,
+        }
+
+        return variants[data["style"]].from_json_data(data)
+
+    def to_json_data(self) -> Any:
+        pass
+
+@dataclass
+class OracleCollectionRenderingMultiTable(OracleCollectionRendering):
+    columns: 'Dict[str, OracleCollectionTableColumn]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleCollectionRenderingMultiTable':
         return cls(
+            "multi_table",
             _from_json_data(Dict[str, OracleCollectionTableColumn], data.get("columns")),
-            _from_json_data(Optional[CSSColor], data.get("color")),
-            _from_json_data(Optional[OracleCollectionStyle], data.get("table_style")),
         )
 
     def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
+        data = { "style": "multi_table" }
         data["columns"] = _to_json_data(self.columns)
-        if self.color is not None:
-             data["color"] = _to_json_data(self.color)
-        if self.table_style is not None:
-             data["table_style"] = _to_json_data(self.table_style)
+        return data
+
+@dataclass
+class OracleCollectionRenderingTables(OracleCollectionRendering):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleCollectionRenderingTables':
+        return cls(
+            "tables",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "style": "tables" }
         return data
 
 class OracleCollectionStyle(Enum):
-    COLLECTION = "collection"
     MULTI_TABLE = "multi_table"
+    """
+    Presented as a single table, with its OracleTable children rendered as
+    columns.
+    """
+
+    TABLES = "tables"
+    """
+    Presented as a collection of separate tables.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollectionStyle':
         return cls(data)
@@ -3951,6 +4571,11 @@ class OracleCollectionStyle(Enum):
 @dataclass
 class OracleCollectionTableColumn:
     content_type: 'OracleTableColumnContentKey'
+    label: 'Label'
+    """
+    The column's header text.
+    """
+
     table_key: 'DictKey'
     """
     The key of the OracleTable (within this collection), whose data is used to
@@ -3962,29 +4587,23 @@ class OracleCollectionTableColumn:
     The thematic color for this column.
     """
 
-    name: 'Optional[Label]'
-    """
-    The column's header text.
-    """
-
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollectionTableColumn':
         return cls(
             _from_json_data(OracleTableColumnContentKey, data.get("content_type")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(DictKey, data.get("table_key")),
             _from_json_data(Optional[CSSColor], data.get("color")),
-            _from_json_data(Optional[Label], data.get("name")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["content_type"] = _to_json_data(self.content_type)
+        data["label"] = _to_json_data(self.label)
         data["table_key"] = _to_json_data(self.table_key)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
-        if self.name is not None:
-             data["name"] = _to_json_data(self.name)
         return data
 
 @dataclass
@@ -4037,11 +4656,33 @@ class OracleRollTemplate:
 @dataclass
 class OracleTable:
     dice: 'DiceNotation'
+    """
+    The roll used to select a result on this table.
+    """
+
     id: 'OracleTableID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     table: 'List[OracleTableRow]'
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     description: 'Optional[MarkdownString]'
     """
     A longer description of the oracle table's intended usage, which might
@@ -4050,9 +4691,23 @@ class OracleTable:
     """
 
     icon: 'Optional[SvgImageURL]'
+    """
+    An icon that represents this table.
+    """
+
     images: 'Optional[List[WebpImageURL]]'
     match: 'Optional[OracleTableMatchBehavior]'
+    """
+    Most oracle tables are insensitive to matches, but a few define special
+    match behavior.
+    """
+
     rendering: 'Optional[OracleTableRendering]'
+    """
+    Describes how how to render this table, when presenting it as a standalone
+    table.
+    """
+
     replaces: 'Optional[OracleTableID]'
     """
     Indicates that this table replaces the identified table. References to the
@@ -4118,14 +4773,14 @@ class OracleTable:
 @dataclass
 class OracleTableColumn:
     content_type: 'OracleTableColumnContentKey'
+    label: 'Label'
+    """
+    The column's header text.
+    """
+
     color: 'Optional[CSSColor]'
     """
     The thematic color for this column.
-    """
-
-    name: 'Optional[Label]'
-    """
-    The column's header text.
     """
 
 
@@ -4133,17 +4788,16 @@ class OracleTableColumn:
     def from_json_data(cls, data: Any) -> 'OracleTableColumn':
         return cls(
             _from_json_data(OracleTableColumnContentKey, data.get("content_type")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[CSSColor], data.get("color")),
-            _from_json_data(Optional[Label], data.get("name")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["content_type"] = _to_json_data(self.content_type)
+        data["label"] = _to_json_data(self.label)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
-        if self.name is not None:
-             data["name"] = _to_json_data(self.name)
         return data
 
 class OracleTableColumnContentKey(Enum):
@@ -4152,9 +4806,25 @@ class OracleTableColumnContentKey(Enum):
     """
 
     DESCRIPTION = "description"
+    """
+    Column displays the OracleTableRow's `description` key.
+    """
+
     RESULT = "result"
+    """
+    Column displays the OracleTableRow's `result` key.
+    """
+
     ROLL = "roll"
+    """
+    Column displays the roll range (`min` and `max`) of each OracleTableRow.
+    """
+
     SUMMARY = "summary"
+    """
+    Column displays the OracleTableRow's `summary` key.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableColumnContentKey':
         return cls(data)
@@ -4206,21 +4876,65 @@ class OracleTableMatchBehavior:
 
 @dataclass
 class OracleTableRendering:
-    columns: 'Dict[str, OracleTableColumn]'
-    table_style: 'Optional[OracleTableStyle]'
+    """
+    Describes the presentation of this table.
+    """
+
+    style: 'str'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableRendering':
+        variants: Dict[str, Type[OracleTableRendering]] = {
+            "column": OracleTableRenderingColumn,
+            "embed_in_row": OracleTableRenderingEmbedInRow,
+            "standalone": OracleTableRenderingStandalone,
+        }
+
+        return variants[data["style"]].from_json_data(data)
+
+    def to_json_data(self) -> Any:
+        pass
+
+@dataclass
+class OracleTableRenderingColumn(OracleTableRendering):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleTableRenderingColumn':
         return cls(
-            _from_json_data(Dict[str, OracleTableColumn], data.get("columns")),
-            _from_json_data(Optional[OracleTableStyle], data.get("table_style")),
+            "column",
         )
 
     def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
+        data = { "style": "column" }
+        return data
+
+@dataclass
+class OracleTableRenderingEmbedInRow(OracleTableRendering):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleTableRenderingEmbedInRow':
+        return cls(
+            "embed_in_row",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "style": "embed_in_row" }
+        return data
+
+@dataclass
+class OracleTableRenderingStandalone(OracleTableRendering):
+    columns: 'Dict[str, OracleTableColumn]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleTableRenderingStandalone':
+        return cls(
+            "standalone",
+            _from_json_data(Dict[str, OracleTableColumn], data.get("columns")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "style": "standalone" }
         data["columns"] = _to_json_data(self.columns)
-        if self.table_style is not None:
-             data["table_style"] = _to_json_data(self.table_style)
         return data
 
 @dataclass
@@ -4271,8 +4985,20 @@ class OracleTableRollMethod(Enum):
     """
 
     KEEP_DUPLICATES = "keep_duplicates"
+    """
+    Duplicates should be kept.
+    """
+
     MAKE_IT_WORSE = "make_it_worse"
+    """
+    Duplicates should be kept, and they compound to make things worse.
+    """
+
     NO_DUPLICATES = "no_duplicates"
+    """
+    Duplicates should be re-rolled.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableRollMethod':
         return cls(data)
@@ -4283,8 +5009,22 @@ class OracleTableRollMethod(Enum):
 @dataclass
 class OracleTableRow:
     id: 'OracleTableRowID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     max: 'Optional[int]'
+    """
+    High end of the dice range for this table row. `null` represents an
+    unrollable row, included only for rendering purposes.
+    """
+
     min: 'Optional[int]'
+    """
+    Low end of the dice range for this table row. `null` represents an
+    unrollable row, included only for rendering purposes.
+    """
+
     result: 'MarkdownString'
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'
@@ -4357,9 +5097,21 @@ class OracleTableRowID:
         return _to_json_data(self.value)
 
 class OracleTableStyle(Enum):
-    EMBED_AS_COLUMN = "embed_as_column"
+    COLUMN = "column"
+    """
+    Render as a single column of a table.
+    """
+
     EMBED_IN_ROW = "embed_in_row"
-    STANDALONE_TABLE = "standalone_table"
+    """
+    Render as a table, within a row in another table.
+    """
+
+    STANDALONE = "standalone"
+    """
+    Render as a standalone table.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableStyle':
         return cls(data)
@@ -4369,13 +5121,45 @@ class OracleTableStyle(Enum):
 
 class PartOfSpeech(Enum):
     ADJECTIVE = "adjective"
+    """
+    An adjective.
+    """
+
     ADJUNCT_COMMON_NOUN = "adjunct_common_noun"
+    """
+    A common noun used as an adjective, to modify another noun.
+    """
+
     ADJUNCT_PROPER_NOUN = "adjunct_proper_noun"
+    """
+    A proper noun used as an adjective, to modify another noun.
+    """
+
     ATTRIBUTIVE_VERB = "attributive_verb"
+    """
+    A verb used as an adjective, to modify a noun.
+    """
+
     COMMON_NOUN = "common_noun"
+    """
+    A common noun.
+    """
+
     GERUND = "gerund"
+    """
+    Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
+    """
+
     PROPER_NOUN = "proper_noun"
+    """
+    A proper noun.
+    """
+
     VERB = "verb"
+    """
+    A verb in present tense
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'PartOfSpeech':
         return cls(data)
@@ -4415,9 +5199,25 @@ class PlayerStat:
 
 class ProgressRollMethod(Enum):
     MISS = "miss"
+    """
+    An automatic miss.
+    """
+
     PROGRESS_ROLL = "progress_roll"
+    """
+    Make a progress roll on a progress track associated with this move.
+    """
+
     STRONG_HIT = "strong_hit"
+    """
+    An automatic strong hit.
+    """
+
     WEAK_HIT = "weak_hit"
+    """
+    An automatic weak hit.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'ProgressRollMethod':
         return cls(data)
@@ -4450,6 +5250,45 @@ class ProgressRollOption:
         return data
 
 @dataclass
+class ProgressTrackTypeInfoControl:
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'ProgressTrackTypeInfoControl':
+        return cls(
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        return data
+
+@dataclass
+class ProgressTrackTypeInfo:
+    """
+    Describes the features of a type of progress track.
+    """
+
+    category: 'Label'
+    """
+    A category label for progress tracks of this type.
+    """
+
+    controls: 'Optional[Dict[str, ProgressTrackTypeInfoControl]]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'ProgressTrackTypeInfo':
+        return cls(
+            _from_json_data(Label, data.get("category")),
+            _from_json_data(Optional[Dict[str, ProgressTrackTypeInfoControl]], data.get("controls")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["category"] = _to_json_data(self.category)
+        if self.controls is not None:
+             data["controls"] = _to_json_data(self.controls)
+        return data
+
+@dataclass
 class Rarity:
     """
     A rarity, as described in Ironsworn: Delve.
@@ -4462,8 +5301,21 @@ class Rarity:
 
     description: 'MarkdownString'
     id: 'RarityID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     xp_cost: 'int'
     """
     From Ironsworn: Delve, p. 174:
@@ -4478,6 +5330,11 @@ class Rarity:
     """
 
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     icon: 'Optional[SvgImageURL]'
     suggestions: 'Optional[Suggestions]'
 
@@ -4524,10 +5381,34 @@ class RarityID:
 
 @dataclass
 class Rules:
+    """
+    Describes rules for player characters in this ruleset, such as stats and
+    condition meters.
+    """
+
     condition_meters: 'Dict[str, ConditionMeterRule]'
+    """
+    Describes the standard condition meters used by player characters in this
+    ruleset.
+    """
+
     impacts: 'Dict[str, ImpactCategory]'
+    """
+    Describes the standard impacts/debilities used by player characters in this
+    ruleset.
+    """
+
     special_tracks: 'Dict[str, SpecialTrackRule]'
+    """
+    Describes the special tracks used by player characters in this ruleset, like
+    Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+    """
+
     stats: 'Dict[str, StatRule]'
+    """
+    Describes the standard stats used by player characters in this ruleset.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'Rules':
@@ -4591,6 +5472,15 @@ class Source:
     """
 
     license: 'Optional[str]'
+    """
+    An absolute URL pointing to the location where this element's license can
+    be found.
+    
+    A `null` here indicates that the content provides **no** license, and is
+    not intended for redistribution.  Datasworn's build process skips unlicensed
+    content by default.
+    """
+
     title: 'str'
     """
     The title of the source document.
@@ -4631,12 +5521,40 @@ class Source:
 
 class SpecialTrackRollMethod(Enum):
     ALL = "all"
+    """
+    Use **every** roll option at once.
+    """
+
     HIGHEST = "highest"
+    """
+    Use the roll option with the best/highest value.
+    """
+
     LOWEST = "lowest"
+    """
+    Use the roll option with the worst/lowest value.
+    """
+
     MISS = "miss"
+    """
+    An automatic miss.
+    """
+
     PLAYER_CHOICE = "player_choice"
+    """
+    The player chooses which roll option to use.
+    """
+
     STRONG_HIT = "strong_hit"
+    """
+    An automatic strong hit.
+    """
+
     WEAK_HIT = "weak_hit"
+    """
+    An automatic weak hit.
+    """
+
     @classmethod
     def from_json_data(cls, data: Any) -> 'SpecialTrackRollMethod':
         return cls(data)
@@ -4646,16 +5564,37 @@ class SpecialTrackRollMethod(Enum):
 
 @dataclass
 class SpecialTrackRule:
+    """
+    Describes a special track like Bonds (classic Ironsworn), Failure (Delve),
+    or Legacies (Starforged).
+    """
+
     description: 'MarkdownString'
-    name: 'Label'
+    """
+    A description of this special track.
+    """
+
+    label: 'Label'
+    """
+    A label for this special track.
+    """
+
     optional: 'bool'
+    """
+    Is this track an optional rule?
+    """
+
     shared: 'bool'
+    """
+    Is this track shared by all players?
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'SpecialTrackRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("optional")),
             _from_json_data(bool, data.get("shared")),
         )
@@ -4663,7 +5602,7 @@ class SpecialTrackRule:
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["description"] = _to_json_data(self.description)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         data["optional"] = _to_json_data(self.optional)
         data["shared"] = _to_json_data(self.shared)
         return data
@@ -4704,20 +5643,32 @@ class SpecialTrackType:
 
 @dataclass
 class StatRule:
+    """
+    Describes a standard player character stat.
+    """
+
     description: 'MarkdownString'
-    name: 'Label'
+    """
+    A description of this stat.
+    """
+
+    label: 'Label'
+    """
+    A label for this stat.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'StatRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("name")),
+            _from_json_data(Label, data.get("label")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["description"] = _to_json_data(self.description)
-        data["name"] = _to_json_data(self.name)
+        data["label"] = _to_json_data(self.label)
         return data
 
 @dataclass
@@ -4738,6 +5689,7 @@ class Suggestions:
     moves: 'Optional[List[MoveID]]'
     npcs: 'Optional[List[NpcID]]'
     oracles: 'Optional[List[OracleTableID]]'
+    rarities: 'Optional[List[RarityID]]'
     site_domains: 'Optional[List[DelveSiteDomainID]]'
     site_themes: 'Optional[List[DelveSiteThemeID]]'
 
@@ -4749,6 +5701,7 @@ class Suggestions:
             _from_json_data(Optional[List[MoveID]], data.get("moves")),
             _from_json_data(Optional[List[NpcID]], data.get("npcs")),
             _from_json_data(Optional[List[OracleTableID]], data.get("oracles")),
+            _from_json_data(Optional[List[RarityID]], data.get("rarities")),
             _from_json_data(Optional[List[DelveSiteDomainID]], data.get("site_domains")),
             _from_json_data(Optional[List[DelveSiteThemeID]], data.get("site_themes")),
         )
@@ -4765,6 +5718,8 @@ class Suggestions:
              data["npcs"] = _to_json_data(self.npcs)
         if self.oracles is not None:
              data["oracles"] = _to_json_data(self.oracles)
+        if self.rarities is not None:
+             data["rarities"] = _to_json_data(self.rarities)
         if self.site_domains is not None:
              data["site_domains"] = _to_json_data(self.site_domains)
         if self.site_themes is not None:
@@ -4858,7 +5813,7 @@ class TriggerActionRollCondition:
     method: 'ActionRollMethod'
     roll_options: 'List[ActionRollOption]'
     """
-    The options available when rolling with this trigger.
+    The options available when rolling with this trigger condition.
     """
 
     by: 'Optional[TriggerBy]'
@@ -4890,9 +5845,15 @@ class TriggerActionRollCondition:
 @dataclass
 class TriggerActionRollConditionEnhancement:
     method: 'Optional[ActionRollMethod]'
+    """
+    A `null` value means this condition provides no roll mechanic of its own;
+    it must be used with another trigger condition that provides a non-null
+    `method`.
+    """
+
     roll_options: 'Optional[List[ActionRollOption]]'
     """
-    The options available when rolling with this trigger.
+    The options available when rolling with this trigger condition.
     """
 
     by: 'Optional[TriggerBy]'
@@ -4986,12 +5947,6 @@ class TriggerNoRoll:
 
 @dataclass
 class TriggerNoRollCondition:
-    method: 'Any'
-    roll_options: 'Any'
-    """
-    The options available when rolling with this trigger.
-    """
-
     by: 'Optional[TriggerBy]'
     text: 'Optional[MarkdownString]'
     """
@@ -5002,16 +5957,12 @@ class TriggerNoRollCondition:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerNoRollCondition':
         return cls(
-            _from_json_data(Any, data.get("method")),
-            _from_json_data(Any, data.get("roll_options")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["method"] = _to_json_data(self.method)
-        data["roll_options"] = _to_json_data(self.roll_options)
         if self.by is not None:
              data["by"] = _to_json_data(self.by)
         if self.text is not None:
@@ -5063,7 +6014,7 @@ class TriggerProgressRollCondition:
     method: 'ProgressRollMethod'
     roll_options: 'List[ProgressRollOption]'
     """
-    The options available when rolling with this trigger.
+    The options available when rolling with this trigger condition.
     """
 
     by: 'Optional[TriggerBy]'
@@ -5095,9 +6046,15 @@ class TriggerProgressRollCondition:
 @dataclass
 class TriggerProgressRollConditionEnhancement:
     method: 'Optional[ProgressRollMethod]'
+    """
+    A `null` value means this condition provides no roll mechanic of its own;
+    it must be used with another trigger condition that provides a non-null
+    `method`.
+    """
+
     roll_options: 'Optional[List[ProgressRollOption]]'
     """
-    The options available when rolling with this trigger.
+    The options available when rolling with this trigger condition.
     """
 
     by: 'Optional[TriggerBy]'
@@ -5171,7 +6128,7 @@ class TriggerSpecialTrackCondition:
     method: 'SpecialTrackRollMethod'
     roll_options: 'List[TriggerSpecialTrackConditionOption]'
     """
-    The options available when rolling with this trigger.
+    The options available when rolling with this trigger condition.
     """
 
     by: 'Optional[TriggerBy]'
@@ -5208,9 +6165,15 @@ class TriggerSpecialTrackConditionEnhancement:
     """
 
     method: 'Optional[SpecialTrackRollMethod]'
+    """
+    A `null` value means this condition provides no roll mechanic of its own;
+    it must be used with another trigger condition that provides a non-null
+    `method`.
+    """
+
     roll_options: 'Optional[List[TriggerSpecialTrackConditionOption]]'
     """
-    The options available when rolling with this trigger.
+    The options available when rolling with this trigger condition.
     """
 
     by: 'Optional[TriggerBy]'
@@ -5276,10 +6239,28 @@ class Truth:
     """
 
     id: 'TruthID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     name: 'Label'
+    """
+    The primary name/label for this item.
+    """
+
     options: 'List[TruthOption]'
     source: 'Source'
+    """
+    Attribution for the original source (such as a book or website) of this
+    item, including the author and licensing information.
+    """
+
     canonical_name: 'Optional[Label]'
+    """
+    The name of this item as it appears on the page in the book, if it's
+    different from `name`.
+    """
+
     icon: 'Optional[SvgImageURL]'
     suggestions: 'Optional[Suggestions]'
     your_character: 'Optional[MarkdownString]'
@@ -5328,6 +6309,10 @@ class TruthID:
 class TruthOption:
     description: 'MarkdownString'
     id: 'TruthOptionID'
+    """
+    The unique Datasworn ID for this item.
+    """
+
     quest_starter: 'MarkdownString'
     max: 'Optional[int]'
     min: 'Optional[int]'
@@ -5375,7 +6360,17 @@ class TruthOptionID:
 @dataclass
 class TruthOptionTableRow:
     max: 'Optional[int]'
+    """
+    High end of the dice range for this table row. `null` represents an
+    unrollable row, included only for rendering purposes.
+    """
+
     min: 'Optional[int]'
+    """
+    Low end of the dice range for this table row. `null` represents an
+    unrollable row, included only for rendering purposes.
+    """
+
     result: 'MarkdownString'
     description: 'Optional[MarkdownString]'
     embed_table: 'Optional[OracleTableID]'

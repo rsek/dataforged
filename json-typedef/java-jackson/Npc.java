@@ -111,6 +111,7 @@ public class Npc {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public NpcId getId() {
         return id;
@@ -118,6 +119,7 @@ public class Npc {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(NpcId id) {
         this.id = id;
@@ -125,6 +127,7 @@ public class Npc {
 
     /**
      * Getter for name.<p>
+     * The primary name/label for this item.
      */
     public Label getName() {
         return name;
@@ -132,6 +135,7 @@ public class Npc {
 
     /**
      * Setter for name.<p>
+     * The primary name/label for this item.
      */
     public void setName(Label name) {
         this.name = name;
@@ -167,6 +171,7 @@ public class Npc {
 
     /**
      * Getter for rank.<p>
+     * The suggested challenge rank for this NPC.
      */
     public ChallengeRank getRank() {
         return rank;
@@ -174,6 +179,7 @@ public class Npc {
 
     /**
      * Setter for rank.<p>
+     * The suggested challenge rank for this NPC.
      */
     public void setRank(ChallengeRank rank) {
         this.rank = rank;
@@ -181,6 +187,8 @@ public class Npc {
 
     /**
      * Getter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public Source getSource() {
         return source;
@@ -188,6 +196,8 @@ public class Npc {
 
     /**
      * Setter for source.<p>
+     * Attribution for the original source (such as a book or website) of this
+     * item, including the author and licensing information.
      */
     public void setSource(Source source) {
         this.source = source;
@@ -209,6 +219,8 @@ public class Npc {
 
     /**
      * Getter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public Label getCanonicalName() {
         return canonicalName;
@@ -216,6 +228,8 @@ public class Npc {
 
     /**
      * Setter for canonicalName.<p>
+     * The name of this item as it appears on the page in the book, if it's
+     * different from `name`.
      */
     public void setCanonicalName(Label canonicalName) {
         this.canonicalName = canonicalName;

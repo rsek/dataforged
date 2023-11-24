@@ -24,9 +24,15 @@ namespace Datasworn
         [JsonPropertyName("count_as_impact")]
         public bool CountAsImpact { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public AssetId Id { get; set; }
 
+        /// <summary>
+        /// The primary name/label for this item.
+        /// </summary>
         [JsonPropertyName("name")]
         public Label Name { get; set; }
 
@@ -38,6 +44,10 @@ namespace Datasworn
         [JsonPropertyName("shared")]
         public bool Shared { get; set; }
 
+        /// <summary>
+        /// Attribution for the original source (such as a book or website) of
+        /// this item, including the author and licensing information.
+        /// </summary>
         [JsonPropertyName("source")]
         public Source Source { get; set; }
 
@@ -45,10 +55,17 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AssetAttachment? Attachments { get; set; }
 
+        /// <summary>
+        /// The name of this item as it appears on the page in the book, if it's
+        /// different from `name`.
+        /// </summary>
         [JsonPropertyName("canonical_name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }
 
+        /// <summary>
+        /// A thematic color associated with this asset.
+        /// </summary>
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public CssColor? Color { get; set; }
@@ -62,6 +79,9 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, AssetControlField> Controls { get; set; }
 
+        /// <summary>
+        /// This asset's icon.
+        /// </summary>
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SvgImageUrl? Icon { get; set; }
@@ -76,6 +96,9 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, AssetOptionField> Options { get; set; }
 
+        /// <summary>
+        /// Describes prerequisites for purchasing or using this asset.
+        /// </summary>
         [JsonPropertyName("requirement")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Requirement { get; set; }

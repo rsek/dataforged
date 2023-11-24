@@ -6,11 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
-/**
- * Select from player and/or asset enhancements. Use it to describe modal
- * abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
- * (Sundered Isles).
- */
 @JsonSerialize
 public class AssetOptionFieldSelectEnhancement extends AssetOptionField {
     @JsonProperty("choices")
@@ -19,8 +14,8 @@ public class AssetOptionFieldSelectEnhancement extends AssetOptionField {
     @JsonProperty("id")
     private AssetOptionFieldId id;
 
-    @JsonProperty("name")
-    private Label name;
+    @JsonProperty("label")
+    private Label label;
 
     @JsonProperty("value")
     private DictKey value;
@@ -44,6 +39,7 @@ public class AssetOptionFieldSelectEnhancement extends AssetOptionField {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public AssetOptionFieldId getId() {
         return id;
@@ -51,35 +47,35 @@ public class AssetOptionFieldSelectEnhancement extends AssetOptionField {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(AssetOptionFieldId id) {
         this.id = id;
     }
 
     /**
-     * Getter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Getter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public Label getName() {
-        return name;
+    public Label getLabel() {
+        return label;
     }
 
     /**
-     * Setter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
+     * Setter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
      */
-    public void setName(Label name) {
-        this.name = name;
+    public void setLabel(Label label) {
+        this.label = label;
     }
 
     /**
      * Getter for value.<p>
-     * The key of the currently selected choice from the `choices` property, or
-     * `null` if none is selected.
+     * The current value of this input.
      */
     public DictKey getValue() {
         return value;
@@ -87,8 +83,7 @@ public class AssetOptionFieldSelectEnhancement extends AssetOptionField {
 
     /**
      * Setter for value.<p>
-     * The key of the currently selected choice from the `choices` property, or
-     * `null` if none is selected.
+     * The current value of this input.
      */
     public void setValue(DictKey value) {
         this.value = value;

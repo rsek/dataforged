@@ -361,17 +361,17 @@ oracles:
             source: *Source
             name: Size
             rendering:
-              table_style: standalone_table
+              style: standalone
               columns:
                 roll:
-                  name: Roll
+                  label: Roll
                   content_type: roll
                 result:
-                  name: Result
+                  label: Result
                   content_type: result
                 time:
                   content_type: summary
-                  name: Time to Walk the Island Circumference
+                  label: Time to Walk the Island Circumference
             table:
               - min: 1
                 max: 20
@@ -393,15 +393,16 @@ oracles:
             source: *Source
             name: Terrain
             rendering:
+              style: standalone
               columns:
                 roll:
-                  name: Roll
+                  label: Roll
                   content_type: roll
                 result:
-                  name: Result
+                  label: Result
                   content_type: result
                 detail:
-                  name: Detail
+                  label: Detail
                   content_type: summary
             table:
               - min: 1
@@ -441,32 +442,35 @@ oracles:
             source: *Source
             name: Vitality
             rendering:
-              table_style: multi_table
+              style: multi_table
               columns:
                 myriads:
                   table_key: myriads
+                  label: Myriads
                   content_type: roll
                 margins:
                   table_key: margins
+                  label: Margins
                   content_type: roll
                 reaches:
                   table_key: reaches
+                  label: Reaches
                   content_type: roll
                 result:
                   table_key: myriads
                   content_type: result
-                  name: Result
+                  label: Result
                 detail:
                   table_key: myriads
                   content_type: summary
-                  name: Detail
+                  label: Detail
             contents:
               myriads:
                 source: *Source
                 name: Myriads
                 summary: Central Seas
                 rendering:
-                  table_style: embed_as_column
+                  style: column
                 table:
                   - min: 1
                     max: 15
@@ -497,7 +501,7 @@ oracles:
                 name: Margins
                 summary: Outer Seas
                 rendering:
-                  table_style: embed_as_column
+                  style: column
                 table:
                   - min: 1
                     max: 10
@@ -528,7 +532,7 @@ oracles:
                 name: Reaches
                 summary: Remote Seas
                 rendering:
-                  table_style: embed_as_column
+                  style: column
                 table:
                   - min: 1
                     max: 5
@@ -558,28 +562,31 @@ oracles:
         source: *Source
         name: Visible Habitation
         rendering:
-          table_style: multi_table
+          style: multi_table
           columns:
             myriads:
               table_key: myriads
+              label: Myriads
               content_type: roll
             margins:
               table_key: margins
+              label: Margins
               content_type: roll
             reaches:
               table_key: reaches
+              label: Reaches
               content_type: roll
             result:
               table_key: myriads
               content_type: result
-              name: Result
+              label: Result
         contents:
           myriads:
             source: *Source
             name: Myriads
             summary: Central Seas
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - min: 1
                 max: 35
@@ -604,7 +611,7 @@ oracles:
             name: Margins
             summary: Outer Seas
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - min: 1
                 max: 50
@@ -629,7 +636,7 @@ oracles:
             name: Reaches
             summary: Remote Seas
             rendering:
-              table_style: embed_as_column
+              style: column
             table:
               - min: 1
                 max: 65

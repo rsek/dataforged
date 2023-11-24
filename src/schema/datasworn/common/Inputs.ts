@@ -31,7 +31,7 @@ import * as Generic from '../utils/Generic.js'
 
 const InputName = Type.Ref<typeof Localize.Label>('#/$defs/Label', {
 	description:
-		'A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).'
+		'A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).'
 })
 
 /**
@@ -43,7 +43,7 @@ export function Input<Value extends TSchema>(
 ) {
 	return Type.Object(
 		{
-			name: InputName,
+			label: InputName,
 			value: {
 				description: 'The current value of this input.',
 				...value
@@ -53,7 +53,7 @@ export function Input<Value extends TSchema>(
 	) satisfies TInput<Value>
 }
 export type TInput<Value extends TSchema> = TObject<{
-	name: TRef<TString>
+	label: TRef<TString>
 	value: Value
 }>
 export interface Input<Value> {
@@ -113,6 +113,8 @@ export const Clock = Generic.Flatten(
 	[
 		Input(
 			Type.Integer({
+				[JsonTypeDef]: { schema: { type: 'int8' } },
+
 				default: 0,
 				description: 'The current number of filled clock segments.'
 			})
@@ -120,11 +122,12 @@ export const Clock = Generic.Flatten(
 		Range({
 			min: {
 				...LiteralZero,
+				[JsonTypeDef]: { schema: { type: 'int8' } },
 				description:
 					'The minimum number of filled clock segments. This is always 0.'
 			},
 			max: JsonEnum([4, 6, 8, 10], {
-				[JsonTypeDef]: { schema: { type: 'uint8' } },
+				[JsonTypeDef]: { schema: { type: 'int8' } },
 				description:
 					'The size of the clock -- in other words, the maximum number of filled clock segments.'
 			})
@@ -140,7 +143,7 @@ export type TClock = typeof Clock
 export type Clock = Static<typeof Clock>
 
 /**
- * A meter with a minimum, a maximum, and an optional current value.
+ * A meter with an integer value, bounded by a minimum and maximum.
  * @abstract
  */
 export function Meter<
@@ -149,13 +152,30 @@ export function Meter<
 >(min: Min, max: Max, options: ObjectOptions = {}) {
 	return Generic.Flatten(
 		[
-			Input(Type.Integer({ description: 'The current value of this meter.' })),
+			Input(
+				Type.Integer({
+					[JsonTypeDef]: { schema: { type: 'int8' } },
+					description: 'The current value of this meter.'
+				})
+			),
 			Range<Min, Max>({
-				min: { description: 'The minimum value of this meter.', ...min },
-				max: { description: 'The maximum value of this meter.', ...max }
+				min: {
+					description: 'The minimum value of this meter.',
+					[JsonTypeDef]: { schema: { type: 'int8' } },
+					...min
+				},
+				max: {
+					description: 'The maximum value of this meter.',
+					[JsonTypeDef]: { schema: { type: 'int8' } },
+					...max
+				}
 			})
 		],
-		options
+		{
+			description:
+				'A meter with an integer value, bounded by a minimum and maximum.',
+			options
+		}
 	)
 }
 export type TMeter<

@@ -1,8 +1,12 @@
-import addFormats from 'ajv-formats'
+import ajvFormatPkg from 'ajv-formats'
 import { log } from '../utils/logger.js'
-import Ajv from 'ajv'
 import { KEYWORDS } from './keywords.js'
 import { FORMATS } from './formats.js'
+import ajvPkg from 'ajv'
+
+// workaround for https://github.com/ajv-validator/ajv/issues/2132
+const Ajv = ajvPkg.default
+const addFormats = ajvFormatPkg.default
 
 // Initialize AJV
 

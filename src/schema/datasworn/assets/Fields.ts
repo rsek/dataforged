@@ -18,12 +18,20 @@ const AssetBooleanFieldMixin = Type.Object({
 	})
 })
 function AssetCheckboxField(id: TRef<TString>) {
+	const base = Fields.CheckboxField(id)
+	const { $comment, description } = base
 	return Generic.Flatten([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
+		description,
+		$comment,
 		title: 'AssetCheckboxField'
 	})
 }
 function AssetCardFlipField(id: TRef<TString>) {
-	return Generic.Flatten([Fields.CardFlipField(id), AssetBooleanFieldMixin], {
+	const base = Fields.CardFlipField(id)
+	const { $comment, description } = base
+	return Generic.Flatten([base, AssetBooleanFieldMixin], {
+		description,
+		$comment,
 		title: 'AssetCardFlipField'
 	})
 }
@@ -33,7 +41,11 @@ export const AssetConditionMeterControlField = DiscriminatedUnion(
 	[AssetCheckboxField, AssetCardFlipField].map((fn) =>
 		fn(Type.Ref(Id.AssetConditionMeterControlFieldId))
 	),
-	{ $id: '#/$defs/AssetConditionMeterControlField' }
+	{
+		$id: '#/$defs/AssetConditionMeterControlField',
+		description:
+			'A checkbox control field, rendered as part of an asset condition meter.'
+	}
 )
 export type AssetConditionMeterControlField = Static<
 	typeof AssetConditionMeterControlField
@@ -83,7 +95,9 @@ const AssetConditionMeterMixin = Type.Object({
 		)
 	),
 	controls: Type.Optional(
-		Generic.Dictionary(Type.Ref(AssetConditionMeterControlField))
+		Generic.Dictionary(Type.Ref(AssetConditionMeterControlField), {
+			description: 'Checkbox controls rendered as part of the condition meter.'
+		})
 	)
 })
 

@@ -9,6 +9,9 @@ namespace Datasworn
         [JsonPropertyName("description")]
         public MarkdownString Description { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public NpcVariantId Id { get; set; }
 
@@ -18,6 +21,9 @@ namespace Datasworn
         [JsonPropertyName("nature")]
         public NpcNature Nature { get; set; }
 
+        /// <summary>
+        /// The suggested challenge rank for this NPC.
+        /// </summary>
         [JsonPropertyName("rank")]
         public ChallengeRank Rank { get; set; }
 

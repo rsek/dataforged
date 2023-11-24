@@ -4,25 +4,28 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    /// <summary>
-    /// Represents an input that accepts plain text.
-    /// </summary>
     public class AssetOptionFieldText : AssetOptionField
     {
         [JsonPropertyName("field_type")]
         public string FieldType { get => "text"; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public AssetOptionFieldId Id { get; set; }
 
         /// <summary>
-        /// A label for this input. In some contexts it may be undesirable
-        /// to render this text, but it should always be exposed to assistive
-        /// technology (e.g. with `aria-label` in HTML).
+        /// A localized label for this input. In some contexts it may be
+        /// undesirable to render this text, but it should always be exposed to
+        /// assistive technology (e.g. with `aria-label` in HTML).
         /// </summary>
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
 
+        /// <summary>
+        /// The content of this text input, or `null` if it's empty
+        /// </summary>
         [JsonPropertyName("value")]
         public string Value { get; set; }
     }

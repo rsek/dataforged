@@ -30,6 +30,10 @@ public class Suggestions {
     private List<OracleTableId> oracles;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("rarities")
+    private List<RarityId> rarities;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("site_domains")
     private List<DelveSiteDomainId> siteDomains;
 
@@ -108,6 +112,20 @@ public class Suggestions {
      */
     public void setOracles(List<OracleTableId> oracles) {
         this.oracles = oracles;
+    }
+
+    /**
+     * Getter for rarities.<p>
+     */
+    public List<RarityId> getRarities() {
+        return rarities;
+    }
+
+    /**
+     * Setter for rarities.<p>
+     */
+    public void setRarities(List<RarityId> rarities) {
+        this.rarities = rarities;
     }
 
     /**

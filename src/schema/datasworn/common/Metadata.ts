@@ -98,16 +98,17 @@ export const Source = Type.Object(
 
 export type Source = Static<typeof Source>
 
-export const Suggestions = Type.Object(
-	{
-		oracles: Type.Optional(Type.Array(Type.Ref(Id.OracleTableId))),
-		assets: Type.Optional(Type.Array(Type.Ref(Id.AssetId))),
-		moves: Type.Optional(Type.Array(Type.Ref(Id.MoveId))),
-		site_domains: Type.Optional(Type.Array(Type.Ref(Id.DelveSiteDomainId))),
-		site_themes: Type.Optional(Type.Array(Type.Ref(Id.DelveSiteThemeId))),
-		npcs: Type.Optional(Type.Array(Type.Ref(Id.NpcId))),
-		atlas: Type.Optional(Type.Array(Type.Ref(Id.AtlasEntryId)))
-	},
+export const Suggestions = Type.Partial(
+	Type.Object({
+		oracles: Type.Array(Type.Ref(Id.OracleTableId)),
+		assets: Type.Array(Type.Ref(Id.AssetId)),
+		moves: Type.Array(Type.Ref(Id.MoveId)),
+		site_domains: Type.Array(Type.Ref(Id.DelveSiteDomainId)),
+		site_themes: Type.Array(Type.Ref(Id.DelveSiteThemeId)),
+		npcs: Type.Array(Type.Ref(Id.NpcId)),
+		atlas: Type.Array(Type.Ref(Id.AtlasEntryId)),
+		rarities: Type.Array(Type.Ref(Id.RarityId))
+	}),
 	{ $id: '#/$defs/Suggestions' }
 )
 

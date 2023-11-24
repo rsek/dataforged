@@ -47,6 +47,7 @@ public class DelveSiteDenizen {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public DelveSiteDenizenId getId() {
         return id;
@@ -54,6 +55,7 @@ public class DelveSiteDenizen {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(DelveSiteDenizenId id) {
         this.id = id;

@@ -1,6 +1,8 @@
 import { Type, type Static } from '@sinclair/typebox'
+import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { JsonEnumFromRecord } from '../../../typebox/index.js'
-import { DictKey } from './Id.js'
+import { Localize, Id } from '../common/index.js'
+import * as Generic from '../utils/Generic.js'
 
 export const ChallengeRank = JsonEnumFromRecord(
 	{
@@ -12,12 +14,17 @@ export const ChallengeRank = JsonEnumFromRecord(
 	},
 	{
 		$id: '#/$defs/ChallengeRank',
-		description: 'Challenge rank, represented as an integer:'
+		description: 'Challenge rank, represented as an integer.',
+		[JsonTypeDef]: {
+			metadata: {
+				typescriptType: `1|2|3|4|5`
+			}
+		}
 	}
 )
 export type ChallengeRank = Static<typeof ChallengeRank>
 
-export const SpecialTrackType = Type.Ref(DictKey, {
+export const SpecialTrackType = Type.Ref(Id.DictKey, {
 	$id: '#/$defs/SpecialTrackType',
 	examples: [
 		'bonds_track',
@@ -36,3 +43,26 @@ export const SpecialTrackType = Type.Ref(DictKey, {
 })
 
 export type SpecialTrackType = Static<typeof SpecialTrackType>
+export const ProgressTrackTypeInfo = Type.Object(
+	{
+		category: Type.Ref(Localize.Label, {
+			description: 'A category label for progress tracks of this type.',
+			examples: [
+				'Vow',
+				'Journey',
+				'Combat',
+				'Scene Challenge',
+				'Expedition',
+				'Connection',
+				'Delve'
+			]
+		}),
+		// TODO
+		controls: Type.Optional(Generic.Dictionary(Type.Object({})))
+	},
+	{
+		$id: '#/$defs/ProgressTrackTypeInfo',
+		description: 'Describes the features of a type of progress track.'
+	}
+)
+export type ProgressTrackTypeInfo = Static<typeof ProgressTrackTypeInfo>

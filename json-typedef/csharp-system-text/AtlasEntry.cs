@@ -17,18 +17,32 @@ namespace Datasworn
         [JsonPropertyName("features")]
         public IList<MarkdownString> Features { get; set; }
 
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public AtlasEntryId Id { get; set; }
 
+        /// <summary>
+        /// The primary name/label for this item.
+        /// </summary>
         [JsonPropertyName("name")]
         public Label Name { get; set; }
 
         [JsonPropertyName("quest_starter")]
         public MarkdownString QuestStarter { get; set; }
 
+        /// <summary>
+        /// Attribution for the original source (such as a book or website) of
+        /// this item, including the author and licensing information.
+        /// </summary>
         [JsonPropertyName("source")]
         public Source Source { get; set; }
 
+        /// <summary>
+        /// The name of this item as it appears on the page in the book, if it's
+        /// different from `name`.
+        /// </summary>
         [JsonPropertyName("canonical_name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }

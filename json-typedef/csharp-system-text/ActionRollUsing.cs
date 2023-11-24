@@ -9,18 +9,41 @@ namespace Datasworn
     [JsonConverter(typeof(ActionRollUsingJsonConverter))]
     public enum ActionRollUsing
     {
+        /// <summary>
+        /// Roll using the value of an asset control.
+        /// </summary>
         AssetControl,
 
+        /// <summary>
+        /// Roll using the value of an asset option.
+        /// </summary>
         AssetOption,
 
+        /// <summary>
+        /// Roll using the value of an attached asset control. For example, a
+        /// Module asset could use this to roll using the `integrity` control of
+        /// an attached Vehicle.
+        /// </summary>
         AttachedAssetControl,
 
+        /// <summary>
+        /// Roll using the value of an attached asset option.
+        /// </summary>
         AttachedAssetOption,
 
+        /// <summary>
+        /// Roll using the value of a standard player condition meter.
+        /// </summary>
         ConditionMeter,
 
+        /// <summary>
+        /// Roll using an integer value with customizable labels.
+        /// </summary>
         Custom,
 
+        /// <summary>
+        /// Roll using a standard player character stat.
+        /// </summary>
         Stat,
     }
     public class ActionRollUsingJsonConverter : JsonConverter<ActionRollUsing>

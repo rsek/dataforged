@@ -7,12 +7,23 @@ namespace Datasworn
 {
     public class OracleTableRow
     {
+        /// <summary>
+        /// The unique Datasworn ID for this item.
+        /// </summary>
         [JsonPropertyName("id")]
         public OracleTableRowId Id { get; set; }
 
+        /// <summary>
+        /// High end of the dice range for this table row. `null` represents an
+        /// unrollable row, included only for rendering purposes.
+        /// </summary>
         [JsonPropertyName("max")]
         public short? Max { get; set; }
 
+        /// <summary>
+        /// Low end of the dice range for this table row. `null` represents an
+        /// unrollable row, included only for rendering purposes.
+        /// </summary>
         [JsonPropertyName("min")]
         public short? Min { get; set; }
 

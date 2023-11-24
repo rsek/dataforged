@@ -19,6 +19,9 @@ namespace Datasworn
         [JsonPropertyName("assets")]
         public IList<AssetIdWildcard> Assets { get; set; }
 
+        /// <summary>
+        /// Null if there's no upper limit to the number of attached assets.
+        /// </summary>
         [JsonPropertyName("max")]
         public short? Max { get; set; }
     }

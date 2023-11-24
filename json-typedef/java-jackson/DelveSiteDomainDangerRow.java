@@ -58,6 +58,7 @@ public class DelveSiteDomainDangerRow {
 
     /**
      * Getter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public DomainDangerRowId getId() {
         return id;
@@ -65,6 +66,7 @@ public class DelveSiteDomainDangerRow {
 
     /**
      * Setter for id.<p>
+     * The unique Datasworn ID for this item.
      */
     public void setId(DomainDangerRowId id) {
         this.id = id;
@@ -72,8 +74,7 @@ public class DelveSiteDomainDangerRow {
 
     /**
      * Getter for max.<p>
-     * High end of the dice range for this table row. `null` represents an
-     * unrollable row, included only for rendering purposes.
+     * High end of the dice range for this table row.
      */
     public Short getMax() {
         return max;
@@ -81,8 +82,7 @@ public class DelveSiteDomainDangerRow {
 
     /**
      * Setter for max.<p>
-     * High end of the dice range for this table row. `null` represents an
-     * unrollable row, included only for rendering purposes.
+     * High end of the dice range for this table row.
      */
     public void setMax(Short max) {
         this.max = max;
@@ -90,8 +90,7 @@ public class DelveSiteDomainDangerRow {
 
     /**
      * Getter for min.<p>
-     * Low end of the dice range for this table row. `null` represents an
-     * unrollable row, included only for rendering purposes.
+     * Low end of the dice range for this table row.
      */
     public Short getMin() {
         return min;
@@ -99,8 +98,7 @@ public class DelveSiteDomainDangerRow {
 
     /**
      * Setter for min.<p>
-     * Low end of the dice range for this table row. `null` represents an
-     * unrollable row, included only for rendering purposes.
+     * Low end of the dice range for this table row.
      */
     public void setMin(Short min) {
         this.min = min;

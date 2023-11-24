@@ -10,12 +10,12 @@ namespace Datasworn
     public class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice
     {
         /// <summary>
-        /// A label for this input. In some contexts it may be undesirable
-        /// to render this text, but it should always be exposed to assistive
-        /// technology (e.g. with `aria-label` in HTML).
+        /// A localized label for this input. In some contexts it may be
+        /// undesirable to render this text, but it should always be exposed to
+        /// assistive technology (e.g. with `aria-label` in HTML).
         /// </summary>
-        [JsonPropertyName("name")]
-        public Label Name { get; set; }
+        [JsonPropertyName("label")]
+        public Label Label { get; set; }
 
         [JsonPropertyName("option_type")]
         public AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType OptionType { get; set; }

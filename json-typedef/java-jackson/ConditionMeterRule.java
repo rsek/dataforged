@@ -5,28 +5,35 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Describes a standard player character condition meter.
+ */
 @JsonSerialize
 public class ConditionMeterRule {
     @JsonProperty("description")
     private MarkdownString description;
 
+    @JsonProperty("label")
+    private Label label;
+
     @JsonProperty("max")
-    private Short max;
+    private Byte max;
 
     @JsonProperty("min")
-    private Short min;
-
-    @JsonProperty("name")
-    private Label name;
+    private Byte min;
 
     @JsonProperty("shared")
     private Boolean shared;
+
+    @JsonProperty("value")
+    private Byte value;
 
     public ConditionMeterRule() {
     }
 
     /**
      * Getter for description.<p>
+     * A description of this condition meter.
      */
     public MarkdownString getDescription() {
         return description;
@@ -34,16 +41,37 @@ public class ConditionMeterRule {
 
     /**
      * Setter for description.<p>
+     * A description of this condition meter.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
     }
 
     /**
+     * Getter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
+     */
+    public Label getLabel() {
+        return label;
+    }
+
+    /**
+     * Setter for label.<p>
+     * A localized label for this input. In some contexts it may be undesirable
+     * to render this text, but it should always be exposed to assistive
+     * technology (e.g. with `aria-label` in HTML).
+     */
+    public void setLabel(Label label) {
+        this.label = label;
+    }
+
+    /**
      * Getter for max.<p>
      * The maximum value of this meter.
      */
-    public Short getMax() {
+    public Byte getMax() {
         return max;
     }
 
@@ -51,7 +79,7 @@ public class ConditionMeterRule {
      * Setter for max.<p>
      * The maximum value of this meter.
      */
-    public void setMax(Short max) {
+    public void setMax(Byte max) {
         this.max = max;
     }
 
@@ -59,7 +87,7 @@ public class ConditionMeterRule {
      * Getter for min.<p>
      * The minimum value of this meter.
      */
-    public Short getMin() {
+    public Byte getMin() {
         return min;
     }
 
@@ -67,32 +95,13 @@ public class ConditionMeterRule {
      * Setter for min.<p>
      * The minimum value of this meter.
      */
-    public void setMin(Short min) {
+    public void setMin(Byte min) {
         this.min = min;
     }
 
     /**
-     * Getter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
-     */
-    public Label getName() {
-        return name;
-    }
-
-    /**
-     * Setter for name.<p>
-     * A label for this input. In some contexts it may be undesirable to render
-     * this text, but it should always be exposed to assistive technology (e.g.
-     * with `aria-label` in HTML).
-     */
-    public void setName(Label name) {
-        this.name = name;
-    }
-
-    /**
      * Getter for shared.<p>
+     * Is this condition meter shared by all players?
      */
     public Boolean getShared() {
         return shared;
@@ -100,8 +109,25 @@ public class ConditionMeterRule {
 
     /**
      * Setter for shared.<p>
+     * Is this condition meter shared by all players?
      */
     public void setShared(Boolean shared) {
         this.shared = shared;
+    }
+
+    /**
+     * Getter for value.<p>
+     * The current value of this meter.
+     */
+    public Byte getValue() {
+        return value;
+    }
+
+    /**
+     * Setter for value.<p>
+     * The current value of this meter.
+     */
+    public void setValue(Byte value) {
+        this.value = value;
     }
 }

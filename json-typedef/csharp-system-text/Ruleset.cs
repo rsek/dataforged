@@ -5,10 +5,6 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    /// <summary>
-    /// Describes game rules compatible with the Ironsworn tabletop role-playing
-    /// game by Shawn Tomkin.
-    /// </summary>
     public class Ruleset
     {
         [JsonPropertyName("id")]
