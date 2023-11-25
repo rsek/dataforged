@@ -16,9 +16,9 @@ import {
 	type TTuple,
 	type TUnion
 } from '@sinclair/typebox'
-import { type TJsonEnum } from '../../../typebox/enum.js'
-import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
-import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { type TJsonEnum } from '../utils/JsonEnum.js'
+import { type TUnionOneOf } from '../utils/UnionOneOf.js'
+import { type TDiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 
 export const SchemaKind = [
 	'Array',

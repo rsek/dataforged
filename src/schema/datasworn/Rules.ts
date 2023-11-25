@@ -1,9 +1,8 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { Localize, Id } from './common/index.js'
 import * as Inputs from './common/Inputs.js'
-import { Flatten } from './utils/Generic.js'
-import * as Generic from './utils/Generic.js'
-
+import * as Utils from './Utils.js'
+import * as Generic from './Generic.js'
 
 export const StatRule = Type.Object(
 	{
@@ -23,7 +22,7 @@ export const StatRule = Type.Object(
 )
 export type StatRule = Static<typeof StatRule>
 
-export const ConditionMeterRule = Flatten(
+export const ConditionMeterRule = Utils.Assign(
 	[
 		Type.Object({
 			description: Type.Ref(Localize.MarkdownString, {

@@ -2,11 +2,11 @@ import { cloneDeep, forEach, mapValues } from 'lodash-es'
 import { trackID } from './id-tracker.js'
 
 import { type Rules } from '../schema/datasworn/Rules.js'
+import { type SourcedNode } from 'schema/datasworn/generic/SourcedNode.js'
 import {
 	type Collection,
-	type RecursiveCollection,
-	type SourcedNode
-} from '../schema/datasworn/utils/Generic.js'
+	type RecursiveCollection
+} from 'schema/datasworn/Collection.js'
 import type * as Out from '../types/io/datasworn.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &

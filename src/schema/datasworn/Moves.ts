@@ -1,6 +1,6 @@
-import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
+import { Type, type Static } from '@sinclair/typebox'
 import { Id } from './common/index.js'
-import * as Generic from './utils/Generic.js'
+import * as Generic from './Generic.js'
 import {
 	MoveActionRoll,
 	MoveActionRollEnhancement,
@@ -11,10 +11,10 @@ import {
 	MoveSpecialTrack,
 	MoveSpecialTrackEnhancement
 } from './moves/index.js'
-import { DiscriminatedUnion } from '../../typebox/discriminated-union.js'
+import * as Utils from './Utils.js'
 
 // discriminated union of all moves by roll_type
-export const Move = DiscriminatedUnion(
+export const Move = Utils.DiscriminatedUnion(
 	'roll_type',
 	[MoveActionRoll, MoveNoRoll, MoveProgressRoll, MoveSpecialTrack],
 	{
@@ -29,7 +29,7 @@ export type Move =
 	| MoveProgressRoll
 	| MoveSpecialTrack
 
-export const MoveEnhancement = DiscriminatedUnion(
+export const MoveEnhancement = Utils.DiscriminatedUnion(
 	'roll_type',
 	[
 		MoveActionRollEnhancement,

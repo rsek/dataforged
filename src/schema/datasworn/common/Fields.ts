@@ -10,10 +10,11 @@ import {
 } from '@sinclair/typebox'
 import { type TMoveEnhancement } from '../Moves.js'
 import { type TAssetEnhancement } from '../assets/Enhancement.js'
-import { type Merge } from '../utils/typebox.js'
 import * as Base from './Inputs.js'
 import type * as Player from './Player.js'
-import * as Generic from '../utils/Generic.js'
+import * as Utils from '../Utils.js'
+import * as Generic from '../Generic.js'
+import type * as Id from './Id.js'
 
 export const EnhanceableProperties = Symbol('EnhanceableProperties')
 
@@ -26,12 +27,12 @@ function InputField<
 >(
 	base: T,
 	discriminator: Discriminator,
-	id: Generic.AnyID,
+	id: Id.AnyID,
 	options: ObjectOptions = {}
 ) {
 	const { description, $comment } = base
 
-	const mixin = Generic.Flatten([
+	const mixin = Utils.Assign([
 		base,
 		Type.Object({ [DISCRIMINATOR]: Type.Literal(discriminator) })
 	]) as unknown as TObject<
@@ -66,7 +67,7 @@ export type TInputField<
 export type InputField<
 	T extends Base.Input<any>,
 	Discriminator extends string
-> = Merge<
+> = Utils.Assign<
 	T,
 	{
 		id: string
@@ -87,7 +88,7 @@ export function CounterField(id: TRef<TString>) {
 	})
 }
 export type TCounterField = ReturnType<typeof CounterField>
-export type CounterField = Static<TCounterField>
+export type CounterField = Static<typeof CounterField>
 
 export function ClockField(id: TRef<TString>, options: ObjectOptions = {}) {
 	const { $comment, description } = Base.Clock

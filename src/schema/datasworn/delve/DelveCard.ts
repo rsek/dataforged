@@ -12,8 +12,11 @@ import {
 import {
 	ExtractLiteralFromEnum,
 	JsonEnumFromRecord
-} from '../../../typebox/enum.js'
-import * as Generic from '../utils/Generic.js'
+} from '../utils/JsonEnum.js'
+import * as Generic from '../Utils.js'
+import * as AssignJs from '../utils/Assign.js'
+import * as SourcedNodeJs from '../generic/SourcedNode.js'
+import * as IdentifiedNodeJs from '../generic/IdentifiedNode.js'
 import { Localize, Metadata } from '../common/index.js'
 import { TTableRow, TableRow, TableRowMixin } from '../oracles/TableRow.js'
 import { SetRequired } from 'type-fest'
@@ -32,7 +35,7 @@ export function DelveCardRow(
 	id: Generic.AnyID,
 	options: SetRequired<ObjectOptions, '$id'>
 ) {
-	return Generic.IdentifiedNode(id, TableRowMixin, options)
+	return IdentifiedNodeJs.IdentifiedNode(id, TableRowMixin, options)
 }
 
 export function DelveCard<
@@ -48,7 +51,7 @@ export function DelveCard<
 	dangers: Dangers,
 	options: ObjectOptions = {}
 ) {
-	const base = Generic.Flatten([
+	const base = AssignJs.Assign([
 		Type.Object({
 			summary: Type.Ref(Localize.MarkdownString),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
@@ -60,5 +63,5 @@ export function DelveCard<
 		Type.Object(properties)
 	])
 
-	return Generic.SourcedNode(id, base, options)
+	return SourcedNodeJs.SourcedNode(id, base, options)
 }

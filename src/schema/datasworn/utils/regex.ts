@@ -7,7 +7,7 @@ import {
 	type ObjectOptions
 } from '@sinclair/typebox'
 import { escapeRegExp } from 'lodash-es'
-import { UnionOneOf } from '../../../typebox/union-oneof.js'
+import { UnionOneOf } from './UnionOneOf.js'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 
 const sep = escapeRegExp('/')

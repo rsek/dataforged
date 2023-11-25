@@ -10,15 +10,12 @@ import {
 	type TInteger
 } from '@sinclair/typebox'
 import { Id, Localize, Metadata, Rolls } from '../common/index.js'
-import {
-	ObjectLiterals,
-	WithDefaults,
-	type CanBeLiteral,
-	setDescriptions
-} from '../utils/typebox.js'
-import * as Generic from '../utils/Generic.js'
+import { WithDefaults, setDescriptions } from '../utils/typebox.js'
+import { ObjectLiteral, type CanBeLiteral } from '../utils/ObjectLiteral.js'
+import * as Generic from '../Utils.js'
+import * as AssignJs from '../utils/Assign.js'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { SetNullable } from '../utils/Generic.js'
+import { SetNullable } from '../utils/SetNullable.js'
 
 const TableRowBase = Type.Object({
 	result: Type.Ref(Localize.MarkdownString),
@@ -32,7 +29,7 @@ const TableRowBase = Type.Object({
 	i18n: Type.Optional(Type.Ref(Localize.I18nHints))
 })
 
-export const TableRowMixin = Generic.Flatten([
+export const TableRowMixin = AssignJs.Assign([
 	TableRowBase,
 	Type.Object({
 		min: Type.Integer({
@@ -98,7 +95,7 @@ export function StaticRowPartial<T extends Partial<CanBeLiteral<TableRow>>>(
 		}
 	> = {}
 ) {
-	const result = WithDefaults(ObjectLiterals(literals), defaults as any, {
+	const result = WithDefaults(ObjectLiteral(literals), defaults as any, {
 		additionalProperties: true
 	})
 	return result

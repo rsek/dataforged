@@ -7,17 +7,19 @@ import {
 	TableRow,
 	TableRowMixin
 } from '../oracles/TableRow.js'
-import * as Generic from '../utils/Generic.js'
-import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
+import * as Generic from '../Utils.js'
+import * as SourcedNodeJs from '../generic/SourcedNode.js'
+import * as IdentifiedNodeJs from '../generic/IdentifiedNode.js'
+import { ExtractLiteralFromEnum } from '../utils/JsonEnum.js'
 import { DelveCardType } from './DelveCard.js'
 
-export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
+export const DelveSiteDomainFeatureRow = IdentifiedNodeJs.IdentifiedNode(
 	Type.Ref(Id.DomainFeatureRowId),
 	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
-export const DelveSiteDomainDangerRow = Generic.IdentifiedNode(
+export const DelveSiteDomainDangerRow = IdentifiedNodeJs.IdentifiedNode(
 	Type.Ref(Id.DomainDangerRowId),
 	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
@@ -28,7 +30,7 @@ const DelveSiteDomainFeatures = Type.Array(Type.Ref(DelveSiteDomainFeatureRow))
 
 const DelveSiteDomainDangers = Type.Array(Type.Ref(DelveSiteDomainDangerRow))
 
-export const DelveSiteDomain = Generic.SourcedNode(
+export const DelveSiteDomain = SourcedNodeJs.SourcedNode(
 	Type.Ref(Id.DelveSiteDomainId),
 	Type.Object({
 		summary: Type.Ref(Localize.MarkdownString),

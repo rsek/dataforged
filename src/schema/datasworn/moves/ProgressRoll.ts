@@ -12,7 +12,8 @@ import {
 	TriggerConditionEnhancement,
 	TriggerEnhancement
 } from './Trigger.js'
-import * as Generic from '../utils/Generic.js'
+import * as Generic from '../Utils.js'
+import * as AssignJs from '../utils/Assign.js'
 import { ProgressTrackTypeInfo } from '../common/Progress.js'
 
 export const ProgressRollOption = Type.Object(
@@ -44,7 +45,7 @@ export const TriggerProgressRoll = Trigger(
 
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
-export const MoveProgressRoll = Generic.Flatten(
+export const MoveProgressRoll = AssignJs.Assign(
 	[
 		Move(
 			'progress_roll',

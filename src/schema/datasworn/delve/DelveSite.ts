@@ -9,8 +9,10 @@ import { toJtdElements } from '../../../json-typedef/utils.js'
 import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
 import { Id, Localize, Metadata, Progress } from '../common/index.js'
 import { StaticRowPartial } from '../oracles/TableRow.js'
-import * as Generic from '../utils/Generic.js'
-
+import * as Generic from '../Utils.js'
+import * as AssignJs from '../utils/Assign.js'
+import * as SourcedNodeJs from '../generic/SourcedNode.js'
+import * as IdentifiedNodeJs from '../generic/IdentifiedNode.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
@@ -18,7 +20,7 @@ export const DelveSiteDenizenFrequency = JsonEnum(
 )
 export type DelveSiteDenizenFrequency = Static<typeof DelveSiteDenizenFrequency>
 
-export const DelveSiteDenizen = Generic.IdentifiedNode(
+export const DelveSiteDenizen = IdentifiedNodeJs.IdentifiedNode(
 	Type.Ref(Id.DelveSiteDenizenId),
 	Type.Object({
 		name: Type.Optional(
@@ -45,7 +47,7 @@ function StaticDenizenRowStub<
 	Max extends number,
 	Frequency extends DelveSiteDenizenFrequency
 >(min: Min, max: Max, frequency: Frequency) {
-	return Generic.Flatten(
+	return AssignJs.Assign(
 		[
 			StaticRowPartial({ min, max }),
 			Type.Object({ frequency: Type.Literal(frequency) })
@@ -59,7 +61,7 @@ function StaticDenizenRowStub<
 }
 const DelveSiteDenizens = Type.Array(Type.Ref(DelveSiteDenizen))
 
-export const DelveSite = Generic.SourcedNode(
+export const DelveSite = SourcedNodeJs.SourcedNode(
 	Type.Ref(Id.DelveSiteId),
 	Type.Object({
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),

@@ -8,7 +8,7 @@ import {
 	type ObjectProperties,
 	type TLiteral
 } from '@sinclair/typebox'
-import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
+import { ExtractLiteralFromEnum } from '../utils/JsonEnum.js'
 import { Id, Localize } from '../common/index.js'
 import {
 	type TTrigger,
@@ -20,8 +20,8 @@ import {
 	type MoveOutcomes,
 	type TMoveOutcomes
 } from './common.js'
-import * as Generic from '../utils/Generic.js'
-
+import * as Generic from '../Generic.js'
+import * as Utils from '../utils/Assign.js'
 
 const MoveBase = Type.Object({
 	replaces: Type.Optional(
@@ -46,7 +46,7 @@ export function Move<
 	Trigger extends TRef<TTrigger>,
 	Outcomes extends TRef<TMoveOutcomes> | TNull
 >(rollType: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
-	const base = Generic.Flatten([
+	const base = Utils.Assign([
 		MoveBase,
 		Type.Object({
 			roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),

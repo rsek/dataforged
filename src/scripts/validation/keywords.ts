@@ -1,7 +1,7 @@
 import { type KeywordDefinition } from 'ajv'
-import { JsonEnum } from '../../typebox/enum.js'
+import { JsonEnum } from '../../schema/datasworn/utils/JsonEnum.js'
 import { Type } from '@sinclair/typebox'
-import { UnionOneOf } from '../../typebox/union-oneof.js'
+import { UnionOneOf } from '../../schema/datasworn/utils/UnionOneOf.js'
 
 export const KEYWORDS: Record<string, Omit<KeywordDefinition, 'keyword'>> = {
 	releaseStage: {

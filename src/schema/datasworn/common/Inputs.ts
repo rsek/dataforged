@@ -15,19 +15,19 @@ import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 
 import {
 	LiteralZero,
-	Nullable,
 	type TFuzzySchemaOf,
-	setDescriptions,
-	type Merge,
-	type TMerge
+	setDescriptions
 } from '../utils/typebox.js'
+import { Nullable } from '../utils/Nullable.js'
 
-import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 import { JsonEnum } from '../../../typebox/index.js'
 
 import type * as Id from './Id.js'
 import type * as Localize from './Localize.js'
-import * as Generic from '../utils/Generic.js'
+import * as Utils from '../Utils.js'
+import * as DictionaryJs from '../generic/Dictionary.js'
+import { TypeCompiler } from '@sinclair/typebox/compiler'
 
 const InputName = Type.Ref<typeof Localize.Label>('#/$defs/Label', {
 	description:
@@ -92,7 +92,7 @@ export interface Range<
 	max: Max
 }
 
-export const Counter = Generic.Flatten(
+export const Counter = Utils.Assign(
 	[
 		Input(Type.Integer({ default: 0 })),
 		Range({
@@ -109,7 +109,7 @@ export const Counter = Generic.Flatten(
 export type TCounter = typeof Counter
 export type Counter = Static<typeof Counter>
 
-export const Clock = Generic.Flatten(
+export const Clock = Utils.Assign(
 	[
 		Input(
 			Type.Integer({
@@ -150,7 +150,7 @@ export function Meter<
 	Min extends TInteger | TLiteral<number> = TInteger,
 	Max extends TInteger | TLiteral<number> = TInteger
 >(min: Min, max: Max, options: ObjectOptions = {}) {
-	return Generic.Flatten(
+	return Utils.Assign(
 		[
 			Input(
 				Type.Integer({
@@ -181,11 +181,11 @@ export function Meter<
 export type TMeter<
 	Min extends TInteger | TLiteral<number> = TInteger,
 	Max extends TInteger | TLiteral<number> = TInteger
-> = TMerge<TInput<TInteger>, TRange<Min, Max>>
+> = Utils.TAssign<[TInput<TInteger>, TRange<Min, Max>]>
 export type Meter<
 	Min extends number = number,
 	Max extends number = number
-> = Merge<Range<Min, Max>, Input<number>>
+> = Utils.Assign<Range<Min, Max>, Input<number>>
 
 /**
  * Represents a checkbox, similar to an HTML `<input type="checkbox">` element.
@@ -230,7 +230,7 @@ export function SelectOption<Value extends TSchema>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Input(value)
-	return Generic.Flatten([SelectOptionBase, mixin], {
+	return Utils.Assign([SelectOptionBase, mixin], {
 		description: 'Represents an option in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<option>` element.',
 		...options
@@ -247,7 +247,7 @@ function Choices<T extends TSchema>(
 ) {
 	return Type.Object(
 		{
-			choices: Generic.Dictionary(choiceSchema)
+			choices: DictionaryJs.Dictionary(choiceSchema)
 		},
 		options
 	)
@@ -268,7 +268,7 @@ export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(optionSchema)
-	return Generic.Flatten([SelectOptionGroupBase, mixin], {
+	return Utils.Assign([SelectOptionGroupBase, mixin], {
 		description: 'Represents a grouping of options in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
 		title: optionSchema.title ? optionSchema.title + 'Group' : undefined,
@@ -310,7 +310,7 @@ export function Select<Option extends TSelectOption<TSchema>>(
 			SelectOptionGroup(optionSchema)
 		])
 	)
-	return Generic.Flatten([SelectBase, mixin], {
+	return Utils.Assign([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',
 		$comment: 'Semantics are similar to the HTML `<select>` element',
 		...options
@@ -325,3 +325,5 @@ export type Select<Option extends SelectOption<any>> = Static<
 	typeof SelectBase
 > &
 	Choices<Option>
+
+

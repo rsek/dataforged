@@ -7,7 +7,7 @@ import {
 } from '@sinclair/typebox'
 import { TypeSystem } from '@sinclair/typebox/system'
 import { Value } from '@sinclair/typebox/value'
-import { Members } from '../json-typedef/symbol.js'
+import { Members } from '../../../json-typedef/symbol.js'
 
 const UnionOneOfKind = 'UnionOneOf'
 

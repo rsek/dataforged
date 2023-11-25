@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { JsonEnumFromRecord } from '../../../typebox/enum.js'
+import { JsonEnumFromRecord } from '../utils/JsonEnum.js'
 import { Id, Localize } from '../common/index.js'
 
 export const DiceNotation = Type.RegExp(

@@ -1,7 +1,7 @@
 import { Type, type Static, type TRef } from '@sinclair/typebox'
 import { Id, Localize, Metadata, Rolls } from './common/index.js'
-import * as Generic from './utils/Generic.js'
-import { Flatten } from './utils/Generic.js'
+import * as Utils from './Utils.js'
+import * as Generic from './Generic.js'
 import { TableRowNullableMixin } from './oracles/TableRow.js'
 import {
 	OracleTableRendering,
@@ -76,7 +76,7 @@ export const OracleTable = Generic.RecursiveCollectable(
 )
 export type OracleTable = Static<typeof OracleTable>
 
-const OracleCollectionBase = Flatten(
+const OracleCollectionBase = Utils.Assign(
 	[
 		Type.Object({
 			rendering: Type.Optional(

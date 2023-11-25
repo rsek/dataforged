@@ -18,17 +18,11 @@ import {
 } from '@sinclair/typebox'
 import * as JTD from 'jtd'
 
-import {
-	cloneDeep,
-	omit,
-	omitBy,
-	pick,
-	pickBy,
-	set,
-	merge,
-	compact
-} from 'lodash-es'
-import { TNullable } from '../schema/datasworn/utils/typebox.js'
+import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
+import { cloneDeep, merge, omit, omitBy, pick, set } from 'lodash-es'
+import * as Generic from '../schema/datasworn/Generic.js'
+import * as Utils from '../schema/datasworn/Utils.js'
+import { TRoot } from '../schema/datasworn/root/SchemaRoot.js'
 import { log } from '../scripts/utils/logger.js'
 import {
 	Description,
@@ -36,12 +30,7 @@ import {
 	TAnySchema,
 	TJsonEnum
 } from '../typebox/index.js'
-import { TDiscriminatedUnion } from '../typebox/discriminated-union.js'
-import { Discriminator, Members } from './symbol.js'
-import { JsonTypeDef } from './symbol.js'
-import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
-import { DictionaryBrand } from '../schema/datasworn/utils/Generic.js'
-import { TRoot } from '../schema/datasworn/root/SchemaRoot.js'
+import { Discriminator, JsonTypeDef, Members } from './symbol.js'
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
 export function extractMetadata<T extends TAnySchema>(jsonSchema: T) {
@@ -74,7 +63,7 @@ export function extractMetadata<T extends TAnySchema>(jsonSchema: T) {
 
 	// @ts-ignore
 	if (jsonSchema[EnumDescription]) {
-		console.log(jsonSchema)
+		// console.log(jsonSchema)
 		// @ts-ignore
 		metadata.enumDescription = jsonSchema[EnumDescription]
 		// @ts-ignore
@@ -218,7 +207,7 @@ export function toJtdSingleEnum<T extends TLiteral>(schema: T) {
 	return { metadata, enum: [schema.const] }
 }
 
-export function toJtdNullable<T extends TNullable<U>, U extends TSchema>(
+export function toJtdNullable<T extends Utils.TNullable<U>, U extends TSchema>(
 	schema: T
 ): JTDSchemaType<Static<U> | null> {
 	const [baseSchema, nullType] = schema.anyOf
@@ -234,9 +223,9 @@ export function toJtdNull(schema: TNull) {
 	return undefined
 }
 
-export function toJtdDiscriminator<T extends TDiscriminatedUnion<any, any[]>>(
-	schema: T
-) {
+export function toJtdDiscriminator<
+	T extends Utils.TDiscriminatedUnion<any, any[]>
+>(schema: T) {
 	const discriminator = schema[Discriminator]
 	// console.log('got discriminator schema', `"${discriminator}"`)
 
@@ -271,13 +260,13 @@ export function toJtdDiscriminated<
 	return form as any
 }
 
-function toJtdForm<T extends TDiscriminatedUnion>(
+function toJtdForm<T extends Utils.TDiscriminatedUnion>(
 	schema: T
 ): JTDSchemaType<Static<T>>
 function toJtdForm<T extends TLiteral<string | string>>(
 	schema: T
 ): JTDSchemaType<Static<T>>
-function toJtdForm<T extends TNullable<U>, U extends TSchema>(
+function toJtdForm<T extends Utils.TNullable<U>, U extends TSchema>(
 	schema: T
 ): JTDSchemaType<Static<U> | null>
 function toJtdForm<T extends TRef<U>, U extends TSchema>(
@@ -324,10 +313,10 @@ function toJtdForm<T extends TSchema>(
 		case TypeGuard.TLiteral(schema):
 			result = toJtdSingleEnum(schema)
 			break
-		case TDiscriminatedUnion(schema):
+		case Utils.TDiscriminatedUnion(schema):
 			result = toJtdDiscriminator(schema)
 			break
-		case TNullable(schema):
+		case Utils.TNullable(schema):
 			result = toJtdNullable(schema)
 			break
 		case TypeGuard.TRef(schema):
@@ -345,7 +334,7 @@ function toJtdForm<T extends TSchema>(
 		case TypeGuard.TNumber(schema):
 			result = toJtdFloat(schema)
 			break
-		case schema[DictionaryBrand] === 'Dictionary':
+		case schema[Generic.DictionaryBrand] === 'Dictionary':
 		case TypeGuard.TRecord(schema):
 			result = toJtdValues(schema)
 			break

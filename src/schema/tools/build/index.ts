@@ -1,5 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { JsonEnumFromRecord } from '../../../typebox/enum.js'
+import { JsonEnumFromRecord } from '../../datasworn/utils/JsonEnum.js'
 import {
 	PKG_SCOPE_COMMUNITY,
 	PKG_SCOPE_OFFICIAL

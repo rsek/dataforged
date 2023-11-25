@@ -1,4 +1,4 @@
-import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 import {
 	ExtractLiteralFromEnum,
 	JsonEnumFromRecord,
@@ -8,7 +8,7 @@ import {
 	type TObject
 } from '../../../typebox/index.js'
 import { Localize, Player, Id } from '../common/index.js'
-import { Nullable } from '../utils/typebox.js'
+import { Nullable } from '../utils/Nullable.js'
 import {
 	Trigger,
 	TriggerCondition,
@@ -17,8 +17,8 @@ import {
 } from './Trigger.js'
 import { type ActionRollMethod, type MoveOutcomes } from './common.js'
 import { Move, MoveEnhancement } from './utils.js'
-import * as Generic from '../utils/Generic.js'
-
+import * as Generic from '../Utils.js'
+import * as AssignJs from '../utils/Assign.js'
 
 export const ActionRollUsing = JsonEnumFromRecord(
 	{
@@ -40,7 +40,7 @@ function ActionRollOptionBase<
 	Using extends ActionRollUsing,
 	Props extends TObject
 >(using: Using, props: Props, options: ObjectOptions = {}) {
-	return Generic.Flatten(
+	return AssignJs.Assign(
 		[
 			props,
 			Type.Object({

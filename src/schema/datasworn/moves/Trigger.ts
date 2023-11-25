@@ -9,17 +9,13 @@ import {
 	type ObjectProperties,
 	type TObject
 } from '@sinclair/typebox'
-import { type TJsonEnum } from '../../../typebox/enum.js'
 import { Localize } from '../common/index.js'
 import {
-	Nullable,
-	TNullable,
 	type TFuzzyNull,
 	type TFuzzyObject,
 	type TFuzzyRef
 } from '../utils/typebox.js'
-import * as Generic from '../utils/Generic.js'
-
+import * as Utils from '../Utils.js'
 
 export const TriggerBy = Type.Object(
 	{
@@ -45,7 +41,7 @@ const TriggerConditionBase = Type.Object({
 })
 
 export function TriggerCondition<
-	Method extends TFuzzyNull<TJsonEnum<string[]>>,
+	Method extends TFuzzyNull<Utils.TJsonEnum<string[]>>,
 	RollOptions extends TFuzzyNull<TArray<TFuzzyObject<{ using: TSchema }>>>
 >(method: Method, rollOptions: RollOptions, options: ObjectOptions = {}) {
 	const roll_options: RollOptions = {
@@ -53,7 +49,7 @@ export function TriggerCondition<
 			'The options available when rolling with this trigger condition.',
 		...rollOptions
 	}
-	return Generic.Flatten(
+	return Utils.Assign(
 		[
 			TriggerConditionBase,
 			Type.Object({
@@ -65,8 +61,8 @@ export function TriggerCondition<
 	)
 }
 export type TTriggerCondition<
-	Method extends TFuzzyNull<TJsonEnum<string[]>> = TFuzzyNull<
-		TJsonEnum<string[]>
+	Method extends TFuzzyNull<Utils.TJsonEnum<string[]>> = TFuzzyNull<
+		Utils.TJsonEnum<string[]>
 	>,
 	RollOptions extends TFuzzyNull<
 		TArray<TFuzzyObject<{ using: TSchema }>>
@@ -93,25 +89,26 @@ export function TriggerConditionEnhancement<T extends TTriggerCondition>(
 		T['properties'],
 		'roll_options' | 'method'
 	> & {
-		roll_options: RollOptions extends TNull | TNullable
+		roll_options: RollOptions extends TNull | Utils.TNullable
 			? RollOptions
-			: TNullable<RollOptions>
-		method: typeof Method extends TNull | TNullable
+			: Utils.TNullable<RollOptions>
+		method: typeof Method extends TNull | Utils.TNullable
 			? typeof Method
-			: TNullable<typeof Method>
+			: Utils.TNullable<typeof Method>
 	}
 
-	const rollOptionsAreNullable = TypeGuard.TNull(Method) ?? TNullable(Method)
+	const rollOptionsAreNullable =
+		TypeGuard.TNull(Method) ?? Utils.TNullable(Method)
 
 	const roll_options = rollOptionsAreNullable
 		? RollOptions
-		: Nullable(RollOptions)
+		: Utils.Nullable(RollOptions)
 
-	const methodIsNullable = TypeGuard.TNull(Method) ?? TNullable(Method)
+	const methodIsNullable = TypeGuard.TNull(Method) ?? Utils.TNullable(Method)
 
 	const method = methodIsNullable
 		? Method
-		: Nullable(Method, {
+		: Utils.Nullable(Method, {
 				description:
 					'A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.'
 		  })
@@ -137,7 +134,7 @@ const TriggerMixin = Type.Object({
 export function Trigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>>
 >(conditions: T, options: ObjectOptions = {}) {
-	return Generic.Flatten(
+	return Utils.Assign(
 		[TriggerMixin, Type.Object({ conditions })],
 		options
 	) as TTrigger<T>

@@ -1,6 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import * as Id from '../common/Id.js'
-import { Nullable } from '../utils/typebox.js'
+import { Nullable } from '../utils/Nullable.js'
 
 export const SvgImageUrl = Type.RegExp(/\.svg$/i, {
 	$id: '#/$defs/SvgImageUrl',

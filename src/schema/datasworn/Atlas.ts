@@ -1,10 +1,11 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { Id } from './common/index.js'
-import * as Generic from './utils/Generic.js'
+import * as Generic from './Generic.js'
+import { Cyclopedia } from './generic/Mixin.js'
 
 export const AtlasEntry = Generic.RecursiveCollectable(
 	Type.Ref(Id.AtlasEntryId),
-	Generic.CyclopediaMixin,
+	Cyclopedia,
 	{
 		$id: '#/$defs/AtlasEntry',
 		title: 'Atlas entry',

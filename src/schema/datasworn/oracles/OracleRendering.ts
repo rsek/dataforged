@@ -2,10 +2,12 @@ import { Type, type Static } from '@sinclair/typebox'
 import {
 	ExtractLiteralFromEnum,
 	JsonEnumFromRecord
-} from '../../../typebox/enum.js'
+} from '../utils/JsonEnum.js'
 import { Id, Localize, Metadata } from '../common/index.js'
-import * as Generic from '../utils/Generic.js'
-import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import * as Generic from '../Utils.js'
+import * as AssignJs from '../utils/Assign.js'
+import * as DictionaryJs from '../generic/Dictionary.js'
+import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 
 export const OracleTableColumnContentKey = JsonEnumFromRecord(
 	{
@@ -45,7 +47,7 @@ export const OracleTableColumn = Type.Object(
 )
 export type OracleTableColumn = Static<typeof OracleTableColumn>
 
-export const OracleCollectionTableColumn = Generic.Flatten(
+export const OracleCollectionTableColumn = AssignJs.Assign(
 	[
 		OracleTableColumn,
 		Type.Object({
@@ -66,7 +68,7 @@ export type OracleCollectionTableColumn = Static<
 
 const OracleRenderingBase = Type.Object({
 	columns: Type.Optional(
-		Generic.Dictionary(Type.Ref(OracleTableColumn), {
+		DictionaryJs.Dictionary(Type.Ref(OracleTableColumn), {
 			description:
 				'Describes the rendering of this oracle as a standalone table.'
 		})
@@ -92,7 +94,7 @@ const OracleCollectionRenderingTables = Type.Object({
 
 const OracleCollectionRenderingMultiTable = Type.Object({
 	style: ExtractLiteralFromEnum(OracleCollectionStyle, 'multi_table'),
-	columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn))
+	columns: DictionaryJs.Dictionary(Type.Ref(OracleCollectionTableColumn))
 })
 
 export const OracleCollectionRendering = DiscriminatedUnion(
@@ -118,7 +120,7 @@ export type OracleTableStyle = Static<typeof OracleTableStyle>
 
 const OracleTableRenderingStandalone = Type.Object({
 	style: ExtractLiteralFromEnum(OracleTableStyle, 'standalone'),
-	columns: Generic.Dictionary(Type.Ref(OracleTableColumn), {
+	columns: DictionaryJs.Dictionary(Type.Ref(OracleTableColumn), {
 		default: {
 			roll: { label: 'Roll', content_type: 'roll' },
 			result: { label: 'Result', content_type: 'result' }

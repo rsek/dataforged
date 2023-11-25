@@ -1,4 +1,4 @@
-import { type Static } from '@sinclair/typebox'
+import { type TRef, type TString, type Static } from '@sinclair/typebox'
 import { type Opaque } from 'type-fest'
 import {
 	DiceRange,
@@ -14,6 +14,7 @@ import {
 	IdUnion,
 	RecursiveCollectableId
 } from '../utils/regex.js'
+import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 
 export const NamespaceId = Id([Namespace], {
 	$id: '#/$defs/NamespaceId',
@@ -111,16 +112,24 @@ export const AssetAbilityId = Extend(AssetId, ['abilities', Index], {
 })
 export type AssetAbilityId = Opaque<Static<typeof AssetAbilityId>>
 
-export const AssetAbilityOptionFieldId = Extend(AssetAbilityId, ['options', Node], {
-	$id: '#/$defs/AssetAbilityOptionFieldId'
-})
+export const AssetAbilityOptionFieldId = Extend(
+	AssetAbilityId,
+	['options', Node],
+	{
+		$id: '#/$defs/AssetAbilityOptionFieldId'
+	}
+)
 export type AssetAbilityOptionFieldId = Opaque<
 	Static<typeof AssetAbilityOptionFieldId>
 >
 
-export const AssetAbilityControlFieldId = Extend(AssetAbilityId, ['controls', Node], {
-	$id: '#/$defs/AssetAbilityControlFieldId'
-})
+export const AssetAbilityControlFieldId = Extend(
+	AssetAbilityId,
+	['controls', Node],
+	{
+		$id: '#/$defs/AssetAbilityControlFieldId'
+	}
+)
 export type AssetAbilityControlFieldId = Opaque<
 	Static<typeof AssetAbilityControlFieldId>
 >
@@ -143,14 +152,22 @@ export const DelveSiteThemeId = UncollectableId(['site_themes'], {
 })
 export type DelveSiteThemeId = Opaque<Static<typeof DelveSiteThemeId>>
 
-export const ThemeFeatureRowId = Extend(DelveSiteThemeId, ['features', DiceRange], {
-	$id: '#/$defs/ThemeFeatureRowId'
-})
+export const ThemeFeatureRowId = Extend(
+	DelveSiteThemeId,
+	['features', DiceRange],
+	{
+		$id: '#/$defs/ThemeFeatureRowId'
+	}
+)
 export type ThemeFeatureRowId = Opaque<Static<typeof ThemeFeatureRowId>>
 
-export const ThemeDangerRowId = Extend(DelveSiteThemeId, ['dangers', DiceRange], {
-	$id: '#/$defs/ThemeDangerRowId'
-})
+export const ThemeDangerRowId = Extend(
+	DelveSiteThemeId,
+	['dangers', DiceRange],
+	{
+		$id: '#/$defs/ThemeDangerRowId'
+	}
+)
 export type ThemeDangerRowId = Opaque<Static<typeof ThemeDangerRowId>>
 
 export const DelveSiteDomainId = UncollectableId(['site_domains'], {
@@ -159,14 +176,22 @@ export const DelveSiteDomainId = UncollectableId(['site_domains'], {
 })
 export type DelveSiteDomainId = Opaque<Static<typeof DelveSiteDomainId>>
 
-export const DomainFeatureRowId = Extend(DelveSiteDomainId, ['features', DiceRange], {
-	$id: '#/$defs/DomainFeatureRowId'
-})
+export const DomainFeatureRowId = Extend(
+	DelveSiteDomainId,
+	['features', DiceRange],
+	{
+		$id: '#/$defs/DomainFeatureRowId'
+	}
+)
 export type DomainFeatureRowId = Opaque<Static<typeof DomainFeatureRowId>>
 
-export const DomainDangerRowId = Extend(DelveSiteDomainId, ['dangers', DiceRange], {
-	$id: '#/$defs/DomainDangerRowId'
-})
+export const DomainDangerRowId = Extend(
+	DelveSiteDomainId,
+	['dangers', DiceRange],
+	{
+		$id: '#/$defs/DomainDangerRowId'
+	}
+)
 export type DomainDangerRowId = Opaque<Static<typeof DomainDangerRowId>>
 
 export const MoveCategoryId = CollectionId(['moves'], {
@@ -231,8 +256,8 @@ export type OracleTableId = Opaque<Static<typeof OracleTableId>>
 
 export const OracleTableIdWildcard = toWildcard(OracleTableId, {
 	description: `Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree.`,
-  // For example, 'starforged/oracles/\*\*/location' represents any starforged table with the "location" key.`,
-  // the double asterisk messes with JTD here :thinking:
+	// For example, 'starforged/oracles/\*\*/location' represents any starforged table with the "location" key.`,
+	// the double asterisk messes with JTD here :thinking:
 	examples: [
 		'*/oracles/**/peril',
 		'starforged/oracles/character/names/*',
@@ -303,13 +328,17 @@ export const StatRuleId = Extend(RuleIdHead, ['stats', Node], {
 })
 export type StatRuleId = Static<typeof StatRuleId>
 
-export const ConditionMeterRuleId = Extend(RuleIdHead, ['condition_meters', Node], {
-	$id: '#/$defs/ConditionMeterRuleId',
-	examples: [
-		'classic/rules/condition_meters/health',
-		'starforged/rules/condition_meters/spirit'
-	]
-})
+export const ConditionMeterRuleId = Extend(
+	RuleIdHead,
+	['condition_meters', Node],
+	{
+		$id: '#/$defs/ConditionMeterRuleId',
+		examples: [
+			'classic/rules/condition_meters/health',
+			'starforged/rules/condition_meters/spirit'
+		]
+	}
+)
 export type ConditionMeterRuleId = Static<typeof ConditionMeterRuleId>
 
 export const SpecialTrackRuleId = Extend(RuleIdHead, ['special_tracks', Node], {
@@ -339,3 +368,4 @@ export const ImpactRuleId = Extend(ImpactRuleCollectionId, [Node], {
 	]
 })
 export type ImpactRuleId = Static<typeof ImpactRuleId>
+export type AnyID = TRef<TString | TUnionOneOf<TString[]>>

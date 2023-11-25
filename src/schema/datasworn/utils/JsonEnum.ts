@@ -1,28 +1,30 @@
 import {
-	type SchemaOptions,
-	type TSchema,
 	Kind,
-	type Static,
 	Type,
-	TObject,
-	TupleToIntersect,
-	UnionToTuple
+	type SchemaOptions,
+	type Static,
+	type TSchema
 } from '@sinclair/typebox'
 import { TypeSystem } from '@sinclair/typebox/system'
-import { JsonPrimitive, ValueOf, type JsonValue, Simplify } from 'type-fest'
-import { isJsonValue } from './isJsonValue.js'
-import { camelCase, map } from 'lodash-es'
-import { Entries, MapEntries } from 'type-fest/source/entries.js'
-import { JsonTypeDef } from '../json-typedef/symbol.js'
+import { camelCase, isNumber, isString, map } from 'lodash-es'
+import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 
 TypeSystem.Type('JsonEnum', JsonEnumCheck)
 
 export function JsonEnumCheck(schema: TJsonEnum, value: unknown) {
-	return schema.enum.every(isJsonValue)
+	return schema.enum.every(isString) || schema.enum.every(isNumber)
 }
 
 export function TJsonEnum(schema: unknown): schema is TJsonEnum {
-	return (schema as TJsonEnum)[Kind] === 'JsonEnum'
+	if (!((schema as TJsonEnum)[Kind] === 'JsonEnum')) return false
+
+	const enumArray = (schema as any).enum
+
+	if (!Array.isArray(enumArray)) return false
+
+	if (!(enumArray.every(isString) || enumArray.every(isNumber))) return false
+
+	return true
 }
 
 export const EnumDescription = Symbol('EnumDescription')

@@ -112,8 +112,8 @@ export const MoveOutcome = Type.Object(
 )
 export type MoveOutcome = Static<typeof MoveOutcome>
 
-// export const MoveOutcomeMatchable = Merge(
-// 	MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) }),
+// export const MoveOutcomeMatchable = Assign(
+// [	MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) })],
 // 	{ $id: '#/$defs/MoveOutcomeMatchable' }
 // )
 // export type MoveOutcomeMatchable = Static<typeof MoveOutcomeMatchable>

@@ -2,7 +2,7 @@ import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { JsonEnumFromRecord } from '../../../typebox/index.js'
 import { Localize, Id } from '../common/index.js'
-import * as Generic from '../utils/Generic.js'
+import * as Generic from '../Generic.js'
 
 export const ChallengeRank = JsonEnumFromRecord(
 	{

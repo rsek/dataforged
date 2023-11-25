@@ -1,9 +1,10 @@
 import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
-import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 import { Id, Fields } from '../common/index.js'
-import * as Generic from '../utils/Generic.js'
-
+import * as Generic from '../Utils.js'
+import * as AssignJs from '../utils/Assign.js'
+import * as DictionaryJs from '../generic/Dictionary.js'
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({
@@ -20,7 +21,7 @@ const AssetBooleanFieldMixin = Type.Object({
 function AssetCheckboxField(id: TRef<TString>) {
 	const base = Fields.CheckboxField(id)
 	const { $comment, description } = base
-	return Generic.Flatten([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
+	return AssignJs.Assign([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
 		description,
 		$comment,
 		title: 'AssetCheckboxField'
@@ -29,7 +30,7 @@ function AssetCheckboxField(id: TRef<TString>) {
 function AssetCardFlipField(id: TRef<TString>) {
 	const base = Fields.CardFlipField(id)
 	const { $comment, description } = base
-	return Generic.Flatten([base, AssetBooleanFieldMixin], {
+	return AssignJs.Assign([base, AssetBooleanFieldMixin], {
 		description,
 		$comment,
 		title: 'AssetCardFlipField'
@@ -95,13 +96,13 @@ const AssetConditionMeterMixin = Type.Object({
 		)
 	),
 	controls: Type.Optional(
-		Generic.Dictionary(Type.Ref(AssetConditionMeterControlField), {
+		DictionaryJs.Dictionary(Type.Ref(AssetConditionMeterControlField), {
 			description: 'Checkbox controls rendered as part of the condition meter.'
 		})
 	)
 })
 
-export const AssetConditionMeter = Generic.Flatten(
+export const AssetConditionMeter = AssignJs.Assign(
 	[
 		Fields.ConditionMeterField(Type.Ref(Id.AssetControlFieldId)),
 		AssetConditionMeterMixin

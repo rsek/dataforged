@@ -1,8 +1,10 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { DeepPartial, NoDefaults, Nullable } from '../utils/typebox.js'
+import { NoDefaults } from '../utils/typebox.js'
+import { DeepPartial } from '../utils/DeepPartial.js'
+import { Nullable } from '../utils/Nullable.js'
 import { AssetConditionMeter } from './Fields.js'
 import { AssetPropertiesEnhanceable } from './common.js'
-import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 import { Fields, Id } from '../common/index.js'
 
 export const AssetAttachment = Type.Object(

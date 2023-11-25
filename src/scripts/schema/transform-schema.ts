@@ -9,7 +9,10 @@ import { cloneDeep, mapValues } from 'lodash-es'
 import JsonPointer from 'json-pointer'
 import JSL from 'json-schema-library'
 import { log } from '../utils/logger.js'
-import { type TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
+import {
+	type SchemaDefs,
+	type TRoot
+} from '../../schema/datasworn/root/SchemaRoot.js'
 import { SourceData } from '../../schema/datasworn/root/SourceData.js'
 
 // function recurseSchema(
@@ -43,7 +46,9 @@ import { SourceData } from '../../schema/datasworn/root/SourceData.js'
 export function prepareDistributableSchema(root: TRoot) {
 	const rootSchema = cloneDeep(root)
 
-	rootSchema.$defs = mapValues(rootSchema.$defs, (v) => prepareSchemaDef(v))
+	rootSchema.$defs = mapValues(rootSchema.$defs, (v) =>
+		prepareSchemaDef(v)
+	) as SchemaDefs
 
 	const draft = new JSL.Draft07(rootSchema)
 	// const pointersToDelete: string[] = []
@@ -99,7 +104,7 @@ export function prepareInputSchema(root: TRoot) {
 	for (const [k, v] of Object.entries(rootSchema.$defs)) v.title = k
 
 	const newSchema = mapSubschemas(root, (subschema, pointer) =>
-		prepareInputSchemaDef(prepareSchemaDef(subschema), pointer)
+		prepareInputSchemaDef(prepareSchemaDef(subschema))
 	)
 
 	return newSchema
@@ -127,12 +132,12 @@ function prepareInputSchemaDef(schema: TSchema) {
 		)
 
 	if ('oneOf' in nuSchema)
-		nuSchema.oneOf = nuSchema.oneOf.map((subschema) =>
+		nuSchema.oneOf = nuSchema.oneOf.map((subschema: TSchema) =>
 			prepareInputSchemaDef(subschema)
 		)
 
 	if ('allOf' in nuSchema)
-		nuSchema.allOf = nuSchema.allOf.map((subschema) =>
+		nuSchema.allOf = nuSchema.allOf.map((subschema: TSchema) =>
 			prepareInputSchemaDef(subschema)
 		)
 

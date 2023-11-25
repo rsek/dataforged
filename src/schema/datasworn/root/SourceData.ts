@@ -19,13 +19,14 @@ import {
 	type SchemaOptions
 } from '@sinclair/typebox'
 import { mapValues, omit } from 'lodash-es'
-import { type TJsonEnum } from '../../../typebox/enum.js'
-import { type TUnionOneOf } from '../../../typebox/union-oneof.js'
-import { OptionalInSourceBrand } from '../utils/Generic.js'
-import { SetOptional, keysWithDefaults } from '../utils/typebox.js'
+import { type TJsonEnum } from '../utils/JsonEnum.js'
+import { type TUnionOneOf } from '../utils/UnionOneOf.js'
+import { ComputedPropertyBrand } from '../utils/Computed.js'
+import { keysWithDefaults } from '../utils/typebox.js'
+import { SetOptional } from '../utils/SetOptional.js'
 import { type SchemaKind, SchemaTransforms } from './SchemaTransform.js'
 import { NiceSchema } from './NiceSchema.js'
-import { type TDiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { type TDiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 
 /**
  * Transform a schema into the more lenient format used for Datasworn source data.
@@ -74,7 +75,7 @@ const transforms: SchemaTransforms = {
 		const optionalProps = keysWithDefaults(schema)
 
 		for (const [key, property] of Object.entries<any>(schema.properties))
-			if (property[OptionalInSourceBrand]) optionalProps.push(key as any)
+			if (property[ComputedPropertyBrand]) optionalProps.push(key as any)
 
 		if (optionalProps.length === 0) return TypeClone.Type(schema, options)
 

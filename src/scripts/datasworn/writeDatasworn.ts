@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import { forEach } from 'lodash-es'
 import { log } from '../utils/logger.js'
 import ajv from '../validation/ajv.js'
-import { buildSourcebook } from './buildDatasworn.js'
+import { buildRuleset } from './buildDatasworn.js'
 import { SCHEMA_IN, SCHEMA_OUT } from '../const.js'
 import { formatPath } from '../../utils.js'
 
@@ -34,7 +34,7 @@ log.info('⚙️  Building sourcebooks...')
 
 await Promise.all(
 	Object.values(pkgs).map((pkg) =>
-		buildSourcebook(pkg, schemaInId, schemaOutId).catch((e) =>
+		buildRuleset(pkg, schemaInId, schemaOutId).catch((e) =>
 			log.error(`Failed to build ${pkg.id}`, e)
 		)
 	)

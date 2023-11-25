@@ -1,12 +1,13 @@
 import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
-import { Id, Localize, Metadata } from './common/index.js'
-import {
-	type TAssetOptionField,
-	type TAssetControlField
-} from './assets/Fields.js'
+import * as Generic from './Generic.js'
 import { type TAssetAbility } from './assets/Ability.js'
+import {
+	type TAssetControlField,
+	type TAssetOptionField
+} from './assets/Fields.js'
 import { AssetPropertiesEnhanceable } from './assets/common.js'
-import * as Generic from './utils/Generic.js'
+import { Id, Localize, Metadata } from './common/index.js'
+import * as Utils from './utils/Assign.js'
 
 const AssetMixin = Type.Object({
 	asset_type: Type.Ref(Localize.Label, {
@@ -55,7 +56,7 @@ const AssetMixin = Type.Object({
 
 export const Asset = Generic.Collectable(
 	Type.Ref(Id.AssetId),
-	Generic.Flatten([
+	Utils.Assign([
 		AssetMixin,
 		AssetPropertiesEnhanceable(
 			Type.Ref<TAssetControlField>('#/$defs/AssetControlField')
@@ -79,6 +80,7 @@ export const AssetType = Generic.Collection(
 export type TAssetType = typeof AssetType
 export type AssetType = Generic.Collection<Asset>
 
-export * from './assets/Fields.js'
 export * from './assets/Ability.js'
 export * from './assets/Enhancement.js'
+export * from './assets/Fields.js'
+

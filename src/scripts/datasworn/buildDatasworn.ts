@@ -6,7 +6,7 @@ import { isUndefined, merge, omit, pick } from 'lodash-es'
 import path from 'path'
 import { Datasworn as DataswornBuilder } from '../../builders/datasworn.js'
 import { transform } from '../../builders/transformer.js'
-import { type SourcedNode } from '../../schema/datasworn/utils/Generic.js'
+import { type SourcedNode } from '../../schema/datasworn/Utils.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
 import type { In, Out } from '../../types/index.js'
 import { formatPath } from '../../utils.js'
@@ -20,17 +20,18 @@ import {
 	sortDataswornKeys,
 	unsortableKeys
 } from './sort.js'
+import { sortTopLevelCollection } from './sortCollection.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
 
 /** Builds all YAML files for a given package configuration */
-export async function buildSourcebook(
+export async function buildRuleset(
 	{ id, paths, pkg }: DataPackageConfig,
 	schemaIdIn: string,
 	schemaIdOut: string
 ) {
-	log.info(`⚙️  Building sourcebook: ${id}`)
+	log.info(`⚙️  Building ruleset: ${id}`)
 	const sourcebook: Record<string, Record<string, unknown>> = {}
 
 	const destDir = path.join(ROOT_OUTPUT, id)
@@ -149,6 +150,7 @@ function cleanDatasworn(datasworn: Out.Datasworn) {
 	const pointersToDelete: string[] = []
 	const sortedPointers: Record<string, unknown> = {}
 
+	// sort non-dictionary objects
 	jsc.input.each(datasworn, (schema, value, hashPointer) => {
 		const sep = '/'
 
@@ -169,6 +171,21 @@ function cleanDatasworn(datasworn: Out.Datasworn) {
 		)
 			sortedPointers[nicePointer] = sortDataswornKeys(value as any)
 	})
+
+	// sort collections
+	for (const [k, v] of Object.entries(datasworn)) {
+		// if (metadataKeys.includes(k as any)) continue
+		// if (k === 'rules') continue
+		if (typeof v !== 'object') continue
+
+		// log.info(`iterating key: ${k}`)
+
+		const result = sortTopLevelCollection(v as any)
+
+		console.log(result)
+
+		datasworn[k] = result
+	}
 
 	// console.log('pointersToDelete', pointersToDelete)
 	// console.log('pointersToSort', pointersToSort)

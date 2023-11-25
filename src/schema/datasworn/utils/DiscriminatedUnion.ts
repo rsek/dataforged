@@ -11,7 +11,11 @@ import {
 	type TUnion
 } from '@sinclair/typebox'
 import { pick } from 'lodash-es'
-import { Discriminator, Members, JsonTypeDef } from '../json-typedef/symbol.js'
+import {
+	Discriminator,
+	Members,
+	JsonTypeDef
+} from '../../../json-typedef/symbol.js'
 
 const DiscriminatedUnionHint = 'DiscriminatedUnion'
 
