@@ -1,0 +1,738 @@
+id: classic
+source: &Source
+  authors:
+    - name: Shawn Tomkin
+  license: https://creativecommons.org/licenses/by/4.0
+  title: Ironsworn Rulebook
+  date: 2019-06-05
+  url: https://ironswornrpg.com
+assets:
+  combat_talent:
+    name: Combat Talent Assets
+    source:
+      <<: *Source
+      page: 40
+    description: |-
+      *Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform [combat moves](id:classic/collections/moves/combat). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.
+
+      Combat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.
+    contents:
+      archer:
+        asset_type: Combat Talent
+        source:
+          <<: &AssetSource
+            <<: *Source
+            title: Ironsworn Assets Master Set
+          page: 12
+        name: Archer
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/delapouite/bow-string.html
+        requirement: If you wield a bow...
+        abilities:
+          - text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by taking a moment to aim, choose your approach and add +1.
+
+                * Trust your instincts: Roll +wits, and take +2 momentum on a strong hit.
+                * Line up your shot: Roll +edge, and take +1 momentum on a hit.
+            enabled: true
+            enhance_moves:
+              - &ArcherSaA
+                enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by taking a moment to aim and trust your instincts
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: wits
+              - <<: *ArcherSaA
+                trigger:
+                  conditions:
+                    - text: by taking a moment to aim and line up your shot
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: edge
+          - text: |-
+              Once per fight, when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash), you may take extra shots and suffer -1 supply (decide before rolling). When you do, reroll any dice. On a hit, inflict +2 harm and take +1 momentum.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: if take extra shots and suffer -1 supply (decide before rolling, once per fight)
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Resupply](id:classic/moves/adventure/resupply) by hunting, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/resupply
+                trigger:
+                  conditions:
+                    - text: by hunting
+                      roll_options: null
+                      method: null
+
+      berserker:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 12
+        name: Berserker
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/lorc/flat-paw-print.html
+        # problem is, this loses the association by not being a *bear* paw (berserker = "bear-shirt")
+        requirement: If you are clad only in animal pelts...
+        abilities:
+          - text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) by embodying your wild nature, add +1 and take +1 momentum on a hit.
+            enabled: true
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: by embodying your wild nature
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) by unleashing your rage (decide before rolling), inflict +1 harm on a hit. Then, choose one.
+
+                * Push yourself: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).
+                * Lose yourself: [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by unleashing your rage (decide before rolling)
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, and your health is above 0, you may let the pain inflame your wildness (decide before rolling). If you then score a strong hit and choose to embrace the pain, take +momentum equal to your remaining health. A weak hit counts as a miss.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/suffer/endure_harm
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: in a fight, if you let the pain inflame your wildness (when your health is above 0)
+                      roll_options: null
+                      method: null
+      brawler:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 12
+        name: Brawler
+        # https://game-icons.net/1x1/skoll/fist.html
+        requirement: If you are unarmed or fighting with a non-deadly weapon...
+        abilities:
+          - text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +iron by engaging in close-quarters brawling (such as punching, tripping, or grappling), add +1. If you score a hit, you may also inflict 1 harm.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      text: by engaging in close-quarters brawling (such as punching, tripping, or grappling)
+                      roll_options:
+                        - using: stat
+                          stat: iron
+          - text: |-
+              When you use an unarmed attack or simple weapon to [Strike](id:classic/moves/combat/strike) with deadly intent, add +2 and inflict 2 harm on a hit (instead of 1). On a weak hit or miss, suffer -1 momentum (in addition to any other outcome of the move).
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you use an unarmed attack or simple weapon with deadly intent
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Face Danger](id:classic/moves/adventure/face_danger) or [Clash](id:classic/moves/combat/clash) against a brawling attack, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/face_danger
+                  - classic/moves/combat/clash
+                trigger:
+                  conditions:
+                    - text: against a brawling attack
+                      roll_options: null
+                      method: null
+      cutthroat:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 12
+        name: Cutthroat
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/skoll/bowie-knife.html
+        requirement: If you wield a dagger or knife...
+        abilities:
+          - text: |-
+              When you are in position to [Strike](id:classic/moves/combat/strike) at an unsuspecting foe, choose one (before rolling).
+
+                * Add +2 and take +1 momentum on a hit.
+                * Inflict +2 harm on a hit.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: against an unspecting foe
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Compel](id:classic/moves/relationship/compel) someone at the point of your blade, or when you rely on your blade to [Face Danger](id:classic/moves/adventure/face_danger), add +1.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: someone at the point of your blade
+                      roll_options: null
+                      method: null
+              - enhances:
+                  - classic/moves/adventure/face_danger
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: when you rely on your blade
+                      roll_options: null
+                      method: null
+          - text: |-
+              Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +shadow by performing a feint or misdirection, reroll any dice and take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      text: by performing a feint or misdirection
+                      roll_options:
+                        - using: stat
+                          stat: shadow
+      duelist:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 12
+        name: Duelist
+        # https://game-icons.net/1x1/lorc/crossed-swords.html
+        requirement: If you wield a bladed weapon in each hand...
+        abilities:
+          - text: |-
+              When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash), you may add +2. If you do (decide before rolling), inflict +1 harm on a strong hit and count a weak hit as a miss.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+          - text: |-
+              Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge by making a bold display of your combat prowess, you may reroll any dice.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      text: by making a bold display of your combat prowess (once per fight)
+                      roll_options:
+                        - using: stat
+                          stat: edge
+          - text: |-
+              When you [Draw the Circle](id:classic/moves/relationship/draw_the_circle), choose one (before rolling).
+
+                * Add +2.
+                * Take +2 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/relationship/draw_the_circle
+                roll_type: action_roll
+      fletcher:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 12
+        name: Fletcher
+        # derived from:
+        # https://game-icons.net/1x1/lorc/arrow-flights.html
+        abilities:
+          - text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by crafting arrows of fine quality, add +1. Then, take +1 supply or +1 momentum on a hit.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by crafting arrows of fine quality
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Resupply](id:classic/moves/adventure/resupply) by recovering or gathering arrows after a battle, add +2.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/resupply
+                trigger:
+                  conditions:
+                    - text: by recovering or gathering arrows after a battle
+                      roll_options: null
+                      method: null
+          - text: &move:Asset.Fletcher |-
+              When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.
+
+                * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).
+                * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
+            moves:
+              craft_arrow:
+                name: Craft Arrow
+                source: *AssetSource
+                roll_type: action_roll
+                trigger:
+                  text: When you craft a single arrow designated for a specific foe...
+                  conditions:
+                    - method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: wits
+                text: *move:Asset.Fletcher
+                outcomes:
+                  strong_hit:
+                    text: |-
+                      On a **strong hit**, take both:
+
+                        * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).
+                        * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
+                  weak_hit:
+                    text: |-
+                      On a **weak hit**, choose one.
+
+                        * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).
+                        * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
+                  miss: &MoveOutcome.Miss.Generic
+                    text: |-
+                      On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price).
+      ironclad:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 12
+        name: Ironclad
+        # icon not on game-icons
+        requirement: If you wear armor...
+        # FIXME
+        # controls:
+        #   equipped:
+        # TODO: should there be a distinction between assets that count *as* an impact, and assets that *apply* a specific impact?
+        # what about assets that *require* an impact?
+        # alternatively, could this handle like, IDK, checkbox impacts?
+        # field_type: select_enhancement
+        # name: Equipped
+        # options:
+        #   lightly_armored:
+        #     name: Lightly armored
+        #     value: {}
+        #   geared_for_war:
+        #     name: Geared for war
+        #     value: { count_as_impact: true }
+        abilities:
+          - text: |-
+              When you equip or adjust your armor, choose one.
+
+                * Lightly armored: When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +1 and take +1 momentum on a hit.
+                * Geared for war: Mark encumbered. When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +2 and take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/suffer/endure_harm
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In a fight while you are lightly armored
+                      roll_options: null
+                      method: null
+              - enhances:
+                  - classic/moves/suffer/endure_harm
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In a fight while you are geared for war
+                      roll_options: null
+                      method: null
+            enabled: true
+          - text: |-
+              When you [Clash](id:classic/moves/combat/clash) while you are geared for war, add +1.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/combat/clash
+                trigger:
+                  conditions:
+                    - text: While you are geared for war
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Compel](id:classic/moves/relationship/compel) in a situation where strength of arms is a factor, add +2.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: In a situation where strength of arms is a factor
+                      roll_options: null
+                      method: null
+      long_arm:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 14
+        name: Long-Arm
+        # https://game-icons.net/1x1/delapouite/bo.html
+        requirement: If you wield a staff...
+        abilities:
+          - text: |-
+              In your hands, a humble staff is a deadly weapon (2 harm). When you instead use it as a simple weapon (1 harm), you may [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) +edge (instead of iron). If you do, add +1 and take +1 momentum on a hit.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options:
+                        - using: stat
+                          stat: edge
+                      method: player_choice
+                      text: When you strike with a staff as a simple weapon
+          - text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - roll_options:
+                        - using: stat
+                          stat: edge
+                      method: player_choice
+                      text: Using your staff to disarm, trip, shove, or stun your foe
+          - text: |-
+              When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/undertake_a_journey
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      roll_options: null
+                      by:
+                        player: true
+                        ally: true
+
+      shield_bearer:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 14
+        name: Shield-Bearer
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/delapouite/viking-shield.html
+        requirement: If you wield a shield...
+        abilities:
+          - text: |-
+              When you [Face Danger](id:classic/moves/adventure/face_danger) using your shield as cover, add +1. When you [Clash](id:classic/moves/combat/clash) in close quarters, take +1 momentum on a strong hit.
+            enabled: true
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/face_danger
+                trigger:
+                  conditions:
+                    - text: using your shield as cover
+                      roll_options: null
+                      method: null
+              - enhances:
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: in close quarters
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you paint your shield with a meaningful symbol, envision what you create. Then, if you [Endure Stress](id:classic/moves/suffer/endure_stress) as you face off against a fearsome foe, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/suffer/endure_stress
+                trigger:
+                  conditions:
+                    - text: While your shield is painted with a meaningful symbol
+                      roll_options: null
+                      method: null
+          - text: |-
+              When forced to [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, you may instead sacrifice your shield and ignore all harm. If you do, the shield is destroyed. Once per fight, you also take initiative when you sacrifice your shield to avoid harm.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/suffer/endure_harm
+                roll_type: action_roll
+      skirmisher:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 14
+        name: Skirmisher
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/delapouite/spear-feather.html
+        requirement: If you wield a spear...
+        abilities:
+          - text: |-
+              When you [Face Danger](id:classic/moves/adventure/face_danger) by holding a foe at bay using your spear’s reach, roll +iron or +edge. If you score a hit, you may...
+
+                * Iron: [Strike](id:classic/moves/combat/strike) (if you have initiative) or [Clash](id:classic/moves/combat/clash) now, and add +1.
+                * Edge: Take +1 momentum.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/face_danger
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      text: by holding a foe at bay using your spear's reach
+                      roll_options:
+                        - using: stat
+                          stat: iron
+                        - using: stat
+                          stat: edge
+
+          - text: |-
+              When you [Strike](id:classic/moves/combat/strike) in close combat, you may attempt to drive your spear home (decide before rolling). If you do, add +1 and inflict +2 harm on a hit. If you score a hit and the fight continues, [Face Danger](id:classic/moves/adventure/face_danger) +iron to recover your spear.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: in close combat with your spear
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: by bracing your spear against a charging foe
+                      roll_options: null
+                      method: null
+      slinger:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 14
+        name: Slinger
+        # https://game-icons.net/1x1/delapouite/sling.html
+        requirement: If you wield a sling...
+        abilities:
+          - text: |-
+              When launched from a sling, a simple stone inflicts deadly harm (2 harm). When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) by barraging your foe with sling-bullets, inflict harm on a strong hit.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by barraging your foe with sling-bullets
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Strike](id:classic/moves/combat/strike) by launching stones at an advancing foe, you may choose one (before rolling).
+
+                * Hold them back: Retain initiative on a weak hit, but inflict only 1 harm.
+                * Hit them hard: Inflict +1 harm on a hit, but suffer -1 momentum.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by launching stones at an advancing foe
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by preparing stones of a special quality or material, add +1. Then, take +1 momentum or +1 supply on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by preparing stones of a special quality or material
+                      roll_options: null
+                      method: null
+      sunderer:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 14
+        name: Sunderer
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/lorc/battered-axe.html
+        requirement: If you wield an axe...
+        abilities:
+          - text: |-
+              When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) in close quarters, you may suffer -1 momentum and inflict +1 harm on a hit (decide before rolling).
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: in close quarters with your axe
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you have your axe in hand, and use the promise of violence to [Compel](id:classic/moves/relationship/compel) or [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/relationship/compel
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: when you have your axe in hand and use the promise of violence
+                      roll_options: null
+                      method: null
+          - text: &move:Asset.Sunderer |-
+              When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
+            moves:
+              carve_rune:
+                name: Carve Rune
+                source: *AssetSource
+                roll_type: action_roll
+                trigger:
+                  text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
+                  conditions:
+                    - method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: heart
+                text: *move:Asset.Sunderer
+                outcomes:
+                  strong_hit:
+                    text: On a **strong hit**, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash).
+                  weak_hit:
+                    text: |-
+                      On a **weak hit**, you succeed, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
+
+                      Inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash).
+                  miss: *MoveOutcome.Miss.Generic
+      swordmaster:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 14
+        name: Swordmaster
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/delapouite/spiral-hilt.html
+        requirement: If you wield a sword...
+        abilities:
+          - text: |-
+              When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) and burn momentum to improve your result, inflict +2 harm. If the fight continues, add +1 on your next move.
+            enabled: true
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+          - text: |-
+              When you [Clash](id:classic/moves/combat/clash) and score a strong hit, add +1 if you immediately follow with a [Strike](id:classic/moves/combat/strike).
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+          - text: |-
+              When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) by kneeling and grasping your sword’s blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm) in exchange for an additional +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/quest/swear_an_iron_vow
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by kneeling and grasping your sword's blade
+                      roll_options: null
+                      method: null
+      thunder_bringer:
+        asset_type: Combat Talent
+        source:
+          <<: *AssetSource
+          page: 14
+        name: Thunder-Bringer
+        # https://game-icons.net/1x1/lorc/hammer-drop.html
+        requirement: If you wield a mighty hammer...
+        abilities:
+          - text: |-
+              When you [Face Danger](id:classic/moves/adventure/face_danger), [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), or [Compel](id:classic/moves/relationship/compel) by hitting or breaking an inanimate object, add +1 and take +1 momentum on a hit.
+            enabled: true
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/face_danger
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: by hitting or breaking an inanimate object
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Strike](id:classic/moves/combat/strike) a foe to knock them back, stun them, or put them off balance, inflict 1 harm (instead of 2) and take +2 momentum on a hit. On a strong hit, you also create an opening and add +1 on your next move.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: to knock a foe back, stun them, or put them off balance
+                      roll_options: null
+                      method: null
+          - text: |-
+              When you [Turn the Tide](id:classic/moves/combat/turn_the_tide), you may [Strike](id:classic/moves/combat/strike) with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +2 harm on a strong hit, but count a weak hit as a miss.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/turn_the_tide
+                roll_type: action_roll

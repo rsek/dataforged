@@ -9,7 +9,9 @@ source: &Source
 oracles:
   moves:
     name: Move Oracles
-    source: *Source
+    source:
+      <<: *Source
+      page: 136
     collections:
       ask_the_oracle:
         name: Ask the Oracle

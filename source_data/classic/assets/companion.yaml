@@ -1,0 +1,597 @@
+id: classic
+source: &Source
+  authors:
+    - name: Shawn Tomkin
+  license: https://creativecommons.org/licenses/by/4.0
+  title: Ironsworn Rulebook
+  date: 2019-06-05
+  url: https://ironswornrpg.com
+assets:
+  companion:
+    name: Companion Assets
+    source:
+      <<: *Source
+      page: 39
+    description: |-
+      Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.
+
+      Companions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move to determine the outcome. See page 43 to learn more.
+    contents:
+      cave_lion:
+        asset_type: Companion
+        source:
+          <<: &AssetSource
+            <<: *Source
+            title: Ironsworn Assets Master Set
+          page: 2
+        name: Cave Lion
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/delapouite/saber-toothed-cat-head.html
+        # tags: [animal_companion]
+        options: &NameOptions
+          name:
+            label: Name
+            field_type: text
+            value: null
+        requirement: Your cat takes down its prey.
+        abilities:
+          - name: Eager
+            text: |-
+              When your cat chases down big game, you may [Resupply](id:classic/moves/adventure/resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/resupply
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When your cat chases down big game
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: edge
+          - name: Inescapable
+            text: |-
+              When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) or [Strike](id:classic/moves/combat/strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/enter_the_fray
+                  - classic/moves/combat/strike
+                trigger:
+                  conditions:
+                    - text: By sending your cat to attack
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: edge
+                roll_type: action_roll
+          - name: Protective
+            text: |-
+              When you [Make Camp](id:classic/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/make_camp
+                roll_type: action_roll
+        controls:
+          health:
+            max: 4
+            value: 4
+            <<: &CompanionHealth
+              field_type: condition_meter
+              label: health
+              moves:
+                suffer:
+                  - classic/moves/suffer/companion_endure_harm
+                recover:
+                  - classic/moves/adventure/heal
+                  - classic/moves/adventure/make_camp
+                  - classic/moves/relationship/sojourn
+      giant_spider:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Giant Spider
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/carl-olsen/spider-alt.html
+        # tags: [beast_companion]
+        options: *NameOptions
+        requirement: Your spider uncovers secrets.
+        abilities:
+          - name: Discreet
+            text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: By sending your spider to scout a place
+                      method: null
+                      roll_options: null
+          - name: Soul-Piercing
+            text: |-
+              You may [Face Danger](id:classic/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](id:classic/moves/adventure/gather_information) and reroll any dice.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/face_danger
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: By sending your spider to secretly study someone
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: shadow
+                # or: add move key to outcomes?
+          - name: Ensnaring
+            text: |-
+              When your spider sets a trap, add +1 as you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +shadow. On a strong hit, also inflict 2 harm.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/combat/enter_the_fray
+                trigger:
+                  conditions:
+                    - text: When your spider sets a trap
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: shadow
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 4
+            value: 4
+      hawk:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Hawk
+        # icon not on game-icons
+        # sub https://game-icons.net/1x1/lorc/hawk-emblem.html ?
+        # tags: [animal_companion]
+        options: *NameOptions
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 3
+            value: 3
+        requirement: Your hawk can aid you while it is aloft.
+        abilities:
+          - name: Far-seeing
+            text: |-
+              When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey), or when you [Resupply](id:classic/moves/adventure/resupply) by hunting for small game, add +1.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/undertake_a_journey
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/resupply
+                trigger:
+                  conditions:
+                    - text: By hunting for small game
+                      method: null
+                      roll_options: null
+          - name: Fierce
+            text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: Using your hawk to harass and distract your foes
+                      method: player_choice
+                      roll_options:
+                        - using: stat
+                          stat: edge
+          - name: Vigilant
+            text: |-
+              When you [Face Danger](id:classic/moves/adventure/face_danger) +wits to detect an approaching threat, or when you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +wits against an ambush, add +2.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/face_danger
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: To detect an approaching threat
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: wits
+              - enhances:
+                  - classic/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: null
+                      roll_options:
+                        - using: stat
+                          stat: wits # 'ambushed' is already how +wits is flavoured
+      horse:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Horse
+        # icon not on game-icons
+        # tags: [animal_companion]
+        options: *NameOptions
+        requirement: You and your horse ride as one.
+        abilities:
+          - name: Swift
+            text: |-
+              When you [Face Danger](id:classic/moves/adventure/face_danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey), add +1.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/undertake_a_journey
+                roll_type: action_roll
+              - enhances:
+                  - classic/moves/adventure/face_danger
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Using your horse’s speed and grace
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: edge
+          - name: Fearless
+            text: |-
+              When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) or [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/combat/enter_the_fray
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: By charging into combat
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: heart
+          - name: Mighty
+            text: |-
+              When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) at close range while mounted, add +1 and inflict +1 harm on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: At close range while mounted
+                      roll_options: null
+                      method: null
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 5
+            value: 5
+      hound:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Hound
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/lorc/hound.html
+        # tags: [animal_companion]
+        options: *NameOptions
+        requirement: Your hound is your steadfast companion.
+        abilities:
+          - name: Sharp
+            text: |-
+              When you [Gather Information](id:classic/moves/adventure/gather_information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/gather_information
+                trigger:
+                  conditions:
+                    - text: Using your hound’s keen senses to track your quarry or investigate a scene
+                      roll_options: null
+                      method: null
+          - name: Ferocious
+            text: |-
+              When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Alongside your hound
+                      roll_options: null
+                      method: null
+          - name: Loyal
+            text: When you [Endure Stress](id:classic/moves/suffer/endure_stress) in the company of your hound, add +1.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/suffer/endure_stress
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: In the company of your hound
+                      roll_options: null
+                      method: null
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 4
+            value: 4
+      kindred:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Kindred
+        # icon not on game-icons
+        # tags: [ironlander_companion]
+        options: *NameOptions
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 4
+            value: 4
+        requirement: Your friend stands by you.
+        abilities:
+          - name: Skilled
+            text: |-
+              When you make a move outside of combat aided by your companion’s expertise, add +1.
+            options:
+              expertise:
+                label: Expertise
+                field_type: text
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you make a move outside of combat aided by your companion’s expertise
+                      roll_options: null
+                      method: null
+          - name: Shield-Kin
+            text: |-
+              When you [Clash](id:classic/moves/combat/clash) or [Battle](id:classic/moves/combat/battle) alongside your companion, or when you [Face Danger](id:classic/moves/adventure/face_danger) against an attack by standing together, add +1.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/clash
+                  - classic/moves/combat/battle
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Alongside your Kindred companion
+                      roll_options: null
+                      method: null
+              - enhances:
+                  - classic/moves/adventure/face_danger
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: Against an attack by standing together with your Kindred companion
+                      roll_options: null
+                      method: null
+          - name: Bonded
+            text: |-
+              Once you mark a bond with your companion, add +1 when you [Face Desolation](id:classic/moves/suffer/face_desolation) in their presence.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/suffer/face_desolation
+                roll_type: action_roll
+      mammoth:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Mammoth
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/delapouite/mammoth.html
+        # tags: [beast_companion]
+        options: *NameOptions
+        requirement: Your mammoth walks a resolute path.
+        abilities:
+          - name: Lumbering
+            text: |-
+              When your mammoth travels with you as you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey), you may add +2 but suffer -1 momentum (decide before rolling).
+          - name: Beast of burden
+            text: |-
+              When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.
+            enhance_moves:
+              # there isn't an exact way to do this, but it's pretty close
+              - enhances:
+                  - classic/moves/adventure/make_camp
+                  - delve/moves/delve/check_your_gear
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: player_choice
+                      roll_options:
+                        - using: asset_control
+                          assets: null
+                          control: health
+          - name: Overpowering
+            text: |-
+              When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                  - classic/moves/combat/clash
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: by riding your mammoth against a pack of foes
+                      roll_options: null
+                      method: null
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 5
+            value: 5
+      owl:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Owl
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/caro-asercion/barn-owl.html
+        # tags: [animal_companion]
+        options: *NameOptions
+        requirement: Your owl soars through the darkness.
+        abilities:
+          - name: Nocturnal
+            text: |-
+              If you [Resupply](id:classic/moves/adventure/resupply) at night by sending your owl to hunt, take +2 momentum on a hit. When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +wits against an ambush in darkness, add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/adventure/resupply
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: at night by sending your owl to hunt
+                      roll_options: null
+                      method: null
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/combat/enter_the_fray
+                trigger:
+                  conditions:
+                    - method: null
+                      text: against an ambush in darkness
+                      roll_options:
+                        - using: stat
+                          stat: wits
+
+          - name: Sage
+            text: |-
+              When you leverage your owl’s secret knowledge to perform a ritual, add +1 or take +1 momentum on a hit (decide before rolling).
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - '*/assets/ritual/*/abilities/*/moves/*'
+                trigger:
+                  conditions:
+                    - text: leverage your owl's secret knowledge to perform a ritual
+                      roll_options: null
+                      method: null
+
+          - name: Embodying
+            text: |-
+              When you [Face Death](id:classic/moves/suffer/face_death), take your owl’s health as +momentum before you roll.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/suffer/face_death
+        controls:
+          health:
+            <<: *CompanionHealth
+            value: 3
+            max: 3
+      raven:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 2
+        name: Raven
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/lorc/raven.html
+        # tags: [animal_companion]
+        options: *NameOptions
+        requirement: Your raven heeds your call.
+        abilities:
+          - name: Sly
+            text: |-
+              When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +shadow using your raven to perform trickery (such as creating a distraction or stealing a small object) add +1 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/adventure/face_danger
+                trigger:
+                  conditions:
+                    - text: using your raven to perform trickery (such as creating a distraction or stealing a small object)
+                      method: null
+                      roll_options:
+                        - using: stat
+                          stat: shadow
+          - name: Knowing
+            text: When you [Face Death](id:classic/moves/suffer/face_death), add +2 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/suffer/face_death
+          - name: Diligent
+            text: |-
+              When your raven carries messages for you, you may [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), [Gather Information](id:classic/moves/adventure/gather_information), or [Compel](id:classic/moves/relationship/compel) from a distance.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/adventure/gather_information
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: your raven carries messages for you
+                      roll_options: null
+                      method: null
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 2
+            value: 2
+      young_wyvern:
+        asset_type: Companion
+        source:
+          <<: *AssetSource
+          page: 4
+        name: Young Wyvern
+        # icon not on game-icons
+        # sub? https://game-icons.net/1x1/lorc/wyvern.html
+        # tags: [beast_companion]
+        options: *NameOptions
+        requirement: Your wyvern won’t devour you. For now.
+        abilities:
+          - name: Insatiable
+            text: |-
+              When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a hit, you may suffer -1 supply in exchange for +2 momentum.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/adventure/undertake_a_journey
+          - name: Indomitable
+            text: |-
+              When you make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move for your wyvern, add +2 and take +1 momentum on a hit.
+            enhance_moves:
+              - roll_type: action_roll
+                enhances:
+                  - classic/moves/suffer/companion_endure_harm
+                trigger:
+                  conditions:
+                    - text: for your wyvern
+                      roll_options: null
+                      method: null
+          - name: Savage
+            text: |-
+              When you [Strike](id:classic/moves/combat/strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.
+            enhance_moves:
+              - enhances:
+                  - classic/moves/combat/strike
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - method: player_choice
+                      text: By commanding your wyvern to attack
+                      roll_options:
+                        - using: stat
+                          stat: heart
+        controls:
+          health:
+            <<: *CompanionHealth
+            max: 5
+            value: 5
