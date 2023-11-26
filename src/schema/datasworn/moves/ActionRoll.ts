@@ -3,7 +3,7 @@ import {
 	type ObjectOptions,
 	type Static,
 	type TObject
-} from '../../../typebox/index.js'
+} from '@sinclair/typebox'
 import { Localize, Player, Id } from '../common/index.js'
 import {
 	Trigger,

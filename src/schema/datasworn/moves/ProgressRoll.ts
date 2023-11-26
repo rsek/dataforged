@@ -1,18 +1,18 @@
-import { Type, type Static } from '../../../typebox/index.js'
-import {
-	type MoveOutcomes,
-	type ProgressRollMethod,
-	type SpecialTrackRollMethod
-} from './common.js'
-import { Move, MoveEnhancement } from './utils.js'
+import { type Static, Type } from '@sinclair/typebox'
+import * as Utils from '../Utils.js'
+import { Progress } from '../common/index.js'
 import {
 	Trigger,
 	TriggerCondition,
 	TriggerConditionEnhancement,
 	TriggerEnhancement
 } from './Trigger.js'
-import * as Utils from '../Utils.js'
-import { Progress } from '../common/index.js'
+import {
+	type MoveOutcomes,
+	type ProgressRollMethod,
+	type SpecialTrackRollMethod
+} from './common.js'
+import { Move, MoveEnhancement } from './utils.js'
 
 export const ProgressRollOption = Type.Object(
 	{

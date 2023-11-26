@@ -1,6 +1,4 @@
-import { TAnySchema } from '@sinclair/typebox'
-import { JsonSchema } from 'json-schema-library'
-import { JSONSchema } from 'json-schema-to-typescript'
+import { type JSONSchema } from 'json-schema-to-typescript'
 
 const typeKeys = [
 	'asset_type',
