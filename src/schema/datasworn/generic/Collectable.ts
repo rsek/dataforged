@@ -1,5 +1,5 @@
 import { type ObjectOptions, type TObject } from '@sinclair/typebox'
-import { SourcedNode, type TSourcedNode } from '../Utils.js'
+import { SourcedNode, type TSourcedNode } from './SourcedNode.js'
 import { type AnyID } from '../common/Id.js'
 
 export const CollectableBrand = Symbol('Collectable')

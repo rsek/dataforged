@@ -16,7 +16,7 @@ import {
 	type TTuple,
 	type TUnion
 } from '@sinclair/typebox'
-import { type TJsonEnum } from '../utils/JsonEnum.js'
+import { type TUnionEnum } from '../utils/UnionEnum.js'
 import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 import { type TDiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 
@@ -36,7 +36,7 @@ export const SchemaKind = [
 	'Union',
 	// custom types
 	'UnionOneOf',
-	'JsonEnum',
+	'UnionEnum',
 	'DiscriminatedUnion'
 ] as const
 
@@ -54,8 +54,8 @@ interface SchemaKindMap extends Record<SchemaKind, TSchema> {
 	String: TString
 	Tuple: TTuple
 	Union: TUnion
-	UnionOneOf: TUnionOneOf
-	JsonEnum: TJsonEnum
+	UnionOneOf: TUnionOneOf<TSchema[]>
+	UnionEnum: TUnionEnum
 	DiscriminatedUnion: TDiscriminatedUnion
 }
 

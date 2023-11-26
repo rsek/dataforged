@@ -1,15 +1,14 @@
 import { TypeClone, type SchemaOptions, type TObject } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
 import { SourceData } from './SourceData.js'
-
-export type SchemaDefs = Record<string, TObject>
+import { type Defs } from '../Defs.js'
 
 export interface RootOptions
 	extends Required<
 		Omit<SchemaOptions, 'default' | 'readOnly' | 'writeOnly' | 'examples'>
 	> {
 	$id: `${'https' | 'http'}://${string}`
-	$defs: SchemaDefs
+	$defs: Defs
 	$schema: string
 }
 
@@ -24,7 +23,7 @@ export function SchemaRoot<T extends TObject, Options extends RootOptions>(
 ) {
 	const $defs = mapValues(options.$defs, (v, k) =>
 		TypeClone.Type(v, { title: k })
-	) as SchemaDefs
+	) as Defs
 
 	return TypeClone.Type(base, { ...options, $defs }) as TRoot<T, Options>
 }
@@ -35,7 +34,7 @@ export function InputSchemaRoot<T extends TObject, Options extends RootOptions>(
 ) {
 	const $defs = mapValues(options.$defs, (v, k) =>
 		SourceData(v, { title: k })
-	) as SchemaDefs
+	) as Defs
 
 	return TypeClone.Type(base, { ...options, $defs }) as TRoot<T, Options>
 }

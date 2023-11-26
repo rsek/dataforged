@@ -1,5 +1,4 @@
 import { Type, type Static } from '../../../typebox/index.js'
-import { type SpecialTrackType } from '../common/Progress.js'
 import {
 	type MoveOutcomes,
 	type ProgressRollMethod,
@@ -12,9 +11,8 @@ import {
 	TriggerConditionEnhancement,
 	TriggerEnhancement
 } from './Trigger.js'
-import * as Generic from '../Utils.js'
-import * as AssignJs from '../utils/Assign.js'
-import { ProgressTrackTypeInfo } from '../common/Progress.js'
+import * as Utils from '../Utils.js'
+import { Progress } from '../common/index.js'
 
 export const ProgressRollOption = Type.Object(
 	{
@@ -45,7 +43,7 @@ export const TriggerProgressRoll = Trigger(
 
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
-export const MoveProgressRoll = AssignJs.Assign(
+export const MoveProgressRoll = Utils.Assign(
 	[
 		Move(
 			'progress_roll',
@@ -54,7 +52,7 @@ export const MoveProgressRoll = AssignJs.Assign(
 		),
 		Type.Object({
 			// is_progress_move: Type.Literal(true, { default: true }),
-			tracks: Type.Ref(ProgressTrackTypeInfo, {
+			tracks: Type.Ref(Progress.ProgressTrackTypeInfo, {
 				description:
 					'Describes the common features of progress tracks associated with this move.'
 			})
@@ -109,7 +107,9 @@ export type MoveProgressRollEnhancement = Static<
 
 export const TriggerSpecialTrackConditionOption = Type.Object(
 	{
-		using: Type.Ref<typeof SpecialTrackType>('#/$defs/SpecialTrackType')
+		using: Type.Ref<typeof Progress.SpecialTrackType>(
+			'#/$defs/SpecialTrackType'
+		)
 	},
 	{ $id: '#/$defs/TriggerSpecialTrackConditionOption' }
 )

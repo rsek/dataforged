@@ -7,12 +7,12 @@ import {
 	SCHEMA_OUT,
 	TYPES_OUT
 } from '../../const.js'
-import { log } from '../../utils/logger.js'
+import Log from '../../utils/Log.js'
 
 /** Assembles the core package from built data, which contains types, schema, and documentation. */
 export async function buildCorePackage() {
 	const corePkgId = `${PKG_SCOPE_OFFICIAL}/core`
-	log.info(`⚙️  Building ${corePkgId}...`)
+	Log.info(`⚙️  Building ${corePkgId}...`)
 
 	const corePkgDir = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL, 'core')
 
@@ -38,5 +38,5 @@ export async function buildCorePackage() {
 		)
 	])
 
-	return log.info(`✅ Finished building ${corePkgId}`)
+	return Log.info(`✅ Finished building ${corePkgId}`)
 }

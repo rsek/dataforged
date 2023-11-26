@@ -1,10 +1,10 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { JsonEnumFromRecord } from '../../../typebox/index.js'
 import { Localize, Id } from '../common/index.js'
 import * as Generic from '../Generic.js'
+import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
 
-export const ChallengeRank = JsonEnumFromRecord(
+export const ChallengeRank = UnionEnumFromRecord(
 	{
 		1: 'Troublesome',
 		2: 'Dangerous',

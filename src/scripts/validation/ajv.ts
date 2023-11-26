@@ -1,5 +1,5 @@
 import ajvFormatPkg from 'ajv-formats'
-import { log } from '../utils/logger.js'
+import Log from '../utils/Log.js'
 import { KEYWORDS } from './keywords.js'
 import { FORMATS } from './formats.js'
 import ajvPkg from 'ajv'
@@ -11,7 +11,7 @@ const addFormats = ajvFormatPkg.default
 // Initialize AJV
 
 const ajv = new Ajv({
-	logger: log,
+	logger: Log,
 	passContext: true,
 	removeAdditional: true,
 	strict: 'log',

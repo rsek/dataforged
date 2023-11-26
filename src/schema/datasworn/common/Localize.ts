@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { JsonEnumFromRecord } from '../../../typebox/index.js'
+import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
 
 export const Label = Type.String({
 	$id: '#/$defs/Label',
@@ -29,7 +29,7 @@ The custom syntax \`{{some_row_key:some_oracle_table_id}}\` should be replaced b
 })
 export type TemplateString = Static<typeof TemplateString>
 
-export const PartOfSpeech = JsonEnumFromRecord(
+export const PartOfSpeech = UnionEnumFromRecord(
 	{
 		common_noun: 'A common noun.',
 		proper_noun: 'A proper noun.',

@@ -18,16 +18,11 @@ import {
 	type TFuzzySchemaOf,
 	setDescriptions
 } from '../utils/typebox.js'
-import { Nullable } from '../utils/Nullable.js'
-
-import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
-import { JsonEnum } from '../../../typebox/index.js'
 
 import type * as Id from './Id.js'
 import type * as Localize from './Localize.js'
 import * as Utils from '../Utils.js'
-import * as DictionaryJs from '../generic/Dictionary.js'
-import { TypeCompiler } from '@sinclair/typebox/compiler'
+import * as Generic from '../Generic.js'
 
 const InputName = Type.Ref<typeof Localize.Label>('#/$defs/Label', {
 	description:
@@ -97,7 +92,7 @@ export const Counter = Utils.Assign(
 		Input(Type.Integer({ default: 0 })),
 		Range({
 			min: LiteralZero,
-			max: Nullable(Type.Integer())
+			max: Utils.Nullable(Type.Integer())
 		})
 	],
 	{
@@ -126,7 +121,7 @@ export const Clock = Utils.Assign(
 				description:
 					'The minimum number of filled clock segments. This is always 0.'
 			},
-			max: JsonEnum([4, 6, 8, 10], {
+			max: Utils.UnionEnum([4, 6, 8, 10], {
 				[JsonTypeDef]: { schema: { type: 'int8' } },
 				description:
 					'The size of the clock -- in other words, the maximum number of filled clock segments.'
@@ -202,7 +197,7 @@ export type Checkbox = Static<typeof Checkbox>
 export type TCheckbox = typeof Checkbox
 
 export const TextInput = Input(
-	Nullable(Type.String(), {
+	Utils.Nullable(Type.String(), {
 		description: "The content of this text input, or `null` if it's empty",
 		default: null
 	}),
@@ -247,7 +242,7 @@ function Choices<T extends TSchema>(
 ) {
 	return Type.Object(
 		{
-			choices: DictionaryJs.Dictionary(choiceSchema)
+			choices: Generic.Dictionary(choiceSchema)
 		},
 		options
 	)
@@ -287,7 +282,7 @@ export type SelectOptionGroup<Option extends SelectOption<any>> = Static<
 	Choices<Option>
 
 const SelectBase = Input(
-	Nullable(
+	Utils.Nullable(
 		Type.Ref<typeof Id.DictKey>('#/$defs/DictKey', {
 			description:
 				'The key of the currently selected choice from the `choices` property, or `null` if none is selected.',
@@ -305,10 +300,10 @@ export function Select<Option extends TSelectOption<TSchema>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(
-		DiscriminatedUnion('option_type', [
-			optionSchema,
-			SelectOptionGroup(optionSchema)
-		])
+		Utils.DiscriminatedUnion(
+			[optionSchema, SelectOptionGroup(optionSchema)],
+			'option_type'
+		)
 	)
 	return Utils.Assign([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',

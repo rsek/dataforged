@@ -1,21 +1,15 @@
 import {
 	Type,
-	type ObjectOptions,
 	type ObjectProperties,
 	type Static,
 	type TObject,
 	type TProperties,
-	type TSchema,
-	TypeClone,
-	type TInteger
+	type TSchema
 } from '@sinclair/typebox'
-import { Id, Localize, Metadata, Rolls } from '../common/index.js'
-import { WithDefaults, setDescriptions } from '../utils/typebox.js'
-import { ObjectLiteral, type CanBeLiteral } from '../utils/ObjectLiteral.js'
-import * as Generic from '../Utils.js'
-import * as AssignJs from '../utils/Assign.js'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { SetNullable } from '../utils/SetNullable.js'
+import { Id, Localize, Metadata, Rolls } from '../common/index.js'
+import * as Utils from '../Utils.js'
+import { WithDefaults, setDescriptions } from '../utils/typebox.js'
 
 const TableRowBase = Type.Object({
 	result: Type.Ref(Localize.MarkdownString),
@@ -29,7 +23,7 @@ const TableRowBase = Type.Object({
 	i18n: Type.Optional(Type.Ref(Localize.I18nHints))
 })
 
-export const TableRowMixin = AssignJs.Assign([
+export const TableRowMixin = Utils.Assign([
 	TableRowBase,
 	Type.Object({
 		min: Type.Integer({
@@ -48,31 +42,12 @@ export const TableRowMixin = AssignJs.Assign([
 ])
 
 export const TableRowNullableMixin = setDescriptions(
-	SetNullable(TableRowMixin, ['min', 'max']),
+	Utils.SetNullable(TableRowMixin, ['min', 'max']),
 	{
 		min: 'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.',
 		max: 'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
 	}
 )
-
-export function TableRow<
-	Min extends TSchema = TInteger,
-	Max extends TSchema = TInteger,
-	Props extends TProperties & { min: Min; max: Max } = TProperties & {
-		min: Min
-		max: Max
-	}
->({ min, max, ...props }: Props, options: ObjectOptions = {}) {
-	min.description ||=
-		'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
-	max.description ||=
-		'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
-	// @ts-expect-error
-	return Type.Object(
-		{ min, max, ...TypeClone.Type(TableRowBase).properties, ...props },
-		options
-	) as TTableRow<Min, Max, Props>
-}
 
 export type TTableRow<
 	Min extends TSchema = TSchema,
@@ -86,7 +61,9 @@ type TableRow<
 	Props extends { min: Min; max: Max } = { min: Min; max: Max }
 > = Props & Static<typeof TableRowBase>
 
-export function StaticRowPartial<T extends Partial<CanBeLiteral<TableRow>>>(
+export function StaticRowPartial<
+	T extends Partial<Utils.CanBeLiteral<TableRow>>
+>(
 	literals: T,
 	defaults: Partial<
 		TableRow & {
@@ -95,7 +72,7 @@ export function StaticRowPartial<T extends Partial<CanBeLiteral<TableRow>>>(
 		}
 	> = {}
 ) {
-	const result = WithDefaults(ObjectLiteral(literals), defaults as any, {
+	const result = WithDefaults(Utils.ObjectLiteral(literals), defaults as any, {
 		additionalProperties: true
 	})
 	return result

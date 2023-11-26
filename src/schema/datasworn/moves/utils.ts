@@ -8,7 +8,7 @@ import {
 	type ObjectProperties,
 	type TLiteral
 } from '@sinclair/typebox'
-import { ExtractLiteralFromEnum } from '../utils/JsonEnum.js'
+import { ExtractLiteralFromEnum } from '../utils/ExtractLiteralFromEnum.js'
 import { Id, Localize } from '../common/index.js'
 import {
 	type TTrigger,

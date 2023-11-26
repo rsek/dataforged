@@ -1,11 +1,11 @@
 import { type KeywordDefinition } from 'ajv'
-import { JsonEnum } from '../../schema/datasworn/utils/JsonEnum.js'
+import { UnionEnum } from '../../schema/datasworn/utils/UnionEnum.js'
 import { Type } from '@sinclair/typebox'
 import { UnionOneOf } from '../../schema/datasworn/utils/UnionOneOf.js'
 
 export const KEYWORDS: Record<string, Omit<KeywordDefinition, 'keyword'>> = {
 	releaseStage: {
-		metaSchema: JsonEnum(['unstable', 'experimental', 'release'], {
+		metaSchema: UnionEnum(['unstable', 'experimental', 'release'], {
 			description:
 				"Indicates the release status of this schema.  Non-'release' schema may be stripped from the output.",
 			default: 'release'

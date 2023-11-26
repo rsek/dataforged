@@ -16,7 +16,7 @@ const logFormat = printf(
 		`${timestamp as string} [${label as string}] ${level}: ${message as string}`
 )
 
-const log = Winston.createLogger({
+export default Winston.createLogger({
 	format: combine(
 		label({ label: PKG_NAME }),
 		timestamp({ format: 'hh:mm:ss.SSS' }),
@@ -33,5 +33,3 @@ const log = Winston.createLogger({
 })
 
 // Winston.addColors(colors as any)
-
-export { log }

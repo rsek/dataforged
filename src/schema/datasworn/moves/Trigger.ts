@@ -41,7 +41,7 @@ const TriggerConditionBase = Type.Object({
 })
 
 export function TriggerCondition<
-	Method extends TFuzzyNull<Utils.TJsonEnum<string[]>>,
+	Method extends TFuzzyNull<Utils.TUnionEnum<string[]>>,
 	RollOptions extends TFuzzyNull<TArray<TFuzzyObject<{ using: TSchema }>>>
 >(method: Method, rollOptions: RollOptions, options: ObjectOptions = {}) {
 	const roll_options: RollOptions = {
@@ -61,8 +61,8 @@ export function TriggerCondition<
 	)
 }
 export type TTriggerCondition<
-	Method extends TFuzzyNull<Utils.TJsonEnum<string[]>> = TFuzzyNull<
-		Utils.TJsonEnum<string[]>
+	Method extends TFuzzyNull<Utils.TUnionEnum<string[]>> = TFuzzyNull<
+		Utils.TUnionEnum<string[]>
 	>,
 	RollOptions extends TFuzzyNull<
 		TArray<TFuzzyObject<{ using: TSchema }>>

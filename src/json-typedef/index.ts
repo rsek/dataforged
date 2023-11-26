@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import * as JTD from 'jtd'
 import path from 'path'
-import { log } from '../scripts/utils/logger.js'
+import Log from '../scripts/utils/Log.js'
 import { toJtdRoot } from './utils.js'
 
 import { Datasworn } from '../schema/datasworn/index.js'
@@ -27,7 +27,7 @@ function crawlForRefs(schema: Record<string, unknown>) {
 crawlForRefs(root as Record<string, unknown>)
 
 for (const name of referenceNames)
-	if (!(name in root?.definitions)) log.info(`Missing definition for ${name}`)
+	if (!(name in root?.definitions)) Log.info(`Missing definition for ${name}`)
 
 const json = JSON.stringify(root, undefined, '\t')
 const filePath = JTD_JSON_PATH

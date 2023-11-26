@@ -4,7 +4,6 @@ import {
 	type TAnySchema,
 	type TBigInt
 } from '@sinclair/typebox'
-import { JsonEnumFromRecord } from '../../../typebox/index.js'
 import {
 	type MoveActionRoll,
 	type MoveNoRoll,
@@ -12,6 +11,7 @@ import {
 	type MoveSpecialTrack
 } from '../Moves.js'
 import { Localize } from '../common/index.js'
+import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
 
 enum Outcome {
 	Miss = 'miss',
@@ -31,7 +31,7 @@ enum RollMethod {
 
 // ENUMS
 
-export const MoveRollType = JsonEnumFromRecord(
+export const MoveRollType = UnionEnumFromRecord(
 	{
 		no_roll: 'A move that makes no action rolls or progress rolls.',
 		action_roll: 'A move that makes an action roll.',
@@ -46,7 +46,7 @@ export const MoveRollType = JsonEnumFromRecord(
 export type MoveRollType = Static<typeof MoveRollType>
 export type TMoveRollType = typeof MoveRollType
 
-export const MoveOutcomeType = JsonEnumFromRecord(
+export const MoveOutcomeType = UnionEnumFromRecord(
 	{
 		[Outcome.Miss]: "The score doesn't beat either challenge die.",
 		[Outcome.WeakHit]: 'The score is greater than one challenge die.',
@@ -71,7 +71,7 @@ const rollMethodOutcomeCommon = {
 	[RollMethod.All]: 'Use **every** roll option at once.'
 }
 
-export const ActionRollMethod = JsonEnumFromRecord(
+export const ActionRollMethod = UnionEnumFromRecord(
 	{
 		...rollMethodForceOutcome,
 		...rollMethodOutcomeCommon
@@ -80,7 +80,7 @@ export const ActionRollMethod = JsonEnumFromRecord(
 )
 export type ActionRollMethod = Static<typeof ActionRollMethod>
 
-export const SpecialTrackRollMethod = JsonEnumFromRecord(
+export const SpecialTrackRollMethod = UnionEnumFromRecord(
 	{
 		...rollMethodForceOutcome,
 		...rollMethodOutcomeCommon
@@ -90,7 +90,7 @@ export const SpecialTrackRollMethod = JsonEnumFromRecord(
 
 export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
 
-export const ProgressRollMethod = JsonEnumFromRecord(
+export const ProgressRollMethod = UnionEnumFromRecord(
 	{
 		...rollMethodForceOutcome,
 		progress_roll:

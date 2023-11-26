@@ -3,9 +3,9 @@
 import { buildCorePackage } from './buildCorePackage.js'
 import * as config from '../pkgConfig.js'
 import { buildDataPackage } from './buildDataPackage.js'
-import { log } from '../../utils/logger.js'
+import Log from '../../utils/Log.js'
 
-const profiler = log.startTimer()
+const profiler = Log.startTimer()
 
 await Promise.all([
 	buildCorePackage(),

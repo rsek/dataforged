@@ -97,6 +97,7 @@ assets:
             enhance_asset:
               controls:
                 health:
+                  field_type: condition_meter
                   max: 6
           - text: |-
               When your command is 0 and the situation desperate, you may [Compel](id:sundered_isles/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
@@ -115,7 +116,7 @@ assets:
             min: 0
             max: 4
             value: 2
-            name: command
+            label: command
             # TODO: counts as impact @ 0
             moves:
               recover:
@@ -265,7 +266,7 @@ assets:
             controls:
               clock:
                 field_type: clock
-                name: Corpse imbued with soulless life
+                label: Corpse imbued with soulless life
                 min: 0
                 max: 4
       overlander:
@@ -312,10 +313,10 @@ assets:
         asset_type: Path
         options:
           field_one:
-            name: Field
+            label: Field
             field_type: text
           field_two:
-            name: Field
+            label: Field
             field_type: text
         abilities:
           - enabled: true
@@ -514,16 +515,19 @@ assets:
                       roll_options: null
         controls:
           winds:
-            name: Winds
+            label: Winds
             field_type: select_enhancement
-            # TODO: add an icon slot? hm.
+            # TODO: add an icon slot?
             choices:
               fine:
-                name: Fine
+                label: Fine
+                option_type: option
                 value: {}
               fair:
-                name: Fair
+                label: Fair
+                option_type: option
                 value: {}
               foul:
-                name: Foul
+                label: Foul
+                option_type: option
                 value: {}

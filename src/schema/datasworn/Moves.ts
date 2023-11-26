@@ -15,8 +15,8 @@ import * as Utils from './Utils.js'
 
 // discriminated union of all moves by roll_type
 export const Move = Utils.DiscriminatedUnion(
-	'roll_type',
 	[MoveActionRoll, MoveNoRoll, MoveProgressRoll, MoveSpecialTrack],
+	'roll_type',
 	{
 		$id: '#/$defs/Move',
 		title: 'Move'
@@ -30,13 +30,13 @@ export type Move =
 	| MoveSpecialTrack
 
 export const MoveEnhancement = Utils.DiscriminatedUnion(
-	'roll_type',
 	[
 		MoveActionRollEnhancement,
 		MoveNoRollEnhancement,
 		MoveProgressRollEnhancement,
 		MoveSpecialTrackEnhancement
 	],
+	'roll_type',
 	{
 		$id: '#/$defs/MoveEnhancement'
 	}

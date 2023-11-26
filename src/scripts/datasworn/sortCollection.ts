@@ -2,7 +2,7 @@ import { Type } from '@sinclair/typebox'
 import { TypeCompiler } from '@sinclair/typebox/compiler'
 import { cloneDeep, compact, min } from 'lodash-es'
 import * as Generic from '../../schema/datasworn/Generic.js'
-import { log } from '../utils/logger.js'
+import Log from '../utils/Log.js'
 
 function sortDictionary<
 	T,
@@ -52,7 +52,7 @@ export function sortTopLevelCollection<
 		return compareSourcedNode(a, b)
 	})
 
-	// log.info(result)
+	// Log.info(result)
 
 	return result
 }
@@ -114,7 +114,7 @@ function compareSourcedNode(a: Generic.SourcedNode, b: Generic.SourcedNode) {
 	// console.log(a, b)
 	for (const item of [a, b]) {
 		if (!item.source?.page && item.id?.includes('collections'))
-			log.warn(`${item.id} is missing a page number.`)
+			Log.warn(`${item.id} is missing a page number.`)
 	}
 
 	return 0

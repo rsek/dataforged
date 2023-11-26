@@ -11,7 +11,7 @@ import { type DataPackageConfig } from '../../schema/tools/build/index.js'
 import type { In, Out } from '../../types/index.js'
 import { formatPath } from '../../utils.js'
 import { ROOT_OUTPUT } from '../const.js'
-import { log } from '../utils/logger.js'
+import Log from '../utils/Log.js'
 import ajv from '../validation/ajv.js'
 import * as jsc from '../validation/jsc.js'
 import { readSource, writeJSON } from './readWrite.js'
@@ -21,6 +21,7 @@ import {
 	unsortableKeys
 } from './sort.js'
 import { sortTopLevelCollection } from './sortCollection.js'
+import SourceValidator from '../validation/SourceValidator.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -31,7 +32,7 @@ export async function buildRuleset(
 	schemaIdIn: string,
 	schemaIdOut: string
 ) {
-	log.info(`⚙️  Building ruleset: ${id}`)
+	Log.info(`⚙️  Building ruleset: ${id}`)
 	const sourcebook: Record<string, Record<string, unknown>> = {}
 
 	const destDir = path.join(ROOT_OUTPUT, id)
@@ -44,7 +45,7 @@ export async function buildRuleset(
 		fastGlob(oldJsonFilesGlob)
 	])
 
-	log.info(
+	Log.info(
 		`🔍 Found ${
 			sourceFiles?.length ?? 0
 		} YAML files for "${id}" in ${formatPath(paths.source)}`
@@ -77,7 +78,7 @@ export async function buildRuleset(
 
 				builtFiles.set(filePath, builtData)
 			} catch (error) {
-				log.error(`Failed to build from ${formatPath(filePath)}:`, error)
+				Log.error(`Failed to build from ${formatPath(filePath)}:`, error)
 			}
 		})
 	)
@@ -104,6 +105,7 @@ export async function buildRuleset(
 		// TODO: rewrite this using keywords and Draft.each() from json-schema-library
 
 		ajv.validate('Datasworn', jsonToValidate)
+		SourceValidator.Check(jsonToValidate)
 
 		const jsonOut = cleanDatasworn({ ...sourcebookMetadata, [k]: v })
 
@@ -116,18 +118,18 @@ export async function buildRuleset(
 			fs
 				.ensureFile(outPath)
 				.then(async () => {
-					log.info(`✏️  Writing to ${formatPath(outPath)}`)
+					Log.info(`✏️  Writing to ${formatPath(outPath)}`)
 					await writeJSON(outPath, jsonOut, { replacer })
 				})
 				.catch(
 					(err) =>
-						void log.error(`Failed to write ${formatPath(outPath)}:`, err)
+						void Log.error(`Failed to write ${formatPath(outPath)}:`, err)
 				)
 		)
 	}
 
 	if (oldJsonFiles?.length > 0)
-		log.info(
+		Log.info(
 			`🧹 Deleting ${oldJsonFiles?.length} old JSON files from ${formatPath(
 				destDir
 			)}`
@@ -137,7 +139,7 @@ export async function buildRuleset(
 
 	await Promise.all(toWrite)
 
-	log.info(`✅ Finished writing sourcebook "${id}" to ${formatPath(destDir)}`)
+	Log.info(`✅ Finished writing sourcebook "${id}" to ${formatPath(destDir)}`)
 }
 
 function cleanDatasworn(datasworn: Out.Datasworn) {
@@ -178,7 +180,7 @@ function cleanDatasworn(datasworn: Out.Datasworn) {
 		// if (k === 'rules') continue
 		if (typeof v !== 'object') continue
 
-		// log.info(`iterating key: ${k}`)
+		// Log.info(`iterating key: ${k}`)
 
 		const result = sortTopLevelCollection(v as any)
 
@@ -218,7 +220,7 @@ async function buildSourcebookFile(
 	)
 	try {
 		if (!ajv.validate<Out.Datasworn>(schemaIdOut, builtData)) {
-			log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
+			Log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
 
 			const errorPath = path.join(
 				ROOT_OUTPUT,
@@ -233,7 +235,7 @@ async function buildSourcebookFile(
 		}
 		return builtData
 	} catch (err) {
-		log.error(`Failed to build ${formatPath(filePath)}`, err)
+		Log.error(`Failed to build ${formatPath(filePath)}`, err)
 	}
 }
 
@@ -245,12 +247,12 @@ type SourcebookData<T extends SourcebookDataKey = SourcebookDataKey> =
 	Out.Datasworn[T]
 
 async function readSourcebookFile(filePath: string, schemaIdIn: string) {
-	log.info(`📖 Reading ${formatPath(filePath)}`)
+	Log.info(`📖 Reading ${formatPath(filePath)}`)
 
 	const sourceData = await readSource(filePath)
 
 	if (!ajv.validate<In.Datasworn>(schemaIdIn, sourceData)) {
-    const shortErrors = ajv.errors?.map(
+		const shortErrors = ajv.errors?.map(
 			({ instancePath, schemaPath, data, parentSchema }) => ({
 				instancePath,
 				schemaPath,
@@ -258,7 +260,7 @@ async function readSourcebookFile(filePath: string, schemaIdIn: string) {
 				data
 			})
 		)
-		log.error(`${JSON.stringify(shortErrors, undefined, '\t')}`)
+		Log.error(`${JSON.stringify(shortErrors, undefined, '\t')}`)
 		throw new Error(
 			`YAML data in ${filePath} doesn't match the ${schemaIdIn} schema`
 		)

@@ -1,9 +1,9 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { JsonEnumFromRecord } from '../../datasworn/utils/JsonEnum.js'
 import {
 	PKG_SCOPE_COMMUNITY,
 	PKG_SCOPE_OFFICIAL
 } from '../../../scripts/const.js'
+import { UnionEnumFromRecord } from '../../datasworn/utils/UnionEnumFromRecord.js'
 
 export const DataPackageConfig = Type.Object({
 	id: Type.String({
@@ -11,7 +11,7 @@ export const DataPackageConfig = Type.Object({
 			'The namespace ID for this data set. This is the first path element of all its object IDs.'
 	}),
 	description: Type.Optional(Type.String()),
-	type: JsonEnumFromRecord({
+	type: UnionEnumFromRecord({
 		standalone: 'A standalone ruleset.',
 		expansion: 'An expansion that depends on other rulesets.'
 	}),
@@ -19,7 +19,7 @@ export const DataPackageConfig = Type.Object({
 		name: Type.String({
 			description: 'The package ID, not including its scope (see `scope`).'
 		}),
-		scope: JsonEnumFromRecord(
+		scope: UnionEnumFromRecord(
 			{
 				[PKG_SCOPE_OFFICIAL]: 'Official Ironsworn content.',
 				[PKG_SCOPE_COMMUNITY]:

@@ -19,7 +19,7 @@ import {
 } from '@sinclair/typebox'
 import { isEmpty } from 'lodash-es'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { type TJsonEnum } from './JsonEnum.js'
+import { type TUnionEnum } from './UnionEnum.js'
 import { type TDiscriminatedUnion } from './DiscriminatedUnion.js'
 import { type TNullable } from './Nullable.js'
 
@@ -120,13 +120,13 @@ export function setDescriptions<T extends TObject>(
 export type TFuzzyRef<T extends TSchema> = T | TRef<T>
 
 export type TFuzzyString = TFuzzyRef<
-	TString | TLiteral<string> | TJsonEnum<string[]>
+	TString | TLiteral<string> | TUnionEnum<string[]>
 >
 export type TFuzzyObject<Props extends TProperties = TProperties> = TFuzzyRef<
 	TObject<Props> | (TDiscriminatedUnion & { static: Static<TObject<Props>> })
 >
 export type TFuzzyNumber = TFuzzyRef<
-	TNumber | TInteger | TLiteral<number> | TJsonEnum<number[]>
+	TNumber | TInteger | TLiteral<number> | TUnionEnum<number[]>
 >
 export type TFuzzyOptional<T extends TSchema> = T | TOptional<T>
 

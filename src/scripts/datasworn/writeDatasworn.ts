@@ -1,15 +1,15 @@
 import * as pkgs from '../pkg/pkgConfig.js'
 import fs from 'fs-extra'
 import { forEach } from 'lodash-es'
-import { log } from '../utils/logger.js'
+import Log from '../utils/Log.js'
 import ajv from '../validation/ajv.js'
 import { buildRuleset } from './buildDatasworn.js'
 import { SCHEMA_IN, SCHEMA_OUT } from '../const.js'
 import { formatPath } from '../../utils.js'
 
-const profiler = log.startTimer()
+const profiler = Log.startTimer()
 
-log.info('📖 Reading schema...')
+Log.info('📖 Reading schema...')
 
 // flush any old schemas
 ajv.removeSchema()
@@ -26,16 +26,16 @@ for await (const [id, filePath] of schemas) {
 	const v = await fs.readJSON(filePath)
 	ajv.validateSchema(v, true)
 	ajv.addSchema(v, id)
-	log.info(`✅ Loaded ${id} schema from ${formatPath(filePath)}`)
+	Log.info(`✅ Loaded ${id} schema from ${formatPath(filePath)}`)
 }
 
 // TODO: invert the logic for this so that it infers from directory structure
-log.info('⚙️  Building sourcebooks...')
+Log.info('⚙️  Building sourcebooks...')
 
 await Promise.all(
 	Object.values(pkgs).map((pkg) =>
 		buildRuleset(pkg, schemaInId, schemaOutId).catch((e) =>
-			log.error(`Failed to build ${pkg.id}`, e)
+			Log.error(`Failed to build ${pkg.id}`, e)
 		)
 	)
 )

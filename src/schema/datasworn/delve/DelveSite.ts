@@ -6,21 +6,18 @@ import {
 } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
-import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
 import { Id, Localize, Metadata, Progress } from '../common/index.js'
 import { StaticRowPartial } from '../oracles/TableRow.js'
-import * as Generic from '../Utils.js'
-import * as AssignJs from '../utils/Assign.js'
-import * as SourcedNodeJs from '../generic/SourcedNode.js'
-import * as IdentifiedNodeJs from '../generic/IdentifiedNode.js'
+import * as Utils from '../Utils.js'
+import * as Generic from '../Generic.js'
 
-export const DelveSiteDenizenFrequency = JsonEnum(
+export const DelveSiteDenizenFrequency = Utils.UnionEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
 	{ $id: '#/$defs/DelveSiteDenizenFrequency' }
 )
 export type DelveSiteDenizenFrequency = Static<typeof DelveSiteDenizenFrequency>
 
-export const DelveSiteDenizen = IdentifiedNodeJs.IdentifiedNode(
+export const DelveSiteDenizen = Generic.IdentifiedNode(
 	Type.Ref(Id.DelveSiteDenizenId),
 	Type.Object({
 		name: Type.Optional(
@@ -47,7 +44,7 @@ function StaticDenizenRowStub<
 	Max extends number,
 	Frequency extends DelveSiteDenizenFrequency
 >(min: Min, max: Max, frequency: Frequency) {
-	return AssignJs.Assign(
+	return Utils.Assign(
 		[
 			StaticRowPartial({ min, max }),
 			Type.Object({ frequency: Type.Literal(frequency) })
@@ -61,7 +58,7 @@ function StaticDenizenRowStub<
 }
 const DelveSiteDenizens = Type.Array(Type.Ref(DelveSiteDenizen))
 
-export const DelveSite = SourcedNodeJs.SourcedNode(
+export const DelveSite = Generic.SourcedNode(
 	Type.Ref(Id.DelveSiteId),
 	Type.Object({
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
@@ -75,7 +72,7 @@ export const DelveSite = SourcedNodeJs.SourcedNode(
 		theme: Type.Ref(Id.DelveSiteThemeId),
 		domain: Type.Ref(Id.DelveSiteDomainId),
 		extra_card: Type.Optional(
-			UnionOneOf(
+			Utils.UnionOneOf(
 				[Type.Ref(Id.DelveSiteThemeId), Type.Ref(Id.DelveSiteDomainId)],
 				{
 					description:

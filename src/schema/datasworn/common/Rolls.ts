@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { JsonEnumFromRecord } from '../utils/JsonEnum.js'
+import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
 import { Id, Localize } from '../common/index.js'
 
 export const DiceNotation = Type.RegExp(
@@ -11,7 +11,7 @@ export const DiceNotation = Type.RegExp(
 	}
 )
 export type DiceNotation = Static<typeof DiceNotation>
-export const OracleTableRollMethod = JsonEnumFromRecord(
+export const OracleTableRollMethod = UnionEnumFromRecord(
 	{
 		no_duplicates: 'Duplicates should be re-rolled.',
 		keep_duplicates: 'Duplicates should be kept.',

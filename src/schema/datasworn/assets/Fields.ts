@@ -1,10 +1,8 @@
 import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
-import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 import { Id, Fields } from '../common/index.js'
-import * as Generic from '../Utils.js'
-import * as AssignJs from '../utils/Assign.js'
-import * as DictionaryJs from '../generic/Dictionary.js'
+import * as Utils from '../Utils.js'
+import * as Generic from '../Generic.js'
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({
@@ -21,7 +19,7 @@ const AssetBooleanFieldMixin = Type.Object({
 function AssetCheckboxField(id: TRef<TString>) {
 	const base = Fields.CheckboxField(id)
 	const { $comment, description } = base
-	return AssignJs.Assign([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
+	return Utils.Assign([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
 		description,
 		$comment,
 		title: 'AssetCheckboxField'
@@ -30,18 +28,18 @@ function AssetCheckboxField(id: TRef<TString>) {
 function AssetCardFlipField(id: TRef<TString>) {
 	const base = Fields.CardFlipField(id)
 	const { $comment, description } = base
-	return AssignJs.Assign([base, AssetBooleanFieldMixin], {
+	return Utils.Assign([base, AssetBooleanFieldMixin], {
 		description,
 		$comment,
 		title: 'AssetCardFlipField'
 	})
 }
 
-export const AssetConditionMeterControlField = DiscriminatedUnion(
-	Fields.DISCRIMINATOR,
+export const AssetConditionMeterControlField = Utils.DiscriminatedUnion(
 	[AssetCheckboxField, AssetCardFlipField].map((fn) =>
 		fn(Type.Ref(Id.AssetConditionMeterControlFieldId))
 	),
+	Fields.DISCRIMINATOR,
 	{
 		$id: '#/$defs/AssetConditionMeterControlField',
 		description:
@@ -96,13 +94,13 @@ const AssetConditionMeterMixin = Type.Object({
 		)
 	),
 	controls: Type.Optional(
-		DictionaryJs.Dictionary(Type.Ref(AssetConditionMeterControlField), {
+		Generic.Dictionary(Type.Ref(AssetConditionMeterControlField), {
 			description: 'Checkbox controls rendered as part of the condition meter.'
 		})
 	)
 })
 
-export const AssetConditionMeter = AssignJs.Assign(
+export const AssetConditionMeter = Utils.Assign(
 	[
 		Fields.ConditionMeterField(Type.Ref(Id.AssetControlFieldId)),
 		AssetConditionMeterMixin
@@ -122,10 +120,10 @@ const AssetOptionFields = [
 	Fields.TextField
 ].map((fn) => fn(Type.Ref(Id.AssetOptionFieldId)))
 
-export const AssetOptionField = DiscriminatedUnion(
-	Fields.DISCRIMINATOR,
+export const AssetOptionField = Utils.DiscriminatedUnion(
 	AssetOptionFields,
-	{ $id: '#/$defs/AssetOptionField', title: 'AssetOptionField' }
+	Fields.DISCRIMINATOR,
+	{ $id: '#/$defs/AssetOptionField' }
 )
 export type AssetOptionField = Static<typeof AssetOptionField>
 export type TAssetOptionField = typeof AssetOptionField
@@ -139,15 +137,13 @@ const AssetControlFields = [
 	].map((fn) => fn(Type.Ref(Id.AssetControlFieldId)))
 ]
 
-export const AssetControlField = DiscriminatedUnion(
-	Fields.DISCRIMINATOR,
+export const AssetControlField = Utils.DiscriminatedUnion(
 	AssetControlFields,
+	Fields.DISCRIMINATOR,
 	{
-		$id: '#/$defs/AssetControlField',
-		title: 'AssetControlField'
+		$id: '#/$defs/AssetControlField'
 	}
 )
-
 
 export type TAssetControlField = typeof AssetControlField
 export type AssetControlField = Static<typeof AssetControlField>
@@ -158,10 +154,10 @@ const AbilityControlFields = [
 	AssetCheckboxField
 ].map((fn) => fn(Type.Ref(Id.AssetAbilityControlFieldId)))
 
-export const AssetAbilityControlField = DiscriminatedUnion(
-	Fields.DISCRIMINATOR,
+export const AssetAbilityControlField = Utils.DiscriminatedUnion(
 	AbilityControlFields,
-	{ $id: '#/$defs/AssetAbilityControlField', title: 'AssetAbilityControlField' }
+	Fields.DISCRIMINATOR,
+	{ $id: '#/$defs/AssetAbilityControlField' }
 )
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
@@ -170,10 +166,10 @@ const AbilityOptionFields = [Fields.TextField].map((fn) =>
 	fn(Type.Ref(Id.AssetAbilityOptionFieldId))
 )
 
-export const AssetAbilityOptionField = DiscriminatedUnion(
-	'field_type',
+export const AssetAbilityOptionField = Utils.DiscriminatedUnion(
 	AbilityOptionFields,
-	{ $id: '#/$defs/AssetAbilityOptionField', title: 'AssetAbilityOptionField' }
+	Fields.DISCRIMINATOR,
+	{ $id: '#/$defs/AssetAbilityOptionField' }
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>

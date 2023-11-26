@@ -1,107 +1,147 @@
 import {
 	Kind,
+	type TRef,
 	Type,
 	TypeClone,
+	TypeRegistry,
 	type SchemaOptions,
 	type Static,
-	type TLiteral,
 	type TObject,
 	type TPick,
-	type TSchema,
-	type TUnion
+	type TSchema
 } from '@sinclair/typebox'
-import { pick } from 'lodash-es'
+import { Value } from '@sinclair/typebox/value'
 import {
 	Discriminator,
-	Members,
-	JsonTypeDef
+	JsonTypeDef,
+	Members
 } from '../../../json-typedef/symbol.js'
-
-const DiscriminatedUnionHint = 'DiscriminatedUnion'
-
-export type TDiscriminable<Discriminator extends string = string> = TObject<{
-	[K in Discriminator]: TLiteral<string>
-}>
-
-export type TDiscriminated<
-	Discriminator extends string = string,
-	T extends TDiscriminable<Discriminator> = TDiscriminable<Discriminator>
-> = T & { [JsonTypeDef]?: { skip?: boolean } }
+import { type TUnionEnum, UnionEnum } from './UnionEnum.js'
+import { pick } from 'lodash-es'
 
 export function DiscriminatedUnion<
-	D extends string,
-	T extends Array<TDiscriminated<D>>
->(discriminator: D, members: [...T], options: SchemaOptions = {}) {
-	const allOf = members.map((member) => {
+	T extends TObject[],
+	TDiscriminator extends string & keyof Static<T[number]>
+>(schemas: [...T], discriminator: TDiscriminator, options: SchemaOptions = {}) {
+	if (!TypeRegistry.Has('DiscriminatedUnion'))
+		TypeRegistry.Set('DiscriminatedUnion', DiscriminatedUnionCheck)
+
+	const allOf = schemas.map((member) => {
 		const result = {
-			if: Type.Unsafe({
-				properties: pick(member.properties, discriminator)
-			}),
-			then: member.$id == null ? TypeClone.Type(member) : Type.Ref(member)
+			if: pick(
+				Type.Pick(member, [discriminator]),
+				`properties.${discriminator}.const`,
+				`properties.${discriminator}.type`
+			),
+			// if: Type.Unsafe<Static<(typeof member)['properties'][D]>>({
+			// 	properties: pick(member.properties, discriminator)
+			// }),
+			then:
+				member.$id == null
+					? TypeClone.Type(member, { additionalProperties: false })
+					: Type.Ref(member)
 		}
 
-		// if (member.$id != null) {
 		// brand the original member so that JTD schema generation skips them -- they won't need their own definition
-		;(member as any)[JsonTypeDef] ||= {}
+		;;(member as any)[JsonTypeDef] ||= {}
 		;(member as any)[JsonTypeDef].skip = true
-		// }
 
 		return result
-	}) as any
+	}) as TDiscriminatedUnion<T, TDiscriminator>['anyOf']
 
-	const properties = {
-		[discriminator]: {
-			enum: members.map((member) => member.properties[discriminator].const)
-		}
-	} as TDiscriminatedUnion<D, T>['properties']
+	type DiscriminatorValueLiteral = Static<T[number]>[TDiscriminator] & string
 
-	const result: TDiscriminatedUnion<D, T> = {
+	const literals = UnionEnum(
+		schemas.map(
+			(member) => member.properties[discriminator].const
+		) as DiscriminatorValueLiteral[]
+	)
+
+	const properties = { [discriminator]: literals } as Record<
+		TDiscriminator,
+		typeof literals
+	>
+
+	const result = {
 		...options,
 		type: 'object',
 		params: undefined as any,
+		static: undefined as any,
 		allOf,
 		required: [discriminator],
-		static: undefined as any,
 		additionalProperties: true,
 		properties,
-		[Kind]: DiscriminatedUnionHint,
+		[Kind]: 'DiscriminatedUnion',
 		[Discriminator]: discriminator,
-		[Members]: members
+		[Members]: schemas
 	}
 
-	return result
+	return result as TDiscriminatedUnion<T, TDiscriminator>
 }
 
-export function TDiscriminatedUnion(
-	schema: unknown
-): schema is TDiscriminatedUnion {
-	return (schema as TDiscriminatedUnion)[Kind] === DiscriminatedUnionHint
+function DiscriminatedUnionCheck(
+	schema: TDiscriminatedUnion<TObject[], string>,
+	value: unknown
+) {
+	const discriminator = schema[Discriminator]
+	const members = schema[Members]
+	const mappingKeys = schema.properties[discriminator].enum
+
+	const validMapping = mappingKeys.every((mapping) =>
+		DiscriminatedUnionMappingCheck(members, discriminator, mapping)
+	)
+
+	return validMapping && mappingKeys.length === members.length
+}
+
+/** Determine whether a given discriminator mapping matches exactly one schema */
+function DiscriminatedUnionMappingCheck(
+	schemas: TObject[],
+	discriminator: string,
+	mapping: string
+) {
+	const matchingSchemas = schemas.filter((schema) =>
+		Value.Check(
+			Type.Object(
+				{ [discriminator]: Type.Literal(mapping) },
+				{ additionalProperties: true }
+			),
+			schema
+		)
+	)
+
+	return matchingSchemas.length === 1
+}
+
+export function TDiscriminatedUnion<
+	T extends TDiscriminatedUnion<TObject[], string> = TDiscriminatedUnion<
+		TObject[],
+		string
+	>
+>(schema: unknown): schema is T {
+	return (schema as T)[Kind] === 'DiscriminatedUnion'
 }
 
 export interface TDiscriminatedUnion<
-	D extends string = string,
-	T extends Array<TDiscriminated<D>> = Array<TDiscriminated<D>>
+	T extends TObject[],
+	TDiscriminator extends string & keyof Static<T[number]>
 > extends TSchema {
 	type: 'object'
-	static: Static<TUnion<T>>
-	properties: {
-		[P in D]: { enum: Array<Static<TDiscriminatorValue<T[number]>>> }
-	}
-	allOf: Array<{
-		if: TObject<{ [P in D]: TPick<T[number], D> }>
-		then: T[number]
-	}>
+	static: Static<T[number]>
+	properties: Record<
+		TDiscriminator,
+		TUnionEnum<(Static<T[number]>[TDiscriminator] & string)[]>
+	>
+	allOf: {
+		if: TPick<T[number], TDiscriminator>
+		then: T[number] | TRef<T[number]>
+	}[]
 	additionalProperties: true
-	[Kind]: typeof DiscriminatedUnionHint
-	[Discriminator]: D
+	[Kind]: 'DiscriminatedUnion'
+	[Discriminator]: TDiscriminator
 	[Members]: [...T]
 }
 
-type DiscriminatorKey<T extends TDiscriminated<string>> =
-	T extends TDiscriminated<infer D> ? D & keyof Static<T> : never
-
-type TDiscriminatorValue<T extends TDiscriminated<string>> =
-	T['properties'][DiscriminatorKey<T>]
 
 //   export type TDiscriminatedUnion<
 // 	D extends string = string,

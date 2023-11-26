@@ -1,7 +1,7 @@
 import { exec } from 'child_process'
 import { kebabCase } from 'lodash-es'
 import { type CamelCase } from 'type-fest'
-import { log } from './scripts/utils/logger.js'
+import Log from './scripts/utils/Log.js'
 
 export function shellify<T extends ShellCommandParams>({
 	command,
@@ -20,14 +20,14 @@ export function shellify<T extends ShellCommandParams>({
 
 	exec(cmdString, (error, stdout, stderr) => {
 		if (error) {
-			log.error(`error: ${error.message}`)
+			Log.error(`error: ${error.message}`)
 			return
 		}
 		if (stderr) {
-			log.error(`stderr: ${stderr}`)
+			Log.error(`stderr: ${stderr}`)
 			return
 		}
-		log.info(`stdout: ${stdout}`)
+		Log.info(`stdout: ${stdout}`)
 	})
 }
 

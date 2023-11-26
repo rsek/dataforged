@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs-extra'
-import { log } from '../../utils/logger.js'
+import Log from '../../utils/Log.js'
 import { type DataPackageConfig } from '../../../schema/tools/build/index.js'
 import { PKG_DIR_NODE, ROOT_OUTPUT } from '../../const.js'
 
@@ -26,5 +26,5 @@ export async function buildDataPackage({ id, pkg, paths }: DataPackageConfig) {
 		} else await fs.remove(assetDest)
 	}
 
-	return log.info(`✅ Finished building ${pkgID}`)
+	return Log.info(`✅ Finished building ${pkgID}`)
 }

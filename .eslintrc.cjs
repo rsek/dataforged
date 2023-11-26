@@ -33,6 +33,7 @@ module.exports = {
 		// EXPERIMENTAL_useProjectService: true
 	},
 	rules: {
+		'@typescript-eslint/array-type': 'off',
 		'@typescript-eslint/no-redeclare': 'off',
 		// Pretty fraught since there's a few of them in use. Maybe possible to define, but i'm not sure it's worth the effort right now.
 		'@typescript-eslint/naming-convention': 'off',
@@ -47,6 +48,7 @@ module.exports = {
 		],
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
-		'@typescript-eslint/ban-ts-comment': 'off'
+		'@typescript-eslint/ban-ts-comment': 'off',
+		'@typescript-eslint/no-namespace': 'off'
 	}
 }

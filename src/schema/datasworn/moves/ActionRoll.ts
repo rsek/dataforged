@@ -1,14 +1,10 @@
-import { DiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 import {
-	ExtractLiteralFromEnum,
-	JsonEnumFromRecord,
 	Type,
 	type ObjectOptions,
 	type Static,
 	type TObject
 } from '../../../typebox/index.js'
 import { Localize, Player, Id } from '../common/index.js'
-import { Nullable } from '../utils/Nullable.js'
 import {
 	Trigger,
 	TriggerCondition,
@@ -17,10 +13,9 @@ import {
 } from './Trigger.js'
 import { type ActionRollMethod, type MoveOutcomes } from './common.js'
 import { Move, MoveEnhancement } from './utils.js'
-import * as Generic from '../Utils.js'
-import * as AssignJs from '../utils/Assign.js'
+import * as Utils from '../Utils.js'
 
-export const ActionRollUsing = JsonEnumFromRecord(
+export const ActionRollUsing = Utils.UnionEnumFromRecord(
 	{
 		stat: 'Roll using a standard player character stat.',
 		condition_meter:
@@ -40,11 +35,11 @@ function ActionRollOptionBase<
 	Using extends ActionRollUsing,
 	Props extends TObject
 >(using: Using, props: Props, options: ObjectOptions = {}) {
-	return AssignJs.Assign(
+	return Utils.Assign(
 		[
 			props,
 			Type.Object({
-				using: ExtractLiteralFromEnum(ActionRollUsing, using)
+				using: Utils.ExtractLiteralFromEnum(ActionRollUsing, using)
 			})
 		],
 		options
@@ -54,7 +49,7 @@ function ActionRollOptionBase<
 export const RollOptionAssetControl = ActionRollOptionBase(
 	'asset_control',
 	Type.Object({
-		assets: Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
+		assets: Utils.Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
@@ -82,7 +77,7 @@ export type RollOptionAttachedAssetControl = Static<
 export const RollOptionAssetOption = ActionRollOptionBase(
 	'asset_option',
 	Type.Object({
-		assets: Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
+		assets: Utils.Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
@@ -147,11 +142,9 @@ const RollOptionSubtypes = [
 	RollOptionCustom
 ]
 
-export const ActionRollOption = DiscriminatedUnion(
-	'using',
-	RollOptionSubtypes,
-	{ $id: '#/$defs/ActionRollOption' }
-)
+export const ActionRollOption = Utils.DiscriminatedUnion(RollOptionSubtypes, 'using', {
+	$id: '#/$defs/ActionRollOption'
+})
 
 export type ActionRollOption = Static<typeof ActionRollOption>
 
@@ -219,7 +212,7 @@ export const TriggerNoRollCondition = TriggerCondition(
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
 export const TriggerNoRoll = Trigger(
-	Nullable(Type.Array(Type.Ref(TriggerNoRollCondition))),
+	Utils.Nullable(Type.Array(Type.Ref(TriggerNoRollCondition))),
 	{ $id: '#/$defs/TriggerNoRoll' }
 )
 

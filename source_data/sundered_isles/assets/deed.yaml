@@ -55,17 +55,20 @@ assets:
             enhance_asset:
               controls:
                 power:
+                  field_type: condition_meter
                   max: 5
           - text: |-
               When you [Undertake an Expedition](id:sundered_isles/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
         controls:
           power:
+            field_type: condition_meter
             min: 0
             max: 4
-            name: power
+            value: 4
+            label: power
             controls:
               wrecked:
-                name: wrecked
+                label: wrecked
                 field_type: checkbox
       undead:
         source: *Source
@@ -87,6 +90,7 @@ assets:
                 trigger:
                   conditions:
                     - text: when you [Lose Momentum](id:sundered_isles/moves/suffer/lose_momentum) to offset harm, then attempt to resist the remaining harm
+                      method: player_choice
                       roll_options:
                         - using: condition_meter
                           condition_meter: spirit
@@ -97,6 +101,7 @@ assets:
                 trigger:
                   conditions:
                     - text: using your undead aspect to intimidate, scare, or confound
+                      method: null
                       roll_options: null
           - text: |-
               You may move at-will between the mortal world and the realm of the dead, can take others with you, and may navigate those paths to bypass or hasten a mortal journey. When you [Undertake an Expedition](id:sundered_isles/moves/exploration/undertake_an_expedition) within the realms of the dead, roll +spirit. On a strong hit, mark progress.
@@ -107,6 +112,8 @@ assets:
                 trigger:
                   conditions:
                     - text: within the realms of the dead
+                      method: player_choice
                       roll_options:
                         - using: condition_meter
                           condition_meter: spirit
+

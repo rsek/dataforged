@@ -1,6 +1,6 @@
 import { Type, type ObjectOptions, type TObject } from '@sinclair/typebox'
 import { IdentifiedNode, type TIdentifiedNode } from './IdentifiedNode.js'
-import { Assign } from '../Utils.js'
+import * as Utils from '../Utils.js'
 import { type Id, Metadata, Localize } from '../common/index.js'
 
 /** Interface shared by objects with source attribute. */
@@ -34,14 +34,14 @@ export function SourcedNode<T extends TObject = TObject>(
 ) {
 	const result = IdentifiedNode(
 		id,
-		Assign([SourcedNodeBase, schema]),
+		Utils.Assign([SourcedNodeBase, schema]),
 		options
 	) satisfies TSourcedNode<T>
 
 	return result
 }
 export type TSourcedNode<T extends TObject = TObject> = TIdentifiedNode<
-	TObject<Assign<(typeof SourcedNodeBase)['properties'], T['properties']>>
+	TObject<Utils.Assign<(typeof SourcedNodeBase)['properties'], T['properties']>>
 >
 export type SourcedNode<T extends object = object> = IdentifiedNode<T> & {
 	name: string

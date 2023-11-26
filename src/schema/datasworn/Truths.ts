@@ -1,15 +1,14 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { Id, Localize, Metadata } from './common/index.js'
-import * as Generic from './Utils.js'
-import * as SourcedNodeJs from './generic/SourcedNode.js'
-import * as IdentifiedNodeJs from './generic/IdentifiedNode.js'
+import * as Generic from './Generic.js'
 import * as Oracles from './Oracles.js'
 
 export const TruthOptionTableRow = Type.Omit(Oracles.OracleTableRow, ['id'], {
 	$id: '#/$defs/TruthOptionTableRow'
 })
+export type TruthOptionTableRow = Static<typeof TruthOptionTableRow>
 
-export const TruthOption = IdentifiedNodeJs.IdentifiedNode(
+export const TruthOption = Generic.IdentifiedNode(
 	Type.Ref(Id.TruthOptionId),
 	Type.Object({
 		min: Type.Optional(Type.Integer()),
@@ -24,7 +23,7 @@ export const TruthOption = IdentifiedNodeJs.IdentifiedNode(
 
 export type TruthOption = Static<typeof TruthOption>
 
-export const Truth = SourcedNodeJs.SourcedNode(
+export const Truth = Generic.SourcedNode(
 	Type.Ref(Id.TruthId),
 	Type.Object({
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),

@@ -7,12 +7,12 @@ import { type JsonSchema } from 'json-schema-library'
 import * as CONST from '../const.js'
 import { getPrettierOptions, writeJSON } from '../datasworn/readWrite.js'
 import { sortSchemaKeys } from '../datasworn/sort.js'
-import { log } from '../utils/logger.js'
+import Log from '../utils/Log.js'
 import ajv from '../validation/ajv.js'
 import * as Schema from '../../schema/datasworn/index.js'
 
 import JSL from 'json-schema-library'
-import { TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
+import { type TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
 
 const draft7 = new JSL.Draft07()
 
@@ -52,7 +52,7 @@ const prettierOptions = await getPrettierOptions(CONST.SCHEMA_OUT)
 for (const options of schemaOptions) {
 	ajv.addSchema(options.rootSchema as JsonSchema, options.name)
 
-	log.info(options.messages.writeStart)
+	Log.info(options.messages.writeStart)
 
 	try {
 		for (const path of options.paths) {
@@ -73,10 +73,10 @@ for (const options of schemaOptions) {
 
 			writeJSON(path, sortedSchema, {
 				prettierOptions
-			}).then(() => log.info(options.messages.writeFinish))
+			}).then(() => Log.info(options.messages.writeFinish))
 		}
 	} catch (error) {
-		log.error(error)
+		Log.error(error)
 
 		for (const path of options.paths)
 			writeJSON(path, options.rootSchema, { prettierOptions })

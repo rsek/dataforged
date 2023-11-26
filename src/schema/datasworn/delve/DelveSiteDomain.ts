@@ -2,24 +2,18 @@ import { Type, type Static } from '@sinclair/typebox'
 import { JsonTypeDef } from '../../../json-typedef/symbol.js'
 import { toJtdElements } from '../../../json-typedef/utils.js'
 import { Id, Localize, Metadata } from '../common/index.js'
-import {
-	StaticRowPartial,
-	TableRow,
-	TableRowMixin
-} from '../oracles/TableRow.js'
-import * as Generic from '../Utils.js'
-import * as SourcedNodeJs from '../generic/SourcedNode.js'
-import * as IdentifiedNodeJs from '../generic/IdentifiedNode.js'
-import { ExtractLiteralFromEnum } from '../utils/JsonEnum.js'
+import { StaticRowPartial, TableRowMixin } from '../oracles/TableRow.js'
+import * as Generic from '../Generic.js'
+import * as Utils from '../Utils.js'
 import { DelveCardType } from './DelveCard.js'
 
-export const DelveSiteDomainFeatureRow = IdentifiedNodeJs.IdentifiedNode(
+export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.DomainFeatureRowId),
 	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
-export const DelveSiteDomainDangerRow = IdentifiedNodeJs.IdentifiedNode(
+export const DelveSiteDomainDangerRow = Generic.IdentifiedNode(
 	Type.Ref(Id.DomainDangerRowId),
 	TableRowMixin,
 	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
@@ -30,13 +24,13 @@ const DelveSiteDomainFeatures = Type.Array(Type.Ref(DelveSiteDomainFeatureRow))
 
 const DelveSiteDomainDangers = Type.Array(Type.Ref(DelveSiteDomainDangerRow))
 
-export const DelveSiteDomain = SourcedNodeJs.SourcedNode(
+export const DelveSiteDomain = Generic.SourcedNode(
 	Type.Ref(Id.DelveSiteDomainId),
 	Type.Object({
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
-		card_type: ExtractLiteralFromEnum(DelveCardType, 'domain'),
+		card_type: Utils.ExtractLiteralFromEnum(DelveCardType, 'domain'),
 		name_oracle: Type.Optional(
 			Type.Ref(Id.OracleTableId, {
 				description:

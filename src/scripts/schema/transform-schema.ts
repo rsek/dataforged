@@ -8,11 +8,9 @@ import { cloneDeep, mapValues } from 'lodash-es'
 
 import JsonPointer from 'json-pointer'
 import JSL from 'json-schema-library'
-import { log } from '../utils/logger.js'
-import {
-	type SchemaDefs,
-	type TRoot
-} from '../../schema/datasworn/root/SchemaRoot.js'
+import Log from '../utils/Log.js'
+import { type TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
+import { type SchemaDefs } from 'schema/datasworn/Defs.js'
 import { SourceData } from '../../schema/datasworn/root/SourceData.js'
 
 // function recurseSchema(
@@ -85,7 +83,7 @@ function mapSubschemas<T extends TSchema>(
 	draft.eachSchema((_, pointer) => {
 		if (pointer === '#') return
 		const hasPointer = subschemaGetter.has(pointer)
-		if (!hasPointer) return log.info(`couldn't find pointer: ${pointer}`)
+		if (!hasPointer) return Log.info(`couldn't find pointer: ${pointer}`)
 		const subschema = subschemaGetter.get(pointer)
 		const updatedSubschema = fn(subschema, pointer)
 		updatedSchemas.set(pointer, updatedSubschema)

@@ -1,32 +1,24 @@
 import {
 	Kind,
 	TypeClone,
+	type SchemaOptions,
 	type TArray,
-	type TBoolean,
-	type TInteger,
 	type TIntersect,
-	type TLiteral,
-	type TNull,
-	type TNumber,
 	/** Transform an object of literal values into a schema representing the object. */
 	type TObject,
 	type TRecord,
-	type TRef,
 	type TSchema,
-	type TString,
 	type TTuple,
-	type TUnion,
-	type SchemaOptions
+	type TUnion
 } from '@sinclair/typebox'
 import { mapValues, omit } from 'lodash-es'
-import { type TJsonEnum } from '../utils/JsonEnum.js'
-import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 import { ComputedPropertyBrand } from '../utils/Computed.js'
-import { keysWithDefaults } from '../utils/typebox.js'
-import { SetOptional } from '../utils/SetOptional.js'
-import { type SchemaKind, SchemaTransforms } from './SchemaTransform.js'
-import { NiceSchema } from './NiceSchema.js'
 import { type TDiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
+import { SetOptional } from '../utils/SetOptional.js'
+import { type TUnionOneOf } from '../utils/UnionOneOf.js'
+import { keysWithDefaults } from '../utils/typebox.js'
+import { NiceSchema } from './NiceSchema.js'
+import { SchemaTransforms, type SchemaKind } from './SchemaTransform.js'
 
 /**
  * Transform a schema into the more lenient format used for Datasworn source data.
@@ -113,14 +105,17 @@ const transforms: SchemaTransforms = {
 
 		return result
 	},
-	UnionOneOf: <T extends TUnionOneOf>(schema: T, options: SchemaOptions) => {
+	UnionOneOf: <T extends TUnionOneOf<TSchema[]>>(
+		schema: T,
+		options: SchemaOptions
+	) => {
 		const result = TypeClone.Type(schema, options)
 
 		result.oneOf = result.oneOf.map((item) => SourceData(item))
 
 		return result
 	},
-	DiscriminatedUnion: <T extends TDiscriminatedUnion>(
+	DiscriminatedUnion: <T extends TDiscriminatedUnion<TObject[], string>>(
 		schema: T,
 		options: SchemaOptions
 	) => {

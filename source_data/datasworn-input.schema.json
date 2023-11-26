@@ -1361,7 +1361,6 @@
 					"if": {
 						"properties": {
 							"style": {
-								"description": "Presented as a collection of separate tables.",
 								"const": "tables",
 								"type": "string"
 							}
@@ -1384,7 +1383,6 @@
 					"if": {
 						"properties": {
 							"style": {
-								"description": "Presented as a single table, with its OracleTable children rendered as columns.",
 								"const": "multi_table",
 								"type": "string"
 							}
@@ -1589,7 +1587,6 @@
 					"if": {
 						"properties": {
 							"style": {
-								"description": "Render as a standalone table.",
 								"const": "standalone",
 								"type": "string"
 							}
@@ -1598,6 +1595,7 @@
 					"then": {
 						"type": "object",
 						"required": ["style"],
+						"additionalProperties": false,
 						"properties": {
 							"style": {
 								"description": "Render as a standalone table.",
@@ -1623,15 +1621,13 @@
 									}
 								}
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				},
 				{
 					"if": {
 						"properties": {
 							"style": {
-								"description": "Render as a single column of a table.",
 								"const": "column",
 								"type": "string"
 							}
@@ -1654,7 +1650,6 @@
 					"if": {
 						"properties": {
 							"style": {
-								"description": "Render as a table, within a row in another table.",
 								"const": "embed_in_row",
 								"type": "string"
 							}
@@ -1788,7 +1783,6 @@
 					"if": {
 						"properties": {
 							"using": {
-								"description": "Roll using a standard player character stat.",
 								"const": "stat",
 								"type": "string"
 							}
@@ -1802,7 +1796,6 @@
 					"if": {
 						"properties": {
 							"using": {
-								"description": "Roll using the value of a standard player condition meter.",
 								"const": "condition_meter",
 								"type": "string"
 							}
@@ -1816,7 +1809,6 @@
 					"if": {
 						"properties": {
 							"using": {
-								"description": "Roll using the value of an asset control.",
 								"const": "asset_control",
 								"type": "string"
 							}
@@ -1830,7 +1822,6 @@
 					"if": {
 						"properties": {
 							"using": {
-								"description": "Roll using the value of an asset option.",
 								"const": "asset_option",
 								"type": "string"
 							}
@@ -1844,7 +1835,6 @@
 					"if": {
 						"properties": {
 							"using": {
-								"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
 								"const": "attached_asset_control",
 								"type": "string"
 							}
@@ -1858,7 +1848,6 @@
 					"if": {
 						"properties": {
 							"using": {
-								"description": "Roll using the value of an attached asset option.",
 								"const": "attached_asset_option",
 								"type": "string"
 							}
@@ -1872,7 +1861,6 @@
 					"if": {
 						"properties": {
 							"using": {
-								"description": "Roll using an integer value with customizable labels.",
 								"const": "custom",
 								"type": "string"
 							}
@@ -1914,7 +1902,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A move that makes an action roll.",
 								"const": "action_roll",
 								"type": "string"
 							}
@@ -1928,7 +1915,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A move that makes no action rolls or progress rolls.",
 								"const": "no_roll",
 								"type": "string"
 							}
@@ -1942,7 +1928,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A progress move that rolls on a standard progress track type (defined by this move).",
 								"const": "progress_roll",
 								"type": "string"
 							}
@@ -1956,7 +1941,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 								"const": "special_track",
 								"type": "string"
 							}
@@ -2138,7 +2122,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A move that makes an action roll.",
 								"const": "action_roll",
 								"type": "string"
 							}
@@ -2152,7 +2135,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A move that makes no action rolls or progress rolls.",
 								"const": "no_roll",
 								"type": "string"
 							}
@@ -2166,7 +2148,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A progress move that rolls on a standard progress track type (defined by this move).",
 								"const": "progress_roll",
 								"type": "string"
 							}
@@ -2180,7 +2161,6 @@
 					"if": {
 						"properties": {
 							"roll_type": {
-								"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 								"const": "special_track",
 								"type": "string"
 							}
@@ -3284,6 +3264,7 @@
 						"title": "ClockField",
 						"type": "object",
 						"required": ["label", "max", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetAbilityControlFieldId",
@@ -3312,8 +3293,7 @@
 								"const": "clock",
 								"type": "string"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				},
 				{
@@ -3331,6 +3311,7 @@
 						"title": "CounterField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetAbilityControlFieldId",
@@ -3367,8 +3348,7 @@
 								"const": "counter",
 								"type": "string"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				},
 				{
@@ -3386,6 +3366,7 @@
 						"title": "AssetCheckboxField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetAbilityControlFieldId",
@@ -3414,8 +3395,7 @@
 								"description": "Does this field disable the asset when its value is set to `true`?",
 								"type": "boolean"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				}
 			]
@@ -3447,6 +3427,7 @@
 						"title": "TextField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetAbilityOptionFieldId",
@@ -3472,8 +3453,7 @@
 								"const": "text",
 								"type": "string"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				}
 			]
@@ -3614,6 +3594,7 @@
 						"title": "AssetCheckboxField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetConditionMeterControlFieldId",
@@ -3642,8 +3623,7 @@
 								"description": "Does this field disable the asset when its value is set to `true`?",
 								"type": "boolean"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				},
 				{
@@ -3660,6 +3640,7 @@
 						"title": "AssetCardFlipField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetConditionMeterControlFieldId",
@@ -3688,8 +3669,7 @@
 								"description": "Does this field disable the asset when its value is set to `true`?",
 								"type": "boolean"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				}
 			]
@@ -3757,6 +3737,7 @@
 						"title": "SelectEnhancementField",
 						"type": "object",
 						"required": ["label", "choices", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetControlFieldId",
@@ -3830,7 +3811,8 @@
 															}
 														}
 													},
-													"required": ["option_type", "label", "value"]
+													"required": ["option_type", "label", "value"],
+													"additionalProperties": false
 												}
 											},
 											{
@@ -3899,7 +3881,8 @@
 															}
 														}
 													},
-													"required": ["name", "option_type", "choices"]
+													"required": ["name", "option_type", "choices"],
+													"additionalProperties": false
 												}
 											}
 										],
@@ -3935,6 +3918,7 @@
 						"title": "AssetCheckboxField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetControlFieldId",
@@ -3963,8 +3947,7 @@
 								"description": "Does this field disable the asset when its value is set to `true`?",
 								"type": "boolean"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				},
 				{
@@ -3981,6 +3964,7 @@
 						"title": "AssetCardFlipField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetControlFieldId",
@@ -4009,8 +3993,7 @@
 								"description": "Does this field disable the asset when its value is set to `true`?",
 								"type": "boolean"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				}
 			]
@@ -4102,6 +4085,7 @@
 						"title": "SelectStatField",
 						"type": "object",
 						"required": ["label", "choices", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetOptionFieldId",
@@ -4164,7 +4148,8 @@
 															"$ref": "#/$defs/PlayerStat"
 														}
 													},
-													"required": ["option_type", "label", "value"]
+													"required": ["option_type", "label", "value"],
+													"additionalProperties": false
 												}
 											},
 											{
@@ -4222,7 +4207,8 @@
 															}
 														}
 													},
-													"required": ["name", "option_type", "choices"]
+													"required": ["name", "option_type", "choices"],
+													"additionalProperties": false
 												}
 											}
 										],
@@ -4258,6 +4244,7 @@
 						"title": "SelectEnhancementField",
 						"type": "object",
 						"required": ["label", "choices", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetOptionFieldId",
@@ -4331,7 +4318,8 @@
 															}
 														}
 													},
-													"required": ["option_type", "label", "value"]
+													"required": ["option_type", "label", "value"],
+													"additionalProperties": false
 												}
 											},
 											{
@@ -4400,7 +4388,8 @@
 															}
 														}
 													},
-													"required": ["name", "option_type", "choices"]
+													"required": ["name", "option_type", "choices"],
+													"additionalProperties": false
 												}
 											}
 										],
@@ -4436,6 +4425,7 @@
 						"title": "TextField",
 						"type": "object",
 						"required": ["label", "field_type"],
+						"additionalProperties": false,
 						"properties": {
 							"id": {
 								"$ref": "#/$defs/AssetOptionFieldId",
@@ -4461,8 +4451,7 @@
 								"const": "text",
 								"type": "string"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				}
 			]
