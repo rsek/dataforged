@@ -2,6 +2,7 @@ import {
 	Kind,
 	Optional,
 	Static,
+	TAnySchema,
 	TArray,
 	TBoolean,
 	TInteger,
@@ -38,12 +39,6 @@ import * as Generic from '../schema/datasworn/Generic.js'
 import * as Utils from '../schema/datasworn/Utils.js'
 import { TRoot } from '../schema/datasworn/root/SchemaRoot.js'
 import Log from '../scripts/utils/Log.js'
-import {
-	Description,
-	EnumDescription,
-	TAnySchema,
-	TUnionEnum
-} from '../typebox/index.js'
 import { Discriminator, JsonTypeDef, Members } from './symbol.js'
 import { Value } from '@sinclair/typebox/value'
 
@@ -77,12 +72,12 @@ export function extractMetadata<T extends TAnySchema>(jsonSchema: T) {
 		metadata = merge(metadata, omit(jsonSchema[JsonTypeDef].metadata))
 
 	// @ts-ignore
-	if (jsonSchema[EnumDescription]) {
+	if (jsonSchema[Utils.EnumDescription]) {
 		// console.log(jsonSchema)
 		// @ts-ignore
-		metadata.enumDescription = jsonSchema[EnumDescription]
+		metadata.enumDescription = jsonSchema[Utils.EnumDescription]
 		// @ts-ignore
-		metadata.description = jsonSchema[Description]
+		metadata.description = jsonSchema[Utils.Description]
 	}
 
 	if (Object.keys(metadata)?.length === 0) return undefined
@@ -104,7 +99,7 @@ export function setIdRef<T extends { id: string }, R extends string>(
 	>
 }
 
-export function toJtdEnum<U extends string[], T extends TUnionEnum<U>>(
+export function toJtdEnum<U extends string[], T extends Utils.TUnionEnum<U>>(
 	schema: T
 ) {
 	return JtdType.Enum(schema.enum)
@@ -178,18 +173,16 @@ export function toJtdValues<T extends TRecord<TString, U>, U extends TSchema>(
 	schema: T
 ) {
 	const [propertyPattern, value] = Object.entries(schema.patternProperties)[0]
-	return JtdType.Record(toJtdForm(value), { metadata: { propertyPattern } })
+	const unwrap = toJtdForm(value as unknown as TConvertible)
+
+	if (!unwrap)
+		throw new Error(
+			`Couldn't unwrap Record value schema: ${JSON.stringify(schema)}`
+		)
+
+	return JtdType.Record(unwrap, { metadata: { propertyPattern } })
 
 	// FIXME: This is probably only safe for Dictionary-style patternProperties
-	// const [propertyPattern, values] = Object.entries(schema.patternProperties)[0]
-
-	// return {
-	// 	metadata: {
-	// 		propertyPattern
-	// 	},
-	// 	values: toJtdForm(values as any)
-	// 	// TODO: metadata property describing the key pattern w/ patternproperties
-	// } as any
 }
 
 export function toJtdSingleEnum(schema: TLiteral<string>) {
@@ -200,62 +193,39 @@ export function toJtdSingleEnum(schema: TLiteral<string>) {
 }
 
 export function toJtdNullable(schema: Utils.TNullable<TSchema>) {
-	const [baseSchema, _nullType] = schema.anyOf
-	const result = JtdType.Optional(toJtdForm(baseSchema) as TSchema)
-	return result
+	const unwrap = Utils.NonNullable(schema)
+	if (!unwrap)
+		throw new Error(
+			`Couldn't unwrap nullable schema: ${JSON.stringify(schema)}`
+		)
+	const newSchema = toJtdForm(unwrap as TConvertible)
+	if (!newSchema)
+		throw new Error(
+			`Couldn't convert unwrapped nullable schema: ${JSON.stringify(schema)}`
+		)
+	return JtdType.Optional(newSchema)
 }
 
-export function toJtdDiscriminator(schema: Utils.TDiscriminatedUnion) {
-	// export function toJtdDiscriminator<
-	// 	T extends Utils.TDiscriminatedUnion<D, Utils.TDiscriminated<D>[]>,
-	// 	D extends string
-	// >(schema: T) {
-	// const discriminator = schema[Discriminator]
-	// console.log('got discriminator schema', `"${discriminator}"`)
-
-	// const mapping = {} as Record<string, any>
-
-	// // console.log(schema[Members])
-
-	// for (const subschema of schema[Members]) {
-	// 	const key = subschema.properties[discriminator].const
-
-	// 	mapping[key] = toJtdDiscriminated(subschema, discriminator)
-	// }
-
-	// // console.log(mapping)
-
+export function toJtdDiscriminator(
+	schema: Utils.TDiscriminatedUnion<TObject[], string>
+) {
 	return JtdType.Union(
 		schema[Members].map((subschema) => toJtdProperties(subschema)),
 		schema[Discriminator]
 	)
-
-	// const form = {
-	// 	discriminator,
-	// 	mapping
-	// } as any
-
-	// return form as JTDSchemaType<Static<T>>
 }
 
-// export function toJtdDiscriminated<
-// 	T extends TObject,
-// 	D extends keyof Static<T>
-// >(schema: T, discriminator: D): JTDSchemaType<Omit<Static<T>, D>> {
-// 	const form = toJtdProperties(schema)
-// 	// @ts-expect-error
-// 	delete form.properties[discriminator]
-
-// 	return form as any
-// }
-
-type ConvertibleSchema = TLiteral<string> | TString | TBoolean | TInteger
+type TConvertible =
+	| TLiteral<string>
+	| TString
+	| TBoolean
+	| TInteger
+	| TObject
+	| TNumber
+	| Utils.TUnionEnum
 
 function toJtdForm(
-	schema:
-		| ConvertibleSchema
-		| Utils.TNullable<ConvertibleSchema>
-		| TOptional<ConvertibleSchema>
+	schema: TConvertible | Utils.TNullable<TConvertible> | TOptional<TConvertible>
 ): TSchema
 function toJtdForm(schema: TNull): undefined
 function toJtdForm(schema: TSchema): TSchema | undefined {
@@ -312,8 +282,8 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 			result = toJtdElements(schema)
 			break
 		case TypeGuard.TObject(schema):
-			// case schema[Kind] === 'Object':
-			result = toJtdProperties(schema)
+		case schema[Kind] === 'Object':
+			result = toJtdProperties(schema as TObject)
 			break
 		case Utils.TDiscriminatedUnion(schema):
 			result = toJtdDiscriminator(schema)
@@ -321,14 +291,14 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 
 		case Value.Check(schema, 'DiscriminatedUnion'):
 			if (
-				(schema as unknown as TUnionEnum).enum?.every(
+				(schema as unknown as Utils.TUnionEnum).enum?.every(
 					(member) => typeof member === 'string'
 				)
 			)
 				result = JtdType.Enum(schema.enum)
 			// FIXME: smarter typing for this; only non-string enum is ChallengeRank, which can be handled as an integer
 			if (
-				(schema as unknown as TUnionEnum).enum?.every(
+				(schema as unknown as Utils.TUnionEnum).enum?.every(
 					(member) => typeof member === 'number'
 				)
 			)

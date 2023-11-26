@@ -30,7 +30,6 @@ export const DelveSiteDomain = Generic.SourcedNode(
 		summary: Type.Ref(Localize.MarkdownString),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
-		card_type: Utils.ExtractLiteralFromEnum(DelveCardType, 'domain'),
 		name_oracle: Type.Optional(
 			Type.Ref(Id.OracleTableId, {
 				description:

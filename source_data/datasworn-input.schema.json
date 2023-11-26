@@ -5215,14 +5215,7 @@
 			"$id": "#/$defs/DelveSiteDomain",
 			"title": "DelveSiteDomain",
 			"type": "object",
-			"required": [
-				"name",
-				"card_type",
-				"summary",
-				"features",
-				"dangers",
-				"source"
-			],
+			"required": ["name", "summary", "features", "dangers", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/DelveSiteDomainId",
@@ -5235,11 +5228,6 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label",
 					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
-				},
-				"card_type": {
-					"type": "string",
-					"description": "A delve site domain card.",
-					"const": "domain"
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -5687,14 +5675,7 @@
 			"$id": "#/$defs/DelveSiteTheme",
 			"title": "DelveSiteTheme",
 			"type": "object",
-			"required": [
-				"name",
-				"card_type",
-				"summary",
-				"features",
-				"dangers",
-				"source"
-			],
+			"required": ["name", "summary", "features", "dangers", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/DelveSiteThemeId",
@@ -5707,11 +5688,6 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label",
 					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
-				},
-				"card_type": {
-					"type": "string",
-					"description": "A delve site theme card.",
-					"const": "theme"
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
