@@ -4,8 +4,6 @@ import { toJtdElements } from '../../../json-typedef/utils.js'
 import { Id, Localize, Metadata } from '../common/index.js'
 import { StaticRowPartial, TableRowMixin } from '../oracles/TableRow.js'
 import * as Generic from '../Generic.js'
-import * as Utils from '../Utils.js'
-import { DelveCardType } from './DelveCard.js'
 
 export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.DomainFeatureRowId),
