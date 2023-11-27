@@ -4,8 +4,8 @@ import {
 	type TObject,
 	type TLiteral
 } from '@sinclair/typebox'
-import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { toJtdElements } from '../../../json-typedef/utils.js'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
+import { toJtdElements } from '../../../scripts/json-typedef/utils.js'
 import { Id, Localize, Metadata, Progress } from '../common/index.js'
 import { StaticRowPartial } from '../oracles/TableRow.js'
 import * as Utils from '../Utils.js'

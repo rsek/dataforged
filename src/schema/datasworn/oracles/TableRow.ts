@@ -6,7 +6,7 @@ import {
 	type TProperties,
 	type TSchema
 } from '@sinclair/typebox'
-import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 import { Id, Localize, Metadata, Rolls } from '../common/index.js'
 import * as Utils from '../Utils.js'
 import { WithDefaults, setDescriptions } from '../utils/typebox.js'

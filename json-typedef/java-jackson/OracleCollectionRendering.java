@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "style")
 @JsonSubTypes({
     @JsonSubTypes.Type(name = "multi_table", value = OracleCollectionRenderingMultiTable.class),
-    @JsonSubTypes.Type(name = "tables", value = OracleCollectionRenderingTables.class),
 })
 public abstract class OracleCollectionRendering {
 }

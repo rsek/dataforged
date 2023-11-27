@@ -28,9 +28,10 @@ namespace Datasworn
         public Label Label { get; set; }
 
         /// <summary>
-        /// The current value of this input.
+        /// The key of the currently selected choice from the `choices`
+        /// property, or `null` if none is selected.
         /// </summary>
         [JsonPropertyName("value")]
-        public DictKey? Value { get; set; }
+        public DictKey Value { get; set; }
     }
 }

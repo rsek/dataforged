@@ -19,9 +19,6 @@ public class ActionRollOptionAssetControl extends ActionRollOption {
 
     /**
      * Getter for assets.<p>
-     * Asset IDs (which may be wildcarded) that provide the control field. For
-     * asset ability enhancements, `null` is used to represent the asset's own
-     * control fields.
      */
     public List<AssetIdWildcard> getAssets() {
         return assets;
@@ -29,9 +26,6 @@ public class ActionRollOptionAssetControl extends ActionRollOption {
 
     /**
      * Setter for assets.<p>
-     * Asset IDs (which may be wildcarded) that provide the control field. For
-     * asset ability enhancements, `null` is used to represent the asset's own
-     * control fields.
      */
     public void setAssets(List<AssetIdWildcard> assets) {
         this.assets = assets;

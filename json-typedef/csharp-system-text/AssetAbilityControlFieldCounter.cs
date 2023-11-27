@@ -23,11 +23,8 @@ namespace Datasworn
         [JsonPropertyName("label")]
         public Label Label { get; set; }
 
-        /// <summary>
-        /// The (inclusive) maximum value.
-        /// </summary>
         [JsonPropertyName("max")]
-        public short? Max { get; set; }
+        public short Max { get; set; }
 
         /// <summary>
         /// The (inclusive) minimum value.

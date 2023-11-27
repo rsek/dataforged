@@ -9,9 +9,6 @@ import java.util.List;
 
 @JsonSerialize
 public class DelveSiteDomain {
-    @JsonProperty("card_type")
-    private DelveSiteDomainCardType cardType;
-
     @JsonProperty("dangers")
     private List<DelveSiteDomainDangerRow> dangers;
 
@@ -51,22 +48,6 @@ public class DelveSiteDomain {
     private Suggestions suggestions;
 
     public DelveSiteDomain() {
-    }
-
-    /**
-     * Getter for cardType.<p>
-     * A delve site domain card.
-     */
-    public DelveSiteDomainCardType getCardType() {
-        return cardType;
-    }
-
-    /**
-     * Setter for cardType.<p>
-     * A delve site domain card.
-     */
-    public void setCardType(DelveSiteDomainCardType cardType) {
-        this.cardType = cardType;
     }
 
     /**

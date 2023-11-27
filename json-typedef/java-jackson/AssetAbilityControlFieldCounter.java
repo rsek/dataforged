@@ -63,7 +63,6 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
 
     /**
      * Getter for max.<p>
-     * The (inclusive) maximum value.
      */
     public Short getMax() {
         return max;
@@ -71,7 +70,6 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
 
     /**
      * Setter for max.<p>
-     * The (inclusive) maximum value.
      */
     public void setMax(Short max) {
         this.max = max;

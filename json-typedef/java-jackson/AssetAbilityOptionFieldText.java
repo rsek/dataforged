@@ -57,7 +57,6 @@ public class AssetAbilityOptionFieldText extends AssetAbilityOptionField {
 
     /**
      * Getter for value.<p>
-     * The content of this text input, or `null` if it's empty
      */
     public String getValue() {
         return value;
@@ -65,7 +64,6 @@ public class AssetAbilityOptionFieldText extends AssetAbilityOptionField {
 
     /**
      * Setter for value.<p>
-     * The content of this text input, or `null` if it's empty
      */
     public void setValue(String value) {
         this.value = value;

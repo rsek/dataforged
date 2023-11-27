@@ -649,8 +649,6 @@ module Datasworn
   class AssetAttachment
     # Asset IDs (which may be wildcards) that may be attached to this asset
     attr_accessor :assets
-
-    # Null if there's no upper limit to the number of attached assets.
     attr_accessor :max
 
     def self.from_json_data(data)
@@ -1845,7 +1843,7 @@ module Datasworn
     end
   end
 
-  # Challenge rank, represented as an integer.
+  # Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
   class ChallengeRank
     attr_accessor :value
 
@@ -1932,33 +1930,6 @@ module Datasworn
 
     def to_json_data
       Datasworn.to_json_data(value)
-    end
-  end
-
-  class DelveCardType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    # A delve site domain card.
-    DOMAIN = new("domain")
-
-    # A delve site theme card.
-    THEME = new("theme")
-
-    def self.from_json_data(data)
-      {
-        "domain" => DOMAIN,
-        "theme" => THEME,
-      }[data]
-    end
-
-    def to_json_data
-      value
     end
   end
 
@@ -2110,32 +2081,7 @@ module Datasworn
     end
   end
 
-  # A delve site domain card.
-  class DelveSiteDomainCardType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    DOMAIN = new("domain")
-
-    def self.from_json_data(data)
-      {
-        "domain" => DOMAIN,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
   class DelveSiteDomain
-    # A delve site domain card.
-    attr_accessor :card_type
     attr_accessor :dangers
     attr_accessor :features
 
@@ -2166,7 +2112,6 @@ module Datasworn
 
     def self.from_json_data(data)
       out = DelveSiteDomain.new
-      out.card_type = Datasworn::from_json_data(DelveSiteDomainCardType, data["card_type"])
       out.dangers = Datasworn::from_json_data(Array[DelveSiteDomainDangerRow], data["dangers"])
       out.features = Datasworn::from_json_data(Array[DelveSiteDomainFeatureRow], data["features"])
       out.id = Datasworn::from_json_data(DelveSiteDomainID, data["id"])
@@ -2183,7 +2128,6 @@ module Datasworn
 
     def to_json_data
       data = {}
-      data["card_type"] = Datasworn::to_json_data(card_type)
       data["dangers"] = Datasworn::to_json_data(dangers)
       data["features"] = Datasworn::to_json_data(features)
       data["id"] = Datasworn::to_json_data(id)
@@ -2335,32 +2279,7 @@ module Datasworn
     end
   end
 
-  # A delve site theme card.
-  class DelveSiteThemeCardType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    THEME = new("theme")
-
-    def self.from_json_data(data)
-      {
-        "theme" => THEME,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
   class DelveSiteTheme
-    # A delve site theme card.
-    attr_accessor :card_type
     attr_accessor :dangers
     attr_accessor :features
 
@@ -2384,7 +2303,6 @@ module Datasworn
 
     def self.from_json_data(data)
       out = DelveSiteTheme.new
-      out.card_type = Datasworn::from_json_data(DelveSiteThemeCardType, data["card_type"])
       out.dangers = Datasworn::from_json_data(Array[DelveSiteThemeDangerRow], data["dangers"])
       out.features = Datasworn::from_json_data(Array[DelveSiteThemeFeatureRow], data["features"])
       out.id = Datasworn::from_json_data(DelveSiteThemeID, data["id"])
@@ -2400,7 +2318,6 @@ module Datasworn
 
     def to_json_data
       data = {}
-      data["card_type"] = Datasworn::to_json_data(card_type)
       data["dangers"] = Datasworn::to_json_data(dangers)
       data["features"] = Datasworn::to_json_data(features)
       data["id"] = Datasworn::to_json_data(id)
@@ -3690,7 +3607,6 @@ module Datasworn
     def self.from_json_data(data)
       {
         "multi_table" => OracleCollectionRenderingMultiTable,
-        "tables" => OracleCollectionRenderingTables,
       }[data["style"]].from_json_data(data)
     end
   end
@@ -3708,20 +3624,6 @@ module Datasworn
     def to_json_data
       data = { "style" => "multi_table" }
       data["columns"] = Datasworn::to_json_data(columns)
-      data
-    end
-  end
-
-  class OracleCollectionRenderingTables < OracleCollectionRendering
-
-    def self.from_json_data(data)
-      out = OracleCollectionRenderingTables.new
-      out.style = "tables"
-      out
-    end
-
-    def to_json_data
-      data = { "style" => "tables" }
       data
     end
   end
@@ -3835,6 +3737,7 @@ module Datasworn
     # item, including the author and licensing information.
     attr_accessor :source
     attr_accessor :table
+    attr_accessor :i18n
 
     # The name of this item as it appears on the page in the book, if it's
     # different from `name`.
@@ -3875,6 +3778,7 @@ module Datasworn
       out.name = Datasworn::from_json_data(Label, data["name"])
       out.source = Datasworn::from_json_data(Source, data["source"])
       out.table = Datasworn::from_json_data(Array[OracleTableRow], data["table"])
+      out.i18n = Datasworn::from_json_data(I18nHints, data["_i18n"])
       out.canonical_name = Datasworn::from_json_data(Label, data["canonical_name"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
@@ -3894,6 +3798,7 @@ module Datasworn
       data["name"] = Datasworn::to_json_data(name)
       data["source"] = Datasworn::to_json_data(source)
       data["table"] = Datasworn::to_json_data(table)
+      data["_i18n"] = Datasworn::to_json_data(i18n) unless i18n.nil?
       data["canonical_name"] = Datasworn::to_json_data(canonical_name) unless canonical_name.nil?
       data["description"] = Datasworn::to_json_data(description) unless description.nil?
       data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
@@ -4021,38 +3926,8 @@ module Datasworn
 
     def self.from_json_data(data)
       {
-        "column" => OracleTableRenderingColumn,
-        "embed_in_row" => OracleTableRenderingEmbedInRow,
         "standalone" => OracleTableRenderingStandalone,
       }[data["style"]].from_json_data(data)
-    end
-  end
-
-  class OracleTableRenderingColumn < OracleTableRendering
-
-    def self.from_json_data(data)
-      out = OracleTableRenderingColumn.new
-      out.style = "column"
-      out
-    end
-
-    def to_json_data
-      data = { "style" => "column" }
-      data
-    end
-  end
-
-  class OracleTableRenderingEmbedInRow < OracleTableRendering
-
-    def self.from_json_data(data)
-      out = OracleTableRenderingEmbedInRow.new
-      out.style = "embed_in_row"
-      out
-    end
-
-    def to_json_data
-      data = { "style" => "embed_in_row" }
-      data
     end
   end
 
@@ -4143,12 +4018,10 @@ module Datasworn
     # The unique Datasworn ID for this item.
     attr_accessor :id
 
-    # High end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # High end of the dice range for this table row.
     attr_accessor :max
 
-    # Low end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # Low end of the dice range for this table row.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description
@@ -4400,19 +4273,6 @@ module Datasworn
     end
   end
 
-  class ProgressTrackTypeInfoControl
-
-    def self.from_json_data(data)
-      out = ProgressTrackTypeInfoControl.new
-      out
-    end
-
-    def to_json_data
-      data = {}
-      data
-    end
-  end
-
   # Describes the features of a type of progress track.
   class ProgressTrackTypeInfo
     # A category label for progress tracks of this type.
@@ -4422,7 +4282,7 @@ module Datasworn
     def self.from_json_data(data)
       out = ProgressTrackTypeInfo.new
       out.category = Datasworn::from_json_data(Label, data["category"])
-      out.controls = Datasworn::from_json_data(Hash[String, ProgressTrackTypeInfoControl], data["controls"])
+      out.controls = Datasworn::from_json_data(Hash[String, Object], data["controls"])
       out
     end
 
@@ -4580,13 +4440,6 @@ module Datasworn
     # The date of the source documents's last update, formatted YYYY-MM-DD.
     # Required because it's used to determine whether the data needs updating.
     attr_accessor :date
-
-    # An absolute URL pointing to the location where this element's license can
-    # be found.
-    # 
-    # A `null` here indicates that the content provides **no** license, and
-    # is not intended for redistribution.  Datasworn's build process skips
-    # unlicensed content by default.
     attr_accessor :license
 
     # The title of the source document.
@@ -4930,9 +4783,6 @@ module Datasworn
   end
 
   class TriggerActionRollConditionEnhancement
-    # A `null` value means this condition provides no roll mechanic of its own;
-    # it must be used with another trigger condition that provides a non-null
-    # `method`.
     attr_accessor :method
 
     # The options available when rolling with this trigger condition.
@@ -5113,9 +4963,6 @@ module Datasworn
   end
 
   class TriggerProgressRollConditionEnhancement
-    # A `null` value means this condition provides no roll mechanic of its own;
-    # it must be used with another trigger condition that provides a non-null
-    # `method`.
     attr_accessor :method
 
     # The options available when rolling with this trigger condition.
@@ -5216,9 +5063,6 @@ module Datasworn
   # A progress move that rolls on one or more special tracks, like Bonds
   # (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
   class TriggerSpecialTrackConditionEnhancement
-    # A `null` value means this condition provides no roll mechanic of its own;
-    # it must be used with another trigger condition that provides a non-null
-    # `method`.
     attr_accessor :method
 
     # The options available when rolling with this trigger condition.
@@ -5391,12 +5235,10 @@ module Datasworn
   end
 
   class TruthOptionTableRow
-    # High end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # High end of the dice range for this table row.
     attr_accessor :max
 
-    # Low end of the dice range for this table row. `null` represents an
-    # unrollable row, included only for rendering purposes.
+    # Low end of the dice range for this table row.
     attr_accessor :min
     attr_accessor :result
     attr_accessor :description

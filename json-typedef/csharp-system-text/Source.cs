@@ -21,14 +21,6 @@ namespace Datasworn
         [JsonPropertyName("date")]
         public string Date { get; set; }
 
-        /// <summary>
-        /// An absolute URL pointing to the location where this element's
-        /// license can be found.
-        /// 
-        /// A `null` here indicates that the content provides **no** license,
-        /// and is not intended for redistribution.  Datasworn's build process
-        /// skips unlicensed content by default.
-        /// </summary>
         [JsonPropertyName("license")]
         public string License { get; set; }
 

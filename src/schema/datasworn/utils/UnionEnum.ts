@@ -33,8 +33,5 @@ function UnionEnumCheck(
 	schema: TUnionEnum<(string | number)[]>,
 	value: unknown
 ) {
-	return (
-		(typeof value === 'string' || typeof value === 'number') &&
-		schema.enum.includes(value)
-	)
+	return schema.enum.includes(value as string | number)
 }

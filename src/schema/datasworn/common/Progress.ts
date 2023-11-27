@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 import { Localize, Id } from '../common/index.js'
 import * as Generic from '../Generic.js'
 import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
@@ -14,7 +14,8 @@ export const ChallengeRank = UnionEnumFromRecord(
 	},
 	{
 		$id: '#/$defs/ChallengeRank',
-		description: 'Challenge rank, represented as an integer.',
+		description:
+			'Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).',
 		[JsonTypeDef]: {
 			metadata: {
 				typescriptType: `1|2|3|4|5`

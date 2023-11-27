@@ -7,12 +7,6 @@ namespace Datasworn
 {
     public class DelveSiteDomain
     {
-        /// <summary>
-        /// A delve site domain card.
-        /// </summary>
-        [JsonPropertyName("card_type")]
-        public DelveSiteDomainCardType CardType { get; set; }
-
         [JsonPropertyName("dangers")]
         public IList<DelveSiteDomainDangerRow> Dangers { get; set; }
 

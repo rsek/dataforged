@@ -7,12 +7,6 @@ namespace Datasworn
 {
     public class DelveSiteTheme
     {
-        /// <summary>
-        /// A delve site theme card.
-        /// </summary>
-        [JsonPropertyName("card_type")]
-        public DelveSiteThemeCardType CardType { get; set; }
-
         [JsonPropertyName("dangers")]
         public IList<DelveSiteThemeDangerRow> Dangers { get; set; }
 

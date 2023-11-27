@@ -23,10 +23,6 @@ namespace Datasworn
 
             switch (tagValue)
             {
-                case "column":
-                    return JsonSerializer.Deserialize<OracleTableRenderingColumn>(ref readerCopy, options);
-                case "embed_in_row":
-                    return JsonSerializer.Deserialize<OracleTableRenderingEmbedInRow>(ref readerCopy, options);
                 case "standalone":
                     return JsonSerializer.Deserialize<OracleTableRenderingStandalone>(ref readerCopy, options);
                 default:

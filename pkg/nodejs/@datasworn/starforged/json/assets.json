@@ -156,2030 +156,6 @@
 				"url": "https://ironswornrpg.com"
 			}
 		},
-		"companion": {
-			"id": "starforged/collections/assets/companion",
-			"name": "Companion Assets",
-			"color": "#3d8b8a",
-			"description": "**Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.\n\nCompanions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. When their health is at 0, they are in danger of being killed or destroyed.",
-			"contents": {
-				"banshee": {
-					"id": "starforged/assets/companion/banshee",
-					"name": "Banshee",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/banshee/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/banshee/abilities/0",
-							"enabled": true,
-							"text": "Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may roll +its health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/exploration/undertake_an_expedition",
-										"starforged/moves/exploration/set_a_course"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "While riding your banshee",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/banshee/abilities/1",
-							"enabled": false,
-							"text": "When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "To detect a threat or avoid a fight (while astride your banshee)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/banshee/abilities/2",
-							"enabled": false,
-							"text": "When you make a combat move and roll a 1 on your action die, the banshee senses the danger and emits a powerful scream to alert you or distract your foes. You may reroll that die.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["*/moves/combat/*"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When aided by your banshee",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/banshee/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/banshee/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/heal"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"combat_bot": {
-					"id": "starforged/assets/companion/combat_bot",
-					"name": "Combat Bot",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/combat_bot/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/combat_bot/abilities/0",
-							"enabled": true,
-							"text": "Your combat bot companion fights at your side. When you [Strike](id:starforged/moves/combat/strike) aided by the bot, add +1; if you [Clash](id:starforged/moves/combat/clash), take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/combat/strike"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Aided by your combat bot",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/combat/clash"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Aided by your combat bot",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/combat_bot/abilities/1",
-							"enabled": false,
-							"text": "When you use the threat of violence to [Compel](id:starforged/moves/adventure/compel) or [Gain Ground](id:starforged/moves/combat/gain_ground) while the bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot's display is especially persuasive; take another +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/adventure/compel",
-										"starforged/moves/combat/gain_ground"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Using the threat of violence while the bot brings its weapons to bear",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/combat_bot/abilities/2",
-							"enabled": false,
-							"text": "Once per fight, when you [React Under Fire](id:starforged/moves/combat/react_under_fire) by using the bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/combat/react_under_fire"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Once per fight, by using the combat bot to draw fire or create a diversion",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/combat_bot/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 5,
-							"value": 5,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/combat_bot/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/repair"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"glowcat": {
-					"id": "starforged/assets/companion/glowcat",
-					"name": "Glowcat",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/glowcat/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/glowcat/abilities/0",
-							"enabled": true,
-							"text": "Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/*/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By studying your glowcat’s reactions in a charged interaction",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/glowcat/abilities/1",
-							"enabled": false,
-							"text": "When you [Compel](id:starforged/moves/adventure/compel), the glowcat’s reactions will help guide your approach; you may reroll your action die if its value is less than the glowcat’s health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/adventure/compel"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When your glowcat’s reactions help guide your approach",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/glowcat/abilities/2",
-							"enabled": false,
-							"text": "When you [Endure Stress](id:starforged/moves/suffer/endure_stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/suffer/endure_stress"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In the company of the glowcat",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/glowcat/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 3,
-							"value": 3,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/glowcat/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/heal"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"protocol_bot": {
-					"id": "starforged/assets/companion/protocol_bot",
-					"name": "Protocol Bot",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/protocol_bot/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/protocol_bot/abilities/0",
-							"enabled": true,
-							"text": "Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you are aided by the bot as you make a move in a formal social interaction",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/protocol_bot/abilities/1",
-							"enabled": false,
-							"text": "When you first visit or interact with a new community or culture, you may ask for the bot's insight. If you do, envision what you learn and take +1 momentum."
-						},
-						{
-							"id": "starforged/assets/companion/protocol_bot/abilities/2",
-							"enabled": false,
-							"text": "If you make a move in a charged interaction and the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In a charged interaction",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/protocol_bot/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 3,
-							"value": 3,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/protocol_bot/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/repair"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"rockhorn": {
-					"id": "starforged/assets/companion/rockhorn",
-					"name": "Rockhorn",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/rockhorn/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/rockhorn/abilities/0",
-							"enabled": true,
-							"text": "Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By sending the rockhorn to directly attack a foe or smash an obstacle",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/rockhorn/abilities/1",
-							"enabled": false,
-							"text": "When you make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/suffer/companion_takes_a_hit"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "For the rockhorn",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/rockhorn/abilities/2",
-							"enabled": false,
-							"text": "The rockhorn will come to your aid in your most vulnerable moments. When you [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Endure Stress](id:starforged/moves/suffer/endure_stress) and score a miss, you may reroll your action die if its value is less than the rockhorn’s health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/suffer/endure_harm",
-										"starforged/moves/suffer/endure_stress"
-									]
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/rockhorn/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 5,
-							"value": 5,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/rockhorn/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/heal"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"sidekick": {
-					"id": "starforged/assets/companion/sidekick",
-					"name": "Sidekick",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"name": {
-							"id": "starforged/assets/companion/sidekick/options/name",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						},
-						"expertise": {
-							"id": "starforged/assets/companion/sidekick/options/expertise",
-							"label": "Expertise",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/sidekick/abilities/0",
-							"enabled": true,
-							"text": "Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Directly aided by your sidekick's expertise (outside of a fight)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/sidekick/abilities/1",
-							"enabled": false,
-							"text": "When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) with the support of your sidekick, take +2 momentum on a hit. When you [Clash](id:starforged/moves/combat/clash) together, add +1.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/combat/enter_the_fray"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "With the support of your sidekick",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/combat/clash"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Together with your sidekick",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/sidekick/abilities/2",
-							"enabled": false,
-							"text": "When your sidekick acts to get you out of a tough spot, you may [Face Danger](id:starforged/moves/adventure/face_danger) or [React Under Fire](id:starforged/moves/combat/react_under_fire) and roll +their health (instead of your own stat). On a hit, take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/*/face_danger",
-										"starforged/moves/combat/react_under_fire"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Your sidekick acts to get you out of a tough spot",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/sidekick/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/sidekick/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/heal"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"sprite": {
-					"id": "starforged/assets/companion/sprite",
-					"name": "Sprite",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/sprite/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/sprite/abilities/0",
-							"enabled": true,
-							"text": "Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/sprite/abilities/1",
-							"enabled": false,
-							"text": "You are attuned to the resonance of the sprite's crystalline structure, and can communicate with it at a distance and perceive through its senses. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by observing a situation from its perspective, or remotely [Gather Information](id:starforged/moves/adventure/gather_information), add +its health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/*/secure_an_advantage",
-										"starforged/moves/adventure/gather_information"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By remotely observing a situation from your sprite's perspective",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/sprite/abilities/2",
-							"enabled": false,
-							"text": "With a moment's rest, the sprite can mend its form and return automatically to max health."
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/sprite/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 2,
-							"value": 2,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/sprite/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/heal"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"survey_bot": {
-					"id": "starforged/assets/companion/survey_bot",
-					"name": "Survey Bot",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/survey_bot/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/survey_bot/abilities/0",
-							"enabled": true,
-							"text": "Your survey bot companion scans the path ahead. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits) overland or within a site, add +1.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/exploration/undertake_an_expedition"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Overland or within a site (assisted by your survey bot)",
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "wits"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/survey_bot/abilities/1",
-							"enabled": false,
-							"text": "Once per expedition, when you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark 1 tick on your discoveries legacy track.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/*/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Once per expedition, by sending the survey bot to scout ahead",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/survey_bot/abilities/2",
-							"enabled": false,
-							"text": "When you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint) aided by the bot's sensors, or [Face Danger](id:starforged/moves/adventure/face_danger) to detect a threat, roll +its health and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/exploration/explore_a_waypoint"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Aided by the survey bot's sensors",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/*/face_danger"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "To detect a threat",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/survey_bot/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 3,
-							"value": 3,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/survey_bot/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/repair"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"symbiote": {
-					"id": "starforged/assets/companion/symbiote",
-					"name": "Symbiote",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/symbiote/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/symbiote/abilities/0",
-							"enabled": true,
-							"text": "You are physically bound to a being with 2 health. When you make aggressive moves while giving yourself to the symbiote's power, add +its health. If you face physical harm, choose either the [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. To restore the symbiote's health, you must [Endure Stress](id:starforged/moves/suffer/endure_stress) and give the symbiote +health equal to the -spirit you face. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Make an aggressive move while giving yourself to the symbiote's power",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/symbiote/abilities/1",
-							"enabled": false,
-							"text": "When you make a move and heed the symbiote's guidance (decide after rolling), you may reroll any dice. Then, [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll"
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/symbiote/abilities/2",
-							"enabled": false,
-							"text": "The symbiote gains power and has 3 health."
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/symbiote/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 2,
-							"value": 2,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/symbiote/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/suffer/endure_stress"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"utility_bot": {
-					"id": "starforged/assets/companion/utility_bot",
-					"name": "Utility Bot",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/utility_bot/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/utility_bot/abilities/0",
-							"enabled": true,
-							"text": "Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/utility_bot/abilities/1",
-							"enabled": false,
-							"text": "When you [Repair](id:starforged/moves/recover/repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/recover/repair"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Aided by the bot",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/utility_bot/abilities/2",
-							"enabled": false,
-							"text": "When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/adventure/check_your_gear"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "To see if your utility bot has a specific tool or technique available",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/utility_bot/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/utility_bot/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/repair"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"voidglider": {
-					"id": "starforged/assets/companion/voidglider",
-					"name": "Voidglider",
-					"asset_type": "Companion",
-					"color": "#3d8b8a",
-					"options": {
-						"label": {
-							"id": "starforged/assets/companion/voidglider/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "starforged/assets/companion/voidglider/abilities/0",
-							"enabled": true,
-							"text": "Your voidglider companion cruises in your starship’s energy wake and can help guide the way on spaceborne journeys. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), add +1.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/exploration/undertake_an_expedition"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "On a spaceborne journey as your voidglider helps guide the way",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/voidglider/abilities/1",
-							"enabled": false,
-							"text": "The voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/companion/voidglider/abilities/2",
-							"enabled": false,
-							"text": "When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "You make a move by signaling the voidglider to distract or attack a spaceborne foe",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "asset_control",
-														"assets": null,
-														"control": "health"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"controls": {
-						"health": {
-							"id": "starforged/assets/companion/voidglider/controls/health",
-							"label": "health",
-							"field_type": "condition_meter",
-							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"out_of_action": {
-									"id": "starforged/assets/companion/voidglider/controls/health/controls/out_of_action",
-									"label": "Out of action",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": true,
-									"is_impact": false
-								}
-							},
-							"moves": {
-								"recover": ["starforged/moves/recover/heal"],
-								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"source": {
-				"title": "Ironsworn: Starforged Rulebook",
-				"date": "2022-05-06",
-				"page": 57,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"deed": {
-			"id": "starforged/collections/assets/deed",
-			"name": "Deed Assets",
-			"color": "#40834f",
-			"description": "**Deeds** represent the notable achievement and situations of your story, and how those events change your character.\n\nDeeds have a requirement listed at the top of the card, phrased as “Once you \\[blank\\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.",
-			"contents": {
-				"bonded": {
-					"id": "starforged/assets/deed/bonded",
-					"name": "Bonded",
-					"asset_type": "Deed",
-					"color": "#40834f",
-					"options": {
-						"bond_mate": {
-							"id": "starforged/assets/deed/bonded/options/bond_mate",
-							"label": "Bond-mate",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "One time only, once you [Forge a Bond](id:starforged/moves/connection/forge_a_bond) with a special individual...",
-					"abilities": [
-						{
-							"id": "starforged/assets/deed/bonded/abilities/0",
-							"enabled": true,
-							"text": "This person is your bond-mate. When you [Sojourn](id:starforged/moves/recover/sojourn) at their home, [Hearten](id:starforged/moves/recover/hearten) in their presence, or [Test Your Relationship](id:starforged/moves/connection/test_your_relationship) or [Develop Your Relationship](id:starforged/moves/connection/develop_your_relationship) with them, reroll any dice. On a strong hit, take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/recover/sojourn"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "At your bond-mate's home",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/recover/hearten"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In your bond-mate's presence",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/connection/test_your_relationship",
-										"starforged/moves/connection/develop_your_relationship"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "With your bond-mate",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/bonded/abilities/1",
-							"enabled": false,
-							"text": "When you [Set a Course](id:starforged/moves/exploration/set_a_course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/exploration/set_a_course"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Back to your bond-mate's location",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/bonded/abilities/2",
-							"enabled": false,
-							"text": "When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](id:starforged/moves/threshold/face_desolation).",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll"
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"homesteader": {
-					"id": "starforged/assets/deed/homesteader",
-					"name": "Homesteader",
-					"asset_type": "Deed",
-					"color": "#40834f",
-					"options": {
-						"label": {
-							"id": "starforged/assets/deed/homesteader/options/label",
-							"label": "Name",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "Once you fill 4 boxes on your bonds legacy track...",
-					"abilities": [
-						{
-							"id": "starforged/assets/deed/homesteader/abilities/0",
-							"enabled": true,
-							"text": "You have chosen or established a community as your home. When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (formidable or greater) in service to your home, reroll any dice. On a hit, mark 1 tick on your bonds legacy track. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, also mark 2 ticks on your bonds legacy track.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/quest/swear_an_iron_vow"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In service to your home (formidable or greater)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "progress_roll",
-									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In service to your home (formidable or greater)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/homesteader/abilities/1",
-							"enabled": false,
-							"text": "When you [Sojourn](id:starforged/moves/recover/sojourn) in your home, choose one.\n\n  * Don't linger: Take an automatic weak hit\n  * Stay a bit: Add +1 and take +1 momentum on a hit",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/recover/sojourn"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In your home (and you don't linger)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/recover/sojourn"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In your home (and you stay a bit)",
-												"method": "weak_hit",
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/homesteader/abilities/2",
-							"enabled": false,
-							"text": "When you [Set a Course](id:starforged/moves/exploration/set_a_course) for home, you may reroll your action die if its value is less than your spirit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/exploration/set_a_course"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "For home",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"marked": {
-					"id": "starforged/assets/deed/marked",
-					"name": "Marked",
-					"asset_type": "Deed",
-					"color": "#40834f",
-					"options": {
-						"identifier": {
-							"id": "starforged/assets/deed/marked/options/identifier",
-							"label": "Identifier",
-							"field_type": "text",
-							"value": null
-						}
-					},
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "Once you fill 5 boxes on your quests legacy track...",
-					"abilities": [
-						{
-							"id": "starforged/assets/deed/marked/abilities/0",
-							"enabled": true,
-							"text": "Envision the title, sigil, uniform, or tattoo you bear in recognition of your achievements. When you [Compel](id:starforged/moves/adventure/compel) or [Make a Connection](id:starforged/moves/connection/make_a_connection) among those who would know your reputation, add +1. On a strong hit with a match, your notoriety grows; mark 2 ticks on your bonds legacy track.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/adventure/compel",
-										"starforged/moves/connection/make_a_connection"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Among those who would know your reputation",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/marked/abilities/1",
-							"enabled": false,
-							"text": "When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.",
-							"controls": {
-								"clock": {
-									"id": "starforged/assets/deed/marked/abilities/1/controls/clock",
-									"label": "Stained reputation",
-									"field_type": "clock",
-									"min": 0,
-									"max": 6,
-									"value": 0
-								}
-							},
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll"
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/marked/abilities/2",
-							"enabled": false,
-							"text": "Once per fight, when you [Gain Ground](id:starforged/moves/combat/gain_ground) through intimidation or command, reroll any dice and mark progress on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/combat/gain_ground"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Through intimidation or command (once per fight)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"oathbreaker": {
-					"id": "starforged/assets/deed/oathbreaker",
-					"name": "Oathbreaker",
-					"asset_type": "Deed",
-					"color": "#40834f",
-					"count_as_impact": true,
-					"shared": false,
-					"requirement": "Once you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow)...",
-					"abilities": [
-						{
-							"id": "starforged/assets/deed/oathbreaker/abilities/0",
-							"enabled": true,
-							"text": "This asset counts as an impact. One time only, when you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (extreme or greater) to redeem yourself, give that vow a special mark. When you [Reach a Milestone](id:starforged/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum. If you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/quest/swear_an_iron_vow"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "To redeem yourself (extreme or greater, one time only)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/quest/forsake_your_vow"]
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/oathbreaker/abilities/1",
-							"enabled": false,
-							"text": "When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Compel](id:starforged/moves/adventure/compel) by reaffirming your commitment to your marked vow, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/*/secure_an_advantage",
-										"starforged/moves/adventure/compel"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By reaffirming your commitment to your marked vow",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/oathbreaker/abilities/2",
-							"enabled": false,
-							"text": "When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on the marked quest and score a hit, you find redemption and automatically gain this ability at no cost. You may then improve one of your stats by +1 and discard this asset. Once the asset is discarded, you may not take it again.",
-							"enhance_moves": [
-								{
-									"roll_type": "progress_roll",
-									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "On your marked quest",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"revenant": {
-					"id": "starforged/assets/deed/revenant",
-					"name": "Revenant",
-					"asset_type": "Deed",
-					"color": "#40834f",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "Once you [Face Death](id:starforged/moves/threshold/face_death)...",
-					"abilities": [
-						{
-							"id": "starforged/assets/deed/revenant/abilities/0",
-							"enabled": true,
-							"text": "When you are at 0 health, and [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Face Death](id:starforged/moves/threshold/face_death), add +1. You may then reroll your action die if its value is less than your spirit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"starforged/moves/suffer/endure_harm",
-										"starforged/moves/threshold/face_death"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you are at 0 health",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/revenant/abilities/1",
-							"enabled": false,
-							"text": "When you [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by bringing death to a foe, you may burn momentum to zero out one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).",
-							"enhance_moves": [
-								{
-									"roll_type": "progress_roll",
-									"enhances": ["starforged/moves/combat/take_decisive_action"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By bringing death to a foe",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/revenant/abilities/2",
-							"enabled": false,
-							"text": "When you [Gather Information](id:starforged/moves/adventure/gather_information) by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/adventure/gather_information"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By studying a place where death left its mark",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "heart"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"survivor": {
-					"id": "starforged/assets/deed/survivor",
-					"name": "Survivor",
-					"asset_type": "Deed",
-					"color": "#40834f",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "Once you mark traumatized or permanently harmed...",
-					"abilities": [
-						{
-							"id": "starforged/assets/deed/survivor/abilities/0",
-							"enabled": true,
-							"text": "When you are haunted by past experiences and must [Endure Stress](id:starforged/moves/suffer/endure_stress), you may [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1) before rolling as you attempt to find focus or calm. If you do, reroll any dice. On a strong hit, take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/suffer/endure_stress"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you are haunted by past experiences",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/survivor/abilities/1",
-							"enabled": false,
-							"text": "When you make a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach, and burn momentum to improve your result, you may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks."
-						},
-						{
-							"id": "starforged/assets/deed/survivor/abilities/2",
-							"enabled": false,
-							"text": "You are learning to live with this impact. The lasting effect (traumatized or permanently harmed, but not both) remains marked, but no longer reduces your max momentum or reset."
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"vanguard": {
-					"id": "starforged/assets/deed/vanguard",
-					"name": "Vanguard",
-					"asset_type": "Deed",
-					"color": "#40834f",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "Once you fill 6 boxes on your discoveries legacy track...",
-					"abilities": [
-						{
-							"id": "starforged/assets/deed/vanguard/abilities/0",
-							"enabled": true,
-							"text": "When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.",
-							"moves": {
-								"seek_safe_haven": {
-									"id": "starforged/assets/deed/vanguard/abilities/0/moves/seek_safe_haven",
-									"name": "Seek Safe Haven",
-									"roll_type": "special_track",
-									"trigger": {
-										"text": "When you seek a safe location in a remote environment...",
-										"conditions": [
-											{
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "discoveries_legacy"
-													}
-												]
-											}
-										]
-									},
-									"text": "When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "On a **strong hit**, you establish a haven; add +2 whenever you make a recovery move at that location.\n\nIf you establish a haven but score a miss on a recovery move, that location is no longer safe."
-										},
-										"weak_hit": {
-											"text": "On a **weak hit**, you establish a haven; add +1 whenever you make a recovery move at that location.\n\nIf you establish a haven but score a miss on a recovery move, that location is no longer safe."
-										},
-										"miss": {
-											"text": "On a **miss**, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn: Starforged Assets",
-										"date": "2022-05-06",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									}
-								}
-							}
-						},
-						{
-							"id": "starforged/assets/deed/vanguard/abilities/1",
-							"enabled": false,
-							"text": "When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "wits"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "starforged/assets/deed/vanguard/abilities/2",
-							"enabled": false,
-							"text": "When you [Endure Stress](id:starforged/moves/suffer/endure_stress), you may roll +wits. If you do, take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["starforged/moves/suffer/endure_stress"],
-									"trigger": {
-										"conditions": [
-											{
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "wits"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"source": {
-				"title": "Ironsworn: Starforged Rulebook",
-				"date": "2022-05-06",
-				"page": 57,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
 		"module": {
 			"id": "starforged/collections/assets/module",
 			"name": "Module Assets",
@@ -9019,6 +6995,2030 @@
 				"title": "Ironsworn: Starforged Rulebook",
 				"date": "2022-05-06",
 				"page": 56,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"companion": {
+			"id": "starforged/collections/assets/companion",
+			"name": "Companion Assets",
+			"color": "#3d8b8a",
+			"description": "**Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.\n\nCompanions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. When their health is at 0, they are in danger of being killed or destroyed.",
+			"contents": {
+				"banshee": {
+					"id": "starforged/assets/companion/banshee",
+					"name": "Banshee",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/banshee/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/banshee/abilities/0",
+							"enabled": true,
+							"text": "Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may roll +its health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/exploration/undertake_an_expedition",
+										"starforged/moves/exploration/set_a_course"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "While riding your banshee",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/banshee/abilities/1",
+							"enabled": false,
+							"text": "When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "To detect a threat or avoid a fight (while astride your banshee)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/banshee/abilities/2",
+							"enabled": false,
+							"text": "When you make a combat move and roll a 1 on your action die, the banshee senses the danger and emits a powerful scream to alert you or distract your foes. You may reroll that die.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["*/moves/combat/*"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "When aided by your banshee",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/banshee/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/banshee/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"combat_bot": {
+					"id": "starforged/assets/companion/combat_bot",
+					"name": "Combat Bot",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/combat_bot/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/combat_bot/abilities/0",
+							"enabled": true,
+							"text": "Your combat bot companion fights at your side. When you [Strike](id:starforged/moves/combat/strike) aided by the bot, add +1; if you [Clash](id:starforged/moves/combat/clash), take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/combat/strike"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Aided by your combat bot",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/combat/clash"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Aided by your combat bot",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/combat_bot/abilities/1",
+							"enabled": false,
+							"text": "When you use the threat of violence to [Compel](id:starforged/moves/adventure/compel) or [Gain Ground](id:starforged/moves/combat/gain_ground) while the bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot's display is especially persuasive; take another +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/adventure/compel",
+										"starforged/moves/combat/gain_ground"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Using the threat of violence while the bot brings its weapons to bear",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/combat_bot/abilities/2",
+							"enabled": false,
+							"text": "Once per fight, when you [React Under Fire](id:starforged/moves/combat/react_under_fire) by using the bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/combat/react_under_fire"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Once per fight, by using the combat bot to draw fire or create a diversion",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/combat_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 5,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/combat_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"glowcat": {
+					"id": "starforged/assets/companion/glowcat",
+					"name": "Glowcat",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/glowcat/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/glowcat/abilities/0",
+							"enabled": true,
+							"text": "Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/*/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By studying your glowcat’s reactions in a charged interaction",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/glowcat/abilities/1",
+							"enabled": false,
+							"text": "When you [Compel](id:starforged/moves/adventure/compel), the glowcat’s reactions will help guide your approach; you may reroll your action die if its value is less than the glowcat’s health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/adventure/compel"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "When your glowcat’s reactions help guide your approach",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/glowcat/abilities/2",
+							"enabled": false,
+							"text": "When you [Endure Stress](id:starforged/moves/suffer/endure_stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/suffer/endure_stress"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In the company of the glowcat",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/glowcat/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 3,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/glowcat/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"protocol_bot": {
+					"id": "starforged/assets/companion/protocol_bot",
+					"name": "Protocol Bot",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/protocol_bot/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/protocol_bot/abilities/0",
+							"enabled": true,
+							"text": "Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "When you are aided by the bot as you make a move in a formal social interaction",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/protocol_bot/abilities/1",
+							"enabled": false,
+							"text": "When you first visit or interact with a new community or culture, you may ask for the bot's insight. If you do, envision what you learn and take +1 momentum."
+						},
+						{
+							"id": "starforged/assets/companion/protocol_bot/abilities/2",
+							"enabled": false,
+							"text": "If you make a move in a charged interaction and the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In a charged interaction",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/protocol_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 3,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/protocol_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"rockhorn": {
+					"id": "starforged/assets/companion/rockhorn",
+					"name": "Rockhorn",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/rockhorn/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/rockhorn/abilities/0",
+							"enabled": true,
+							"text": "Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By sending the rockhorn to directly attack a foe or smash an obstacle",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/rockhorn/abilities/1",
+							"enabled": false,
+							"text": "When you make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/suffer/companion_takes_a_hit"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "For the rockhorn",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/rockhorn/abilities/2",
+							"enabled": false,
+							"text": "The rockhorn will come to your aid in your most vulnerable moments. When you [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Endure Stress](id:starforged/moves/suffer/endure_stress) and score a miss, you may reroll your action die if its value is less than the rockhorn’s health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/suffer/endure_harm",
+										"starforged/moves/suffer/endure_stress"
+									]
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/rockhorn/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 5,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/rockhorn/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"sidekick": {
+					"id": "starforged/assets/companion/sidekick",
+					"name": "Sidekick",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"name": {
+							"id": "starforged/assets/companion/sidekick/options/name",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						},
+						"expertise": {
+							"id": "starforged/assets/companion/sidekick/options/expertise",
+							"label": "Expertise",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/sidekick/abilities/0",
+							"enabled": true,
+							"text": "Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Directly aided by your sidekick's expertise (outside of a fight)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/sidekick/abilities/1",
+							"enabled": false,
+							"text": "When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) with the support of your sidekick, take +2 momentum on a hit. When you [Clash](id:starforged/moves/combat/clash) together, add +1.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/combat/enter_the_fray"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "With the support of your sidekick",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/combat/clash"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Together with your sidekick",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/sidekick/abilities/2",
+							"enabled": false,
+							"text": "When your sidekick acts to get you out of a tough spot, you may [Face Danger](id:starforged/moves/adventure/face_danger) or [React Under Fire](id:starforged/moves/combat/react_under_fire) and roll +their health (instead of your own stat). On a hit, take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/*/face_danger",
+										"starforged/moves/combat/react_under_fire"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Your sidekick acts to get you out of a tough spot",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/sidekick/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/sidekick/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"sprite": {
+					"id": "starforged/assets/companion/sprite",
+					"name": "Sprite",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/sprite/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/sprite/abilities/0",
+							"enabled": true,
+							"text": "Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/sprite/abilities/1",
+							"enabled": false,
+							"text": "You are attuned to the resonance of the sprite's crystalline structure, and can communicate with it at a distance and perceive through its senses. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by observing a situation from its perspective, or remotely [Gather Information](id:starforged/moves/adventure/gather_information), add +its health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/*/secure_an_advantage",
+										"starforged/moves/adventure/gather_information"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By remotely observing a situation from your sprite's perspective",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/sprite/abilities/2",
+							"enabled": false,
+							"text": "With a moment's rest, the sprite can mend its form and return automatically to max health."
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/sprite/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 2,
+							"value": 2,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/sprite/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"survey_bot": {
+					"id": "starforged/assets/companion/survey_bot",
+					"name": "Survey Bot",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/survey_bot/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/survey_bot/abilities/0",
+							"enabled": true,
+							"text": "Your survey bot companion scans the path ahead. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits) overland or within a site, add +1.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/exploration/undertake_an_expedition"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Overland or within a site (assisted by your survey bot)",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "wits"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/survey_bot/abilities/1",
+							"enabled": false,
+							"text": "Once per expedition, when you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark 1 tick on your discoveries legacy track.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/*/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Once per expedition, by sending the survey bot to scout ahead",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/survey_bot/abilities/2",
+							"enabled": false,
+							"text": "When you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint) aided by the bot's sensors, or [Face Danger](id:starforged/moves/adventure/face_danger) to detect a threat, roll +its health and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/exploration/explore_a_waypoint"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Aided by the survey bot's sensors",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/*/face_danger"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "To detect a threat",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/survey_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 3,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/survey_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"symbiote": {
+					"id": "starforged/assets/companion/symbiote",
+					"name": "Symbiote",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/symbiote/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/symbiote/abilities/0",
+							"enabled": true,
+							"text": "You are physically bound to a being with 2 health. When you make aggressive moves while giving yourself to the symbiote's power, add +its health. If you face physical harm, choose either the [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. To restore the symbiote's health, you must [Endure Stress](id:starforged/moves/suffer/endure_stress) and give the symbiote +health equal to the -spirit you face. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Make an aggressive move while giving yourself to the symbiote's power",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/symbiote/abilities/1",
+							"enabled": false,
+							"text": "When you make a move and heed the symbiote's guidance (decide after rolling), you may reroll any dice. Then, [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll"
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/symbiote/abilities/2",
+							"enabled": false,
+							"text": "The symbiote gains power and has 3 health."
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/symbiote/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 2,
+							"value": 2,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/symbiote/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/suffer/endure_stress"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"utility_bot": {
+					"id": "starforged/assets/companion/utility_bot",
+					"name": "Utility Bot",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/utility_bot/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/utility_bot/abilities/0",
+							"enabled": true,
+							"text": "Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/utility_bot/abilities/1",
+							"enabled": false,
+							"text": "When you [Repair](id:starforged/moves/recover/repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/recover/repair"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Aided by the bot",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/utility_bot/abilities/2",
+							"enabled": false,
+							"text": "When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/adventure/check_your_gear"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "To see if your utility bot has a specific tool or technique available",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/utility_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/utility_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"voidglider": {
+					"id": "starforged/assets/companion/voidglider",
+					"name": "Voidglider",
+					"asset_type": "Companion",
+					"color": "#3d8b8a",
+					"options": {
+						"label": {
+							"id": "starforged/assets/companion/voidglider/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "starforged/assets/companion/voidglider/abilities/0",
+							"enabled": true,
+							"text": "Your voidglider companion cruises in your starship’s energy wake and can help guide the way on spaceborne journeys. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), add +1.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/exploration/undertake_an_expedition"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "On a spaceborne journey as your voidglider helps guide the way",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/voidglider/abilities/1",
+							"enabled": false,
+							"text": "The voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/companion/voidglider/abilities/2",
+							"enabled": false,
+							"text": "When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"text": "You make a move by signaling the voidglider to distract or attack a spaceborne foe",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/voidglider/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/voidglider/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"source": {
+				"title": "Ironsworn: Starforged Rulebook",
+				"date": "2022-05-06",
+				"page": 57,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"deed": {
+			"id": "starforged/collections/assets/deed",
+			"name": "Deed Assets",
+			"color": "#40834f",
+			"description": "**Deeds** represent the notable achievement and situations of your story, and how those events change your character.\n\nDeeds have a requirement listed at the top of the card, phrased as “Once you \\[blank\\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.",
+			"contents": {
+				"bonded": {
+					"id": "starforged/assets/deed/bonded",
+					"name": "Bonded",
+					"asset_type": "Deed",
+					"color": "#40834f",
+					"options": {
+						"bond_mate": {
+							"id": "starforged/assets/deed/bonded/options/bond_mate",
+							"label": "Bond-mate",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "One time only, once you [Forge a Bond](id:starforged/moves/connection/forge_a_bond) with a special individual...",
+					"abilities": [
+						{
+							"id": "starforged/assets/deed/bonded/abilities/0",
+							"enabled": true,
+							"text": "This person is your bond-mate. When you [Sojourn](id:starforged/moves/recover/sojourn) at their home, [Hearten](id:starforged/moves/recover/hearten) in their presence, or [Test Your Relationship](id:starforged/moves/connection/test_your_relationship) or [Develop Your Relationship](id:starforged/moves/connection/develop_your_relationship) with them, reroll any dice. On a strong hit, take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/recover/sojourn"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "At your bond-mate's home",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/recover/hearten"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In your bond-mate's presence",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/connection/test_your_relationship",
+										"starforged/moves/connection/develop_your_relationship"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "With your bond-mate",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/bonded/abilities/1",
+							"enabled": false,
+							"text": "When you [Set a Course](id:starforged/moves/exploration/set_a_course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/exploration/set_a_course"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Back to your bond-mate's location",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/bonded/abilities/2",
+							"enabled": false,
+							"text": "When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](id:starforged/moves/threshold/face_desolation).",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll"
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"homesteader": {
+					"id": "starforged/assets/deed/homesteader",
+					"name": "Homesteader",
+					"asset_type": "Deed",
+					"color": "#40834f",
+					"options": {
+						"label": {
+							"id": "starforged/assets/deed/homesteader/options/label",
+							"label": "Name",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "Once you fill 4 boxes on your bonds legacy track...",
+					"abilities": [
+						{
+							"id": "starforged/assets/deed/homesteader/abilities/0",
+							"enabled": true,
+							"text": "You have chosen or established a community as your home. When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (formidable or greater) in service to your home, reroll any dice. On a hit, mark 1 tick on your bonds legacy track. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, also mark 2 ticks on your bonds legacy track.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/quest/swear_an_iron_vow"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In service to your home (formidable or greater)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "progress_roll",
+									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In service to your home (formidable or greater)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/homesteader/abilities/1",
+							"enabled": false,
+							"text": "When you [Sojourn](id:starforged/moves/recover/sojourn) in your home, choose one.\n\n  * Don't linger: Take an automatic weak hit\n  * Stay a bit: Add +1 and take +1 momentum on a hit",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/recover/sojourn"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In your home (and you don't linger)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/recover/sojourn"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In your home (and you stay a bit)",
+												"method": "weak_hit",
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/homesteader/abilities/2",
+							"enabled": false,
+							"text": "When you [Set a Course](id:starforged/moves/exploration/set_a_course) for home, you may reroll your action die if its value is less than your spirit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/exploration/set_a_course"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "For home",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"marked": {
+					"id": "starforged/assets/deed/marked",
+					"name": "Marked",
+					"asset_type": "Deed",
+					"color": "#40834f",
+					"options": {
+						"identifier": {
+							"id": "starforged/assets/deed/marked/options/identifier",
+							"label": "Identifier",
+							"field_type": "text",
+							"value": null
+						}
+					},
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "Once you fill 5 boxes on your quests legacy track...",
+					"abilities": [
+						{
+							"id": "starforged/assets/deed/marked/abilities/0",
+							"enabled": true,
+							"text": "Envision the title, sigil, uniform, or tattoo you bear in recognition of your achievements. When you [Compel](id:starforged/moves/adventure/compel) or [Make a Connection](id:starforged/moves/connection/make_a_connection) among those who would know your reputation, add +1. On a strong hit with a match, your notoriety grows; mark 2 ticks on your bonds legacy track.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/adventure/compel",
+										"starforged/moves/connection/make_a_connection"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Among those who would know your reputation",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/marked/abilities/1",
+							"enabled": false,
+							"text": "When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.",
+							"controls": {
+								"clock": {
+									"id": "starforged/assets/deed/marked/abilities/1/controls/clock",
+									"label": "Stained reputation",
+									"field_type": "clock",
+									"min": 0,
+									"max": 6,
+									"value": 0
+								}
+							},
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll"
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/marked/abilities/2",
+							"enabled": false,
+							"text": "Once per fight, when you [Gain Ground](id:starforged/moves/combat/gain_ground) through intimidation or command, reroll any dice and mark progress on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/combat/gain_ground"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Through intimidation or command (once per fight)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"oathbreaker": {
+					"id": "starforged/assets/deed/oathbreaker",
+					"name": "Oathbreaker",
+					"asset_type": "Deed",
+					"color": "#40834f",
+					"count_as_impact": true,
+					"shared": false,
+					"requirement": "Once you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow)...",
+					"abilities": [
+						{
+							"id": "starforged/assets/deed/oathbreaker/abilities/0",
+							"enabled": true,
+							"text": "This asset counts as an impact. One time only, when you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (extreme or greater) to redeem yourself, give that vow a special mark. When you [Reach a Milestone](id:starforged/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum. If you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/quest/swear_an_iron_vow"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "To redeem yourself (extreme or greater, one time only)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/quest/forsake_your_vow"]
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/oathbreaker/abilities/1",
+							"enabled": false,
+							"text": "When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Compel](id:starforged/moves/adventure/compel) by reaffirming your commitment to your marked vow, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/*/secure_an_advantage",
+										"starforged/moves/adventure/compel"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By reaffirming your commitment to your marked vow",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/oathbreaker/abilities/2",
+							"enabled": false,
+							"text": "When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on the marked quest and score a hit, you find redemption and automatically gain this ability at no cost. You may then improve one of your stats by +1 and discard this asset. Once the asset is discarded, you may not take it again.",
+							"enhance_moves": [
+								{
+									"roll_type": "progress_roll",
+									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "On your marked quest",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"revenant": {
+					"id": "starforged/assets/deed/revenant",
+					"name": "Revenant",
+					"asset_type": "Deed",
+					"color": "#40834f",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "Once you [Face Death](id:starforged/moves/threshold/face_death)...",
+					"abilities": [
+						{
+							"id": "starforged/assets/deed/revenant/abilities/0",
+							"enabled": true,
+							"text": "When you are at 0 health, and [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Face Death](id:starforged/moves/threshold/face_death), add +1. You may then reroll your action die if its value is less than your spirit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"starforged/moves/suffer/endure_harm",
+										"starforged/moves/threshold/face_death"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "When you are at 0 health",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/revenant/abilities/1",
+							"enabled": false,
+							"text": "When you [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by bringing death to a foe, you may burn momentum to zero out one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).",
+							"enhance_moves": [
+								{
+									"roll_type": "progress_roll",
+									"enhances": ["starforged/moves/combat/take_decisive_action"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By bringing death to a foe",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/revenant/abilities/2",
+							"enabled": false,
+							"text": "When you [Gather Information](id:starforged/moves/adventure/gather_information) by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/adventure/gather_information"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "By studying a place where death left its mark",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "heart"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"survivor": {
+					"id": "starforged/assets/deed/survivor",
+					"name": "Survivor",
+					"asset_type": "Deed",
+					"color": "#40834f",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "Once you mark traumatized or permanently harmed...",
+					"abilities": [
+						{
+							"id": "starforged/assets/deed/survivor/abilities/0",
+							"enabled": true,
+							"text": "When you are haunted by past experiences and must [Endure Stress](id:starforged/moves/suffer/endure_stress), you may [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1) before rolling as you attempt to find focus or calm. If you do, reroll any dice. On a strong hit, take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/suffer/endure_stress"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "When you are haunted by past experiences",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/survivor/abilities/1",
+							"enabled": false,
+							"text": "When you make a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach, and burn momentum to improve your result, you may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks."
+						},
+						{
+							"id": "starforged/assets/deed/survivor/abilities/2",
+							"enabled": false,
+							"text": "You are learning to live with this impact. The lasting effect (traumatized or permanently harmed, but not both) remains marked, but no longer reduces your max momentum or reset."
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"vanguard": {
+					"id": "starforged/assets/deed/vanguard",
+					"name": "Vanguard",
+					"asset_type": "Deed",
+					"color": "#40834f",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "Once you fill 6 boxes on your discoveries legacy track...",
+					"abilities": [
+						{
+							"id": "starforged/assets/deed/vanguard/abilities/0",
+							"enabled": true,
+							"text": "When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.",
+							"moves": {
+								"seek_safe_haven": {
+									"id": "starforged/assets/deed/vanguard/abilities/0/moves/seek_safe_haven",
+									"name": "Seek Safe Haven",
+									"roll_type": "special_track",
+									"trigger": {
+										"text": "When you seek a safe location in a remote environment...",
+										"conditions": [
+											{
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "discoveries_legacy"
+													}
+												]
+											}
+										]
+									},
+									"text": "When you seek a safe location in a remote environment, make a progress roll against your discoveries legacy track. On a strong hit, you establish a haven; add +2 whenever you make a recovery move at that location. On a weak hit, as above, but add +1 when making a recovery move. On a miss, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price). If you establish a haven but score a miss on a recovery move, that location is no longer safe.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "On a **strong hit**, you establish a haven; add +2 whenever you make a recovery move at that location.\n\nIf you establish a haven but score a miss on a recovery move, that location is no longer safe."
+										},
+										"weak_hit": {
+											"text": "On a **weak hit**, you establish a haven; add +1 whenever you make a recovery move at that location.\n\nIf you establish a haven but score a miss on a recovery move, that location is no longer safe."
+										},
+										"miss": {
+											"text": "On a **miss**, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn: Starforged Assets",
+										"date": "2022-05-06",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
+									}
+								}
+							}
+						},
+						{
+							"id": "starforged/assets/deed/vanguard/abilities/1",
+							"enabled": false,
+							"text": "When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"trigger": {
+										"conditions": [
+											{
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "wits"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "starforged/assets/deed/vanguard/abilities/2",
+							"enabled": false,
+							"text": "When you [Endure Stress](id:starforged/moves/suffer/endure_stress), you may roll +wits. If you do, take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/suffer/endure_stress"],
+									"trigger": {
+										"conditions": [
+											{
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "wits"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"source": {
+				"title": "Ironsworn: Starforged Rulebook",
+				"date": "2022-05-06",
+				"page": 57,
 				"authors": [
 					{
 						"name": "Shawn Tomkin"

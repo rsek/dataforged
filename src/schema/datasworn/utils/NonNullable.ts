@@ -1,6 +1,6 @@
+import { TypeClone } from '@sinclair/typebox'
 import { type TNullable } from './Nullable.js'
 
 export function NonNullable<T extends TNullable>(base: T) {
-	const [schema] = base.anyOf
-	return schema
+	return TypeClone.Type(base.anyOf[0])
 }

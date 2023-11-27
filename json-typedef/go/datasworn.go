@@ -148,9 +148,6 @@ func (v *ActionRollOption) UnmarshalJSON(b []byte) error {
 }
 
 type ActionRollOptionAssetControl struct {
-	// Asset IDs (which may be wildcarded) that provide the control field. For
-	// asset ability enhancements, `null` is used to represent the asset's own
-	// control fields.
 	Assets []AssetIDWildcard `json:"assets"`
 
 	// The key of the asset control field.
@@ -158,9 +155,6 @@ type ActionRollOptionAssetControl struct {
 }
 
 type ActionRollOptionAssetOption struct {
-	// Asset IDs (which may be wildcarded) that provide the option field. For asset
-	// ability enhancements, `null` is used to represent the asset's own option
-	// fields.
 	Assets []AssetIDWildcard `json:"assets"`
 
 	// The key of the asset option field.
@@ -399,8 +393,7 @@ type AssetAbilityControlFieldCounter struct {
 	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
-	// The (inclusive) maximum value.
-	Max *int16 `json:"max"`
+	Max int16 `json:"max"`
 
 	// The (inclusive) minimum value.
 	Min int8 `json:"min"`
@@ -459,8 +452,7 @@ type AssetAbilityOptionFieldText struct {
 	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
-	// The content of this text input, or `null` if it's empty
-	Value *string `json:"value"`
+	Value string `json:"value"`
 }
 
 type AssetAbilityOptionFieldID = string
@@ -472,8 +464,7 @@ type AssetAttachment struct {
 	// Asset IDs (which may be wildcards) that may be attached to this asset
 	Assets []AssetIDWildcard `json:"assets"`
 
-	// Null if there's no upper limit to the number of attached assets.
-	Max *int16 `json:"max"`
+	Max int16 `json:"max"`
 }
 
 // A checkbox control field, rendered as part of an asset condition meter.
@@ -805,8 +796,9 @@ type AssetControlFieldSelectEnhancement struct {
 	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
-	// The current value of this input.
-	Value *DictKey `json:"value"`
+	// The key of the currently selected choice from the `choices` property, or
+	// `null` if none is selected.
+	Value DictKey `json:"value"`
 }
 
 type AssetControlFieldEnhancement struct {
@@ -1040,8 +1032,9 @@ type AssetOptionFieldSelectEnhancement struct {
 	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
-	// The current value of this input.
-	Value *DictKey `json:"value"`
+	// The key of the currently selected choice from the `choices` property, or
+	// `null` if none is selected.
+	Value DictKey `json:"value"`
 }
 
 type AssetOptionFieldSelectStatChoice struct {
@@ -1140,8 +1133,9 @@ type AssetOptionFieldSelectStat struct {
 	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
-	// The current value of this input.
-	Value *DictKey `json:"value"`
+	// The key of the currently selected choice from the `choices` property, or
+	// `null` if none is selected.
+	Value DictKey `json:"value"`
 }
 
 type AssetOptionFieldText struct {
@@ -1153,8 +1147,7 @@ type AssetOptionFieldText struct {
 	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
-	// The content of this text input, or `null` if it's empty
-	Value *string `json:"value"`
+	Value string `json:"value"`
 }
 
 type AssetOptionFieldID = string
@@ -1292,7 +1285,7 @@ type AtlasID = string
 
 type AtlasIDWildcard = string
 
-// Challenge rank, represented as an integer.
+// Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
 type ChallengeRank = uint8
 
 // Describes a standard player character condition meter.
@@ -1323,16 +1316,6 @@ type ConditionMeterRuleID = string
 // A CSS color value. See: https://developer.mozilla.org/en-
 // US/docs/Web/CSS/color_value
 type CSSColor = string
-
-type DelveCardType string
-
-const (
-// A delve site domain card.
-	DelveCardTypeDomain DelveCardType = "domain"
-
-// A delve site theme card.
-	DelveCardTypeTheme DelveCardType = "theme"
-)
 
 // A delve site with a theme, domain, and denizen table.
 type DelveSite struct {
@@ -1405,17 +1388,7 @@ const (
 
 type DelveSiteDenizenID = string
 
-// A delve site domain card.
-type DelveSiteDomainCardType string
-
-const (
-	DelveSiteDomainCardTypeDomain DelveSiteDomainCardType = "domain"
-)
-
 type DelveSiteDomain struct {
-	// A delve site domain card.
-	CardType DelveSiteDomainCardType `json:"card_type"`
-
 	Dangers []DelveSiteDomainDangerRow `json:"dangers"`
 
 	Features []DelveSiteDomainFeatureRow `json:"features"`
@@ -1512,17 +1485,7 @@ type DelveSiteDomainID = string
 
 type DelveSiteID = string
 
-// A delve site theme card.
-type DelveSiteThemeCardType string
-
-const (
-	DelveSiteThemeCardTypeTheme DelveSiteThemeCardType = "theme"
-)
-
 type DelveSiteTheme struct {
-	// A delve site theme card.
-	CardType DelveSiteThemeCardType `json:"card_type"`
-
 	Dangers []DelveSiteThemeDangerRow `json:"dangers"`
 
 	Features []DelveSiteThemeFeatureRow `json:"features"`
@@ -2237,16 +2200,12 @@ type OracleCollectionRendering struct {
 	Style string
 
 	MultiTable OracleCollectionRenderingMultiTable
-
-	Tables OracleCollectionRenderingTables
 }
 
 func (v OracleCollectionRendering) MarshalJSON() ([]byte, error) {
 	switch v.Style {
 	case "multi_table":
 		return json.Marshal(struct { T string `json:"style"`; OracleCollectionRenderingMultiTable }{ v.Style, v.MultiTable })
-	case "tables":
-		return json.Marshal(struct { T string `json:"style"`; OracleCollectionRenderingTables }{ v.Style, v.Tables })
 	}
 
 	return nil, fmt.Errorf("bad Style value: %s", v.Style)
@@ -2262,8 +2221,6 @@ func (v *OracleCollectionRendering) UnmarshalJSON(b []byte) error {
 	switch t.T {
 	case "multi_table":
 		err = json.Unmarshal(b, &v.MultiTable)
-	case "tables":
-		err = json.Unmarshal(b, &v.Tables)
 	default:
 		err = fmt.Errorf("bad Style value: %s", t.T)
 	}
@@ -2278,9 +2235,6 @@ func (v *OracleCollectionRendering) UnmarshalJSON(b []byte) error {
 
 type OracleCollectionRenderingMultiTable struct {
 	Columns map[string]OracleCollectionTableColumn `json:"columns"`
-}
-
-type OracleCollectionRenderingTables struct {
 }
 
 type OracleCollectionStyle string
@@ -2342,6 +2296,8 @@ type OracleTable struct {
 	Source Source `json:"source"`
 
 	Table []OracleTableRow `json:"table"`
+
+	I18n *I18nHints `json:"_i18n,omitempty"`
 
 	// The name of this item as it appears on the page in the book, if it's
 	// different from `name`.
@@ -2419,19 +2375,11 @@ type OracleTableMatchBehavior struct {
 type OracleTableRendering struct {
 	Style string
 
-	Column OracleTableRenderingColumn
-
-	EmbedInRow OracleTableRenderingEmbedInRow
-
 	Standalone OracleTableRenderingStandalone
 }
 
 func (v OracleTableRendering) MarshalJSON() ([]byte, error) {
 	switch v.Style {
-	case "column":
-		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingColumn }{ v.Style, v.Column })
-	case "embed_in_row":
-		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingEmbedInRow }{ v.Style, v.EmbedInRow })
 	case "standalone":
 		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingStandalone }{ v.Style, v.Standalone })
 	}
@@ -2447,10 +2395,6 @@ func (v *OracleTableRendering) UnmarshalJSON(b []byte) error {
 
 	var err error
 	switch t.T {
-	case "column":
-		err = json.Unmarshal(b, &v.Column)
-	case "embed_in_row":
-		err = json.Unmarshal(b, &v.EmbedInRow)
 	case "standalone":
 		err = json.Unmarshal(b, &v.Standalone)
 	default:
@@ -2463,12 +2407,6 @@ func (v *OracleTableRendering) UnmarshalJSON(b []byte) error {
 
 	v.Style = t.T
 	return nil
-}
-
-type OracleTableRenderingColumn struct {
-}
-
-type OracleTableRenderingEmbedInRow struct {
 }
 
 type OracleTableRenderingStandalone struct {
@@ -2511,13 +2449,11 @@ type OracleTableRow struct {
 	// The unique Datasworn ID for this item.
 	ID OracleTableRowID `json:"id"`
 
-	// High end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
-	Max *int16 `json:"max"`
+	// High end of the dice range for this table row.
+	Max int16 `json:"max"`
 
-	// Low end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
-	Min *int16 `json:"min"`
+	// Low end of the dice range for this table row.
+	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
 
@@ -2619,15 +2555,12 @@ type ProgressRollOption struct {
 	Using ProgressRollOptionUsing `json:"using"`
 }
 
-type ProgressTrackTypeInfoControl struct {
-}
-
 // Describes the features of a type of progress track.
 type ProgressTrackTypeInfo struct {
 	// A category label for progress tracks of this type.
 	Category Label `json:"category"`
 
-	Controls map[string]ProgressTrackTypeInfoControl `json:"controls,omitempty"`
+	Controls map[string]interface{} `json:"controls,omitempty"`
 }
 
 // A rarity, as described in Ironsworn: Delve.
@@ -2706,13 +2639,7 @@ type Source struct {
 	// Required because it's used to determine whether the data needs updating.
 	Date string `json:"date"`
 
-	// An absolute URL pointing to the location where this element's license can
-	// be found.
-	// 
-	// A `null` here indicates that the content provides **no** license, and is
-	// not intended for redistribution.  Datasworn's build process skips unlicensed
-	// content by default.
-	License *string `json:"license"`
+	License string `json:"license"`
 
 	// The title of the source document.
 	Title string `json:"title"`
@@ -2844,10 +2771,7 @@ type TriggerActionRollCondition struct {
 }
 
 type TriggerActionRollConditionEnhancement struct {
-	// A `null` value means this condition provides no roll mechanic of its own;
-	// it must be used with another trigger condition that provides a non-null
-	// `method`.
-	Method *ActionRollMethod `json:"method"`
+	Method ActionRollMethod `json:"method"`
 
 	// The options available when rolling with this trigger condition.
 	RollOptions []ActionRollOption `json:"roll_options"`
@@ -2914,10 +2838,7 @@ type TriggerProgressRollCondition struct {
 }
 
 type TriggerProgressRollConditionEnhancement struct {
-	// A `null` value means this condition provides no roll mechanic of its own;
-	// it must be used with another trigger condition that provides a non-null
-	// `method`.
-	Method *ProgressRollMethod `json:"method"`
+	Method ProgressRollMethod `json:"method"`
 
 	// The options available when rolling with this trigger condition.
 	RollOptions []ProgressRollOption `json:"roll_options"`
@@ -2957,10 +2878,7 @@ type TriggerSpecialTrackCondition struct {
 // A progress move that rolls on one or more special tracks, like Bonds (classic
 // Ironsworn), Failure (Delve), or Legacy (Starforged).
 type TriggerSpecialTrackConditionEnhancement struct {
-	// A `null` value means this condition provides no roll mechanic of its own;
-	// it must be used with another trigger condition that provides a non-null
-	// `method`.
-	Method *SpecialTrackRollMethod `json:"method"`
+	Method SpecialTrackRollMethod `json:"method"`
 
 	// The options available when rolling with this trigger condition.
 	RollOptions []TriggerSpecialTrackConditionOption `json:"roll_options"`
@@ -3026,13 +2944,11 @@ type TruthOption struct {
 type TruthOptionID = string
 
 type TruthOptionTableRow struct {
-	// High end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
-	Max *int16 `json:"max"`
+	// High end of the dice range for this table row.
+	Max int16 `json:"max"`
 
-	// Low end of the dice range for this table row. `null` represents an
-	// unrollable row, included only for rendering purposes.
-	Min *int16 `json:"min"`
+	// Low end of the dice range for this table row.
+	Min int16 `json:"min"`
 
 	Result MarkdownString `json:"result"`
 

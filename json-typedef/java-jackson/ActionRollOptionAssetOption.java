@@ -19,9 +19,6 @@ public class ActionRollOptionAssetOption extends ActionRollOption {
 
     /**
      * Getter for assets.<p>
-     * Asset IDs (which may be wildcarded) that provide the option field. For
-     * asset ability enhancements, `null` is used to represent the asset's own
-     * option fields.
      */
     public List<AssetIdWildcard> getAssets() {
         return assets;
@@ -29,9 +26,6 @@ public class ActionRollOptionAssetOption extends ActionRollOption {
 
     /**
      * Setter for assets.<p>
-     * Asset IDs (which may be wildcarded) that provide the option field. For
-     * asset ability enhancements, `null` is used to represent the asset's own
-     * option fields.
      */
     public void setAssets(List<AssetIdWildcard> assets) {
         this.assets = assets;

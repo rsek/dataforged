@@ -12,93 +12,93 @@
 			"ref": "Rules"
 		},
 		"oracles": {
+			"values": {
+				"ref": "OracleCollection"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections."
-			},
-			"values": {
-				"ref": "OracleCollection"
 			}
 		},
 		"moves": {
+			"values": {
+				"ref": "MoveCategory"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing move categories, which contain moves."
-			},
-			"values": {
-				"ref": "MoveCategory"
 			}
 		},
 		"assets": {
+			"values": {
+				"ref": "AssetType"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing asset types, which contain assets."
-			},
-			"values": {
-				"ref": "AssetType"
 			}
 		},
 		"atlas": {
+			"values": {
+				"ref": "Atlas"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing atlas collections, which contain atlas entries."
-			},
-			"values": {
-				"ref": "Atlas"
 			}
 		},
 		"npcs": {
+			"values": {
+				"ref": "NpcCollection"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing NPC collections, which contain NPCs."
-			},
-			"values": {
-				"ref": "NpcCollection"
 			}
 		},
 		"truths": {
+			"values": {
+				"ref": "Truth"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object of truth categories."
-			},
-			"values": {
-				"ref": "Truth"
 			}
 		},
 		"rarities": {
+			"values": {
+				"ref": "Rarity"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve."
-			},
-			"values": {
-				"ref": "Rarity"
 			}
 		},
 		"delve_sites": {
+			"values": {
+				"ref": "DelveSite"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve"
-			},
-			"values": {
-				"ref": "DelveSite"
 			}
 		},
 		"site_themes": {
+			"values": {
+				"ref": "DelveSiteTheme"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing delve site themes."
-			},
-			"values": {
-				"ref": "DelveSiteTheme"
 			}
 		},
 		"site_domains": {
+			"values": {
+				"ref": "DelveSiteDomain"
+			},
 			"metadata": {
 				"propertyPattern": "^([a-z][a-z_]*)$",
 				"description": "A dictionary object containing delve site domains."
-			},
-			"values": {
-				"ref": "DelveSiteDomain"
 			}
 		}
 	},
@@ -523,9 +523,7 @@
 							]
 						}
 					},
-					"metadata": {
-						"minItems": 1
-					}
+					"metadata": {}
 				},
 				"date": {
 					"type": "string",
@@ -547,22 +545,15 @@
 				"license": {
 					"type": "string",
 					"metadata": {
-						"format": "uri",
-						"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
-						"examples": [
-							"https://creativecommons.org/licenses/by/4.0",
-							"https://creativecommons.org/licenses/by-nc-sa/4.0"
-						]
-					},
-					"nullable": true
+						"format": "uri"
+					}
 				}
 			},
 			"optionalProperties": {
 				"page": {
 					"type": "int16",
 					"metadata": {
-						"description": "The page number where this item is described in full.",
-						"minimum": 1
+						"description": "The page number where this item is described in full."
 					}
 				}
 			},
@@ -571,7 +562,6 @@
 			}
 		},
 		"Suggestions": {
-			"properties": {},
 			"optionalProperties": {
 				"oracles": {
 					"elements": {
@@ -632,7 +622,6 @@
 			}
 		},
 		"I18nHint": {
-			"properties": {},
 			"optionalProperties": {
 				"part_of_speech": {
 					"ref": "PartOfSpeech"
@@ -640,7 +629,6 @@
 			}
 		},
 		"I18nHints": {
-			"properties": {},
 			"optionalProperties": {
 				"result": {
 					"ref": "I18nHint"
@@ -652,7 +640,6 @@
 					"ref": "I18nHint"
 				},
 				"template": {
-					"properties": {},
 					"optionalProperties": {
 						"result": {
 							"ref": "I18nHint"
@@ -769,12 +756,12 @@
 					}
 				},
 				"contents": {
+					"values": {
+						"ref": "ImpactRule"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "A dictionary object of the Impacts in this category."
-					},
-					"values": {
-						"ref": "ImpactRule"
 					}
 				}
 			},
@@ -824,39 +811,39 @@
 		"Rules": {
 			"properties": {
 				"stats": {
+					"values": {
+						"ref": "StatRule"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Describes the standard stats used by player characters in this ruleset."
-					},
-					"values": {
-						"ref": "StatRule"
 					}
 				},
 				"condition_meters": {
+					"values": {
+						"ref": "ConditionMeterRule"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Describes the standard condition meters used by player characters in this ruleset."
-					},
-					"values": {
-						"ref": "ConditionMeterRule"
 					}
 				},
 				"impacts": {
+					"values": {
+						"ref": "ImpactCategory"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Describes the standard impacts/debilities used by player characters in this ruleset."
-					},
-					"values": {
-						"ref": "ImpactCategory"
 					}
 				},
 				"special_tracks": {
+					"values": {
+						"ref": "SpecialTrackRule"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged)."
-					},
-					"values": {
-						"ref": "SpecialTrackRule"
 					}
 				}
 			},
@@ -923,7 +910,7 @@
 		"ChallengeRank": {
 			"type": "uint8",
 			"metadata": {
-				"description": "Challenge rank, represented as an integer.",
+				"description": "Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).",
 				"typescriptType": "1|2|3|4|5",
 				"enumDescription": {
 					"1": "Troublesome",
@@ -954,11 +941,9 @@
 			},
 			"optionalProperties": {
 				"controls": {
+					"values": {},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
-					"values": {
-						"properties": {}
 					}
 				}
 			},
@@ -1047,11 +1032,11 @@
 					"ref": "MarkdownString"
 				},
 				"variants": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "NpcVariant"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -1080,11 +1065,11 @@
 					}
 				},
 				"contents": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "Npc"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -1207,7 +1192,6 @@
 			}
 		},
 		"OracleRollTemplate": {
-			"properties": {},
 			"optionalProperties": {
 				"result": {
 					"ref": "TemplateString",
@@ -1243,7 +1227,6 @@
 			}
 		},
 		"OracleTableRoll": {
-			"properties": {},
 			"optionalProperties": {
 				"oracle": {
 					"ref": "OracleTableId",
@@ -1259,9 +1242,7 @@
 				},
 				"times": {
 					"type": "int16",
-					"metadata": {
-						"minimum": 1
-					}
+					"metadata": {}
 				},
 				"method": {
 					"ref": "OracleTableRollMethod"
@@ -1304,19 +1285,19 @@
 					}
 				},
 				"contents": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "OracleTable"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				},
 				"collections": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "OracleCollection"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -1382,17 +1363,14 @@
 		"OracleCollectionRendering": {
 			"discriminator": "style",
 			"mapping": {
-				"tables": {
-					"properties": {}
-				},
 				"multi_table": {
 					"properties": {
 						"columns": {
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
-							},
 							"values": {
 								"ref": "OracleCollectionTableColumn"
+							},
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
 					}
@@ -1485,6 +1463,9 @@
 				},
 				"suggestions": {
 					"ref": "Suggestions"
+				},
+				"_i18n": {
+					"ref": "I18nHints"
 				},
 				"icon": {
 					"ref": "SvgImageUrl",
@@ -1593,20 +1574,14 @@
 				"standalone": {
 					"properties": {
 						"columns": {
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
-							},
 							"values": {
 								"ref": "OracleTableColumn"
+							},
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
 					}
-				},
-				"column": {
-					"properties": {}
-				},
-				"embed_in_row": {
-					"properties": {}
 				}
 			},
 			"metadata": {
@@ -1627,16 +1602,14 @@
 				"min": {
 					"type": "int16",
 					"metadata": {
-						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"nullable": true
+						"description": "Low end of the dice range for this table row."
+					}
 				},
 				"max": {
 					"type": "int16",
 					"metadata": {
-						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"nullable": true
+						"description": "High end of the dice range for this table row."
+					}
 				}
 			},
 			"optionalProperties": {
@@ -1727,11 +1700,7 @@
 						"assets": {
 							"elements": {
 								"ref": "AssetIdWildcard"
-							},
-							"metadata": {
-								"description": "Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
-							},
-							"nullable": true
+							}
 						},
 						"control": {
 							"ref": "DictKey",
@@ -1750,11 +1719,7 @@
 						"assets": {
 							"elements": {
 								"ref": "AssetIdWildcard"
-							},
-							"metadata": {
-								"description": "Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
-							},
-							"nullable": true
+							}
 						},
 						"option": {
 							"ref": "DictKey",
@@ -1795,9 +1760,7 @@
 						},
 						"value": {
 							"type": "int16",
-							"metadata": {
-								"minimum": 0
-							}
+							"metadata": {}
 						}
 					}
 				}
@@ -2090,11 +2053,11 @@
 					}
 				},
 				"contents": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "Move"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -2159,7 +2122,6 @@
 			"discriminator": "roll_type",
 			"mapping": {
 				"action_roll": {
-					"properties": {},
 					"optionalProperties": {
 						"enhances": {
 							"elements": {
@@ -2172,7 +2134,6 @@
 					}
 				},
 				"no_roll": {
-					"properties": {},
 					"optionalProperties": {
 						"enhances": {
 							"elements": {
@@ -2185,7 +2146,6 @@
 					}
 				},
 				"progress_roll": {
-					"properties": {},
 					"optionalProperties": {
 						"enhances": {
 							"elements": {
@@ -2198,7 +2158,6 @@
 					}
 				},
 				"special_track": {
-					"properties": {},
 					"optionalProperties": {
 						"enhances": {
 							"elements": {
@@ -2360,11 +2319,7 @@
 		"TriggerActionRollConditionEnhancement": {
 			"properties": {
 				"method": {
-					"ref": "ActionRollMethod",
-					"metadata": {
-						"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`."
-					},
-					"nullable": true
+					"ref": "ActionRollMethod"
 				},
 				"roll_options": {
 					"elements": {
@@ -2372,8 +2327,7 @@
 					},
 					"metadata": {
 						"description": "The options available when rolling with this trigger condition."
-					},
-					"nullable": true
+					}
 				}
 			},
 			"optionalProperties": {
@@ -2422,13 +2376,11 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerNoRollCondition"
-					},
-					"nullable": true
+					}
 				}
 			}
 		},
 		"TriggerNoRollCondition": {
-			"properties": {},
 			"optionalProperties": {
 				"text": {
 					"ref": "MarkdownString",
@@ -2495,11 +2447,7 @@
 		"TriggerProgressRollConditionEnhancement": {
 			"properties": {
 				"method": {
-					"ref": "ProgressRollMethod",
-					"metadata": {
-						"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`."
-					},
-					"nullable": true
+					"ref": "ProgressRollMethod"
 				},
 				"roll_options": {
 					"elements": {
@@ -2507,8 +2455,7 @@
 					},
 					"metadata": {
 						"description": "The options available when rolling with this trigger condition."
-					},
-					"nullable": true
+					}
 				}
 			},
 			"optionalProperties": {
@@ -2577,11 +2524,7 @@
 		"TriggerSpecialTrackConditionEnhancement": {
 			"properties": {
 				"method": {
-					"ref": "SpecialTrackRollMethod",
-					"metadata": {
-						"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`."
-					},
-					"nullable": true
+					"ref": "SpecialTrackRollMethod"
 				},
 				"roll_options": {
 					"elements": {
@@ -2589,8 +2532,7 @@
 					},
 					"metadata": {
 						"description": "The options available when rolling with this trigger condition."
-					},
-					"nullable": true
+					}
 				}
 			},
 			"optionalProperties": {
@@ -2704,12 +2646,12 @@
 					}
 				},
 				"options": {
+					"values": {
+						"ref": "AssetOptionField"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset."
-					},
-					"values": {
-						"ref": "AssetOptionField"
 					}
 				},
 				"requirement": {
@@ -2719,12 +2661,12 @@
 					}
 				},
 				"controls": {
+					"values": {
+						"ref": "AssetControlField"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset."
-					},
-					"values": {
-						"ref": "AssetControlField"
 					}
 				},
 				"attachments": {
@@ -2756,30 +2698,30 @@
 					"ref": "Label"
 				},
 				"moves": {
+					"values": {
+						"ref": "Move"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Unique moves added by this asset ability."
-					},
-					"values": {
-						"ref": "Move"
 					}
 				},
 				"options": {
+					"values": {
+						"ref": "AssetAbilityOptionField"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Fields that are expected to be set once and remain the same through the life of the asset."
-					},
-					"values": {
-						"ref": "AssetAbilityOptionField"
 					}
 				},
 				"controls": {
+					"values": {
+						"ref": "AssetAbilityControlField"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Fields whose values are expected to change over the life of the asset."
-					},
-					"values": {
-						"ref": "AssetAbilityControlField"
 					}
 				},
 				"enhance_asset": {
@@ -2863,11 +2805,7 @@
 							}
 						},
 						"max": {
-							"type": "int16",
-							"metadata": {
-								"description": "The (inclusive) maximum value."
-							},
-							"nullable": true
+							"type": "int16"
 						}
 					}
 				},
@@ -2925,11 +2863,7 @@
 							}
 						},
 						"value": {
-							"type": "string",
-							"metadata": {
-								"description": "The content of this text input, or `null` if it's empty"
-							},
-							"nullable": true
+							"type": "string"
 						}
 					}
 				}
@@ -2947,11 +2881,7 @@
 				},
 				"max": {
 					"type": "int16",
-					"metadata": {
-						"minimum": 1,
-						"description": "Null if there's no upper limit to the number of attached assets."
-					},
-					"nullable": true
+					"metadata": {}
 				}
 			},
 			"metadata": {
@@ -3072,7 +3002,6 @@
 					},
 					"optionalProperties": {
 						"moves": {
-							"properties": {},
 							"optionalProperties": {
 								"suffer": {
 									"elements": {
@@ -3112,12 +3041,12 @@
 							}
 						},
 						"controls": {
+							"values": {
+								"ref": "AssetConditionMeterControlField"
+							},
 							"metadata": {
 								"propertyPattern": "^([a-z][a-z_]*)$",
 								"description": "Checkbox controls rendered as part of the condition meter."
-							},
-							"values": {
-								"ref": "AssetConditionMeterControlField"
 							}
 						}
 					}
@@ -3139,14 +3068,10 @@
 						"value": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The current value of this input."
-							},
-							"nullable": true
+								"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected."
+							}
 						},
 						"choices": {
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
-							},
 							"values": {
 								"discriminator": "option_type",
 								"mapping": {
@@ -3159,7 +3084,6 @@
 												}
 											},
 											"value": {
-												"properties": {},
 												"optionalProperties": {
 													"enhance_asset": {
 														"ref": "AssetEnhancement"
@@ -3193,9 +3117,6 @@
 												}
 											},
 											"choices": {
-												"metadata": {
-													"propertyPattern": "^([a-z][a-z_]*)$"
-												},
 												"values": {
 													"properties": {
 														"option_type": {
@@ -3210,7 +3131,6 @@
 															}
 														},
 														"value": {
-															"properties": {},
 															"optionalProperties": {
 																"enhance_asset": {
 																	"ref": "AssetEnhancement"
@@ -3237,11 +3157,17 @@
 													"metadata": {
 														"description": "Represents an option in a list of choices."
 													}
+												},
+												"metadata": {
+													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
 										}
 									}
 								}
+							},
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
 					}
@@ -3332,15 +3258,14 @@
 			}
 		},
 		"AssetEnhancement": {
-			"properties": {},
 			"optionalProperties": {
 				"controls": {
+					"values": {
+						"ref": "AssetControlFieldEnhancement"
+					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
 						"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset."
-					},
-					"values": {
-						"ref": "AssetControlFieldEnhancement"
 					}
 				},
 				"suggestions": {
@@ -3386,14 +3311,10 @@
 						"value": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The current value of this input."
-							},
-							"nullable": true
+								"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected."
+							}
 						},
 						"choices": {
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
-							},
 							"values": {
 								"discriminator": "option_type",
 								"mapping": {
@@ -3430,9 +3351,6 @@
 												}
 											},
 											"choices": {
-												"metadata": {
-													"propertyPattern": "^([a-z][a-z_]*)$"
-												},
 												"values": {
 													"properties": {
 														"option_type": {
@@ -3464,11 +3382,17 @@
 													"metadata": {
 														"description": "Represents an option in a list of choices."
 													}
+												},
+												"metadata": {
+													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
 										}
 									}
 								}
+							},
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
 					}
@@ -3490,14 +3414,10 @@
 						"value": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The current value of this input."
-							},
-							"nullable": true
+								"description": "The key of the currently selected choice from the `choices` property, or `null` if none is selected."
+							}
 						},
 						"choices": {
-							"metadata": {
-								"propertyPattern": "^([a-z][a-z_]*)$"
-							},
 							"values": {
 								"discriminator": "option_type",
 								"mapping": {
@@ -3510,7 +3430,6 @@
 												}
 											},
 											"value": {
-												"properties": {},
 												"optionalProperties": {
 													"enhance_asset": {
 														"ref": "AssetEnhancement"
@@ -3544,9 +3463,6 @@
 												}
 											},
 											"choices": {
-												"metadata": {
-													"propertyPattern": "^([a-z][a-z_]*)$"
-												},
 												"values": {
 													"properties": {
 														"option_type": {
@@ -3561,7 +3477,6 @@
 															}
 														},
 														"value": {
-															"properties": {},
 															"optionalProperties": {
 																"enhance_asset": {
 																	"ref": "AssetEnhancement"
@@ -3588,11 +3503,17 @@
 													"metadata": {
 														"description": "Represents an option in a list of choices."
 													}
+												},
+												"metadata": {
+													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
 										}
 									}
 								}
+							},
+							"metadata": {
+								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
 					}
@@ -3612,11 +3533,7 @@
 							}
 						},
 						"value": {
-							"type": "string",
-							"metadata": {
-								"description": "The content of this text input, or `null` if it's empty"
-							},
-							"nullable": true
+							"type": "string"
 						}
 					}
 				}
@@ -3643,11 +3560,11 @@
 					}
 				},
 				"contents": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "Asset"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -3796,16 +3713,14 @@
 				"min": {
 					"type": "int16",
 					"metadata": {
-						"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"nullable": true
+						"description": "Low end of the dice range for this table row."
+					}
 				},
 				"max": {
 					"type": "int16",
 					"metadata": {
-						"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
-					},
-					"nullable": true
+						"description": "High end of the dice range for this table row."
+					}
 				}
 			},
 			"optionalProperties": {
@@ -3859,19 +3774,19 @@
 					}
 				},
 				"contents": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "AtlasEntry"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				},
 				"collections": {
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					},
 					"values": {
 						"ref": "Atlas"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -4037,9 +3952,7 @@
 				"xp_cost": {
 					"type": "int16",
 					"metadata": {
-						"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
-						"maximum": 5,
-						"minimum": 3
+						"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity."
 					}
 				},
 				"description": {
@@ -4062,18 +3975,6 @@
 			},
 			"metadata": {
 				"description": "A rarity, as described in Ironsworn: Delve."
-			}
-		},
-		"DelveCardType": {
-			"enum": [
-				"theme",
-				"domain"
-			],
-			"metadata": {
-				"enumDescription": {
-					"theme": "A delve site theme card.",
-					"domain": "A delve site domain card."
-				}
 			}
 		},
 		"DelveSite": {
@@ -4206,16 +4107,6 @@
 				},
 				"summary": {
 					"ref": "MarkdownString"
-				},
-				"card_type": {
-					"metadata": {
-						"description": "A delve site domain card.",
-						"typescriptType": "DelveCardType.domain",
-						"csharpType": "DelveCardType.domain"
-					},
-					"enum": [
-						"domain"
-					]
 				},
 				"features": {
 					"elements": {
@@ -4383,16 +4274,6 @@
 				},
 				"summary": {
 					"ref": "MarkdownString"
-				},
-				"card_type": {
-					"metadata": {
-						"description": "A delve site theme card.",
-						"typescriptType": "DelveCardType.theme",
-						"csharpType": "DelveCardType.theme"
-					},
-					"enum": [
-						"theme"
-					]
 				},
 				"features": {
 					"elements": {

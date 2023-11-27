@@ -44,7 +44,7 @@ module Datasworn
   end
 
   class ActionRollOptionAssetControl < ActionRollOption
-    attr_accessor assets: Array[AssetIDWildcard]?
+    attr_accessor assets: Array[AssetIDWildcard]
     attr_accessor control: DictKey
 
     def self.from_json_data: (untyped) -> ActionRollOptionAssetControl
@@ -52,7 +52,7 @@ module Datasworn
   end
 
   class ActionRollOptionAssetOption < ActionRollOption
-    attr_accessor assets: Array[AssetIDWildcard]?
+    attr_accessor assets: Array[AssetIDWildcard]
     attr_accessor option: DictKey
 
     def self.from_json_data: (untyped) -> ActionRollOptionAssetOption
@@ -178,7 +178,7 @@ module Datasworn
   class AssetAbilityControlFieldCounter < AssetAbilityControlField
     attr_accessor id: AssetAbilityControlFieldID
     attr_accessor label: Label
-    attr_accessor max: Integer?
+    attr_accessor max: Integer
     attr_accessor min: Integer
     attr_accessor value: Integer
 
@@ -210,7 +210,7 @@ module Datasworn
   class AssetAbilityOptionFieldText < AssetAbilityOptionField
     attr_accessor id: AssetAbilityOptionFieldID
     attr_accessor label: Label
-    attr_accessor value: String?
+    attr_accessor value: String
 
     def self.from_json_data: (untyped) -> AssetAbilityOptionFieldText
     def to_json_data: () -> untyped
@@ -225,7 +225,7 @@ module Datasworn
 
   class AssetAttachment
     attr_accessor assets: Array[AssetIDWildcard]
-    attr_accessor max: Integer?
+    attr_accessor max: Integer
 
     def self.from_json_data: (untyped) -> AssetAttachment
     def to_json_data: () -> untyped
@@ -380,7 +380,7 @@ module Datasworn
     attr_accessor choices: Hash[String, AssetControlFieldSelectEnhancementChoice]
     attr_accessor id: AssetControlFieldID
     attr_accessor label: Label
-    attr_accessor value: DictKey?
+    attr_accessor value: DictKey
 
     def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancement
     def to_json_data: () -> untyped
@@ -509,7 +509,7 @@ module Datasworn
     attr_accessor choices: Hash[String, AssetOptionFieldSelectEnhancementChoice]
     attr_accessor id: AssetOptionFieldID
     attr_accessor label: Label
-    attr_accessor value: DictKey?
+    attr_accessor value: DictKey
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancement
     def to_json_data: () -> untyped
@@ -562,7 +562,7 @@ module Datasworn
     attr_accessor choices: Hash[String, AssetOptionFieldSelectStatChoice]
     attr_accessor id: AssetOptionFieldID
     attr_accessor label: Label
-    attr_accessor value: DictKey?
+    attr_accessor value: DictKey
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectStat
     def to_json_data: () -> untyped
@@ -571,7 +571,7 @@ module Datasworn
   class AssetOptionFieldText < AssetOptionField
     attr_accessor id: AssetOptionFieldID
     attr_accessor label: Label
-    attr_accessor value: String?
+    attr_accessor value: String
 
     def self.from_json_data: (untyped) -> AssetOptionFieldText
     def to_json_data: () -> untyped
@@ -714,16 +714,6 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class DelveCardType
-    attr_accessor value: String
-
-    DOMAIN: DelveCardType
-    THEME: DelveCardType
-
-    def self.from_json_data: (untyped) -> DelveCardType
-    def to_json_data: () -> untyped
-  end
-
   class DelveSite
     attr_accessor denizens: Array[DelveSiteDenizen]
     attr_accessor description: MarkdownString
@@ -775,17 +765,7 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class DelveSiteDomainCardType
-    attr_accessor value: String
-
-    DOMAIN: DelveSiteDomainCardType
-
-    def self.from_json_data: (untyped) -> DelveSiteDomainCardType
-    def to_json_data: () -> untyped
-  end
-
   class DelveSiteDomain
-    attr_accessor card_type: DelveSiteDomainCardType
     attr_accessor dangers: Array[DelveSiteDomainDangerRow]
     attr_accessor features: Array[DelveSiteDomainFeatureRow]
     attr_accessor id: DelveSiteDomainID
@@ -852,17 +832,7 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class DelveSiteThemeCardType
-    attr_accessor value: String
-
-    THEME: DelveSiteThemeCardType
-
-    def self.from_json_data: (untyped) -> DelveSiteThemeCardType
-    def to_json_data: () -> untyped
-  end
-
   class DelveSiteTheme
-    attr_accessor card_type: DelveSiteThemeCardType
     attr_accessor dangers: Array[DelveSiteThemeDangerRow]
     attr_accessor features: Array[DelveSiteThemeFeatureRow]
     attr_accessor id: DelveSiteThemeID
@@ -1348,12 +1318,6 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class OracleCollectionRenderingTables < OracleCollectionRendering
-
-    def self.from_json_data: (untyped) -> OracleCollectionRenderingTables
-    def to_json_data: () -> untyped
-  end
-
   class OracleCollectionStyle
     attr_accessor value: String
 
@@ -1389,6 +1353,7 @@ module Datasworn
     attr_accessor name: Label
     attr_accessor source: Source
     attr_accessor table: Array[OracleTableRow]
+    attr_accessor i18n: I18nHints?
     attr_accessor canonical_name: Label?
     attr_accessor description: MarkdownString?
     attr_accessor icon: SvgImageURL?
@@ -1452,18 +1417,6 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class OracleTableRenderingColumn < OracleTableRendering
-
-    def self.from_json_data: (untyped) -> OracleTableRenderingColumn
-    def to_json_data: () -> untyped
-  end
-
-  class OracleTableRenderingEmbedInRow < OracleTableRendering
-
-    def self.from_json_data: (untyped) -> OracleTableRenderingEmbedInRow
-    def to_json_data: () -> untyped
-  end
-
   class OracleTableRenderingStandalone < OracleTableRendering
     attr_accessor columns: Hash[String, OracleTableColumn]
 
@@ -1494,8 +1447,8 @@ module Datasworn
 
   class OracleTableRow
     attr_accessor id: OracleTableRowID
-    attr_accessor max: Integer?
-    attr_accessor min: Integer?
+    attr_accessor max: Integer
+    attr_accessor min: Integer
     attr_accessor result: MarkdownString
     attr_accessor description: MarkdownString?
     attr_accessor embed_table: OracleTableID?
@@ -1586,15 +1539,9 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class ProgressTrackTypeInfoControl
-
-    def self.from_json_data: (untyped) -> ProgressTrackTypeInfoControl
-    def to_json_data: () -> untyped
-  end
-
   class ProgressTrackTypeInfo
     attr_accessor category: Label
-    attr_accessor controls: Hash[String, ProgressTrackTypeInfoControl]?
+    attr_accessor controls: Hash[String, untyped]?
 
     def self.from_json_data: (untyped) -> ProgressTrackTypeInfo
     def to_json_data: () -> untyped
@@ -1644,7 +1591,7 @@ module Datasworn
   class Source
     attr_accessor authors: Array[SourceAuthor]
     attr_accessor date: String
-    attr_accessor license: String?
+    attr_accessor license: String
     attr_accessor title: String
     attr_accessor url: String
     attr_accessor page: Integer?
@@ -1768,8 +1715,8 @@ module Datasworn
   end
 
   class TriggerActionRollConditionEnhancement
-    attr_accessor method: ActionRollMethod?
-    attr_accessor roll_options: Array[ActionRollOption]?
+    attr_accessor method: ActionRollMethod
+    attr_accessor roll_options: Array[ActionRollOption]
     attr_accessor by: TriggerBy?
     attr_accessor text: MarkdownString?
 
@@ -1793,7 +1740,7 @@ module Datasworn
   end
 
   class TriggerNoRoll
-    attr_accessor conditions: Array[TriggerNoRollCondition]?
+    attr_accessor conditions: Array[TriggerNoRollCondition]
     attr_accessor text: MarkdownString
 
     def self.from_json_data: (untyped) -> TriggerNoRoll
@@ -1834,8 +1781,8 @@ module Datasworn
   end
 
   class TriggerProgressRollConditionEnhancement
-    attr_accessor method: ProgressRollMethod?
-    attr_accessor roll_options: Array[ProgressRollOption]?
+    attr_accessor method: ProgressRollMethod
+    attr_accessor roll_options: Array[ProgressRollOption]
     attr_accessor by: TriggerBy?
     attr_accessor text: MarkdownString?
 
@@ -1869,8 +1816,8 @@ module Datasworn
   end
 
   class TriggerSpecialTrackConditionEnhancement
-    attr_accessor method: SpecialTrackRollMethod?
-    attr_accessor roll_options: Array[TriggerSpecialTrackConditionOption]?
+    attr_accessor method: SpecialTrackRollMethod
+    attr_accessor roll_options: Array[TriggerSpecialTrackConditionOption]
     attr_accessor by: TriggerBy?
     attr_accessor text: MarkdownString?
 
@@ -1934,8 +1881,8 @@ module Datasworn
   end
 
   class TruthOptionTableRow
-    attr_accessor max: Integer?
-    attr_accessor min: Integer?
+    attr_accessor max: Integer
+    attr_accessor min: Integer
     attr_accessor result: MarkdownString
     attr_accessor description: MarkdownString?
     attr_accessor embed_table: OracleTableID?

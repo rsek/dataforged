@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"check": "tsc --project tsconfig.json --noEmit",
-		"build:jtd": "ts-node ./src/json-typedef/index.ts",
+		"build:jtd": "ts-node ./src/scripts/json-typedef/index.ts",
 		"build:tools": "tsc --project tsconfig.json ; tsc-alias -p tsconfig.json ./dist",
 		"build:schema": "ts-node ./src/scripts/schema/buildSchema.ts",
 		"build:io-types": "ts-node ./src/types/write-io-types.ts",

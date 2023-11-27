@@ -8,7 +8,7 @@ import {
 } from '@sinclair/typebox'
 import { escapeRegExp } from 'lodash-es'
 import { UnionOneOf } from './UnionOneOf.js'
-import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 
 const sep = escapeRegExp('/')
 const wc = escapeRegExp('*')

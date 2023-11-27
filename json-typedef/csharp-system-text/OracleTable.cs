@@ -35,6 +35,10 @@ namespace Datasworn
         [JsonPropertyName("table")]
         public IList<OracleTableRow> Table { get; set; }
 
+        [JsonPropertyName("_i18n")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public I18nHints? I18n { get; set; }
+
         /// <summary>
         /// The name of this item as it appears on the page in the book, if it's
         /// different from `name`.

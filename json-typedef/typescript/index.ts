@@ -101,13 +101,7 @@ export type ActionRollOption = ActionRollOptionAssetControl | ActionRollOptionAs
 
 export interface ActionRollOptionAssetControl {
   using: "asset_control";
-
-  /**
-   * Asset IDs (which may be wildcarded) that provide the control field. For
-   * asset ability enhancements, `null` is used to represent the asset's own
-   * control fields.
-   */
-  assets: (AssetIdWildcard[] | null);
+  assets: AssetIdWildcard[];
 
   /**
    * The key of the asset control field.
@@ -117,13 +111,7 @@ export interface ActionRollOptionAssetControl {
 
 export interface ActionRollOptionAssetOption {
   using: "asset_option";
-
-  /**
-   * Asset IDs (which may be wildcarded) that provide the option field. For
-   * asset ability enhancements, `null` is used to represent the asset's own
-   * option fields.
-   */
-  assets: (AssetIdWildcard[] | null);
+  assets: AssetIdWildcard[];
 
   /**
    * The key of the asset option field.
@@ -402,11 +390,7 @@ export interface AssetAbilityControlFieldCounter {
    * (e.g. with `aria-label` in HTML).
    */
   label: Label;
-
-  /**
-   * The (inclusive) maximum value.
-   */
-  max: (number | null);
+  max: number;
 
   /**
    * The (inclusive) minimum value.
@@ -439,11 +423,7 @@ export interface AssetAbilityOptionFieldText {
    * (e.g. with `aria-label` in HTML).
    */
   label: Label;
-
-  /**
-   * The content of this text input, or `null` if it's empty
-   */
-  value: (string | null);
+  value: string;
 }
 
 export type AssetAbilityOptionFieldId = string;
@@ -458,11 +438,7 @@ export interface AssetAttachment {
    * Asset IDs (which may be wildcards) that may be attached to this asset
    */
   assets: AssetIdWildcard[];
-
-  /**
-   * Null if there's no upper limit to the number of attached assets.
-   */
-  max: (number | null);
+  max: number;
 }
 
 /**
@@ -755,9 +731,10 @@ export interface AssetControlFieldSelectEnhancement {
   label: Label;
 
   /**
-   * The current value of this input.
+   * The key of the currently selected choice from the `choices` property, or
+   * `null` if none is selected.
    */
-  value: (DictKey | null);
+  value: DictKey;
 }
 
 export type AssetControlFieldEnhancement = AssetControlFieldEnhancementConditionMeter;
@@ -904,9 +881,10 @@ export interface AssetOptionFieldSelectEnhancement {
   label: Label;
 
   /**
-   * The current value of this input.
+   * The key of the currently selected choice from the `choices` property, or
+   * `null` if none is selected.
    */
-  value: (DictKey | null);
+  value: DictKey;
 }
 
 export type AssetOptionFieldSelectStatChoice = AssetOptionFieldSelectStatChoiceOption | AssetOptionFieldSelectStatChoiceOptionGroup;
@@ -986,9 +964,10 @@ export interface AssetOptionFieldSelectStat {
   label: Label;
 
   /**
-   * The current value of this input.
+   * The key of the currently selected choice from the `choices` property, or
+   * `null` if none is selected.
    */
-  value: (DictKey | null);
+  value: DictKey;
 }
 
 export interface AssetOptionFieldText {
@@ -1005,11 +984,7 @@ export interface AssetOptionFieldText {
    * (e.g. with `aria-label` in HTML).
    */
   label: Label;
-
-  /**
-   * The content of this text input, or `null` if it's empty
-   */
-  value: (string | null);
+  value: string;
 }
 
 export type AssetOptionFieldId = string;
@@ -1188,7 +1163,7 @@ export type AtlasId = string;
 export type AtlasIdWildcard = string;
 
 /**
- * Challenge rank, represented as an integer.
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  */
 export type ChallengeRank = 1|2|3|4|5;
 
@@ -1236,18 +1211,6 @@ export type ConditionMeterRuleId = string;
  * US/docs/Web/CSS/color_value
  */
 export type CssColor = string;
-
-export enum DelveCardType {
-  /**
-   * A delve site domain card.
-   */
-  Domain = "domain",
-
-  /**
-   * A delve site theme card.
-   */
-  Theme = "theme",
-}
 
 /**
  * A delve site with a theme, domain, and denizen table.
@@ -1324,10 +1287,6 @@ export enum DelveSiteDenizenFrequency {
 export type DelveSiteDenizenId = string;
 
 export interface DelveSiteDomain {
-  /**
-   * A delve site domain card.
-   */
-  card_type: DelveCardType.domain;
   dangers: DelveSiteDomainDangerRow[];
   features: DelveSiteDomainFeatureRow[];
 
@@ -1424,10 +1383,6 @@ export type DelveSiteDomainId = string;
 export type DelveSiteId = string;
 
 export interface DelveSiteTheme {
-  /**
-   * A delve site theme card.
-   */
-  card_type: DelveCardType.theme;
   dangers: DelveSiteThemeDangerRow[];
   features: DelveSiteThemeFeatureRow[];
 
@@ -2179,15 +2134,11 @@ export type OracleCollectionId = string;
  * Describes the presentation of this oracle collection, which might represent a
  * group of separate tables, or a single table with additional columns.
  */
-export type OracleCollectionRendering = OracleCollectionRenderingMultiTable | OracleCollectionRenderingTables;
+export type OracleCollectionRendering = OracleCollectionRenderingMultiTable;
 
 export interface OracleCollectionRenderingMultiTable {
   style: "multi_table";
   columns: { [key: string]: OracleCollectionTableColumn };
-}
-
-export interface OracleCollectionRenderingTables {
-  style: "tables";
 }
 
 export enum OracleCollectionStyle {
@@ -2272,6 +2223,7 @@ export interface OracleTable {
    */
   source: Source;
   table: OracleTableRow[];
+  _i18n?: I18nHints;
 
   /**
    * The name of this item as it appears on the page in the book, if it's
@@ -2374,15 +2326,7 @@ export interface OracleTableMatchBehavior {
 /**
  * Describes the presentation of this table.
  */
-export type OracleTableRendering = OracleTableRenderingColumn | OracleTableRenderingEmbedInRow | OracleTableRenderingStandalone;
-
-export interface OracleTableRenderingColumn {
-  style: "column";
-}
-
-export interface OracleTableRenderingEmbedInRow {
-  style: "embed_in_row";
-}
+export type OracleTableRendering = OracleTableRenderingStandalone;
 
 export interface OracleTableRenderingStandalone {
   style: "standalone";
@@ -2436,16 +2380,14 @@ export interface OracleTableRow {
   id: OracleTableRowId;
 
   /**
-   * High end of the dice range for this table row. `null` represents an
-   * unrollable row, included only for rendering purposes.
+   * High end of the dice range for this table row.
    */
-  max: (number | null);
+  max: number;
 
   /**
-   * Low end of the dice range for this table row. `null` represents an
-   * unrollable row, included only for rendering purposes.
+   * Low end of the dice range for this table row.
    */
-  min: (number | null);
+  min: number;
   result: MarkdownString;
   description?: MarkdownString;
   embed_table?: OracleTableId;
@@ -2566,9 +2508,6 @@ export interface ProgressRollOption {
   using: ProgressRollOptionUsing;
 }
 
-export interface ProgressTrackTypeInfoControl {
-}
-
 /**
  * Describes the features of a type of progress track.
  */
@@ -2577,7 +2516,7 @@ export interface ProgressTrackTypeInfo {
    * A category label for progress tracks of this type.
    */
   category: Label;
-  controls?: { [key: string]: ProgressTrackTypeInfoControl };
+  controls?: { [key: string]: any };
 }
 
 /**
@@ -2684,16 +2623,7 @@ export interface Source {
    * Required because it's used to determine whether the data needs updating.
    */
   date: string;
-
-  /**
-   * An absolute URL pointing to the location where this element's license can
-   * be found.
-   * 
-   * A `null` here indicates that the content provides **no** license, and
-   * is not intended for redistribution.  Datasworn's build process skips
-   * unlicensed content by default.
-   */
-  license: (string | null);
+  license: string;
 
   /**
    * The title of the source document.
@@ -2863,17 +2793,12 @@ export interface TriggerActionRollCondition {
 }
 
 export interface TriggerActionRollConditionEnhancement {
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own;
-   * it must be used with another trigger condition that provides a non-null
-   * `method`.
-   */
-  method: (ActionRollMethod | null);
+  method: ActionRollMethod;
 
   /**
    * The options available when rolling with this trigger condition.
    */
-  roll_options: (ActionRollOption[] | null);
+  roll_options: ActionRollOption[];
   by?: TriggerBy;
 
   /**
@@ -2896,7 +2821,7 @@ export interface TriggerBy {
 }
 
 export interface TriggerNoRoll {
-  conditions: (TriggerNoRollCondition[] | null);
+  conditions: TriggerNoRollCondition[];
 
   /**
    * A markdown string containing the primary trigger text for this move.
@@ -2948,17 +2873,12 @@ export interface TriggerProgressRollCondition {
 }
 
 export interface TriggerProgressRollConditionEnhancement {
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own;
-   * it must be used with another trigger condition that provides a non-null
-   * `method`.
-   */
-  method: (ProgressRollMethod | null);
+  method: ProgressRollMethod;
 
   /**
    * The options available when rolling with this trigger condition.
    */
-  roll_options: (ProgressRollOption[] | null);
+  roll_options: ProgressRollOption[];
   by?: TriggerBy;
 
   /**
@@ -3003,17 +2923,12 @@ export interface TriggerSpecialTrackCondition {
  * Ironsworn), Failure (Delve), or Legacy (Starforged).
  */
 export interface TriggerSpecialTrackConditionEnhancement {
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own;
-   * it must be used with another trigger condition that provides a non-null
-   * `method`.
-   */
-  method: (SpecialTrackRollMethod | null);
+  method: SpecialTrackRollMethod;
 
   /**
    * The options available when rolling with this trigger condition.
    */
-  roll_options: (TriggerSpecialTrackConditionOption[] | null);
+  roll_options: TriggerSpecialTrackConditionOption[];
   by?: TriggerBy;
 
   /**
@@ -3081,16 +2996,14 @@ export type TruthOptionId = string;
 
 export interface TruthOptionTableRow {
   /**
-   * High end of the dice range for this table row. `null` represents an
-   * unrollable row, included only for rendering purposes.
+   * High end of the dice range for this table row.
    */
-  max: (number | null);
+  max: number;
 
   /**
-   * Low end of the dice range for this table row. `null` represents an
-   * unrollable row, included only for rendering purposes.
+   * Low end of the dice range for this table row.
    */
-  min: (number | null);
+  min: number;
   result: MarkdownString;
   description?: MarkdownString;
   embed_table?: OracleTableId;

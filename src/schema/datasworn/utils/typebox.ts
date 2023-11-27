@@ -18,7 +18,7 @@ import {
 	type TString
 } from '@sinclair/typebox'
 import { isEmpty } from 'lodash-es'
-import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 import { type TUnionEnum } from './UnionEnum.js'
 import { type TDiscriminatedUnion } from './DiscriminatedUnion.js'
 import { type TNullable } from './Nullable.js'
@@ -123,7 +123,10 @@ export type TFuzzyString = TFuzzyRef<
 	TString | TLiteral<string> | TUnionEnum<string[]>
 >
 export type TFuzzyObject<Props extends TProperties = TProperties> = TFuzzyRef<
-	TObject<Props> | (TDiscriminatedUnion & { static: Static<TObject<Props>> })
+	| TObject<Props>
+	| (TDiscriminatedUnion<TObject[], string> & {
+			static: Static<TObject<Props>>
+	  })
 >
 export type TFuzzyNumber = TFuzzyRef<
 	TNumber | TInteger | TLiteral<number> | TUnionEnum<number[]>

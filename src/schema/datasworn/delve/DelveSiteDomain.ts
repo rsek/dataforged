@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { JsonTypeDef } from '../../../json-typedef/symbol.js'
-import { toJtdElements } from '../../../json-typedef/utils.js'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
+import { toJtdElements } from '../../../scripts/json-typedef/utils.js'
 import { Id, Localize, Metadata } from '../common/index.js'
 import { StaticRowPartial, TableRowMixin } from '../oracles/TableRow.js'
 import * as Generic from '../Generic.js'

@@ -1227,6 +1227,1306 @@
 				"url": "https://ironswornrpg.com"
 			}
 		},
+		"combat_talent": {
+			"id": "classic/collections/assets/combat_talent",
+			"name": "Combat Talent Assets",
+			"description": "*Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform [combat moves](id:classic/collections/moves/combat). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.\n\nCombat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.",
+			"contents": {
+				"archer": {
+					"id": "classic/assets/combat_talent/archer",
+					"name": "Archer",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a bow...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/archer/abilities/0",
+							"enabled": true,
+							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by taking a moment to aim, choose your approach and add +1.\n\n  * Trust your instincts: Roll +wits, and take +2 momentum on a strong hit.\n  * Line up your shot: Roll +edge, and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by taking a moment to aim and trust your instincts",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "wits"
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by taking a moment to aim and line up your shot",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "edge"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/archer/abilities/1",
+							"enabled": false,
+							"text": "Once per fight, when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash), you may take extra shots and suffer -1 supply (decide before rolling). When you do, reroll any dice. On a hit, inflict +2 harm and take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "if take extra shots and suffer -1 supply (decide before rolling, once per fight)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/archer/abilities/2",
+							"enabled": false,
+							"text": "When you [Resupply](id:classic/moves/adventure/resupply) by hunting, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/resupply"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by hunting",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 12,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"berserker": {
+					"id": "classic/assets/combat_talent/berserker",
+					"name": "Berserker",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you are clad only in animal pelts...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/berserker/abilities/0",
+							"enabled": true,
+							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) by embodying your wild nature, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/relationship/compel"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by embodying your wild nature",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/berserker/abilities/1",
+							"enabled": false,
+							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) by unleashing your rage (decide before rolling), inflict +1 harm on a hit. Then, choose one.\n\n  * Push yourself: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).\n  * Lose yourself: [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by unleashing your rage (decide before rolling)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/berserker/abilities/2",
+							"enabled": false,
+							"text": "When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, and your health is above 0, you may let the pain inflame your wildness (decide before rolling). If you then score a strong hit and choose to embrace the pain, take +momentum equal to your remaining health. A weak hit counts as a miss.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/suffer/endure_harm"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "in a fight, if you let the pain inflame your wildness (when your health is above 0)",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 12,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"brawler": {
+					"id": "classic/assets/combat_talent/brawler",
+					"name": "Brawler",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you are unarmed or fighting with a non-deadly weapon...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/brawler/abilities/0",
+							"enabled": true,
+							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +iron by engaging in close-quarters brawling (such as punching, tripping, or grappling), add +1. If you score a hit, you may also inflict 1 harm.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by engaging in close-quarters brawling (such as punching, tripping, or grappling)",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "iron"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/brawler/abilities/1",
+							"enabled": false,
+							"text": "When you use an unarmed attack or simple weapon to [Strike](id:classic/moves/combat/strike) with deadly intent, add +2 and inflict 2 harm on a hit (instead of 1). On a weak hit or miss, suffer -1 momentum (in addition to any other outcome of the move).",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/strike"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "When you use an unarmed attack or simple weapon with deadly intent",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/brawler/abilities/2",
+							"enabled": false,
+							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) or [Clash](id:classic/moves/combat/clash) against a brawling attack, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/adventure/face_danger",
+										"classic/moves/combat/clash"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "against a brawling attack",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 12,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"cutthroat": {
+					"id": "classic/assets/combat_talent/cutthroat",
+					"name": "Cutthroat",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a dagger or knife...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/cutthroat/abilities/0",
+							"enabled": true,
+							"text": "When you are in position to [Strike](id:classic/moves/combat/strike) at an unsuspecting foe, choose one (before rolling).\n\n  * Add +2 and take +1 momentum on a hit.\n  * Inflict +2 harm on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/strike"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "against an unspecting foe",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/cutthroat/abilities/1",
+							"enabled": false,
+							"text": "When you [Compel](id:classic/moves/relationship/compel) someone at the point of your blade, or when you rely on your blade to [Face Danger](id:classic/moves/adventure/face_danger), add +1.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/relationship/compel"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "someone at the point of your blade",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/face_danger"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "when you rely on your blade",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/cutthroat/abilities/2",
+							"enabled": false,
+							"text": "Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +shadow by performing a feint or misdirection, reroll any dice and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by performing a feint or misdirection",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "shadow"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 12,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"duelist": {
+					"id": "classic/assets/combat_talent/duelist",
+					"name": "Duelist",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a bladed weapon in each hand...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/duelist/abilities/0",
+							"enabled": true,
+							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash), you may add +2. If you do (decide before rolling), inflict +1 harm on a strong hit and count a weak hit as a miss.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									]
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/duelist/abilities/1",
+							"enabled": false,
+							"text": "Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge by making a bold display of your combat prowess, you may reroll any dice.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by making a bold display of your combat prowess (once per fight)",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "edge"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/duelist/abilities/2",
+							"enabled": false,
+							"text": "When you [Draw the Circle](id:classic/moves/relationship/draw_the_circle), choose one (before rolling).\n\n  * Add +2.\n  * Take +2 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/relationship/draw_the_circle"]
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 12,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"fletcher": {
+					"id": "classic/assets/combat_talent/fletcher",
+					"name": "Fletcher",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/fletcher/abilities/0",
+							"enabled": true,
+							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by crafting arrows of fine quality, add +1. Then, take +1 supply or +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by crafting arrows of fine quality",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/fletcher/abilities/1",
+							"enabled": false,
+							"text": "When you [Resupply](id:classic/moves/adventure/resupply) by recovering or gathering arrows after a battle, add +2.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/resupply"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by recovering or gathering arrows after a battle",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/fletcher/abilities/2",
+							"enabled": false,
+							"text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
+							"moves": {
+								"craft_arrow": {
+									"id": "classic/assets/combat_talent/fletcher/abilities/2/moves/craft_arrow",
+									"name": "Craft Arrow",
+									"roll_type": "action_roll",
+									"trigger": {
+										"text": "When you craft a single arrow designated for a specific foe...",
+										"conditions": [
+											{
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "wits"
+													}
+												]
+											}
+										]
+									},
+									"text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "On a **strong hit**, take both:\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
+										},
+										"weak_hit": {
+											"text": "On a **weak hit**, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
+										},
+										"miss": {
+											"text": "On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
+									}
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 12,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"ironclad": {
+					"id": "classic/assets/combat_talent/ironclad",
+					"name": "Ironclad",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wear armor...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/ironclad/abilities/0",
+							"enabled": true,
+							"text": "When you equip or adjust your armor, choose one.\n\n  * Lightly armored: When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +1 and take +1 momentum on a hit.\n  * Geared for war: Mark encumbered. When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +2 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/suffer/endure_harm"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In a fight while you are lightly armored",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/suffer/endure_harm"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In a fight while you are geared for war",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/ironclad/abilities/1",
+							"enabled": false,
+							"text": "When you [Clash](id:classic/moves/combat/clash) while you are geared for war, add +1.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/clash"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "While you are geared for war",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/ironclad/abilities/2",
+							"enabled": false,
+							"text": "When you [Compel](id:classic/moves/relationship/compel) in a situation where strength of arms is a factor, add +2.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/relationship/compel"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In a situation where strength of arms is a factor",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 12,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"long_arm": {
+					"id": "classic/assets/combat_talent/long_arm",
+					"name": "Long-Arm",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a staff...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/long_arm/abilities/0",
+							"enabled": true,
+							"text": "In your hands, a humble staff is a deadly weapon (2 harm). When you instead use it as a simple weapon (1 harm), you may [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) +edge (instead of iron). If you do, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "When you strike with a staff as a simple weapon",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "edge"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/long_arm/abilities/1",
+							"enabled": false,
+							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "Using your staff to disarm, trip, shove, or stun your foe",
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "edge"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/long_arm/abilities/2",
+							"enabled": false,
+							"text": "When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/undertake_a_journey"],
+									"trigger": {
+										"conditions": [
+											{
+												"by": {
+													"ally": true,
+													"player": true
+												},
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 14,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"shield_bearer": {
+					"id": "classic/assets/combat_talent/shield_bearer",
+					"name": "Shield-Bearer",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a shield...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/shield_bearer/abilities/0",
+							"enabled": true,
+							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) using your shield as cover, add +1. When you [Clash](id:classic/moves/combat/clash) in close quarters, take +1 momentum on a strong hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/face_danger"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "using your shield as cover",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								},
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/clash"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "in close quarters",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/shield_bearer/abilities/1",
+							"enabled": false,
+							"text": "When you paint your shield with a meaningful symbol, envision what you create. Then, if you [Endure Stress](id:classic/moves/suffer/endure_stress) as you face off against a fearsome foe, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/suffer/endure_stress"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "While your shield is painted with a meaningful symbol",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/shield_bearer/abilities/2",
+							"enabled": false,
+							"text": "When forced to [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, you may instead sacrifice your shield and ignore all harm. If you do, the shield is destroyed. Once per fight, you also take initiative when you sacrifice your shield to avoid harm.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/suffer/endure_harm"]
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 14,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"skirmisher": {
+					"id": "classic/assets/combat_talent/skirmisher",
+					"name": "Skirmisher",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a spear...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/skirmisher/abilities/0",
+							"enabled": true,
+							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) by holding a foe at bay using your spear’s reach, roll +iron or +edge. If you score a hit, you may...\n\n  * Iron: [Strike](id:classic/moves/combat/strike) (if you have initiative) or [Clash](id:classic/moves/combat/clash) now, and add +1.\n  * Edge: Take +1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/face_danger"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by holding a foe at bay using your spear's reach",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "iron"
+													},
+													{
+														"using": "stat",
+														"stat": "edge"
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/skirmisher/abilities/1",
+							"enabled": false,
+							"text": "When you [Strike](id:classic/moves/combat/strike) in close combat, you may attempt to drive your spear home (decide before rolling). If you do, add +1 and inflict +2 harm on a hit. If you score a hit and the fight continues, [Face Danger](id:classic/moves/adventure/face_danger) +iron to recover your spear.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/strike"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "in close combat with your spear",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/skirmisher/abilities/2",
+							"enabled": false,
+							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by bracing your spear against a charging foe",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 14,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"slinger": {
+					"id": "classic/assets/combat_talent/slinger",
+					"name": "Slinger",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a sling...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/slinger/abilities/0",
+							"enabled": true,
+							"text": "When launched from a sling, a simple stone inflicts deadly harm (2 harm). When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) by barraging your foe with sling-bullets, inflict harm on a strong hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/enter_the_fray"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by barraging your foe with sling-bullets",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/slinger/abilities/1",
+							"enabled": false,
+							"text": "When you [Strike](id:classic/moves/combat/strike) by launching stones at an advancing foe, you may choose one (before rolling).\n\n  * Hold them back: Retain initiative on a weak hit, but inflict only 1 harm.\n  * Hit them hard: Inflict +1 harm on a hit, but suffer -1 momentum.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/strike"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by launching stones at an advancing foe",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/slinger/abilities/2",
+							"enabled": false,
+							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by preparing stones of a special quality or material, add +1. Then, take +1 momentum or +1 supply on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by preparing stones of a special quality or material",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 14,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"sunderer": {
+					"id": "classic/assets/combat_talent/sunderer",
+					"name": "Sunderer",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield an axe...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/sunderer/abilities/0",
+							"enabled": true,
+							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) in close quarters, you may suffer -1 momentum and inflict +1 harm on a hit (decide before rolling).",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "in close quarters with your axe",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/sunderer/abilities/1",
+							"enabled": false,
+							"text": "When you have your axe in hand, and use the promise of violence to [Compel](id:classic/moves/relationship/compel) or [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/relationship/compel",
+										"classic/moves/adventure/secure_an_advantage"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "when you have your axe in hand and use the promise of violence",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/sunderer/abilities/2",
+							"enabled": false,
+							"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
+							"moves": {
+								"carve_rune": {
+									"id": "classic/assets/combat_talent/sunderer/abilities/2/moves/carve_rune",
+									"name": "Carve Rune",
+									"roll_type": "action_roll",
+									"trigger": {
+										"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...",
+										"conditions": [
+											{
+												"method": "player_choice",
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "heart"
+													}
+												]
+											}
+										]
+									},
+									"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "On a **strong hit**, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
+										},
+										"weak_hit": {
+											"text": "On a **weak hit**, you succeed, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nInflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
+										},
+										"miss": {
+											"text": "On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
+									}
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 14,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"swordmaster": {
+					"id": "classic/assets/combat_talent/swordmaster",
+					"name": "Swordmaster",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a sword...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/swordmaster/abilities/0",
+							"enabled": true,
+							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) and burn momentum to improve your result, inflict +2 harm. If the fight continues, add +1 on your next move.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									]
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/swordmaster/abilities/1",
+							"enabled": false,
+							"text": "When you [Clash](id:classic/moves/combat/clash) and score a strong hit, add +1 if you immediately follow with a [Strike](id:classic/moves/combat/strike).",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/clash"]
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/swordmaster/abilities/2",
+							"enabled": false,
+							"text": "When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) by kneeling and grasping your sword’s blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm) in exchange for an additional +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by kneeling and grasping your sword's blade",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 14,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"thunder_bringer": {
+					"id": "classic/assets/combat_talent/thunder_bringer",
+					"name": "Thunder-Bringer",
+					"asset_type": "Combat Talent",
+					"count_as_impact": false,
+					"shared": false,
+					"requirement": "If you wield a mighty hammer...",
+					"abilities": [
+						{
+							"id": "classic/assets/combat_talent/thunder_bringer/abilities/0",
+							"enabled": true,
+							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger), [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), or [Compel](id:classic/moves/relationship/compel) by hitting or breaking an inanimate object, add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": [
+										"classic/moves/adventure/face_danger",
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/relationship/compel"
+									],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "by hitting or breaking an inanimate object",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/thunder_bringer/abilities/1",
+							"enabled": false,
+							"text": "When you [Strike](id:classic/moves/combat/strike) a foe to knock them back, stun them, or put them off balance, inflict 1 harm (instead of 2) and take +2 momentum on a hit. On a strong hit, you also create an opening and add +1 on your next move.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/strike"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "to knock a foe back, stun them, or put them off balance",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": "classic/assets/combat_talent/thunder_bringer/abilities/2",
+							"enabled": false,
+							"text": "When you [Turn the Tide](id:classic/moves/combat/turn_the_tide), you may [Strike](id:classic/moves/combat/strike) with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +2 harm on a strong hit, but count a weak hit as a miss.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["classic/moves/combat/turn_the_tide"]
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn Assets Master Set",
+						"date": "2019-06-05",
+						"page": 14,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"source": {
+				"title": "Ironsworn Rulebook",
+				"date": "2019-06-05",
+				"page": 40,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
 		"path": {
 			"id": "classic/collections/assets/path",
 			"name": "Path Assets",
@@ -4683,1306 +5983,6 @@
 						"title": "Ironsworn Assets Master Set",
 						"date": "2019-06-05",
 						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"source": {
-				"title": "Ironsworn Rulebook",
-				"date": "2019-06-05",
-				"page": 40,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"combat_talent": {
-			"id": "classic/collections/assets/combat_talent",
-			"name": "Combat Talent Assets",
-			"description": "*Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform [combat moves](id:classic/collections/moves/combat). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.\n\nCombat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.",
-			"contents": {
-				"archer": {
-					"id": "classic/assets/combat_talent/archer",
-					"name": "Archer",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a bow...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/archer/abilities/0",
-							"enabled": true,
-							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by taking a moment to aim, choose your approach and add +1.\n\n  * Trust your instincts: Roll +wits, and take +2 momentum on a strong hit.\n  * Line up your shot: Roll +edge, and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by taking a moment to aim and trust your instincts",
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "wits"
-													}
-												]
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by taking a moment to aim and line up your shot",
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "edge"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/archer/abilities/1",
-							"enabled": false,
-							"text": "Once per fight, when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash), you may take extra shots and suffer -1 supply (decide before rolling). When you do, reroll any dice. On a hit, inflict +2 harm and take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "if take extra shots and suffer -1 supply (decide before rolling, once per fight)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/archer/abilities/2",
-							"enabled": false,
-							"text": "When you [Resupply](id:classic/moves/adventure/resupply) by hunting, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/resupply"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by hunting",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"berserker": {
-					"id": "classic/assets/combat_talent/berserker",
-					"name": "Berserker",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you are clad only in animal pelts...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/berserker/abilities/0",
-							"enabled": true,
-							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) by embodying your wild nature, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/relationship/compel"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by embodying your wild nature",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/berserker/abilities/1",
-							"enabled": false,
-							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) by unleashing your rage (decide before rolling), inflict +1 harm on a hit. Then, choose one.\n\n  * Push yourself: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).\n  * Lose yourself: [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by unleashing your rage (decide before rolling)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/berserker/abilities/2",
-							"enabled": false,
-							"text": "When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, and your health is above 0, you may let the pain inflame your wildness (decide before rolling). If you then score a strong hit and choose to embrace the pain, take +momentum equal to your remaining health. A weak hit counts as a miss.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_harm"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "in a fight, if you let the pain inflame your wildness (when your health is above 0)",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"brawler": {
-					"id": "classic/assets/combat_talent/brawler",
-					"name": "Brawler",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you are unarmed or fighting with a non-deadly weapon...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/brawler/abilities/0",
-							"enabled": true,
-							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +iron by engaging in close-quarters brawling (such as punching, tripping, or grappling), add +1. If you score a hit, you may also inflict 1 harm.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by engaging in close-quarters brawling (such as punching, tripping, or grappling)",
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "iron"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/brawler/abilities/1",
-							"enabled": false,
-							"text": "When you use an unarmed attack or simple weapon to [Strike](id:classic/moves/combat/strike) with deadly intent, add +2 and inflict 2 harm on a hit (instead of 1). On a weak hit or miss, suffer -1 momentum (in addition to any other outcome of the move).",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/strike"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you use an unarmed attack or simple weapon with deadly intent",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/brawler/abilities/2",
-							"enabled": false,
-							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) or [Clash](id:classic/moves/combat/clash) against a brawling attack, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/face_danger",
-										"classic/moves/combat/clash"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "against a brawling attack",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"cutthroat": {
-					"id": "classic/assets/combat_talent/cutthroat",
-					"name": "Cutthroat",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a dagger or knife...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/cutthroat/abilities/0",
-							"enabled": true,
-							"text": "When you are in position to [Strike](id:classic/moves/combat/strike) at an unsuspecting foe, choose one (before rolling).\n\n  * Add +2 and take +1 momentum on a hit.\n  * Inflict +2 harm on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/strike"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "against an unspecting foe",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/cutthroat/abilities/1",
-							"enabled": false,
-							"text": "When you [Compel](id:classic/moves/relationship/compel) someone at the point of your blade, or when you rely on your blade to [Face Danger](id:classic/moves/adventure/face_danger), add +1.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/compel"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "someone at the point of your blade",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "when you rely on your blade",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/cutthroat/abilities/2",
-							"enabled": false,
-							"text": "Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +shadow by performing a feint or misdirection, reroll any dice and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by performing a feint or misdirection",
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "shadow"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"duelist": {
-					"id": "classic/assets/combat_talent/duelist",
-					"name": "Duelist",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a bladed weapon in each hand...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/duelist/abilities/0",
-							"enabled": true,
-							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash), you may add +2. If you do (decide before rolling), inflict +1 harm on a strong hit and count a weak hit as a miss.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									]
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/duelist/abilities/1",
-							"enabled": false,
-							"text": "Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge by making a bold display of your combat prowess, you may reroll any dice.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by making a bold display of your combat prowess (once per fight)",
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "edge"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/duelist/abilities/2",
-							"enabled": false,
-							"text": "When you [Draw the Circle](id:classic/moves/relationship/draw_the_circle), choose one (before rolling).\n\n  * Add +2.\n  * Take +2 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/draw_the_circle"]
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"fletcher": {
-					"id": "classic/assets/combat_talent/fletcher",
-					"name": "Fletcher",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/fletcher/abilities/0",
-							"enabled": true,
-							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by crafting arrows of fine quality, add +1. Then, take +1 supply or +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by crafting arrows of fine quality",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/fletcher/abilities/1",
-							"enabled": false,
-							"text": "When you [Resupply](id:classic/moves/adventure/resupply) by recovering or gathering arrows after a battle, add +2.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/resupply"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by recovering or gathering arrows after a battle",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/fletcher/abilities/2",
-							"enabled": false,
-							"text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
-							"moves": {
-								"craft_arrow": {
-									"id": "classic/assets/combat_talent/fletcher/abilities/2/moves/craft_arrow",
-									"name": "Craft Arrow",
-									"roll_type": "action_roll",
-									"trigger": {
-										"text": "When you craft a single arrow designated for a specific foe...",
-										"conditions": [
-											{
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "wits"
-													}
-												]
-											}
-										]
-									},
-									"text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
-									"outcomes": {
-										"strong_hit": {
-											"text": "On a **strong hit**, take both:\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
-										},
-										"weak_hit": {
-											"text": "On a **weak hit**, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
-										},
-										"miss": {
-											"text": "On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									}
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"ironclad": {
-					"id": "classic/assets/combat_talent/ironclad",
-					"name": "Ironclad",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wear armor...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/ironclad/abilities/0",
-							"enabled": true,
-							"text": "When you equip or adjust your armor, choose one.\n\n  * Lightly armored: When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +1 and take +1 momentum on a hit.\n  * Geared for war: Mark encumbered. When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +2 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_harm"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In a fight while you are lightly armored",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_harm"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In a fight while you are geared for war",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/ironclad/abilities/1",
-							"enabled": false,
-							"text": "When you [Clash](id:classic/moves/combat/clash) while you are geared for war, add +1.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/clash"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "While you are geared for war",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/ironclad/abilities/2",
-							"enabled": false,
-							"text": "When you [Compel](id:classic/moves/relationship/compel) in a situation where strength of arms is a factor, add +2.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/compel"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In a situation where strength of arms is a factor",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 12,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"long_arm": {
-					"id": "classic/assets/combat_talent/long_arm",
-					"name": "Long-Arm",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a staff...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/long_arm/abilities/0",
-							"enabled": true,
-							"text": "In your hands, a humble staff is a deadly weapon (2 harm). When you instead use it as a simple weapon (1 harm), you may [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) +edge (instead of iron). If you do, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you strike with a staff as a simple weapon",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "edge"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/long_arm/abilities/1",
-							"enabled": false,
-							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Using your staff to disarm, trip, shove, or stun your foe",
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "edge"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/long_arm/abilities/2",
-							"enabled": false,
-							"text": "When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/undertake_a_journey"],
-									"trigger": {
-										"conditions": [
-											{
-												"by": {
-													"ally": true,
-													"player": true
-												},
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 14,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"shield_bearer": {
-					"id": "classic/assets/combat_talent/shield_bearer",
-					"name": "Shield-Bearer",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a shield...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/shield_bearer/abilities/0",
-							"enabled": true,
-							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) using your shield as cover, add +1. When you [Clash](id:classic/moves/combat/clash) in close quarters, take +1 momentum on a strong hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "using your shield as cover",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/clash"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "in close quarters",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/shield_bearer/abilities/1",
-							"enabled": false,
-							"text": "When you paint your shield with a meaningful symbol, envision what you create. Then, if you [Endure Stress](id:classic/moves/suffer/endure_stress) as you face off against a fearsome foe, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_stress"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "While your shield is painted with a meaningful symbol",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/shield_bearer/abilities/2",
-							"enabled": false,
-							"text": "When forced to [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, you may instead sacrifice your shield and ignore all harm. If you do, the shield is destroyed. Once per fight, you also take initiative when you sacrifice your shield to avoid harm.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_harm"]
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 14,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"skirmisher": {
-					"id": "classic/assets/combat_talent/skirmisher",
-					"name": "Skirmisher",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a spear...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/skirmisher/abilities/0",
-							"enabled": true,
-							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) by holding a foe at bay using your spear’s reach, roll +iron or +edge. If you score a hit, you may...\n\n  * Iron: [Strike](id:classic/moves/combat/strike) (if you have initiative) or [Clash](id:classic/moves/combat/clash) now, and add +1.\n  * Edge: Take +1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by holding a foe at bay using your spear's reach",
-												"method": null,
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "iron"
-													},
-													{
-														"using": "stat",
-														"stat": "edge"
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/skirmisher/abilities/1",
-							"enabled": false,
-							"text": "When you [Strike](id:classic/moves/combat/strike) in close combat, you may attempt to drive your spear home (decide before rolling). If you do, add +1 and inflict +2 harm on a hit. If you score a hit and the fight continues, [Face Danger](id:classic/moves/adventure/face_danger) +iron to recover your spear.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/strike"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "in close combat with your spear",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/skirmisher/abilities/2",
-							"enabled": false,
-							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by bracing your spear against a charging foe",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 14,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"slinger": {
-					"id": "classic/assets/combat_talent/slinger",
-					"name": "Slinger",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a sling...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/slinger/abilities/0",
-							"enabled": true,
-							"text": "When launched from a sling, a simple stone inflicts deadly harm (2 harm). When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) by barraging your foe with sling-bullets, inflict harm on a strong hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/enter_the_fray"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by barraging your foe with sling-bullets",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/slinger/abilities/1",
-							"enabled": false,
-							"text": "When you [Strike](id:classic/moves/combat/strike) by launching stones at an advancing foe, you may choose one (before rolling).\n\n  * Hold them back: Retain initiative on a weak hit, but inflict only 1 harm.\n  * Hit them hard: Inflict +1 harm on a hit, but suffer -1 momentum.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/strike"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by launching stones at an advancing foe",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/slinger/abilities/2",
-							"enabled": false,
-							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by preparing stones of a special quality or material, add +1. Then, take +1 momentum or +1 supply on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by preparing stones of a special quality or material",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 14,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"sunderer": {
-					"id": "classic/assets/combat_talent/sunderer",
-					"name": "Sunderer",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield an axe...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/sunderer/abilities/0",
-							"enabled": true,
-							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) in close quarters, you may suffer -1 momentum and inflict +1 harm on a hit (decide before rolling).",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "in close quarters with your axe",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/sunderer/abilities/1",
-							"enabled": false,
-							"text": "When you have your axe in hand, and use the promise of violence to [Compel](id:classic/moves/relationship/compel) or [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/relationship/compel",
-										"classic/moves/adventure/secure_an_advantage"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "when you have your axe in hand and use the promise of violence",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/sunderer/abilities/2",
-							"enabled": false,
-							"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-							"moves": {
-								"carve_rune": {
-									"id": "classic/assets/combat_talent/sunderer/abilities/2/moves/carve_rune",
-									"name": "Carve Rune",
-									"roll_type": "action_roll",
-									"trigger": {
-										"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...",
-										"conditions": [
-											{
-												"method": "player_choice",
-												"roll_options": [
-													{
-														"using": "stat",
-														"stat": "heart"
-													}
-												]
-											}
-										]
-									},
-									"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-									"outcomes": {
-										"strong_hit": {
-											"text": "On a **strong hit**, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
-										},
-										"weak_hit": {
-											"text": "On a **weak hit**, you succeed, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nInflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
-										},
-										"miss": {
-											"text": "On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									}
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 14,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"swordmaster": {
-					"id": "classic/assets/combat_talent/swordmaster",
-					"name": "Swordmaster",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a sword...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/swordmaster/abilities/0",
-							"enabled": true,
-							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) and burn momentum to improve your result, inflict +2 harm. If the fight continues, add +1 on your next move.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									]
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/swordmaster/abilities/1",
-							"enabled": false,
-							"text": "When you [Clash](id:classic/moves/combat/clash) and score a strong hit, add +1 if you immediately follow with a [Strike](id:classic/moves/combat/strike).",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/clash"]
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/swordmaster/abilities/2",
-							"enabled": false,
-							"text": "When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) by kneeling and grasping your sword’s blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm) in exchange for an additional +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by kneeling and grasping your sword's blade",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 14,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"thunder_bringer": {
-					"id": "classic/assets/combat_talent/thunder_bringer",
-					"name": "Thunder-Bringer",
-					"asset_type": "Combat Talent",
-					"count_as_impact": false,
-					"shared": false,
-					"requirement": "If you wield a mighty hammer...",
-					"abilities": [
-						{
-							"id": "classic/assets/combat_talent/thunder_bringer/abilities/0",
-							"enabled": true,
-							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger), [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), or [Compel](id:classic/moves/relationship/compel) by hitting or breaking an inanimate object, add +1 and take +1 momentum on a hit.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/face_danger",
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/relationship/compel"
-									],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by hitting or breaking an inanimate object",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/thunder_bringer/abilities/1",
-							"enabled": false,
-							"text": "When you [Strike](id:classic/moves/combat/strike) a foe to knock them back, stun them, or put them off balance, inflict 1 harm (instead of 2) and take +2 momentum on a hit. On a strong hit, you also create an opening and add +1 on your next move.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/strike"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "to knock a foe back, stun them, or put them off balance",
-												"method": null,
-												"roll_options": null
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"id": "classic/assets/combat_talent/thunder_bringer/abilities/2",
-							"enabled": false,
-							"text": "When you [Turn the Tide](id:classic/moves/combat/turn_the_tide), you may [Strike](id:classic/moves/combat/strike) with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +2 harm on a strong hit, but count a weak hit as a miss.",
-							"enhance_moves": [
-								{
-									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/turn_the_tide"]
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn Assets Master Set",
-						"date": "2019-06-05",
-						"page": 14,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"

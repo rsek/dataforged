@@ -17,7 +17,7 @@ public class ProgressTrackTypeInfo {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("controls")
-    private Map<String, ProgressTrackTypeInfoControl> controls;
+    private Map<String, Object> controls;
 
     public ProgressTrackTypeInfo() {
     }
@@ -41,14 +41,14 @@ public class ProgressTrackTypeInfo {
     /**
      * Getter for controls.<p>
      */
-    public Map<String, ProgressTrackTypeInfoControl> getControls() {
+    public Map<String, Object> getControls() {
         return controls;
     }
 
     /**
      * Setter for controls.<p>
      */
-    public void setControls(Map<String, ProgressTrackTypeInfoControl> controls) {
+    public void setControls(Map<String, Object> controls) {
         this.controls = controls;
     }
 }

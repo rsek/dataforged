@@ -10,12 +10,11 @@ import {
 	type TPick,
 	type TSchema
 } from '@sinclair/typebox'
-import { Value } from '@sinclair/typebox/value'
 import {
 	Discriminator,
 	JsonTypeDef,
 	Members
-} from '../../../json-typedef/symbol.js'
+} from '../../../scripts/json-typedef/symbol.js'
 import { type TUnionEnum, UnionEnum } from './UnionEnum.js'
 import { pick } from 'lodash-es'
 
@@ -43,7 +42,7 @@ export function DiscriminatedUnion<
 		}
 
 		// brand the original member so that JTD schema generation skips them -- they won't need their own definition
-		;;(member as any)[JsonTypeDef] ||= {}
+		;(member as any)[JsonTypeDef] ||= {}
 		;(member as any)[JsonTypeDef].skip = true
 
 		return result
@@ -84,34 +83,15 @@ function DiscriminatedUnionCheck(
 	value: unknown
 ) {
 	const discriminator = schema[Discriminator]
-	const members = schema[Members]
-	const mappingKeys = schema.properties[discriminator].enum
+	// const members = schema[Members]
+	const mapping = schema.properties[discriminator].enum
 
-	const validMapping = mappingKeys.every((mapping) =>
-		DiscriminatedUnionMappingCheck(members, discriminator, mapping)
-	)
+	// const memberSchema = UnionOneOf(members)
+	// const memberValidator = Value.Check()
 
-	return validMapping && mappingKeys.length === members.length
+	return (value as any[]).every((item) => mapping.includes(item[discriminator]))
 }
 
-/** Determine whether a given discriminator mapping matches exactly one schema */
-function DiscriminatedUnionMappingCheck(
-	schemas: TObject[],
-	discriminator: string,
-	mapping: string
-) {
-	const matchingSchemas = schemas.filter((schema) =>
-		Value.Check(
-			Type.Object(
-				{ [discriminator]: Type.Literal(mapping) },
-				{ additionalProperties: true }
-			),
-			schema
-		)
-	)
-
-	return matchingSchemas.length === 1
-}
 
 export function TDiscriminatedUnion<
 	T extends TDiscriminatedUnion<TObject[], string> = TDiscriminatedUnion<

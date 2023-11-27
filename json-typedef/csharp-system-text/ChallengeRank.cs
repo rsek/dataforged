@@ -7,7 +7,8 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// Challenge rank, represented as an integer.
+    /// Challenge rank, represented as an integer from 1 (troublesome) to
+    /// 5 (epic).
     /// </summary>
     [JsonConverter(typeof(ChallengeRankJsonConverter))]
     public class ChallengeRank

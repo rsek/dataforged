@@ -1,4 +1,4 @@
-import { exec } from 'child_process'
+import { ExecOptions, exec } from 'child_process'
 import { kebabCase } from 'lodash-es'
 import { type CamelCase } from 'type-fest'
 import Log from './scripts/utils/Log.js'
@@ -6,7 +6,8 @@ import Log from './scripts/utils/Log.js'
 export function shellify<T extends ShellCommandParams>({
 	command,
 	args = [],
-	options = {}
+	options = {},
+	execOptions = {}
 }: T) {
 	const substrings: string[] = [command, ...args.map((arg) => `"${arg}"`)]
 
@@ -18,7 +19,7 @@ export function shellify<T extends ShellCommandParams>({
 
 	// console.log(cmdString)
 
-	exec(cmdString, (error, stdout, stderr) => {
+	exec(cmdString, execOptions, (error, stdout, stderr) => {
 		if (error) {
 			Log.error(`error: ${error.message}`)
 			return
@@ -42,4 +43,5 @@ export type ShellCommandParams<
 	command: Command
 	args: Arguments
 	options: Options
+	execOptions: ExecOptions
 }

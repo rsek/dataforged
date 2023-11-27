@@ -12,1933 +12,6 @@
 	},
 	"id": "delve",
 	"oracles": {
-		"character": {
-			"id": "delve/collections/oracles/character",
-			"name": "Character",
-			"enhances": "classic/collections/oracles/character",
-			"rendering": {
-				"style": "tables"
-			},
-			"summary": "Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.",
-			"contents": {
-				"activity": {
-					"id": "delve/oracles/character/activity",
-					"name": "Activity",
-					"canonical_name": "Character: Activity",
-					"dice": "1d100",
-					"summary": "To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](id:delve/oracles/feature/focus) oracle or [Theme](id:classic/oracles/action_and_theme/theme) oracle.",
-					"suggestions": {
-						"oracles": [
-							"delve/oracles/feature/focus",
-							"classic/oracles/action_and_theme/theme"
-						]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/character/activity/1-2",
-							"min": 1,
-							"max": 2,
-							"result": "Guarding",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/3-4",
-							"min": 3,
-							"max": 4,
-							"result": "Preserving",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/5-6",
-							"min": 5,
-							"max": 6,
-							"result": "Constructing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/7-8",
-							"min": 7,
-							"max": 8,
-							"result": "Mending",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/9-10",
-							"min": 9,
-							"max": 10,
-							"result": "Assisting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/11-12",
-							"min": 11,
-							"max": 12,
-							"result": "Securing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/13-14",
-							"min": 13,
-							"max": 14,
-							"result": "Learning",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/15-16",
-							"min": 15,
-							"max": 16,
-							"result": "Sneaking",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/17-18",
-							"min": 17,
-							"max": 18,
-							"result": "Fleeing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/19-20",
-							"min": 19,
-							"max": 20,
-							"result": "Sacrificing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/21-22",
-							"min": 21,
-							"max": 22,
-							"result": "Creating",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/23-24",
-							"min": 23,
-							"max": 24,
-							"result": "Luring",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/25-26",
-							"min": 25,
-							"max": 26,
-							"result": "Hunting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/27-28",
-							"min": 27,
-							"max": 28,
-							"result": "Seizing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/29-30",
-							"min": 29,
-							"max": 30,
-							"result": "Bargaining",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/31-32",
-							"min": 31,
-							"max": 32,
-							"result": "Mimicking",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/33-34",
-							"min": 33,
-							"max": 34,
-							"result": "Tricking",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/35-36",
-							"min": 35,
-							"max": 36,
-							"result": "Tracking",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/37-38",
-							"min": 37,
-							"max": 38,
-							"result": "Escorting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/39-40",
-							"min": 39,
-							"max": 40,
-							"result": "Hiding",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/41-42",
-							"min": 41,
-							"max": 42,
-							"result": "Raiding",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/43-44",
-							"min": 43,
-							"max": 44,
-							"result": "Socializing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/45-46",
-							"min": 45,
-							"max": 46,
-							"result": "Exploring",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/47-48",
-							"min": 47,
-							"max": 48,
-							"result": "Journeying",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/49-50",
-							"min": 49,
-							"max": 50,
-							"result": "Supporting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/51-52",
-							"min": 51,
-							"max": 52,
-							"result": "Avoiding",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/53-54",
-							"min": 53,
-							"max": 54,
-							"result": "Disabling",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/55-56",
-							"min": 55,
-							"max": 56,
-							"result": "Leading",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/57-58",
-							"min": 57,
-							"max": 58,
-							"result": "Assaulting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/59-60",
-							"min": 59,
-							"max": 60,
-							"result": "Ensnaring",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/61-62",
-							"min": 61,
-							"max": 62,
-							"result": "Defending",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/63-64",
-							"min": 63,
-							"max": 64,
-							"result": "Recovering",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/65-66",
-							"min": 65,
-							"max": 66,
-							"result": "Patrolling",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/67-68",
-							"min": 67,
-							"max": 68,
-							"result": "Resting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/69-70",
-							"min": 69,
-							"max": 70,
-							"result": "Distracting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/71-72",
-							"min": 71,
-							"max": 72,
-							"result": "Leaving",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/73-74",
-							"min": 73,
-							"max": 74,
-							"result": "Fighting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/75-76",
-							"min": 75,
-							"max": 76,
-							"result": "Ambushing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/77-78",
-							"min": 77,
-							"max": 78,
-							"result": "Controlling",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/79-80",
-							"min": 79,
-							"max": 80,
-							"result": "Observing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/81-82",
-							"min": 81,
-							"max": 82,
-							"result": "Gathering",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/83-84",
-							"min": 83,
-							"max": 84,
-							"result": "Suffering",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/85-86",
-							"min": 85,
-							"max": 86,
-							"result": "Threatening",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/87-88",
-							"min": 87,
-							"max": 88,
-							"result": "Searching",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/89-90",
-							"min": 89,
-							"max": 90,
-							"result": "Destroying",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/91-92",
-							"min": 91,
-							"max": 92,
-							"result": "Restoring",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/93-94",
-							"min": 93,
-							"max": 94,
-							"result": "Consuming",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/95-96",
-							"min": 95,
-							"max": 96,
-							"result": "Removing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/97-98",
-							"min": 97,
-							"max": 98,
-							"result": "Inspecting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/activity/99-100",
-							"min": 99,
-							"max": 100,
-							"result": "Summoning",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 213,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"disposition": {
-					"id": "delve/oracles/character/disposition",
-					"name": "Disposition",
-					"canonical_name": "Character: Disposition",
-					"dice": "1d100",
-					"summary": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
-					"table": [
-						{
-							"id": "delve/oracles/character/disposition/1-6",
-							"min": 1,
-							"max": 6,
-							"result": "Helpful",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/7-13",
-							"min": 7,
-							"max": 13,
-							"result": "Friendly",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/14-20",
-							"min": 14,
-							"max": 20,
-							"result": "Cooperative",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/21-28",
-							"min": 21,
-							"max": 28,
-							"result": "Curious",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/29-36",
-							"min": 29,
-							"max": 36,
-							"result": "Indifferent",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/37-47",
-							"min": 37,
-							"max": 47,
-							"result": "Suspicious",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/48-57",
-							"min": 48,
-							"max": 57,
-							"result": "Wanting",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/58-67",
-							"min": 58,
-							"max": 67,
-							"result": "Desperate",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/68-76",
-							"min": 68,
-							"max": 76,
-							"result": "Demanding",
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/77-85",
-							"min": 77,
-							"max": 85,
-							"result": "Unfriendly",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/86-93",
-							"min": 86,
-							"max": 93,
-							"result": "Threatening",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/character/disposition/94-100",
-							"min": 94,
-							"max": 100,
-							"result": "Hostile",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 213,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"collections": {},
-			"source": {
-				"title": "Ironsworn: Delve",
-				"date": "2020-02-13",
-				"page": 213,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"combat_event": {
-			"id": "delve/collections/oracles/combat_event",
-			"name": "Combat Event",
-			"rendering": {
-				"style": "tables"
-			},
-			"summary": "Determine the actions of a character, creature, or force during a fight.",
-			"description": "Use the Combat Event oracles to answer questions about the actions of a foe or enemy force. You can use these oracles instead of—or in addition to—the [Combat Action](id:classic/oracles/turning_point/combat_action) oracle.\n\nRoll once each on the [Method](id:delve/oracles/combat_event/method) oracle and the [Target](id:delve/oracles/combat_event/target) oracle. Then, interpret the response as appropriate to the current situation and the nature of your foe.\n\nFor example, you are fighting a rhaskar, a bear-like beast. It has initiative, and you want to know what it does next. You [Ask the Oracle](id:classic/moves/fate/ask_the_oracle), rolling [Method](id:delve/oracles/combat_event/method) and [Target](id:delve/oracles/combat_event/target). The oracle responds, “Await Weakness.” You envision the rhaskar circling you, its keen eyes narrowing as it looks for an opening in your defenses. You must [Face Danger](id:classic/moves/adventure/face_danger) to avoid being outmaneuvered.",
-			"contents": {
-				"method": {
-					"id": "delve/oracles/combat_event/method",
-					"name": "Method",
-					"canonical_name": "Combat Event: Method",
-					"dice": "1d100",
-					"suggestions": {
-						"oracles": ["delve/oracles/combat_event/target"]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/combat_event/method/1-2",
-							"min": 1,
-							"max": 2,
-							"result": "Defy",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/3-4",
-							"min": 3,
-							"max": 4,
-							"result": "Break",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/5-6",
-							"min": 5,
-							"max": 6,
-							"result": "Trick",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/7-8",
-							"min": 7,
-							"max": 8,
-							"result": "Evade",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/9-10",
-							"min": 9,
-							"max": 10,
-							"result": "Protect",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/11-12",
-							"min": 11,
-							"max": 12,
-							"result": "Overwhelm",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/13-14",
-							"min": 13,
-							"max": 14,
-							"result": "Persevere",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/15-16",
-							"min": 15,
-							"max": 16,
-							"result": "Assist",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/17-18",
-							"min": 17,
-							"max": 18,
-							"result": "Await",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/19-20",
-							"min": 19,
-							"max": 20,
-							"result": "Abort",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/21-22",
-							"min": 21,
-							"max": 22,
-							"result": "Block",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/23-24",
-							"min": 23,
-							"max": 24,
-							"result": "Collide",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/25-26",
-							"min": 25,
-							"max": 26,
-							"result": "Focus",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/27-28",
-							"min": 27,
-							"max": 28,
-							"result": "Advance",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/29-30",
-							"min": 29,
-							"max": 30,
-							"result": "Breach",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/31-32",
-							"min": 31,
-							"max": 32,
-							"result": "Endure",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/33-34",
-							"min": 33,
-							"max": 34,
-							"result": "Assault",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/35-36",
-							"min": 35,
-							"max": 36,
-							"result": "Charge",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/37-38",
-							"min": 37,
-							"max": 38,
-							"result": "Escalate",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/39-40",
-							"min": 39,
-							"max": 40,
-							"result": "Sunder",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/41-42",
-							"min": 41,
-							"max": 42,
-							"result": "Shatter",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/43-44",
-							"min": 43,
-							"max": 44,
-							"result": "Aim",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/45-46",
-							"min": 45,
-							"max": 46,
-							"result": "Stagger",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/47-48",
-							"min": 47,
-							"max": 48,
-							"result": "Counter",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/49-50",
-							"min": 49,
-							"max": 50,
-							"result": "Seize",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/51-52",
-							"min": 51,
-							"max": 52,
-							"result": "Impact",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/53-54",
-							"min": 53,
-							"max": 54,
-							"result": "Entangle",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/55-56",
-							"min": 55,
-							"max": 56,
-							"result": "Hold",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/57-58",
-							"min": 57,
-							"max": 58,
-							"result": "Deflect",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/59-60",
-							"min": 59,
-							"max": 60,
-							"result": "Drop",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/61-62",
-							"min": 61,
-							"max": 62,
-							"result": "Lose",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/63-64",
-							"min": 63,
-							"max": 64,
-							"result": "Sweep",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/65-66",
-							"min": 65,
-							"max": 66,
-							"result": "Secure",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/67-68",
-							"min": 67,
-							"max": 68,
-							"result": "Cover",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/69-70",
-							"min": 69,
-							"max": 70,
-							"result": "Withdraw",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/71-72",
-							"min": 71,
-							"max": 72,
-							"result": "Clash",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/73-74",
-							"min": 73,
-							"max": 74,
-							"result": "Amplify",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/75-76",
-							"min": 75,
-							"max": 76,
-							"result": "Batter",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/77-78",
-							"min": 77,
-							"max": 78,
-							"result": "Feint",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/79-80",
-							"min": 79,
-							"max": 80,
-							"result": "Shove",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/81-82",
-							"min": 81,
-							"max": 82,
-							"result": "Embed",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/83-84",
-							"min": 83,
-							"max": 84,
-							"result": "Affect",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/85-86",
-							"min": 85,
-							"max": 86,
-							"result": "Probe",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/87-88",
-							"min": 87,
-							"max": 88,
-							"result": "Force",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/89-90",
-							"min": 89,
-							"max": 90,
-							"result": "Intensify",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/91-92",
-							"min": 91,
-							"max": 92,
-							"result": "Distract",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/93-94",
-							"min": 93,
-							"max": 94,
-							"result": "Challenge",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/95-96",
-							"min": 95,
-							"max": 96,
-							"result": "Brawl",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/97-98",
-							"min": 97,
-							"max": 98,
-							"result": "Coordinate",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/method/99-100",
-							"min": 99,
-							"max": 100,
-							"result": "Overrun",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 218,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"target": {
-					"id": "delve/oracles/combat_event/target",
-					"name": "Target",
-					"canonical_name": "Combat Event: Target",
-					"dice": "1d100",
-					"suggestions": {
-						"oracles": ["delve/oracles/combat_event/method"]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/combat_event/target/1-2",
-							"min": 1,
-							"max": 2,
-							"result": "Control",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/3-4",
-							"min": 3,
-							"max": 4,
-							"result": "Defense",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/5-6",
-							"min": 5,
-							"max": 6,
-							"result": "Limbs",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/7-8",
-							"min": 7,
-							"max": 8,
-							"result": "Focus",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/9-10",
-							"min": 9,
-							"max": 10,
-							"result": "Advantage",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/11-12",
-							"min": 11,
-							"max": 12,
-							"result": "Range",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/13-14",
-							"min": 13,
-							"max": 14,
-							"result": "Stress",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/15-16",
-							"min": 15,
-							"max": 16,
-							"result": "Sense",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/17-18",
-							"min": 17,
-							"max": 18,
-							"result": "Weakness",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/19-20",
-							"min": 19,
-							"max": 20,
-							"result": "Opening",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/21-22",
-							"min": 21,
-							"max": 22,
-							"result": "Fear",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/23-24",
-							"min": 23,
-							"max": 24,
-							"result": "Instinct",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/25-26",
-							"min": 25,
-							"max": 26,
-							"result": "Footing",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/27-28",
-							"min": 27,
-							"max": 28,
-							"result": "Maneuver",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/29-30",
-							"min": 29,
-							"max": 30,
-							"result": "Reach",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/31-32",
-							"min": 31,
-							"max": 32,
-							"result": "Harm",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/33-34",
-							"min": 33,
-							"max": 34,
-							"result": "Finesse",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/35-36",
-							"min": 35,
-							"max": 36,
-							"result": "Weapon",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/37-38",
-							"min": 37,
-							"max": 38,
-							"result": "Environment",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/39-40",
-							"min": 39,
-							"max": 40,
-							"result": "Technique",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/41-42",
-							"min": 41,
-							"max": 42,
-							"result": "Surprise",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/43-44",
-							"min": 43,
-							"max": 44,
-							"result": "Pride",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/45-46",
-							"min": 45,
-							"max": 46,
-							"result": "Wound",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/47-48",
-							"min": 47,
-							"max": 48,
-							"result": "Precision",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/49-50",
-							"min": 49,
-							"max": 50,
-							"result": "Ally",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/51-52",
-							"min": 51,
-							"max": 52,
-							"result": "Ground",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/53-54",
-							"min": 53,
-							"max": 54,
-							"result": "Courage",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/55-56",
-							"min": 55,
-							"max": 56,
-							"result": "Companion",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/57-58",
-							"min": 57,
-							"max": 58,
-							"result": "Object",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/59-60",
-							"min": 59,
-							"max": 60,
-							"result": "Momentum",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/61-62",
-							"min": 61,
-							"max": 62,
-							"result": "Speed",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/63-64",
-							"min": 63,
-							"max": 64,
-							"result": "Strength",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/65-66",
-							"min": 65,
-							"max": 66,
-							"result": "Supply",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/67-68",
-							"min": 67,
-							"max": 68,
-							"result": "Terrain",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/69-70",
-							"min": 69,
-							"max": 70,
-							"result": "Armor",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/71-72",
-							"min": 71,
-							"max": 72,
-							"result": "Skill",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/73-74",
-							"min": 73,
-							"max": 74,
-							"result": "Body",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/75-76",
-							"min": 75,
-							"max": 76,
-							"result": "Protection",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/77-78",
-							"min": 77,
-							"max": 78,
-							"result": "Resolve",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/79-80",
-							"min": 79,
-							"max": 80,
-							"result": "Ferocity",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/81-82",
-							"min": 81,
-							"max": 82,
-							"result": "Shield",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/83-84",
-							"min": 83,
-							"max": 84,
-							"result": "Ammo",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/85-86",
-							"min": 85,
-							"max": 86,
-							"result": "Anger",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/87-88",
-							"min": 87,
-							"max": 88,
-							"result": "Opportunity",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/89-90",
-							"min": 89,
-							"max": 90,
-							"result": "Balance",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/91-92",
-							"min": 91,
-							"max": 92,
-							"result": "Position",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/93-94",
-							"min": 93,
-							"max": 94,
-							"result": "Barrier",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/95-96",
-							"min": 95,
-							"max": 96,
-							"result": "Strategy",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/97-98",
-							"min": 97,
-							"max": 98,
-							"result": "Grasp",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/combat_event/target/99-100",
-							"min": 99,
-							"max": 100,
-							"result": "Power",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 219,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"collections": {},
-			"suggestions": {
-				"oracles": ["classic/oracles/turning_point/combat_action"]
-			},
-			"source": {
-				"title": "Ironsworn: Delve",
-				"date": "2020-02-13",
-				"page": 218,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
 		"feature": {
 			"id": "delve/collections/oracles/feature",
 			"name": "Feature",
@@ -3100,1285 +1173,6 @@
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
 				"page": 204,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"monstrosity": {
-			"id": "delve/collections/oracles/monstrosity",
-			"name": "Monstrosity",
-			"rendering": {
-				"style": "tables"
-			},
-			"summary": "Discover the nature of a [nightspawn](id:delve/npcs/horrors/nightspawn) or other frightful creature within your world.",
-			"description": "Use the Monstrosity oracle to define the nature of a [Nightspawn](id:delve/npcs/horrors/nightspawn), or to introduce a new type of [animal](id:classic/collections/npcs/animal), [beast](id:classic/collections/npcs/beast), or [horror](id:classic/collections/npcs/horror) in your world.\n\nTo create a monstrosity, start by rolling for its [Size](id:delve/oracles/monstrosity/size) and [Primary Form](id:delve/oracles/monstrosity/primary_form). Then, roll up to four times for [Characteristics](id:delve/oracles/monstrosity/characteristics) and keep up to three of those results. Do the same for [Abilities](id:delve/oracles/monstrosity/abilities).\n\nGive the monstrosity a rank. Choose one appropriate to its features, or use the [Challenge Rank](id:classic/oracles/turning_point/challenge_rank) oracle.\n\nFinally, envision your creation and give it a name. It’s part of your world now.\n\nSome results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.\n\nTo learn more about your creation’s nature, you can roll on additional tables. Use the [Character Goal](id:classic/oracles/character/goal) oracle to give the monstrosity a purpose. Roll on the [Character Disposition](id:classic/oracles/character/disposition) and [Activity](id:delve/oracles/character/activity) oracles to frame your initial encounter. Another roll or two can give your monstrosity nuance and complexity, making it a deeper part of your story.",
-			"contents": {
-				"size": {
-					"id": "delve/oracles/monstrosity/size",
-					"name": "Size",
-					"canonical_name": "Monstrosity: Size",
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/monstrosity/size/1-5",
-							"min": 1,
-							"max": 5,
-							"result": "Tiny (rodent-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/6-30",
-							"min": 6,
-							"max": 30,
-							"result": "Small (hound-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/31-65",
-							"min": 31,
-							"max": 65,
-							"result": "Medium (person-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/66-94",
-							"min": 66,
-							"max": 94,
-							"result": "Large (giant-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/95-99",
-							"min": 95,
-							"max": 99,
-							"result": "Huge (whale-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/100-100",
-							"min": 100,
-							"max": 100,
-							"result": "Titanic (incomprehensible)"
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 214,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"primary_form": {
-					"id": "delve/oracles/monstrosity/primary_form",
-					"name": "Primary Form",
-					"canonical_name": "Monstrosity: Primary Form",
-					"dice": "1d100",
-					"summary": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
-					"table": [
-						{
-							"id": "delve/oracles/monstrosity/primary_form/1-15",
-							"min": 1,
-							"max": 15,
-							"result": "Beast / mammal",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/16-25",
-							"min": 16,
-							"max": 25,
-							"result": "Humanoid",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/26-31",
-							"min": 26,
-							"max": 31,
-							"result": "Bird",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/32-37",
-							"min": 32,
-							"max": 37,
-							"result": "Spider",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/38-43",
-							"min": 38,
-							"max": 43,
-							"result": "Snake",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/44-49",
-							"min": 44,
-							"max": 49,
-							"result": "Worm / slug",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/50-55",
-							"min": 50,
-							"max": 55,
-							"result": "Lizard",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/56-61",
-							"min": 56,
-							"max": 61,
-							"result": "Insect",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/62-66",
-							"min": 62,
-							"max": 66,
-							"result": "Amorphous",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/67-69",
-							"min": 67,
-							"max": 69,
-							"result": "Crustacean",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/70-71",
-							"min": 70,
-							"max": 71,
-							"result": "Fish",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/72-73",
-							"min": 72,
-							"max": 73,
-							"result": "Octopoid",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/74-75",
-							"min": 74,
-							"max": 75,
-							"result": "Amphibian",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/76-77",
-							"min": 76,
-							"max": 77,
-							"result": "Plant",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/78-78",
-							"min": 78,
-							"max": 78,
-							"result": "Incorporeal",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/79-79",
-							"min": 79,
-							"max": 79,
-							"result": "Mineral",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/80-80",
-							"min": 80,
-							"max": 80,
-							"result": "Elemental",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/81-100",
-							"min": 81,
-							"max": 100,
-							"result": "Hybrid (roll twice)",
-							"rolls": [
-								{
-									"auto": true,
-									"method": "no_duplicates",
-									"times": 2
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 214,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"characteristics": {
-					"id": "delve/oracles/monstrosity/characteristics",
-					"name": "Characteristics",
-					"canonical_name": "Monstrosity: Characteristics",
-					"dice": "1d100",
-					"summary": "Roll up to four times for Characteristics and keep up to three of those results.",
-					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
-					"table": [
-						{
-							"id": "delve/oracles/monstrosity/characteristics/1-5",
-							"min": 1,
-							"max": 5,
-							"result": "Extra limbs"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/6-10",
-							"min": 6,
-							"max": 10,
-							"result": "Fangs / rows of sharp teeth"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/11-15",
-							"min": 11,
-							"max": 15,
-							"result": "Claws / talons"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/16-20",
-							"min": 16,
-							"max": 20,
-							"result": "Strange color / markings"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/21-25",
-							"min": 21,
-							"max": 25,
-							"result": "Horns / tusks"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/26-30",
-							"min": 26,
-							"max": 30,
-							"result": "Oversized mouth"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/31-35",
-							"min": 31,
-							"max": 35,
-							"result": "Spikes / spines"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/36-40",
-							"min": 36,
-							"max": 40,
-							"result": "Tail"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/41-45",
-							"min": 41,
-							"max": 45,
-							"result": "Multi-segmented body"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/46-50",
-							"min": 46,
-							"max": 50,
-							"result": "Wings"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/51-54",
-							"min": 51,
-							"max": 54,
-							"result": "Stinger / barbs"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/55-58",
-							"min": 55,
-							"max": 58,
-							"result": "Many-eyed"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/59-62",
-							"min": 59,
-							"max": 62,
-							"result": "Distinctive sound"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/63-66",
-							"min": 63,
-							"max": 66,
-							"result": "Tentacles / tendrils"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/67-69",
-							"min": 67,
-							"max": 69,
-							"result": "Mandibles / pincers"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/70-72",
-							"min": 70,
-							"max": 72,
-							"result": "Luminescent"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/73-75",
-							"min": 73,
-							"max": 75,
-							"result": "Antennae / sensory organs"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/76-78",
-							"min": 76,
-							"max": 78,
-							"result": "Proboscis / inner jaw"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/79-81",
-							"min": 79,
-							"max": 81,
-							"result": "Exoskeleton / shell"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/82-84",
-							"min": 82,
-							"max": 84,
-							"result": "Bony protuberances"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/85-87",
-							"min": 85,
-							"max": 87,
-							"result": "Corrupted flesh"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/88-90",
-							"min": 88,
-							"max": 90,
-							"result": "Semi-transparent"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/91-93",
-							"min": 91,
-							"max": 93,
-							"result": "Scarred / injured"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/94-95",
-							"min": 94,
-							"max": 95,
-							"result": "Egg sac / carried offspring"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/96-97",
-							"min": 96,
-							"max": 97,
-							"result": "Rotting / skeletal"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/98-98",
-							"min": 98,
-							"max": 98,
-							"result": "Mummified / desiccated"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/99-99",
-							"min": 99,
-							"max": 99,
-							"result": "Multi-headed"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/100-100",
-							"min": 100,
-							"max": 100,
-							"result": "Etched with mystic runes"
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 215,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"abilities": {
-					"id": "delve/oracles/monstrosity/abilities",
-					"name": "Abilities",
-					"canonical_name": "Monstrosity: Abilities",
-					"dice": "1d100",
-					"summary": "Roll up to four times for Abilities and keep up to three of those results.",
-					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.",
-					"table": [
-						{
-							"id": "delve/oracles/monstrosity/abilities/1-4",
-							"min": 1,
-							"max": 4,
-							"result": "Keen senses"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/5-8",
-							"min": 5,
-							"max": 8,
-							"result": "Intimidating vocalization"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/9-12",
-							"min": 9,
-							"max": 12,
-							"result": "Climber"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/13-16",
-							"min": 13,
-							"max": 16,
-							"result": "Intelligent"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/17-20",
-							"min": 17,
-							"max": 20,
-							"result": "Swift"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/21-24",
-							"min": 21,
-							"max": 24,
-							"result": "Powerful bite"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/25-28",
-							"min": 25,
-							"max": 28,
-							"result": "Stealthy / ambusher"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/29-32",
-							"min": 29,
-							"max": 32,
-							"result": "Horrid visage"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/33-36",
-							"min": 33,
-							"max": 36,
-							"result": "Strong"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/37-40",
-							"min": 37,
-							"max": 40,
-							"result": "Camouflaged"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/41-43",
-							"min": 41,
-							"max": 43,
-							"result": "Flier / glider"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/44-46",
-							"min": 44,
-							"max": 46,
-							"result": "Poisonous"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/47-49",
-							"min": 47,
-							"max": 49,
-							"result": "Semiaquatic / swimmer"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/50-52",
-							"min": 50,
-							"max": 52,
-							"result": "Grappler / entangler"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/53-55",
-							"min": 53,
-							"max": 55,
-							"result": "Leaper"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/56-58",
-							"min": 56,
-							"max": 58,
-							"result": "Crusher / constrictor"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/59-61",
-							"min": 59,
-							"max": 61,
-							"result": "Armored"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/62-64",
-							"min": 62,
-							"max": 64,
-							"result": "Burrower"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/65-67",
-							"min": 65,
-							"max": 67,
-							"result": "Noxious smell"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/68-69",
-							"min": 68,
-							"max": 69,
-							"result": "Trap-setter"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/70-71",
-							"min": 70,
-							"max": 71,
-							"result": "Parasitic"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/72-73",
-							"min": 72,
-							"max": 73,
-							"result": "Vibration sense"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/74-75",
-							"min": 74,
-							"max": 75,
-							"result": "Breath weapon / toxic spew"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/76-77",
-							"min": 76,
-							"max": 77,
-							"result": "Mimicry"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/78-79",
-							"min": 78,
-							"max": 79,
-							"result": "Shapeshifting"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/80-81",
-							"min": 80,
-							"max": 81,
-							"result": "Control lesser creatures"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/82-83",
-							"min": 82,
-							"max": 83,
-							"result": "Echolocation"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/84-85",
-							"min": 84,
-							"max": 85,
-							"result": "Electric shock"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/86-87",
-							"min": 86,
-							"max": 87,
-							"result": "Acidic"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/88-89",
-							"min": 88,
-							"max": 89,
-							"result": "Symbiotic"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/90-91",
-							"min": 90,
-							"max": 91,
-							"result": "Shoot projectiles"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/92-92",
-							"min": 92,
-							"max": 92,
-							"result": "Paralyzing"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/93-93",
-							"min": 93,
-							"max": 93,
-							"result": "Immune to iron"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/94-94",
-							"min": 94,
-							"max": 94,
-							"result": "Feels no pain"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/95-95",
-							"min": 95,
-							"max": 95,
-							"result": "Enact rituals"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/96-96",
-							"min": 96,
-							"max": 96,
-							"result": "Create illusions"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/97-97",
-							"min": 97,
-							"max": 97,
-							"result": "Mind control / telepathy"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/98-98",
-							"min": 98,
-							"max": 98,
-							"result": "Move between realities"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/99-99",
-							"min": 99,
-							"max": 99,
-							"result": "Wield weapons"
-						},
-						{
-							"id": "delve/oracles/monstrosity/abilities/100-100",
-							"min": 100,
-							"max": 100,
-							"result": "Control elements"
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 216,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"collections": {},
-			"suggestions": {
-				"oracles": [
-					"classic/oracles/turning_point/challenge_rank",
-					"classic/oracles/character/goal",
-					"classic/oracles/character/disposition",
-					"delve/oracles/character/activity"
-				]
-			},
-			"source": {
-				"title": "Ironsworn: Delve",
-				"date": "2020-02-13",
-				"page": 214,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"moves": {
-			"id": "delve/collections/oracles/moves",
-			"name": "Moves",
-			"enhances": "classic/collections/oracles/moves",
-			"rendering": {
-				"style": "tables"
-			},
-			"contents": {
-				"find_an_opportunity": {
-					"id": "delve/oracles/moves/find_an_opportunity",
-					"name": "Find an Opportunity",
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/1-25",
-							"min": 1,
-							"max": 25,
-							"result": "The terrain favors you, or you find a hidden path."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/26-45",
-							"min": 26,
-							"max": 45,
-							"result": "An aspect of the history or nature of this place is revealed."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/46-57",
-							"min": 46,
-							"max": 57,
-							"result": "You locate a secure area."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/58-68",
-							"min": 58,
-							"max": 68,
-							"result": "A clue offers insight or direction."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/69-78",
-							"min": 69,
-							"max": 78,
-							"result": "You get the drop on a denizen."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/79-86",
-							"min": 79,
-							"max": 86,
-							"result": "This area provides an opportunity to scavenge, forage, or hunt."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/87-90",
-							"min": 87,
-							"max": 90,
-							"result": "You locate an interesting or helpful object."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/91-94",
-							"min": 91,
-							"max": 94,
-							"result": "You are alerted to a potential threat."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/95-98",
-							"min": 95,
-							"max": 98,
-							"result": "You encounter a denizen who might support you."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/99-100",
-							"min": 99,
-							"max": 100,
-							"result": "You encounter a denizen in need of help."
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 30,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"reveal_a_danger": {
-					"id": "delve/oracles/moves/reveal_a_danger",
-					"name": "Reveal a Danger",
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/1-30",
-							"min": 1,
-							"max": 30,
-							"result": "Check the theme card."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/31-45",
-							"min": 31,
-							"max": 45,
-							"result": "Check the domain card."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/46-57",
-							"min": 46,
-							"max": 57,
-							"result": "You encounter a hostile denizen."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/58-68",
-							"min": 58,
-							"max": 68,
-							"result": "You face an environmental or architectural hazard."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/69-76",
-							"min": 69,
-							"max": 76,
-							"result": "A discovery undermines or complicates your quest."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/77-79",
-							"min": 77,
-							"max": 79,
-							"result": "You confront a harrowing situation or sensation."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/80-82",
-							"min": 80,
-							"max": 82,
-							"result": "You face the consequences of an earlier choice or approach."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/83-85",
-							"min": 83,
-							"max": 85,
-							"result": "Your way is blocked or trapped."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/86-88",
-							"min": 86,
-							"max": 88,
-							"result": "A resource is diminished, broken, or lost."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/89-91",
-							"min": 89,
-							"max": 91,
-							"result": "You face a perplexing mystery or tough choice."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/92-94",
-							"min": 92,
-							"max": 94,
-							"result": "You lose your way or are delayed."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/95-100",
-							"min": 95,
-							"max": 100,
-							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
-							"rolls": [
-								{
-									"auto": true,
-									"method": "make_it_worse",
-									"times": 2
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 34,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"reveal_a_danger_alt": {
-					"id": "delve/oracles/moves/reveal_a_danger_alt",
-					"name": "Reveal a Danger (alternate version)",
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/1-22",
-							"min": 1,
-							"max": 22,
-							"result": "You encounter a hostile denizen."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/23-42",
-							"min": 23,
-							"max": 42,
-							"result": "You face an environmental or architectural hazard."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/43-58",
-							"min": 43,
-							"max": 58,
-							"result": "A discovery undermines or complicates your quest."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/59-64",
-							"min": 59,
-							"max": 64,
-							"result": "You confront a harrowing situation or sensation."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/65-70",
-							"min": 65,
-							"max": 70,
-							"result": "You face the consequences of an earlier choice or approach."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/71-76",
-							"min": 71,
-							"max": 76,
-							"result": "Your way is blocked or trapped."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/77-82",
-							"min": 77,
-							"max": 82,
-							"result": "A resource is diminished, broken, or lost."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/83-88",
-							"min": 83,
-							"max": 88,
-							"result": "You face a perplexing mystery or tough choice."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/89-94",
-							"min": 89,
-							"max": 94,
-							"result": "You lose your way or are delayed."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/95-100",
-							"min": 95,
-							"max": 100,
-							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
-							"rolls": [
-								{
-									"auto": true,
-									"method": "make_it_worse",
-									"times": 2
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 68,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"replaces": "delve/oracles/moves/reveal_a_danger"
-				},
-				"advance_a_threat": {
-					"id": "delve/oracles/moves/advance_a_threat",
-					"name": "Advance a Threat",
-					"dice": "1d100",
-					"match": {
-						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
-					},
-					"table": [
-						{
-							"id": "delve/oracles/moves/advance_a_threat/1-30",
-							"min": 1,
-							"max": 30,
-							"result": "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](id:classic/moves/quest/reach_a_milestone). Otherwise, mark menace."
-						},
-						{
-							"id": "delve/oracles/moves/advance_a_threat/31-70",
-							"min": 31,
-							"max": 70,
-							"result": "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."
-						},
-						{
-							"id": "delve/oracles/moves/advance_a_threat/71-100",
-							"min": 71,
-							"max": 100,
-							"result": "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 155,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"collections": {
-				"delve_the_depths": {
-					"id": "delve/collections/oracles/moves/delve_the_depths",
-					"name": "Delve the Depths",
-					"rendering": {
-						"style": "multi_table",
-						"columns": {
-							"edge": {
-								"label": "Edge",
-								"content_type": "roll",
-								"table_key": "edge"
-							},
-							"shadow": {
-								"label": "Shadow",
-								"content_type": "roll",
-								"table_key": "shadow"
-							},
-							"wits": {
-								"label": "Wits",
-								"content_type": "roll",
-								"table_key": "wits"
-							},
-							"weak_hit_result": {
-								"label": "Weak Hit Result",
-								"content_type": "result",
-								"table_key": "edge"
-							}
-						}
-					},
-					"contents": {
-						"edge": {
-							"id": "delve/oracles/moves/delve_the_depths/edge",
-							"name": "Edge",
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
-									"min": 1,
-									"max": 45,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/46-65",
-									"min": 46,
-									"max": 65,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/66-75",
-									"min": 66,
-									"max": 75,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/76-80",
-									"min": 76,
-									"max": 80,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/81-100",
-									"min": 81,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							],
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							}
-						},
-						"shadow": {
-							"id": "delve/oracles/moves/delve_the_depths/shadow",
-							"name": "Shadow",
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
-									"min": 1,
-									"max": 30,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/31-65",
-									"min": 31,
-									"max": 65,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/66-90",
-									"min": 66,
-									"max": 90,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/91-99",
-									"min": 91,
-									"max": 99,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/100-100",
-									"min": 100,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							],
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							}
-						},
-						"wits": {
-							"id": "delve/oracles/moves/delve_the_depths/wits",
-							"name": "Wits",
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
-									"min": 1,
-									"max": 40,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/41-55",
-									"min": 41,
-									"max": 55,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/56-80",
-									"min": 56,
-									"max": 80,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/81-99",
-									"min": 81,
-									"max": 99,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/100-100",
-									"min": 100,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							],
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							}
-						}
-					},
-					"collections": {},
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 21,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"source": {
-				"title": "Ironsworn: Delve",
-				"date": "2020-02-13",
 				"authors": [
 					{
 						"name": "Shawn Tomkin"
@@ -8135,6 +4929,3832 @@
 				"url": "https://ironswornrpg.com"
 			}
 		},
+		"character": {
+			"id": "delve/collections/oracles/character",
+			"name": "Character",
+			"enhances": "classic/collections/oracles/character",
+			"rendering": {
+				"style": "tables"
+			},
+			"summary": "Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.",
+			"contents": {
+				"activity": {
+					"id": "delve/oracles/character/activity",
+					"name": "Activity",
+					"canonical_name": "Character: Activity",
+					"dice": "1d100",
+					"summary": "To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](id:delve/oracles/feature/focus) oracle or [Theme](id:classic/oracles/action_and_theme/theme) oracle.",
+					"suggestions": {
+						"oracles": [
+							"delve/oracles/feature/focus",
+							"classic/oracles/action_and_theme/theme"
+						]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/character/activity/1-2",
+							"min": 1,
+							"max": 2,
+							"result": "Guarding",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/3-4",
+							"min": 3,
+							"max": 4,
+							"result": "Preserving",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/5-6",
+							"min": 5,
+							"max": 6,
+							"result": "Constructing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/7-8",
+							"min": 7,
+							"max": 8,
+							"result": "Mending",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/9-10",
+							"min": 9,
+							"max": 10,
+							"result": "Assisting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/11-12",
+							"min": 11,
+							"max": 12,
+							"result": "Securing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/13-14",
+							"min": 13,
+							"max": 14,
+							"result": "Learning",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/15-16",
+							"min": 15,
+							"max": 16,
+							"result": "Sneaking",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/17-18",
+							"min": 17,
+							"max": 18,
+							"result": "Fleeing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/19-20",
+							"min": 19,
+							"max": 20,
+							"result": "Sacrificing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/21-22",
+							"min": 21,
+							"max": 22,
+							"result": "Creating",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/23-24",
+							"min": 23,
+							"max": 24,
+							"result": "Luring",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/25-26",
+							"min": 25,
+							"max": 26,
+							"result": "Hunting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/27-28",
+							"min": 27,
+							"max": 28,
+							"result": "Seizing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/29-30",
+							"min": 29,
+							"max": 30,
+							"result": "Bargaining",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/31-32",
+							"min": 31,
+							"max": 32,
+							"result": "Mimicking",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/33-34",
+							"min": 33,
+							"max": 34,
+							"result": "Tricking",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/35-36",
+							"min": 35,
+							"max": 36,
+							"result": "Tracking",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/37-38",
+							"min": 37,
+							"max": 38,
+							"result": "Escorting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/39-40",
+							"min": 39,
+							"max": 40,
+							"result": "Hiding",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/41-42",
+							"min": 41,
+							"max": 42,
+							"result": "Raiding",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/43-44",
+							"min": 43,
+							"max": 44,
+							"result": "Socializing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/45-46",
+							"min": 45,
+							"max": 46,
+							"result": "Exploring",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/47-48",
+							"min": 47,
+							"max": 48,
+							"result": "Journeying",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/49-50",
+							"min": 49,
+							"max": 50,
+							"result": "Supporting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/51-52",
+							"min": 51,
+							"max": 52,
+							"result": "Avoiding",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/53-54",
+							"min": 53,
+							"max": 54,
+							"result": "Disabling",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/55-56",
+							"min": 55,
+							"max": 56,
+							"result": "Leading",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/57-58",
+							"min": 57,
+							"max": 58,
+							"result": "Assaulting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/59-60",
+							"min": 59,
+							"max": 60,
+							"result": "Ensnaring",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/61-62",
+							"min": 61,
+							"max": 62,
+							"result": "Defending",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/63-64",
+							"min": 63,
+							"max": 64,
+							"result": "Recovering",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/65-66",
+							"min": 65,
+							"max": 66,
+							"result": "Patrolling",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/67-68",
+							"min": 67,
+							"max": 68,
+							"result": "Resting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/69-70",
+							"min": 69,
+							"max": 70,
+							"result": "Distracting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/71-72",
+							"min": 71,
+							"max": 72,
+							"result": "Leaving",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/73-74",
+							"min": 73,
+							"max": 74,
+							"result": "Fighting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/75-76",
+							"min": 75,
+							"max": 76,
+							"result": "Ambushing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/77-78",
+							"min": 77,
+							"max": 78,
+							"result": "Controlling",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/79-80",
+							"min": 79,
+							"max": 80,
+							"result": "Observing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/81-82",
+							"min": 81,
+							"max": 82,
+							"result": "Gathering",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/83-84",
+							"min": 83,
+							"max": 84,
+							"result": "Suffering",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/85-86",
+							"min": 85,
+							"max": 86,
+							"result": "Threatening",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/87-88",
+							"min": 87,
+							"max": 88,
+							"result": "Searching",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/89-90",
+							"min": 89,
+							"max": 90,
+							"result": "Destroying",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/91-92",
+							"min": 91,
+							"max": 92,
+							"result": "Restoring",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/93-94",
+							"min": 93,
+							"max": 94,
+							"result": "Consuming",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/95-96",
+							"min": 95,
+							"max": 96,
+							"result": "Removing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/97-98",
+							"min": 97,
+							"max": 98,
+							"result": "Inspecting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/activity/99-100",
+							"min": 99,
+							"max": 100,
+							"result": "Summoning",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 213,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"disposition": {
+					"id": "delve/oracles/character/disposition",
+					"name": "Disposition",
+					"canonical_name": "Character: Disposition",
+					"dice": "1d100",
+					"summary": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
+					"table": [
+						{
+							"id": "delve/oracles/character/disposition/1-6",
+							"min": 1,
+							"max": 6,
+							"result": "Helpful",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/7-13",
+							"min": 7,
+							"max": 13,
+							"result": "Friendly",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/14-20",
+							"min": 14,
+							"max": 20,
+							"result": "Cooperative",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/21-28",
+							"min": 21,
+							"max": 28,
+							"result": "Curious",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/29-36",
+							"min": 29,
+							"max": 36,
+							"result": "Indifferent",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/37-47",
+							"min": 37,
+							"max": 47,
+							"result": "Suspicious",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/48-57",
+							"min": 48,
+							"max": 57,
+							"result": "Wanting",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/58-67",
+							"min": 58,
+							"max": 67,
+							"result": "Desperate",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/68-76",
+							"min": 68,
+							"max": 76,
+							"result": "Demanding",
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/77-85",
+							"min": 77,
+							"max": 85,
+							"result": "Unfriendly",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/86-93",
+							"min": 86,
+							"max": 93,
+							"result": "Threatening",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/character/disposition/94-100",
+							"min": 94,
+							"max": 100,
+							"result": "Hostile",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 213,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"collections": {},
+			"source": {
+				"title": "Ironsworn: Delve",
+				"date": "2020-02-13",
+				"page": 213,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"monstrosity": {
+			"id": "delve/collections/oracles/monstrosity",
+			"name": "Monstrosity",
+			"rendering": {
+				"style": "tables"
+			},
+			"summary": "Discover the nature of a [nightspawn](id:delve/npcs/horrors/nightspawn) or other frightful creature within your world.",
+			"description": "Use the Monstrosity oracle to define the nature of a [Nightspawn](id:delve/npcs/horrors/nightspawn), or to introduce a new type of [animal](id:classic/collections/npcs/animal), [beast](id:classic/collections/npcs/beast), or [horror](id:classic/collections/npcs/horror) in your world.\n\nTo create a monstrosity, start by rolling for its [Size](id:delve/oracles/monstrosity/size) and [Primary Form](id:delve/oracles/monstrosity/primary_form). Then, roll up to four times for [Characteristics](id:delve/oracles/monstrosity/characteristics) and keep up to three of those results. Do the same for [Abilities](id:delve/oracles/monstrosity/abilities).\n\nGive the monstrosity a rank. Choose one appropriate to its features, or use the [Challenge Rank](id:classic/oracles/turning_point/challenge_rank) oracle.\n\nFinally, envision your creation and give it a name. It’s part of your world now.\n\nSome results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.\n\nTo learn more about your creation’s nature, you can roll on additional tables. Use the [Character Goal](id:classic/oracles/character/goal) oracle to give the monstrosity a purpose. Roll on the [Character Disposition](id:classic/oracles/character/disposition) and [Activity](id:delve/oracles/character/activity) oracles to frame your initial encounter. Another roll or two can give your monstrosity nuance and complexity, making it a deeper part of your story.",
+			"contents": {
+				"size": {
+					"id": "delve/oracles/monstrosity/size",
+					"name": "Size",
+					"canonical_name": "Monstrosity: Size",
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/monstrosity/size/1-5",
+							"min": 1,
+							"max": 5,
+							"result": "Tiny (rodent-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/6-30",
+							"min": 6,
+							"max": 30,
+							"result": "Small (hound-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/31-65",
+							"min": 31,
+							"max": 65,
+							"result": "Medium (person-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/66-94",
+							"min": 66,
+							"max": 94,
+							"result": "Large (giant-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/95-99",
+							"min": 95,
+							"max": 99,
+							"result": "Huge (whale-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/100-100",
+							"min": 100,
+							"max": 100,
+							"result": "Titanic (incomprehensible)"
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 214,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"primary_form": {
+					"id": "delve/oracles/monstrosity/primary_form",
+					"name": "Primary Form",
+					"canonical_name": "Monstrosity: Primary Form",
+					"dice": "1d100",
+					"summary": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
+					"table": [
+						{
+							"id": "delve/oracles/monstrosity/primary_form/1-15",
+							"min": 1,
+							"max": 15,
+							"result": "Beast / mammal",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/16-25",
+							"min": 16,
+							"max": 25,
+							"result": "Humanoid",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/26-31",
+							"min": 26,
+							"max": 31,
+							"result": "Bird",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/32-37",
+							"min": 32,
+							"max": 37,
+							"result": "Spider",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/38-43",
+							"min": 38,
+							"max": 43,
+							"result": "Snake",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/44-49",
+							"min": 44,
+							"max": 49,
+							"result": "Worm / slug",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/50-55",
+							"min": 50,
+							"max": 55,
+							"result": "Lizard",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/56-61",
+							"min": 56,
+							"max": 61,
+							"result": "Insect",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/62-66",
+							"min": 62,
+							"max": 66,
+							"result": "Amorphous",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/67-69",
+							"min": 67,
+							"max": 69,
+							"result": "Crustacean",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/70-71",
+							"min": 70,
+							"max": 71,
+							"result": "Fish",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/72-73",
+							"min": 72,
+							"max": 73,
+							"result": "Octopoid",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/74-75",
+							"min": 74,
+							"max": 75,
+							"result": "Amphibian",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/76-77",
+							"min": 76,
+							"max": 77,
+							"result": "Plant",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/78-78",
+							"min": 78,
+							"max": 78,
+							"result": "Incorporeal",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/79-79",
+							"min": 79,
+							"max": 79,
+							"result": "Mineral",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/80-80",
+							"min": 80,
+							"max": 80,
+							"result": "Elemental",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/81-100",
+							"min": 81,
+							"max": 100,
+							"result": "Hybrid (roll twice)",
+							"rolls": [
+								{
+									"auto": true,
+									"method": "no_duplicates",
+									"times": 2
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 214,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"characteristics": {
+					"id": "delve/oracles/monstrosity/characteristics",
+					"name": "Characteristics",
+					"canonical_name": "Monstrosity: Characteristics",
+					"dice": "1d100",
+					"summary": "Roll up to four times for Characteristics and keep up to three of those results.",
+					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
+					"table": [
+						{
+							"id": "delve/oracles/monstrosity/characteristics/1-5",
+							"min": 1,
+							"max": 5,
+							"result": "Extra limbs"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/6-10",
+							"min": 6,
+							"max": 10,
+							"result": "Fangs / rows of sharp teeth"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/11-15",
+							"min": 11,
+							"max": 15,
+							"result": "Claws / talons"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/16-20",
+							"min": 16,
+							"max": 20,
+							"result": "Strange color / markings"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/21-25",
+							"min": 21,
+							"max": 25,
+							"result": "Horns / tusks"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/26-30",
+							"min": 26,
+							"max": 30,
+							"result": "Oversized mouth"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/31-35",
+							"min": 31,
+							"max": 35,
+							"result": "Spikes / spines"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/36-40",
+							"min": 36,
+							"max": 40,
+							"result": "Tail"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/41-45",
+							"min": 41,
+							"max": 45,
+							"result": "Multi-segmented body"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/46-50",
+							"min": 46,
+							"max": 50,
+							"result": "Wings"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/51-54",
+							"min": 51,
+							"max": 54,
+							"result": "Stinger / barbs"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/55-58",
+							"min": 55,
+							"max": 58,
+							"result": "Many-eyed"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/59-62",
+							"min": 59,
+							"max": 62,
+							"result": "Distinctive sound"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/63-66",
+							"min": 63,
+							"max": 66,
+							"result": "Tentacles / tendrils"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/67-69",
+							"min": 67,
+							"max": 69,
+							"result": "Mandibles / pincers"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/70-72",
+							"min": 70,
+							"max": 72,
+							"result": "Luminescent"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/73-75",
+							"min": 73,
+							"max": 75,
+							"result": "Antennae / sensory organs"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/76-78",
+							"min": 76,
+							"max": 78,
+							"result": "Proboscis / inner jaw"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/79-81",
+							"min": 79,
+							"max": 81,
+							"result": "Exoskeleton / shell"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/82-84",
+							"min": 82,
+							"max": 84,
+							"result": "Bony protuberances"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/85-87",
+							"min": 85,
+							"max": 87,
+							"result": "Corrupted flesh"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/88-90",
+							"min": 88,
+							"max": 90,
+							"result": "Semi-transparent"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/91-93",
+							"min": 91,
+							"max": 93,
+							"result": "Scarred / injured"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/94-95",
+							"min": 94,
+							"max": 95,
+							"result": "Egg sac / carried offspring"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/96-97",
+							"min": 96,
+							"max": 97,
+							"result": "Rotting / skeletal"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/98-98",
+							"min": 98,
+							"max": 98,
+							"result": "Mummified / desiccated"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/99-99",
+							"min": 99,
+							"max": 99,
+							"result": "Multi-headed"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/100-100",
+							"min": 100,
+							"max": 100,
+							"result": "Etched with mystic runes"
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 215,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"abilities": {
+					"id": "delve/oracles/monstrosity/abilities",
+					"name": "Abilities",
+					"canonical_name": "Monstrosity: Abilities",
+					"dice": "1d100",
+					"summary": "Roll up to four times for Abilities and keep up to three of those results.",
+					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.",
+					"table": [
+						{
+							"id": "delve/oracles/monstrosity/abilities/1-4",
+							"min": 1,
+							"max": 4,
+							"result": "Keen senses"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/5-8",
+							"min": 5,
+							"max": 8,
+							"result": "Intimidating vocalization"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/9-12",
+							"min": 9,
+							"max": 12,
+							"result": "Climber"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/13-16",
+							"min": 13,
+							"max": 16,
+							"result": "Intelligent"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/17-20",
+							"min": 17,
+							"max": 20,
+							"result": "Swift"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/21-24",
+							"min": 21,
+							"max": 24,
+							"result": "Powerful bite"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/25-28",
+							"min": 25,
+							"max": 28,
+							"result": "Stealthy / ambusher"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/29-32",
+							"min": 29,
+							"max": 32,
+							"result": "Horrid visage"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/33-36",
+							"min": 33,
+							"max": 36,
+							"result": "Strong"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/37-40",
+							"min": 37,
+							"max": 40,
+							"result": "Camouflaged"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/41-43",
+							"min": 41,
+							"max": 43,
+							"result": "Flier / glider"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/44-46",
+							"min": 44,
+							"max": 46,
+							"result": "Poisonous"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/47-49",
+							"min": 47,
+							"max": 49,
+							"result": "Semiaquatic / swimmer"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/50-52",
+							"min": 50,
+							"max": 52,
+							"result": "Grappler / entangler"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/53-55",
+							"min": 53,
+							"max": 55,
+							"result": "Leaper"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/56-58",
+							"min": 56,
+							"max": 58,
+							"result": "Crusher / constrictor"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/59-61",
+							"min": 59,
+							"max": 61,
+							"result": "Armored"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/62-64",
+							"min": 62,
+							"max": 64,
+							"result": "Burrower"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/65-67",
+							"min": 65,
+							"max": 67,
+							"result": "Noxious smell"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/68-69",
+							"min": 68,
+							"max": 69,
+							"result": "Trap-setter"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/70-71",
+							"min": 70,
+							"max": 71,
+							"result": "Parasitic"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/72-73",
+							"min": 72,
+							"max": 73,
+							"result": "Vibration sense"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/74-75",
+							"min": 74,
+							"max": 75,
+							"result": "Breath weapon / toxic spew"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/76-77",
+							"min": 76,
+							"max": 77,
+							"result": "Mimicry"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/78-79",
+							"min": 78,
+							"max": 79,
+							"result": "Shapeshifting"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/80-81",
+							"min": 80,
+							"max": 81,
+							"result": "Control lesser creatures"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/82-83",
+							"min": 82,
+							"max": 83,
+							"result": "Echolocation"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/84-85",
+							"min": 84,
+							"max": 85,
+							"result": "Electric shock"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/86-87",
+							"min": 86,
+							"max": 87,
+							"result": "Acidic"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/88-89",
+							"min": 88,
+							"max": 89,
+							"result": "Symbiotic"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/90-91",
+							"min": 90,
+							"max": 91,
+							"result": "Shoot projectiles"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/92-92",
+							"min": 92,
+							"max": 92,
+							"result": "Paralyzing"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/93-93",
+							"min": 93,
+							"max": 93,
+							"result": "Immune to iron"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/94-94",
+							"min": 94,
+							"max": 94,
+							"result": "Feels no pain"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/95-95",
+							"min": 95,
+							"max": 95,
+							"result": "Enact rituals"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/96-96",
+							"min": 96,
+							"max": 96,
+							"result": "Create illusions"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/97-97",
+							"min": 97,
+							"max": 97,
+							"result": "Mind control / telepathy"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/98-98",
+							"min": 98,
+							"max": 98,
+							"result": "Move between realities"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/99-99",
+							"min": 99,
+							"max": 99,
+							"result": "Wield weapons"
+						},
+						{
+							"id": "delve/oracles/monstrosity/abilities/100-100",
+							"min": 100,
+							"max": 100,
+							"result": "Control elements"
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 216,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"collections": {},
+			"suggestions": {
+				"oracles": [
+					"classic/oracles/turning_point/challenge_rank",
+					"classic/oracles/character/goal",
+					"classic/oracles/character/disposition",
+					"delve/oracles/character/activity"
+				]
+			},
+			"source": {
+				"title": "Ironsworn: Delve",
+				"date": "2020-02-13",
+				"page": 214,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"combat_event": {
+			"id": "delve/collections/oracles/combat_event",
+			"name": "Combat Event",
+			"rendering": {
+				"style": "tables"
+			},
+			"summary": "Determine the actions of a character, creature, or force during a fight.",
+			"description": "Use the Combat Event oracles to answer questions about the actions of a foe or enemy force. You can use these oracles instead of—or in addition to—the [Combat Action](id:classic/oracles/turning_point/combat_action) oracle.\n\nRoll once each on the [Method](id:delve/oracles/combat_event/method) oracle and the [Target](id:delve/oracles/combat_event/target) oracle. Then, interpret the response as appropriate to the current situation and the nature of your foe.\n\nFor example, you are fighting a rhaskar, a bear-like beast. It has initiative, and you want to know what it does next. You [Ask the Oracle](id:classic/moves/fate/ask_the_oracle), rolling [Method](id:delve/oracles/combat_event/method) and [Target](id:delve/oracles/combat_event/target). The oracle responds, “Await Weakness.” You envision the rhaskar circling you, its keen eyes narrowing as it looks for an opening in your defenses. You must [Face Danger](id:classic/moves/adventure/face_danger) to avoid being outmaneuvered.",
+			"contents": {
+				"method": {
+					"id": "delve/oracles/combat_event/method",
+					"name": "Method",
+					"canonical_name": "Combat Event: Method",
+					"dice": "1d100",
+					"suggestions": {
+						"oracles": ["delve/oracles/combat_event/target"]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/combat_event/method/1-2",
+							"min": 1,
+							"max": 2,
+							"result": "Defy",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/3-4",
+							"min": 3,
+							"max": 4,
+							"result": "Break",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/5-6",
+							"min": 5,
+							"max": 6,
+							"result": "Trick",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/7-8",
+							"min": 7,
+							"max": 8,
+							"result": "Evade",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/9-10",
+							"min": 9,
+							"max": 10,
+							"result": "Protect",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/11-12",
+							"min": 11,
+							"max": 12,
+							"result": "Overwhelm",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/13-14",
+							"min": 13,
+							"max": 14,
+							"result": "Persevere",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/15-16",
+							"min": 15,
+							"max": 16,
+							"result": "Assist",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/17-18",
+							"min": 17,
+							"max": 18,
+							"result": "Await",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/19-20",
+							"min": 19,
+							"max": 20,
+							"result": "Abort",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/21-22",
+							"min": 21,
+							"max": 22,
+							"result": "Block",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/23-24",
+							"min": 23,
+							"max": 24,
+							"result": "Collide",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/25-26",
+							"min": 25,
+							"max": 26,
+							"result": "Focus",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/27-28",
+							"min": 27,
+							"max": 28,
+							"result": "Advance",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/29-30",
+							"min": 29,
+							"max": 30,
+							"result": "Breach",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/31-32",
+							"min": 31,
+							"max": 32,
+							"result": "Endure",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/33-34",
+							"min": 33,
+							"max": 34,
+							"result": "Assault",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/35-36",
+							"min": 35,
+							"max": 36,
+							"result": "Charge",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/37-38",
+							"min": 37,
+							"max": 38,
+							"result": "Escalate",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/39-40",
+							"min": 39,
+							"max": 40,
+							"result": "Sunder",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/41-42",
+							"min": 41,
+							"max": 42,
+							"result": "Shatter",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/43-44",
+							"min": 43,
+							"max": 44,
+							"result": "Aim",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/45-46",
+							"min": 45,
+							"max": 46,
+							"result": "Stagger",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/47-48",
+							"min": 47,
+							"max": 48,
+							"result": "Counter",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/49-50",
+							"min": 49,
+							"max": 50,
+							"result": "Seize",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/51-52",
+							"min": 51,
+							"max": 52,
+							"result": "Impact",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/53-54",
+							"min": 53,
+							"max": 54,
+							"result": "Entangle",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/55-56",
+							"min": 55,
+							"max": 56,
+							"result": "Hold",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/57-58",
+							"min": 57,
+							"max": 58,
+							"result": "Deflect",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/59-60",
+							"min": 59,
+							"max": 60,
+							"result": "Drop",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/61-62",
+							"min": 61,
+							"max": 62,
+							"result": "Lose",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/63-64",
+							"min": 63,
+							"max": 64,
+							"result": "Sweep",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/65-66",
+							"min": 65,
+							"max": 66,
+							"result": "Secure",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/67-68",
+							"min": 67,
+							"max": 68,
+							"result": "Cover",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/69-70",
+							"min": 69,
+							"max": 70,
+							"result": "Withdraw",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/71-72",
+							"min": 71,
+							"max": 72,
+							"result": "Clash",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/73-74",
+							"min": 73,
+							"max": 74,
+							"result": "Amplify",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/75-76",
+							"min": 75,
+							"max": 76,
+							"result": "Batter",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/77-78",
+							"min": 77,
+							"max": 78,
+							"result": "Feint",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/79-80",
+							"min": 79,
+							"max": 80,
+							"result": "Shove",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/81-82",
+							"min": 81,
+							"max": 82,
+							"result": "Embed",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/83-84",
+							"min": 83,
+							"max": 84,
+							"result": "Affect",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/85-86",
+							"min": 85,
+							"max": 86,
+							"result": "Probe",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/87-88",
+							"min": 87,
+							"max": 88,
+							"result": "Force",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/89-90",
+							"min": 89,
+							"max": 90,
+							"result": "Intensify",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/91-92",
+							"min": 91,
+							"max": 92,
+							"result": "Distract",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/93-94",
+							"min": 93,
+							"max": 94,
+							"result": "Challenge",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/95-96",
+							"min": 95,
+							"max": 96,
+							"result": "Brawl",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/97-98",
+							"min": 97,
+							"max": 98,
+							"result": "Coordinate",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/method/99-100",
+							"min": 99,
+							"max": 100,
+							"result": "Overrun",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 218,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"target": {
+					"id": "delve/oracles/combat_event/target",
+					"name": "Target",
+					"canonical_name": "Combat Event: Target",
+					"dice": "1d100",
+					"suggestions": {
+						"oracles": ["delve/oracles/combat_event/method"]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/combat_event/target/1-2",
+							"min": 1,
+							"max": 2,
+							"result": "Control",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/3-4",
+							"min": 3,
+							"max": 4,
+							"result": "Defense",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/5-6",
+							"min": 5,
+							"max": 6,
+							"result": "Limbs",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/7-8",
+							"min": 7,
+							"max": 8,
+							"result": "Focus",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/9-10",
+							"min": 9,
+							"max": 10,
+							"result": "Advantage",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/11-12",
+							"min": 11,
+							"max": 12,
+							"result": "Range",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/13-14",
+							"min": 13,
+							"max": 14,
+							"result": "Stress",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/15-16",
+							"min": 15,
+							"max": 16,
+							"result": "Sense",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/17-18",
+							"min": 17,
+							"max": 18,
+							"result": "Weakness",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/19-20",
+							"min": 19,
+							"max": 20,
+							"result": "Opening",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/21-22",
+							"min": 21,
+							"max": 22,
+							"result": "Fear",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/23-24",
+							"min": 23,
+							"max": 24,
+							"result": "Instinct",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/25-26",
+							"min": 25,
+							"max": 26,
+							"result": "Footing",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/27-28",
+							"min": 27,
+							"max": 28,
+							"result": "Maneuver",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/29-30",
+							"min": 29,
+							"max": 30,
+							"result": "Reach",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/31-32",
+							"min": 31,
+							"max": 32,
+							"result": "Harm",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/33-34",
+							"min": 33,
+							"max": 34,
+							"result": "Finesse",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/35-36",
+							"min": 35,
+							"max": 36,
+							"result": "Weapon",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/37-38",
+							"min": 37,
+							"max": 38,
+							"result": "Environment",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/39-40",
+							"min": 39,
+							"max": 40,
+							"result": "Technique",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/41-42",
+							"min": 41,
+							"max": 42,
+							"result": "Surprise",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/43-44",
+							"min": 43,
+							"max": 44,
+							"result": "Pride",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/45-46",
+							"min": 45,
+							"max": 46,
+							"result": "Wound",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/47-48",
+							"min": 47,
+							"max": 48,
+							"result": "Precision",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/49-50",
+							"min": 49,
+							"max": 50,
+							"result": "Ally",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/51-52",
+							"min": 51,
+							"max": 52,
+							"result": "Ground",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/53-54",
+							"min": 53,
+							"max": 54,
+							"result": "Courage",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/55-56",
+							"min": 55,
+							"max": 56,
+							"result": "Companion",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/57-58",
+							"min": 57,
+							"max": 58,
+							"result": "Object",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/59-60",
+							"min": 59,
+							"max": 60,
+							"result": "Momentum",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/61-62",
+							"min": 61,
+							"max": 62,
+							"result": "Speed",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/63-64",
+							"min": 63,
+							"max": 64,
+							"result": "Strength",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/65-66",
+							"min": 65,
+							"max": 66,
+							"result": "Supply",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/67-68",
+							"min": 67,
+							"max": 68,
+							"result": "Terrain",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/69-70",
+							"min": 69,
+							"max": 70,
+							"result": "Armor",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/71-72",
+							"min": 71,
+							"max": 72,
+							"result": "Skill",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/73-74",
+							"min": 73,
+							"max": 74,
+							"result": "Body",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/75-76",
+							"min": 75,
+							"max": 76,
+							"result": "Protection",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/77-78",
+							"min": 77,
+							"max": 78,
+							"result": "Resolve",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/79-80",
+							"min": 79,
+							"max": 80,
+							"result": "Ferocity",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/81-82",
+							"min": 81,
+							"max": 82,
+							"result": "Shield",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/83-84",
+							"min": 83,
+							"max": 84,
+							"result": "Ammo",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/85-86",
+							"min": 85,
+							"max": 86,
+							"result": "Anger",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/87-88",
+							"min": 87,
+							"max": 88,
+							"result": "Opportunity",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/89-90",
+							"min": 89,
+							"max": 90,
+							"result": "Balance",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/91-92",
+							"min": 91,
+							"max": 92,
+							"result": "Position",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/93-94",
+							"min": 93,
+							"max": 94,
+							"result": "Barrier",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/95-96",
+							"min": 95,
+							"max": 96,
+							"result": "Strategy",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/97-98",
+							"min": 97,
+							"max": 98,
+							"result": "Grasp",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/combat_event/target/99-100",
+							"min": 99,
+							"max": 100,
+							"result": "Power",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 219,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"collections": {},
+			"suggestions": {
+				"oracles": ["classic/oracles/turning_point/combat_action"]
+			},
+			"source": {
+				"title": "Ironsworn: Delve",
+				"date": "2020-02-13",
+				"page": 218,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"moves": {
+			"id": "delve/collections/oracles/moves",
+			"name": "Moves",
+			"enhances": "classic/collections/oracles/moves",
+			"rendering": {
+				"style": "tables"
+			},
+			"contents": {
+				"find_an_opportunity": {
+					"id": "delve/oracles/moves/find_an_opportunity",
+					"name": "Find an Opportunity",
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/1-25",
+							"min": 1,
+							"max": 25,
+							"result": "The terrain favors you, or you find a hidden path."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/26-45",
+							"min": 26,
+							"max": 45,
+							"result": "An aspect of the history or nature of this place is revealed."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/46-57",
+							"min": 46,
+							"max": 57,
+							"result": "You locate a secure area."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/58-68",
+							"min": 58,
+							"max": 68,
+							"result": "A clue offers insight or direction."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/69-78",
+							"min": 69,
+							"max": 78,
+							"result": "You get the drop on a denizen."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/79-86",
+							"min": 79,
+							"max": 86,
+							"result": "This area provides an opportunity to scavenge, forage, or hunt."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/87-90",
+							"min": 87,
+							"max": 90,
+							"result": "You locate an interesting or helpful object."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/91-94",
+							"min": 91,
+							"max": 94,
+							"result": "You are alerted to a potential threat."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/95-98",
+							"min": 95,
+							"max": 98,
+							"result": "You encounter a denizen who might support you."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/99-100",
+							"min": 99,
+							"max": 100,
+							"result": "You encounter a denizen in need of help."
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 30,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"reveal_a_danger": {
+					"id": "delve/oracles/moves/reveal_a_danger",
+					"name": "Reveal a Danger",
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/1-30",
+							"min": 1,
+							"max": 30,
+							"result": "Check the theme card."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/31-45",
+							"min": 31,
+							"max": 45,
+							"result": "Check the domain card."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/46-57",
+							"min": 46,
+							"max": 57,
+							"result": "You encounter a hostile denizen."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/58-68",
+							"min": 58,
+							"max": 68,
+							"result": "You face an environmental or architectural hazard."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/69-76",
+							"min": 69,
+							"max": 76,
+							"result": "A discovery undermines or complicates your quest."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/77-79",
+							"min": 77,
+							"max": 79,
+							"result": "You confront a harrowing situation or sensation."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/80-82",
+							"min": 80,
+							"max": 82,
+							"result": "You face the consequences of an earlier choice or approach."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/83-85",
+							"min": 83,
+							"max": 85,
+							"result": "Your way is blocked or trapped."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/86-88",
+							"min": 86,
+							"max": 88,
+							"result": "A resource is diminished, broken, or lost."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/89-91",
+							"min": 89,
+							"max": 91,
+							"result": "You face a perplexing mystery or tough choice."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/92-94",
+							"min": 92,
+							"max": 94,
+							"result": "You lose your way or are delayed."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/95-100",
+							"min": 95,
+							"max": 100,
+							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+							"rolls": [
+								{
+									"auto": true,
+									"method": "make_it_worse",
+									"times": 2
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 34,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"reveal_a_danger_alt": {
+					"id": "delve/oracles/moves/reveal_a_danger_alt",
+					"name": "Reveal a Danger (alternate version)",
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/1-22",
+							"min": 1,
+							"max": 22,
+							"result": "You encounter a hostile denizen."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/23-42",
+							"min": 23,
+							"max": 42,
+							"result": "You face an environmental or architectural hazard."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/43-58",
+							"min": 43,
+							"max": 58,
+							"result": "A discovery undermines or complicates your quest."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/59-64",
+							"min": 59,
+							"max": 64,
+							"result": "You confront a harrowing situation or sensation."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/65-70",
+							"min": 65,
+							"max": 70,
+							"result": "You face the consequences of an earlier choice or approach."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/71-76",
+							"min": 71,
+							"max": 76,
+							"result": "Your way is blocked or trapped."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/77-82",
+							"min": 77,
+							"max": 82,
+							"result": "A resource is diminished, broken, or lost."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/83-88",
+							"min": 83,
+							"max": 88,
+							"result": "You face a perplexing mystery or tough choice."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/89-94",
+							"min": 89,
+							"max": 94,
+							"result": "You lose your way or are delayed."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/95-100",
+							"min": 95,
+							"max": 100,
+							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+							"rolls": [
+								{
+									"auto": true,
+									"method": "make_it_worse",
+									"times": 2
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 68,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"replaces": "delve/oracles/moves/reveal_a_danger"
+				},
+				"advance_a_threat": {
+					"id": "delve/oracles/moves/advance_a_threat",
+					"name": "Advance a Threat",
+					"dice": "1d100",
+					"match": {
+						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
+					},
+					"table": [
+						{
+							"id": "delve/oracles/moves/advance_a_threat/1-30",
+							"min": 1,
+							"max": 30,
+							"result": "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](id:classic/moves/quest/reach_a_milestone). Otherwise, mark menace."
+						},
+						{
+							"id": "delve/oracles/moves/advance_a_threat/31-70",
+							"min": 31,
+							"max": 70,
+							"result": "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."
+						},
+						{
+							"id": "delve/oracles/moves/advance_a_threat/71-100",
+							"min": 71,
+							"max": 100,
+							"result": "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 155,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"collections": {
+				"delve_the_depths": {
+					"id": "delve/collections/oracles/moves/delve_the_depths",
+					"name": "Delve the Depths",
+					"rendering": {
+						"style": "multi_table",
+						"columns": {
+							"edge": {
+								"label": "Edge",
+								"content_type": "roll",
+								"table_key": "edge"
+							},
+							"shadow": {
+								"label": "Shadow",
+								"content_type": "roll",
+								"table_key": "shadow"
+							},
+							"wits": {
+								"label": "Wits",
+								"content_type": "roll",
+								"table_key": "wits"
+							},
+							"weak_hit_result": {
+								"label": "Weak Hit Result",
+								"content_type": "result",
+								"table_key": "edge"
+							}
+						}
+					},
+					"contents": {
+						"edge": {
+							"id": "delve/oracles/moves/delve_the_depths/edge",
+							"name": "Edge",
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
+									"min": 1,
+									"max": 45,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/46-65",
+									"min": 46,
+									"max": 65,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/66-75",
+									"min": 66,
+									"max": 75,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/76-80",
+									"min": 76,
+									"max": 80,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/81-100",
+									"min": 81,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
+						"shadow": {
+							"id": "delve/oracles/moves/delve_the_depths/shadow",
+							"name": "Shadow",
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
+									"min": 1,
+									"max": 30,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/31-65",
+									"min": 31,
+									"max": 65,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/66-90",
+									"min": 66,
+									"max": 90,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/91-99",
+									"min": 91,
+									"max": 99,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/100-100",
+									"min": 100,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
+						"wits": {
+							"id": "delve/oracles/moves/delve_the_depths/wits",
+							"name": "Wits",
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
+									"min": 1,
+									"max": 40,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/41-55",
+									"min": 41,
+									"max": 55,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/56-80",
+									"min": 56,
+									"max": 80,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/81-99",
+									"min": 81,
+									"max": 99,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/100-100",
+									"min": 100,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						}
+					},
+					"collections": {},
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 21,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"source": {
+				"title": "Ironsworn: Delve",
+				"date": "2020-02-13",
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"trap": {
+			"id": "delve/collections/oracles/trap",
+			"name": "Trap",
+			"rendering": {
+				"style": "tables"
+			},
+			"summary": "Identify the characteristics and effects of a trap within a site.",
+			"description": "If you encounter a trap within a site, use these oracles to better understand the nature or function of this obstacle. Roll once for an [Event](id:delve/oracles/trap/event) and once for a [Component](id:delve/oracles/trap/component), and interpret the response as appropriate to the situation and environment. A trap might be a physical, supernatural, or an ambush by a denizen.\n\nIf you are in a position to overcome or avoid the trap, make moves to see what happens. A simple trap might be dealt with in a single action, such as through the [Face Danger](id:classic/moves/adventure/face_danger) move. A complex trap could be represented as a scene challenge (*Ironsworn Core*, page 234).",
+			"contents": {
+				"trap": {
+					"id": "delve/oracles/trap/trap",
+					"name": "Event",
+					"canonical_name": "Trap: Event",
+					"dice": "1d100",
+					"suggestions": {
+						"oracles": ["delve/oracles/trap/component"]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/trap/trap/1-4",
+							"min": 1,
+							"max": 4,
+							"result": "Block",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/5-8",
+							"min": 5,
+							"max": 8,
+							"result": "Create",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/9-12",
+							"min": 9,
+							"max": 12,
+							"result": "Break",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/13-16",
+							"min": 13,
+							"max": 16,
+							"result": "Puncture",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/17-20",
+							"min": 17,
+							"max": 20,
+							"result": "Entangle",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/21-24",
+							"min": 21,
+							"max": 24,
+							"result": "Enclose",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/25-28",
+							"min": 25,
+							"max": 28,
+							"result": "Ambush",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/29-32",
+							"min": 29,
+							"max": 32,
+							"result": "Snare",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/33-36",
+							"min": 33,
+							"max": 36,
+							"result": "Change",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/37-40",
+							"min": 37,
+							"max": 40,
+							"result": "Imitate",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/41-44",
+							"min": 41,
+							"max": 44,
+							"result": "Crush",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/45-48",
+							"min": 45,
+							"max": 48,
+							"result": "Drop",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/49-52",
+							"min": 49,
+							"max": 52,
+							"result": "Conceal",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/53-56",
+							"min": 53,
+							"max": 56,
+							"result": "Lure",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/57-60",
+							"min": 57,
+							"max": 60,
+							"result": "Release",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/61-64",
+							"min": 61,
+							"max": 64,
+							"result": "Obscure",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/65-68",
+							"min": 65,
+							"max": 68,
+							"result": "Cut",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/69-72",
+							"min": 69,
+							"max": 72,
+							"result": "Smother",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/73-76",
+							"min": 73,
+							"max": 76,
+							"result": "Collapse",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/77-80",
+							"min": 77,
+							"max": 80,
+							"result": "Summon",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/81-84",
+							"min": 81,
+							"max": 84,
+							"result": "Move",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/85-88",
+							"min": 85,
+							"max": 88,
+							"result": "Surprise",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/89-92",
+							"min": 89,
+							"max": 92,
+							"result": "Divert",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/93-96",
+							"min": 93,
+							"max": 96,
+							"result": "Attack",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/97-100",
+							"min": 97,
+							"max": 100,
+							"result": "Trigger",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 217,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"component": {
+					"id": "delve/oracles/trap/component",
+					"name": "Component",
+					"canonical_name": "Trap: Component",
+					"dice": "1d100",
+					"suggestions": {
+						"oracles": ["delve/oracles/trap/event"]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/trap/component/1-4",
+							"min": 1,
+							"max": 4,
+							"result": "Pit",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/5-8",
+							"min": 5,
+							"max": 8,
+							"result": "Water",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/9-12",
+							"min": 9,
+							"max": 12,
+							"result": "Fire",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/13-16",
+							"min": 13,
+							"max": 16,
+							"result": "Projectile",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/17-20",
+							"min": 17,
+							"max": 20,
+							"result": "Passage",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/21-24",
+							"min": 21,
+							"max": 24,
+							"result": "Fall",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/25-28",
+							"min": 25,
+							"max": 28,
+							"result": "Debris",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/29-32",
+							"min": 29,
+							"max": 32,
+							"result": "Fear",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/33-36",
+							"min": 33,
+							"max": 36,
+							"result": "Alarm",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/37-40",
+							"min": 37,
+							"max": 40,
+							"result": "Trigger",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/41-44",
+							"min": 41,
+							"max": 44,
+							"result": "Cold",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/45-48",
+							"min": 45,
+							"max": 48,
+							"result": "Weapon",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/49-52",
+							"min": 49,
+							"max": 52,
+							"result": "Darkness",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/53-56",
+							"min": 53,
+							"max": 56,
+							"result": "Decay",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/57-60",
+							"min": 57,
+							"max": 60,
+							"result": "Path",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/61-64",
+							"min": 61,
+							"max": 64,
+							"result": "Stone",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/65-68",
+							"min": 65,
+							"max": 68,
+							"result": "Terrain",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/69-72",
+							"min": 69,
+							"max": 72,
+							"result": "Poison",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/73-76",
+							"min": 73,
+							"max": 76,
+							"result": "Barrier",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/77-80",
+							"min": 77,
+							"max": 80,
+							"result": "Overhead",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/81-84",
+							"min": 81,
+							"max": 84,
+							"result": "Magic",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/85-88",
+							"min": 85,
+							"max": 88,
+							"result": "Toxin",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/89-92",
+							"min": 89,
+							"max": 92,
+							"result": "Earth",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/93-96",
+							"min": 93,
+							"max": 96,
+							"result": "Light",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/97-100",
+							"min": 97,
+							"max": 100,
+							"result": "Denizen",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 217,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"collections": {},
+			"source": {
+				"title": "Ironsworn: Delve",
+				"date": "2020-02-13",
+				"page": 217,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
 		"threat": {
 			"id": "delve/collections/oracles/threat",
 			"name": "Threat",
@@ -8956,626 +9576,6 @@
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
 				"page": 220,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"trap": {
-			"id": "delve/collections/oracles/trap",
-			"name": "Trap",
-			"rendering": {
-				"style": "tables"
-			},
-			"summary": "Identify the characteristics and effects of a trap within a site.",
-			"description": "If you encounter a trap within a site, use these oracles to better understand the nature or function of this obstacle. Roll once for an [Event](id:delve/oracles/trap/event) and once for a [Component](id:delve/oracles/trap/component), and interpret the response as appropriate to the situation and environment. A trap might be a physical, supernatural, or an ambush by a denizen.\n\nIf you are in a position to overcome or avoid the trap, make moves to see what happens. A simple trap might be dealt with in a single action, such as through the [Face Danger](id:classic/moves/adventure/face_danger) move. A complex trap could be represented as a scene challenge (*Ironsworn Core*, page 234).",
-			"contents": {
-				"trap": {
-					"id": "delve/oracles/trap/trap",
-					"name": "Event",
-					"canonical_name": "Trap: Event",
-					"dice": "1d100",
-					"suggestions": {
-						"oracles": ["delve/oracles/trap/component"]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/trap/trap/1-4",
-							"min": 1,
-							"max": 4,
-							"result": "Block",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/5-8",
-							"min": 5,
-							"max": 8,
-							"result": "Create",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/9-12",
-							"min": 9,
-							"max": 12,
-							"result": "Break",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/13-16",
-							"min": 13,
-							"max": 16,
-							"result": "Puncture",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/17-20",
-							"min": 17,
-							"max": 20,
-							"result": "Entangle",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/21-24",
-							"min": 21,
-							"max": 24,
-							"result": "Enclose",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/25-28",
-							"min": 25,
-							"max": 28,
-							"result": "Ambush",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/29-32",
-							"min": 29,
-							"max": 32,
-							"result": "Snare",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/33-36",
-							"min": 33,
-							"max": 36,
-							"result": "Change",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/37-40",
-							"min": 37,
-							"max": 40,
-							"result": "Imitate",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/41-44",
-							"min": 41,
-							"max": 44,
-							"result": "Crush",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/45-48",
-							"min": 45,
-							"max": 48,
-							"result": "Drop",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/49-52",
-							"min": 49,
-							"max": 52,
-							"result": "Conceal",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/53-56",
-							"min": 53,
-							"max": 56,
-							"result": "Lure",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/57-60",
-							"min": 57,
-							"max": 60,
-							"result": "Release",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/61-64",
-							"min": 61,
-							"max": 64,
-							"result": "Obscure",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/65-68",
-							"min": 65,
-							"max": 68,
-							"result": "Cut",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/69-72",
-							"min": 69,
-							"max": 72,
-							"result": "Smother",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/73-76",
-							"min": 73,
-							"max": 76,
-							"result": "Collapse",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/77-80",
-							"min": 77,
-							"max": 80,
-							"result": "Summon",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/81-84",
-							"min": 81,
-							"max": 84,
-							"result": "Move",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/85-88",
-							"min": 85,
-							"max": 88,
-							"result": "Surprise",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/89-92",
-							"min": 89,
-							"max": 92,
-							"result": "Divert",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/93-96",
-							"min": 93,
-							"max": 96,
-							"result": "Attack",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/97-100",
-							"min": 97,
-							"max": 100,
-							"result": "Trigger",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 217,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"component": {
-					"id": "delve/oracles/trap/component",
-					"name": "Component",
-					"canonical_name": "Trap: Component",
-					"dice": "1d100",
-					"suggestions": {
-						"oracles": ["delve/oracles/trap/event"]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/trap/component/1-4",
-							"min": 1,
-							"max": 4,
-							"result": "Pit",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/5-8",
-							"min": 5,
-							"max": 8,
-							"result": "Water",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/9-12",
-							"min": 9,
-							"max": 12,
-							"result": "Fire",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/13-16",
-							"min": 13,
-							"max": 16,
-							"result": "Projectile",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/17-20",
-							"min": 17,
-							"max": 20,
-							"result": "Passage",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/21-24",
-							"min": 21,
-							"max": 24,
-							"result": "Fall",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/25-28",
-							"min": 25,
-							"max": 28,
-							"result": "Debris",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/29-32",
-							"min": 29,
-							"max": 32,
-							"result": "Fear",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/33-36",
-							"min": 33,
-							"max": 36,
-							"result": "Alarm",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/37-40",
-							"min": 37,
-							"max": 40,
-							"result": "Trigger",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/41-44",
-							"min": 41,
-							"max": 44,
-							"result": "Cold",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/45-48",
-							"min": 45,
-							"max": 48,
-							"result": "Weapon",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/49-52",
-							"min": 49,
-							"max": 52,
-							"result": "Darkness",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/53-56",
-							"min": 53,
-							"max": 56,
-							"result": "Decay",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/57-60",
-							"min": 57,
-							"max": 60,
-							"result": "Path",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/61-64",
-							"min": 61,
-							"max": 64,
-							"result": "Stone",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/65-68",
-							"min": 65,
-							"max": 68,
-							"result": "Terrain",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/69-72",
-							"min": 69,
-							"max": 72,
-							"result": "Poison",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/73-76",
-							"min": 73,
-							"max": 76,
-							"result": "Barrier",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/77-80",
-							"min": 77,
-							"max": 80,
-							"result": "Overhead",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/81-84",
-							"min": 81,
-							"max": 84,
-							"result": "Magic",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/85-88",
-							"min": 85,
-							"max": 88,
-							"result": "Toxin",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/89-92",
-							"min": 89,
-							"max": 92,
-							"result": "Earth",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/93-96",
-							"min": 93,
-							"max": 96,
-							"result": "Light",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/97-100",
-							"min": 97,
-							"max": 100,
-							"result": "Denizen",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 217,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"collections": {},
-			"source": {
-				"title": "Ironsworn: Delve",
-				"date": "2020-02-13",
-				"page": 217,
 				"authors": [
 					{
 						"name": "Shawn Tomkin"

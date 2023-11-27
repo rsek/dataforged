@@ -1,12 +1,13 @@
 import fs from 'fs-extra'
 import * as JTD from 'jtd'
 import path from 'path'
-import Log from '../scripts/utils/Log.js'
+import Log from '../utils/Log.js'
 import { toJtdRoot } from './utils.js'
 
-import { Datasworn } from '../schema/datasworn/index.js'
-import { PKG_NAME } from '../scripts/const.js'
-import { shellify, type ShellCommandParams } from '../shellify.js'
+import { Datasworn } from '../../schema/datasworn/index.js'
+import { PKG_NAME } from '../const.js'
+import { shellify, type ShellCommandParams } from '../../shellify.js'
+import { isEmpty, merge } from 'lodash-es'
 
 const JTD_TYPES_ROOT = path.join(process.cwd(), 'json-typedef')
 const JTD_JSON_PATH = path.join(JTD_TYPES_ROOT, 'datasworn.jtd.json')
@@ -29,11 +30,18 @@ crawlForRefs(root as Record<string, unknown>)
 for (const name of referenceNames)
 	if (!(name in root?.definitions)) Log.info(`Missing definition for ${name}`)
 
-const json = JSON.stringify(root, undefined, '\t')
+const json = JSON.stringify(
+	root,
+	(k, v) => {
+		if (isEmpty(v)) return undefined
+		return v
+	},
+	'\t'
+)
 const filePath = JTD_JSON_PATH
 
 fs.writeFile(filePath, json).then(() => {
-	if (!JTD.isValidSchema(root))
+	if (!JTD.isValidSchema(JSON.parse(json)))
 		throw Error(
 			`Wrote to ${filePath}, but it\'s not a valid JSON Typedef schema`
 		)
@@ -93,6 +101,9 @@ const params: ShellCommandParams<'jtd-codegen', [string], JtdOptions> = {
 		rubySigOut: path.join(JTD_TYPES_ROOT, 'ruby-sig'),
 		rustOut: path.join(JTD_TYPES_ROOT, 'rust'),
 		typescriptOut: path.join(JTD_TYPES_ROOT, 'typescript')
+	},
+	execOptions: {
+		env: merge(process.env, { RUST_BACKTRACE: 'full' })
 	}
 }
 

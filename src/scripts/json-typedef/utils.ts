@@ -16,6 +16,7 @@ import {
 	TRequired,
 	TSchema,
 	TString,
+	Type,
 	TypeGuard,
 	TypeRegistry
 } from '@sinclair/typebox'
@@ -26,6 +27,8 @@ import { Type as JtdType } from './typedef.js'
 import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
 import {
 	cloneDeep,
+	isInteger,
+	isString,
 	isUndefined,
 	mapValues,
 	merge,
@@ -35,10 +38,10 @@ import {
 	pickBy,
 	set
 } from 'lodash-es'
-import * as Generic from '../schema/datasworn/Generic.js'
-import * as Utils from '../schema/datasworn/Utils.js'
-import { TRoot } from '../schema/datasworn/root/SchemaRoot.js'
-import Log from '../scripts/utils/Log.js'
+import * as Generic from '../../schema/datasworn/Generic.js'
+import * as Utils from '../../schema/datasworn/Utils.js'
+import { TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
+import Log from '../utils/Log.js'
 import { Discriminator, JsonTypeDef, Members } from './symbol.js'
 import { Value } from '@sinclair/typebox/value'
 
@@ -99,18 +102,14 @@ export function setIdRef<T extends { id: string }, R extends string>(
 	>
 }
 
-export function toJtdEnum<U extends string[], T extends Utils.TUnionEnum<U>>(
-	schema: T
-) {
-	return JtdType.Enum(schema.enum)
-}
+export function toJtdEnum<
+	U extends string[] | number[],
+	T extends Utils.TUnionEnum<U>
+>(schema: T) {
+	if (schema.enum.every(isString)) return JtdType.Enum(schema.enum)
+	if (schema.enum.every(isInteger)) return JtdType.Uint8()
 
-export function toJtdOptional<T extends TOptional<Base>, Base extends TSchema>(
-	schema: T
-) {
-	// @ts-expect-error
-	const unwrap = omit(schema, Optional) as Base
-	return JtdType.Optional(toJtdForm(unwrap))
+	throw new Error(`Unable to infer schema for enum: ${JSON.stringify(schema)}`)
 }
 
 export function toJtdRef<T extends TSchema>(schema: TRef<T>) {
@@ -126,46 +125,25 @@ export function toJtdElements<U extends TSchema, T extends TArray<U>>(
 ) {
 	const items = schema.items as TSchema
 	return JtdType.Array(toJtdForm(items))
-	// return {
-	// 	elements: toJtdForm(schema.items as any)
-	// } as JTDSchemaType<Array<Static<T>[number]>>
 }
 
 /** Transform a Typebox object schema into JTD properties */
 export function toJtdProperties<T extends TObject>(schema: T) {
-	// const optionalProps = pickBy(schema, (v) => TypeGuard.TOptional(v))
-
 	const fields = omitBy(
-		mapValues(schema.properties, (subschema) => toJtdForm(subschema as any)),
+		mapValues(schema.properties, (subschema) => {
+			if (Utils.TNullable(subschema))
+				return JtdType.Nullable(toJtdForm(subschema.anyOf[0] as any))
+
+			const base = toJtdForm(subschema as any)
+
+			if (TypeGuard.TOptional(subschema)) return Type.Optional(base)
+
+			return base
+		}),
 		isUndefined
 	)
 
 	return JtdType.Struct(fields)
-	// const optionalProperties = {} as Record<
-	// 	keyof T['properties'],
-	// 	JTDSchemaType<Static<TSchema>>
-	// >
-	// const properties = {} as Record<
-	// 	keyof T['properties'],
-	// 	JTDSchemaType<Static<TSchema>>
-	// >
-
-	// for (const [key, propertySchema] of Object.entries(schema.properties)) {
-	// 	// skip underscore properties
-	// 	if (key.startsWith('_')) continue
-
-	// 	const props = isOptional(propertySchema) ? optionalProperties : properties
-	// 	props[key as keyof typeof props] = toJtdForm(propertySchema as any)
-	// }
-
-	// return {
-	// 	properties: omitBy(properties, (v) => typeof v === 'undefined'),
-	// 	optionalProperties:
-	// 		Object.keys(optionalProperties).length > 0
-	// 			? optionalProperties
-	// 			: undefined,
-	// 	additionalProperties: schema.additionalProperties
-	// } as unknown as JTDSchemaType<Static<T>>
 }
 
 /** Transform a Typebox record schema into JTD values */
@@ -180,7 +158,7 @@ export function toJtdValues<T extends TRecord<TString, U>, U extends TSchema>(
 			`Couldn't unwrap Record value schema: ${JSON.stringify(schema)}`
 		)
 
-	return JtdType.Record(unwrap, { metadata: { propertyPattern } })
+	return JtdType.Record(unwrap, { propertyPattern })
 
 	// FIXME: This is probably only safe for Dictionary-style patternProperties
 }
@@ -192,27 +170,20 @@ export function toJtdSingleEnum(schema: TLiteral<string>) {
 	return JtdType.Enum([schema.const])
 }
 
-export function toJtdNullable(schema: Utils.TNullable<TSchema>) {
-	const unwrap = Utils.NonNullable(schema)
-	if (!unwrap)
-		throw new Error(
-			`Couldn't unwrap nullable schema: ${JSON.stringify(schema)}`
-		)
-	const newSchema = toJtdForm(unwrap as TConvertible)
-	if (!newSchema)
-		throw new Error(
-			`Couldn't convert unwrapped nullable schema: ${JSON.stringify(schema)}`
-		)
-	return JtdType.Optional(newSchema)
-}
-
 export function toJtdDiscriminator(
 	schema: Utils.TDiscriminatedUnion<TObject[], string>
 ) {
-	return JtdType.Union(
-		schema[Members].map((subschema) => toJtdProperties(subschema)),
-		schema[Discriminator]
+	const discriminator = schema[Discriminator]
+
+	const mapping = Object.fromEntries(
+		schema[Members].map((subschema) => [
+			subschema.properties[discriminator].const,
+			toJtdProperties(Type.Omit(subschema, [discriminator]))
+		])
 	)
+
+	// console.log(discriminator, mapping)
+	return JtdType.Union(mapping, discriminator)
 }
 
 type TConvertible =
@@ -244,12 +215,6 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 		case schema[JsonTypeDef]?.skip:
 		case TypeGuard.TNull(schema):
 			return undefined
-		case Utils.TNullable(schema):
-			result = toJtdNullable(schema)
-			break
-		case TypeGuard.TOptional(schema):
-			result = toJtdOptional(schema)
-			break
 		case TypeGuard.TLiteralString(schema):
 			result = toJtdSingleEnum(schema)
 			break
@@ -288,21 +253,8 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 		case Utils.TDiscriminatedUnion(schema):
 			result = toJtdDiscriminator(schema)
 			break
-
-		case Value.Check(schema, 'DiscriminatedUnion'):
-			if (
-				(schema as unknown as Utils.TUnionEnum).enum?.every(
-					(member) => typeof member === 'string'
-				)
-			)
-				result = JtdType.Enum(schema.enum)
-			// FIXME: smarter typing for this; only non-string enum is ChallengeRank, which can be handled as an integer
-			if (
-				(schema as unknown as Utils.TUnionEnum).enum?.every(
-					(member) => typeof member === 'number'
-				)
-			)
-				result = JtdType.Uint8()
+		case schema[Kind] === 'UnionEnum':
+			result = toJtdEnum(schema as any)
 			break
 	}
 
@@ -314,6 +266,7 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 	}
 
 	result = merge(result, { metadata: extractMetadata(schema) })
+
 	return result as any
 }
 

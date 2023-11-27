@@ -9,9 +9,6 @@ import java.util.List;
 
 @JsonSerialize
 public class DelveSiteTheme {
-    @JsonProperty("card_type")
-    private DelveSiteThemeCardType cardType;
-
     @JsonProperty("dangers")
     private List<DelveSiteThemeDangerRow> dangers;
 
@@ -47,22 +44,6 @@ public class DelveSiteTheme {
     private Suggestions suggestions;
 
     public DelveSiteTheme() {
-    }
-
-    /**
-     * Getter for cardType.<p>
-     * A delve site theme card.
-     */
-    public DelveSiteThemeCardType getCardType() {
-        return cardType;
-    }
-
-    /**
-     * Setter for cardType.<p>
-     * A delve site theme card.
-     */
-    public void setCardType(DelveSiteThemeCardType cardType) {
-        this.cardType = cardType;
     }
 
     /**

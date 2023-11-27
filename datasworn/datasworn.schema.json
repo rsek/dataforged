@@ -928,7 +928,7 @@
 		"ChallengeRank": {
 			"$id": "#/$defs/ChallengeRank",
 			"title": "ChallengeRank",
-			"description": "Challenge rank, represented as an integer.\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
+			"description": "Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
 			"enum": [1, 2, 3, 4, 5]
 		},
 		"ProgressTrackTypeInfo": {
@@ -4849,12 +4849,6 @@
 				}
 			}
 		},
-		"DelveCardType": {
-			"$id": "#/$defs/DelveCardType",
-			"title": "DelveCardType",
-			"description": "  * theme: A delve site theme card.\n  * domain: A delve site domain card.",
-			"enum": ["theme", "domain"]
-		},
 		"DelveSite": {
 			"$id": "#/$defs/DelveSite",
 			"title": "DelveSite",
@@ -5205,15 +5199,7 @@
 			"$id": "#/$defs/DelveSiteDomain",
 			"title": "DelveSiteDomain",
 			"type": "object",
-			"required": [
-				"id",
-				"name",
-				"card_type",
-				"summary",
-				"features",
-				"dangers",
-				"source"
-			],
+			"required": ["id", "name", "summary", "features", "dangers", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/DelveSiteDomainId",
@@ -5226,11 +5212,6 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label",
 					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
-				},
-				"card_type": {
-					"type": "string",
-					"description": "A delve site domain card.",
-					"const": "domain"
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"
@@ -5676,15 +5657,7 @@
 			"$id": "#/$defs/DelveSiteTheme",
 			"title": "DelveSiteTheme",
 			"type": "object",
-			"required": [
-				"id",
-				"name",
-				"card_type",
-				"summary",
-				"features",
-				"dangers",
-				"source"
-			],
+			"required": ["id", "name", "summary", "features", "dangers", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/DelveSiteThemeId",
@@ -5697,11 +5670,6 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label",
 					"description": "The name of this item as it appears on the page in the book, if it's different from `name`."
-				},
-				"card_type": {
-					"type": "string",
-					"description": "A delve site theme card.",
-					"const": "theme"
 				},
 				"icon": {
 					"$ref": "#/$defs/SvgImageUrl"

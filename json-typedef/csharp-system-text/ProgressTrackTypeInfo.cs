@@ -18,6 +18,6 @@ namespace Datasworn
 
         [JsonPropertyName("controls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, ProgressTrackTypeInfoControl> Controls { get; set; }
+        public IDictionary<string, object> Controls { get; set; }
     }
 }

@@ -14,18 +14,16 @@ namespace Datasworn
         public OracleTableRowId Id { get; set; }
 
         /// <summary>
-        /// High end of the dice range for this table row. `null` represents an
-        /// unrollable row, included only for rendering purposes.
+        /// High end of the dice range for this table row.
         /// </summary>
         [JsonPropertyName("max")]
-        public short? Max { get; set; }
+        public short Max { get; set; }
 
         /// <summary>
-        /// Low end of the dice range for this table row. `null` represents an
-        /// unrollable row, included only for rendering purposes.
+        /// Low end of the dice range for this table row.
         /// </summary>
         [JsonPropertyName("min")]
-        public short? Min { get; set; }
+        public short Min { get; set; }
 
         [JsonPropertyName("result")]
         public MarkdownString Result { get; set; }

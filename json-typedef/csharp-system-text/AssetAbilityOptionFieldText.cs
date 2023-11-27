@@ -23,9 +23,6 @@ namespace Datasworn
         [JsonPropertyName("label")]
         public Label Label { get; set; }
 
-        /// <summary>
-        /// The content of this text input, or `null` if it's empty
-        /// </summary>
         [JsonPropertyName("value")]
         public string Value { get; set; }
     }

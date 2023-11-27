@@ -25,6 +25,10 @@ public class OracleTable {
     private List<OracleTableRow> table;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("_i18n")
+    private I18nHints i18n;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("canonical_name")
     private Label canonicalName;
 
@@ -141,6 +145,20 @@ public class OracleTable {
      */
     public void setTable(List<OracleTableRow> table) {
         this.table = table;
+    }
+
+    /**
+     * Getter for i18n.<p>
+     */
+    public I18nHints getI18n() {
+        return i18n;
+    }
+
+    /**
+     * Setter for i18n.<p>
+     */
+    public void setI18n(I18nHints i18n) {
+        this.i18n = i18n;
     }
 
     /**

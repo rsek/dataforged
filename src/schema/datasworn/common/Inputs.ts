@@ -11,7 +11,7 @@ import {
 	type Static,
 	type TSchema
 } from '@sinclair/typebox'
-import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 
 import {
 	LiteralZero,

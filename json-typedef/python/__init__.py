@@ -179,13 +179,7 @@ class ActionRollOption:
 
 @dataclass
 class ActionRollOptionAssetControl(ActionRollOption):
-    assets: 'Optional[List[AssetIDWildcard]]'
-    """
-    Asset IDs (which may be wildcarded) that provide the control field. For
-    asset ability enhancements, `null` is used to represent the asset's own
-    control fields.
-    """
-
+    assets: 'List[AssetIDWildcard]'
     control: 'DictKey'
     """
     The key of the asset control field.
@@ -196,7 +190,7 @@ class ActionRollOptionAssetControl(ActionRollOption):
     def from_json_data(cls, data: Any) -> 'ActionRollOptionAssetControl':
         return cls(
             "asset_control",
-            _from_json_data(Optional[List[AssetIDWildcard]], data.get("assets")),
+            _from_json_data(List[AssetIDWildcard], data.get("assets")),
             _from_json_data(DictKey, data.get("control")),
         )
 
@@ -208,13 +202,7 @@ class ActionRollOptionAssetControl(ActionRollOption):
 
 @dataclass
 class ActionRollOptionAssetOption(ActionRollOption):
-    assets: 'Optional[List[AssetIDWildcard]]'
-    """
-    Asset IDs (which may be wildcarded) that provide the option field. For asset
-    ability enhancements, `null` is used to represent the asset's own option
-    fields.
-    """
-
+    assets: 'List[AssetIDWildcard]'
     option: 'DictKey'
     """
     The key of the asset option field.
@@ -225,7 +213,7 @@ class ActionRollOptionAssetOption(ActionRollOption):
     def from_json_data(cls, data: Any) -> 'ActionRollOptionAssetOption':
         return cls(
             "asset_option",
-            _from_json_data(Optional[List[AssetIDWildcard]], data.get("assets")),
+            _from_json_data(List[AssetIDWildcard], data.get("assets")),
             _from_json_data(DictKey, data.get("option")),
         )
 
@@ -702,11 +690,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
     (e.g. with `aria-label` in HTML).
     """
 
-    max: 'Optional[int]'
-    """
-    The (inclusive) maximum value.
-    """
-
+    max: 'int'
     min: 'int'
     """
     The (inclusive) minimum value.
@@ -724,7 +708,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
             "counter",
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
-            _from_json_data(Optional[int], data.get("max")),
+            _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
             _from_json_data(int, data.get("value")),
         )
@@ -789,11 +773,7 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
     (e.g. with `aria-label` in HTML).
     """
 
-    value: 'Optional[str]'
-    """
-    The content of this text input, or `null` if it's empty
-    """
-
+    value: 'str'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldText':
@@ -801,7 +781,7 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
             "text",
             _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
-            _from_json_data(Optional[str], data.get("value")),
+            _from_json_data(str, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
@@ -835,17 +815,13 @@ class AssetAttachment:
     Asset IDs (which may be wildcards) that may be attached to this asset
     """
 
-    max: 'Optional[int]'
-    """
-    Null if there's no upper limit to the number of attached assets.
-    """
-
+    max: 'int'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAttachment':
         return cls(
             _from_json_data(List[AssetIDWildcard], data.get("assets")),
-            _from_json_data(Optional[int], data.get("max")),
+            _from_json_data(int, data.get("max")),
         )
 
     def to_json_data(self) -> Any:
@@ -1400,9 +1376,10 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
     (e.g. with `aria-label` in HTML).
     """
 
-    value: 'Optional[DictKey]'
+    value: 'DictKey'
     """
-    The current value of this input.
+    The key of the currently selected choice from the `choices` property, or
+    `null` if none is selected.
     """
 
 
@@ -1413,7 +1390,7 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
             _from_json_data(Dict[str, AssetControlFieldSelectEnhancementChoice], data.get("choices")),
             _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
-            _from_json_data(Optional[DictKey], data.get("value")),
+            _from_json_data(DictKey, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
@@ -1765,9 +1742,10 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
     (e.g. with `aria-label` in HTML).
     """
 
-    value: 'Optional[DictKey]'
+    value: 'DictKey'
     """
-    The current value of this input.
+    The key of the currently selected choice from the `choices` property, or
+    `null` if none is selected.
     """
 
 
@@ -1778,7 +1756,7 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
             _from_json_data(Dict[str, AssetOptionFieldSelectEnhancementChoice], data.get("choices")),
             _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
-            _from_json_data(Optional[DictKey], data.get("value")),
+            _from_json_data(DictKey, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
@@ -1932,9 +1910,10 @@ class AssetOptionFieldSelectStat(AssetOptionField):
     (e.g. with `aria-label` in HTML).
     """
 
-    value: 'Optional[DictKey]'
+    value: 'DictKey'
     """
-    The current value of this input.
+    The key of the currently selected choice from the `choices` property, or
+    `null` if none is selected.
     """
 
 
@@ -1945,7 +1924,7 @@ class AssetOptionFieldSelectStat(AssetOptionField):
             _from_json_data(Dict[str, AssetOptionFieldSelectStatChoice], data.get("choices")),
             _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
-            _from_json_data(Optional[DictKey], data.get("value")),
+            _from_json_data(DictKey, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
@@ -1970,11 +1949,7 @@ class AssetOptionFieldText(AssetOptionField):
     (e.g. with `aria-label` in HTML).
     """
 
-    value: 'Optional[str]'
-    """
-    The content of this text input, or `null` if it's empty
-    """
-
+    value: 'str'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldText':
@@ -1982,7 +1957,7 @@ class AssetOptionFieldText(AssetOptionField):
             "text",
             _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
-            _from_json_data(Optional[str], data.get("value")),
+            _from_json_data(str, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
@@ -2358,7 +2333,7 @@ class AtlasIDWildcard:
 @dataclass
 class ChallengeRank:
     """
-    Challenge rank, represented as an integer.
+    Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
     """
 
     value: 'int'
@@ -2456,24 +2431,6 @@ class CSSColor:
 
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
-
-class DelveCardType(Enum):
-    DOMAIN = "domain"
-    """
-    A delve site domain card.
-    """
-
-    THEME = "theme"
-    """
-    A delve site theme card.
-    """
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'DelveCardType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
 
 @dataclass
 class DelveSite:
@@ -2627,26 +2584,8 @@ class DelveSiteDenizenID:
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
 
-class DelveSiteDomainCardType(Enum):
-    """
-    A delve site domain card.
-    """
-
-    DOMAIN = "domain"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'DelveSiteDomainCardType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
 @dataclass
 class DelveSiteDomain:
-    card_type: 'DelveSiteDomainCardType'
-    """
-    A delve site domain card.
-    """
-
     dangers: 'List[DelveSiteDomainDangerRow]'
     features: 'List[DelveSiteDomainFeatureRow]'
     id: 'DelveSiteDomainID'
@@ -2688,7 +2627,6 @@ class DelveSiteDomain:
     @classmethod
     def from_json_data(cls, data: Any) -> 'DelveSiteDomain':
         return cls(
-            _from_json_data(DelveSiteDomainCardType, data.get("card_type")),
             _from_json_data(List[DelveSiteDomainDangerRow], data.get("dangers")),
             _from_json_data(List[DelveSiteDomainFeatureRow], data.get("features")),
             _from_json_data(DelveSiteDomainID, data.get("id")),
@@ -2704,7 +2642,6 @@ class DelveSiteDomain:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["card_type"] = _to_json_data(self.card_type)
         data["dangers"] = _to_json_data(self.dangers)
         data["features"] = _to_json_data(self.features)
         data["id"] = _to_json_data(self.id)
@@ -2881,26 +2818,8 @@ class DelveSiteID:
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
 
-class DelveSiteThemeCardType(Enum):
-    """
-    A delve site theme card.
-    """
-
-    THEME = "theme"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'DelveSiteThemeCardType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
 @dataclass
 class DelveSiteTheme:
-    card_type: 'DelveSiteThemeCardType'
-    """
-    A delve site theme card.
-    """
-
     dangers: 'List[DelveSiteThemeDangerRow]'
     features: 'List[DelveSiteThemeFeatureRow]'
     id: 'DelveSiteThemeID'
@@ -2933,7 +2852,6 @@ class DelveSiteTheme:
     @classmethod
     def from_json_data(cls, data: Any) -> 'DelveSiteTheme':
         return cls(
-            _from_json_data(DelveSiteThemeCardType, data.get("card_type")),
             _from_json_data(List[DelveSiteThemeDangerRow], data.get("dangers")),
             _from_json_data(List[DelveSiteThemeFeatureRow], data.get("features")),
             _from_json_data(DelveSiteThemeID, data.get("id")),
@@ -2948,7 +2866,6 @@ class DelveSiteTheme:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["card_type"] = _to_json_data(self.card_type)
         data["dangers"] = _to_json_data(self.dangers)
         data["features"] = _to_json_data(self.features)
         data["id"] = _to_json_data(self.id)
@@ -4512,7 +4429,6 @@ class OracleCollectionRendering:
     def from_json_data(cls, data: Any) -> 'OracleCollectionRendering':
         variants: Dict[str, Type[OracleCollectionRendering]] = {
             "multi_table": OracleCollectionRenderingMultiTable,
-            "tables": OracleCollectionRenderingTables,
         }
 
         return variants[data["style"]].from_json_data(data)
@@ -4534,19 +4450,6 @@ class OracleCollectionRenderingMultiTable(OracleCollectionRendering):
     def to_json_data(self) -> Any:
         data = { "style": "multi_table" }
         data["columns"] = _to_json_data(self.columns)
-        return data
-
-@dataclass
-class OracleCollectionRenderingTables(OracleCollectionRendering):
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'OracleCollectionRenderingTables':
-        return cls(
-            "tables",
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "style": "tables" }
         return data
 
 class OracleCollectionStyle(Enum):
@@ -4677,6 +4580,7 @@ class OracleTable:
     """
 
     table: 'List[OracleTableRow]'
+    i18n: 'Optional[I18nHints]'
     canonical_name: 'Optional[Label]'
     """
     The name of this item as it appears on the page in the book, if it's
@@ -4732,6 +4636,7 @@ class OracleTable:
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(List[OracleTableRow], data.get("table")),
+            _from_json_data(Optional[I18nHints], data.get("_i18n")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[SvgImageURL], data.get("icon")),
@@ -4750,6 +4655,8 @@ class OracleTable:
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
         data["table"] = _to_json_data(self.table)
+        if self.i18n is not None:
+             data["_i18n"] = _to_json_data(self.i18n)
         if self.canonical_name is not None:
              data["canonical_name"] = _to_json_data(self.canonical_name)
         if self.description is not None:
@@ -4885,8 +4792,6 @@ class OracleTableRendering:
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableRendering':
         variants: Dict[str, Type[OracleTableRendering]] = {
-            "column": OracleTableRenderingColumn,
-            "embed_in_row": OracleTableRenderingEmbedInRow,
             "standalone": OracleTableRenderingStandalone,
         }
 
@@ -4894,32 +4799,6 @@ class OracleTableRendering:
 
     def to_json_data(self) -> Any:
         pass
-
-@dataclass
-class OracleTableRenderingColumn(OracleTableRendering):
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'OracleTableRenderingColumn':
-        return cls(
-            "column",
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "style": "column" }
-        return data
-
-@dataclass
-class OracleTableRenderingEmbedInRow(OracleTableRendering):
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'OracleTableRenderingEmbedInRow':
-        return cls(
-            "embed_in_row",
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "style": "embed_in_row" }
-        return data
 
 @dataclass
 class OracleTableRenderingStandalone(OracleTableRendering):
@@ -5013,16 +4892,14 @@ class OracleTableRow:
     The unique Datasworn ID for this item.
     """
 
-    max: 'Optional[int]'
+    max: 'int'
     """
-    High end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    High end of the dice range for this table row.
     """
 
-    min: 'Optional[int]'
+    min: 'int'
     """
-    Low end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    Low end of the dice range for this table row.
     """
 
     result: 'MarkdownString'
@@ -5039,8 +4916,8 @@ class OracleTableRow:
     def from_json_data(cls, data: Any) -> 'OracleTableRow':
         return cls(
             _from_json_data(OracleTableRowID, data.get("id")),
-            _from_json_data(Optional[int], data.get("max")),
-            _from_json_data(Optional[int], data.get("min")),
+            _from_json_data(int, data.get("max")),
+            _from_json_data(int, data.get("min")),
             _from_json_data(MarkdownString, data.get("result")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),
@@ -5250,18 +5127,6 @@ class ProgressRollOption:
         return data
 
 @dataclass
-class ProgressTrackTypeInfoControl:
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'ProgressTrackTypeInfoControl':
-        return cls(
-        )
-
-    def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
-        return data
-
-@dataclass
 class ProgressTrackTypeInfo:
     """
     Describes the features of a type of progress track.
@@ -5272,13 +5137,13 @@ class ProgressTrackTypeInfo:
     A category label for progress tracks of this type.
     """
 
-    controls: 'Optional[Dict[str, ProgressTrackTypeInfoControl]]'
+    controls: 'Optional[Dict[str, Any]]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'ProgressTrackTypeInfo':
         return cls(
             _from_json_data(Label, data.get("category")),
-            _from_json_data(Optional[Dict[str, ProgressTrackTypeInfoControl]], data.get("controls")),
+            _from_json_data(Optional[Dict[str, Any]], data.get("controls")),
         )
 
     def to_json_data(self) -> Any:
@@ -5471,16 +5336,7 @@ class Source:
     Required because it's used to determine whether the data needs updating.
     """
 
-    license: 'Optional[str]'
-    """
-    An absolute URL pointing to the location where this element's license can
-    be found.
-    
-    A `null` here indicates that the content provides **no** license, and is
-    not intended for redistribution.  Datasworn's build process skips unlicensed
-    content by default.
-    """
-
+    license: 'str'
     title: 'str'
     """
     The title of the source document.
@@ -5502,7 +5358,7 @@ class Source:
         return cls(
             _from_json_data(List[SourceAuthor], data.get("authors")),
             _from_json_data(str, data.get("date")),
-            _from_json_data(Optional[str], data.get("license")),
+            _from_json_data(str, data.get("license")),
             _from_json_data(str, data.get("title")),
             _from_json_data(str, data.get("url")),
             _from_json_data(Optional[int], data.get("page")),
@@ -5844,14 +5700,8 @@ class TriggerActionRollCondition:
 
 @dataclass
 class TriggerActionRollConditionEnhancement:
-    method: 'Optional[ActionRollMethod]'
-    """
-    A `null` value means this condition provides no roll mechanic of its own;
-    it must be used with another trigger condition that provides a non-null
-    `method`.
-    """
-
-    roll_options: 'Optional[List[ActionRollOption]]'
+    method: 'ActionRollMethod'
+    roll_options: 'List[ActionRollOption]'
     """
     The options available when rolling with this trigger condition.
     """
@@ -5866,8 +5716,8 @@ class TriggerActionRollConditionEnhancement:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerActionRollConditionEnhancement':
         return cls(
-            _from_json_data(Optional[ActionRollMethod], data.get("method")),
-            _from_json_data(Optional[List[ActionRollOption]], data.get("roll_options")),
+            _from_json_data(ActionRollMethod, data.get("method")),
+            _from_json_data(List[ActionRollOption], data.get("roll_options")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
@@ -5922,7 +5772,7 @@ class TriggerBy:
 
 @dataclass
 class TriggerNoRoll:
-    conditions: 'Optional[List[TriggerNoRollCondition]]'
+    conditions: 'List[TriggerNoRollCondition]'
     text: 'MarkdownString'
     """
     A markdown string containing the primary trigger text for this move.
@@ -5935,7 +5785,7 @@ class TriggerNoRoll:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerNoRoll':
         return cls(
-            _from_json_data(Optional[List[TriggerNoRollCondition]], data.get("conditions")),
+            _from_json_data(List[TriggerNoRollCondition], data.get("conditions")),
             _from_json_data(MarkdownString, data.get("text")),
         )
 
@@ -6045,14 +5895,8 @@ class TriggerProgressRollCondition:
 
 @dataclass
 class TriggerProgressRollConditionEnhancement:
-    method: 'Optional[ProgressRollMethod]'
-    """
-    A `null` value means this condition provides no roll mechanic of its own;
-    it must be used with another trigger condition that provides a non-null
-    `method`.
-    """
-
-    roll_options: 'Optional[List[ProgressRollOption]]'
+    method: 'ProgressRollMethod'
+    roll_options: 'List[ProgressRollOption]'
     """
     The options available when rolling with this trigger condition.
     """
@@ -6067,8 +5911,8 @@ class TriggerProgressRollConditionEnhancement:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerProgressRollConditionEnhancement':
         return cls(
-            _from_json_data(Optional[ProgressRollMethod], data.get("method")),
-            _from_json_data(Optional[List[ProgressRollOption]], data.get("roll_options")),
+            _from_json_data(ProgressRollMethod, data.get("method")),
+            _from_json_data(List[ProgressRollOption], data.get("roll_options")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
@@ -6164,14 +6008,8 @@ class TriggerSpecialTrackConditionEnhancement:
     (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
     """
 
-    method: 'Optional[SpecialTrackRollMethod]'
-    """
-    A `null` value means this condition provides no roll mechanic of its own;
-    it must be used with another trigger condition that provides a non-null
-    `method`.
-    """
-
-    roll_options: 'Optional[List[TriggerSpecialTrackConditionOption]]'
+    method: 'SpecialTrackRollMethod'
+    roll_options: 'List[TriggerSpecialTrackConditionOption]'
     """
     The options available when rolling with this trigger condition.
     """
@@ -6186,8 +6024,8 @@ class TriggerSpecialTrackConditionEnhancement:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerSpecialTrackConditionEnhancement':
         return cls(
-            _from_json_data(Optional[SpecialTrackRollMethod], data.get("method")),
-            _from_json_data(Optional[List[TriggerSpecialTrackConditionOption]], data.get("roll_options")),
+            _from_json_data(SpecialTrackRollMethod, data.get("method")),
+            _from_json_data(List[TriggerSpecialTrackConditionOption], data.get("roll_options")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
@@ -6359,16 +6197,14 @@ class TruthOptionID:
 
 @dataclass
 class TruthOptionTableRow:
-    max: 'Optional[int]'
+    max: 'int'
     """
-    High end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    High end of the dice range for this table row.
     """
 
-    min: 'Optional[int]'
+    min: 'int'
     """
-    Low end of the dice range for this table row. `null` represents an
-    unrollable row, included only for rendering purposes.
+    Low end of the dice range for this table row.
     """
 
     result: 'MarkdownString'
@@ -6384,8 +6220,8 @@ class TruthOptionTableRow:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TruthOptionTableRow':
         return cls(
-            _from_json_data(Optional[int], data.get("max")),
-            _from_json_data(Optional[int], data.get("min")),
+            _from_json_data(int, data.get("max")),
+            _from_json_data(int, data.get("min")),
             _from_json_data(MarkdownString, data.get("result")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableID], data.get("embed_table")),

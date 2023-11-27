@@ -781,11 +781,18 @@ export class TypeDefBuilder {
 	// ------------------------------------------------------------------------
 	/** `[Standard]` Creates an Optional property */
 	public Optional<T extends Types.TSchema>(schema: T): Types.TOptional<T> {
-		return this.Optional(schema)
+		// return this.Optional(schema)
+		return Type.Optional(schema)
 	}
 	/** `[Standard]` Creates a Readonly property */
 	public Readonly<T extends Types.TSchema>(schema: T): Types.TReadonly<T> {
-		return this.Readonly(schema)
+		// return this.Readonly(schema)
+		return Type.Readonly(schema)
+	}
+
+	public Nullable<T extends Types.TSchema>(schema: T) {
+		const newType = { ...Types.TypeClone.Type(schema), nullable: true }
+		return newType as T & { nullable: true }
 	}
 	// ------------------------------------------------------------------------
 	// Types
@@ -913,23 +920,41 @@ export class TypeDefBuilder {
 		)
 	}
 	/** [Standard] Creates a Union type */
-	public Union<T extends TStruct<TFields>[], D extends string = 'type'>(
-		structs: [...T],
-		discriminator?: D
-	): TUnion<T, D> {
-		discriminator = (discriminator || 'type') as D
-		if (structs.length === 0)
+	// public Union<T extends TStruct<TFields>[], D extends string = 'type'>(
+	// 	structs: [...T],
+	// 	discriminator?: D
+	// ): TUnion<T, D> {
+	// 	discriminator = (discriminator || 'type') as D
+	// 	if (structs.length === 0)
+	// 		throw new Error(
+	// 			'TypeDefBuilder: Union types must contain at least one struct'
+	// 		)
+	// 	const mapping = structs.reduce(
+	// 		(acc, current, index) => ({ ...acc, [index.toString()]: current }),
+	// 		{}
+	// 	)
+	// 	return this.Create(
+	// 		{ [Types.Kind]: 'TypeDef:Union', discriminator, mapping },
+	// 		{}
+	// 	)
+	// }
+	public Union<T extends Record<string, TStruct<TFields>>, D extends string>(
+		mapping: T,
+		discriminator: D
+	): TUnion<T[keyof T][], D> {
+		if (Object.values(mapping).length === 0)
 			throw new Error(
 				'TypeDefBuilder: Union types must contain at least one struct'
 			)
-		const mapping = structs.reduce(
-			(acc, current, index) => ({ ...acc, [index.toString()]: current }),
-			{}
-		)
-		return this.Create(
+
+		const result = this.Create(
 			{ [Types.Kind]: 'TypeDef:Union', discriminator, mapping },
 			{}
 		)
+
+		// console.log(JSON.stringify(result, undefined, '\t'))
+
+		return result
 	}
 	/** [Standard] Creates a Timestamp type */
 	public Timestamp(metadata: Metadata = {}): TTimestamp {
