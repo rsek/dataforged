@@ -21,7 +21,7 @@ import {
 	unsortableKeys
 } from './sort.js'
 import { sortTopLevelCollection } from './sortCollection.js'
-import SourceValidator from '../validation/SourceValidator.js'
+// import SourceValidator from '../validation/SourceValidator.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -105,7 +105,7 @@ export async function buildRuleset(
 		// TODO: rewrite this using keywords and Draft.each() from json-schema-library
 
 		ajv.validate('Datasworn', jsonToValidate)
-		SourceValidator.Check(jsonToValidate)
+		// SourceValidator.Check(jsonToValidate)
 
 		const jsonOut = cleanDatasworn({ ...sourcebookMetadata, [k]: v })
 

@@ -1,8 +1,10 @@
 import { TypeCompiler } from '@sinclair/typebox/compiler'
 import { DataswornSource } from '../../schema/datasworn/Root.js'
 
-const { $schema, $id, $defs, ...root } = DataswornSource
 
-const SourceValidator = TypeCompiler.Compile(root, Object.values($defs))
+const SourceValidator = TypeCompiler.Compile(
+	DataswornSource,
+	Object.values(DataswornSource.$defs)
+)
 
 export default SourceValidator

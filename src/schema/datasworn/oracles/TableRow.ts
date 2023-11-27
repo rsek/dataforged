@@ -72,8 +72,7 @@ export function StaticRowPartial<
 		}
 	> = {}
 ) {
-	const result = WithDefaults(Utils.ObjectLiteral(literals), defaults as any, {
+	return WithDefaults(Utils.ObjectLiteral(literals), defaults as any, {
 		additionalProperties: true
 	})
-	return result
 }

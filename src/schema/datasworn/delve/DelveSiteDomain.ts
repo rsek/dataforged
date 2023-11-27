@@ -104,7 +104,8 @@ export const DelveSiteDomain = Generic.SourcedNode(
 		)
 	}),
 	{
-		$id: '#/$defs/DelveSiteDomain'
+		$id: '#/$defs/DelveSiteDomain',
+		description: 'A delve site domain card.'
 	}
 )
 // console.log(DelveSiteDomain)

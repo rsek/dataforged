@@ -438,7 +438,7 @@ export type Label19 = string;
  */
 export type Label20 = string;
 /**
- * Challenge rank, represented as an integer.
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  *
  *   * 1: Troublesome
  *   * 2: Dangerous
@@ -565,7 +565,7 @@ export type Label26 = string;
  */
 export type NpcNature = string;
 /**
- * Challenge rank, represented as an integer.
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  *
  *   * 1: Troublesome
  *   * 2: Dangerous
@@ -579,7 +579,7 @@ export type ChallengeRank1 = 1 | 2 | 3 | 4 | 5;
  */
 export type NpcVariantId = string;
 /**
- * Challenge rank, represented as an integer.
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  *
  *   * 1: Troublesome
  *   * 2: Dangerous
@@ -1813,10 +1813,6 @@ export interface DelveSiteDomain {
   id?: DelveSiteDomainId1;
   name: Label29;
   canonical_name?: Label30;
-  /**
-   * A delve site domain card.
-   */
-  card_type: "domain";
   icon?: SvgImageUrl2;
   summary: MarkdownString9;
   features: DelveSiteDomainFeatureRow[] &
@@ -2015,10 +2011,6 @@ export interface DelveSiteTheme {
   id?: DelveSiteThemeId1;
   name: Label31;
   canonical_name?: Label32;
-  /**
-   * A delve site theme card.
-   */
-  card_type: "theme";
   icon?: SvgImageUrl2;
   summary: MarkdownString9;
   features: DelveSiteThemeFeatureRow[] &

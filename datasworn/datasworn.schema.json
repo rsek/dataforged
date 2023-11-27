@@ -3,7 +3,7 @@
 	"title": "Datasworn v2.0.0-dev",
 	"type": "object",
 	"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
-	"required": ["id", "source"],
+	"required": ["id"],
 	"properties": {
 		"id": {
 			"$ref": "#/$defs/NamespaceId"
@@ -110,9 +110,6 @@
 					"$ref": "#/$defs/Truth"
 				}
 			}
-		},
-		"source": {
-			"$ref": "#/$defs/Source"
 		}
 	},
 	"$defs": {
@@ -5199,6 +5196,7 @@
 			"$id": "#/$defs/DelveSiteDomain",
 			"title": "DelveSiteDomain",
 			"type": "object",
+			"description": "A delve site domain card.",
 			"required": ["id", "name", "summary", "features", "dangers", "source"],
 			"properties": {
 				"id": {
@@ -5657,6 +5655,7 @@
 			"$id": "#/$defs/DelveSiteTheme",
 			"title": "DelveSiteTheme",
 			"type": "object",
+			"description": "A delve site theme card.",
 			"required": ["id", "name", "summary", "features", "dangers", "source"],
 			"properties": {
 				"id": {

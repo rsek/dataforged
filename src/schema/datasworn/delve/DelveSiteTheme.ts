@@ -70,6 +70,7 @@ export const DelveSiteTheme = Generic.SourcedNode(
 		)
 	}),
 	{
+		description: 'A delve site theme card.',
 		$id: '#/$defs/DelveSiteTheme'
 	}
 )

@@ -1,18 +1,24 @@
 id: starforged
-source: &Source
-  url: https://ironswornrpg.com
-  authors:
-    - name: Shawn Tomkin
-  title: 'Ironsworn: Starforged Rulebook'
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-  date: 2022-06-05
+# source: &Source
+#   url: https://ironswornrpg.com
+#   authors:
+#     - name: Shawn Tomkin
+#   title: 'Ironsworn: Starforged Rulebook'
+#   license: https://creativecommons.org/licenses/by-nc-sa/4.0
+#   date: 2022-06-05
 # last full text dump: march 9, with 030522
 truths:
   cataclysm:
     name: Cataclysm
     icon: icons/truths/cataclysm.svg
     source:
-      <<: *Source
+      <<: &Source
+        title: 'Ironsworn: Starforged Rulebook'
+        license: https://creativecommons.org/licenses/by/4.0
+        url: https://ironswornrpg.com
+        date: 2022-05-06
+        authors:
+          - name: Shawn Tomkin
       page: 84
     options:
       - min: 1

@@ -1,17 +1,16 @@
 id: delve
-source: &Source
-  authors:
-    - name: Shawn Tomkin
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-  title: 'Ironsworn: Delve'
-  date: 2020-02-13
-  url: https://ironswornrpg.com
 npcs:
   ironlanders:
     name: Ironlanders
     enhances: classic/collections/npcs/ironlanders
     source:
-      <<: *Source
+      <<:  &Source
+        authors:
+          - name: Shawn Tomkin
+        license: https://creativecommons.org/licenses/by-nc-sa/4.0
+        title: 'Ironsworn: Delve'
+        date: 2020-02-13
+        url: https://ironswornrpg.com
       page: 110
     contents:
       husk:

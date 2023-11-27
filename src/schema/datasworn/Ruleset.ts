@@ -91,7 +91,7 @@ export const Ruleset = Type.Composite(
 		Type.Object({
 			// ruleset ID isn't optional in source, so we don't flag it with IdentifiedNode
 			id: Type.Ref<typeof Id.NamespaceId>('#/$defs/NamespaceId'),
-			source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
+			// source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
 			rules: Type.Optional(Type.Ref<TRules>('#/$defs/Rules'))
 		}),
 		Type.Partial(RulesetPrimaryContent),
@@ -109,7 +109,7 @@ export const Expansion = Type.Composite(
 	[
 		Type.Object({
 			id: Type.Ref<typeof Id.NamespaceId>('#/$defs/NamespaceId'),
-			source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
+			// source: Type.Ref<typeof Metadata.Source>('#/$defs/Source'),
 			enhances: Type.Ref<typeof Id.NamespaceId>('#/$defs/NamespaceId')
 		}),
 		Type.Partial(RulesetPrimaryContent),
