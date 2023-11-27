@@ -35,7 +35,7 @@ Log.info('⚙️  Building sourcebooks...')
 await Promise.all(
 	Object.values(pkgs).map((pkg) =>
 		buildRuleset(pkg, schemaInId, schemaOutId).catch((e) =>
-			Log.error(`Failed to build ${pkg.id}`, e)
+			Log.error(`Failed to build package "${pkg.id}":`, e)
 		)
 	)
 )
