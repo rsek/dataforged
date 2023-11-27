@@ -1,5 +1,5 @@
 import { type Static } from '@sinclair/typebox'
-import { SCHEMA_ID, INPUT_SCHEMA_ID, VERSION } from '../../scripts/const.js'
+import { SCHEMA_ID, SOURCE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 
 import { Ruleset } from './Ruleset.js'
 import { SchemaRoot, InputSchemaRoot } from './root/SchemaRoot.js'
@@ -18,7 +18,7 @@ export const Datasworn = SchemaRoot(Ruleset, {
 
 export const DataswornSource = InputSchemaRoot(Ruleset, {
 	$schema,
-	$id: INPUT_SCHEMA_ID,
+	$id: SOURCE_SCHEMA_ID,
 	title: `DataswornSource v${VERSION}`,
 	description:
 		'Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.\n\nThe source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.',

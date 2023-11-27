@@ -19,9 +19,16 @@ function isSourcedNode<T extends Generic.SourcedNode = Generic.SourcedNode>(
 	obj: unknown
 ): obj is T {
 	const checker = TypeCompiler.Compile(
-		Generic.SourcedNode(Type.String() as any, Type.Object({}), {
-			additionalProperties: true
-		})
+		Type.Object(
+			{
+				id: Type.String(),
+				source: Type.Object({}, { additionalProperties: true }),
+				name: Type.String()
+			},
+			{
+				additionalProperties: true
+			}
+		)
 	)
 	return checker.Check(obj)
 }
@@ -32,11 +39,7 @@ function isCollection<
 >(obj: unknown): obj is T {
 	if (!isSourcedNode(obj)) return false
 
-	const oneOfKeys = ['contents', 'collections']
-
-	if (!oneOfKeys.some(Object.keys(obj as any).includes)) return false
-
-	return true
+	return 'contents' in obj || 'collections' in obj
 }
 
 export function sortTopLevelCollection<

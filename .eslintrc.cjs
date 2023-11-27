@@ -49,6 +49,7 @@ module.exports = {
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
 		'@typescript-eslint/ban-ts-comment': 'off',
-		'@typescript-eslint/no-namespace': 'off'
+		'@typescript-eslint/no-namespace': 'off',
+		'@typescript-eslint/return-await': 'off'
 	}
 }

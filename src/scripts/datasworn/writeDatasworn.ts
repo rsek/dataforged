@@ -12,7 +12,7 @@ const profiler = Log.startTimer()
 Log.info('📖 Reading schema...')
 
 // flush any old schemas
-ajv.removeSchema()
+// ajv.removeSchema()
 
 const schemaInId = 'DataswornSource'
 const schemaOutId = 'Datasworn'
@@ -25,18 +25,18 @@ const schemas = new Map([
 for await (const [id, filePath] of schemas) {
 	const v = await fs.readJSON(filePath)
 	await ajv.validateSchema(v, true)
-	ajv.addSchema(v, id)
+	ajv.addSchema(v, id, true, 'log')
 	Log.info(`✅ Loaded ${id} schema from ${formatPath(filePath)}`)
 }
 
-// TODO: invert the logic for this so that it infers from directory structure
 Log.info('⚙️  Building sourcebooks...')
 
 await Promise.all(
-	Object.values(pkgs).map((pkg) =>
-		buildRuleset(pkg, schemaInId, schemaOutId).catch((e) =>
-			Log.error(`Failed to build package "${pkg.id}":`, e)
-		)
+	Object.values(pkgs).map(
+		async (pkg) => buildRuleset(pkg, schemaInId, schemaOutId)
+		// .catch((e) =>
+		// 	Log.error(`Failed to build package "${pkg.id}":`, e)
+		// )
 	)
 )
 

@@ -8,11 +8,12 @@ import * as CONST from '../const.js'
 import { getPrettierOptions, writeJSON } from '../datasworn/readWrite.js'
 import { sortSchemaKeys } from '../datasworn/sort.js'
 import Log from '../utils/Log.js'
-import ajv from '../validation/ajv.js'
+// import ajv from '../validation/ajv.js'
 import * as Schema from '../../schema/datasworn/index.js'
 
 import JSL from 'json-schema-library'
 import { type TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
+import { loadSchema, loadSourceSchema } from './loadSchema.js'
 
 const draft7 = new JSL.Draft07()
 
@@ -50,7 +51,7 @@ const schemaOptions: SchemaOptions[] = [
 const prettierOptions = await getPrettierOptions(CONST.SCHEMA_OUT)
 
 for (const options of schemaOptions) {
-	ajv.addSchema(options.rootSchema as JsonSchema, options.name)
+	// ajv.addSchema(options.rootSchema as JsonSchema, options.name)
 
 	Log.info(options.messages.writeStart)
 
@@ -68,28 +69,26 @@ for (const options of schemaOptions) {
 
 			// console.log(sortedSchema)
 
+			const replacer: (this: any, key: string, value: any) => any = (k, v) =>
+				k === '$id' && typeof v === 'string' && !v.startsWith('http')
+					? undefined
+					: v
+
 			for (const path of options.paths)
 				writeJSON(path, sortedSchema, {
 					prettierOptions,
-					replacer: (k, v) =>
-						k === '$id' && typeof v === 'string' && !v.startsWith('http')
-							? undefined
-							: v
+					replacer
 				})
 
 			writeJSON(path, sortedSchema, {
 				prettierOptions,
-
-				replacer: (k, v) =>
-					k === '$id' && typeof v === 'string' && !v.startsWith('http')
-						? undefined
-						: v
+				replacer
 			}).then(() => Log.info(options.messages.writeFinish))
 		}
 	} catch (error) {
 		Log.error(error)
 
 		for (const path of options.paths)
-			writeJSON(path, options.rootSchema, { prettierOptions })
+			writeJSON(path, options.rootSchema, { prettierOptions, replacer })
 	}
 }

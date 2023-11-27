@@ -31,3 +31,8 @@ for (const [keyword, data] of Object.entries(KEYWORDS))
 addFormats(ajv)
 
 export default ajv
+
+// ajv.addSchema(await loadSchema(), 'Datasworn')
+// ajv.addSchema(await loadSourceSchema(), 'DataswornSource')
+
+// console.log(ajv)

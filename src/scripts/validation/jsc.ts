@@ -1,30 +1,29 @@
-import JsonSchema, { type JSONValidator } from 'json-schema-library'
-import fs from 'fs-extra'
-import * as CONST from '../const.js'
+import JsonSchema, { type JsonValidator } from 'json-schema-library'
+import { loadSchema, loadSourceSchema } from '../schema/loadSchema.js'
 import { FORMATS } from './formats.js'
 import { KEYWORDS } from './keywords.js'
 
 // TODO: have these do actual validation instead of skipping it
 const validateFormat = Object.fromEntries(
-	Object.keys(FORMATS).map<[string, JSONValidator]>((k) => [k, () => undefined])
+	Object.keys(FORMATS).map<[string, JsonValidator]>((k) => [k, () => undefined])
 )
 
 const validateKeyword = Object.fromEntries(
-	Object.entries(KEYWORDS).map<[string, JSONValidator]>(([k, v]) => {
+	Object.entries(KEYWORDS).map<[string, JsonValidator]>(([k, v]) => {
 		const fn = v.metaSchema != null ? () => undefined : () => undefined
 		return [k, fn]
 	})
 )
 
-export const input = new JsonSchema.Draft07(fs.readJSONSync(CONST.SCHEMA_IN), {
-	validateFormat,
-	validateKeyword
-})
-
-export const output = new JsonSchema.Draft07(
-	fs.readJSONSync(CONST.SCHEMA_OUT),
+export const DataswornSourceDraft = new JsonSchema.Draft07(
+	await loadSourceSchema(),
 	{
 		validateFormat,
 		validateKeyword
 	}
 )
+
+export const DataswornDraft = new JsonSchema.Draft07(await loadSchema(), {
+	validateFormat,
+	validateKeyword
+})

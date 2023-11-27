@@ -22,7 +22,7 @@ export const TYPES_OUT = path.join(ROOT_TYPES_OUT, 'datasworn.d.ts')
 export const SCHEMA_OUT = path.join(ROOT_OUTPUT, 'datasworn.schema.json')
 export const SCHEMA_IN = path.join(
 	ROOT_SOURCE_DATA,
-	'datasworn-input.schema.json'
+	'datasworn-source.schema.json'
 )
 
 export const SCHEMA_DELVE_OUT = path.join(
@@ -32,16 +32,16 @@ export const SCHEMA_DELVE_OUT = path.join(
 
 export const SCHEMA_DELVE_IN = path.join(
 	ROOT_OUTPUT,
-	'datasworn-delve-input.schema.json'
+	'datasworn-delve-source.schema.json'
 )
 
 export const SCHEMA_ID = 'https://ironswornrpg.com/datasworn.schema.json'
 
-export const INPUT_SCHEMA_ID =
-	'https://ironswornrpg.com/datasworn-input.schema.json'
+export const SOURCE_SCHEMA_ID =
+	'https://ironswornrpg.com/datasworn-source.schema.json'
 
 export const DELVE_SCHEMA_ID =
 	'https://ironswornrpg.com/datasworn-delve.schema.json'
 
-export const DELVE_INPUT_ID =
-	'https://ironswornrpg.com/datasworn-delve-input.schema.json'
+export const DELVE_SOURCE_ID =
+	'https://ironswornrpg.com/datasworn-delve-source.schema.json'
