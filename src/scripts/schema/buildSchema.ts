@@ -69,10 +69,21 @@ for (const options of schemaOptions) {
 			// console.log(sortedSchema)
 
 			for (const path of options.paths)
-				writeJSON(path, sortedSchema, { prettierOptions })
+				writeJSON(path, sortedSchema, {
+					prettierOptions,
+					replacer: (k, v) =>
+						k === '$id' && typeof v === 'string' && !v.startsWith('http')
+							? undefined
+							: v
+				})
 
 			writeJSON(path, sortedSchema, {
-				prettierOptions
+				prettierOptions,
+
+				replacer: (k, v) =>
+					k === '$id' && typeof v === 'string' && !v.startsWith('http')
+						? undefined
+						: v
 			}).then(() => Log.info(options.messages.writeFinish))
 		}
 	} catch (error) {

@@ -14,7 +14,7 @@ Log.info('📖 Reading schema...')
 // flush any old schemas
 ajv.removeSchema()
 
-const schemaInId = 'DataswornInput'
+const schemaInId = 'DataswornSource'
 const schemaOutId = 'Datasworn'
 
 const schemas = new Map([
@@ -24,7 +24,7 @@ const schemas = new Map([
 
 for await (const [id, filePath] of schemas) {
 	const v = await fs.readJSON(filePath)
-	ajv.validateSchema(v, true)
+	await ajv.validateSchema(v, true)
 	ajv.addSchema(v, id)
 	Log.info(`✅ Loaded ${id} schema from ${formatPath(filePath)}`)
 }
