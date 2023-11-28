@@ -112,20 +112,35 @@ export function RecursiveCollection<T extends TCollection<TRef>>(
 	collection: T,
 	options: TypeFest.SetRequired<SchemaOptions, '$id'>
 ) {
-	// @ts-expect-error
-	return Utils.Assign(
-		[
-			collection,
-			Type.Object({
-				collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
-			})
-		],
+	return Type.Recursive(
+		(TThis) =>
+			Utils.Assign([
+				collection,
+				Type.Object({
+					collections: Type.Optional(Dictionary(TThis))
+				})
+			]),
 		{
 			...options,
 			[CollectionBrand]: 'Collection',
 			[RecursiveCollectionBrand]: 'RecursiveCollection'
 		}
-	) as TRecursiveCollection<T, 3>
+	) as any as TRecursiveCollection<T, 3>
+
+	// @ts-expect-error
+	// return Utils.Assign(
+	// 	[
+	// 		collection,
+	// 		Type.Object({
+	// 			collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
+	// 		})
+	// 	],
+	// 	{
+	// 		...options,
+	// 		[CollectionBrand]: 'Collection',
+	// 		[RecursiveCollectionBrand]: 'RecursiveCollection'
+	// 	}
+	// ) as TRecursiveCollection<T, 3>
 }
 // based on es2019 FlatArray
 /** Limits recursion to 3 levels (which is the maximum number of times the IDs can recurse through collections) */

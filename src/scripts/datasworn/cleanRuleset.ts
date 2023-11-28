@@ -12,7 +12,7 @@ export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
 	const sortedPointers: Record<string, unknown> = {}
 
 	// sort non-dictionary objects
-	jsl.each(datasworn, (schema, value, hashPointer) => {
+	jsl.each(datasworn, (schema, value: any, hashPointer) => {
 		const sep = '/'
 
 		const nicePointer = hashPointer.replace(/^#\//, sep)
@@ -20,6 +20,8 @@ export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
 		const key = nicePointer.split(sep).pop() as string
 
 		if (nicePointer === sep) return
+
+		// if (value?.id) console.log(value.id, '=>', nicePointer)
 
 		if (
 			value != null &&

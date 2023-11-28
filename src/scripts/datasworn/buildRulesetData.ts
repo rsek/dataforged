@@ -7,6 +7,7 @@ import { formatPath } from '../../utils.js'
 import Log from '../utils/Log.js'
 import type AJV from '../validation/ajv.js'
 import type * as Generic from '../../schema/datasworn/Generic.js'
+// import OutputValidator from '../validation/OutputValidator.js'
 
 /** Builds from the contents of a single YAML or JSON file */
 export async function buildRulesetData(
@@ -25,6 +26,7 @@ export async function buildRulesetData(
 
 	try {
 		const isValid = ajv.validate('Datasworn', builtData)
+		// const isValid = OutputValidator.Check(builtData)
 		if (!isValid) {
 			const shortErrors = ajv.errors?.map(
 				({ instancePath, parentSchema, message }) => ({

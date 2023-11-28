@@ -48,34 +48,36 @@ export const DelveSiteDomain = Generic.SourcedNode(
 					StaticRowPartial({ min: 81, max: 84 }),
 					StaticRowPartial({ min: 85, max: 88 }),
 					StaticRowPartial(
-						{ min: 89, max: 98 },
-						{
-							result: 'Something unusual or unexpected',
-							suggestions: {
-								oracles: [
-									'delve/oracles/feature/aspect',
-									'delve/oracles/feature/focus'
-								]
-							}
-						}
+						// FIXME: disabled for now because the defaults make TypeCompiler upset
+						{ min: 89, max: 98 }
+
+						// {
+						// 	result: 'Something unusual or unexpected',
+						// 	suggestions: {
+						// 		oracles: [
+						// 			'delve/oracles/feature/aspect',
+						// 			'delve/oracles/feature/focus'
+						// 		]
+						// 	}
+						// }
 					),
 					StaticRowPartial(
-						{ min: 99, max: 99 },
-						{
-							result: 'You transition into a new theme',
-							suggestions: {
-								oracles: ['delve/oracles/site_nature/theme']
-							}
-						}
+						{ min: 99, max: 99 }
+						// {
+						// result: 'You transition into a new theme'
+						// suggestions: {
+						// 	oracles: ['delve/oracles/site_nature/theme']
+						// }
+						// }
 					),
 					StaticRowPartial(
-						{ min: 100, max: 100 },
-						{
-							result: 'You transition into a new domain',
-							suggestions: {
-								oracles: ['delve/oracles/site_nature/domain']
-							}
-						}
+						{ min: 100, max: 100 }
+						// {
+						// 	result: 'You transition into a new domain',
+						// 	suggestions: {
+						// 		oracles: ['delve/oracles/site_nature/domain']
+						// 	}
+						// }
 					)
 				])
 			],
