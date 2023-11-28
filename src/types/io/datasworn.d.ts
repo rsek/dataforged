@@ -1864,28 +1864,16 @@ export interface DelveSiteDomain {
       {
         min: 89;
         max: 98;
-        result?: string;
-        suggestions?: {
-          [k: string]: unknown;
-        };
         [k: string]: unknown;
       },
       {
         min: 99;
         max: 99;
-        result?: string;
-        suggestions?: {
-          [k: string]: unknown;
-        };
         [k: string]: unknown;
       },
       {
         min: 100;
         max: 100;
-        result?: string;
-        suggestions?: {
-          [k: string]: unknown;
-        };
         [k: string]: unknown;
       }
     ];

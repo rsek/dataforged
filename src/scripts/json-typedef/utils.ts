@@ -16,6 +16,7 @@ import {
 	TRequired,
 	TSchema,
 	TString,
+	TThis,
 	Type,
 	TypeGuard,
 	TypeRegistry
@@ -112,7 +113,7 @@ export function toJtdEnum<
 	throw new Error(`Unable to infer schema for enum: ${JSON.stringify(schema)}`)
 }
 
-export function toJtdRef<T extends TSchema>(schema: TRef<T>) {
+export function toJtdRef<T extends TSchema>(schema: TRef<T> | TThis) {
 	const ref = schema.$ref.replace('#/$defs/', '')
 	type RefName = typeof ref
 
@@ -236,6 +237,7 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 			)
 			result = JtdType.Float32()
 			break
+		case TypeGuard.TThis(schema):
 		case TypeGuard.TRef(schema):
 			result = toJtdRef(schema)
 			break

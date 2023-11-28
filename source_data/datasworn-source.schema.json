@@ -1,6 +1,6 @@
 {
 	"$id": "https://ironswornrpg.com/datasworn-source.schema.json",
-	"title": "DataswornSource v2.0.0-dev",
+	"title": "DataswornSource v0.0.0-dev",
 	"type": "object",
 	"description": "Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.\n\nThe source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.",
 	"required": ["id"],
@@ -5224,17 +5224,6 @@
 										"max": {
 											"type": "number",
 											"const": 98
-										},
-										"result": {
-											"default": "Something unusual or unexpected"
-										},
-										"suggestions": {
-											"default": {
-												"oracles": [
-													"delve/oracles/feature/aspect",
-													"delve/oracles/feature/focus"
-												]
-											}
 										}
 									},
 									"additionalProperties": true
@@ -5250,14 +5239,6 @@
 										"max": {
 											"type": "number",
 											"const": 99
-										},
-										"result": {
-											"default": "You transition into a new theme"
-										},
-										"suggestions": {
-											"default": {
-												"oracles": ["delve/oracles/site_nature/theme"]
-											}
 										}
 									},
 									"additionalProperties": true
@@ -5273,14 +5254,6 @@
 										"max": {
 											"type": "number",
 											"const": 100
-										},
-										"result": {
-											"default": "You transition into a new domain"
-										},
-										"suggestions": {
-											"default": {
-												"oracles": ["delve/oracles/site_nature/domain"]
-											}
 										}
 									},
 									"additionalProperties": true
@@ -5399,7 +5372,8 @@
 					"$ref": "#/$defs/OracleTableId",
 					"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites."
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"DelveSiteDomainDangerRow": {
 			"title": "DelveSiteDomainDangerRow",
