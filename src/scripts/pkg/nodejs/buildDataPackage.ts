@@ -20,6 +20,11 @@ export async function buildDataPackage({ id, pkg, paths }: DataPackageConfig) {
 	for await (const assetSrc of paths.assets ?? []) {
 		const assetDest = path.join(pkgRoot, assetSrc.split('/').pop() as string)
 
+
+		const exists = await fs.exists(assetSrc)
+
+		if (!exists) throw Error(`Missing asset dir: ${assetSrc}`)
+
 		if (await fs.exists(assetSrc)) {
 			await fs.emptyDir(assetDest)
 			await fs.copy(assetSrc, assetDest)

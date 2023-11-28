@@ -33,8 +33,8 @@ export const Starforged: DataPackageConfig = {
 	paths: {
 		source: path.join(ROOT_SOURCE_DATA, 'starforged'),
 		assets: [
-			path.join(ROOT_SOURCE_DATA, 'images'),
-			path.join(ROOT_SOURCE_DATA, 'icons')
+			path.join(ROOT_SOURCE_DATA, 'starforged', 'images'),
+			path.join(ROOT_SOURCE_DATA, 'starforged', 'icons')
 		]
 	},
 	pkg: { name: 'starforged', scope: PKG_SCOPE_OFFICIAL }

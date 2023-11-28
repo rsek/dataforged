@@ -9,15 +9,26 @@ import {
 } from '../../const.js'
 import Log from '../../utils/Log.js'
 
+const rootDir = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL, 'core')
+
+const id = `${PKG_SCOPE_OFFICIAL}/core`
+const jsonDir = path.join(rootDir, 'json')
+const typesPath = path.join(rootDir, 'index.d.ts')
+
+export const config = {
+	id,
+	rootDir,
+	jsonDir,
+	typesPath
+} as const
+
 /** Assembles the core package from built data, which contains types, schema, and documentation. */
-export async function buildCorePackage() {
-	const corePkgId = `${PKG_SCOPE_OFFICIAL}/core`
-	Log.info(`⚙️  Building ${corePkgId}...`)
-
-	const corePkgDir = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL, 'core')
-
-	const jsonDir = path.join(corePkgDir, 'json')
-	const typesDest = path.join(corePkgDir, 'index.d.ts')
+export async function buildCorePackage({
+	id,
+	jsonDir,
+	typesPath
+}: typeof config = config) {
+	Log.info(`⚙️  Building ${id}...`)
 
 	await fs.emptyDir(jsonDir)
 
@@ -25,7 +36,7 @@ export async function buildCorePackage() {
 		fs.copy(SCHEMA_OUT, path.join(jsonDir, 'datasworn.schema.json'), {
 			overwrite: true
 		}),
-		fs.copy(TYPES_OUT, typesDest, {
+		fs.copy(TYPES_OUT, typesPath, {
 			overwrite: true
 		}),
 		fs.copy(
@@ -38,5 +49,5 @@ export async function buildCorePackage() {
 		)
 	])
 
-	return Log.info(`✅ Finished building ${corePkgId}`)
+	return Log.info(`✅ Finished building ${id}`)
 }

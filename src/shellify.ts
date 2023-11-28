@@ -1,4 +1,4 @@
-import { ExecOptions, exec } from 'child_process'
+import { type ExecOptions, exec } from 'child_process'
 import { kebabCase } from 'lodash-es'
 import { type CamelCase } from 'type-fest'
 import Log from './scripts/utils/Log.js'
@@ -41,7 +41,7 @@ export type ShellCommandParams<
 	>
 > = {
 	command: Command
-	args: Arguments
-	options: Options
-	execOptions: ExecOptions
+	args?: Arguments
+	options?: Options
+	execOptions?: ExecOptions
 }
