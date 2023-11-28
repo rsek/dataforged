@@ -4,6 +4,7 @@ import {
 	LEGACY_ID_PATH,
 	PKG_DIR_NODE,
 	PKG_SCOPE_OFFICIAL,
+	ROOT_SOURCE_DATA,
 	SCHEMA_OUT,
 	TYPES_OUT
 } from '../../const.js'
@@ -36,6 +37,14 @@ export async function buildCorePackage({
 		fs.copy(SCHEMA_OUT, path.join(jsonDir, 'datasworn.schema.json'), {
 			overwrite: true
 		}),
+
+		fs.copy(
+			path.join(ROOT_SOURCE_DATA, 'datasworn-source.schema.json'),
+			path.join(jsonDir, 'datasworn-source.schema.json'),
+			{
+				overwrite: true
+			}
+		),
 		fs.copy(TYPES_OUT, typesPath, {
 			overwrite: true
 		}),

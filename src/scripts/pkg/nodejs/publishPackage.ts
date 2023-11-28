@@ -8,8 +8,8 @@ function publishCorePackage() {
 		command: 'npm publish',
 		args: [pkg.rootDir],
 		options: {
-			dryRun: true,
-			tag: 'next'
+			tag: 'next',
+			access: 'public'
 		}
 	})
 }
