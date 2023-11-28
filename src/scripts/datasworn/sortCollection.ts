@@ -1,4 +1,3 @@
-import { Type } from '@sinclair/typebox'
 import { TypeCompiler } from '@sinclair/typebox/compiler'
 import { cloneDeep, compact, min } from 'lodash-es'
 import * as Generic from '../../schema/datasworn/Generic.js'

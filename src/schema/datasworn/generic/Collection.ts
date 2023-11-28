@@ -84,6 +84,7 @@ export function Collection<T extends TRef>(
 		[CollectionBrand]: 'Collection'
 	})
 
+	// @ts-expect-error
 	return result as TCollection<T>
 }
 

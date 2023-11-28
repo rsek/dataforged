@@ -13,7 +13,5 @@ export async function writeRuleset(outPath: string, data: unknown) {
 			Log.info(`✏️  Writing to ${formatPath(outPath)}`)
 			await writeJSON(outPath, data, { replacer })
 		})
-		.catch(
-			(err) => void Log.error(`Failed to write ${formatPath(outPath)}:`, err)
-		)
+		.catch((err) => Log.error(`Failed to write ${formatPath(outPath)}:`, err))
 }

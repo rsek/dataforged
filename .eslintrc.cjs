@@ -50,6 +50,14 @@ module.exports = {
 		'@typescript-eslint/strict-boolean-expressions': 'off',
 		'@typescript-eslint/ban-ts-comment': 'off',
 		'@typescript-eslint/no-namespace': 'off',
-		'@typescript-eslint/return-await': 'off'
+		'@typescript-eslint/return-await': 'off',
+		'@typescript-eslint/no-unused-vars': [
+			'warn',
+			{
+				varsIgnorePattern: '^_',
+				destructuredArrayIgnorePattern: '^_',
+				ignoreRestSiblings: true
+			}
+		]
 	}
 }

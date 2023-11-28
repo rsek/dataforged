@@ -24,4 +24,6 @@ await Promise.all(
 	)
 )
 
-profiler.done({ message: `Finished in ${Date.now() - profiler.start}ms` })
+profiler.done({
+	message: `Finished in ${Date.now() - profiler.start.valueOf()}ms`
+})
