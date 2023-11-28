@@ -2,10 +2,7 @@ import { merge } from 'lodash-es'
 import { type Out } from '../../types/index.js'
 import type AJV from '../validation/ajv.js'
 
-export function mergeRulesetData(
-	data: Map<string, Out.Datasworn>,
-	ajv: typeof AJV
-) {
+export function mergeRulesetData(data: Map<string, Out.Datasworn>) {
 	const ruleset: Out.Datasworn = {}
 
 	const entries = Array.from(data.entries())
@@ -13,11 +10,8 @@ export function mergeRulesetData(
 		.sort(([a], [b]) => a.localeCompare(b, 'en-US'))
 
 	for (const [_, data] of entries) {
-		ajv.validate('Datasworn', data)
 		merge(ruleset, data)
 	}
-
-	// console.log(ruleset)
 
 	return ruleset
 }

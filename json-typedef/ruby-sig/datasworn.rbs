@@ -2,7 +2,15 @@
 
 module Datasworn
 
-  class Ruleset
+  class RulesPackage
+    attr_accessor package_type: String
+
+    def self.from_json_data: (untyped) -> RulesPackage
+    def to_json_data: () -> untyped
+  end
+
+  class RulesPackageExpansion < RulesPackage
+    attr_accessor enhances: NamespaceID
     attr_accessor id: NamespaceID
     attr_accessor assets: Hash[String, AssetType]?
     attr_accessor atlas: Hash[String, Atlas]?
@@ -16,7 +24,25 @@ module Datasworn
     attr_accessor site_themes: Hash[String, DelveSiteTheme]?
     attr_accessor truths: Hash[String, Truth]?
 
-    def self.from_json_data: (untyped) -> Ruleset
+    def self.from_json_data: (untyped) -> RulesPackageExpansion
+    def to_json_data: () -> untyped
+  end
+
+  class RulesPackageRuleset < RulesPackage
+    attr_accessor assets: Hash[String, AssetType]
+    attr_accessor id: NamespaceID
+    attr_accessor moves: Hash[String, MoveCategory]
+    attr_accessor oracles: Hash[String, OracleCollection]
+    attr_accessor rules: Rules
+    attr_accessor atlas: Hash[String, Atlas]?
+    attr_accessor delve_sites: Hash[String, DelveSite]?
+    attr_accessor npcs: Hash[String, NpcCollection]?
+    attr_accessor rarities: Hash[String, Rarity]?
+    attr_accessor site_domains: Hash[String, DelveSiteDomain]?
+    attr_accessor site_themes: Hash[String, DelveSiteTheme]?
+    attr_accessor truths: Hash[String, Truth]?
+
+    def self.from_json_data: (untyped) -> RulesPackageRuleset
     def to_json_data: () -> untyped
   end
 
@@ -1324,6 +1350,12 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
+  class OracleCollectionRenderingTables < OracleCollectionRendering
+
+    def self.from_json_data: (untyped) -> OracleCollectionRenderingTables
+    def to_json_data: () -> untyped
+  end
+
   class OracleCollectionStyle
     attr_accessor value: String
 
@@ -1420,6 +1452,18 @@ module Datasworn
     attr_accessor style: String
 
     def self.from_json_data: (untyped) -> OracleTableRendering
+    def to_json_data: () -> untyped
+  end
+
+  class OracleTableRenderingColumn < OracleTableRendering
+
+    def self.from_json_data: (untyped) -> OracleTableRenderingColumn
+    def to_json_data: () -> untyped
+  end
+
+  class OracleTableRenderingEmbedInRow < OracleTableRendering
+
+    def self.from_json_data: (untyped) -> OracleTableRenderingEmbedInRow
     def to_json_data: () -> untyped
   end
 
@@ -1568,6 +1612,16 @@ module Datasworn
     attr_accessor stats: Hash[String, StatRule]
 
     def self.from_json_data: (untyped) -> Rules
+    def to_json_data: () -> untyped
+  end
+
+  class RulesExpansion
+    attr_accessor condition_meters: Hash[String, ConditionMeterRule]?
+    attr_accessor impacts: Hash[String, ImpactCategory]?
+    attr_accessor special_tracks: Hash[String, SpecialTrackRule]?
+    attr_accessor stats: Hash[String, StatRule]?
+
+    def self.from_json_data: (untyped) -> RulesExpansion
     def to_json_data: () -> untyped
   end
 

@@ -46,3 +46,10 @@ export const Rules = Type.Object(
 )
 export type Rules = Static<typeof Rules>
 export type TRules = typeof Rules
+
+export const RulesExpansion = Type.Partial(Rules, {
+	$id: '#/$defs/RulesExpansion'
+})
+
+export type RulesExpansion = Static<typeof RulesExpansion>
+export type TRulesExpansion = typeof RulesExpansion

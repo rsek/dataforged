@@ -1,7 +1,5 @@
 import {
 	Kind,
-	Optional,
-	Static,
 	TAnySchema,
 	TArray,
 	TBoolean,
@@ -13,13 +11,11 @@ import {
 	TOptional,
 	TRecord,
 	TRef,
-	TRequired,
 	TSchema,
 	TString,
 	TThis,
 	Type,
-	TypeGuard,
-	TypeRegistry
+	TypeGuard
 } from '@sinclair/typebox'
 import * as JTD from 'jtd'
 
@@ -144,7 +140,9 @@ export function toJtdProperties<T extends TObject>(schema: T) {
 		isUndefined
 	)
 
-	return JtdType.Struct(fields)
+	const result = JtdType.Struct(fields)
+
+	return result
 }
 
 /** Transform a Typebox record schema into JTD values */
@@ -179,7 +177,7 @@ export function toJtdDiscriminator(
 	const mapping = Object.fromEntries(
 		schema[Members].map((subschema) => [
 			subschema.properties[discriminator].const,
-			toJtdProperties(Type.Omit(subschema, [discriminator]))
+			omit(toJtdProperties(subschema), `properties.${discriminator}`)
 		])
 	)
 
@@ -275,6 +273,11 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 export function toJtdRoot<T extends TRoot>(schemaRoot: T) {
 	const definitions = {} as { [K in keyof T['$defs']]: JTD.Schema }
 
+	const base = toJtdForm(schemaRoot as any)
+
+	if (isUndefined(base))
+		throw new Error('Unable to infer JSON Typedef form of root schema.')
+
 	for (const k in schemaRoot.$defs)
 		try {
 			definitions[k] = toJtdForm(schemaRoot.$defs[k])
@@ -283,8 +286,8 @@ export function toJtdRoot<T extends TRoot>(schemaRoot: T) {
 		}
 
 	return {
-		...toJtdProperties(schemaRoot),
-		definitions: omitBy(definitions, (v) => typeof v === 'undefined')
+		...base,
+		definitions: omitBy(definitions, isUndefined)
 	}
 }
 

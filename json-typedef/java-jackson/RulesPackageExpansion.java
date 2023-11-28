@@ -8,7 +8,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
 @JsonSerialize
-public class Ruleset {
+public class RulesPackageExpansion extends RulesPackage {
+    @JsonProperty("enhances")
+    private NamespaceId enhances;
+
     @JsonProperty("id")
     private NamespaceId id;
 
@@ -56,7 +59,21 @@ public class Ruleset {
     @JsonProperty("truths")
     private Map<String, Truth> truths;
 
-    public Ruleset() {
+    public RulesPackageExpansion() {
+    }
+
+    /**
+     * Getter for enhances.<p>
+     */
+    public NamespaceId getEnhances() {
+        return enhances;
+    }
+
+    /**
+     * Setter for enhances.<p>
+     */
+    public void setEnhances(NamespaceId enhances) {
+        this.enhances = enhances;
     }
 
     /**

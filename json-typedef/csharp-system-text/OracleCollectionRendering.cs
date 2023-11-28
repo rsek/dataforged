@@ -27,6 +27,8 @@ namespace Datasworn
             {
                 case "multi_table":
                     return JsonSerializer.Deserialize<OracleCollectionRenderingMultiTable>(ref readerCopy, options);
+                case "tables":
+                    return JsonSerializer.Deserialize<OracleCollectionRenderingTables>(ref readerCopy, options);
                 default:
                     throw new ArgumentException(String.Format("Bad Style value: {0}", tagValue));
             }

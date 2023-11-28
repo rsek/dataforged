@@ -1,13 +1,13 @@
-import { type Static } from '@sinclair/typebox'
+import { type Static, Type } from '@sinclair/typebox'
 import { SCHEMA_ID, SOURCE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 
-import { Ruleset } from './Ruleset.js'
+import { RulesPackage } from './Rulesets.js'
 import { SchemaRoot, InputSchemaRoot } from './root/SchemaRoot.js'
 import Defs from './Defs.js'
 
 const $schema = 'http://json-schema.org/draft-07/schema#'
 
-export const Datasworn = SchemaRoot(Ruleset, {
+export const Datasworn = SchemaRoot(RulesPackage, {
 	$schema,
 	$id: SCHEMA_ID,
 	title: `Datasworn v${VERSION}`,
@@ -16,7 +16,7 @@ export const Datasworn = SchemaRoot(Ruleset, {
 	$defs: Defs
 })
 
-export const DataswornSource = InputSchemaRoot(Ruleset, {
+export const DataswornSource = InputSchemaRoot(RulesPackage, {
 	$schema,
 	$id: SOURCE_SCHEMA_ID,
 	title: `DataswornSource v${VERSION}`,

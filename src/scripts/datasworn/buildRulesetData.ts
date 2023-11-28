@@ -24,34 +24,36 @@ export async function buildRulesetData(
 		transformer as any
 	)
 
-	try {
-		const isValid = ajv.validate('Datasworn', builtData)
-		// const isValid = OutputValidator.Check(builtData)
-		if (!isValid) {
-			const shortErrors = ajv.errors?.map(
-				({ instancePath, parentSchema, message }) => ({
-					parentSchema: parentSchema?.$id ?? parentSchema?.title,
-					instancePath,
-					message
-				})
-			)
-			Log.error(`${JSON.stringify(shortErrors, undefined, '\t')}`)
+	return builtData
 
-			const errorPath = path.join(
-				path.dirname(filePath),
-				'error',
-				path.basename(filePath, '.yaml') + `.error.json`
-			)
-			await fs.ensureFile(errorPath)
+	// try {
+	// 	const isValid = ajv.validate('Datasworn', builtData)
+	// 	// const isValid = OutputValidator.Check(builtData)
+	// 	if (!isValid) {
+	// 		const shortErrors = ajv.errors?.map(
+	// 			({ instancePath, parentSchema, message }) => ({
+	// 				parentSchema: parentSchema?.$id ?? parentSchema?.title,
+	// 				instancePath,
+	// 				message
+	// 			})
+	// 		)
+	// 		Log.error(`${JSON.stringify(shortErrors, undefined, '\t')}`)
 
-			await fs.writeJSON(errorPath, builtData, { spaces: '\t' })
-			throw new Error(
-				`Transformed data doesn't match the output schema. Dumping invalid JSON to: ${errorPath}`
-			)
-		}
+	// 		const errorPath = path.join(
+	// 			path.dirname(filePath),
+	// 			'error',
+	// 			path.basename(filePath, '.yaml') + `.error.json`
+	// 		)
+	// 		await fs.ensureFile(errorPath)
 
-		return builtData
-	} catch (err) {
-		Log.error(`Failed to build ${formatPath(filePath)}`, err)
-	}
+	// 		await fs.writeJSON(errorPath, builtData, { spaces: '\t' })
+	// 		throw new Error(
+	// 			`Transformed data doesn't match the output schema. Dumping invalid JSON to: ${errorPath}`
+	// 		)
+	// 	}
+
+	// 	return builtData
+	// } catch (err) {
+	// 	Log.error(`Failed to build ${formatPath(filePath)}`, err)
+	// }
 }

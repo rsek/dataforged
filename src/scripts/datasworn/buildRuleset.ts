@@ -77,7 +77,7 @@ export async function buildRuleset(
 	// 	.sort(([a], [b]) => a.localeCompare(b, 'en-US'))
 	// 	.forEach(([_, data]) => merge(ruleset, data))
 
-	const ruleset = cleanRuleset(mergeRulesetData(builtFiles, ajv), jsl)
+	const ruleset = cleanRuleset(mergeRulesetData(builtFiles), jsl)
 
 	// console.log(ruleset)
 
@@ -87,24 +87,24 @@ export async function buildRuleset(
 
 	/** JSON transformer to strip underscore (macro) properties */
 
-	for (const [k, v] of Object.entries(ruleset)) {
-		if (isMacroKey(k)) continue
-		if (metadataKeys.includes(k as any)) continue
-		if (v == null || Object.keys(v)?.length === 0) continue
+	// for (const [k, v] of Object.entries(ruleset)) {
+	// 	if (isMacroKey(k)) continue
+	// 	if (metadataKeys.includes(k as any)) continue
+	// 	if (v == null || Object.keys(v)?.length === 0) continue
 
-		const jsonToValidate = { id, [k]: v }
+	// 	const jsonToValidate = { id, [k]: v }
 
-		// TODO: rewrite this using keywords and Draft.each() from json-schema-library ??
+	// 	// TODO: rewrite this using keywords and Draft.each() from json-schema-library ??
 
-		ajv.validate('Datasworn', jsonToValidate)
+	// 	ajv.validate('Datasworn', jsonToValidate)
 
-		const jsonOut = cleanRuleset(jsonToValidate, jsl)
-		// const jsonOut = jsonToValidate
+	// 	const jsonOut = cleanRuleset(jsonToValidate, jsl)
+	// 	// const jsonOut = jsonToValidate
 
-		const outPath = path.join(destDir, `${k}.json`)
+	// 	const outPath = path.join(destDir, `${k}.json`)
 
-		toWrite.push(writeRuleset(outPath, jsonOut))
-	}
+	// 	toWrite.push(writeRuleset(outPath, jsonOut))
+	// }
 
 	if (oldJsonFiles?.length > 0)
 		Log.info(

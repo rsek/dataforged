@@ -8,7 +8,29 @@ from typing import Any, Dict, List, Optional, Type, Union, get_args, get_origin
 
 
 @dataclass
-class Ruleset:
+class RulesPackage:
+    """
+    Describes game rules compatible with the Ironsworn tabletop role-playing
+    game by Shawn Tomkin.
+    """
+
+    package_type: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'RulesPackage':
+        variants: Dict[str, Type[RulesPackage]] = {
+            "expansion": RulesPackageExpansion,
+            "ruleset": RulesPackageRuleset,
+        }
+
+        return variants[data["package_type"]].from_json_data(data)
+
+    def to_json_data(self) -> Any:
+        pass
+
+@dataclass
+class RulesPackageExpansion(RulesPackage):
+    enhances: 'NamespaceID'
     id: 'NamespaceID'
     assets: 'Optional[Dict[str, AssetType]]'
     """
@@ -67,8 +89,10 @@ class Ruleset:
 
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'Ruleset':
+    def from_json_data(cls, data: Any) -> 'RulesPackageExpansion':
         return cls(
+            "expansion",
+            _from_json_data(NamespaceID, data.get("enhances")),
             _from_json_data(NamespaceID, data.get("id")),
             _from_json_data(Optional[Dict[str, AssetType]], data.get("assets")),
             _from_json_data(Optional[Dict[str, Atlas]], data.get("atlas")),
@@ -84,7 +108,8 @@ class Ruleset:
         )
 
     def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
+        data = { "package_type": "expansion" }
+        data["enhances"] = _to_json_data(self.enhances)
         data["id"] = _to_json_data(self.id)
         if self.assets is not None:
              data["assets"] = _to_json_data(self.assets)
@@ -102,6 +127,106 @@ class Ruleset:
              data["rarities"] = _to_json_data(self.rarities)
         if self.rules is not None:
              data["rules"] = _to_json_data(self.rules)
+        if self.site_domains is not None:
+             data["site_domains"] = _to_json_data(self.site_domains)
+        if self.site_themes is not None:
+             data["site_themes"] = _to_json_data(self.site_themes)
+        if self.truths is not None:
+             data["truths"] = _to_json_data(self.truths)
+        return data
+
+@dataclass
+class RulesPackageRuleset(RulesPackage):
+    assets: 'Dict[str, AssetType]'
+    """
+    A dictionary object containing asset types, which contain assets.
+    """
+
+    id: 'NamespaceID'
+    moves: 'Dict[str, MoveCategory]'
+    """
+    A dictionary object containing move categories, which contain moves.
+    """
+
+    oracles: 'Dict[str, OracleCollection]'
+    """
+    A dictionary object containing oracle collections, which may contain oracle
+    tables and/or oracle collections.
+    """
+
+    rules: 'Rules'
+    atlas: 'Optional[Dict[str, Atlas]]'
+    """
+    A dictionary object containing atlas collections, which contain atlas
+    entries.
+    """
+
+    delve_sites: 'Optional[Dict[str, DelveSite]]'
+    """
+    A dictionary object of delve sites, like the premade delve sites presented
+    in Ironsworn: Delve
+    """
+
+    npcs: 'Optional[Dict[str, NpcCollection]]'
+    """
+    A dictionary object containing NPC collections, which contain NPCs.
+    """
+
+    rarities: 'Optional[Dict[str, Rarity]]'
+    """
+    A dictionary object containing rarities, like those presented in Ironsworn:
+    Delve.
+    """
+
+    site_domains: 'Optional[Dict[str, DelveSiteDomain]]'
+    """
+    A dictionary object containing delve site domains.
+    """
+
+    site_themes: 'Optional[Dict[str, DelveSiteTheme]]'
+    """
+    A dictionary object containing delve site themes.
+    """
+
+    truths: 'Optional[Dict[str, Truth]]'
+    """
+    A dictionary object of truth categories.
+    """
+
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'RulesPackageRuleset':
+        return cls(
+            "ruleset",
+            _from_json_data(Dict[str, AssetType], data.get("assets")),
+            _from_json_data(NamespaceID, data.get("id")),
+            _from_json_data(Dict[str, MoveCategory], data.get("moves")),
+            _from_json_data(Dict[str, OracleCollection], data.get("oracles")),
+            _from_json_data(Rules, data.get("rules")),
+            _from_json_data(Optional[Dict[str, Atlas]], data.get("atlas")),
+            _from_json_data(Optional[Dict[str, DelveSite]], data.get("delve_sites")),
+            _from_json_data(Optional[Dict[str, NpcCollection]], data.get("npcs")),
+            _from_json_data(Optional[Dict[str, Rarity]], data.get("rarities")),
+            _from_json_data(Optional[Dict[str, DelveSiteDomain]], data.get("site_domains")),
+            _from_json_data(Optional[Dict[str, DelveSiteTheme]], data.get("site_themes")),
+            _from_json_data(Optional[Dict[str, Truth]], data.get("truths")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "package_type": "ruleset" }
+        data["assets"] = _to_json_data(self.assets)
+        data["id"] = _to_json_data(self.id)
+        data["moves"] = _to_json_data(self.moves)
+        data["oracles"] = _to_json_data(self.oracles)
+        data["rules"] = _to_json_data(self.rules)
+        if self.atlas is not None:
+             data["atlas"] = _to_json_data(self.atlas)
+        if self.delve_sites is not None:
+             data["delve_sites"] = _to_json_data(self.delve_sites)
+        if self.npcs is not None:
+             data["npcs"] = _to_json_data(self.npcs)
+        if self.rarities is not None:
+             data["rarities"] = _to_json_data(self.rarities)
         if self.site_domains is not None:
              data["site_domains"] = _to_json_data(self.site_domains)
         if self.site_themes is not None:
@@ -4456,6 +4581,7 @@ class OracleCollectionRendering:
     def from_json_data(cls, data: Any) -> 'OracleCollectionRendering':
         variants: Dict[str, Type[OracleCollectionRendering]] = {
             "multi_table": OracleCollectionRenderingMultiTable,
+            "tables": OracleCollectionRenderingTables,
         }
 
         return variants[data["style"]].from_json_data(data)
@@ -4477,6 +4603,19 @@ class OracleCollectionRenderingMultiTable(OracleCollectionRendering):
     def to_json_data(self) -> Any:
         data = { "style": "multi_table" }
         data["columns"] = _to_json_data(self.columns)
+        return data
+
+@dataclass
+class OracleCollectionRenderingTables(OracleCollectionRendering):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleCollectionRenderingTables':
+        return cls(
+            "tables",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "style": "tables" }
         return data
 
 class OracleCollectionStyle(Enum):
@@ -4819,6 +4958,8 @@ class OracleTableRendering:
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableRendering':
         variants: Dict[str, Type[OracleTableRendering]] = {
+            "column": OracleTableRenderingColumn,
+            "embed_in_row": OracleTableRenderingEmbedInRow,
             "standalone": OracleTableRenderingStandalone,
         }
 
@@ -4826,6 +4967,32 @@ class OracleTableRendering:
 
     def to_json_data(self) -> Any:
         pass
+
+@dataclass
+class OracleTableRenderingColumn(OracleTableRendering):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleTableRenderingColumn':
+        return cls(
+            "column",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "style": "column" }
+        return data
+
+@dataclass
+class OracleTableRenderingEmbedInRow(OracleTableRendering):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleTableRenderingEmbedInRow':
+        return cls(
+            "embed_in_row",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "style": "embed_in_row" }
+        return data
 
 @dataclass
 class OracleTableRenderingStandalone(OracleTableRendering):
@@ -5287,6 +5454,58 @@ class Rules:
         data["impacts"] = _to_json_data(self.impacts)
         data["special_tracks"] = _to_json_data(self.special_tracks)
         data["stats"] = _to_json_data(self.stats)
+        return data
+
+@dataclass
+class RulesExpansion:
+    """
+    Describes rules for player characters in this ruleset, such as stats and
+    condition meters.
+    """
+
+    condition_meters: 'Optional[Dict[str, ConditionMeterRule]]'
+    """
+    Describes the standard condition meters used by player characters in this
+    ruleset.
+    """
+
+    impacts: 'Optional[Dict[str, ImpactCategory]]'
+    """
+    Describes the standard impacts/debilities used by player characters in this
+    ruleset.
+    """
+
+    special_tracks: 'Optional[Dict[str, SpecialTrackRule]]'
+    """
+    Describes the special tracks used by player characters in this ruleset, like
+    Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+    """
+
+    stats: 'Optional[Dict[str, StatRule]]'
+    """
+    Describes the standard stats used by player characters in this ruleset.
+    """
+
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'RulesExpansion':
+        return cls(
+            _from_json_data(Optional[Dict[str, ConditionMeterRule]], data.get("condition_meters")),
+            _from_json_data(Optional[Dict[str, ImpactCategory]], data.get("impacts")),
+            _from_json_data(Optional[Dict[str, SpecialTrackRule]], data.get("special_tracks")),
+            _from_json_data(Optional[Dict[str, StatRule]], data.get("stats")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        if self.condition_meters is not None:
+             data["condition_meters"] = _to_json_data(self.condition_meters)
+        if self.impacts is not None:
+             data["impacts"] = _to_json_data(self.impacts)
+        if self.special_tracks is not None:
+             data["special_tracks"] = _to_json_data(self.special_tracks)
+        if self.stats is not None:
+             data["stats"] = _to_json_data(self.stats)
         return data
 
 @dataclass

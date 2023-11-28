@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "style")
 @JsonSubTypes({
+    @JsonSubTypes.Type(name = "column", value = OracleTableRenderingColumn.class),
+    @JsonSubTypes.Type(name = "embed_in_row", value = OracleTableRenderingEmbedInRow.class),
     @JsonSubTypes.Type(name = "standalone", value = OracleTableRenderingStandalone.class),
 })
 public abstract class OracleTableRendering {

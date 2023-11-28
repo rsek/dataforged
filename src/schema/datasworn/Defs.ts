@@ -8,6 +8,7 @@ import * as Oracles from './Oracles.js'
 import * as Rarities from './Rarities.js'
 import * as Rules from './Rules.js'
 import * as Truths from './Truths.js'
+import { Ruleset, Expansion } from './Rulesets.js'
 import {
 	Id,
 	Localize,
@@ -34,6 +35,8 @@ const Defs: Defs = {
 	...Player,
 	...Rarities,
 	...DelveSites,
-	...Rules
+	...Rules,
+	Ruleset,
+	Expansion
 }
 export default Defs

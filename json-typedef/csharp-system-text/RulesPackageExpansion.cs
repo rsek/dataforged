@@ -5,8 +5,14 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
-    public class Ruleset
+    public class RulesPackageExpansion : RulesPackage
     {
+        [JsonPropertyName("package_type")]
+        public string PackageType { get => "expansion"; }
+
+        [JsonPropertyName("enhances")]
+        public NamespaceId Enhances { get; set; }
+
         [JsonPropertyName("id")]
         public NamespaceId Id { get; set; }
 

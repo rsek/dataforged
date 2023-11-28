@@ -5,46 +5,38 @@ require 'time'
 
 module Datasworn
 
-  class Ruleset
+  # Describes game rules compatible with the Ironsworn tabletop role-playing
+  # game by Shawn Tomkin.
+  class RulesPackage
+    attr_accessor :package_type
+
+    def self.from_json_data(data)
+      {
+        "expansion" => RulesPackageExpansion,
+        "ruleset" => RulesPackageRuleset,
+      }[data["package_type"]].from_json_data(data)
+    end
+  end
+
+  class RulesPackageExpansion < RulesPackage
+    attr_accessor :enhances
     attr_accessor :id
-
-    # A dictionary object containing asset types, which contain assets.
     attr_accessor :assets
-
-    # A dictionary object containing atlas collections, which contain atlas
-    # entries.
     attr_accessor :atlas
-
-    # A dictionary object of delve sites, like the premade delve sites presented
-    # in Ironsworn: Delve
     attr_accessor :delve_sites
-
-    # A dictionary object containing move categories, which contain moves.
     attr_accessor :moves
-
-    # A dictionary object containing NPC collections, which contain NPCs.
     attr_accessor :npcs
-
-    # A dictionary object containing oracle collections, which may contain
-    # oracle tables and/or oracle collections.
     attr_accessor :oracles
-
-    # A dictionary object containing rarities, like those presented in
-    # Ironsworn: Delve.
     attr_accessor :rarities
     attr_accessor :rules
-
-    # A dictionary object containing delve site domains.
     attr_accessor :site_domains
-
-    # A dictionary object containing delve site themes.
     attr_accessor :site_themes
-
-    # A dictionary object of truth categories.
     attr_accessor :truths
 
     def self.from_json_data(data)
-      out = Ruleset.new
+      out = RulesPackageExpansion.new
+      out.package_type = "expansion"
+      out.enhances = Datasworn::from_json_data(NamespaceID, data["enhances"])
       out.id = Datasworn::from_json_data(NamespaceID, data["id"])
       out.assets = Datasworn::from_json_data(Hash[String, AssetType], data["assets"])
       out.atlas = Datasworn::from_json_data(Hash[String, Atlas], data["atlas"])
@@ -61,7 +53,8 @@ module Datasworn
     end
 
     def to_json_data
-      data = {}
+      data = { "package_type" => "expansion" }
+      data["enhances"] = Datasworn::to_json_data(enhances)
       data["id"] = Datasworn::to_json_data(id)
       data["assets"] = Datasworn::to_json_data(assets) unless assets.nil?
       data["atlas"] = Datasworn::to_json_data(atlas) unless atlas.nil?
@@ -71,6 +64,56 @@ module Datasworn
       data["oracles"] = Datasworn::to_json_data(oracles) unless oracles.nil?
       data["rarities"] = Datasworn::to_json_data(rarities) unless rarities.nil?
       data["rules"] = Datasworn::to_json_data(rules) unless rules.nil?
+      data["site_domains"] = Datasworn::to_json_data(site_domains) unless site_domains.nil?
+      data["site_themes"] = Datasworn::to_json_data(site_themes) unless site_themes.nil?
+      data["truths"] = Datasworn::to_json_data(truths) unless truths.nil?
+      data
+    end
+  end
+
+  class RulesPackageRuleset < RulesPackage
+    attr_accessor :assets
+    attr_accessor :id
+    attr_accessor :moves
+    attr_accessor :oracles
+    attr_accessor :rules
+    attr_accessor :atlas
+    attr_accessor :delve_sites
+    attr_accessor :npcs
+    attr_accessor :rarities
+    attr_accessor :site_domains
+    attr_accessor :site_themes
+    attr_accessor :truths
+
+    def self.from_json_data(data)
+      out = RulesPackageRuleset.new
+      out.package_type = "ruleset"
+      out.assets = Datasworn::from_json_data(Hash[String, AssetType], data["assets"])
+      out.id = Datasworn::from_json_data(NamespaceID, data["id"])
+      out.moves = Datasworn::from_json_data(Hash[String, MoveCategory], data["moves"])
+      out.oracles = Datasworn::from_json_data(Hash[String, OracleCollection], data["oracles"])
+      out.rules = Datasworn::from_json_data(Rules, data["rules"])
+      out.atlas = Datasworn::from_json_data(Hash[String, Atlas], data["atlas"])
+      out.delve_sites = Datasworn::from_json_data(Hash[String, DelveSite], data["delve_sites"])
+      out.npcs = Datasworn::from_json_data(Hash[String, NpcCollection], data["npcs"])
+      out.rarities = Datasworn::from_json_data(Hash[String, Rarity], data["rarities"])
+      out.site_domains = Datasworn::from_json_data(Hash[String, DelveSiteDomain], data["site_domains"])
+      out.site_themes = Datasworn::from_json_data(Hash[String, DelveSiteTheme], data["site_themes"])
+      out.truths = Datasworn::from_json_data(Hash[String, Truth], data["truths"])
+      out
+    end
+
+    def to_json_data
+      data = { "package_type" => "ruleset" }
+      data["assets"] = Datasworn::to_json_data(assets)
+      data["id"] = Datasworn::to_json_data(id)
+      data["moves"] = Datasworn::to_json_data(moves)
+      data["oracles"] = Datasworn::to_json_data(oracles)
+      data["rules"] = Datasworn::to_json_data(rules)
+      data["atlas"] = Datasworn::to_json_data(atlas) unless atlas.nil?
+      data["delve_sites"] = Datasworn::to_json_data(delve_sites) unless delve_sites.nil?
+      data["npcs"] = Datasworn::to_json_data(npcs) unless npcs.nil?
+      data["rarities"] = Datasworn::to_json_data(rarities) unless rarities.nil?
       data["site_domains"] = Datasworn::to_json_data(site_domains) unless site_domains.nil?
       data["site_themes"] = Datasworn::to_json_data(site_themes) unless site_themes.nil?
       data["truths"] = Datasworn::to_json_data(truths) unless truths.nil?
@@ -3616,6 +3659,7 @@ module Datasworn
     def self.from_json_data(data)
       {
         "multi_table" => OracleCollectionRenderingMultiTable,
+        "tables" => OracleCollectionRenderingTables,
       }[data["style"]].from_json_data(data)
     end
   end
@@ -3633,6 +3677,20 @@ module Datasworn
     def to_json_data
       data = { "style" => "multi_table" }
       data["columns"] = Datasworn::to_json_data(columns)
+      data
+    end
+  end
+
+  class OracleCollectionRenderingTables < OracleCollectionRendering
+
+    def self.from_json_data(data)
+      out = OracleCollectionRenderingTables.new
+      out.style = "tables"
+      out
+    end
+
+    def to_json_data
+      data = { "style" => "tables" }
       data
     end
   end
@@ -3935,8 +3993,38 @@ module Datasworn
 
     def self.from_json_data(data)
       {
+        "column" => OracleTableRenderingColumn,
+        "embed_in_row" => OracleTableRenderingEmbedInRow,
         "standalone" => OracleTableRenderingStandalone,
       }[data["style"]].from_json_data(data)
+    end
+  end
+
+  class OracleTableRenderingColumn < OracleTableRendering
+
+    def self.from_json_data(data)
+      out = OracleTableRenderingColumn.new
+      out.style = "column"
+      out
+    end
+
+    def to_json_data
+      data = { "style" => "column" }
+      data
+    end
+  end
+
+  class OracleTableRenderingEmbedInRow < OracleTableRendering
+
+    def self.from_json_data(data)
+      out = OracleTableRenderingEmbedInRow.new
+      out.style = "embed_in_row"
+      out
+    end
+
+    def to_json_data
+      data = { "style" => "embed_in_row" }
+      data
     end
   end
 
@@ -4382,6 +4470,43 @@ module Datasworn
       data["impacts"] = Datasworn::to_json_data(impacts)
       data["special_tracks"] = Datasworn::to_json_data(special_tracks)
       data["stats"] = Datasworn::to_json_data(stats)
+      data
+    end
+  end
+
+  # Describes rules for player characters in this ruleset, such as stats and
+  # condition meters.
+  class RulesExpansion
+    # Describes the standard condition meters used by player characters in this
+    # ruleset.
+    attr_accessor :condition_meters
+
+    # Describes the standard impacts/debilities used by player characters in
+    # this ruleset.
+    attr_accessor :impacts
+
+    # Describes the special tracks used by player characters in this ruleset,
+    # like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+    attr_accessor :special_tracks
+
+    # Describes the standard stats used by player characters in this ruleset.
+    attr_accessor :stats
+
+    def self.from_json_data(data)
+      out = RulesExpansion.new
+      out.condition_meters = Datasworn::from_json_data(Hash[String, ConditionMeterRule], data["condition_meters"])
+      out.impacts = Datasworn::from_json_data(Hash[String, ImpactCategory], data["impacts"])
+      out.special_tracks = Datasworn::from_json_data(Hash[String, SpecialTrackRule], data["special_tracks"])
+      out.stats = Datasworn::from_json_data(Hash[String, StatRule], data["stats"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["condition_meters"] = Datasworn::to_json_data(condition_meters) unless condition_meters.nil?
+      data["impacts"] = Datasworn::to_json_data(impacts) unless impacts.nil?
+      data["special_tracks"] = Datasworn::to_json_data(special_tracks) unless special_tracks.nil?
+      data["stats"] = Datasworn::to_json_data(stats) unless stats.nil?
       data
     end
   end

@@ -4,8 +4,23 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
 
+/// Describes game rules compatible with the Ironsworn tabletop role-playing
+/// game by Shawn Tomkin.
 #[derive(Serialize, Deserialize)]
-pub struct Ruleset {
+#[serde(tag = "package_type")]
+pub enum RulesPackage {
+    #[serde(rename = "expansion")]
+    Expansion(RulesPackageExpansion),
+
+    #[serde(rename = "ruleset")]
+    Ruleset(RulesPackageRuleset),
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct RulesPackageExpansion {
+    #[serde(rename = "enhances")]
+    pub enhances: NamespaceId,
+
     #[serde(rename = "id")]
     pub id: NamespaceId,
 
@@ -51,6 +66,66 @@ pub struct Ruleset {
     #[serde(rename = "rules")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub rules: Option<Box<Rules>>,
+
+    /// A dictionary object containing delve site domains.
+    #[serde(rename = "site_domains")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub siteDomains: Option<Box<HashMap<String, DelveSiteDomain>>>,
+
+    /// A dictionary object containing delve site themes.
+    #[serde(rename = "site_themes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub siteThemes: Option<Box<HashMap<String, DelveSiteTheme>>>,
+
+    /// A dictionary object of truth categories.
+    #[serde(rename = "truths")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub truths: Option<Box<HashMap<String, Truth>>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct RulesPackageRuleset {
+    /// A dictionary object containing asset types, which contain assets.
+    #[serde(rename = "assets")]
+    pub assets: HashMap<String, AssetType>,
+
+    #[serde(rename = "id")]
+    pub id: NamespaceId,
+
+    /// A dictionary object containing move categories, which contain moves.
+    #[serde(rename = "moves")]
+    pub moves: HashMap<String, MoveCategory>,
+
+    /// A dictionary object containing oracle collections, which may contain
+    /// oracle tables and/or oracle collections.
+    #[serde(rename = "oracles")]
+    pub oracles: HashMap<String, OracleCollection>,
+
+    #[serde(rename = "rules")]
+    pub rules: Rules,
+
+    /// A dictionary object containing atlas collections, which contain atlas
+    /// entries.
+    #[serde(rename = "atlas")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub atlas: Option<Box<HashMap<String, Atlas>>>,
+
+    /// A dictionary object of delve sites, like the premade delve sites
+    /// presented in Ironsworn: Delve
+    #[serde(rename = "delve_sites")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub delveSites: Option<Box<HashMap<String, DelveSite>>>,
+
+    /// A dictionary object containing NPC collections, which contain NPCs.
+    #[serde(rename = "npcs")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub npcs: Option<Box<HashMap<String, NpcCollection>>>,
+
+    /// A dictionary object containing rarities, like those presented in
+    /// Ironsworn: Delve.
+    #[serde(rename = "rarities")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rarities: Option<Box<HashMap<String, Rarity>>>,
 
     /// A dictionary object containing delve site domains.
     #[serde(rename = "site_domains")]
@@ -2478,6 +2553,9 @@ pub type OracleCollectionId = String;
 pub enum OracleCollectionRendering {
     #[serde(rename = "multi_table")]
     MultiTable(OracleCollectionRenderingMultiTable),
+
+    #[serde(rename = "tables")]
+    Tables(OracleCollectionRenderingTables),
 }
 
 #[derive(Serialize, Deserialize)]
@@ -2485,6 +2563,9 @@ pub struct OracleCollectionRenderingMultiTable {
     #[serde(rename = "columns")]
     pub columns: HashMap<String, OracleCollectionTableColumn>,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct OracleCollectionRenderingTables {}
 
 #[derive(Serialize, Deserialize)]
 pub enum OracleCollectionStyle {
@@ -2675,9 +2756,21 @@ pub struct OracleTableMatchBehavior {
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "style")]
 pub enum OracleTableRendering {
+    #[serde(rename = "column")]
+    Column(OracleTableRenderingColumn),
+
+    #[serde(rename = "embed_in_row")]
+    EmbedInRow(OracleTableRenderingEmbedInRow),
+
     #[serde(rename = "standalone")]
     Standalone(OracleTableRenderingStandalone),
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct OracleTableRenderingColumn {}
+
+#[derive(Serialize, Deserialize)]
+pub struct OracleTableRenderingEmbedInRow {}
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableRenderingStandalone {
@@ -2954,6 +3047,35 @@ pub struct Rules {
     /// Describes the standard stats used by player characters in this ruleset.
     #[serde(rename = "stats")]
     pub stats: HashMap<String, StatRule>,
+}
+
+/// Describes rules for player characters in this ruleset, such as stats and
+/// condition meters.
+#[derive(Serialize, Deserialize)]
+pub struct RulesExpansion {
+    /// Describes the standard condition meters used by player characters in
+    /// this ruleset.
+    #[serde(rename = "condition_meters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub conditionMeters: Option<Box<HashMap<String, ConditionMeterRule>>>,
+
+    /// Describes the standard impacts/debilities used by player characters in
+    /// this ruleset.
+    #[serde(rename = "impacts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub impacts: Option<Box<HashMap<String, ImpactCategory>>>,
+
+    /// Describes the special tracks used by player characters in this
+    /// ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies
+    /// (Starforged).
+    #[serde(rename = "special_tracks")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub specialTracks: Option<Box<HashMap<String, SpecialTrackRule>>>,
+
+    /// Describes the standard stats used by player characters in this ruleset.
+    #[serde(rename = "stats")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub stats: Option<Box<HashMap<String, StatRule>>>,
 }
 
 #[derive(Serialize, Deserialize)]

@@ -7,7 +7,54 @@ import (
 	"fmt"
 )
 
-type Ruleset struct {
+// Describes game rules compatible with the Ironsworn tabletop role-playing game
+// by Shawn Tomkin.
+type RulesPackage struct {
+	PackageType string
+
+	Expansion RulesPackageExpansion
+
+	Ruleset RulesPackageRuleset
+}
+
+func (v RulesPackage) MarshalJSON() ([]byte, error) {
+	switch v.PackageType {
+	case "expansion":
+		return json.Marshal(struct { T string `json:"package_type"`; RulesPackageExpansion }{ v.PackageType, v.Expansion })
+	case "ruleset":
+		return json.Marshal(struct { T string `json:"package_type"`; RulesPackageRuleset }{ v.PackageType, v.Ruleset })
+	}
+
+	return nil, fmt.Errorf("bad PackageType value: %s", v.PackageType)
+}
+
+func (v *RulesPackage) UnmarshalJSON(b []byte) error {
+	var t struct { T string `json:"package_type"` }
+	if err := json.Unmarshal(b, &t); err != nil {
+		return err
+	}
+
+	var err error
+	switch t.T {
+	case "expansion":
+		err = json.Unmarshal(b, &v.Expansion)
+	case "ruleset":
+		err = json.Unmarshal(b, &v.Ruleset)
+	default:
+		err = fmt.Errorf("bad PackageType value: %s", t.T)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	v.PackageType = t.T
+	return nil
+}
+
+type RulesPackageExpansion struct {
+	Enhances NamespaceID `json:"enhances"`
+
 	ID NamespaceID `json:"id"`
 
 	// A dictionary object containing asset types, which contain assets.
@@ -36,6 +83,46 @@ type Ruleset struct {
 	Rarities map[string]Rarity `json:"rarities,omitempty"`
 
 	Rules *Rules `json:"rules,omitempty"`
+
+	// A dictionary object containing delve site domains.
+	SiteDomains map[string]DelveSiteDomain `json:"site_domains,omitempty"`
+
+	// A dictionary object containing delve site themes.
+	SiteThemes map[string]DelveSiteTheme `json:"site_themes,omitempty"`
+
+	// A dictionary object of truth categories.
+	Truths map[string]Truth `json:"truths,omitempty"`
+}
+
+type RulesPackageRuleset struct {
+	// A dictionary object containing asset types, which contain assets.
+	Assets map[string]AssetType `json:"assets"`
+
+	ID NamespaceID `json:"id"`
+
+	// A dictionary object containing move categories, which contain moves.
+	Moves map[string]MoveCategory `json:"moves"`
+
+	// A dictionary object containing oracle collections, which may contain oracle
+	// tables and/or oracle collections.
+	Oracles map[string]OracleCollection `json:"oracles"`
+
+	Rules Rules `json:"rules"`
+
+	// A dictionary object containing atlas collections, which contain atlas
+	// entries.
+	Atlas map[string]Atlas `json:"atlas,omitempty"`
+
+	// A dictionary object of delve sites, like the premade delve sites presented
+	// in Ironsworn: Delve
+	DelveSites map[string]DelveSite `json:"delve_sites,omitempty"`
+
+	// A dictionary object containing NPC collections, which contain NPCs.
+	Npcs map[string]NpcCollection `json:"npcs,omitempty"`
+
+	// A dictionary object containing rarities, like those presented in Ironsworn:
+	// Delve.
+	Rarities map[string]Rarity `json:"rarities,omitempty"`
 
 	// A dictionary object containing delve site domains.
 	SiteDomains map[string]DelveSiteDomain `json:"site_domains,omitempty"`
@@ -2203,12 +2290,16 @@ type OracleCollectionRendering struct {
 	Style string
 
 	MultiTable OracleCollectionRenderingMultiTable
+
+	Tables OracleCollectionRenderingTables
 }
 
 func (v OracleCollectionRendering) MarshalJSON() ([]byte, error) {
 	switch v.Style {
 	case "multi_table":
 		return json.Marshal(struct { T string `json:"style"`; OracleCollectionRenderingMultiTable }{ v.Style, v.MultiTable })
+	case "tables":
+		return json.Marshal(struct { T string `json:"style"`; OracleCollectionRenderingTables }{ v.Style, v.Tables })
 	}
 
 	return nil, fmt.Errorf("bad Style value: %s", v.Style)
@@ -2224,6 +2315,8 @@ func (v *OracleCollectionRendering) UnmarshalJSON(b []byte) error {
 	switch t.T {
 	case "multi_table":
 		err = json.Unmarshal(b, &v.MultiTable)
+	case "tables":
+		err = json.Unmarshal(b, &v.Tables)
 	default:
 		err = fmt.Errorf("bad Style value: %s", t.T)
 	}
@@ -2238,6 +2331,9 @@ func (v *OracleCollectionRendering) UnmarshalJSON(b []byte) error {
 
 type OracleCollectionRenderingMultiTable struct {
 	Columns map[string]OracleCollectionTableColumn `json:"columns"`
+}
+
+type OracleCollectionRenderingTables struct {
 }
 
 type OracleCollectionStyle string
@@ -2378,11 +2474,19 @@ type OracleTableMatchBehavior struct {
 type OracleTableRendering struct {
 	Style string
 
+	Column OracleTableRenderingColumn
+
+	EmbedInRow OracleTableRenderingEmbedInRow
+
 	Standalone OracleTableRenderingStandalone
 }
 
 func (v OracleTableRendering) MarshalJSON() ([]byte, error) {
 	switch v.Style {
+	case "column":
+		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingColumn }{ v.Style, v.Column })
+	case "embed_in_row":
+		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingEmbedInRow }{ v.Style, v.EmbedInRow })
 	case "standalone":
 		return json.Marshal(struct { T string `json:"style"`; OracleTableRenderingStandalone }{ v.Style, v.Standalone })
 	}
@@ -2398,6 +2502,10 @@ func (v *OracleTableRendering) UnmarshalJSON(b []byte) error {
 
 	var err error
 	switch t.T {
+	case "column":
+		err = json.Unmarshal(b, &v.Column)
+	case "embed_in_row":
+		err = json.Unmarshal(b, &v.EmbedInRow)
 	case "standalone":
 		err = json.Unmarshal(b, &v.Standalone)
 	default:
@@ -2410,6 +2518,12 @@ func (v *OracleTableRendering) UnmarshalJSON(b []byte) error {
 
 	v.Style = t.T
 	return nil
+}
+
+type OracleTableRenderingColumn struct {
+}
+
+type OracleTableRenderingEmbedInRow struct {
 }
 
 type OracleTableRenderingStandalone struct {
@@ -2616,6 +2730,25 @@ type Rules struct {
 
 	// Describes the standard stats used by player characters in this ruleset.
 	Stats map[string]StatRule `json:"stats"`
+}
+
+// Describes rules for player characters in this ruleset, such as stats and
+// condition meters.
+type RulesExpansion struct {
+	// Describes the standard condition meters used by player characters in this
+	// ruleset.
+	ConditionMeters map[string]ConditionMeterRule `json:"condition_meters,omitempty"`
+
+	// Describes the standard impacts/debilities used by player characters in this
+	// ruleset.
+	Impacts map[string]ImpactCategory `json:"impacts,omitempty"`
+
+	// Describes the special tracks used by player characters in this ruleset, like
+	// Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+	SpecialTracks map[string]SpecialTrackRule `json:"special_tracks,omitempty"`
+
+	// Describes the standard stats used by player characters in this ruleset.
+	Stats map[string]StatRule `json:"stats,omitempty"`
 }
 
 type SourceAuthor struct {

@@ -12,7 +12,10 @@ import {
 	type TUnion
 } from '@sinclair/typebox'
 import { mapValues, omit } from 'lodash-es'
-import { ComputedPropertyBrand } from '../utils/Computed.js'
+import {
+	ComputedPropertyBrand,
+	SourceOptionalBrand
+} from '../utils/Computed.js'
 import { type TDiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
 import { SetOptional } from '../utils/SetOptional.js'
 import { type TUnionOneOf } from '../utils/UnionOneOf.js'
@@ -51,23 +54,11 @@ const transforms: SchemaTransforms = {
 	},
 
 	Object: <T extends TObject>(schema: T, options: SchemaOptions) => {
-		// const optionalProps = keysWithDefaults(schema)
-
-		// for (const [key, property] of Object.entries<any>(schema.properties))
-		//   if (property[OptionalInSourceBrand]) optionalProps.push(key as any)
-
-		// if (optionalProps.length === 0) return TypeClone.Type(schema, options)
-
-		// const base = SetOptional(schema, optionalProps)
-
-		// // set properties that have a default to optional
-		// // omit properties that are branded with OptionalInSource
-		// return TypeClone.Type(base, { $id: schema.$id }) as T // this isn't correct, but defaults arent part of the type data, so it's close enough
-
 		const optionalProps = keysWithDefaults(schema)
 
 		for (const [key, property] of Object.entries<any>(schema.properties))
-			if (property[ComputedPropertyBrand]) optionalProps.push(key as any)
+			if (property[ComputedPropertyBrand] || property[SourceOptionalBrand])
+				optionalProps.push(key as any)
 
 		if (optionalProps.length === 0) return TypeClone.Type(schema, options)
 
@@ -75,8 +66,6 @@ const transforms: SchemaTransforms = {
 
 		const nuOptions = omit(TypeClone.Type(schema, options), Object.keys(base))
 
-		// set properties that have a default to optional
-		// omit properties that are branded with OptionalInSource
 		return TypeClone.Type(base, nuOptions) as T // defaults arent part of the type data, so it's close enough
 	},
 
