@@ -81,12 +81,7 @@ export const AssetAbility: Transformer<
 	): Record<string, Out.Move> | undefined {
 		if (data.moves == null) return
 		return mapValues(data.moves, (moveData, moveKey) =>
-			transform(
-				moveData,
-				moveKey,
-				{ id: `${this.id}/moves`, source: parent.source },
-				Move
-			)
+			transform(moveData, moveKey, { id: `${this.id}/moves` }, Move)
 		)
 	},
 	options: function (

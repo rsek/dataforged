@@ -64,7 +64,7 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		parent: null
 	) {
 		return mapValues(data.truths, (v, k) =>
-			transform(v, k, { source: data.source, id: `${data.id}/truths` }, Truth)
+			transform(v, k, { id: `${data.id}/truths` }, Truth)
 		)
 	},
 
@@ -83,12 +83,7 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		parent: null
 	) {
 		return mapValues(data.rarities, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id}/rarities` },
-				Rarity
-			)
+			transform(v, k, { id: `${data.id}/rarities` }, Rarity)
 		)
 	},
 	delve_sites: function (
@@ -98,12 +93,7 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		parent: null
 	) {
 		return mapValues(data.delve_sites, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id}/delve_sites` },
-				DelveSite
-			)
+			transform(v, k, { id: `${data.id}/delve_sites` }, DelveSite)
 		)
 	},
 	site_themes: function (
@@ -113,12 +103,7 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		parent: null
 	) {
 		return mapValues(data.site_themes, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id}/site_themes` },
-				DelveSiteTheme
-			)
+			transform(v, k, { id: `${data.id}/site_themes` }, DelveSiteTheme)
 		)
 	},
 	site_domains: function (
@@ -128,12 +113,7 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		parent: null
 	) {
 		return mapValues(data.site_domains, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id}/site_domains` },
-				DelveSiteDomain
-			)
+			transform(v, k, { id: `${data.id}/site_domains` }, DelveSiteDomain)
 		)
 	}
 })

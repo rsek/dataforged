@@ -57,7 +57,7 @@ export async function writeJSON(
 		JSON.stringify(value, replacer, space),
 		prettierOptions
 	)
-	return await fs.writeFile(filePath, data)
+	await fs.writeFile(filePath, data)
 }
 export async function getPrettierOptions(
 	filepath: string

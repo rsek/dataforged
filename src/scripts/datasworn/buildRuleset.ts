@@ -14,6 +14,7 @@ import { buildRulesetData } from './buildRulesetData.js'
 import { mergeRulesetData } from './mergeRulesetParts.js'
 import { cleanRuleset } from './cleanRuleset.js'
 import { type Draft07 } from 'json-schema-library'
+import { writeRuleset } from './writeRuleset.js'
 
 const metadataKeys = ['id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -78,11 +79,15 @@ export async function buildRuleset(
 	// 	.sort(([a], [b]) => a.localeCompare(b, 'en-US'))
 	// 	.forEach(([_, data]) => merge(ruleset, data))
 
-	const ruleset = mergeRulesetData(builtFiles, ajv)
+	const ruleset = cleanRuleset(mergeRulesetData(builtFiles, ajv), jsl)
 
 	// console.log(ruleset)
 
-	const toWrite: Array<Promise<void>> = []
+	const toWrite: Array<Promise<void>> = [
+		writeRuleset(path.join(destDir, 'all.json'), ruleset)
+	]
+
+	/** JSON transformer to strip underscore (macro) properties */
 
 	for (const [k, v] of Object.entries(ruleset)) {
 		if (isMacroKey(k)) continue
@@ -98,23 +103,9 @@ export async function buildRuleset(
 		const jsonOut = cleanRuleset(jsonToValidate, jsl)
 		// const jsonOut = jsonToValidate
 
-		/** JSON transformer to strip underscore (macro) properties */
-		const replacer = (k: string, v: unknown) => (isMacroKey(k) ? undefined : v)
-
 		const outPath = path.join(destDir, `${k}.json`)
 
-		toWrite.push(
-			fs
-				.ensureFile(outPath)
-				.then(async () => {
-					Log.info(`✏️  Writing to ${formatPath(outPath)}`)
-					await writeJSON(outPath, jsonOut, { replacer })
-				})
-				.catch(
-					(err) =>
-						void Log.error(`Failed to write ${formatPath(outPath)}:`, err)
-				)
-		)
+		toWrite.push(writeRuleset(outPath, jsonOut))
 	}
 
 	if (oldJsonFiles?.length > 0)
