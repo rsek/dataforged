@@ -12,6 +12,7 @@ export * from './utils/OmitMeta.js'
 export * from './utils/DiscriminatedUnion.js'
 export * from './utils/UnionOneOf.js'
 export * from './utils/UnionEnum.js'
+export * from './utils/OmitOptional.js'
 
 // depends on UnionEnum
 export * from './utils/UnionEnumFromRecord.js'

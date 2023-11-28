@@ -32,9 +32,12 @@ export function SetOptional<
 	const toRemove: string[] = []
 
 	for (const k of optionalKeys as string[]) {
+		// skip if no such prop exists
 		if (base.properties[k] == null) continue
+		// skip if it's already optional
 		if (TypeGuard.TOptional(base.properties[k])) continue
 		base.properties[k] = Type.Optional(base.properties[k])
+		// flag key for removal from "required" array
 		toRemove.push(k)
 	}
 

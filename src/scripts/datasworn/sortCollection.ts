@@ -2,7 +2,9 @@ import { Type } from '@sinclair/typebox'
 import { TypeCompiler } from '@sinclair/typebox/compiler'
 import { cloneDeep, compact, min } from 'lodash-es'
 import * as Generic from '../../schema/datasworn/Generic.js'
+import * as Utils from '../../schema/datasworn/Utils.js'
 import Log from '../utils/Log.js'
+import { Localize, Metadata } from '../../schema/datasworn/common/index.js'
 
 function sortDictionary<
 	T,
@@ -15,31 +17,28 @@ function sortDictionary<
 	return Object.fromEntries(entries) as D
 }
 
+const commonRefs = [Localize.Label, Metadata.Source]
+
+const sourcedNodeValidatorSchema = Utils.OmitOptional(Generic.SourcedNodeBase, {
+	additionalProperties: true
+})
+
+const SourcedNodeValidator = TypeCompiler.Compile(
+	sourcedNodeValidatorSchema,
+	commonRefs
+)
+
 function isSourcedNode<T extends Generic.SourcedNode = Generic.SourcedNode>(
 	obj: unknown
 ): obj is T {
-	const checker = TypeCompiler.Compile(
-		Type.Object(
-			{
-				id: Type.String(),
-				source: Type.Object({}, { additionalProperties: true }),
-				name: Type.String()
-			},
-			{
-				additionalProperties: true
-			}
-		)
-	)
-	return checker.Check(obj)
+	return SourcedNodeValidator.Check(obj)
 }
 
-function isCollection<
+export function isCollection<
 	T extends
 		Generic.Collection<Generic.SourcedNode> = Generic.Collection<Generic.SourcedNode>
 >(obj: unknown): obj is T {
-	if (!isSourcedNode(obj)) return false
-
-	return 'contents' in obj || 'collections' in obj
+	return isSourcedNode(obj) && ('contents' in obj || 'collections' in obj)
 }
 
 export function sortTopLevelCollection<

@@ -13,7 +13,7 @@ const encoding = 'utf8'
  * Reads source data from a YAML or JSON file.
  * @return The deserialized object.
  */
-export async function readSource(filePath: string) {
+export async function readSourceData(filePath: string) {
 	switch (path.extname(filePath)) {
 		case '.yaml':
 		case '.yml':

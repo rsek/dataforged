@@ -259,7 +259,7 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 	}
 
 	if (result == null) {
-		console.log(schema)
+		// console.log(schema)
 		throw new Error(
 			`no transform available for typebox schema kind ${schema[Kind]}`
 		)

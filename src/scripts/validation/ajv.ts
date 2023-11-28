@@ -10,29 +10,24 @@ const addFormats = ajvFormatPkg.default
 
 // Initialize AJV
 
-const ajv = new Ajv({
+const AJV = new Ajv({
 	logger: Log,
 	passContext: true,
-	removeAdditional: true,
+	// removeAdditional: true,
 	strict: 'log',
 	strictSchema: 'log',
 	strictTypes: 'log',
-	useDefaults: true,
+	useDefaults: 'empty',
 	validateFormats: true,
 	verbose: true
 })
 
 for (const [format, data] of Object.entries(FORMATS))
-	ajv.addFormat(format, data)
+	AJV.addFormat(format, data)
 
 for (const [keyword, data] of Object.entries(KEYWORDS))
-	ajv.addKeyword({ keyword, ...data })
+	AJV.addKeyword({ keyword, ...data })
 
-addFormats(ajv)
+addFormats(AJV)
 
-export default ajv
-
-// ajv.addSchema(await loadSchema(), 'Datasworn')
-// ajv.addSchema(await loadSourceSchema(), 'DataswornSource')
-
-// console.log(ajv)
+export default AJV

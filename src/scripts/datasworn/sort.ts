@@ -114,13 +114,11 @@ export function compareObjectKeys(
 
 export function isSortableObjectSchema(schema: JSONSchema) {
 	switch (true) {
-		// skip non-object schema
+		// skip non-object schema or dictionary-like object
 		case schema.type !== 'object':
-		// skip dictionary-like object
 		case schema.patternProperties != null:
 			// console.log('SKIP', schema.title ?? schema)
 			return false
-
 		default:
 			// console.log('Sorting', schema.title ?? schema)
 			return true

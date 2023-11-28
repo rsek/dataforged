@@ -73,7 +73,7 @@ export function Collection<T extends TRef>(
 					'This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.'
 			})
 		),
-		contents: Dictionary(collectable, { default: {} })
+		contents: Type.Optional(Dictionary(collectable))
 	})
 	const base = Utils.Assign([CollectionMixin, idMixin]) as TObject<
 		(typeof CollectionMixin)['properties'] & TCollectionIdMixin<T>['properties']
@@ -116,7 +116,7 @@ export function RecursiveCollection<T extends TCollection<TRef>>(
 		[
 			collection,
 			Type.Object({
-				collections: Dictionary(Type.Ref(options.$id), { default: {} })
+				collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
 			})
 		],
 		{

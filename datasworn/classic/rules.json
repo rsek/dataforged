@@ -1,0 +1,137 @@
+{
+	"id": "classic",
+	"rules": {
+		"condition_meters": {
+			"health": {
+				"label": "health",
+				"min": 0,
+				"max": 5,
+				"value": 5,
+				"shared": false,
+				"description": "Health represents your current physical condition and stamina."
+			},
+			"spirit": {
+				"label": "spirit",
+				"min": 0,
+				"max": 5,
+				"value": 5,
+				"shared": false,
+				"description": "Spirit is your current mental state."
+			},
+			"supply": {
+				"label": "supply",
+				"min": 0,
+				"max": 5,
+				"value": 5,
+				"shared": true,
+				"description": "Supply is an abstract representation of your preparedness, including ammo, food, water, and general upkeep."
+			}
+		},
+		"impacts": {
+			"conditions": {
+				"label": "conditions",
+				"description": "As with all debilities, conditions impact your max momentum and momentum reset. In addition, if you are wounded, shaken, or unprepared, you cannot increase the associated track.",
+				"contents": {
+					"wounded": {
+						"label": "wounded",
+						"shared": false,
+						"description": "You are severely injured and need treatment to recover.",
+						"permanent": false,
+						"prevents_recovery": ["health"]
+					},
+					"shaken": {
+						"label": "shaken",
+						"shared": false,
+						"description": "You are despairing or distraught, and need comfort to recover.",
+						"permanent": false,
+						"prevents_recovery": ["spirit"]
+					},
+					"unprepared": {
+						"label": "unprepared",
+						"shared": true,
+						"description": "You and your allies have exhausted their supplies, and must gather provisions in a community to recover.",
+						"permanent": false,
+						"prevents_recovery": ["supply"]
+					},
+					"encumbered": {
+						"label": "encumbered",
+						"shared": false,
+						"description": "You are carrying excessive or cumbersome weight.",
+						"permanent": false,
+						"prevents_recovery": []
+					}
+				}
+			},
+			"banes": {
+				"label": "banes",
+				"description": "Banes are permanent. They forever impact your character through the momentum penalty and—more importantly—through the narrative impact of being maimed or corrupted.",
+				"contents": {
+					"maimed": {
+						"label": "maimed",
+						"shared": false,
+						"description": "You have suffered a wound which causes you ongoing physical challenges, such as the loss of an eye or hand. Or, you bear horrific scars which serve as a constant reminder of your failures.",
+						"permanent": true,
+						"prevents_recovery": []
+					},
+					"corrupted": {
+						"label": "corrupted",
+						"shared": false,
+						"description": "Your experiences have left you emotionally scarred. You are at the threshold of losing yourself to darkness.",
+						"permanent": true,
+						"prevents_recovery": []
+					}
+				}
+			},
+			"burdens": {
+				"label": "burdens",
+				"description": "Burdens are a result of life-changing experiences that leave you bound to quests. Clearing a burden can only be accomplished by resolving the quest.",
+				"contents": {
+					"cursed": {
+						"label": "cursed",
+						"shared": false,
+						"description": "Cursed is marked when you [Face Death] and return with a soul-bound quest. This burden can only be cleared by completing the quest.",
+						"permanent": false,
+						"prevents_recovery": []
+					},
+					"tormented": {
+						"label": "tormented",
+						"shared": false,
+						"description": "Tormented is marked when you [Face Desolation] and undertake a quest to prevent a dire future.",
+						"permanent": false,
+						"prevents_recovery": []
+					}
+				}
+			}
+		},
+		"special_tracks": {
+			"bonds": {
+				"label": "bonds",
+				"shared": false,
+				"description": "As you build relationships and complete quests in the service of others, you create bonds by making the Forge a Bond move.",
+				"optional": false
+			}
+		},
+		"stats": {
+			"edge": {
+				"label": "edge",
+				"description": "Quickness, agility, and prowess in ranged combat."
+			},
+			"heart": {
+				"label": "heart",
+				"description": "Courage, willpower, empathy, sociability, and loyalty."
+			},
+			"iron": {
+				"label": "iron",
+				"description": "Physical strength, endurance, aggressiveness, and prowess in close combat."
+			},
+			"shadow": {
+				"label": "shadow",
+				"description": "Sneakiness, deceptiveness, and cunning."
+			},
+			"wits": {
+				"label": "wits",
+				"description": "Expertise, knowledge, and observation."
+			}
+		}
+	}
+}

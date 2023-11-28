@@ -1,42 +1,26 @@
 import * as pkgs from '../pkg/pkgConfig.js'
-import fs from 'fs-extra'
-import { forEach } from 'lodash-es'
 import Log from '../utils/Log.js'
-import ajv from '../validation/ajv.js'
-import { buildRuleset } from './buildDatasworn.js'
-import { SCHEMA_IN, SCHEMA_OUT } from '../const.js'
-import { formatPath } from '../../utils.js'
+import AJV from '../validation/ajv.js'
+import { buildRuleset } from './buildRuleset.js'
+import { loadSchema, loadSourceSchema } from './loadSchema.js'
 
 const profiler = Log.startTimer()
 
 Log.info('📖 Reading schema...')
 
 // flush any old schemas
-// ajv.removeSchema()
+AJV.removeSchema()
 
-const schemaInId = 'DataswornSource'
-const schemaOutId = 'Datasworn'
-
-const schemas = new Map([
-	[schemaInId, SCHEMA_IN],
-	[schemaOutId, SCHEMA_OUT]
-])
-
-for await (const [id, filePath] of schemas) {
-	const v = await fs.readJSON(filePath)
-	await ajv.validateSchema(v, true)
-	ajv.addSchema(v, id, true, 'log')
-	Log.info(`✅ Loaded ${id} schema from ${formatPath(filePath)}`)
-}
+await loadSourceSchema()
+const { JSL } = await loadSchema()
 
 Log.info('⚙️  Building sourcebooks...')
 
 await Promise.all(
-	Object.values(pkgs).map(
-		async (pkg) => buildRuleset(pkg, schemaInId, schemaOutId)
-		// .catch((e) =>
-		// 	Log.error(`Failed to build package "${pkg.id}":`, e)
-		// )
+	Object.values(pkgs).map(async (pkg) =>
+		buildRuleset(pkg, AJV, JSL).catch((e) =>
+			Log.error(`Failed to build package "${pkg.id}":`, e)
+		)
 	)
 )
 
