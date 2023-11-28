@@ -10,9 +10,6 @@ import java.util.Map;
 
 @JsonSerialize
 public class AssetType {
-    @JsonProperty("contents")
-    private Map<String, Asset> contents;
-
     @JsonProperty("id")
     private AssetTypeId id;
 
@@ -29,6 +26,10 @@ public class AssetType {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private CssColor color;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("contents")
+    private Map<String, Asset> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -59,20 +60,6 @@ public class AssetType {
     private MarkdownString summary;
 
     public AssetType() {
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, Asset> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, Asset> contents) {
-        this.contents = contents;
     }
 
     /**
@@ -157,6 +144,20 @@ public class AssetType {
      */
     public void setColor(CssColor color) {
         this.color = color;
+    }
+
+    /**
+     * Getter for contents.<p>
+     */
+    public Map<String, Asset> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, Asset> contents) {
+        this.contents = contents;
     }
 
     /**

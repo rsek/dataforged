@@ -12,9 +12,6 @@ public class Ruleset {
     @JsonProperty("id")
     private NamespaceId id;
 
-    @JsonProperty("source")
-    private Source source;
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("assets")
     private Map<String, AssetType> assets;
@@ -74,20 +71,6 @@ public class Ruleset {
      */
     public void setId(NamespaceId id) {
         this.id = id;
-    }
-
-    /**
-     * Getter for source.<p>
-     */
-    public Source getSource() {
-        return source;
-    }
-
-    /**
-     * Setter for source.<p>
-     */
-    public void setSource(Source source) {
-        this.source = source;
     }
 
     /**

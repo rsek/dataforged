@@ -10,9 +10,6 @@ import java.util.Map;
 
 @JsonSerialize
 public class MoveCategory {
-    @JsonProperty("contents")
-    private Map<String, Move> contents;
-
     @JsonProperty("id")
     private MoveCategoryId id;
 
@@ -29,6 +26,10 @@ public class MoveCategory {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private CssColor color;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("contents")
+    private Map<String, Move> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -59,20 +60,6 @@ public class MoveCategory {
     private MarkdownString summary;
 
     public MoveCategory() {
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, Move> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, Move> contents) {
-        this.contents = contents;
     }
 
     /**
@@ -157,6 +144,20 @@ public class MoveCategory {
      */
     public void setColor(CssColor color) {
         this.color = color;
+    }
+
+    /**
+     * Getter for contents.<p>
+     */
+    public Map<String, Move> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, Move> contents) {
+        this.contents = contents;
     }
 
     /**

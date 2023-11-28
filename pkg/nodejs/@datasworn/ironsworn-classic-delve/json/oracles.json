@@ -1,17 +1,524 @@
 {
-	"source": {
-		"title": "Ironsworn: Delve",
-		"date": "2020-02-13",
-		"authors": [
-			{
-				"name": "Shawn Tomkin"
-			}
-		],
-		"license": "https://creativecommons.org/licenses/by/4.0",
-		"url": "https://ironswornrpg.com"
-	},
 	"id": "delve",
 	"oracles": {
+		"moves": {
+			"id": "delve/collections/oracles/moves",
+			"name": "Moves",
+			"enhances": "classic/collections/oracles/moves",
+			"rendering": {
+				"style": "tables"
+			},
+			"contents": {
+				"find_an_opportunity": {
+					"id": "delve/oracles/moves/find_an_opportunity",
+					"name": "Find an Opportunity",
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/1-25",
+							"min": 1,
+							"max": 25,
+							"result": "The terrain favors you, or you find a hidden path."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/26-45",
+							"min": 26,
+							"max": 45,
+							"result": "An aspect of the history or nature of this place is revealed."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/46-57",
+							"min": 46,
+							"max": 57,
+							"result": "You locate a secure area."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/58-68",
+							"min": 58,
+							"max": 68,
+							"result": "A clue offers insight or direction."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/69-78",
+							"min": 69,
+							"max": 78,
+							"result": "You get the drop on a denizen."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/79-86",
+							"min": 79,
+							"max": 86,
+							"result": "This area provides an opportunity to scavenge, forage, or hunt."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/87-90",
+							"min": 87,
+							"max": 90,
+							"result": "You locate an interesting or helpful object."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/91-94",
+							"min": 91,
+							"max": 94,
+							"result": "You are alerted to a potential threat."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/95-98",
+							"min": 95,
+							"max": 98,
+							"result": "You encounter a denizen who might support you."
+						},
+						{
+							"id": "delve/oracles/moves/find_an_opportunity/99-100",
+							"min": 99,
+							"max": 100,
+							"result": "You encounter a denizen in need of help."
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 30,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"reveal_a_danger": {
+					"id": "delve/oracles/moves/reveal_a_danger",
+					"name": "Reveal a Danger",
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/1-30",
+							"min": 1,
+							"max": 30,
+							"result": "Check the theme card."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/31-45",
+							"min": 31,
+							"max": 45,
+							"result": "Check the domain card."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/46-57",
+							"min": 46,
+							"max": 57,
+							"result": "You encounter a hostile denizen."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/58-68",
+							"min": 58,
+							"max": 68,
+							"result": "You face an environmental or architectural hazard."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/69-76",
+							"min": 69,
+							"max": 76,
+							"result": "A discovery undermines or complicates your quest."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/77-79",
+							"min": 77,
+							"max": 79,
+							"result": "You confront a harrowing situation or sensation."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/80-82",
+							"min": 80,
+							"max": 82,
+							"result": "You face the consequences of an earlier choice or approach."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/83-85",
+							"min": 83,
+							"max": 85,
+							"result": "Your way is blocked or trapped."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/86-88",
+							"min": 86,
+							"max": 88,
+							"result": "A resource is diminished, broken, or lost."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/89-91",
+							"min": 89,
+							"max": 91,
+							"result": "You face a perplexing mystery or tough choice."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/92-94",
+							"min": 92,
+							"max": 94,
+							"result": "You lose your way or are delayed."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger/95-100",
+							"min": 95,
+							"max": 100,
+							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+							"rolls": [
+								{
+									"auto": true,
+									"method": "make_it_worse",
+									"times": 2
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 34,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"reveal_a_danger_alt": {
+					"id": "delve/oracles/moves/reveal_a_danger_alt",
+					"name": "Reveal a Danger (alternate version)",
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/1-22",
+							"min": 1,
+							"max": 22,
+							"result": "You encounter a hostile denizen."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/23-42",
+							"min": 23,
+							"max": 42,
+							"result": "You face an environmental or architectural hazard."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/43-58",
+							"min": 43,
+							"max": 58,
+							"result": "A discovery undermines or complicates your quest."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/59-64",
+							"min": 59,
+							"max": 64,
+							"result": "You confront a harrowing situation or sensation."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/65-70",
+							"min": 65,
+							"max": 70,
+							"result": "You face the consequences of an earlier choice or approach."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/71-76",
+							"min": 71,
+							"max": 76,
+							"result": "Your way is blocked or trapped."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/77-82",
+							"min": 77,
+							"max": 82,
+							"result": "A resource is diminished, broken, or lost."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/83-88",
+							"min": 83,
+							"max": 88,
+							"result": "You face a perplexing mystery or tough choice."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/89-94",
+							"min": 89,
+							"max": 94,
+							"result": "You lose your way or are delayed."
+						},
+						{
+							"id": "delve/oracles/moves/reveal_a_danger_alt/95-100",
+							"min": 95,
+							"max": 100,
+							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+							"rolls": [
+								{
+									"auto": true,
+									"method": "make_it_worse",
+									"times": 2
+								}
+							]
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 68,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"replaces": "delve/oracles/moves/reveal_a_danger"
+				},
+				"advance_a_threat": {
+					"id": "delve/oracles/moves/advance_a_threat",
+					"name": "Advance a Threat",
+					"dice": "1d100",
+					"match": {
+						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
+					},
+					"table": [
+						{
+							"id": "delve/oracles/moves/advance_a_threat/1-30",
+							"min": 1,
+							"max": 30,
+							"result": "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](id:classic/moves/quest/reach_a_milestone). Otherwise, mark menace."
+						},
+						{
+							"id": "delve/oracles/moves/advance_a_threat/31-70",
+							"min": 31,
+							"max": 70,
+							"result": "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."
+						},
+						{
+							"id": "delve/oracles/moves/advance_a_threat/71-100",
+							"min": 71,
+							"max": 100,
+							"result": "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 155,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"collections": {
+				"delve_the_depths": {
+					"id": "delve/collections/oracles/moves/delve_the_depths",
+					"name": "Delve the Depths",
+					"rendering": {
+						"style": "multi_table",
+						"columns": {
+							"edge": {
+								"label": "Edge",
+								"content_type": "roll",
+								"table_key": "edge"
+							},
+							"shadow": {
+								"label": "Shadow",
+								"content_type": "roll",
+								"table_key": "shadow"
+							},
+							"wits": {
+								"label": "Wits",
+								"content_type": "roll",
+								"table_key": "wits"
+							},
+							"weak_hit_result": {
+								"label": "Weak Hit Result",
+								"content_type": "result",
+								"table_key": "edge"
+							}
+						}
+					},
+					"contents": {
+						"edge": {
+							"id": "delve/oracles/moves/delve_the_depths/edge",
+							"name": "Edge",
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
+									"min": 1,
+									"max": 45,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/46-65",
+									"min": 46,
+									"max": 65,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/66-75",
+									"min": 66,
+									"max": 75,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/76-80",
+									"min": 76,
+									"max": 80,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/81-100",
+									"min": 81,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
+						"shadow": {
+							"id": "delve/oracles/moves/delve_the_depths/shadow",
+							"name": "Shadow",
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
+									"min": 1,
+									"max": 30,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/31-65",
+									"min": 31,
+									"max": 65,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/66-90",
+									"min": 66,
+									"max": 90,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/91-99",
+									"min": 91,
+									"max": 99,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/100-100",
+									"min": 100,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						},
+						"wits": {
+							"id": "delve/oracles/moves/delve_the_depths/wits",
+							"name": "Wits",
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
+									"min": 1,
+									"max": 40,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/41-55",
+									"min": 41,
+									"max": 55,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/56-80",
+									"min": 56,
+									"max": 80,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/81-99",
+									"min": 81,
+									"max": 99,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/100-100",
+									"min": 100,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 21,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"source": {
+				"title": "Ironsworn: Delve",
+				"date": "2020-02-13",
+				"page": 19,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
 		"feature": {
 			"id": "delve/collections/oracles/feature",
 			"name": "Feature",
@@ -1168,7 +1675,6 @@
 					}
 				}
 			},
-			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -4717,7 +5223,6 @@
 							}
 						}
 					},
-					"collections": {},
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -4915,7 +5420,6 @@
 					}
 				}
 			},
-			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -5669,7 +6173,6 @@
 					}
 				}
 			},
-			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -6422,7 +6925,6 @@
 					}
 				}
 			},
-			"collections": {},
 			"suggestions": {
 				"oracles": [
 					"classic/oracles/turning_point/challenge_rank",
@@ -6435,6 +6937,625 @@
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
 				"page": 214,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"trap": {
+			"id": "delve/collections/oracles/trap",
+			"name": "Trap",
+			"rendering": {
+				"style": "tables"
+			},
+			"summary": "Identify the characteristics and effects of a trap within a site.",
+			"description": "If you encounter a trap within a site, use these oracles to better understand the nature or function of this obstacle. Roll once for an [Event](id:delve/oracles/trap/event) and once for a [Component](id:delve/oracles/trap/component), and interpret the response as appropriate to the situation and environment. A trap might be a physical, supernatural, or an ambush by a denizen.\n\nIf you are in a position to overcome or avoid the trap, make moves to see what happens. A simple trap might be dealt with in a single action, such as through the [Face Danger](id:classic/moves/adventure/face_danger) move. A complex trap could be represented as a scene challenge (*Ironsworn Core*, page 234).",
+			"contents": {
+				"trap": {
+					"id": "delve/oracles/trap/trap",
+					"name": "Event",
+					"canonical_name": "Trap: Event",
+					"dice": "1d100",
+					"suggestions": {
+						"oracles": ["delve/oracles/trap/component"]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/trap/trap/1-4",
+							"min": 1,
+							"max": 4,
+							"result": "Block",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/5-8",
+							"min": 5,
+							"max": 8,
+							"result": "Create",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/9-12",
+							"min": 9,
+							"max": 12,
+							"result": "Break",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/13-16",
+							"min": 13,
+							"max": 16,
+							"result": "Puncture",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/17-20",
+							"min": 17,
+							"max": 20,
+							"result": "Entangle",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/21-24",
+							"min": 21,
+							"max": 24,
+							"result": "Enclose",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/25-28",
+							"min": 25,
+							"max": 28,
+							"result": "Ambush",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/29-32",
+							"min": 29,
+							"max": 32,
+							"result": "Snare",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/33-36",
+							"min": 33,
+							"max": 36,
+							"result": "Change",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/37-40",
+							"min": 37,
+							"max": 40,
+							"result": "Imitate",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/41-44",
+							"min": 41,
+							"max": 44,
+							"result": "Crush",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/45-48",
+							"min": 45,
+							"max": 48,
+							"result": "Drop",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/49-52",
+							"min": 49,
+							"max": 52,
+							"result": "Conceal",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/53-56",
+							"min": 53,
+							"max": 56,
+							"result": "Lure",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/57-60",
+							"min": 57,
+							"max": 60,
+							"result": "Release",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/61-64",
+							"min": 61,
+							"max": 64,
+							"result": "Obscure",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/65-68",
+							"min": 65,
+							"max": 68,
+							"result": "Cut",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/69-72",
+							"min": 69,
+							"max": 72,
+							"result": "Smother",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/73-76",
+							"min": 73,
+							"max": 76,
+							"result": "Collapse",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/77-80",
+							"min": 77,
+							"max": 80,
+							"result": "Summon",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/81-84",
+							"min": 81,
+							"max": 84,
+							"result": "Move",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/85-88",
+							"min": 85,
+							"max": 88,
+							"result": "Surprise",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/89-92",
+							"min": 89,
+							"max": 92,
+							"result": "Divert",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/93-96",
+							"min": 93,
+							"max": 96,
+							"result": "Attack",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/trap/97-100",
+							"min": 97,
+							"max": 100,
+							"result": "Trigger",
+							"i18n": {
+								"result": {
+									"part_of_speech": "verb"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 217,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"component": {
+					"id": "delve/oracles/trap/component",
+					"name": "Component",
+					"canonical_name": "Trap: Component",
+					"dice": "1d100",
+					"suggestions": {
+						"oracles": ["delve/oracles/trap/event"]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/trap/component/1-4",
+							"min": 1,
+							"max": 4,
+							"result": "Pit",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/5-8",
+							"min": 5,
+							"max": 8,
+							"result": "Water",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/9-12",
+							"min": 9,
+							"max": 12,
+							"result": "Fire",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/13-16",
+							"min": 13,
+							"max": 16,
+							"result": "Projectile",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/17-20",
+							"min": 17,
+							"max": 20,
+							"result": "Passage",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/21-24",
+							"min": 21,
+							"max": 24,
+							"result": "Fall",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/25-28",
+							"min": 25,
+							"max": 28,
+							"result": "Debris",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/29-32",
+							"min": 29,
+							"max": 32,
+							"result": "Fear",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/33-36",
+							"min": 33,
+							"max": 36,
+							"result": "Alarm",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/37-40",
+							"min": 37,
+							"max": 40,
+							"result": "Trigger",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/41-44",
+							"min": 41,
+							"max": 44,
+							"result": "Cold",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/45-48",
+							"min": 45,
+							"max": 48,
+							"result": "Weapon",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/49-52",
+							"min": 49,
+							"max": 52,
+							"result": "Darkness",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/53-56",
+							"min": 53,
+							"max": 56,
+							"result": "Decay",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/57-60",
+							"min": 57,
+							"max": 60,
+							"result": "Path",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/61-64",
+							"min": 61,
+							"max": 64,
+							"result": "Stone",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/65-68",
+							"min": 65,
+							"max": 68,
+							"result": "Terrain",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/69-72",
+							"min": 69,
+							"max": 72,
+							"result": "Poison",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/73-76",
+							"min": 73,
+							"max": 76,
+							"result": "Barrier",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/77-80",
+							"min": 77,
+							"max": 80,
+							"result": "Overhead",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/81-84",
+							"min": 81,
+							"max": 84,
+							"result": "Magic",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/85-88",
+							"min": 85,
+							"max": 88,
+							"result": "Toxin",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/89-92",
+							"min": 89,
+							"max": 92,
+							"result": "Earth",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/93-96",
+							"min": 93,
+							"max": 96,
+							"result": "Light",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/97-100",
+							"min": 97,
+							"max": 100,
+							"result": "Denizen",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						}
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 217,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
+			"source": {
+				"title": "Ironsworn: Delve",
+				"date": "2020-02-13",
+				"page": 217,
 				"authors": [
 					{
 						"name": "Shawn Tomkin"
@@ -7600,7 +8721,6 @@
 					}
 				}
 			},
-			"collections": {},
 			"suggestions": {
 				"oracles": ["classic/oracles/turning_point/combat_action"]
 			},
@@ -7608,1144 +8728,6 @@
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
 				"page": 218,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"moves": {
-			"id": "delve/collections/oracles/moves",
-			"name": "Moves",
-			"enhances": "classic/collections/oracles/moves",
-			"rendering": {
-				"style": "tables"
-			},
-			"contents": {
-				"find_an_opportunity": {
-					"id": "delve/oracles/moves/find_an_opportunity",
-					"name": "Find an Opportunity",
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/1-25",
-							"min": 1,
-							"max": 25,
-							"result": "The terrain favors you, or you find a hidden path."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/26-45",
-							"min": 26,
-							"max": 45,
-							"result": "An aspect of the history or nature of this place is revealed."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/46-57",
-							"min": 46,
-							"max": 57,
-							"result": "You locate a secure area."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/58-68",
-							"min": 58,
-							"max": 68,
-							"result": "A clue offers insight or direction."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/69-78",
-							"min": 69,
-							"max": 78,
-							"result": "You get the drop on a denizen."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/79-86",
-							"min": 79,
-							"max": 86,
-							"result": "This area provides an opportunity to scavenge, forage, or hunt."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/87-90",
-							"min": 87,
-							"max": 90,
-							"result": "You locate an interesting or helpful object."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/91-94",
-							"min": 91,
-							"max": 94,
-							"result": "You are alerted to a potential threat."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/95-98",
-							"min": 95,
-							"max": 98,
-							"result": "You encounter a denizen who might support you."
-						},
-						{
-							"id": "delve/oracles/moves/find_an_opportunity/99-100",
-							"min": 99,
-							"max": 100,
-							"result": "You encounter a denizen in need of help."
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 30,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"reveal_a_danger": {
-					"id": "delve/oracles/moves/reveal_a_danger",
-					"name": "Reveal a Danger",
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/1-30",
-							"min": 1,
-							"max": 30,
-							"result": "Check the theme card."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/31-45",
-							"min": 31,
-							"max": 45,
-							"result": "Check the domain card."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/46-57",
-							"min": 46,
-							"max": 57,
-							"result": "You encounter a hostile denizen."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/58-68",
-							"min": 58,
-							"max": 68,
-							"result": "You face an environmental or architectural hazard."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/69-76",
-							"min": 69,
-							"max": 76,
-							"result": "A discovery undermines or complicates your quest."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/77-79",
-							"min": 77,
-							"max": 79,
-							"result": "You confront a harrowing situation or sensation."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/80-82",
-							"min": 80,
-							"max": 82,
-							"result": "You face the consequences of an earlier choice or approach."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/83-85",
-							"min": 83,
-							"max": 85,
-							"result": "Your way is blocked or trapped."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/86-88",
-							"min": 86,
-							"max": 88,
-							"result": "A resource is diminished, broken, or lost."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/89-91",
-							"min": 89,
-							"max": 91,
-							"result": "You face a perplexing mystery or tough choice."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/92-94",
-							"min": 92,
-							"max": 94,
-							"result": "You lose your way or are delayed."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger/95-100",
-							"min": 95,
-							"max": 100,
-							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
-							"rolls": [
-								{
-									"auto": true,
-									"method": "make_it_worse",
-									"times": 2
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 34,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"reveal_a_danger_alt": {
-					"id": "delve/oracles/moves/reveal_a_danger_alt",
-					"name": "Reveal a Danger (alternate version)",
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/1-22",
-							"min": 1,
-							"max": 22,
-							"result": "You encounter a hostile denizen."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/23-42",
-							"min": 23,
-							"max": 42,
-							"result": "You face an environmental or architectural hazard."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/43-58",
-							"min": 43,
-							"max": 58,
-							"result": "A discovery undermines or complicates your quest."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/59-64",
-							"min": 59,
-							"max": 64,
-							"result": "You confront a harrowing situation or sensation."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/65-70",
-							"min": 65,
-							"max": 70,
-							"result": "You face the consequences of an earlier choice or approach."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/71-76",
-							"min": 71,
-							"max": 76,
-							"result": "Your way is blocked or trapped."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/77-82",
-							"min": 77,
-							"max": 82,
-							"result": "A resource is diminished, broken, or lost."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/83-88",
-							"min": 83,
-							"max": 88,
-							"result": "You face a perplexing mystery or tough choice."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/89-94",
-							"min": 89,
-							"max": 94,
-							"result": "You lose your way or are delayed."
-						},
-						{
-							"id": "delve/oracles/moves/reveal_a_danger_alt/95-100",
-							"min": 95,
-							"max": 100,
-							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
-							"rolls": [
-								{
-									"auto": true,
-									"method": "make_it_worse",
-									"times": 2
-								}
-							]
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 68,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"replaces": "delve/oracles/moves/reveal_a_danger"
-				},
-				"advance_a_threat": {
-					"id": "delve/oracles/moves/advance_a_threat",
-					"name": "Advance a Threat",
-					"dice": "1d100",
-					"match": {
-						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
-					},
-					"table": [
-						{
-							"id": "delve/oracles/moves/advance_a_threat/1-30",
-							"min": 1,
-							"max": 30,
-							"result": "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](id:classic/moves/quest/reach_a_milestone). Otherwise, mark menace."
-						},
-						{
-							"id": "delve/oracles/moves/advance_a_threat/31-70",
-							"min": 31,
-							"max": 70,
-							"result": "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."
-						},
-						{
-							"id": "delve/oracles/moves/advance_a_threat/71-100",
-							"min": 71,
-							"max": 100,
-							"result": "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 155,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"collections": {
-				"delve_the_depths": {
-					"id": "delve/collections/oracles/moves/delve_the_depths",
-					"name": "Delve the Depths",
-					"rendering": {
-						"style": "multi_table",
-						"columns": {
-							"edge": {
-								"label": "Edge",
-								"content_type": "roll",
-								"table_key": "edge"
-							},
-							"shadow": {
-								"label": "Shadow",
-								"content_type": "roll",
-								"table_key": "shadow"
-							},
-							"wits": {
-								"label": "Wits",
-								"content_type": "roll",
-								"table_key": "wits"
-							},
-							"weak_hit_result": {
-								"label": "Weak Hit Result",
-								"content_type": "result",
-								"table_key": "edge"
-							}
-						}
-					},
-					"contents": {
-						"edge": {
-							"id": "delve/oracles/moves/delve_the_depths/edge",
-							"name": "Edge",
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
-									"min": 1,
-									"max": 45,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/46-65",
-									"min": 46,
-									"max": 65,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/66-75",
-									"min": 66,
-									"max": 75,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/76-80",
-									"min": 76,
-									"max": 80,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/81-100",
-									"min": 81,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							],
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							}
-						},
-						"shadow": {
-							"id": "delve/oracles/moves/delve_the_depths/shadow",
-							"name": "Shadow",
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
-									"min": 1,
-									"max": 30,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/31-65",
-									"min": 31,
-									"max": 65,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/66-90",
-									"min": 66,
-									"max": 90,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/91-99",
-									"min": 91,
-									"max": 99,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/100-100",
-									"min": 100,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							],
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							}
-						},
-						"wits": {
-							"id": "delve/oracles/moves/delve_the_depths/wits",
-							"name": "Wits",
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
-									"min": 1,
-									"max": 40,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/41-55",
-									"min": 41,
-									"max": 55,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/56-80",
-									"min": 56,
-									"max": 80,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/81-99",
-									"min": 81,
-									"max": 99,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/100-100",
-									"min": 100,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							],
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							}
-						}
-					},
-					"collections": {},
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 21,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"source": {
-				"title": "Ironsworn: Delve",
-				"date": "2020-02-13",
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"trap": {
-			"id": "delve/collections/oracles/trap",
-			"name": "Trap",
-			"rendering": {
-				"style": "tables"
-			},
-			"summary": "Identify the characteristics and effects of a trap within a site.",
-			"description": "If you encounter a trap within a site, use these oracles to better understand the nature or function of this obstacle. Roll once for an [Event](id:delve/oracles/trap/event) and once for a [Component](id:delve/oracles/trap/component), and interpret the response as appropriate to the situation and environment. A trap might be a physical, supernatural, or an ambush by a denizen.\n\nIf you are in a position to overcome or avoid the trap, make moves to see what happens. A simple trap might be dealt with in a single action, such as through the [Face Danger](id:classic/moves/adventure/face_danger) move. A complex trap could be represented as a scene challenge (*Ironsworn Core*, page 234).",
-			"contents": {
-				"trap": {
-					"id": "delve/oracles/trap/trap",
-					"name": "Event",
-					"canonical_name": "Trap: Event",
-					"dice": "1d100",
-					"suggestions": {
-						"oracles": ["delve/oracles/trap/component"]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/trap/trap/1-4",
-							"min": 1,
-							"max": 4,
-							"result": "Block",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/5-8",
-							"min": 5,
-							"max": 8,
-							"result": "Create",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/9-12",
-							"min": 9,
-							"max": 12,
-							"result": "Break",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/13-16",
-							"min": 13,
-							"max": 16,
-							"result": "Puncture",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/17-20",
-							"min": 17,
-							"max": 20,
-							"result": "Entangle",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/21-24",
-							"min": 21,
-							"max": 24,
-							"result": "Enclose",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/25-28",
-							"min": 25,
-							"max": 28,
-							"result": "Ambush",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/29-32",
-							"min": 29,
-							"max": 32,
-							"result": "Snare",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/33-36",
-							"min": 33,
-							"max": 36,
-							"result": "Change",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/37-40",
-							"min": 37,
-							"max": 40,
-							"result": "Imitate",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/41-44",
-							"min": 41,
-							"max": 44,
-							"result": "Crush",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/45-48",
-							"min": 45,
-							"max": 48,
-							"result": "Drop",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/49-52",
-							"min": 49,
-							"max": 52,
-							"result": "Conceal",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/53-56",
-							"min": 53,
-							"max": 56,
-							"result": "Lure",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/57-60",
-							"min": 57,
-							"max": 60,
-							"result": "Release",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/61-64",
-							"min": 61,
-							"max": 64,
-							"result": "Obscure",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/65-68",
-							"min": 65,
-							"max": 68,
-							"result": "Cut",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/69-72",
-							"min": 69,
-							"max": 72,
-							"result": "Smother",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/73-76",
-							"min": 73,
-							"max": 76,
-							"result": "Collapse",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/77-80",
-							"min": 77,
-							"max": 80,
-							"result": "Summon",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/81-84",
-							"min": 81,
-							"max": 84,
-							"result": "Move",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/85-88",
-							"min": 85,
-							"max": 88,
-							"result": "Surprise",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/89-92",
-							"min": 89,
-							"max": 92,
-							"result": "Divert",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/93-96",
-							"min": 93,
-							"max": 96,
-							"result": "Attack",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/trap/97-100",
-							"min": 97,
-							"max": 100,
-							"result": "Trigger",
-							"i18n": {
-								"result": {
-									"part_of_speech": "verb"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 217,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"component": {
-					"id": "delve/oracles/trap/component",
-					"name": "Component",
-					"canonical_name": "Trap: Component",
-					"dice": "1d100",
-					"suggestions": {
-						"oracles": ["delve/oracles/trap/event"]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/trap/component/1-4",
-							"min": 1,
-							"max": 4,
-							"result": "Pit",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/5-8",
-							"min": 5,
-							"max": 8,
-							"result": "Water",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/9-12",
-							"min": 9,
-							"max": 12,
-							"result": "Fire",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/13-16",
-							"min": 13,
-							"max": 16,
-							"result": "Projectile",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/17-20",
-							"min": 17,
-							"max": 20,
-							"result": "Passage",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/21-24",
-							"min": 21,
-							"max": 24,
-							"result": "Fall",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/25-28",
-							"min": 25,
-							"max": 28,
-							"result": "Debris",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/29-32",
-							"min": 29,
-							"max": 32,
-							"result": "Fear",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/33-36",
-							"min": 33,
-							"max": 36,
-							"result": "Alarm",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/37-40",
-							"min": 37,
-							"max": 40,
-							"result": "Trigger",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/41-44",
-							"min": 41,
-							"max": 44,
-							"result": "Cold",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/45-48",
-							"min": 45,
-							"max": 48,
-							"result": "Weapon",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/49-52",
-							"min": 49,
-							"max": 52,
-							"result": "Darkness",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/53-56",
-							"min": 53,
-							"max": 56,
-							"result": "Decay",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/57-60",
-							"min": 57,
-							"max": 60,
-							"result": "Path",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/61-64",
-							"min": 61,
-							"max": 64,
-							"result": "Stone",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/65-68",
-							"min": 65,
-							"max": 68,
-							"result": "Terrain",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/69-72",
-							"min": 69,
-							"max": 72,
-							"result": "Poison",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/73-76",
-							"min": 73,
-							"max": 76,
-							"result": "Barrier",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/77-80",
-							"min": 77,
-							"max": 80,
-							"result": "Overhead",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/81-84",
-							"min": 81,
-							"max": 84,
-							"result": "Magic",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/85-88",
-							"min": 85,
-							"max": 88,
-							"result": "Toxin",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/89-92",
-							"min": 89,
-							"max": 92,
-							"result": "Earth",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/93-96",
-							"min": 93,
-							"max": 96,
-							"result": "Light",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/97-100",
-							"min": 97,
-							"max": 100,
-							"result": "Denizen",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						}
-					],
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 217,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"collections": {},
-			"source": {
-				"title": "Ironsworn: Delve",
-				"date": "2020-02-13",
-				"page": 217,
 				"authors": [
 					{
 						"name": "Shawn Tomkin"
@@ -9571,7 +9553,6 @@
 					}
 				}
 			},
-			"collections": {},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",

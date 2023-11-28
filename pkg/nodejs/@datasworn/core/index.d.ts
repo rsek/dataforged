@@ -438,7 +438,7 @@ export type Label19 = string;
  */
 export type Label20 = string;
 /**
- * Challenge rank, represented as an integer.
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  *
  *   * 1: Troublesome
  *   * 2: Dangerous
@@ -565,7 +565,7 @@ export type Label26 = string;
  */
 export type NpcNature = string;
 /**
- * Challenge rank, represented as an integer.
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  *
  *   * 1: Troublesome
  *   * 2: Dangerous
@@ -579,7 +579,7 @@ export type ChallengeRank1 = 1 | 2 | 3 | 4 | 5;
  */
 export type NpcVariantId = string;
 /**
- * Challenge rank, represented as an integer.
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  *
  *   * 1: Troublesome
  *   * 2: Dangerous
@@ -735,7 +735,6 @@ export interface Datasworn {
   truths?: {
     [k: string]: Truth;
   };
-  source: Source14;
 }
 /**
  * Describes rules for player characters in this ruleset, such as stats and condition meters.
@@ -873,10 +872,10 @@ export interface OracleCollection {
   rendering?: OracleCollectionRendering;
   summary?: MarkdownString5;
   description?: MarkdownString6;
-  contents: {
+  contents?: {
     [k: string]: OracleTable;
   };
-  collections: {
+  collections?: {
     [k: string]: OracleCollection;
   };
   suggestions?: Suggestions;
@@ -1079,7 +1078,7 @@ export interface AssetType {
   images?: WebpImageUrl2[];
   summary?: MarkdownString10;
   description?: MarkdownString11;
-  contents: {
+  contents?: {
     [k: string]: Asset;
   };
   suggestions?: Suggestions;
@@ -1286,10 +1285,10 @@ export interface Atlas {
   images?: WebpImageUrl3[];
   summary?: MarkdownString13;
   description?: MarkdownString14;
-  contents: {
+  contents?: {
     [k: string]: AtlasEntry;
   };
-  collections: {
+  collections?: {
     [k: string]: Atlas;
   };
   suggestions?: Suggestions;
@@ -1554,7 +1553,7 @@ export interface MoveCategory {
   images?: WebpImageUrl4[];
   summary?: MarkdownString15;
   description?: MarkdownString16;
-  contents: {
+  contents?: {
     [k: string]: Move;
   };
   suggestions?: Suggestions;
@@ -1615,7 +1614,7 @@ export interface NpcCollection {
   images?: WebpImageUrl5[];
   summary?: MarkdownString17;
   description?: MarkdownString18;
-  contents: {
+  contents?: {
     [k: string]: Npc;
   };
   suggestions?: Suggestions;
@@ -1804,6 +1803,8 @@ export interface Source10 {
   url: string;
 }
 /**
+ * A delve site domain card.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
@@ -1811,10 +1812,6 @@ export interface DelveSiteDomain {
   id: DelveSiteDomainId1;
   name: Label29;
   canonical_name?: Label30;
-  /**
-   * A delve site domain card.
-   */
-  card_type: "domain";
   icon?: SvgImageUrl2;
   summary: MarkdownString9;
   features: DelveSiteDomainFeatureRow[] &
@@ -2006,6 +2003,8 @@ export interface Source11 {
   url: string;
 }
 /**
+ * A delve site theme card.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
@@ -2013,10 +2012,6 @@ export interface DelveSiteTheme {
   id: DelveSiteThemeId1;
   name: Label31;
   canonical_name?: Label32;
-  /**
-   * A delve site theme card.
-   */
-  card_type: "theme";
   icon?: SvgImageUrl2;
   summary: MarkdownString9;
   features: DelveSiteThemeFeatureRow[] &
@@ -2242,46 +2237,6 @@ export interface TruthOptionTableRow {
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
 export interface Source13 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * Metadata describing the original source of this item
- */
-export interface Source14 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.

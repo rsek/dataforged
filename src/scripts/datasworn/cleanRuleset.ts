@@ -32,8 +32,8 @@ export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
 	// sort collections
 	for (const [k, v] of Object.entries(datasworn)) {
 		// if (metadataKeys.includes(k as any)) continue
-		if (k === 'rules') continue
 		if (typeof v !== 'object') continue
+		if (k === 'rules') continue
 
 		// log.info(`iterating key: ${k}`)
 		const result = sortTopLevelCollection(v as any)

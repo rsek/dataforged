@@ -4,7 +4,6 @@ module Datasworn
 
   class Ruleset
     attr_accessor id: NamespaceID
-    attr_accessor source: Source
     attr_accessor assets: Hash[String, AssetType]?
     attr_accessor atlas: Hash[String, Atlas]?
     attr_accessor delve_sites: Hash[String, DelveSite]?
@@ -74,7 +73,7 @@ module Datasworn
   end
 
   class ActionRollOptionConditionMeter < ActionRollOption
-    attr_accessor condition_meter: PlayerConditionMeter
+    attr_accessor condition_meter: ConditionMeterID
 
     def self.from_json_data: (untyped) -> ActionRollOptionConditionMeter
     def to_json_data: () -> untyped
@@ -89,7 +88,7 @@ module Datasworn
   end
 
   class ActionRollOptionStat < ActionRollOption
-    attr_accessor stat: PlayerStat
+    attr_accessor stat: StatID
 
     def self.from_json_data: (untyped) -> ActionRollOptionStat
     def to_json_data: () -> untyped
@@ -524,7 +523,7 @@ module Datasworn
 
   class AssetOptionFieldSelectStatChoiceOption < AssetOptionFieldSelectStatChoice
     attr_accessor label: Label
-    attr_accessor value: PlayerStat
+    attr_accessor value: StatID
     attr_accessor selected: bool?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectStatChoiceOption
@@ -543,7 +542,7 @@ module Datasworn
   class AssetOptionFieldSelectStatChoiceOptionGroupChoice
     attr_accessor label: Label
     attr_accessor option_type: AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType
-    attr_accessor value: PlayerStat
+    attr_accessor value: StatID
     attr_accessor selected: bool?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectStatChoiceOptionGroupChoice
@@ -592,12 +591,12 @@ module Datasworn
   end
 
   class AssetType
-    attr_accessor contents: Hash[String, Asset]
     attr_accessor id: AssetTypeID
     attr_accessor name: Label
     attr_accessor source: Source
     attr_accessor canonical_name: Label?
     attr_accessor color: CSSColor?
+    attr_accessor contents: Hash[String, Asset]?
     attr_accessor description: MarkdownString?
     attr_accessor enhances: AssetTypeID?
     attr_accessor icon: SvgImageURL?
@@ -618,13 +617,13 @@ module Datasworn
   end
 
   class Atlas
-    attr_accessor collections: Hash[String, Atlas]
-    attr_accessor contents: Hash[String, AtlasEntry]
     attr_accessor id: AtlasID
     attr_accessor name: Label
     attr_accessor source: Source
     attr_accessor canonical_name: Label?
+    attr_accessor collections: Hash[String, Atlas]?
     attr_accessor color: CSSColor?
+    attr_accessor contents: Hash[String, AtlasEntry]?
     attr_accessor description: MarkdownString?
     attr_accessor enhances: AtlasID?
     attr_accessor icon: SvgImageURL?
@@ -685,6 +684,13 @@ module Datasworn
     attr_accessor value: Integer
 
     def self.from_json_data: (untyped) -> ChallengeRank
+    def to_json_data: () -> untyped
+  end
+
+  class ConditionMeterID
+    attr_accessor value: DictKey
+
+    def self.from_json_data: (untyped) -> ConditionMeterID
     def to_json_data: () -> untyped
   end
 
@@ -1065,12 +1071,12 @@ module Datasworn
   end
 
   class MoveCategory
-    attr_accessor contents: Hash[String, Move]
     attr_accessor id: MoveCategoryID
     attr_accessor name: Label
     attr_accessor source: Source
     attr_accessor canonical_name: Label?
     attr_accessor color: CSSColor?
+    attr_accessor contents: Hash[String, Move]?
     attr_accessor description: MarkdownString?
     attr_accessor enhances: MoveCategoryID?
     attr_accessor icon: SvgImageURL?
@@ -1211,12 +1217,12 @@ module Datasworn
   end
 
   class NpcCollection
-    attr_accessor contents: Hash[String, Npc]
     attr_accessor id: NpcCollectionID
     attr_accessor name: Label
     attr_accessor source: Source
     attr_accessor canonical_name: Label?
     attr_accessor color: CSSColor?
+    attr_accessor contents: Hash[String, Npc]?
     attr_accessor description: MarkdownString?
     attr_accessor enhances: NpcCollectionID?
     attr_accessor icon: SvgImageURL?
@@ -1277,13 +1283,13 @@ module Datasworn
   end
 
   class OracleCollection
-    attr_accessor collections: Hash[String, OracleCollection]
-    attr_accessor contents: Hash[String, OracleTable]
     attr_accessor id: OracleCollectionID
     attr_accessor name: Label
     attr_accessor source: Source
     attr_accessor canonical_name: Label?
+    attr_accessor collections: Hash[String, OracleCollection]?
     attr_accessor color: CSSColor?
+    attr_accessor contents: Hash[String, OracleTable]?
     attr_accessor description: MarkdownString?
     attr_accessor enhances: OracleCollectionID?
     attr_accessor icon: SvgImageURL?
@@ -1497,20 +1503,6 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class PlayerConditionMeter
-    attr_accessor value: DictKey
-
-    def self.from_json_data: (untyped) -> PlayerConditionMeter
-    def to_json_data: () -> untyped
-  end
-
-  class PlayerStat
-    attr_accessor value: DictKey
-
-    def self.from_json_data: (untyped) -> PlayerStat
-    def to_json_data: () -> untyped
-  end
-
   class ProgressRollMethod
     attr_accessor value: String
 
@@ -1636,6 +1628,13 @@ module Datasworn
     attr_accessor value: DictKey
 
     def self.from_json_data: (untyped) -> SpecialTrackType
+    def to_json_data: () -> untyped
+  end
+
+  class StatID
+    attr_accessor value: DictKey
+
+    def self.from_json_data: (untyped) -> StatID
     def to_json_data: () -> untyped
   end
 

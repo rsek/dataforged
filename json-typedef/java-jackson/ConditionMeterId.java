@@ -6,17 +6,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * A basic player character stat.
+ * A basic, rollable player character resource.
  */
-public class PlayerStat {
+public class ConditionMeterId {
     @JsonValue
     private DictKey value;
 
-    public PlayerStat() {
+    public ConditionMeterId() {
     }
 
     @JsonCreator
-    public PlayerStat(DictKey value) {
+    public ConditionMeterId(DictKey value) {
         this.value = value;
     }
 

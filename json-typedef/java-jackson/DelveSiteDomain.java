@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * A delve site domain card.
+ */
 @JsonSerialize
 public class DelveSiteDomain {
     @JsonProperty("dangers")

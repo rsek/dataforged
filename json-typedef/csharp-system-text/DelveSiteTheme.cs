@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A delve site theme card.
+    /// </summary>
     public class DelveSiteTheme
     {
         [JsonPropertyName("dangers")]

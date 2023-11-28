@@ -2,7 +2,6 @@
 
 export interface Ruleset {
   id: NamespaceId;
-  source: Source;
 
   /**
    * A dictionary object containing asset types, which contain assets.
@@ -139,7 +138,7 @@ export interface ActionRollOptionAttachedAssetOption {
 
 export interface ActionRollOptionConditionMeter {
   using: "condition_meter";
-  condition_meter: PlayerConditionMeter;
+  condition_meter: ConditionMeterId;
 }
 
 export interface ActionRollOptionCustom {
@@ -150,7 +149,7 @@ export interface ActionRollOptionCustom {
 
 export interface ActionRollOptionStat {
   using: "stat";
-  stat: PlayerStat;
+  stat: StatId;
 }
 
 export enum ActionRollUsing {
@@ -902,7 +901,7 @@ export interface AssetOptionFieldSelectStatChoiceOption {
   /**
    * The current value of this input.
    */
-  value: PlayerStat;
+  value: StatId;
 
   /**
    * Is this option currently selected?
@@ -929,7 +928,7 @@ export interface AssetOptionFieldSelectStatChoiceOptionGroupChoice {
   /**
    * The current value of this input.
    */
-  value: PlayerStat;
+  value: StatId;
 
   /**
    * Is this option currently selected?
@@ -992,8 +991,6 @@ export type AssetOptionFieldId = string;
 export type AssetOptionFieldIdWildcard = string;
 
 export interface AssetType {
-  contents: { [key: string]: Asset };
-
   /**
    * The unique Datasworn ID for this item.
    */
@@ -1020,6 +1017,7 @@ export interface AssetType {
    * A thematic color associated with this collection.
    */
   color?: CssColor;
+  contents?: { [key: string]: Asset };
 
   /**
    * A longer description of this collection, which might include multiple
@@ -1057,9 +1055,6 @@ export interface AssetType {
 export type AssetTypeId = string;
 
 export interface Atlas {
-  collections: { [key: string]: Atlas };
-  contents: { [key: string]: AtlasEntry };
-
   /**
    * The unique Datasworn ID for this item.
    */
@@ -1081,11 +1076,13 @@ export interface Atlas {
    * different from `name`.
    */
   canonical_name?: Label;
+  collections?: { [key: string]: Atlas };
 
   /**
    * A thematic color associated with this collection.
    */
   color?: CssColor;
+  contents?: { [key: string]: AtlasEntry };
 
   /**
    * A longer description of this collection, which might include multiple
@@ -1166,6 +1163,11 @@ export type AtlasIdWildcard = string;
  * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  */
 export type ChallengeRank = 1|2|3|4|5;
+
+/**
+ * A basic, rollable player character resource.
+ */
+export type ConditionMeterId = DictKey;
 
 /**
  * Describes a standard player character condition meter.
@@ -1286,6 +1288,9 @@ export enum DelveSiteDenizenFrequency {
 
 export type DelveSiteDenizenId = string;
 
+/**
+ * A delve site domain card.
+ */
 export interface DelveSiteDomain {
   dangers: DelveSiteDomainDangerRow[];
   features: DelveSiteDomainFeatureRow[];
@@ -1382,6 +1387,9 @@ export type DelveSiteDomainId = string;
 
 export type DelveSiteId = string;
 
+/**
+ * A delve site theme card.
+ */
 export interface DelveSiteTheme {
   dangers: DelveSiteThemeDangerRow[];
   features: DelveSiteThemeFeatureRow[];
@@ -1758,8 +1766,6 @@ export interface MoveSpecialTrack {
 }
 
 export interface MoveCategory {
-  contents: { [key: string]: Move };
-
   /**
    * The unique Datasworn ID for this item.
    */
@@ -1786,6 +1792,7 @@ export interface MoveCategory {
    * A thematic color associated with this collection.
    */
   color?: CssColor;
+  contents?: { [key: string]: Move };
 
   /**
    * A longer description of this collection, which might include multiple
@@ -1966,8 +1973,6 @@ export interface Npc {
 }
 
 export interface NpcCollection {
-  contents: { [key: string]: Npc };
-
   /**
    * The unique Datasworn ID for this item.
    */
@@ -1994,6 +1999,7 @@ export interface NpcCollection {
    * A thematic color associated with this collection.
    */
   color?: CssColor;
+  contents?: { [key: string]: Npc };
 
   /**
    * A longer description of this collection, which might include multiple
@@ -2064,9 +2070,6 @@ export interface NpcVariant {
 export type NpcVariantId = string;
 
 export interface OracleCollection {
-  collections: { [key: string]: OracleCollection };
-  contents: { [key: string]: OracleTable };
-
   /**
    * The unique Datasworn ID for this item.
    */
@@ -2088,11 +2091,13 @@ export interface OracleCollection {
    * different from `name`.
    */
   canonical_name?: Label;
+  collections?: { [key: string]: OracleCollection };
 
   /**
    * A thematic color associated with this collection.
    */
   color?: CssColor;
+  contents?: { [key: string]: OracleTable };
 
   /**
    * A longer description of this collection, which might include multiple
@@ -2468,16 +2473,6 @@ export enum PartOfSpeech {
   Verb = "verb",
 }
 
-/**
- * A basic, rollable player character resource.
- */
-export type PlayerConditionMeter = DictKey;
-
-/**
- * A basic player character stat.
- */
-export type PlayerStat = DictKey;
-
 export enum ProgressRollMethod {
   /**
    * An automatic miss.
@@ -2718,6 +2713,11 @@ export type SpecialTrackRuleId = string;
  * 
  */
 export type SpecialTrackType = DictKey;
+
+/**
+ * A basic player character stat.
+ */
+export type StatId = DictKey;
 
 /**
  * Describes a standard player character stat.

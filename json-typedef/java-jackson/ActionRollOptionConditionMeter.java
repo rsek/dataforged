@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class ActionRollOptionConditionMeter extends ActionRollOption {
     @JsonProperty("condition_meter")
-    private PlayerConditionMeter conditionMeter;
+    private ConditionMeterId conditionMeter;
 
     public ActionRollOptionConditionMeter() {
     }
@@ -16,14 +16,14 @@ public class ActionRollOptionConditionMeter extends ActionRollOption {
     /**
      * Getter for conditionMeter.<p>
      */
-    public PlayerConditionMeter getConditionMeter() {
+    public ConditionMeterId getConditionMeter() {
         return conditionMeter;
     }
 
     /**
      * Setter for conditionMeter.<p>
      */
-    public void setConditionMeter(PlayerConditionMeter conditionMeter) {
+    public void setConditionMeter(ConditionMeterId conditionMeter) {
         this.conditionMeter = conditionMeter;
     }
 }

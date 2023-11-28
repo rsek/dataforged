@@ -10,6 +10,6 @@ namespace Datasworn
         public string Using { get => "stat"; }
 
         [JsonPropertyName("stat")]
-        public PlayerStat Stat { get; set; }
+        public StatId Stat { get; set; }
     }
 }

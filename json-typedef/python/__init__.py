@@ -10,7 +10,6 @@ from typing import Any, Dict, List, Optional, Type, Union, get_args, get_origin
 @dataclass
 class Ruleset:
     id: 'NamespaceID'
-    source: 'Source'
     assets: 'Optional[Dict[str, AssetType]]'
     """
     A dictionary object containing asset types, which contain assets.
@@ -71,7 +70,6 @@ class Ruleset:
     def from_json_data(cls, data: Any) -> 'Ruleset':
         return cls(
             _from_json_data(NamespaceID, data.get("id")),
-            _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Dict[str, AssetType]], data.get("assets")),
             _from_json_data(Optional[Dict[str, Atlas]], data.get("atlas")),
             _from_json_data(Optional[Dict[str, DelveSite]], data.get("delve_sites")),
@@ -88,7 +86,6 @@ class Ruleset:
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
         data["id"] = _to_json_data(self.id)
-        data["source"] = _to_json_data(self.source)
         if self.assets is not None:
              data["assets"] = _to_json_data(self.assets)
         if self.atlas is not None:
@@ -265,13 +262,13 @@ class ActionRollOptionAttachedAssetOption(ActionRollOption):
 
 @dataclass
 class ActionRollOptionConditionMeter(ActionRollOption):
-    condition_meter: 'PlayerConditionMeter'
+    condition_meter: 'ConditionMeterID'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'ActionRollOptionConditionMeter':
         return cls(
             "condition_meter",
-            _from_json_data(PlayerConditionMeter, data.get("condition_meter")),
+            _from_json_data(ConditionMeterID, data.get("condition_meter")),
         )
 
     def to_json_data(self) -> Any:
@@ -300,13 +297,13 @@ class ActionRollOptionCustom(ActionRollOption):
 
 @dataclass
 class ActionRollOptionStat(ActionRollOption):
-    stat: 'PlayerStat'
+    stat: 'StatID'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'ActionRollOptionStat':
         return cls(
             "stat",
-            _from_json_data(PlayerStat, data.get("stat")),
+            _from_json_data(StatID, data.get("stat")),
         )
 
     def to_json_data(self) -> Any:
@@ -1792,7 +1789,7 @@ class AssetOptionFieldSelectStatChoiceOption(AssetOptionFieldSelectStatChoice):
     (e.g. with `aria-label` in HTML).
     """
 
-    value: 'PlayerStat'
+    value: 'StatID'
     """
     The current value of this input.
     """
@@ -1808,7 +1805,7 @@ class AssetOptionFieldSelectStatChoiceOption(AssetOptionFieldSelectStatChoice):
         return cls(
             "option",
             _from_json_data(Label, data.get("label")),
-            _from_json_data(PlayerStat, data.get("value")),
+            _from_json_data(StatID, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
         )
 
@@ -1843,7 +1840,7 @@ class AssetOptionFieldSelectStatChoiceOptionGroupChoice:
     """
 
     option_type: 'AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType'
-    value: 'PlayerStat'
+    value: 'StatID'
     """
     The current value of this input.
     """
@@ -1859,7 +1856,7 @@ class AssetOptionFieldSelectStatChoiceOptionGroupChoice:
         return cls(
             _from_json_data(Label, data.get("label")),
             _from_json_data(AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType, data.get("option_type")),
-            _from_json_data(PlayerStat, data.get("value")),
+            _from_json_data(StatID, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
         )
 
@@ -1991,7 +1988,6 @@ class AssetOptionFieldIDWildcard:
 
 @dataclass
 class AssetType:
-    contents: 'Dict[str, Asset]'
     id: 'AssetTypeID'
     """
     The unique Datasworn ID for this item.
@@ -2019,6 +2015,7 @@ class AssetType:
     A thematic color associated with this collection.
     """
 
+    contents: 'Optional[Dict[str, Asset]]'
     description: 'Optional[MarkdownString]'
     """
     A longer description of this collection, which might include multiple
@@ -2055,12 +2052,12 @@ class AssetType:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetType':
         return cls(
-            _from_json_data(Dict[str, Asset], data.get("contents")),
             _from_json_data(AssetTypeID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[CSSColor], data.get("color")),
+            _from_json_data(Optional[Dict[str, Asset]], data.get("contents")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[AssetTypeID], data.get("enhances")),
             _from_json_data(Optional[SvgImageURL], data.get("icon")),
@@ -2072,7 +2069,6 @@ class AssetType:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
@@ -2080,6 +2076,8 @@ class AssetType:
              data["canonical_name"] = _to_json_data(self.canonical_name)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
+        if self.contents is not None:
+             data["contents"] = _to_json_data(self.contents)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
         if self.enhances is not None:
@@ -2109,8 +2107,6 @@ class AssetTypeID:
 
 @dataclass
 class Atlas:
-    collections: 'Dict[str, Atlas]'
-    contents: 'Dict[str, AtlasEntry]'
     id: 'AtlasID'
     """
     The unique Datasworn ID for this item.
@@ -2133,11 +2129,13 @@ class Atlas:
     different from `name`.
     """
 
+    collections: 'Optional[Dict[str, Atlas]]'
     color: 'Optional[CSSColor]'
     """
     A thematic color associated with this collection.
     """
 
+    contents: 'Optional[Dict[str, AtlasEntry]]'
     description: 'Optional[MarkdownString]'
     """
     A longer description of this collection, which might include multiple
@@ -2174,13 +2172,13 @@ class Atlas:
     @classmethod
     def from_json_data(cls, data: Any) -> 'Atlas':
         return cls(
-            _from_json_data(Dict[str, Atlas], data.get("collections")),
-            _from_json_data(Dict[str, AtlasEntry], data.get("contents")),
             _from_json_data(AtlasID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
+            _from_json_data(Optional[Dict[str, Atlas]], data.get("collections")),
             _from_json_data(Optional[CSSColor], data.get("color")),
+            _from_json_data(Optional[Dict[str, AtlasEntry]], data.get("contents")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[AtlasID], data.get("enhances")),
             _from_json_data(Optional[SvgImageURL], data.get("icon")),
@@ -2192,15 +2190,17 @@ class Atlas:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["collections"] = _to_json_data(self.collections)
-        data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
         if self.canonical_name is not None:
              data["canonical_name"] = _to_json_data(self.canonical_name)
+        if self.collections is not None:
+             data["collections"] = _to_json_data(self.collections)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
+        if self.contents is not None:
+             data["contents"] = _to_json_data(self.contents)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
         if self.enhances is not None:
@@ -2341,6 +2341,21 @@ class ChallengeRank:
     @classmethod
     def from_json_data(cls, data: Any) -> 'ChallengeRank':
         return cls(_from_json_data(int, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class ConditionMeterID:
+    """
+    A basic, rollable player character resource.
+    """
+
+    value: 'DictKey'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'ConditionMeterID':
+        return cls(_from_json_data(DictKey, data))
 
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
@@ -2586,6 +2601,10 @@ class DelveSiteDenizenID:
 
 @dataclass
 class DelveSiteDomain:
+    """
+    A delve site domain card.
+    """
+
     dangers: 'List[DelveSiteDomainDangerRow]'
     features: 'List[DelveSiteDomainFeatureRow]'
     id: 'DelveSiteDomainID'
@@ -2820,6 +2839,10 @@ class DelveSiteID:
 
 @dataclass
 class DelveSiteTheme:
+    """
+    A delve site theme card.
+    """
+
     dangers: 'List[DelveSiteThemeDangerRow]'
     features: 'List[DelveSiteThemeFeatureRow]'
     id: 'DelveSiteThemeID'
@@ -3633,7 +3656,6 @@ class MoveSpecialTrack(Move):
 
 @dataclass
 class MoveCategory:
-    contents: 'Dict[str, Move]'
     id: 'MoveCategoryID'
     """
     The unique Datasworn ID for this item.
@@ -3661,6 +3683,7 @@ class MoveCategory:
     A thematic color associated with this collection.
     """
 
+    contents: 'Optional[Dict[str, Move]]'
     description: 'Optional[MarkdownString]'
     """
     A longer description of this collection, which might include multiple
@@ -3697,12 +3720,12 @@ class MoveCategory:
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveCategory':
         return cls(
-            _from_json_data(Dict[str, Move], data.get("contents")),
             _from_json_data(MoveCategoryID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[CSSColor], data.get("color")),
+            _from_json_data(Optional[Dict[str, Move]], data.get("contents")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[MoveCategoryID], data.get("enhances")),
             _from_json_data(Optional[SvgImageURL], data.get("icon")),
@@ -3714,7 +3737,6 @@ class MoveCategory:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
@@ -3722,6 +3744,8 @@ class MoveCategory:
              data["canonical_name"] = _to_json_data(self.canonical_name)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
+        if self.contents is not None:
+             data["contents"] = _to_json_data(self.contents)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
         if self.enhances is not None:
@@ -4083,7 +4107,6 @@ class Npc:
 
 @dataclass
 class NpcCollection:
-    contents: 'Dict[str, Npc]'
     id: 'NpcCollectionID'
     """
     The unique Datasworn ID for this item.
@@ -4111,6 +4134,7 @@ class NpcCollection:
     A thematic color associated with this collection.
     """
 
+    contents: 'Optional[Dict[str, Npc]]'
     description: 'Optional[MarkdownString]'
     """
     A longer description of this collection, which might include multiple
@@ -4147,12 +4171,12 @@ class NpcCollection:
     @classmethod
     def from_json_data(cls, data: Any) -> 'NpcCollection':
         return cls(
-            _from_json_data(Dict[str, Npc], data.get("contents")),
             _from_json_data(NpcCollectionID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[CSSColor], data.get("color")),
+            _from_json_data(Optional[Dict[str, Npc]], data.get("contents")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[NpcCollectionID], data.get("enhances")),
             _from_json_data(Optional[SvgImageURL], data.get("icon")),
@@ -4164,7 +4188,6 @@ class NpcCollection:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
@@ -4172,6 +4195,8 @@ class NpcCollection:
              data["canonical_name"] = _to_json_data(self.canonical_name)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
+        if self.contents is not None:
+             data["contents"] = _to_json_data(self.contents)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
         if self.enhances is not None:
@@ -4293,8 +4318,6 @@ class NpcVariantID:
 
 @dataclass
 class OracleCollection:
-    collections: 'Dict[str, OracleCollection]'
-    contents: 'Dict[str, OracleTable]'
     id: 'OracleCollectionID'
     """
     The unique Datasworn ID for this item.
@@ -4317,11 +4340,13 @@ class OracleCollection:
     different from `name`.
     """
 
+    collections: 'Optional[Dict[str, OracleCollection]]'
     color: 'Optional[CSSColor]'
     """
     A thematic color associated with this collection.
     """
 
+    contents: 'Optional[Dict[str, OracleTable]]'
     description: 'Optional[MarkdownString]'
     """
     A longer description of this collection, which might include multiple
@@ -4359,13 +4384,13 @@ class OracleCollection:
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollection':
         return cls(
-            _from_json_data(Dict[str, OracleCollection], data.get("collections")),
-            _from_json_data(Dict[str, OracleTable], data.get("contents")),
             _from_json_data(OracleCollectionID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[Label], data.get("canonical_name")),
+            _from_json_data(Optional[Dict[str, OracleCollection]], data.get("collections")),
             _from_json_data(Optional[CSSColor], data.get("color")),
+            _from_json_data(Optional[Dict[str, OracleTable]], data.get("contents")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleCollectionID], data.get("enhances")),
             _from_json_data(Optional[SvgImageURL], data.get("icon")),
@@ -4378,15 +4403,17 @@ class OracleCollection:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["collections"] = _to_json_data(self.collections)
-        data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
         if self.canonical_name is not None:
              data["canonical_name"] = _to_json_data(self.canonical_name)
+        if self.collections is not None:
+             data["collections"] = _to_json_data(self.collections)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
+        if self.contents is not None:
+             data["contents"] = _to_json_data(self.contents)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
         if self.enhances is not None:
@@ -5044,36 +5071,6 @@ class PartOfSpeech(Enum):
     def to_json_data(self) -> Any:
         return self.value
 
-@dataclass
-class PlayerConditionMeter:
-    """
-    A basic, rollable player character resource.
-    """
-
-    value: 'DictKey'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'PlayerConditionMeter':
-        return cls(_from_json_data(DictKey, data))
-
-    def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
-
-@dataclass
-class PlayerStat:
-    """
-    A basic player character stat.
-    """
-
-    value: 'DictKey'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'PlayerStat':
-        return cls(_from_json_data(DictKey, data))
-
-    def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
-
 class ProgressRollMethod(Enum):
     MISS = "miss"
     """
@@ -5492,6 +5489,21 @@ class SpecialTrackType:
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'SpecialTrackType':
+        return cls(_from_json_data(DictKey, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class StatID:
+    """
+    A basic player character stat.
+    """
+
+    value: 'DictKey'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'StatID':
         return cls(_from_json_data(DictKey, data))
 
     def to_json_data(self) -> Any:

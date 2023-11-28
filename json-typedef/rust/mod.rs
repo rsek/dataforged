@@ -9,9 +9,6 @@ pub struct Ruleset {
     #[serde(rename = "id")]
     pub id: NamespaceId,
 
-    #[serde(rename = "source")]
-    pub source: Source,
-
     /// A dictionary object containing asset types, which contain assets.
     #[serde(rename = "assets")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -164,7 +161,7 @@ pub struct ActionRollOptionAttachedAssetOption {
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionConditionMeter {
     #[serde(rename = "condition_meter")]
-    pub conditionMeter: PlayerConditionMeter,
+    pub conditionMeter: ConditionMeterId,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -179,7 +176,7 @@ pub struct ActionRollOptionCustom {
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionStat {
     #[serde(rename = "stat")]
-    pub stat: PlayerStat,
+    pub stat: StatId,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -967,7 +964,7 @@ pub struct AssetOptionFieldSelectStatChoiceOption {
 
     /// The current value of this input.
     #[serde(rename = "value")]
-    pub value: PlayerStat,
+    pub value: StatId,
 
     /// Is this option currently selected?
     #[serde(rename = "selected")]
@@ -995,7 +992,7 @@ pub struct AssetOptionFieldSelectStatChoiceOptionGroupChoice {
 
     /// The current value of this input.
     #[serde(rename = "value")]
-    pub value: PlayerStat,
+    pub value: StatId,
 
     /// Is this option currently selected?
     #[serde(rename = "selected")]
@@ -1056,9 +1053,6 @@ pub type AssetOptionFieldIdWildcard = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetType {
-    #[serde(rename = "contents")]
-    pub contents: HashMap<String, Asset>,
-
     /// The unique Datasworn ID for this item.
     #[serde(rename = "id")]
     pub id: AssetTypeId,
@@ -1082,6 +1076,10 @@ pub struct AssetType {
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<CssColor>>,
+
+    #[serde(rename = "contents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub contents: Option<Box<HashMap<String, Asset>>>,
 
     /// A longer description of this collection, which might include multiple
     /// paragraphs. If it's only a couple sentences, use the `summary` key
@@ -1127,12 +1125,6 @@ pub type AssetTypeId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct Atlas {
-    #[serde(rename = "collections")]
-    pub collections: HashMap<String, Atlas>,
-
-    #[serde(rename = "contents")]
-    pub contents: HashMap<String, AtlasEntry>,
-
     /// The unique Datasworn ID for this item.
     #[serde(rename = "id")]
     pub id: AtlasId,
@@ -1152,10 +1144,18 @@ pub struct Atlas {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub canonicalName: Option<Box<Label>>,
 
+    #[serde(rename = "collections")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub collections: Option<Box<HashMap<String, Atlas>>>,
+
     /// A thematic color associated with this collection.
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<CssColor>>,
+
+    #[serde(rename = "contents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub contents: Option<Box<HashMap<String, AtlasEntry>>>,
 
     /// A longer description of this collection, which might include multiple
     /// paragraphs. If it's only a couple sentences, use the `summary` key
@@ -1252,6 +1252,9 @@ pub type AtlasIdWildcard = String;
 
 /// Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
 pub type ChallengeRank = u8;
+
+/// A basic, rollable player character resource.
+pub type ConditionMeterId = DictKey;
 
 /// Describes a standard player character condition meter.
 #[derive(Serialize, Deserialize)]
@@ -1392,6 +1395,7 @@ pub enum DelveSiteDenizenFrequency {
 
 pub type DelveSiteDenizenId = String;
 
+/// A delve site domain card.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteDomain {
     #[serde(rename = "dangers")]
@@ -1548,6 +1552,7 @@ pub type DelveSiteDomainId = String;
 
 pub type DelveSiteId = String;
 
+/// A delve site theme card.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteTheme {
     #[serde(rename = "dangers")]
@@ -2014,9 +2019,6 @@ pub struct MoveSpecialTrack {
 
 #[derive(Serialize, Deserialize)]
 pub struct MoveCategory {
-    #[serde(rename = "contents")]
-    pub contents: HashMap<String, Move>,
-
     /// The unique Datasworn ID for this item.
     #[serde(rename = "id")]
     pub id: MoveCategoryId,
@@ -2040,6 +2042,10 @@ pub struct MoveCategory {
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<CssColor>>,
+
+    #[serde(rename = "contents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub contents: Option<Box<HashMap<String, Move>>>,
 
     /// A longer description of this collection, which might include multiple
     /// paragraphs. If it's only a couple sentences, use the `summary` key
@@ -2277,9 +2283,6 @@ pub struct Npc {
 
 #[derive(Serialize, Deserialize)]
 pub struct NpcCollection {
-    #[serde(rename = "contents")]
-    pub contents: HashMap<String, Npc>,
-
     /// The unique Datasworn ID for this item.
     #[serde(rename = "id")]
     pub id: NpcCollectionId,
@@ -2303,6 +2306,10 @@ pub struct NpcCollection {
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<CssColor>>,
+
+    #[serde(rename = "contents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub contents: Option<Box<HashMap<String, Npc>>>,
 
     /// A longer description of this collection, which might include multiple
     /// paragraphs. If it's only a couple sentences, use the `summary` key
@@ -2386,12 +2393,6 @@ pub type NpcVariantId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleCollection {
-    #[serde(rename = "collections")]
-    pub collections: HashMap<String, OracleCollection>,
-
-    #[serde(rename = "contents")]
-    pub contents: HashMap<String, OracleTable>,
-
     /// The unique Datasworn ID for this item.
     #[serde(rename = "id")]
     pub id: OracleCollectionId,
@@ -2411,10 +2412,18 @@ pub struct OracleCollection {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub canonicalName: Option<Box<Label>>,
 
+    #[serde(rename = "collections")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub collections: Option<Box<HashMap<String, OracleCollection>>>,
+
     /// A thematic color associated with this collection.
     #[serde(rename = "color")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<CssColor>>,
+
+    #[serde(rename = "contents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub contents: Option<Box<HashMap<String, OracleTable>>>,
 
     /// A longer description of this collection, which might include multiple
     /// paragraphs. If it's only a couple sentences, use the `summary` key
@@ -2827,12 +2836,6 @@ pub enum PartOfSpeech {
     Verb,
 }
 
-/// A basic, rollable player character resource.
-pub type PlayerConditionMeter = DictKey;
-
-/// A basic player character stat.
-pub type PlayerStat = DictKey;
-
 #[derive(Serialize, Deserialize)]
 pub enum ProgressRollMethod {
     /// An automatic miss.
@@ -3061,6 +3064,9 @@ pub type SpecialTrackRuleId = String;
 /// Ironsworn: Starforged
 /// 
 pub type SpecialTrackType = DictKey;
+
+/// A basic player character stat.
+pub type StatId = DictKey;
 
 /// Describes a standard player character stat.
 #[derive(Serialize, Deserialize)]

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class ActionRollOptionStat extends ActionRollOption {
     @JsonProperty("stat")
-    private PlayerStat stat;
+    private StatId stat;
 
     public ActionRollOptionStat() {
     }
@@ -16,14 +16,14 @@ public class ActionRollOptionStat extends ActionRollOption {
     /**
      * Getter for stat.<p>
      */
-    public PlayerStat getStat() {
+    public StatId getStat() {
         return stat;
     }
 
     /**
      * Setter for stat.<p>
      */
-    public void setStat(PlayerStat stat) {
+    public void setStat(StatId stat) {
         this.stat = stat;
     }
 }

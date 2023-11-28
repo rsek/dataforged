@@ -21,7 +21,7 @@ namespace Datasworn
         /// The current value of this input.
         /// </summary>
         [JsonPropertyName("value")]
-        public PlayerStat Value { get; set; }
+        public StatId Value { get; set; }
 
         /// <summary>
         /// Is this option currently selected?

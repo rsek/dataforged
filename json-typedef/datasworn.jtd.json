@@ -2,9 +2,6 @@
 	"properties": {
 		"id": {
 			"ref": "NamespaceId"
-		},
-		"source": {
-			"ref": "Source"
 		}
 	},
 	"optionalProperties": {
@@ -1063,14 +1060,6 @@
 					"metadata": {
 						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 					}
-				},
-				"contents": {
-					"values": {
-						"ref": "Npc"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
 				}
 			},
 			"optionalProperties": {
@@ -1125,6 +1114,14 @@
 					"ref": "NpcCollectionId",
 					"metadata": {
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				},
+				"contents": {
+					"values": {
+						"ref": "Npc"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -1283,22 +1280,6 @@
 					"metadata": {
 						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 					}
-				},
-				"contents": {
-					"values": {
-						"ref": "OracleTable"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"collections": {
-					"values": {
-						"ref": "OracleCollection"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
 				}
 			},
 			"optionalProperties": {
@@ -1356,6 +1337,22 @@
 					"ref": "OracleCollectionId",
 					"metadata": {
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				},
+				"contents": {
+					"values": {
+						"ref": "OracleTable"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				},
+				"collections": {
+					"values": {
+						"ref": "OracleCollection"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			}
@@ -1684,14 +1681,14 @@
 				"stat": {
 					"properties": {
 						"stat": {
-							"ref": "PlayerStat"
+							"ref": "StatId"
 						}
 					}
 				},
 				"condition_meter": {
 					"properties": {
 						"condition_meter": {
-							"ref": "PlayerConditionMeter"
+							"ref": "ConditionMeterId"
 						}
 					}
 				},
@@ -2051,14 +2048,6 @@
 					"metadata": {
 						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 					}
-				},
-				"contents": {
-					"values": {
-						"ref": "Move"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
 				}
 			},
 			"optionalProperties": {
@@ -2113,6 +2102,14 @@
 					"ref": "MoveCategoryId",
 					"metadata": {
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				},
+				"contents": {
+					"values": {
+						"ref": "Move"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -3327,7 +3324,7 @@
 												}
 											},
 											"value": {
-												"ref": "PlayerStat",
+												"ref": "StatId",
 												"metadata": {
 													"description": "The current value of this input."
 												}
@@ -3365,7 +3362,7 @@
 															}
 														},
 														"value": {
-															"ref": "PlayerStat",
+															"ref": "StatId",
 															"metadata": {
 																"description": "The current value of this input."
 															}
@@ -3558,14 +3555,6 @@
 					"metadata": {
 						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 					}
-				},
-				"contents": {
-					"values": {
-						"ref": "Asset"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
 				}
 			},
 			"optionalProperties": {
@@ -3620,6 +3609,14 @@
 					"ref": "AssetTypeId",
 					"metadata": {
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				},
+				"contents": {
+					"values": {
+						"ref": "Asset"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			},
@@ -3772,22 +3769,6 @@
 					"metadata": {
 						"description": "Attribution for the original source (such as a book or website) of this item, including the author and licensing information."
 					}
-				},
-				"contents": {
-					"values": {
-						"ref": "AtlasEntry"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
-				},
-				"collections": {
-					"values": {
-						"ref": "Atlas"
-					},
-					"metadata": {
-						"propertyPattern": "^([a-z][a-z_]*)$"
-					}
 				}
 			},
 			"optionalProperties": {
@@ -3842,6 +3823,22 @@
 					"ref": "AtlasId",
 					"metadata": {
 						"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
+					}
+				},
+				"contents": {
+					"values": {
+						"ref": "AtlasEntry"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
+					}
+				},
+				"collections": {
+					"values": {
+						"ref": "Atlas"
+					},
+					"metadata": {
+						"propertyPattern": "^([a-z][a-z_]*)$"
 					}
 				}
 			}
@@ -3899,7 +3896,7 @@
 				"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn."
 			}
 		},
-		"PlayerConditionMeter": {
+		"ConditionMeterId": {
 			"ref": "DictKey",
 			"metadata": {
 				"description": "A basic, rollable player character resource.",
@@ -3910,7 +3907,7 @@
 				]
 			}
 		},
-		"PlayerStat": {
+		"StatId": {
 			"ref": "DictKey",
 			"metadata": {
 				"description": "A basic player character stat.",
@@ -4142,7 +4139,9 @@
 					}
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "A delve site domain card."
+			}
 		},
 		"DelveSiteDomainDangerRow": {
 			"properties": {
@@ -4303,7 +4302,9 @@
 					"ref": "SvgImageUrl"
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "A delve site theme card."
+			}
 		},
 		"DelveSiteThemeDangerRow": {
 			"properties": {

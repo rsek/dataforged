@@ -18,7 +18,7 @@ public class AssetOptionFieldSelectStatChoiceOptionGroupChoice {
     private AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType optionType;
 
     @JsonProperty("value")
-    private PlayerStat value;
+    private StatId value;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("selected")
@@ -65,7 +65,7 @@ public class AssetOptionFieldSelectStatChoiceOptionGroupChoice {
      * Getter for value.<p>
      * The current value of this input.
      */
-    public PlayerStat getValue() {
+    public StatId getValue() {
         return value;
     }
 
@@ -73,7 +73,7 @@ public class AssetOptionFieldSelectStatChoiceOptionGroupChoice {
      * Setter for value.<p>
      * The current value of this input.
      */
-    public void setValue(PlayerStat value) {
+    public void setValue(StatId value) {
         this.value = value;
     }
 

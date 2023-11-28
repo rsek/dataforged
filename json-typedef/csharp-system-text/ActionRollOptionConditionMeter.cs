@@ -10,6 +10,6 @@ namespace Datasworn
         public string Using { get => "condition_meter"; }
 
         [JsonPropertyName("condition_meter")]
-        public PlayerConditionMeter ConditionMeter { get; set; }
+        public ConditionMeterId ConditionMeter { get; set; }
     }
 }

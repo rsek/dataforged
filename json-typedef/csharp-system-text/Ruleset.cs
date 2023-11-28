@@ -10,9 +10,6 @@ namespace Datasworn
         [JsonPropertyName("id")]
         public NamespaceId Id { get; set; }
 
-        [JsonPropertyName("source")]
-        public Source Source { get; set; }
-
         /// <summary>
         /// A dictionary object containing asset types, which contain assets.
         /// </summary>

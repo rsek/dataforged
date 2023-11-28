@@ -7,12 +7,6 @@ namespace Datasworn
 {
     public class OracleCollection
     {
-        [JsonPropertyName("collections")]
-        public IDictionary<string, OracleCollection> Collections { get; set; }
-
-        [JsonPropertyName("contents")]
-        public IDictionary<string, OracleTable> Contents { get; set; }
-
         /// <summary>
         /// The unique Datasworn ID for this item.
         /// </summary>
@@ -40,12 +34,20 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? CanonicalName { get; set; }
 
+        [JsonPropertyName("collections")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IDictionary<string, OracleCollection> Collections { get; set; }
+
         /// <summary>
         /// A thematic color associated with this collection.
         /// </summary>
         [JsonPropertyName("color")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public CssColor? Color { get; set; }
+
+        [JsonPropertyName("contents")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IDictionary<string, OracleTable> Contents { get; set; }
 
         /// <summary>
         /// A longer description of this collection, which might include

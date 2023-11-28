@@ -9,8 +9,8 @@ namespace Datasworn
     /// <summary>
     /// A basic player character stat.
     /// </summary>
-    [JsonConverter(typeof(PlayerStatJsonConverter))]
-    public class PlayerStat
+    [JsonConverter(typeof(StatIdJsonConverter))]
+    public class StatId
     {
         /// <summary>
         /// The underlying data being wrapped.
@@ -18,14 +18,14 @@ namespace Datasworn
         public DictKey Value { get; set; }
     }
 
-    public class PlayerStatJsonConverter : JsonConverter<PlayerStat>
+    public class StatIdJsonConverter : JsonConverter<StatId>
     {
-        public override PlayerStat Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override StatId Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            return new PlayerStat { Value = JsonSerializer.Deserialize<DictKey>(ref reader, options) };
+            return new StatId { Value = JsonSerializer.Deserialize<DictKey>(ref reader, options) };
         }
 
-        public override void Write(Utf8JsonWriter writer, PlayerStat value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, StatId value, JsonSerializerOptions options)
         {
             JsonSerializer.Serialize<DictKey>(writer, value.Value, options);
         }

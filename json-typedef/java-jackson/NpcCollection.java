@@ -10,9 +10,6 @@ import java.util.Map;
 
 @JsonSerialize
 public class NpcCollection {
-    @JsonProperty("contents")
-    private Map<String, Npc> contents;
-
     @JsonProperty("id")
     private NpcCollectionId id;
 
@@ -29,6 +26,10 @@ public class NpcCollection {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private CssColor color;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("contents")
+    private Map<String, Npc> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -59,20 +60,6 @@ public class NpcCollection {
     private MarkdownString summary;
 
     public NpcCollection() {
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, Npc> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, Npc> contents) {
-        this.contents = contents;
     }
 
     /**
@@ -157,6 +144,20 @@ public class NpcCollection {
      */
     public void setColor(CssColor color) {
         this.color = color;
+    }
+
+    /**
+     * Getter for contents.<p>
+     */
+    public Map<String, Npc> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, Npc> contents) {
+        this.contents = contents;
     }
 
     /**

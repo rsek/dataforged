@@ -670,7 +670,9 @@ export type Label34 = string;
 export type TruthOptionId = string;
 
 /**
- * Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.
+ * Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.
+ *
+ * The source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.
  */
 export interface Datasworn {
   id: NamespaceId;
@@ -776,11 +778,11 @@ export interface ConditionMeterRule {
   /**
    * The minimum value of this meter.
    */
-  min: number;
+  min?: number;
   /**
    * The maximum value of this meter.
    */
-  max: number;
+  max?: number;
   /**
    * The current value of this meter.
    */
@@ -788,7 +790,7 @@ export interface ConditionMeterRule {
   /**
    * Is this condition meter shared by all players?
    */
-  shared: boolean;
+  shared?: boolean;
   description: MarkdownString;
 }
 /**
@@ -818,16 +820,16 @@ export interface ImpactRule {
   /**
    * Is this impact applied to all players at once?
    */
-  shared: boolean;
+  shared?: boolean;
   description: MarkdownString2;
   /**
    * Is this impact permanent?
    */
-  permanent: boolean;
+  permanent?: boolean;
   /**
    * Keys of ruleset condition meters, to which this impact prevents recovery.
    */
-  prevents_recovery: DictKey[];
+  prevents_recovery?: DictKey[];
 }
 /**
  * Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
@@ -840,12 +842,12 @@ export interface SpecialTrackRule {
   /**
    * Is this track shared by all players?
    */
-  shared: boolean;
+  shared?: boolean;
   description: MarkdownString3;
   /**
    * Is this track an optional rule?
    */
-  optional: boolean;
+  optional?: boolean;
 }
 /**
  * Describes a standard player character stat.
@@ -862,7 +864,7 @@ export interface StatRule {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface OracleCollection {
-  id: OracleCollectionId;
+  id?: OracleCollectionId;
   name: Label5;
   canonical_name?: Label6;
   enhances?: OracleCollectionId1;
@@ -887,12 +889,12 @@ export interface OracleCollection {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface OracleTable {
-  id: OracleTableId;
+  id?: OracleTableId;
   name: Label7;
   canonical_name?: Label8;
   icon?: SvgImageUrl1;
   images?: WebpImageUrl1[];
-  dice: DiceNotation;
+  dice?: DiceNotation;
   rendering?: OracleTableRendering;
   summary?: MarkdownString7;
   description?: MarkdownString8;
@@ -923,15 +925,15 @@ export interface Suggestions {
  * An array of objects, each representing a single row of the table.
  */
 export interface OracleTableRow {
-  id: OracleTableRowId;
+  id?: OracleTableRowId;
   /**
    * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  min: number | null;
+  min?: number | null;
   /**
    * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  max: number | null;
+  max?: number | null;
   icon?: SvgImageUrl2;
   result: MarkdownString9;
   summary?: MarkdownString9;
@@ -1069,7 +1071,7 @@ export interface Source1 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface AssetType {
-  id: AssetTypeId;
+  id?: AssetTypeId;
   name: Label9;
   canonical_name?: Label10;
   enhances?: AssetTypeId1;
@@ -1090,7 +1092,7 @@ export interface AssetType {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Asset {
-  id: AssetId1;
+  id?: AssetId1;
   name: Label11;
   canonical_name?: Label12;
   asset_type: Label13;
@@ -1105,11 +1107,11 @@ export interface Asset {
   /**
    * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
    */
-  count_as_impact: boolean;
+  count_as_impact?: boolean;
   /**
    * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
    */
-  shared: boolean;
+  shared?: boolean;
   attachments?: AssetAttachment;
   requirement?: MarkdownString12;
   abilities: AssetAbility[];
@@ -1129,7 +1131,7 @@ export interface AssetAttachment {
   /**
    * Null if there's no upper limit to the number of attached assets.
    */
-  max: number | null;
+  max?: number | null;
   /**
    * Asset IDs (which may be wildcards) that may be attached to this asset
    */
@@ -1139,12 +1141,12 @@ export interface AssetAttachment {
  * Abilities provided by this asset. Most assets have 3.
  */
 export interface AssetAbility {
-  id: AssetAbilityId;
+  id?: AssetAbilityId;
   name?: Label14;
   /**
    * Is this asset ability enabled?
    */
-  enabled: boolean;
+  enabled?: boolean;
   /**
    * Fields that are expected to be set once and remain the same through the life of the asset.
    */
@@ -1276,7 +1278,7 @@ export interface Source3 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Atlas {
-  id: AtlasId;
+  id?: AtlasId;
   name: Label15;
   canonical_name?: Label16;
   enhances?: AtlasId1;
@@ -1302,7 +1304,7 @@ export interface Atlas {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface AtlasEntry {
-  id: AtlasEntryId1;
+  id?: AtlasEntryId1;
   name: Label17;
   canonical_name?: Label18;
   summary?: MarkdownString9;
@@ -1400,7 +1402,7 @@ export interface Source5 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSite {
-  id: DelveSiteId;
+  id?: DelveSiteId;
   name: Label19;
   canonical_name?: Label20;
   icon?: SvgImageUrl2;
@@ -1532,7 +1534,7 @@ export interface Source6 {
   url: string;
 }
 export interface DelveSiteDenizen {
-  id: DelveSiteDenizenId;
+  id?: DelveSiteDenizenId;
   name?: Label14;
   min: number;
   max: number;
@@ -1544,7 +1546,7 @@ export interface DelveSiteDenizen {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface MoveCategory {
-  id: MoveCategoryId;
+  id?: MoveCategoryId;
   name: Label21;
   canonical_name?: Label22;
   enhances?: MoveCategoryId1;
@@ -1605,7 +1607,7 @@ export interface Source7 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface NpcCollection {
-  id: NpcCollectionId;
+  id?: NpcCollectionId;
   name: Label23;
   canonical_name?: Label24;
   enhances?: NpcCollectionId1;
@@ -1628,7 +1630,7 @@ export interface NpcCollection {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Npc {
-  id: NpcId2;
+  id?: NpcId2;
   name: Label25;
   canonical_name?: Label26;
   nature: NpcNature;
@@ -1651,7 +1653,7 @@ export interface Npc {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface NpcVariant {
-  id: NpcVariantId;
+  id?: NpcVariantId;
   name: Label14;
   nature: NpcNature;
   rank: ChallengeRank2;
@@ -1745,7 +1747,7 @@ export interface Source9 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Rarity {
-  id: RarityId1;
+  id?: RarityId1;
   name: Label27;
   canonical_name?: Label28;
   icon?: SvgImageUrl2;
@@ -1760,7 +1762,7 @@ export interface Rarity {
    *
    *       If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.
    */
-  xp_cost: number;
+  xp_cost?: number;
 }
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
@@ -1809,7 +1811,7 @@ export interface Source10 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSiteDomain {
-  id: DelveSiteDomainId1;
+  id?: DelveSiteDomainId1;
   name: Label29;
   canonical_name?: Label30;
   icon?: SvgImageUrl2;
@@ -1923,7 +1925,7 @@ export interface DelveSiteDomain {
   name_oracle?: OracleTableId4;
 }
 export interface DelveSiteDomainFeatureRow {
-  id: DomainFeatureRowId;
+  id?: DomainFeatureRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -1943,7 +1945,7 @@ export interface DelveSiteDomainFeatureRow {
   i18n?: I18NHints;
 }
 export interface DelveSiteDomainDangerRow {
-  id: DomainDangerRowId;
+  id?: DomainDangerRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -2009,7 +2011,7 @@ export interface Source11 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSiteTheme {
-  id: DelveSiteThemeId1;
+  id?: DelveSiteThemeId1;
   name: Label31;
   canonical_name?: Label32;
   icon?: SvgImageUrl2;
@@ -2110,7 +2112,7 @@ export interface DelveSiteTheme {
   source: Source12;
 }
 export interface DelveSiteThemeFeatureRow {
-  id: ThemeFeatureRowId;
+  id?: ThemeFeatureRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -2130,7 +2132,7 @@ export interface DelveSiteThemeFeatureRow {
   i18n?: I18NHints;
 }
 export interface DelveSiteThemeDangerRow {
-  id: ThemeDangerRowId;
+  id?: ThemeDangerRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -2196,7 +2198,7 @@ export interface Source12 {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Truth {
-  id: TruthId;
+  id?: TruthId;
   name: Label33;
   canonical_name?: Label34;
   icon?: SvgImageUrl2;
@@ -2206,7 +2208,7 @@ export interface Truth {
   your_character?: MarkdownString9;
 }
 export interface TruthOption {
-  id: TruthOptionId;
+  id?: TruthOptionId;
   min?: number;
   max?: number;
   summary?: MarkdownString9;
@@ -2218,11 +2220,11 @@ export interface TruthOptionTableRow {
   /**
    * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  min: number | null;
+  min?: number | null;
   /**
    * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  max: number | null;
+  max?: number | null;
   icon?: SvgImageUrl2;
   result: MarkdownString9;
   summary?: MarkdownString9;

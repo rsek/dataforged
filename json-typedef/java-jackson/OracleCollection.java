@@ -10,12 +10,6 @@ import java.util.Map;
 
 @JsonSerialize
 public class OracleCollection {
-    @JsonProperty("collections")
-    private Map<String, OracleCollection> collections;
-
-    @JsonProperty("contents")
-    private Map<String, OracleTable> contents;
-
     @JsonProperty("id")
     private OracleCollectionId id;
 
@@ -30,8 +24,16 @@ public class OracleCollection {
     private Label canonicalName;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("collections")
+    private Map<String, OracleCollection> collections;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("color")
     private CssColor color;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("contents")
+    private Map<String, OracleTable> contents;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -66,34 +68,6 @@ public class OracleCollection {
     private MarkdownString summary;
 
     public OracleCollection() {
-    }
-
-    /**
-     * Getter for collections.<p>
-     */
-    public Map<String, OracleCollection> getCollections() {
-        return collections;
-    }
-
-    /**
-     * Setter for collections.<p>
-     */
-    public void setCollections(Map<String, OracleCollection> collections) {
-        this.collections = collections;
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, OracleTable> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, OracleTable> contents) {
-        this.contents = contents;
     }
 
     /**
@@ -165,6 +139,20 @@ public class OracleCollection {
     }
 
     /**
+     * Getter for collections.<p>
+     */
+    public Map<String, OracleCollection> getCollections() {
+        return collections;
+    }
+
+    /**
+     * Setter for collections.<p>
+     */
+    public void setCollections(Map<String, OracleCollection> collections) {
+        this.collections = collections;
+    }
+
+    /**
      * Getter for color.<p>
      * A thematic color associated with this collection.
      */
@@ -178,6 +166,20 @@ public class OracleCollection {
      */
     public void setColor(CssColor color) {
         this.color = color;
+    }
+
+    /**
+     * Getter for contents.<p>
+     */
+    public Map<String, OracleTable> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, OracleTable> contents) {
+        this.contents = contents;
     }
 
     /**

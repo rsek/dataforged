@@ -10,8 +10,6 @@ import (
 type Ruleset struct {
 	ID NamespaceID `json:"id"`
 
-	Source Source `json:"source"`
-
 	// A dictionary object containing asset types, which contain assets.
 	Assets map[string]AssetType `json:"assets,omitempty"`
 
@@ -172,7 +170,7 @@ type ActionRollOptionAttachedAssetOption struct {
 }
 
 type ActionRollOptionConditionMeter struct {
-	ConditionMeter PlayerConditionMeter `json:"condition_meter"`
+	ConditionMeter ConditionMeterID `json:"condition_meter"`
 }
 
 type ActionRollOptionCustom struct {
@@ -182,7 +180,7 @@ type ActionRollOptionCustom struct {
 }
 
 type ActionRollOptionStat struct {
-	Stat PlayerStat `json:"stat"`
+	Stat StatID `json:"stat"`
 }
 
 type ActionRollUsing string
@@ -1087,7 +1085,7 @@ type AssetOptionFieldSelectStatChoiceOption struct {
 	Label Label `json:"label"`
 
 	// The current value of this input.
-	Value PlayerStat `json:"value"`
+	Value StatID `json:"value"`
 
 	// Is this option currently selected?
 	Selected *bool `json:"selected,omitempty"`
@@ -1109,7 +1107,7 @@ type AssetOptionFieldSelectStatChoiceOptionGroupChoice struct {
 	OptionType AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
 	// The current value of this input.
-	Value PlayerStat `json:"value"`
+	Value StatID `json:"value"`
 
 	// Is this option currently selected?
 	Selected *bool `json:"selected,omitempty"`
@@ -1155,8 +1153,6 @@ type AssetOptionFieldID = string
 type AssetOptionFieldIDWildcard = string
 
 type AssetType struct {
-	Contents map[string]Asset `json:"contents"`
-
 	// The unique Datasworn ID for this item.
 	ID AssetTypeID `json:"id"`
 
@@ -1173,6 +1169,8 @@ type AssetType struct {
 
 	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
+
+	Contents map[string]Asset `json:"contents,omitempty"`
 
 	// A longer description of this collection, which might include multiple
 	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
@@ -1202,10 +1200,6 @@ type AssetType struct {
 type AssetTypeID = string
 
 type Atlas struct {
-	Collections map[string]Atlas `json:"collections"`
-
-	Contents map[string]AtlasEntry `json:"contents"`
-
 	// The unique Datasworn ID for this item.
 	ID AtlasID `json:"id"`
 
@@ -1220,8 +1214,12 @@ type Atlas struct {
 	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	Collections map[string]Atlas `json:"collections,omitempty"`
+
 	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
+
+	Contents map[string]AtlasEntry `json:"contents,omitempty"`
 
 	// A longer description of this collection, which might include multiple
 	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
@@ -1287,6 +1285,9 @@ type AtlasIDWildcard = string
 
 // Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
 type ChallengeRank = uint8
+
+// A basic, rollable player character resource.
+type ConditionMeterID = DictKey
 
 // Describes a standard player character condition meter.
 type ConditionMeterRule struct {
@@ -1388,6 +1389,7 @@ const (
 
 type DelveSiteDenizenID = string
 
+// A delve site domain card.
 type DelveSiteDomain struct {
 	Dangers []DelveSiteDomainDangerRow `json:"dangers"`
 
@@ -1485,6 +1487,7 @@ type DelveSiteDomainID = string
 
 type DelveSiteID = string
 
+// A delve site theme card.
 type DelveSiteTheme struct {
 	Dangers []DelveSiteThemeDangerRow `json:"dangers"`
 
@@ -1841,8 +1844,6 @@ type MoveSpecialTrack struct {
 }
 
 type MoveCategory struct {
-	Contents map[string]Move `json:"contents"`
-
 	// The unique Datasworn ID for this item.
 	ID MoveCategoryID `json:"id"`
 
@@ -1859,6 +1860,8 @@ type MoveCategory struct {
 
 	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
+
+	Contents map[string]Move `json:"contents,omitempty"`
 
 	// A longer description of this collection, which might include multiple
 	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
@@ -2067,8 +2070,6 @@ type Npc struct {
 }
 
 type NpcCollection struct {
-	Contents map[string]Npc `json:"contents"`
-
 	// The unique Datasworn ID for this item.
 	ID NpcCollectionID `json:"id"`
 
@@ -2085,6 +2086,8 @@ type NpcCollection struct {
 
 	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
+
+	Contents map[string]Npc `json:"contents,omitempty"`
 
 	// A longer description of this collection, which might include multiple
 	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
@@ -2144,10 +2147,6 @@ type NpcVariant struct {
 type NpcVariantID = string
 
 type OracleCollection struct {
-	Collections map[string]OracleCollection `json:"collections"`
-
-	Contents map[string]OracleTable `json:"contents"`
-
 	// The unique Datasworn ID for this item.
 	ID OracleCollectionID `json:"id"`
 
@@ -2162,8 +2161,12 @@ type OracleCollection struct {
 	// different from `name`.
 	CanonicalName *Label `json:"canonical_name,omitempty"`
 
+	Collections map[string]OracleCollection `json:"collections,omitempty"`
+
 	// A thematic color associated with this collection.
 	Color *CSSColor `json:"color,omitempty"`
+
+	Contents map[string]OracleTable `json:"contents,omitempty"`
 
 	// A longer description of this collection, which might include multiple
 	// paragraphs. If it's only a couple sentences, use the `summary` key instead.
@@ -2523,12 +2526,6 @@ const (
 	PartOfSpeechVerb PartOfSpeech = "verb"
 )
 
-// A basic, rollable player character resource.
-type PlayerConditionMeter = DictKey
-
-// A basic player character stat.
-type PlayerStat = DictKey
-
 type ProgressRollMethod string
 
 const (
@@ -2704,6 +2701,9 @@ type SpecialTrackRuleID = string
 // Ironsworn: Starforged
 // 
 type SpecialTrackType = DictKey
+
+// A basic player character stat.
+type StatID = DictKey
 
 // Describes a standard player character stat.
 type StatRule struct {
