@@ -2,7 +2,7 @@ import * as pkgs from '../pkg/pkgConfig.js'
 import Log from '../utils/Log.js'
 import AJV from '../validation/ajv.js'
 import { buildRuleset } from './buildRuleset.js'
-import { loadSchema, loadSourceSchema } from './loadSchema.js'
+import { loadSchema, loadSourceSchema } from '../schema/loadSchema.js'
 
 const profiler = Log.startTimer()
 

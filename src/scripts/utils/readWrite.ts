@@ -4,7 +4,7 @@ import { merge } from 'lodash-es'
 import path from 'path'
 import { default as Prettier } from 'prettier'
 import { Simplify } from 'type-fest'
-import Log from '../utils/Log.js'
+import Log from './Log.js'
 
 const space = '\t'
 const encoding = 'utf8'

@@ -11,7 +11,7 @@ import {
 import { type TMoveEnhancement } from '../Moves.js'
 import { type TAssetEnhancement } from '../assets/Enhancement.js'
 import * as Base from './Inputs.js'
-import type * as Player from './Player.js'
+import * as Player from './Player.js'
 import * as Utils from '../Utils.js'
 import * as Generic from '../Generic.js'
 import type * as Id from './Id.js'
@@ -134,12 +134,9 @@ export function SelectStatField(
 	options: ObjectOptions = {}
 ) {
 	return SelectField(
-		Base.SelectOption(
-			Type.Ref<typeof Player.PlayerStat>('#/$defs/PlayerStat'),
-			{
-				title: 'SelectStatOption'
-			}
-		),
+		Base.SelectOption(Type.Ref(Player.StatId), {
+			title: 'SelectStatOption'
+		}),
 		'select_stat',
 		id,
 		{ title: 'SelectStatField', ...options }

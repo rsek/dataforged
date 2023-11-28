@@ -5,7 +5,7 @@
 import JsonPointer from 'json-pointer'
 import { type JsonSchema } from 'json-schema-library'
 import * as CONST from '../const.js'
-import { getPrettierOptions, writeJSON } from '../datasworn/readWrite.js'
+import { getPrettierOptions, writeJSON } from '../utils/readWrite.js'
 import { sortSchemaKeys } from '../datasworn/sort.js'
 import Log from '../utils/Log.js'
 import AJV from '../validation/ajv.js'

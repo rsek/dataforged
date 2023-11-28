@@ -2489,7 +2489,7 @@
 					"const": "condition_meter"
 				},
 				"condition_meter": {
-					"$ref": "#/$defs/PlayerConditionMeter"
+					"$ref": "#/$defs/ConditionMeterId"
 				}
 			},
 			"additionalProperties": false
@@ -2525,7 +2525,7 @@
 					"const": "stat"
 				},
 				"stat": {
-					"$ref": "#/$defs/PlayerStat"
+					"$ref": "#/$defs/StatId"
 				}
 			},
 			"additionalProperties": false
@@ -3998,7 +3998,7 @@
 														},
 														"value": {
 															"description": "The current value of this input.",
-															"$ref": "#/$defs/PlayerStat"
+															"$ref": "#/$defs/StatId"
 														}
 													},
 													"required": ["option_type", "label", "value"],
@@ -4052,7 +4052,7 @@
 																		},
 																		"value": {
 																			"description": "The current value of this input.",
-																			"$ref": "#/$defs/PlayerStat"
+																			"$ref": "#/$defs/StatId"
 																		}
 																	},
 																	"required": ["option_type", "label", "value"]
@@ -4642,15 +4642,15 @@
 			},
 			"additionalProperties": false
 		},
-		"PlayerConditionMeter": {
+		"ConditionMeterId": {
 			"$ref": "#/$defs/DictKey",
-			"title": "PlayerConditionMeter",
+			"title": "ConditionMeterId",
 			"description": "A basic, rollable player character resource.",
 			"examples": ["health", "spirit", "supply"]
 		},
-		"PlayerStat": {
+		"StatId": {
 			"$ref": "#/$defs/DictKey",
-			"title": "PlayerStat",
+			"title": "StatId",
 			"description": "A basic player character stat.",
 			"examples": ["edge", "heart", "iron", "shadow", "wits"]
 		},

@@ -106,7 +106,7 @@ export type RollOptionAttachedAssetOption = Static<
 export const RollOptionStat = ActionRollOptionBase(
 	'stat',
 	Type.Object({
-		stat: Type.Ref(Player.PlayerStat)
+		stat: Type.Ref(Player.StatId)
 	}),
 	{ $id: '#/$defs/RollOptionStat' }
 )
@@ -116,7 +116,7 @@ export type RollOptionStat = Static<typeof RollOptionStat>
 export const RollOptionConditionMeter = ActionRollOptionBase(
 	'condition_meter',
 	Type.Object({
-		condition_meter: Type.Ref(Player.PlayerConditionMeter)
+		condition_meter: Type.Ref(Player.ConditionMeterId)
 	}),
 	{ $id: '#/$defs/RollOptionConditionMeter' }
 )

@@ -2,7 +2,7 @@ import type { In } from '../../types/index.js'
 import { formatPath } from '../../utils.js'
 import Log from '../utils/Log.js'
 import type AJV from '../validation/ajv.js'
-import { readSourceData } from './readWrite.js'
+import { readSourceData } from '../utils/readWrite.js'
 
 export async function loadRulesetFile(filePath: string, ajv: typeof AJV) {
 	Log.info(`📖 Reading ${formatPath(filePath)}`)

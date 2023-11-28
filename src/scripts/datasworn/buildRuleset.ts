@@ -7,11 +7,11 @@ import { formatPath } from '../../utils.js'
 import { ROOT_OUTPUT } from '../const.js'
 import Log from '../utils/Log.js'
 import type AJV from '../validation/ajv.js'
-import { writeJSON } from './readWrite.js'
+import { writeJSON } from '../utils/readWrite.js'
 // import { cleanRuleset } from './cleanRuleset.js'
 import { loadRulesetFile } from './readRulesetFile.js'
 import { buildRulesetData } from './buildRulesetData.js'
-import { mergeRulesetParts } from './mergeRulesetParts.js'
+import { mergeRulesetData } from './mergeRulesetParts.js'
 import { cleanRuleset } from './cleanRuleset.js'
 import { type Draft07 } from 'json-schema-library'
 
@@ -78,7 +78,7 @@ export async function buildRuleset(
 	// 	.sort(([a], [b]) => a.localeCompare(b, 'en-US'))
 	// 	.forEach(([_, data]) => merge(ruleset, data))
 
-	const ruleset = mergeRulesetParts(builtFiles, ajv)
+	const ruleset = mergeRulesetData(builtFiles, ajv)
 
 	// console.log(ruleset)
 

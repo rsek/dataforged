@@ -2,7 +2,7 @@ import { merge } from 'lodash-es'
 import { type Out } from '../../types/index.js'
 import type AJV from '../validation/ajv.js'
 
-export function mergeRulesetParts(
+export function mergeRulesetData(
 	data: Map<string, Out.Datasworn>,
 	ajv: typeof AJV
 ) {
