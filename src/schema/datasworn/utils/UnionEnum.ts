@@ -6,6 +6,8 @@ import {
 	type SchemaOptions,
 	type TSchema
 } from '@sinclair/typebox'
+import { isInteger, set } from 'lodash-es'
+import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 
 export const EnumDescription = Symbol('EnumDescription')
 export const Description = Symbol('Description')
@@ -26,7 +28,15 @@ export function UnionEnum<T extends string[] | number[]>(
 	if (!TypeRegistry.Has('UnionEnum'))
 		TypeRegistry.Set('UnionEnum', UnionEnumCheck)
 
-	return { ...options, [Kind]: 'UnionEnum', enum: literals } as TUnionEnum<T>
+	const result = {
+		...options,
+		[Kind]: 'UnionEnum',
+		enum: literals
+	} as TUnionEnum<T>
+
+	if (result.enum.every(isInteger))
+		set(result[JsonTypeDef], 'metadata.typescriptType', literals.join(' | '))
+	return result
 }
 
 function UnionEnumCheck(

@@ -16,6 +16,8 @@ pub enum RulesPackage {
     Ruleset(RulesPackageRuleset),
 }
 
+/// A Datasworn package that relies on an external package to provide its
+/// ruleset.
 #[derive(Serialize, Deserialize)]
 pub struct RulesPackageExpansion {
     #[serde(rename = "datasworn_version")]
@@ -86,6 +88,7 @@ pub struct RulesPackageExpansion {
     pub truths: Option<Box<HashMap<String, Truth>>>,
 }
 
+/// A standalone Datasworn package that describes its own ruleset.
 #[derive(Serialize, Deserialize)]
 pub struct RulesPackageRuleset {
     /// A dictionary object containing asset types, which contain assets.
@@ -430,6 +433,7 @@ pub enum AssetAbilityControlField {
     Counter(AssetAbilityControlFieldCounter),
 }
 
+/// Represents a checkbox.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldCheckbox {
     /// Does this field disable the asset when its value is set to `true`?
@@ -456,6 +460,7 @@ pub struct AssetAbilityControlFieldCheckbox {
     pub value: bool,
 }
 
+/// A clock with 4, 6, 8, or 10 segments.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldClock {
     /// The unique Datasworn ID for this item.
@@ -482,6 +487,7 @@ pub struct AssetAbilityControlFieldClock {
     pub value: i8,
 }
 
+/// A counter that starts at zero, with an optional maximum value.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldCounter {
     /// The unique Datasworn ID for this item.
@@ -517,6 +523,7 @@ pub enum AssetAbilityOptionField {
     Text(AssetAbilityOptionFieldText),
 }
 
+/// Represents an input that accepts plain text.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityOptionFieldText {
     /// The unique Datasworn ID for this item.
@@ -559,6 +566,9 @@ pub enum AssetConditionMeterControlField {
     Checkbox(AssetConditionMeterControlFieldCheckbox),
 }
 
+/// When its value is set to `true` it means that the card is flipped over.
+/// Some assets use this to represent a 'broken' state (e.g. Starforged Module
+/// assets).
 #[derive(Serialize, Deserialize)]
 pub struct AssetConditionMeterControlFieldCardFlip {
     /// Does this field disable the asset when its value is set to `true`?
@@ -585,6 +595,7 @@ pub struct AssetConditionMeterControlFieldCardFlip {
     pub value: bool,
 }
 
+/// Represents a checkbox.
 #[derive(Serialize, Deserialize)]
 pub struct AssetConditionMeterControlFieldCheckbox {
     /// Does this field disable the asset when its value is set to `true`?
@@ -629,6 +640,9 @@ pub enum AssetControlField {
     SelectEnhancement(AssetControlFieldSelectEnhancement),
 }
 
+/// When its value is set to `true` it means that the card is flipped over.
+/// Some assets use this to represent a 'broken' state (e.g. Starforged Module
+/// assets).
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldCardFlip {
     /// Does this field disable the asset when its value is set to `true`?
@@ -655,6 +669,7 @@ pub struct AssetControlFieldCardFlip {
     pub value: bool,
 }
 
+/// Represents a checkbox.
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldCheckbox {
     /// Does this field disable the asset when its value is set to `true`?
@@ -698,6 +713,10 @@ pub struct AssetControlFieldConditionMeterMoves {
     pub suffer: Option<Box<Vec<MoveIdWildcard>>>,
 }
 
+/// Some assets provide a special condition meter of their own. The most common
+/// example is the health meters on companion assets. Asset condition meters
+/// may also include their own controls, such as the checkboxes that Starforged
+/// companion assets use to indicate they are "out of action".
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldConditionMeter {
     /// The unique Datasworn ID for this item.
@@ -756,6 +775,7 @@ pub struct AssetControlFieldSelectEnhancementChoiceOptionValue {
     pub enhanceMoves: Option<Box<Vec<MoveEnhancement>>>,
 }
 
+/// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldSelectEnhancementChoiceOption {
     /// A localized label for this input. In some contexts it may be undesirable
@@ -814,6 +834,7 @@ pub struct AssetControlFieldSelectEnhancementChoiceOptionGroupChoice {
     pub selected: Option<Box<bool>>,
 }
 
+/// Represents a grouping of options in a list of choices.
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldSelectEnhancementChoiceOptionGroup {
     #[serde(rename = "choices")]
@@ -824,6 +845,9 @@ pub struct AssetControlFieldSelectEnhancementChoiceOptionGroup {
     pub name: Label,
 }
 
+/// Select from player and/or asset enhancements. Use it to describe modal
+/// abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+/// (Sundered Isles).
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldSelectEnhancement {
     #[serde(rename = "choices")]
@@ -852,6 +876,10 @@ pub enum AssetControlFieldEnhancement {
     ConditionMeter(AssetControlFieldEnhancementConditionMeter),
 }
 
+/// Some assets provide a special condition meter of their own. The most common
+/// example is the health meters on companion assets. Asset condition meters
+/// may also include their own controls, such as the checkboxes that Starforged
+/// companion assets use to indicate they are "out of action".
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldEnhancementConditionMeter {
     /// The maximum value of this meter.
@@ -936,6 +964,7 @@ pub struct AssetOptionFieldSelectEnhancementChoiceOptionValue {
     pub enhanceMoves: Option<Box<Vec<MoveEnhancement>>>,
 }
 
+/// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectEnhancementChoiceOption {
     /// A localized label for this input. In some contexts it may be undesirable
@@ -994,6 +1023,7 @@ pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
     pub selected: Option<Box<bool>>,
 }
 
+/// Represents a grouping of options in a list of choices.
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroup {
     #[serde(rename = "choices")]
@@ -1004,6 +1034,9 @@ pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroup {
     pub name: Label,
 }
 
+/// Select from player and/or asset enhancements. Use it to describe modal
+/// abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+/// (Sundered Isles).
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectEnhancement {
     #[serde(rename = "choices")]
@@ -1035,6 +1068,7 @@ pub enum AssetOptionFieldSelectStatChoice {
     OptionGroup(AssetOptionFieldSelectStatChoiceOptionGroup),
 }
 
+/// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectStatChoiceOption {
     /// A localized label for this input. In some contexts it may be undesirable
@@ -1081,6 +1115,7 @@ pub struct AssetOptionFieldSelectStatChoiceOptionGroupChoice {
     pub selected: Option<Box<bool>>,
 }
 
+/// Represents a grouping of options in a list of choices.
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectStatChoiceOptionGroup {
     #[serde(rename = "choices")]
@@ -1091,6 +1126,7 @@ pub struct AssetOptionFieldSelectStatChoiceOptionGroup {
     pub name: Label,
 }
 
+/// Represents a list of mutually exclusive choices.
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectStat {
     #[serde(rename = "choices")]
@@ -1112,6 +1148,7 @@ pub struct AssetOptionFieldSelectStat {
     pub value: DictKey,
 }
 
+/// Represents an input that accepts plain text.
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldText {
     /// The unique Datasworn ID for this item.
@@ -1788,8 +1825,8 @@ pub type DomainDangerRowId = String;
 
 pub type DomainFeatureRowId = String;
 
-/// The ID of a Datasworn package that enhances another Datasworn package, and
-/// relies on another package to provide its ruleset.
+/// The ID of a Datasworn package that relies on an external package to provide
+/// its ruleset.
 pub type ExpansionId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -1904,6 +1941,7 @@ pub enum Move {
     SpecialTrack(MoveSpecialTrack),
 }
 
+/// A move that makes an action roll.
 #[derive(Serialize, Deserialize)]
 pub struct MoveActionRoll {
     /// The unique Datasworn ID for this item.
@@ -1999,6 +2037,8 @@ pub struct MoveNoRoll {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// A progress move that rolls on a standard progress track type (defined by the
+/// move object).
 #[derive(Serialize, Deserialize)]
 pub struct MoveProgressRoll {
     /// The unique Datasworn ID for this item.

@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The ID of a Datasworn package that enhances another Datasworn package, and
- * relies on another package to provide its ruleset.
+ * The ID of a Datasworn package that relies on an external package to provide
+ * its ruleset.
  */
 public class ExpansionId {
     @JsonValue

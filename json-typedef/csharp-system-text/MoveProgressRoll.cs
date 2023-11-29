@@ -5,6 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A progress move that rolls on a standard progress track type (defined by
+    /// the move object).
+    /// </summary>
     public class MoveProgressRoll : Move
     {
         [JsonPropertyName("roll_type")]

@@ -104,6 +104,9 @@
 						"description": "A dictionary object containing delve site domains."
 					}
 				}
+			},
+			"metadata": {
+				"description": "A standalone Datasworn package that describes its own ruleset."
 			}
 		},
 		"expansion": {
@@ -212,6 +215,9 @@
 						"description": "A dictionary object containing delve site domains."
 					}
 				}
+			},
+			"metadata": {
+				"description": "A Datasworn package that relies on an external package to provide its ruleset."
 			}
 		}
 	},
@@ -383,7 +389,7 @@
 		"ExpansionId": {
 			"type": "string",
 			"metadata": {
-				"description": "The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.",
+				"description": "The ID of a Datasworn package that relies on an external package to provide its ruleset.",
 				"examples": [
 					"delve"
 				],
@@ -1085,7 +1091,6 @@
 			"type": "uint8",
 			"metadata": {
 				"description": "Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).",
-				"typescriptType": "1|2|3|4|5",
 				"enumDescription": {
 					"1": "Troublesome",
 					"2": "Dangerous",
@@ -2031,6 +2036,9 @@
 								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 							}
 						}
+					},
+					"metadata": {
+						"description": "A move that makes an action roll."
 					}
 				},
 				"no_roll": {
@@ -2087,7 +2095,8 @@
 								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 							}
 						}
-					}
+					},
+					"metadata": {}
 				},
 				"progress_roll": {
 					"properties": {
@@ -2152,6 +2161,9 @@
 								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 							}
 						}
+					},
+					"metadata": {
+						"description": "A progress move that rolls on a standard progress track type (defined by the move object)."
 					}
 				},
 				"special_track": {
@@ -2211,7 +2223,8 @@
 								"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
 							}
 						}
-					}
+					},
+					"metadata": {}
 				}
 			}
 		},
@@ -2960,9 +2973,13 @@
 						"max": {
 							"type": "int8",
 							"metadata": {
-								"description": "The size of the clock -- in other words, the maximum number of filled clock segments."
+								"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
+								"typescriptType": "4 | 6 | 8 | 10"
 							}
 						}
+					},
+					"metadata": {
+						"description": "A clock with 4, 6, 8, or 10 segments."
 					}
 				},
 				"counter": {
@@ -2994,6 +3011,9 @@
 						"max": {
 							"type": "int16"
 						}
+					},
+					"metadata": {
+						"description": "A counter that starts at zero, with an optional maximum value."
 					}
 				},
 				"checkbox": {
@@ -3028,6 +3048,9 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
+					},
+					"metadata": {
+						"description": "Represents a checkbox."
 					}
 				}
 			}
@@ -3052,6 +3075,9 @@
 						"value": {
 							"type": "string"
 						}
+					},
+					"metadata": {
+						"description": "Represents an input that accepts plain text."
 					}
 				}
 			}
@@ -3110,6 +3136,9 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
+					},
+					"metadata": {
+						"description": "Represents a checkbox."
 					}
 				},
 				"card_flip": {
@@ -3144,6 +3173,9 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
+					},
+					"metadata": {
+						"description": "When its value is set to `true` it means that the card is flipped over. Some assets use this to represent a 'broken' state (e.g. Starforged Module assets)."
 					}
 				}
 			},
@@ -3236,6 +3268,9 @@
 								"description": "Checkbox controls rendered as part of the condition meter."
 							}
 						}
+					},
+					"metadata": {
+						"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\"."
 					}
 				},
 				"select_enhancement": {
@@ -3293,6 +3328,9 @@
 													"description": "Is this option currently selected?"
 												}
 											}
+										},
+										"metadata": {
+											"description": "Represents an option in a list of choices."
 										}
 									},
 									"option_group": {
@@ -3349,6 +3387,9 @@
 													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
+										},
+										"metadata": {
+											"description": "Represents a grouping of options in a list of choices."
 										}
 									}
 								}
@@ -3357,6 +3398,9 @@
 								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
+					},
+					"metadata": {
+						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
 					}
 				},
 				"checkbox": {
@@ -3391,6 +3435,9 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
+					},
+					"metadata": {
+						"description": "Represents a checkbox."
 					}
 				},
 				"card_flip": {
@@ -3425,6 +3472,9 @@
 								"description": "Does this field disable the asset when its value is set to `true`?"
 							}
 						}
+					},
+					"metadata": {
+						"description": "When its value is set to `true` it means that the card is flipped over. Some assets use this to represent a 'broken' state (e.g. Starforged Module assets)."
 					}
 				}
 			}
@@ -3440,6 +3490,9 @@
 								"description": "The maximum value of this meter."
 							}
 						}
+					},
+					"metadata": {
+						"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\"."
 					}
 				}
 			}
@@ -3527,6 +3580,9 @@
 													"description": "Is this option currently selected?"
 												}
 											}
+										},
+										"metadata": {
+											"description": "Represents an option in a list of choices."
 										}
 									},
 									"option_group": {
@@ -3574,6 +3630,9 @@
 													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
+										},
+										"metadata": {
+											"description": "Represents a grouping of options in a list of choices."
 										}
 									}
 								}
@@ -3582,6 +3641,9 @@
 								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
+					},
+					"metadata": {
+						"description": "Represents a list of mutually exclusive choices."
 					}
 				},
 				"select_enhancement": {
@@ -3639,6 +3701,9 @@
 													"description": "Is this option currently selected?"
 												}
 											}
+										},
+										"metadata": {
+											"description": "Represents an option in a list of choices."
 										}
 									},
 									"option_group": {
@@ -3695,6 +3760,9 @@
 													"propertyPattern": "^([a-z][a-z_]*)$"
 												}
 											}
+										},
+										"metadata": {
+											"description": "Represents a grouping of options in a list of choices."
 										}
 									}
 								}
@@ -3703,6 +3771,9 @@
 								"propertyPattern": "^([a-z][a-z_]*)$"
 							}
 						}
+					},
+					"metadata": {
+						"description": "Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles)."
 					}
 				},
 				"text": {
@@ -3722,6 +3793,9 @@
 						"value": {
 							"type": "string"
 						}
+					},
+					"metadata": {
+						"description": "Represents an input that accepts plain text."
 					}
 				}
 			}

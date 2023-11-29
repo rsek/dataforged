@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Represents a checkbox.
+ */
 @JsonSerialize
 public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
     @JsonProperty("disables_asset")

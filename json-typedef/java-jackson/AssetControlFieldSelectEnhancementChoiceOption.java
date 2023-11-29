@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Represents an option in a list of choices.
+ */
 @JsonSerialize
 public class AssetControlFieldSelectEnhancementChoiceOption extends AssetControlFieldSelectEnhancementChoice {
     @JsonProperty("label")

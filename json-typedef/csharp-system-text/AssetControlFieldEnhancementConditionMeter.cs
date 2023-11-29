@@ -4,6 +4,12 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Some assets provide a special condition meter of their own. The most
+    /// common example is the health meters on companion assets. Asset condition
+    /// meters may also include their own controls, such as the checkboxes that
+    /// Starforged companion assets use to indicate they are "out of action".
+    /// </summary>
     public class AssetControlFieldEnhancementConditionMeter : AssetControlFieldEnhancement
     {
         [JsonPropertyName("field_type")]

@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Represents an option in a list of choices.
+    /// </summary>
     public class AssetOptionFieldSelectStatChoiceOption : AssetOptionFieldSelectStatChoice
     {
         [JsonPropertyName("option_type")]

@@ -5,6 +5,11 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Select from player and/or asset enhancements. Use it to describe modal
+    /// abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+    /// (Sundered Isles).
+    /// </summary>
     public class AssetOptionFieldSelectEnhancement : AssetOptionField
     {
         [JsonPropertyName("field_type")]

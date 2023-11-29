@@ -123,7 +123,7 @@ export type DomainDangerRowId = string;
  */
 export type DomainFeatureRowId = string;
 /**
- * The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.
+ * The ID of a Datasworn package that relies on an external package to provide its ruleset.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "ExpansionId".
@@ -4053,6 +4053,8 @@ export interface Ruleset {
   };
 }
 /**
+ * A standalone Datasworn package that describes its own ruleset.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "Expansion".
  */

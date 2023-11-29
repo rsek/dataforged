@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A counter that starts at zero, with an optional maximum value.
+    /// </summary>
     public class AssetAbilityControlFieldCounter : AssetAbilityControlField
     {
         [JsonPropertyName("field_type")]

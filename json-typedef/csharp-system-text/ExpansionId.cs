@@ -7,8 +7,8 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// The ID of a Datasworn package that enhances another Datasworn package,
-    /// and relies on another package to provide its ruleset.
+    /// The ID of a Datasworn package that relies on an external package to
+    /// provide its ruleset.
     /// </summary>
     [JsonConverter(typeof(ExpansionIdJsonConverter))]
     public class ExpansionId

@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
+/**
+ * Represents a list of mutually exclusive choices.
+ */
 @JsonSerialize
 public class AssetOptionFieldSelectStat extends AssetOptionField {
     @JsonProperty("choices")

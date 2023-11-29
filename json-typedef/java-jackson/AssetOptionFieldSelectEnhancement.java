@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
+/**
+ * Select from player and/or asset enhancements. Use it to describe modal
+ * abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+ * (Sundered Isles).
+ */
 @JsonSerialize
 public class AssetOptionFieldSelectEnhancement extends AssetOptionField {
     @JsonProperty("choices")

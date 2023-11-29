@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Represents an input that accepts plain text.
+    /// </summary>
     public class AssetAbilityOptionFieldText : AssetAbilityOptionField
     {
         [JsonPropertyName("field_type")]

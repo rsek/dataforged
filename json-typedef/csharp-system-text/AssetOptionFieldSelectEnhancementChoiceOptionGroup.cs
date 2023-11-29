@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Represents a grouping of options in a list of choices.
+    /// </summary>
     public class AssetOptionFieldSelectEnhancementChoiceOptionGroup : AssetOptionFieldSelectEnhancementChoice
     {
         [JsonPropertyName("option_type")]

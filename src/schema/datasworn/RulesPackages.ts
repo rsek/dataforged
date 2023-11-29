@@ -103,8 +103,9 @@ export const Ruleset = Type.Object(
 	},
 	{
 		$id: '#/$defs/Ruleset',
+
 		description:
-			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.'
+			'A standalone Datasworn package that describes its own ruleset.'
 	}
 )
 export type Ruleset = Static<typeof Ruleset>
@@ -123,7 +124,11 @@ export const Expansion = Utils.Assign(
 			ruleset: Type.Ref<typeof Id.RulesetId>('#/$defs/RulesetId')
 		})
 	],
-	{ $id: '#/$defs/Expansion' }
+	{
+		description:
+			'A Datasworn package that relies on an external package to provide its ruleset.',
+		$id: '#/$defs/Expansion'
+	}
 )
 export type Expansion = Static<typeof Expansion>
 
@@ -131,6 +136,8 @@ export const RulesPackage = Utils.DiscriminatedUnion(
 	[Ruleset, Expansion],
 	'package_type',
 	{
+		description:
+			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.'
 		// title: 'RulesPackage'
 		// $id: '#/$defs/RulesPackage'
 	}

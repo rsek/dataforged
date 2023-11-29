@@ -15,12 +15,7 @@ export const ChallengeRank = UnionEnumFromRecord(
 	{
 		$id: '#/$defs/ChallengeRank',
 		description:
-			'Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).',
-		[JsonTypeDef]: {
-			metadata: {
-				typescriptType: `1|2|3|4|5`
-			}
-		}
+			'Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).'
 	}
 )
 export type ChallengeRank = Static<typeof ChallengeRank>

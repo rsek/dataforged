@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * A counter that starts at zero, with an optional maximum value.
+ */
 @JsonSerialize
 public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
     @JsonProperty("id")

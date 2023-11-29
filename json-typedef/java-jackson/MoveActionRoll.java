@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * A move that makes an action roll.
+ */
 @JsonSerialize
 public class MoveActionRoll extends Move {
     @JsonProperty("id")

@@ -6,6 +6,10 @@
  */
 export type RulesPackage = RulesPackageExpansion | RulesPackageRuleset;
 
+/**
+ * A Datasworn package that relies on an external package to provide its
+ * ruleset.
+ */
 export interface RulesPackageExpansion {
   package_type: "expansion";
   datasworn_version: SemanticVersion;
@@ -68,6 +72,9 @@ export interface RulesPackageExpansion {
   truths?: { [key: string]: Truth };
 }
 
+/**
+ * A standalone Datasworn package that describes its own ruleset.
+ */
 export interface RulesPackageRuleset {
   package_type: "ruleset";
 
@@ -381,6 +388,9 @@ export interface AssetAbility {
 
 export type AssetAbilityControlField = AssetAbilityControlFieldCheckbox | AssetAbilityControlFieldClock | AssetAbilityControlFieldCounter;
 
+/**
+ * Represents a checkbox.
+ */
 export interface AssetAbilityControlFieldCheckbox {
   field_type: "checkbox";
 
@@ -413,6 +423,9 @@ export interface AssetAbilityControlFieldCheckbox {
   value: boolean;
 }
 
+/**
+ * A clock with 4, 6, 8, or 10 segments.
+ */
 export interface AssetAbilityControlFieldClock {
   field_type: "clock";
 
@@ -432,7 +445,7 @@ export interface AssetAbilityControlFieldClock {
    * The size of the clock -- in other words, the maximum number of filled clock
    * segments.
    */
-  max: number;
+  max: 4 | 6 | 8 | 10;
 
   /**
    * The minimum number of filled clock segments. This is always 0.
@@ -445,6 +458,9 @@ export interface AssetAbilityControlFieldClock {
   value: number;
 }
 
+/**
+ * A counter that starts at zero, with an optional maximum value.
+ */
 export interface AssetAbilityControlFieldCounter {
   field_type: "counter";
 
@@ -478,6 +494,9 @@ export type AssetAbilityId = string;
 
 export type AssetAbilityOptionField = AssetAbilityOptionFieldText;
 
+/**
+ * Represents an input that accepts plain text.
+ */
 export interface AssetAbilityOptionFieldText {
   field_type: "text";
 
@@ -515,6 +534,11 @@ export interface AssetAttachment {
  */
 export type AssetConditionMeterControlField = AssetConditionMeterControlFieldCardFlip | AssetConditionMeterControlFieldCheckbox;
 
+/**
+ * When its value is set to `true` it means that the card is flipped over.
+ * Some assets use this to represent a 'broken' state (e.g. Starforged Module
+ * assets).
+ */
 export interface AssetConditionMeterControlFieldCardFlip {
   field_type: "card_flip";
 
@@ -547,6 +571,9 @@ export interface AssetConditionMeterControlFieldCardFlip {
   value: boolean;
 }
 
+/**
+ * Represents a checkbox.
+ */
 export interface AssetConditionMeterControlFieldCheckbox {
   field_type: "checkbox";
 
@@ -583,6 +610,11 @@ export type AssetConditionMeterControlFieldId = string;
 
 export type AssetControlField = AssetControlFieldCardFlip | AssetControlFieldCheckbox | AssetControlFieldConditionMeter | AssetControlFieldSelectEnhancement;
 
+/**
+ * When its value is set to `true` it means that the card is flipped over.
+ * Some assets use this to represent a 'broken' state (e.g. Starforged Module
+ * assets).
+ */
 export interface AssetControlFieldCardFlip {
   field_type: "card_flip";
 
@@ -615,6 +647,9 @@ export interface AssetControlFieldCardFlip {
   value: boolean;
 }
 
+/**
+ * Represents a checkbox.
+ */
 export interface AssetControlFieldCheckbox {
   field_type: "checkbox";
 
@@ -665,6 +700,12 @@ export interface AssetControlFieldConditionMeterMoves {
   suffer?: MoveIdWildcard[];
 }
 
+/**
+ * Some assets provide a special condition meter of their own. The most common
+ * example is the health meters on companion assets. Asset condition meters
+ * may also include their own controls, such as the checkboxes that Starforged
+ * companion assets use to indicate they are "out of action".
+ */
 export interface AssetControlFieldConditionMeter {
   field_type: "condition_meter";
 
@@ -717,6 +758,9 @@ export interface AssetControlFieldSelectEnhancementChoiceOptionValue {
   enhance_moves?: MoveEnhancement[];
 }
 
+/**
+ * Represents an option in a list of choices.
+ */
 export interface AssetControlFieldSelectEnhancementChoiceOption {
   option_type: "option";
 
@@ -773,6 +817,9 @@ export interface AssetControlFieldSelectEnhancementChoiceOptionGroupChoice {
   selected?: boolean;
 }
 
+/**
+ * Represents a grouping of options in a list of choices.
+ */
 export interface AssetControlFieldSelectEnhancementChoiceOptionGroup {
   option_type: "option_group";
   choices: { [key: string]: AssetControlFieldSelectEnhancementChoiceOptionGroupChoice };
@@ -783,6 +830,11 @@ export interface AssetControlFieldSelectEnhancementChoiceOptionGroup {
   name: Label;
 }
 
+/**
+ * Select from player and/or asset enhancements. Use it to describe modal
+ * abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+ * (Sundered Isles).
+ */
 export interface AssetControlFieldSelectEnhancement {
   field_type: "select_enhancement";
   choices: { [key: string]: AssetControlFieldSelectEnhancementChoice };
@@ -808,6 +860,12 @@ export interface AssetControlFieldSelectEnhancement {
 
 export type AssetControlFieldEnhancement = AssetControlFieldEnhancementConditionMeter;
 
+/**
+ * Some assets provide a special condition meter of their own. The most common
+ * example is the health meters on companion assets. Asset condition meters
+ * may also include their own controls, such as the checkboxes that Starforged
+ * companion assets use to indicate they are "out of action".
+ */
 export interface AssetControlFieldEnhancementConditionMeter {
   field_type: "condition_meter";
 
@@ -867,6 +925,9 @@ export interface AssetOptionFieldSelectEnhancementChoiceOptionValue {
   enhance_moves?: MoveEnhancement[];
 }
 
+/**
+ * Represents an option in a list of choices.
+ */
 export interface AssetOptionFieldSelectEnhancementChoiceOption {
   option_type: "option";
 
@@ -923,6 +984,9 @@ export interface AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
   selected?: boolean;
 }
 
+/**
+ * Represents a grouping of options in a list of choices.
+ */
 export interface AssetOptionFieldSelectEnhancementChoiceOptionGroup {
   option_type: "option_group";
   choices: { [key: string]: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice };
@@ -933,6 +997,11 @@ export interface AssetOptionFieldSelectEnhancementChoiceOptionGroup {
   name: Label;
 }
 
+/**
+ * Select from player and/or asset enhancements. Use it to describe modal
+ * abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+ * (Sundered Isles).
+ */
 export interface AssetOptionFieldSelectEnhancement {
   field_type: "select_enhancement";
   choices: { [key: string]: AssetOptionFieldSelectEnhancementChoice };
@@ -958,6 +1027,9 @@ export interface AssetOptionFieldSelectEnhancement {
 
 export type AssetOptionFieldSelectStatChoice = AssetOptionFieldSelectStatChoiceOption | AssetOptionFieldSelectStatChoiceOptionGroup;
 
+/**
+ * Represents an option in a list of choices.
+ */
 export interface AssetOptionFieldSelectStatChoiceOption {
   option_type: "option";
 
@@ -1006,6 +1078,9 @@ export interface AssetOptionFieldSelectStatChoiceOptionGroupChoice {
   selected?: boolean;
 }
 
+/**
+ * Represents a grouping of options in a list of choices.
+ */
 export interface AssetOptionFieldSelectStatChoiceOptionGroup {
   option_type: "option_group";
   choices: { [key: string]: AssetOptionFieldSelectStatChoiceOptionGroupChoice };
@@ -1016,6 +1091,9 @@ export interface AssetOptionFieldSelectStatChoiceOptionGroup {
   name: Label;
 }
 
+/**
+ * Represents a list of mutually exclusive choices.
+ */
 export interface AssetOptionFieldSelectStat {
   field_type: "select_stat";
   choices: { [key: string]: AssetOptionFieldSelectStatChoice };
@@ -1039,6 +1117,9 @@ export interface AssetOptionFieldSelectStat {
   value: DictKey;
 }
 
+/**
+ * Represents an input that accepts plain text.
+ */
 export interface AssetOptionFieldText {
   field_type: "text";
 
@@ -1232,7 +1313,7 @@ export type AtlasIdWildcard = string;
 /**
  * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  */
-export type ChallengeRank = 1|2|3|4|5;
+export type ChallengeRank = number;
 
 /**
  * A basic, rollable player character resource.
@@ -1557,8 +1638,8 @@ export type DomainDangerRowId = string;
 export type DomainFeatureRowId = string;
 
 /**
- * The ID of a Datasworn package that enhances another Datasworn package, and
- * relies on another package to provide its ruleset.
+ * The ID of a Datasworn package that relies on an external package to provide
+ * its ruleset.
  */
 export type ExpansionId = string;
 
@@ -1649,6 +1730,9 @@ export type MarkdownString = string;
 
 export type Move = MoveActionRoll | MoveNoRoll | MoveProgressRoll | MoveSpecialTrack;
 
+/**
+ * A move that makes an action roll.
+ */
 export interface MoveActionRoll {
   roll_type: "action_roll";
 
@@ -1742,6 +1826,10 @@ export interface MoveNoRoll {
   suggestions?: Suggestions;
 }
 
+/**
+ * A progress move that rolls on a standard progress track type (defined by the
+ * move object).
+ */
 export interface MoveProgressRoll {
   roll_type: "progress_roll";
 

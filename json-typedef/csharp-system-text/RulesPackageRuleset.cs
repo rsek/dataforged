@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A standalone Datasworn package that describes its own ruleset.
+    /// </summary>
     public class RulesPackageRuleset : RulesPackage
     {
         [JsonPropertyName("package_type")]

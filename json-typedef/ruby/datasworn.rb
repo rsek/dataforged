@@ -18,6 +18,8 @@ module Datasworn
     end
   end
 
+  # A Datasworn package that relies on an external package to provide its
+  # ruleset.
   class RulesPackageExpansion < RulesPackage
     attr_accessor :datasworn_version
     attr_accessor :id
@@ -74,6 +76,7 @@ module Datasworn
     end
   end
 
+  # A standalone Datasworn package that describes its own ruleset.
   class RulesPackageRuleset < RulesPackage
     attr_accessor :assets
     attr_accessor :datasworn_version
@@ -527,6 +530,7 @@ module Datasworn
     end
   end
 
+  # Represents a checkbox.
   class AssetAbilityControlFieldCheckbox < AssetAbilityControlField
     attr_accessor :disables_asset
     attr_accessor :id
@@ -556,6 +560,7 @@ module Datasworn
     end
   end
 
+  # A clock with 4, 6, 8, or 10 segments.
   class AssetAbilityControlFieldClock < AssetAbilityControlField
     attr_accessor :id
     attr_accessor :label
@@ -585,6 +590,7 @@ module Datasworn
     end
   end
 
+  # A counter that starts at zero, with an optional maximum value.
   class AssetAbilityControlFieldCounter < AssetAbilityControlField
     attr_accessor :id
     attr_accessor :label
@@ -652,6 +658,7 @@ module Datasworn
     end
   end
 
+  # Represents an input that accepts plain text.
   class AssetAbilityOptionFieldText < AssetAbilityOptionField
     attr_accessor :id
     attr_accessor :label
@@ -724,6 +731,9 @@ module Datasworn
     end
   end
 
+  # When its value is set to `true` it means that the card is flipped over.
+  # Some assets use this to represent a 'broken' state (e.g. Starforged Module
+  # assets).
   class AssetConditionMeterControlFieldCardFlip < AssetConditionMeterControlField
     attr_accessor :disables_asset
     attr_accessor :id
@@ -753,6 +763,7 @@ module Datasworn
     end
   end
 
+  # Represents a checkbox.
   class AssetConditionMeterControlFieldCheckbox < AssetConditionMeterControlField
     attr_accessor :disables_asset
     attr_accessor :id
@@ -809,6 +820,9 @@ module Datasworn
     end
   end
 
+  # When its value is set to `true` it means that the card is flipped over.
+  # Some assets use this to represent a 'broken' state (e.g. Starforged Module
+  # assets).
   class AssetControlFieldCardFlip < AssetControlField
     attr_accessor :disables_asset
     attr_accessor :id
@@ -838,6 +852,7 @@ module Datasworn
     end
   end
 
+  # Represents a checkbox.
   class AssetControlFieldCheckbox < AssetControlField
     attr_accessor :disables_asset
     attr_accessor :id
@@ -893,6 +908,10 @@ module Datasworn
     end
   end
 
+  # Some assets provide a special condition meter of their own. The most common
+  # example is the health meters on companion assets. Asset condition meters
+  # may also include their own controls, such as the checkboxes that Starforged
+  # companion assets use to indicate they are "out of action".
   class AssetControlFieldConditionMeter < AssetControlField
     attr_accessor :id
     attr_accessor :label
@@ -959,6 +978,7 @@ module Datasworn
     end
   end
 
+  # Represents an option in a list of choices.
   class AssetControlFieldSelectEnhancementChoiceOption < AssetControlFieldSelectEnhancementChoice
     attr_accessor :label
     attr_accessor :value
@@ -1057,6 +1077,7 @@ module Datasworn
     end
   end
 
+  # Represents a grouping of options in a list of choices.
   class AssetControlFieldSelectEnhancementChoiceOptionGroup < AssetControlFieldSelectEnhancementChoice
     attr_accessor :choices
     attr_accessor :name
@@ -1077,6 +1098,9 @@ module Datasworn
     end
   end
 
+  # Select from player and/or asset enhancements. Use it to describe modal
+  # abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+  # (Sundered Isles).
   class AssetControlFieldSelectEnhancement < AssetControlField
     attr_accessor :choices
     attr_accessor :id
@@ -1113,6 +1137,10 @@ module Datasworn
     end
   end
 
+  # Some assets provide a special condition meter of their own. The most common
+  # example is the health meters on companion assets. Asset condition meters
+  # may also include their own controls, such as the checkboxes that Starforged
+  # companion assets use to indicate they are "out of action".
   class AssetControlFieldEnhancementConditionMeter < AssetControlFieldEnhancement
     attr_accessor :max
 
@@ -1271,6 +1299,7 @@ module Datasworn
     end
   end
 
+  # Represents an option in a list of choices.
   class AssetOptionFieldSelectEnhancementChoiceOption < AssetOptionFieldSelectEnhancementChoice
     attr_accessor :label
     attr_accessor :value
@@ -1369,6 +1398,7 @@ module Datasworn
     end
   end
 
+  # Represents a grouping of options in a list of choices.
   class AssetOptionFieldSelectEnhancementChoiceOptionGroup < AssetOptionFieldSelectEnhancementChoice
     attr_accessor :choices
     attr_accessor :name
@@ -1389,6 +1419,9 @@ module Datasworn
     end
   end
 
+  # Select from player and/or asset enhancements. Use it to describe modal
+  # abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+  # (Sundered Isles).
   class AssetOptionFieldSelectEnhancement < AssetOptionField
     attr_accessor :choices
     attr_accessor :id
@@ -1426,6 +1459,7 @@ module Datasworn
     end
   end
 
+  # Represents an option in a list of choices.
   class AssetOptionFieldSelectStatChoiceOption < AssetOptionFieldSelectStatChoice
     attr_accessor :label
     attr_accessor :value
@@ -1504,6 +1538,7 @@ module Datasworn
     end
   end
 
+  # Represents a grouping of options in a list of choices.
   class AssetOptionFieldSelectStatChoiceOptionGroup < AssetOptionFieldSelectStatChoice
     attr_accessor :choices
     attr_accessor :name
@@ -1524,6 +1559,7 @@ module Datasworn
     end
   end
 
+  # Represents a list of mutually exclusive choices.
   class AssetOptionFieldSelectStat < AssetOptionField
     attr_accessor :choices
     attr_accessor :id
@@ -1550,6 +1586,7 @@ module Datasworn
     end
   end
 
+  # Represents an input that accepts plain text.
   class AssetOptionFieldText < AssetOptionField
     attr_accessor :id
     attr_accessor :label
@@ -2572,8 +2609,8 @@ module Datasworn
     end
   end
 
-  # The ID of a Datasworn package that enhances another Datasworn package, and
-  # relies on another package to provide its ruleset.
+  # The ID of a Datasworn package that relies on an external package to provide
+  # its ruleset.
   class ExpansionID
     attr_accessor :value
 
@@ -2792,6 +2829,7 @@ module Datasworn
     end
   end
 
+  # A move that makes an action roll.
   class MoveActionRoll < Move
     attr_accessor :id
     attr_accessor :name
@@ -2877,6 +2915,8 @@ module Datasworn
     end
   end
 
+  # A progress move that rolls on a standard progress track type (defined by the
+  # move object).
   class MoveProgressRoll < Move
     attr_accessor :id
     attr_accessor :name

@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Represents an input that accepts plain text.
+ */
 @JsonSerialize
 public class AssetAbilityOptionFieldText extends AssetAbilityOptionField {
     @JsonProperty("id")

@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A clock with 4, 6, 8, or 10 segments.
+    /// </summary>
     public class AssetAbilityControlFieldClock : AssetAbilityControlField
     {
         [JsonPropertyName("field_type")]

@@ -5,6 +5,11 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * When its value is set to `true` it means that the card is flipped over.
+ * Some assets use this to represent a 'broken' state (e.g. Starforged Module
+ * assets).
+ */
 @JsonSerialize
 public class AssetControlFieldCardFlip extends AssetControlField {
     @JsonProperty("disables_asset")

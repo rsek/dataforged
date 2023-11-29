@@ -177,7 +177,10 @@ export function toJtdDiscriminator(
 	const mapping = Object.fromEntries(
 		schema[Members].map((subschema) => [
 			subschema.properties[discriminator].const,
-			omit(toJtdProperties(subschema), `properties.${discriminator}`)
+			{
+				...omit(toJtdProperties(subschema), `properties.${discriminator}`),
+				metadata: extractMetadata(subschema)
+			}
 		])
 	)
 

@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A move that makes an action roll.
+    /// </summary>
     public class MoveActionRoll : Move
     {
         [JsonPropertyName("roll_type")]

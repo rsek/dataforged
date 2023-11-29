@@ -52,6 +52,8 @@ func (v *RulesPackage) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// A Datasworn package that relies on an external package to provide its
+// ruleset.
 type RulesPackageExpansion struct {
 	DataswornVersion SemanticVersion `json:"datasworn_version"`
 
@@ -96,6 +98,7 @@ type RulesPackageExpansion struct {
 	Truths map[string]Truth `json:"truths,omitempty"`
 }
 
+// A standalone Datasworn package that describes its own ruleset.
 type RulesPackageRuleset struct {
 	// A dictionary object containing asset types, which contain assets.
 	Assets map[string]AssetType `json:"assets"`
@@ -433,6 +436,7 @@ func (v *AssetAbilityControlField) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// Represents a checkbox.
 type AssetAbilityControlFieldCheckbox struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
@@ -453,6 +457,7 @@ type AssetAbilityControlFieldCheckbox struct {
 	Value bool `json:"value"`
 }
 
+// A clock with 4, 6, 8, or 10 segments.
 type AssetAbilityControlFieldClock struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
@@ -473,6 +478,7 @@ type AssetAbilityControlFieldClock struct {
 	Value int8 `json:"value"`
 }
 
+// A counter that starts at zero, with an optional maximum value.
 type AssetAbilityControlFieldCounter struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
@@ -532,6 +538,7 @@ func (v *AssetAbilityOptionField) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// Represents an input that accepts plain text.
 type AssetAbilityOptionFieldText struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityOptionFieldID `json:"id"`
@@ -600,6 +607,9 @@ func (v *AssetConditionMeterControlField) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// When its value is set to `true` it means that the card is flipped over.
+// Some assets use this to represent a 'broken' state (e.g. Starforged Module
+// assets).
 type AssetConditionMeterControlFieldCardFlip struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
@@ -620,6 +630,7 @@ type AssetConditionMeterControlFieldCardFlip struct {
 	Value bool `json:"value"`
 }
 
+// Represents a checkbox.
 type AssetConditionMeterControlFieldCheckbox struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
@@ -697,6 +708,9 @@ func (v *AssetControlField) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// When its value is set to `true` it means that the card is flipped over.
+// Some assets use this to represent a 'broken' state (e.g. Starforged Module
+// assets).
 type AssetControlFieldCardFlip struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
@@ -717,6 +731,7 @@ type AssetControlFieldCardFlip struct {
 	Value bool `json:"value"`
 }
 
+// Represents a checkbox.
 type AssetControlFieldCheckbox struct {
 	// Does this field disable the asset when its value is set to `true`?
 	DisablesAsset bool `json:"disables_asset"`
@@ -749,6 +764,10 @@ type AssetControlFieldConditionMeterMoves struct {
 	Suffer []MoveIDWildcard `json:"suffer,omitempty"`
 }
 
+// Some assets provide a special condition meter of their own. The most common
+// example is the health meters on companion assets. Asset condition meters
+// may also include their own controls, such as the checkboxes that Starforged
+// companion assets use to indicate they are "out of action".
 type AssetControlFieldConditionMeter struct {
 	// The unique Datasworn ID for this item.
 	ID AssetControlFieldID `json:"id"`
@@ -825,6 +844,7 @@ type AssetControlFieldSelectEnhancementChoiceOptionValue struct {
 	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
 }
 
+// Represents an option in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOption struct {
 	// A localized label for this input. In some contexts it may be undesirable to
 	// render this text, but it should always be exposed to assistive technology
@@ -867,6 +887,7 @@ type AssetControlFieldSelectEnhancementChoiceOptionGroupChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
+// Represents a grouping of options in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOptionGroup struct {
 	Choices map[string]AssetControlFieldSelectEnhancementChoiceOptionGroupChoice `json:"choices"`
 
@@ -874,6 +895,9 @@ type AssetControlFieldSelectEnhancementChoiceOptionGroup struct {
 	Name Label `json:"name"`
 }
 
+// Select from player and/or asset enhancements. Use it to describe modal
+// abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+// (Sundered Isles).
 type AssetControlFieldSelectEnhancement struct {
 	Choices map[string]AssetControlFieldSelectEnhancementChoice `json:"choices"`
 
@@ -927,6 +951,10 @@ func (v *AssetControlFieldEnhancement) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// Some assets provide a special condition meter of their own. The most common
+// example is the health meters on companion assets. Asset condition meters
+// may also include their own controls, such as the checkboxes that Starforged
+// companion assets use to indicate they are "out of action".
 type AssetControlFieldEnhancementConditionMeter struct {
 	// The maximum value of this meter.
 	Max int8 `json:"max"`
@@ -1061,6 +1089,7 @@ type AssetOptionFieldSelectEnhancementChoiceOptionValue struct {
 	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
 }
 
+// Represents an option in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOption struct {
 	// A localized label for this input. In some contexts it may be undesirable to
 	// render this text, but it should always be exposed to assistive technology
@@ -1103,6 +1132,7 @@ type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
+// Represents a grouping of options in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOptionGroup struct {
 	Choices map[string]AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice `json:"choices"`
 
@@ -1110,6 +1140,9 @@ type AssetOptionFieldSelectEnhancementChoiceOptionGroup struct {
 	Name Label `json:"name"`
 }
 
+// Select from player and/or asset enhancements. Use it to describe modal
+// abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+// (Sundered Isles).
 type AssetOptionFieldSelectEnhancement struct {
 	Choices map[string]AssetOptionFieldSelectEnhancementChoice `json:"choices"`
 
@@ -1169,6 +1202,7 @@ func (v *AssetOptionFieldSelectStatChoice) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// Represents an option in a list of choices.
 type AssetOptionFieldSelectStatChoiceOption struct {
 	// A localized label for this input. In some contexts it may be undesirable to
 	// render this text, but it should always be exposed to assistive technology
@@ -1204,6 +1238,7 @@ type AssetOptionFieldSelectStatChoiceOptionGroupChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
+// Represents a grouping of options in a list of choices.
 type AssetOptionFieldSelectStatChoiceOptionGroup struct {
 	Choices map[string]AssetOptionFieldSelectStatChoiceOptionGroupChoice `json:"choices"`
 
@@ -1211,6 +1246,7 @@ type AssetOptionFieldSelectStatChoiceOptionGroup struct {
 	Name Label `json:"name"`
 }
 
+// Represents a list of mutually exclusive choices.
 type AssetOptionFieldSelectStat struct {
 	Choices map[string]AssetOptionFieldSelectStatChoice `json:"choices"`
 
@@ -1227,6 +1263,7 @@ type AssetOptionFieldSelectStat struct {
 	Value DictKey `json:"value"`
 }
 
+// Represents an input that accepts plain text.
 type AssetOptionFieldText struct {
 	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
@@ -1676,8 +1713,8 @@ type DomainDangerRowID = string
 
 type DomainFeatureRowID = string
 
-// The ID of a Datasworn package that enhances another Datasworn package, and
-// relies on another package to provide its ruleset.
+// The ID of a Datasworn package that relies on an external package to provide
+// its ruleset.
 type ExpansionID = string
 
 type I18nHint struct {
@@ -1801,6 +1838,7 @@ func (v *Move) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// A move that makes an action roll.
 type MoveActionRoll struct {
 	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
@@ -1867,6 +1905,8 @@ type MoveNoRoll struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// A progress move that rolls on a standard progress track type (defined by the
+// move object).
 type MoveProgressRoll struct {
 	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`

@@ -169,7 +169,7 @@
 		"ExpansionId": {
 			"title": "ExpansionId",
 			"type": "string",
-			"description": "The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.",
+			"description": "The ID of a Datasworn package that relies on an external package to provide its ruleset.",
 			"examples": ["delve"],
 			"pattern": "^([a-z0-9_]{3,})$"
 		},
@@ -850,7 +850,8 @@
 		"ChallengeRank": {
 			"title": "ChallengeRank",
 			"description": "Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
-			"enum": [1, 2, 3, 4, 5]
+			"enum": [1, 2, 3, 4, 5],
+			"typescriptType": "1|2|3|4|5"
 		},
 		"ProgressTrackTypeInfo": {
 			"title": "ProgressTrackTypeInfo",
@@ -3114,7 +3115,8 @@
 							},
 							"max": {
 								"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
-								"enum": [4, 6, 8, 10]
+								"enum": [4, 6, 8, 10],
+								"typescriptType": "4|6|8|10"
 							},
 							"field_type": {
 								"const": "clock",
@@ -5891,7 +5893,7 @@
 		"Ruleset": {
 			"title": "Ruleset",
 			"type": "object",
-			"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
+			"description": "A standalone Datasworn package that describes its own ruleset.",
 			"required": [
 				"id",
 				"datasworn_version",
@@ -6020,6 +6022,7 @@
 		"Expansion": {
 			"title": "Expansion",
 			"type": "object",
+			"description": "A Datasworn package that relies on an external package to provide its ruleset.",
 			"required": ["id", "datasworn_version", "package_type", "ruleset"],
 			"properties": {
 				"id": {

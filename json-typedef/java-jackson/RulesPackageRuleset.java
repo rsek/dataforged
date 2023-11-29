@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
+/**
+ * A standalone Datasworn package that describes its own ruleset.
+ */
 @JsonSerialize
 public class RulesPackageRuleset extends RulesPackage {
     @JsonProperty("assets")

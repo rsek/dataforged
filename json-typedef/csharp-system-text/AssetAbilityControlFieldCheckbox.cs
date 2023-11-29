@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Represents a checkbox.
+    /// </summary>
     public class AssetAbilityControlFieldCheckbox : AssetAbilityControlField
     {
         [JsonPropertyName("field_type")]

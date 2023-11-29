@@ -7,6 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * A progress move that rolls on a standard progress track type (defined by the
+ * move object).
+ */
 @JsonSerialize
 public class MoveProgressRoll extends Move {
     @JsonProperty("id")

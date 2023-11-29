@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * A clock with 4, 6, 8, or 10 segments.
+ */
 @JsonSerialize
 public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     @JsonProperty("id")

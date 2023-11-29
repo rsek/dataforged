@@ -30,6 +30,11 @@ class RulesPackage:
 
 @dataclass
 class RulesPackageExpansion(RulesPackage):
+    """
+    A Datasworn package that relies on an external package to provide its
+    ruleset.
+    """
+
     datasworn_version: 'SemanticVersion'
     id: 'ExpansionID'
     ruleset: 'RulesetID'
@@ -140,6 +145,10 @@ class RulesPackageExpansion(RulesPackage):
 
 @dataclass
 class RulesPackageRuleset(RulesPackage):
+    """
+    A standalone Datasworn package that describes its own ruleset.
+    """
+
     assets: 'Dict[str, AssetType]'
     """
     A dictionary object containing asset types, which contain assets.
@@ -704,6 +713,10 @@ class AssetAbilityControlField:
 
 @dataclass
 class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
+    """
+    Represents a checkbox.
+    """
+
     disables_asset: 'bool'
     """
     Does this field disable the asset when its value is set to `true`?
@@ -755,6 +768,10 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
 
 @dataclass
 class AssetAbilityControlFieldClock(AssetAbilityControlField):
+    """
+    A clock with 4, 6, 8, or 10 segments.
+    """
+
     id: 'AssetAbilityControlFieldID'
     """
     The unique Datasworn ID for this item.
@@ -806,6 +823,10 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
 
 @dataclass
 class AssetAbilityControlFieldCounter(AssetAbilityControlField):
+    """
+    A counter that starts at zero, with an optional maximum value.
+    """
+
     id: 'AssetAbilityControlFieldID'
     """
     The unique Datasworn ID for this item.
@@ -889,6 +910,10 @@ class AssetAbilityOptionField:
 
 @dataclass
 class AssetAbilityOptionFieldText(AssetAbilityOptionField):
+    """
+    Represents an input that accepts plain text.
+    """
+
     id: 'AssetAbilityOptionFieldID'
     """
     The unique Datasworn ID for this item.
@@ -980,6 +1005,12 @@ class AssetConditionMeterControlField:
 
 @dataclass
 class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
+    """
+    When its value is set to `true` it means that the card is flipped over.
+    Some assets use this to represent a 'broken' state (e.g. Starforged Module
+    assets).
+    """
+
     disables_asset: 'bool'
     """
     Does this field disable the asset when its value is set to `true`?
@@ -1031,6 +1062,10 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
 
 @dataclass
 class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
+    """
+    Represents a checkbox.
+    """
+
     disables_asset: 'bool'
     """
     Does this field disable the asset when its value is set to `true`?
@@ -1111,6 +1146,12 @@ class AssetControlField:
 
 @dataclass
 class AssetControlFieldCardFlip(AssetControlField):
+    """
+    When its value is set to `true` it means that the card is flipped over.
+    Some assets use this to represent a 'broken' state (e.g. Starforged Module
+    assets).
+    """
+
     disables_asset: 'bool'
     """
     Does this field disable the asset when its value is set to `true`?
@@ -1162,6 +1203,10 @@ class AssetControlFieldCardFlip(AssetControlField):
 
 @dataclass
 class AssetControlFieldCheckbox(AssetControlField):
+    """
+    Represents a checkbox.
+    """
+
     disables_asset: 'bool'
     """
     Does this field disable the asset when its value is set to `true`?
@@ -1248,6 +1293,13 @@ class AssetControlFieldConditionMeterMoves:
 
 @dataclass
 class AssetControlFieldConditionMeter(AssetControlField):
+    """
+    Some assets provide a special condition meter of their own. The most common
+    example is the health meters on companion assets. Asset condition meters
+    may also include their own controls, such as the checkboxes that Starforged
+    companion assets use to indicate they are "out of action".
+    """
+
     id: 'AssetControlFieldID'
     """
     The unique Datasworn ID for this item.
@@ -1355,6 +1407,10 @@ class AssetControlFieldSelectEnhancementChoiceOptionValue:
 
 @dataclass
 class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnhancementChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
     label: 'Label'
     """
     A localized label for this input. In some contexts it may be undesirable to
@@ -1468,6 +1524,10 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
 
 @dataclass
 class AssetControlFieldSelectEnhancementChoiceOptionGroup(AssetControlFieldSelectEnhancementChoice):
+    """
+    Represents a grouping of options in a list of choices.
+    """
+
     choices: 'Dict[str, AssetControlFieldSelectEnhancementChoiceOptionGroupChoice]'
     name: 'Label'
     """
@@ -1491,6 +1551,12 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroup(AssetControlFieldSelec
 
 @dataclass
 class AssetControlFieldSelectEnhancement(AssetControlField):
+    """
+    Select from player and/or asset enhancements. Use it to describe modal
+    abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+    (Sundered Isles).
+    """
+
     choices: 'Dict[str, AssetControlFieldSelectEnhancementChoice]'
     id: 'AssetControlFieldID'
     """
@@ -1546,6 +1612,13 @@ class AssetControlFieldEnhancement:
 
 @dataclass
 class AssetControlFieldEnhancementConditionMeter(AssetControlFieldEnhancement):
+    """
+    Some assets provide a special condition meter of their own. The most common
+    example is the health meters on companion assets. Asset condition meters
+    may also include their own controls, such as the checkboxes that Starforged
+    companion assets use to indicate they are "out of action".
+    """
+
     max: 'int'
     """
     The maximum value of this meter.
@@ -1721,6 +1794,10 @@ class AssetOptionFieldSelectEnhancementChoiceOptionValue:
 
 @dataclass
 class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhancementChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
     label: 'Label'
     """
     A localized label for this input. In some contexts it may be undesirable to
@@ -1834,6 +1911,10 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
 
 @dataclass
 class AssetOptionFieldSelectEnhancementChoiceOptionGroup(AssetOptionFieldSelectEnhancementChoice):
+    """
+    Represents a grouping of options in a list of choices.
+    """
+
     choices: 'Dict[str, AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice]'
     name: 'Label'
     """
@@ -1857,6 +1938,12 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroup(AssetOptionFieldSelectE
 
 @dataclass
 class AssetOptionFieldSelectEnhancement(AssetOptionField):
+    """
+    Select from player and/or asset enhancements. Use it to describe modal
+    abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder
+    (Sundered Isles).
+    """
+
     choices: 'Dict[str, AssetOptionFieldSelectEnhancementChoice]'
     id: 'AssetOptionFieldID'
     """
@@ -1913,6 +2000,10 @@ class AssetOptionFieldSelectStatChoice:
 
 @dataclass
 class AssetOptionFieldSelectStatChoiceOption(AssetOptionFieldSelectStatChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
     label: 'Label'
     """
     A localized label for this input. In some contexts it may be undesirable to
@@ -2002,6 +2093,10 @@ class AssetOptionFieldSelectStatChoiceOptionGroupChoice:
 
 @dataclass
 class AssetOptionFieldSelectStatChoiceOptionGroup(AssetOptionFieldSelectStatChoice):
+    """
+    Represents a grouping of options in a list of choices.
+    """
+
     choices: 'Dict[str, AssetOptionFieldSelectStatChoiceOptionGroupChoice]'
     name: 'Label'
     """
@@ -2025,6 +2120,10 @@ class AssetOptionFieldSelectStatChoiceOptionGroup(AssetOptionFieldSelectStatChoi
 
 @dataclass
 class AssetOptionFieldSelectStat(AssetOptionField):
+    """
+    Represents a list of mutually exclusive choices.
+    """
+
     choices: 'Dict[str, AssetOptionFieldSelectStatChoice]'
     id: 'AssetOptionFieldID'
     """
@@ -2065,6 +2164,10 @@ class AssetOptionFieldSelectStat(AssetOptionField):
 
 @dataclass
 class AssetOptionFieldText(AssetOptionField):
+    """
+    Represents an input that accepts plain text.
+    """
+
     id: 'AssetOptionFieldID'
     """
     The unique Datasworn ID for this item.
@@ -3234,8 +3337,8 @@ class DomainFeatureRowID:
 @dataclass
 class ExpansionID:
     """
-    The ID of a Datasworn package that enhances another Datasworn package, and
-    relies on another package to provide its ruleset.
+    The ID of a Datasworn package that relies on an external package to provide
+    its ruleset.
     """
 
     value: 'str'
@@ -3479,6 +3582,10 @@ class Move:
 
 @dataclass
 class MoveActionRoll(Move):
+    """
+    A move that makes an action roll.
+    """
+
     id: 'MoveID'
     """
     The unique Datasworn ID for this item.
@@ -3636,6 +3743,11 @@ class MoveNoRoll(Move):
 
 @dataclass
 class MoveProgressRoll(Move):
+    """
+    A progress move that rolls on a standard progress track type (defined by the
+    move object).
+    """
+
     id: 'MoveID'
     """
     The unique Datasworn ID for this item.

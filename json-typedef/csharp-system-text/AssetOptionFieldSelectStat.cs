@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Represents a list of mutually exclusive choices.
+    /// </summary>
     public class AssetOptionFieldSelectStat : AssetOptionField
     {
         [JsonPropertyName("field_type")]

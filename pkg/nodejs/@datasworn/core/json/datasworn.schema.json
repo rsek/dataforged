@@ -169,7 +169,7 @@
 		"ExpansionId": {
 			"title": "ExpansionId",
 			"type": "string",
-			"description": "The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.",
+			"description": "The ID of a Datasworn package that relies on an external package to provide its ruleset.",
 			"examples": ["delve"],
 			"pattern": "^([a-z0-9_]{3,})$"
 		},
@@ -6020,6 +6020,7 @@
 		"Expansion": {
 			"title": "Expansion",
 			"type": "object",
+			"description": "A standalone Datasworn package that describes its own ruleset.",
 			"required": ["id", "datasworn_version", "package_type", "ruleset"],
 			"properties": {
 				"id": {
