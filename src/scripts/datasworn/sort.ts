@@ -5,7 +5,8 @@ const typeKeys = [
 	'card_type',
 	'content_type',
 	'field_type',
-	'roll_type'
+	'roll_type',
+	'package_type'
 ]
 
 export const unsortableKeys = [
@@ -22,8 +23,9 @@ export const dataSwornKeyOrder = [
 	'name',
 	'label',
 	'canonical_name',
-	'rules',
 	...typeKeys,
+	'ruleset',
+	'rules',
 	'enhances',
 	'min',
 	'max',
@@ -84,10 +86,10 @@ export const dataSwornKeyOrder = [
 	'table',
 	'assets',
 	'atlas',
-	'delve_sites',
 	'moves',
 	'npcs',
 	'rarities',
+	'delve_sites',
 	'site_domains',
 	'site_themes',
 	'truths',

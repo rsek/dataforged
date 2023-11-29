@@ -27,8 +27,8 @@ const recursiveElementWildcard = oneOf(
 	new RegExp(sep + node.source + sep + wce)
 )
 
-export const Namespace = Symbol(namespace.source)
-export type Namespace = typeof Namespace
+export const Pkg = Symbol(namespace.source)
+export type Pkg = typeof Pkg
 export const Node = Symbol(node.source)
 export type Node = typeof Node
 export const NodeRecursive = Symbol(nodeRecursive.source)
@@ -41,7 +41,7 @@ export const Collection = Symbol(collection.source)
 export type Collection = typeof Collection
 const noSeparator = [NodeRecursive]
 type IdElementSymbol =
-	| Namespace
+	| Pkg
 	| NodeRecursive
 	| Node
 	| Index
@@ -81,23 +81,23 @@ export function RecursiveCollectableId(
 	type: IdElement[],
 	options: IdOptions = {}
 ) {
-	return Id([Namespace, ...type, NodeRecursive, Node], options)
+	return Id([Pkg, ...type, NodeRecursive, Node], options)
 }
 export function RecursiveCollectionId(
 	type: IdElement[],
 	options: IdOptions = {}
 ) {
-	return Id([Namespace, Collection, ...type, NodeRecursive], options)
+	return Id([Pkg, Collection, ...type, NodeRecursive], options)
 }
 export function CollectableId(type: IdElement[], options: IdOptions = {}) {
-	return Id([Namespace, ...type, Node, Node], options)
+	return Id([Pkg, ...type, Node, Node], options)
 }
 export function CollectionId(type: IdElement[], options: IdOptions = {}) {
-	return Id([Namespace, Collection, ...type, Node], options)
+	return Id([Pkg, Collection, ...type, Node], options)
 }
 
 export function UncollectableId(type: IdElement[], options: IdOptions = {}) {
-	return Id([Namespace, ...type, Node], options)
+	return Id([Pkg, ...type, Node], options)
 }
 
 export function Extend(

@@ -166,6 +166,13 @@
 			"type": "string",
 			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
+		"ExpansionId": {
+			"title": "ExpansionId",
+			"type": "string",
+			"description": "The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.",
+			"examples": ["delve"],
+			"pattern": "^([a-z0-9_]{3,})$"
+		},
 		"ImpactRuleCollectionId": {
 			"title": "ImpactRuleCollectionId",
 			"type": "string",
@@ -231,12 +238,6 @@
 				"*/moves/*/face_danger",
 				"*/assets/ritual/*/abilities/*/moves/*"
 			]
-		},
-		"NamespaceId": {
-			"title": "NamespaceId",
-			"type": "string",
-			"examples": ["classic", "delve", "starforged", "sundered_isles"],
-			"pattern": "^([a-z0-9_]{3,})$"
 		},
 		"NpcCollectionId": {
 			"title": "NpcCollectionId",
@@ -323,6 +324,13 @@
 			"type": "string",
 			"examples": ["classic/rarities/ayethins_journal"],
 			"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
+		},
+		"RulesetId": {
+			"title": "RulesetId",
+			"type": "string",
+			"description": "The ID of standalone Datasworn package that describes its own ruleset.",
+			"examples": ["classic", "starforged"],
+			"pattern": "^([a-z0-9_]{3,})$"
 		},
 		"SpecialTrackRuleId": {
 			"title": "SpecialTrackRuleId",
@@ -5884,8 +5892,11 @@
 			"required": ["id", "package_type"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/NamespaceId",
-					"examples": ["classic", "starforged"]
+					"$ref": "#/$defs/RulesetId"
+				},
+				"package_type": {
+					"type": "string",
+					"const": "ruleset"
 				},
 				"rules": {
 					"$ref": "#/$defs/Rules"
@@ -5920,16 +5931,6 @@
 						}
 					}
 				},
-				"delve_sites": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSite"
-						}
-					}
-				},
 				"moves": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
@@ -5957,6 +5958,16 @@
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Rarity"
+						}
+					}
+				},
+				"delve_sites": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSite"
 						}
 					}
 				},
@@ -5989,10 +6000,6 @@
 							"$ref": "#/$defs/Truth"
 						}
 					}
-				},
-				"package_type": {
-					"type": "string",
-					"const": "ruleset"
 				}
 			},
 			"additionalProperties": false
@@ -6000,17 +6007,20 @@
 		"Expansion": {
 			"title": "Expansion",
 			"type": "object",
-			"required": ["id", "enhances", "package_type"],
+			"required": ["id", "package_type", "ruleset"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/NamespaceId",
-					"examples": ["delve"]
+					"$ref": "#/$defs/ExpansionId"
+				},
+				"package_type": {
+					"type": "string",
+					"const": "expansion"
+				},
+				"ruleset": {
+					"$ref": "#/$defs/RulesetId"
 				},
 				"rules": {
 					"$ref": "#/$defs/Rules"
-				},
-				"enhances": {
-					"$ref": "#/$defs/NamespaceId"
 				},
 				"oracles": {
 					"type": "object",
@@ -6039,16 +6049,6 @@
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Atlas"
-						}
-					}
-				},
-				"delve_sites": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSite"
 						}
 					}
 				},
@@ -6082,6 +6082,16 @@
 						}
 					}
 				},
+				"delve_sites": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSite"
+						}
+					}
+				},
 				"site_domains": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
@@ -6111,10 +6121,6 @@
 							"$ref": "#/$defs/Truth"
 						}
 					}
-				},
-				"package_type": {
-					"type": "string",
-					"const": "expansion"
 				}
 			},
 			"additionalProperties": false

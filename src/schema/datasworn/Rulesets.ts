@@ -20,9 +20,7 @@ import * as Utils from './Utils.js'
 export const Ruleset = Type.Object(
 	{
 		// ruleset ID isn't optional in source, so we don't flag it with IdentifiedNode
-		id: Type.Ref<typeof Id.NamespaceId>('#/$defs/NamespaceId', {
-			examples: ['classic', 'starforged']
-		}),
+		id: Type.Ref<typeof Id.RulesetId>('#/$defs/RulesetId'),
 		package_type: Type.Literal('ruleset'),
 		rules: Utils.SourceOptional(Type.Ref<TRules>('#/$defs/Rules')),
 		oracles: Utils.SourceOptional(
@@ -114,11 +112,9 @@ export const Expansion = Utils.Assign(
 	[
 		Type.Omit(Type.Partial(Ruleset), ['id', 'package_type']),
 		Type.Object({
-			id: Type.Ref<typeof Id.NamespaceId>('#/$defs/NamespaceId', {
-				examples: ['delve']
-			}),
+			id: Type.Ref<typeof Id.ExpansionId>('#/$defs/ExpansionId'),
 			package_type: Type.Literal('expansion'),
-			enhances: Type.Ref<typeof Id.NamespaceId>('#/$defs/NamespaceId')
+			ruleset: Type.Ref<typeof Id.RulesetId>('#/$defs/RulesetId')
 		})
 	],
 	{ $id: '#/$defs/Expansion' }

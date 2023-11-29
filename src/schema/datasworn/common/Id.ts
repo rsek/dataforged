@@ -4,7 +4,7 @@ import {
 	DiceRange,
 	Extend,
 	Index,
-	Namespace,
+	Pkg,
 	Node,
 	CollectionId,
 	Id,
@@ -16,11 +16,21 @@ import {
 } from '../utils/regex.js'
 import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 
-export const NamespaceId = Id([Namespace], {
-	$id: '#/$defs/NamespaceId',
-	examples: ['classic', 'delve', 'starforged', 'sundered_isles']
+export const RulesetId = Id([Pkg], {
+	$id: '#/$defs/RulesetId',
+	examples: ['classic', 'starforged'],
+	description:
+		'The ID of standalone Datasworn package that describes its own ruleset.'
 })
-export type NamespaceId = Static<typeof NamespaceId>
+export type RulesetId = Static<typeof RulesetId>
+
+export const ExpansionId = Id([Pkg], {
+	$id: '#/$defs/ExpansionId',
+	examples: ['delve'],
+	description:
+		'The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.'
+})
+export type ExpansionId = Static<typeof ExpansionId>
 
 export const DictKey = Id([Node], {
 	$id: '#/$defs/DictKey',
@@ -321,7 +331,7 @@ export const TruthOptionId = Extend(TruthId, [Index], {
 })
 export type TruthOptionId = Opaque<Static<typeof TruthOptionId>>
 
-const RuleIdHead = Id([Namespace, 'rules'])
+const RuleIdHead = Id([Pkg, 'rules'])
 
 export const StatRuleId = Extend(RuleIdHead, ['stats', Node], {
 	$id: '#/$defs/StatRuleId'
