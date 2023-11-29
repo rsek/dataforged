@@ -6,8 +6,8 @@ export const DiceNotation = Type.RegExp(
 	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
 	{
 		$id: 'DiceNotation',
-		examples: ['1d100', '1d6+2']
-		// format: 'dice_notation'
+		examples: ['1d100', '1d6+2'],
+		format: 'dice_notation'
 	}
 )
 export type DiceNotation = Static<typeof DiceNotation>

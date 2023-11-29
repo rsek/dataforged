@@ -121,14 +121,12 @@ export const Clock = Utils.Assign(
 				description:
 					'The minimum number of filled clock segments. This is always 0.'
 			},
-			max: Type.Enum(
-				{ 4: 4, 6: 6, 8: 8, 10: 10 },
-				{
-					[JsonTypeDef]: { schema: { type: 'int8' } },
-					description:
-						'The size of the clock -- in other words, the maximum number of filled clock segments.'
-				}
-			)
+			max: Utils.UnionEnum([4, 6, 8, 10], {
+				[JsonTypeDef]: { schema: { type: 'int8' } },
+				title: 'ClockSize',
+				description:
+					'The size of the clock -- in other words, the maximum number of filled clock segments.'
+			})
 		})
 	],
 	{

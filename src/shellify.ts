@@ -3,16 +3,25 @@ import { kebabCase } from 'lodash-es'
 import { type CamelCase } from 'type-fest'
 import Log from './scripts/utils/Log.js'
 
-export function shellify<T extends ShellCommandParams>({
-	command,
-	args = [],
-	options = {},
-	execOptions = {}
-}: T) {
+export function shellify<T extends ShellCommandParams>(
+	{ command, args = [], options = {}, execOptions = {} }: T,
+	argCase = kebabCase
+) {
 	const substrings: string[] = [command, ...args.map((arg) => `"${arg}"`)]
 
 	for (const [k, v] of Object.entries(options)) {
-		substrings.push(`--${kebabCase(k)} "${v.toString()}"`)
+		let str = `--${argCase(k)}`
+		switch (typeof v) {
+			case 'string':
+				str += ` "${v.toString()}"`
+				break
+			case 'boolean':
+				break
+			default:
+				str += ` ${v.toString()}`
+		}
+
+		substrings.push(str)
 	}
 
 	const cmdString = substrings.join(' ')

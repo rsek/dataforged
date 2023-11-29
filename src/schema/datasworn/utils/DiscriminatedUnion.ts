@@ -64,19 +64,19 @@ export function DiscriminatedUnion<
 
 	type DiscriminatorValueLiteral = Static<T[number]>[TDiscriminator] & string
 
-	// const literals = UnionEnum(
-	// 	schemas.map(
-	// 		(member) => member.properties[discriminator].const
-	// 	) as DiscriminatorValueLiteral[]
-	// )
-	const literals = Type.Enum(
-		Object.fromEntries(
-			schemas.map((member) => [
-				member.properties[discriminator].const,
-				member.properties[discriminator].const
-			])
-		)
+	const literals = UnionEnum(
+		schemas.map(
+			(member) => member.properties[discriminator].const
+		) as DiscriminatorValueLiteral[]
 	)
+	// const literals = Type.Enum(
+	// 	Object.fromEntries(
+	// 		schemas.map((member) => [
+	// 			member.properties[discriminator].const,
+	// 			member.properties[discriminator].const
+	// 		])
+	// 	)
+	// )
 
 	const properties = { [discriminator]: literals } as Record<
 		TDiscriminator,

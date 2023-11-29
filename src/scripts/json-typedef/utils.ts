@@ -1,4 +1,5 @@
 import {
+	Hint,
 	Kind,
 	TAnySchema,
 	TArray,
@@ -25,6 +26,7 @@ import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
 import {
 	cloneDeep,
 	isInteger,
+	isNumber,
 	isString,
 	isUndefined,
 	mapValues,
@@ -256,7 +258,15 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 		case Utils.TDiscriminatedUnion(schema):
 			result = toJtdDiscriminator(schema)
 			break
-		case schema[Kind] === 'UnionEnum':
+		case TypeGuard.TUnion(schema) && schema[Hint] === 'Enum':
+			result = JtdType.Enum(schema.anyOf.map((item) => item.const))
+			result.metadata = {
+				enumDescription: Object.fromEntries(
+					schema.anyOf.map((item) => [item.const, item.description])
+				)
+			}
+			break
+		case Utils.TUnionEnum(schema):
 			result = toJtdEnum(schema as any)
 			break
 	}
@@ -269,6 +279,13 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 	}
 
 	result = merge(result, { metadata: extractMetadata(schema) })
+
+	// if (result[Kind] === 'TypeDef:Enum' && !result.metadata?.typescriptType) {
+	// 	result.metadata ||= {}
+	// 	result.metadata.typescriptType = result.enum
+	// 		.map((item: string | number) => (isInteger(item) ? item : `'${item}'`))
+	// 		.join(' | ')
+	// }
 
 	return result as any
 }
