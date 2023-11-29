@@ -114,6 +114,7 @@ const transforms: SchemaTransforms = {
 			...ifThen,
 			then: SourceData(ifThen.then)
 		})) as any[]
+		// result.oneOf = result.oneOf.map((member) => SourceData(member)) as any
 
 		return result
 	}

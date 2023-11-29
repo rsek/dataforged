@@ -14,7 +14,6 @@ export * from './Npcs.js'
 export * from './Oracles.js'
 export * from './Rarities.js'
 export * from './Rules.js'
-export * from './RulesPackages.js'
 export * from './Truths.js'
 
 export * from './RulesPackages.js'

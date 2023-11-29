@@ -82,14 +82,20 @@ export const OracleCollectionStyle = Utils.UnionEnumFromRecord(
 )
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
-const OracleCollectionRenderingTables = Type.Object({
-	style: Utils.ExtractLiteralFromEnum(OracleCollectionStyle, 'tables')
-})
+export const OracleCollectionRenderingTables = Type.Object(
+	{
+		style: Utils.ExtractLiteralFromEnum(OracleCollectionStyle, 'tables')
+	},
+	{ $id: '#/$defs/OracleCollectionRenderingTables' }
+)
 
-const OracleCollectionRenderingMultiTable = Type.Object({
-	style: Utils.ExtractLiteralFromEnum(OracleCollectionStyle, 'multi_table'),
-	columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn))
-})
+export const OracleCollectionRenderingMultiTable = Type.Object(
+	{
+		style: Utils.ExtractLiteralFromEnum(OracleCollectionStyle, 'multi_table'),
+		columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn))
+	},
+	{ $id: '#/$defs/OracleCollectionRenderingMultiTable' }
+)
 
 export const OracleCollectionRendering = Utils.DiscriminatedUnion(
 	[OracleCollectionRenderingTables, OracleCollectionRenderingMultiTable],
@@ -112,23 +118,32 @@ export const OracleTableStyle = Utils.UnionEnumFromRecord(
 )
 export type OracleTableStyle = Static<typeof OracleTableStyle>
 
-const OracleTableRenderingStandalone = Type.Object({
-	style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'standalone'),
-	columns: Generic.Dictionary(Type.Ref(OracleTableColumn), {
-		default: {
-			roll: { label: 'Roll', content_type: 'roll' },
-			result: { label: 'Result', content_type: 'result' }
-		}
-	})
-})
+export const OracleTableRenderingStandalone = Type.Object(
+	{
+		style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'standalone'),
+		columns: Generic.Dictionary(Type.Ref(OracleTableColumn), {
+			default: {
+				roll: { label: 'Roll', content_type: 'roll' },
+				result: { label: 'Result', content_type: 'result' }
+			}
+		})
+	},
+	{ $id: '#/$defs/OracleTableRenderingStandalone' }
+)
 
-const OracleTableRenderingColumn = Type.Object({
-	style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'column')
-})
+export const OracleTableRenderingColumn = Type.Object(
+	{
+		style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'column')
+	},
+	{ $id: '#/$defs/OracleTableRenderingColumn' }
+)
 
-const OracleTableRenderingEmbedInRow = Type.Object({
-	style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'embed_in_row')
-})
+export const OracleTableRenderingEmbedInRow = Type.Object(
+	{
+		style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'embed_in_row')
+	},
+	{ $id: '#/$defs/OracleTableRenderingEmbedInRow' }
+)
 
 export const OracleTableRendering = Utils.DiscriminatedUnion(
 	[

@@ -49,6 +49,15 @@ const schemaOptions: SchemaOptions[] = [
 
 const prettierOptions = await getPrettierOptions(CONST.SCHEMA_OUT)
 
+const metadataKeys = ['tsType']
+
+function replacer(k: string, v: unknown) {
+	if (metadataKeys.includes(k)) return undefined
+	return k === '$id' && typeof v === 'string' && !v.startsWith('http')
+		? undefined
+		: v
+}
+
 for (const options of schemaOptions) {
 	AJV.addSchema(options.rootSchema as JsonSchema, options.name)
 
@@ -67,11 +76,6 @@ for (const options of schemaOptions) {
 			}, options.rootSchema)
 
 			// console.log(sortedSchema)
-
-			const replacer: (this: any, key: string, value: any) => any = (k, v) =>
-				k === '$id' && typeof v === 'string' && !v.startsWith('http')
-					? undefined
-					: v
 
 			for (const path of options.paths)
 				writeJSON(path, sortedSchema, {

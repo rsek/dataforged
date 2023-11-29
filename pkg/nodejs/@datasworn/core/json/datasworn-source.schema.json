@@ -1273,16 +1273,7 @@
 						}
 					},
 					"then": {
-						"type": "object",
-						"properties": {
-							"style": {
-								"description": "Presented as a collection of separate tables.",
-								"const": "tables",
-								"type": "string"
-							}
-						},
-						"required": ["style"],
-						"additionalProperties": false
+						"$ref": "#/$defs/OracleCollectionRenderingTables"
 					}
 				},
 				{
@@ -1295,28 +1286,45 @@
 						}
 					},
 					"then": {
-						"type": "object",
-						"properties": {
-							"style": {
-								"description": "Presented as a single table, with its OracleTable children rendered as columns.",
-								"const": "multi_table",
-								"type": "string"
-							},
-							"columns": {
-								"$comment": "Deserialize as a dictionary object.",
-								"type": "object",
-								"patternProperties": {
-									"^([a-z][a-z_]*)$": {
-										"$ref": "#/$defs/OracleCollectionTableColumn"
-									}
-								}
-							}
-						},
-						"required": ["style", "columns"],
-						"additionalProperties": false
+						"$ref": "#/$defs/OracleCollectionRenderingMultiTable"
 					}
 				}
 			]
+		},
+		"OracleCollectionRenderingMultiTable": {
+			"title": "OracleCollectionRenderingMultiTable",
+			"type": "object",
+			"required": ["style", "columns"],
+			"properties": {
+				"style": {
+					"type": "string",
+					"description": "Presented as a single table, with its OracleTable children rendered as columns.",
+					"const": "multi_table"
+				},
+				"columns": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/OracleCollectionTableColumn"
+						}
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"OracleCollectionRenderingTables": {
+			"title": "OracleCollectionRenderingTables",
+			"type": "object",
+			"required": ["style"],
+			"properties": {
+				"style": {
+					"type": "string",
+					"description": "Presented as a collection of separate tables.",
+					"const": "tables"
+				}
+			},
+			"additionalProperties": false
 		},
 		"OracleCollectionStyle": {
 			"title": "OracleCollectionStyle",
@@ -1493,35 +1501,7 @@
 						}
 					},
 					"then": {
-						"type": "object",
-						"required": ["style"],
-						"additionalProperties": false,
-						"properties": {
-							"style": {
-								"description": "Render as a standalone table.",
-								"const": "standalone",
-								"type": "string"
-							},
-							"columns": {
-								"default": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"$comment": "Deserialize as a dictionary object.",
-								"type": "object",
-								"patternProperties": {
-									"^([a-z][a-z_]*)$": {
-										"$ref": "#/$defs/OracleTableColumn"
-									}
-								}
-							}
-						}
+						"$ref": "#/$defs/OracleTableRenderingStandalone"
 					}
 				},
 				{
@@ -1534,16 +1514,7 @@
 						}
 					},
 					"then": {
-						"type": "object",
-						"properties": {
-							"style": {
-								"description": "Render as a single column of a table.",
-								"const": "column",
-								"type": "string"
-							}
-						},
-						"required": ["style"],
-						"additionalProperties": false
+						"$ref": "#/$defs/OracleTableRenderingColumn"
 					}
 				},
 				{
@@ -1556,19 +1527,68 @@
 						}
 					},
 					"then": {
-						"type": "object",
-						"properties": {
-							"style": {
-								"description": "Render as a table, within a row in another table.",
-								"const": "embed_in_row",
-								"type": "string"
-							}
-						},
-						"required": ["style"],
-						"additionalProperties": false
+						"$ref": "#/$defs/OracleTableRenderingEmbedInRow"
 					}
 				}
 			]
+		},
+		"OracleTableRenderingColumn": {
+			"title": "OracleTableRenderingColumn",
+			"type": "object",
+			"required": ["style"],
+			"properties": {
+				"style": {
+					"type": "string",
+					"description": "Render as a single column of a table.",
+					"const": "column"
+				}
+			},
+			"additionalProperties": false
+		},
+		"OracleTableRenderingEmbedInRow": {
+			"title": "OracleTableRenderingEmbedInRow",
+			"type": "object",
+			"required": ["style"],
+			"properties": {
+				"style": {
+					"type": "string",
+					"description": "Render as a table, within a row in another table.",
+					"const": "embed_in_row"
+				}
+			},
+			"additionalProperties": false
+		},
+		"OracleTableRenderingStandalone": {
+			"title": "OracleTableRenderingStandalone",
+			"type": "object",
+			"required": ["style"],
+			"properties": {
+				"style": {
+					"type": "string",
+					"description": "Render as a standalone table.",
+					"const": "standalone"
+				},
+				"columns": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"default": {
+						"roll": {
+							"label": "Roll",
+							"content_type": "roll"
+						},
+						"result": {
+							"label": "Result",
+							"content_type": "result"
+						}
+					},
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/OracleTableColumn"
+						}
+					}
+				}
+			},
+			"additionalProperties": false
 		},
 		"OracleTableRow": {
 			"title": "OracleTableRow",

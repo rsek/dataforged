@@ -1,4 +1,4 @@
-import type * as In from '../types/io/datasworn-input.js'
+import type * as In from '../types/io/datasworn-source.js'
 import type * as Out from '../types/io/datasworn.js'
 import {
 	sourcedTransformer,

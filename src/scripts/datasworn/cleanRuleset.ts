@@ -8,6 +8,8 @@ import {
 import { sortTopLevelCollection } from './sortCollection.js'
 import { type Draft07 } from 'json-schema-library'
 
+
+const metadataKeys = ['tsType']
 export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
 	const sortedPointers: Record<string, unknown> = {}
 
@@ -33,7 +35,7 @@ export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
 
 	// sort collections
 	for (const [k, v] of Object.entries(datasworn)) {
-		// if (metadataKeys.includes(k as any)) continue
+		if (metadataKeys.includes(k as any)) continue
 		if (typeof v !== 'object') continue
 		if (k === 'rules') continue
 

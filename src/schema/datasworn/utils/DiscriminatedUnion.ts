@@ -48,6 +48,19 @@ export function DiscriminatedUnion<
 		return result
 	}) as TDiscriminatedUnion<T, TDiscriminator>['anyOf']
 
+	const oneOf = schemas.map((member) => {
+		const result =
+			member.$id == null
+				? TypeClone.Type(member, { additionalProperties: false })
+				: Type.Ref(member)
+
+		// brand the original member so that JTD schema generation skips them -- they won't need their own definition
+		;(member as any)[JsonTypeDef] ||= {}
+		;(member as any)[JsonTypeDef].skip = true
+
+		return result
+	})
+
 	type DiscriminatorValueLiteral = Static<T[number]>[TDiscriminator] & string
 
 	const literals = UnionEnum(
@@ -66,7 +79,13 @@ export function DiscriminatedUnion<
 		type: 'object',
 		params: undefined as any,
 		static: undefined as any,
+		tsType: schemas
+			.map((schema) =>
+				schema.$id ? schema.$id.replace('#/$defs/', '') : schema.title
+			)
+			.join(' | '),
 		allOf,
+		// oneOf,
 		required: [discriminator],
 		additionalProperties: true,
 		properties,
@@ -92,7 +111,6 @@ function DiscriminatedUnionCheck(
 	return (value as any[]).every((item) => mapping.includes(item[discriminator]))
 }
 
-
 export function TDiscriminatedUnion<
 	T extends TDiscriminatedUnion<TObject[], string> = TDiscriminatedUnion<
 		TObject[],
@@ -116,53 +134,10 @@ export interface TDiscriminatedUnion<
 		if: TPick<T[number], TDiscriminator>
 		then: T[number] | TRef<T[number]>
 	}[]
+	oneOf: (T[number] | TRef<T[number]>)[]
 	additionalProperties: true
 	[Kind]: 'DiscriminatedUnion'
 	[Discriminator]: TDiscriminator
 	[Members]: [...T]
 }
 
-
-//   export type TDiscriminatedUnion<
-// 	D extends string = string,
-// 	T extends Array<TDiscriminated<D>> = Array<TDiscriminated<D>>
-// > = TUnionOneOf<[...Array<TRef<T[number]>>]> & {
-// 	static: TUnion<T>['static']
-// 	[Hint]: typeof DiscriminatedUnionHint
-// 	[Discriminator]: D
-// 	[Members]: [...T]
-// }
-
-// export function TDiscriminatedUnion(
-// 	schema: unknown
-// ): schema is TDiscriminatedUnion {
-// 	return (schema as TDiscriminatedUnion)[Hint] === DiscriminatedUnionHint
-// }
-
-/**
- * A oneOf union schema that converts to a JTD-friendly Discriminator form (AKA tagged union).
- */
-// export function DiscriminatedUnion<
-// 	D extends string,
-// 	T extends Array<TDiscriminated<D>>
-// >(discriminator: D, oneOf: [...T], options: SchemaOptions = {}) {
-// 	const result = UnionOneOf(
-// 		oneOf.map((item) =>
-// 			item.$id == null ? TypeClone.Type(item) : Type.Ref(item)
-// 		),
-// 		options
-// 	) as TDiscriminatedUnion<D, T>
-
-// 	// for (const subschema of oneOf) {
-// 	// 	if (subschema.$id == null) continue
-// 	// 	subschema.title = subschema.$id.split('/').pop()
-// 	// 	delete subschema.$id
-// 	// }
-
-// 	result[Hint] = DiscriminatedUnionHint
-// 	result[Discriminator] = discriminator
-// 	// so that JTD can reconstruct them into a single object later
-// 	result[Members] = oneOf as any
-
-// 	return result
-// }

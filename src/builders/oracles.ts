@@ -6,7 +6,7 @@ import {
 	type Transformer,
 	recursiveCollectionTransformer
 } from './transformer.js'
-import type * as SchemaIn from '../types/io/datasworn-input.js'
+import type * as SchemaIn from '../types/io/datasworn-source.js'
 import type * as SchemaOut from '../types/io/datasworn.js'
 import { cloneDeep, merge } from 'lodash-es'
 

@@ -1,2 +1,2 @@
-export * as In from './io/datasworn-input'
-export * as Out from './io/datasworn'
+export * as In from './io/datasworn-source.js'
+export * as Out from './io/datasworn.js'
