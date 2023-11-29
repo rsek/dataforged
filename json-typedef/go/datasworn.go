@@ -86,7 +86,7 @@ type RulesPackageExpansion struct {
 	// Delve.
 	Rarities map[string]Rarity `json:"rarities,omitempty"`
 
-	Rules *Rules `json:"rules,omitempty"`
+	Rules *RulesExpansion `json:"rules,omitempty"`
 
 	// A dictionary object containing delve site domains.
 	SiteDomains map[string]DelveSiteDomain `json:"site_domains,omitempty"`

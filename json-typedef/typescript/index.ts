@@ -54,7 +54,7 @@ export interface RulesPackageExpansion {
    * Delve.
    */
   rarities?: { [key: string]: Rarity };
-  rules?: Rules;
+  rules?: RulesExpansion;
 
   /**
    * A dictionary object containing delve site domains.

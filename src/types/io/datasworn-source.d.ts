@@ -4257,7 +4257,7 @@ export interface Expansion {
   datasworn_version?: SemanticVersion;
   package_type: "expansion";
   ruleset: RulesetId;
-  rules?: Rules;
+  rules?: RulesExpansion;
   /**
    * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
    */

@@ -77,7 +77,7 @@ class RulesPackageExpansion(RulesPackage):
     Delve.
     """
 
-    rules: 'Optional[Rules]'
+    rules: 'Optional[RulesExpansion]'
     site_domains: 'Optional[Dict[str, DelveSiteDomain]]'
     """
     A dictionary object containing delve site domains.
@@ -108,7 +108,7 @@ class RulesPackageExpansion(RulesPackage):
             _from_json_data(Optional[Dict[str, NpcCollection]], data.get("npcs")),
             _from_json_data(Optional[Dict[str, OracleCollection]], data.get("oracles")),
             _from_json_data(Optional[Dict[str, Rarity]], data.get("rarities")),
-            _from_json_data(Optional[Rules], data.get("rules")),
+            _from_json_data(Optional[RulesExpansion], data.get("rules")),
             _from_json_data(Optional[Dict[str, DelveSiteDomain]], data.get("site_domains")),
             _from_json_data(Optional[Dict[str, DelveSiteTheme]], data.get("site_themes")),
             _from_json_data(Optional[Dict[str, Truth]], data.get("truths")),

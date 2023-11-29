@@ -70,7 +70,7 @@ pub struct RulesPackageExpansion {
 
     #[serde(rename = "rules")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub rules: Option<Box<Rules>>,
+    pub rules: Option<Box<RulesExpansion>>,
 
     /// A dictionary object containing delve site domains.
     #[serde(rename = "site_domains")]

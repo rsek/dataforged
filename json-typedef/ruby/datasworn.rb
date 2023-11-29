@@ -49,7 +49,7 @@ module Datasworn
       out.npcs = Datasworn::from_json_data(Hash[String, NpcCollection], data["npcs"])
       out.oracles = Datasworn::from_json_data(Hash[String, OracleCollection], data["oracles"])
       out.rarities = Datasworn::from_json_data(Hash[String, Rarity], data["rarities"])
-      out.rules = Datasworn::from_json_data(Rules, data["rules"])
+      out.rules = Datasworn::from_json_data(RulesExpansion, data["rules"])
       out.site_domains = Datasworn::from_json_data(Hash[String, DelveSiteDomain], data["site_domains"])
       out.site_themes = Datasworn::from_json_data(Hash[String, DelveSiteTheme], data["site_themes"])
       out.truths = Datasworn::from_json_data(Hash[String, Truth], data["truths"])

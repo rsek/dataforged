@@ -16,6 +16,7 @@ import { type TRarity } from './Rarities.js'
 import { type TRules } from './Rules.js'
 import { type TTruth } from './Truths.js'
 import * as Utils from './Utils.js'
+import * as Rules from './Rules.js'
 
 export const Ruleset = Type.Object(
 	{
@@ -106,13 +107,15 @@ export const Expansion = Utils.Assign(
 		Type.Omit(Type.Partial(Ruleset), [
 			'id',
 			'package_type',
-			'datasworn_version'
+			'datasworn_version',
+			'rules'
 		]),
 		Type.Object({
 			id: Type.Ref<typeof Id.ExpansionId>('ExpansionId'),
 			datasworn_version: Utils.Computed(Type.Ref(Metadata.SemanticVersion)),
 			package_type: Type.Literal('expansion'),
-			ruleset: Type.Ref<typeof Id.RulesetId>('RulesetId')
+			ruleset: Type.Ref<typeof Id.RulesetId>('RulesetId'),
+			rules: Type.Optional(Type.Ref(Rules.RulesExpansion))
 		})
 	],
 	{

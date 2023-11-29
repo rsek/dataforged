@@ -52,7 +52,7 @@ public class RulesPackageExpansion extends RulesPackage {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("rules")
-    private Rules rules;
+    private RulesExpansion rules;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("site_domains")
@@ -234,14 +234,14 @@ public class RulesPackageExpansion extends RulesPackage {
     /**
      * Getter for rules.<p>
      */
-    public Rules getRules() {
+    public RulesExpansion getRules() {
         return rules;
     }
 
     /**
      * Setter for rules.<p>
      */
-    public void setRules(Rules rules) {
+    public void setRules(RulesExpansion rules) {
         this.rules = rules;
     }
 

@@ -78,7 +78,7 @@ namespace Datasworn
 
         [JsonPropertyName("rules")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Rules? Rules { get; set; }
+        public RulesExpansion? Rules { get; set; }
 
         /// <summary>
         /// A dictionary object containing delve site domains.
