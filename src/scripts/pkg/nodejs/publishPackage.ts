@@ -15,4 +15,4 @@ function publishCorePackage() {
 	})
 }
 
-// publishCorePackage()
+publishCorePackage()
