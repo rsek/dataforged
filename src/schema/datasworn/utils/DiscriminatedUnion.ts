@@ -8,7 +8,8 @@ import {
 	type Static,
 	type TObject,
 	type TPick,
-	type TSchema
+	type TSchema,
+	TypeGuard
 } from '@sinclair/typebox'
 import {
 	Discriminator,
@@ -16,7 +17,7 @@ import {
 	Members
 } from '../../../scripts/json-typedef/symbol.js'
 import { type TUnionEnum, UnionEnum } from './UnionEnum.js'
-import { pick } from 'lodash-es'
+import { mapValues, omit, pick } from 'lodash-es'
 
 export function DiscriminatedUnion<
 	T extends TObject[],
@@ -63,10 +64,18 @@ export function DiscriminatedUnion<
 
 	type DiscriminatorValueLiteral = Static<T[number]>[TDiscriminator] & string
 
-	const literals = UnionEnum(
-		schemas.map(
-			(member) => member.properties[discriminator].const
-		) as DiscriminatorValueLiteral[]
+	// const literals = UnionEnum(
+	// 	schemas.map(
+	// 		(member) => member.properties[discriminator].const
+	// 	) as DiscriminatorValueLiteral[]
+	// )
+	const literals = Type.Enum(
+		Object.fromEntries(
+			schemas.map((member) => [
+				member.properties[discriminator].const,
+				member.properties[discriminator].const
+			])
+		)
 	)
 
 	const properties = { [discriminator]: literals } as Record<
@@ -141,3 +150,32 @@ export interface TDiscriminatedUnion<
 	[Members]: [...T]
 }
 
+export function ToUnion<T extends TObject[]>(
+	schema: TDiscriminatedUnion<T, string>
+) {
+	const base = omit(TypeClone.Type(schema), [
+		'type',
+		'allOf',
+		'additionalProperties',
+		'oneOf',
+		Kind,
+		Discriminator,
+		Members
+	])
+
+	const anyOf = schema.allOf.map((item) => {
+		const subschema = item.then
+
+		switch (true) {
+			case TypeGuard.TObject(subschema):
+				break
+
+			default:
+				break
+		}
+
+		return subschema
+	})
+
+	return Type.Union(anyOf, base)
+}

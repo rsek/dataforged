@@ -2,14 +2,14 @@ import { Type, type Static } from '@sinclair/typebox'
 import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
 
 export const Label = Type.String({
-	$id: '#/$defs/Label',
+	$id: 'Label',
 	description: 'A localized plain text name or label.',
 	i18n: true
 })
 export type Label = Static<typeof Label>
 
 export const MarkdownString = Type.String({
-	$id: '#/$defs/MarkdownString',
+	$id: 'MarkdownString',
 	description:
 		'Localized text, formatted in Markdown.\n\nIt uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.',
 	format: 'markdown',
@@ -18,7 +18,7 @@ export const MarkdownString = Type.String({
 export type MarkdownString = Static<typeof Label>
 
 export const TemplateString = Type.String({
-	$id: '#/$defs/TemplateString',
+	$id: 'TemplateString',
 	description: `A rich text string in Markdown with replaced values from oracle roll results.
 
 The custom syntax \`{{some_row_key:some_oracle_table_id}}\` should be replaced by the \`some_row_key\` string of a rolled oracle table. This is usually the \`result\` key, for example \`{{result:starforged/oracles/core/action}}\`
@@ -43,7 +43,7 @@ export const PartOfSpeech = UnionEnumFromRecord(
 		adjective: 'An adjective.',
 		attributive_verb: 'A verb used as an adjective, to modify a noun.'
 	},
-	{ $id: '#/$defs/PartOfSpeech' }
+	{ $id: 'PartOfSpeech' }
 )
 export type PartOfSpeech = Static<typeof PartOfSpeech>
 
@@ -51,7 +51,7 @@ export const I18nHint = Type.Object(
 	{
 		part_of_speech: Type.Optional(Type.Ref(PartOfSpeech))
 	},
-	{ $id: '#/$defs/I18nHint' }
+	{ $id: 'I18nHint' }
 )
 export type I18nHint = Static<typeof I18nHint>
 
@@ -68,6 +68,6 @@ export const I18nHints = Type.Object(
 			})
 		)
 	},
-	{ $id: '#/$defs/I18nHints' }
+	{ $id: 'I18nHints' }
 )
 export type I18nHints = Static<typeof I18nHints>

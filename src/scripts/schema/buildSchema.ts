@@ -53,9 +53,14 @@ const metadataKeys = ['tsType']
 
 function replacer(k: string, v: unknown) {
 	if (metadataKeys.includes(k)) return undefined
-	return k === '$id' && typeof v === 'string' && !v.startsWith('http')
-		? undefined
-		: v
+
+  const valueIsUri = v.startsWith('http')
+
+	if (k === '$id' && typeof v === 'string' && !valueIsUri) return undefined
+
+	const refKeys = ['$id', '$ref']
+
+	if (refKeys.includes(k) && !valueIsUri) return '#/$defs/' + v
 }
 
 for (const options of schemaOptions) {

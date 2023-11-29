@@ -27,7 +27,7 @@ export const ActionRollUsing = Utils.UnionEnumFromRecord(
 			'Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.',
 		attached_asset_option: 'Roll using the value of an attached asset option.'
 	},
-	{ $id: '#/$defs/ActionRollUsing' }
+	{ $id: 'ActionRollUsing' }
 )
 export type ActionRollUsing = Static<typeof ActionRollUsing>
 
@@ -59,7 +59,7 @@ export const RollOptionAssetControl = ActionRollOptionBase(
 			examples: ['health', 'integrity']
 		})
 	}),
-	{ $id: '#/$defs/RollOptionAssetControl' }
+	{ $id: 'RollOptionAssetControl' }
 )
 
 export type RollOptionAssetControl = Static<typeof RollOptionAssetControl>
@@ -67,7 +67,7 @@ export type RollOptionAssetControl = Static<typeof RollOptionAssetControl>
 export const RollOptionAttachedAssetControl = ActionRollOptionBase(
 	'attached_asset_control',
 	Type.Pick(RollOptionAssetControl, ['control']),
-	{ $id: '#/$defs/RollOptionAttachedAssetControl' }
+	{ $id: 'RollOptionAttachedAssetControl' }
 )
 
 export type RollOptionAttachedAssetControl = Static<
@@ -86,7 +86,7 @@ export const RollOptionAssetOption = ActionRollOptionBase(
 			description: 'The key of the asset option field.'
 		})
 	}),
-	{ $id: '#/$defs/RollOptionAssetOption' }
+	{ $id: 'RollOptionAssetOption' }
 )
 
 export type RollOptionAssetOption = Static<typeof RollOptionAssetOption>
@@ -94,7 +94,7 @@ export type RollOptionAssetOption = Static<typeof RollOptionAssetOption>
 export const RollOptionAttachedAssetOption = ActionRollOptionBase(
 	'attached_asset_option',
 	Type.Pick(RollOptionAssetOption, ['option']),
-	{ $id: '#/$defs/RollOptionAttachedAssetOption' }
+	{ $id: 'RollOptionAttachedAssetOption' }
 )
 
 export type RollOptionAttachedAssetOption = Static<
@@ -108,7 +108,7 @@ export const RollOptionStat = ActionRollOptionBase(
 	Type.Object({
 		stat: Type.Ref(Player.StatId)
 	}),
-	{ $id: '#/$defs/RollOptionStat' }
+	{ $id: 'RollOptionStat' }
 )
 
 export type RollOptionStat = Static<typeof RollOptionStat>
@@ -118,7 +118,7 @@ export const RollOptionConditionMeter = ActionRollOptionBase(
 	Type.Object({
 		condition_meter: Type.Ref(Player.ConditionMeterId)
 	}),
-	{ $id: '#/$defs/RollOptionConditionMeter' }
+	{ $id: 'RollOptionConditionMeter' }
 )
 export type RollOptionConditionMeter = Static<typeof RollOptionConditionMeter>
 
@@ -128,7 +128,7 @@ export const RollOptionCustom = ActionRollOptionBase(
 		name: Type.Ref(Localize.Label),
 		value: Type.Integer({ minimum: 0 })
 	}),
-	{ $id: '#/$defs/RollOptionCustom' }
+	{ $id: 'RollOptionCustom' }
 )
 export type RollOptionCustom = Static<typeof RollOptionCustom>
 
@@ -142,16 +142,20 @@ const RollOptionSubtypes = [
 	RollOptionCustom
 ]
 
-export const ActionRollOption = Utils.DiscriminatedUnion(RollOptionSubtypes, 'using', {
-	$id: '#/$defs/ActionRollOption'
-})
+export const ActionRollOption = Utils.DiscriminatedUnion(
+	RollOptionSubtypes,
+	'using',
+	{
+		$id: 'ActionRollOption'
+	}
+)
 
 export type ActionRollOption = Static<typeof ActionRollOption>
 
 export const TriggerActionRollCondition = TriggerCondition(
-	Type.Ref<typeof ActionRollMethod>('#/$defs/ActionRollMethod'),
+	Type.Ref<typeof ActionRollMethod>('ActionRollMethod'),
 	Type.Array(Type.Ref(ActionRollOption)),
-	{ $id: '#/$defs/TriggerActionRollCondition' }
+	{ $id: 'TriggerActionRollCondition' }
 )
 export type TriggerActionRollCondition = Static<
 	typeof TriggerActionRollCondition
@@ -160,7 +164,7 @@ export type TriggerActionRollCondition = Static<
 export const TriggerActionRoll = Trigger(
 	Type.Array(Type.Ref(TriggerActionRollCondition)),
 	{
-		$id: '#/$defs/TriggerActionRoll'
+		$id: 'TriggerActionRoll'
 	}
 )
 export type TriggerActionRoll = Static<typeof TriggerActionRoll>
@@ -168,11 +172,11 @@ export type TriggerActionRoll = Static<typeof TriggerActionRoll>
 export const MoveActionRoll = Move(
 	'action_roll',
 	Type.Ref(TriggerActionRoll),
-	Type.Ref<typeof MoveOutcomes>('#/$defs/MoveOutcomes'),
+	Type.Ref<typeof MoveOutcomes>('MoveOutcomes'),
 	{
 		title: 'Move (action roll)',
 		description: 'A move that makes an action roll.',
-		$id: '#/$defs/MoveActionRoll'
+		$id: 'MoveActionRoll'
 	}
 )
 
@@ -182,10 +186,12 @@ export type MoveActionRoll = Move<
 	MoveOutcomes
 >
 
-export const TriggerActionRollConditionEnhancement =
-	TriggerConditionEnhancement(TriggerActionRollCondition, {
-		$id: '#/$defs/TriggerActionRollConditionEnhancement'
-	})
+export const TriggerActionRollConditionEnhancement = TriggerConditionEnhancement(
+	TriggerActionRollCondition,
+	{
+		$id: 'TriggerActionRollConditionEnhancement'
+	}
+)
 
 export type TriggerActionRollConditionEnhancement = Static<
 	typeof TriggerActionRollConditionEnhancement
@@ -194,7 +200,7 @@ export type TriggerActionRollConditionEnhancement = Static<
 export const TriggerActionRollEnhancement = TriggerEnhancement(
 	Type.Array(Type.Ref(TriggerActionRollConditionEnhancement)),
 	{
-		$id: '#/$defs/TriggerActionRollEnhancement'
+		$id: 'TriggerActionRollEnhancement'
 	}
 )
 export type TriggerActionRollEnhancement = Static<
@@ -206,14 +212,14 @@ export type TriggerActionRollEnhancement = Static<
 export const TriggerNoRollCondition = TriggerCondition(
 	Type.Null({ default: null }),
 	Type.Null({ default: null }),
-	{ $id: '#/$defs/TriggerNoRollCondition' }
+	{ $id: 'TriggerNoRollCondition' }
 )
 
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
 export const TriggerNoRoll = Trigger(
 	Utils.Nullable(Type.Array(Type.Ref(TriggerNoRollCondition))),
-	{ $id: '#/$defs/TriggerNoRoll' }
+	{ $id: 'TriggerNoRoll' }
 )
 
 export type TriggerNoRoll = Static<typeof TriggerNoRoll>
@@ -223,7 +229,7 @@ export const MoveNoRoll = Move(
 	Type.Ref(TriggerNoRoll),
 	Type.Null({ default: null }),
 	{
-		$id: '#/$defs/MoveNoRoll'
+		$id: 'MoveNoRoll'
 	}
 )
 
@@ -233,7 +239,7 @@ export const TriggerNoRollEnhancement = TriggerEnhancement(
 	// triggers without rolls don't need their own condition enhancement type
 	Type.Array(Type.Ref(TriggerNoRollCondition)),
 	{
-		$id: '#/$defs/TriggerNoRollEnhancement'
+		$id: 'TriggerNoRollEnhancement'
 	}
 )
 export type TriggerNoRollEnhancement = Static<typeof TriggerNoRollEnhancement>
@@ -242,7 +248,7 @@ export const MoveNoRollEnhancement = MoveEnhancement(
 	'no_roll',
 	Type.Ref(TriggerNoRollEnhancement),
 	{
-		$id: '#/$defs/MoveNoRollEnhancement'
+		$id: 'MoveNoRollEnhancement'
 	}
 )
 export type MoveNoRollEnhancement = MoveEnhancement<
@@ -254,7 +260,7 @@ export const MoveActionRollEnhancement = MoveEnhancement(
 	'action_roll',
 	Type.Ref(TriggerActionRollEnhancement),
 	{
-		$id: '#/$defs/MoveActionRollEnhancement'
+		$id: 'MoveActionRollEnhancement'
 	}
 )
 export type MoveActionRollEnhancement = MoveEnhancement<

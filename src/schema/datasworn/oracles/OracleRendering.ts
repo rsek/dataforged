@@ -2,6 +2,7 @@ import { Type, type Static } from '@sinclair/typebox'
 import { Id, Localize, Metadata } from '../common/index.js'
 import * as Generic from '../Generic.js'
 import * as Utils from '../Utils.js'
+import { TypeCompiler } from '@sinclair/typebox/compiler'
 
 export const OracleTableColumnContentKey = Utils.UnionEnumFromRecord(
 	{
@@ -13,7 +14,7 @@ export const OracleTableColumnContentKey = Utils.UnionEnumFromRecord(
 	{
 		description:
 			'The value(s) from each OracleTableRow that is rendered in this column.',
-		$id: '#/$defs/OracleTableColumnContentKey'
+		$id: 'OracleTableColumnContentKey'
 	}
 )
 type OracleTableColumnContentKey = Static<typeof OracleTableColumnContentKey>
@@ -31,7 +32,7 @@ export const OracleTableColumn = Type.Object(
 		)
 	},
 	{
-		$id: '#/$defs/OracleTableColumn',
+		$id: 'OracleTableColumn',
 		examples: [
 			{ label: 'Roll', content_type: 'roll' },
 			{ label: 'Result', content_type: 'result' },
@@ -52,7 +53,7 @@ export const OracleCollectionTableColumn = Utils.Assign(
 		})
 	],
 	{
-		$id: '#/$defs/OracleCollectionTableColumn',
+		$id: 'OracleCollectionTableColumn',
 		default: undefined
 	}
 )
@@ -77,7 +78,7 @@ export const OracleCollectionStyle = Utils.UnionEnumFromRecord(
 			'Presented as a single table, with its OracleTable children rendered as columns.'
 	},
 	{
-		$id: '#/$defs/OracleCollectionStyle'
+		$id: 'OracleCollectionStyle'
 	}
 )
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
@@ -86,7 +87,7 @@ export const OracleCollectionRenderingTables = Type.Object(
 	{
 		style: Utils.ExtractLiteralFromEnum(OracleCollectionStyle, 'tables')
 	},
-	{ $id: '#/$defs/OracleCollectionRenderingTables' }
+	{ $id: 'OracleCollectionRenderingTables' }
 )
 
 export const OracleCollectionRenderingMultiTable = Type.Object(
@@ -94,14 +95,14 @@ export const OracleCollectionRenderingMultiTable = Type.Object(
 		style: Utils.ExtractLiteralFromEnum(OracleCollectionStyle, 'multi_table'),
 		columns: Generic.Dictionary(Type.Ref(OracleCollectionTableColumn))
 	},
-	{ $id: '#/$defs/OracleCollectionRenderingMultiTable' }
+	{ $id: 'OracleCollectionRenderingMultiTable' }
 )
 
 export const OracleCollectionRendering = Utils.DiscriminatedUnion(
 	[OracleCollectionRenderingTables, OracleCollectionRenderingMultiTable],
 	'style',
 	{
-		$id: '#/$defs/OracleCollectionRendering',
+		$id: 'OracleCollectionRendering',
 		description:
 			'Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.'
 	}
@@ -114,7 +115,7 @@ export const OracleTableStyle = Utils.UnionEnumFromRecord(
 		embed_in_row: 'Render as a table, within a row in another table.',
 		column: 'Render as a single column of a table.'
 	},
-	{ $id: '#/$defs/OracleTableStyle' }
+	{ $id: 'OracleTableStyle' }
 )
 export type OracleTableStyle = Static<typeof OracleTableStyle>
 
@@ -128,21 +129,21 @@ export const OracleTableRenderingStandalone = Type.Object(
 			}
 		})
 	},
-	{ $id: '#/$defs/OracleTableRenderingStandalone' }
+	{ $id: 'OracleTableRenderingStandalone' }
 )
 
 export const OracleTableRenderingColumn = Type.Object(
 	{
 		style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'column')
 	},
-	{ $id: '#/$defs/OracleTableRenderingColumn' }
+	{ $id: 'OracleTableRenderingColumn' }
 )
 
 export const OracleTableRenderingEmbedInRow = Type.Object(
 	{
 		style: Utils.ExtractLiteralFromEnum(OracleTableStyle, 'embed_in_row')
 	},
-	{ $id: '#/$defs/OracleTableRenderingEmbedInRow' }
+	{ $id: 'OracleTableRenderingEmbedInRow' }
 )
 
 export const OracleTableRendering = Utils.DiscriminatedUnion(
@@ -154,7 +155,7 @@ export const OracleTableRendering = Utils.DiscriminatedUnion(
 	'style',
 
 	{
-		$id: '#/$defs/OracleTableRendering',
+		$id: 'OracleTableRendering',
 		description: 'Describes the presentation of this table.',
 		default: {
 			style: 'standalone',

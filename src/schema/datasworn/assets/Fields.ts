@@ -41,7 +41,7 @@ export const AssetConditionMeterControlField = Utils.DiscriminatedUnion(
 	),
 	Fields.DISCRIMINATOR,
 	{
-		$id: '#/$defs/AssetConditionMeterControlField',
+		$id: 'AssetConditionMeterControlField',
 		description:
 			'A checkbox control field, rendered as part of an asset condition meter.'
 	}
@@ -106,7 +106,7 @@ export const AssetConditionMeter = Utils.Assign(
 		AssetConditionMeterMixin
 	],
 	{
-		$id: '#/$defs/AssetConditionMeter',
+		$id: 'AssetConditionMeter',
 		description:
 			'Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".'
 	}
@@ -123,7 +123,7 @@ const AssetOptionFields = [
 export const AssetOptionField = Utils.DiscriminatedUnion(
 	AssetOptionFields,
 	Fields.DISCRIMINATOR,
-	{ $id: '#/$defs/AssetOptionField' }
+	{ $id: 'AssetOptionField' }
 )
 export type AssetOptionField = Static<typeof AssetOptionField>
 export type TAssetOptionField = typeof AssetOptionField
@@ -141,7 +141,7 @@ export const AssetControlField = Utils.DiscriminatedUnion(
 	AssetControlFields,
 	Fields.DISCRIMINATOR,
 	{
-		$id: '#/$defs/AssetControlField'
+		$id: 'AssetControlField'
 	}
 )
 
@@ -157,7 +157,7 @@ const AbilityControlFields = [
 export const AssetAbilityControlField = Utils.DiscriminatedUnion(
 	AbilityControlFields,
 	Fields.DISCRIMINATOR,
-	{ $id: '#/$defs/AssetAbilityControlField' }
+	{ $id: 'AssetAbilityControlField' }
 )
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
@@ -169,7 +169,7 @@ const AbilityOptionFields = [Fields.TextField].map((fn) =>
 export const AssetAbilityOptionField = Utils.DiscriminatedUnion(
 	AbilityOptionFields,
 	Fields.DISCRIMINATOR,
-	{ $id: '#/$defs/AssetAbilityOptionField' }
+	{ $id: 'AssetAbilityOptionField' }
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>

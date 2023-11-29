@@ -13,7 +13,7 @@ export const ChallengeRank = UnionEnumFromRecord(
 		5: 'Epic'
 	},
 	{
-		$id: '#/$defs/ChallengeRank',
+		$id: 'ChallengeRank',
 		description:
 			'Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).'
 	}
@@ -21,7 +21,7 @@ export const ChallengeRank = UnionEnumFromRecord(
 export type ChallengeRank = Static<typeof ChallengeRank>
 
 export const SpecialTrackType = Type.Ref(Id.DictKey, {
-	$id: '#/$defs/SpecialTrackType',
+	$id: 'SpecialTrackType',
 	examples: [
 		'bonds_track',
 		'failure_track',
@@ -57,7 +57,7 @@ export const ProgressTrackTypeInfo = Type.Object(
 		controls: Type.Optional(Generic.Dictionary(Type.Object({})))
 	},
 	{
-		$id: '#/$defs/ProgressTrackTypeInfo',
+		$id: 'ProgressTrackTypeInfo',
 		description: 'Describes the features of a type of progress track.'
 	}
 )

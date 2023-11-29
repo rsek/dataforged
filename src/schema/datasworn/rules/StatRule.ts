@@ -13,7 +13,7 @@ export const StatRule = Type.Object(
 		})
 	},
 	{
-		$id: '#/$defs/StatRule',
+		$id: 'StatRule',
 		description: 'Describes a standard player character stat.'
 	}
 )

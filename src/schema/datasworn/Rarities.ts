@@ -22,7 +22,7 @@ export const Rarity = Generic.SourcedNode(
 		description: Type.Ref(Localize.MarkdownString)
 	}),
 	{
-		$id: '#/$defs/Rarity',
+		$id: 'Rarity',
 		description: 'A rarity, as described in Ironsworn: Delve.'
 	}
 )

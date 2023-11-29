@@ -13,7 +13,7 @@ import * as Generic from '../Generic.js'
 
 export const DelveSiteDenizenFrequency = Utils.UnionEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
-	{ $id: '#/$defs/DelveSiteDenizenFrequency' }
+	{ $id: 'DelveSiteDenizenFrequency' }
 )
 export type DelveSiteDenizenFrequency = Static<typeof DelveSiteDenizenFrequency>
 
@@ -36,7 +36,7 @@ export const DelveSiteDenizen = Generic.IdentifiedNode(
 		),
 		frequency: Type.Ref(DelveSiteDenizenFrequency)
 	}),
-	{ $id: '#/$defs/DelveSiteDenizen' }
+	{ $id: 'DelveSiteDenizen' }
 )
 export type DelveSiteDenizen = Static<typeof DelveSiteDenizen>
 function StaticDenizenRowStub<
@@ -72,7 +72,7 @@ export const DelveSite = Generic.SourcedNode(
 		theme: Type.Ref(Id.DelveSiteThemeId),
 		domain: Type.Ref(Id.DelveSiteDomainId),
 		extra_card: Type.Optional(
-			Utils.UnionOneOf(
+			Type.Union(
 				[Type.Ref(Id.DelveSiteThemeId), Type.Ref(Id.DelveSiteDomainId)],
 				{
 					description:
@@ -108,7 +108,7 @@ export const DelveSite = Generic.SourcedNode(
 		)
 	}),
 	{
-		$id: '#/$defs/DelveSite',
+		$id: 'DelveSite',
 		description: 'A delve site with a theme, domain, and denizen table.'
 	}
 )

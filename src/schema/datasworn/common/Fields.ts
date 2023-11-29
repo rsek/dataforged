@@ -153,13 +153,11 @@ export function SelectEnhancementField(
 		Base.SelectOption(
 			Type.Partial(
 				Type.Object({
-					enhance_asset: Type.Ref<TAssetEnhancement>(
-						'#/$defs/AssetEnhancement'
-					),
+					enhance_asset: Type.Ref<TAssetEnhancement>('AssetEnhancement'),
 					// TODO
 					// enhance_player: Type.Object({}, { description: 'NYI' }),
 					enhance_moves: Type.Array(
-						Type.Ref<TMoveEnhancement>('#/$defs/MoveEnhancement')
+						Type.Ref<TMoveEnhancement>('MoveEnhancement')
 					)
 				})
 			),

@@ -34,13 +34,10 @@ const AssetMixin = Type.Object({
 		})
 	),
 	options: Type.Optional(
-		Generic.Dictionary(
-			Type.Ref<TAssetOptionField>('#/$defs/AssetOptionField'),
-			{
-				description:
-					'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
-			}
-		)
+		Generic.Dictionary(Type.Ref<TAssetOptionField>('AssetOptionField'), {
+			description:
+				'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
+		})
 	),
 	requirement: Type.Optional(
 		Type.Ref(Localize.MarkdownString, {
@@ -48,7 +45,7 @@ const AssetMixin = Type.Object({
 		})
 	),
 	abilities: Type.Array(
-		Type.Ref<TAssetAbility>('#/$defs/AssetAbility', {
+		Type.Ref<TAssetAbility>('AssetAbility', {
 			description: 'Abilities provided by this asset. Most assets have 3.'
 		})
 	)
@@ -59,10 +56,10 @@ export const Asset = Generic.Collectable(
 	Utils.Assign([
 		AssetMixin,
 		AssetPropertiesEnhanceable(
-			Type.Ref<TAssetControlField>('#/$defs/AssetControlField')
+			Type.Ref<TAssetControlField>('AssetControlField')
 		)
 	]),
-	{ $id: '#/$defs/Asset' }
+	{ $id: 'Asset' }
 )
 export type TAsset = typeof Asset
 export type Asset = Generic.Collectable<
@@ -72,9 +69,9 @@ export type Asset = Generic.Collectable<
 
 export const AssetType = Generic.Collection(
 	Type.Ref(Id.AssetTypeId),
-	Type.Ref<TUnsafe<Asset>>('#/$defs/Asset'),
+	Type.Ref<TUnsafe<Asset>>('Asset'),
 	{
-		$id: '#/$defs/AssetType'
+		$id: 'AssetType'
 	}
 )
 export type TAssetType = typeof AssetType

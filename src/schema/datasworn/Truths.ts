@@ -4,7 +4,7 @@ import * as Generic from './Generic.js'
 import * as Oracles from './Oracles.js'
 
 export const TruthOptionTableRow = Type.Omit(Oracles.OracleTableRow, ['id'], {
-	$id: '#/$defs/TruthOptionTableRow'
+	$id: 'TruthOptionTableRow'
 })
 export type TruthOptionTableRow = Static<typeof TruthOptionTableRow>
 
@@ -18,7 +18,7 @@ export const TruthOption = Generic.IdentifiedNode(
 		quest_starter: Type.Ref(Localize.MarkdownString),
 		table: Type.Optional(Type.Array(Type.Ref(TruthOptionTableRow)))
 	}),
-	{ $id: '#/$defs/TruthOption' }
+	{ $id: 'TruthOption' }
 )
 
 export type TruthOption = Static<typeof TruthOption>
@@ -31,7 +31,7 @@ export const Truth = Generic.SourcedNode(
 		your_character: Type.Optional(Type.Ref(Localize.MarkdownString))
 	}),
 	{
-		$id: '#/$defs/Truth',
+		$id: 'Truth',
 		description: 'A setting truth category.'
 	}
 )

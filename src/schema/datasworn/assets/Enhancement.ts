@@ -20,7 +20,7 @@ export const AssetAttachment = Type.Object(
 		})
 	},
 	{
-		$id: '#/$defs/AssetAttachment',
+		$id: 'AssetAttachment',
 		description:
 			"Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info."
 	}
@@ -33,7 +33,7 @@ export const AssetConditionMeterEnhancement = NoDefaults(
 
 	Type.Pick(AssetConditionMeter, ['field_type', 'max']),
 	{
-		$id: '#/$defs/AssetConditionMeterEnhancement'
+		$id: 'AssetConditionMeterEnhancement'
 	}
 )
 export type AssetConditionMeterEnhancement = Static<
@@ -43,7 +43,7 @@ export type AssetConditionMeterEnhancement = Static<
 export const AssetControlFieldEnhancement = DiscriminatedUnion(
 	[AssetConditionMeterEnhancement],
 	Fields.DISCRIMINATOR,
-	{ $id: '#/$defs/AssetControlFieldEnhancement' }
+	{ $id: 'AssetControlFieldEnhancement' }
 )
 
 export const AssetEnhancement = PartialDeep(
@@ -55,7 +55,7 @@ export const AssetEnhancement = PartialDeep(
 	{
 		description:
 			'Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
-		$id: '#/$defs/AssetEnhancement'
+		$id: 'AssetEnhancement'
 	}
 )
 export type TAssetEnhancement = typeof AssetEnhancement

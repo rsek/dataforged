@@ -68,7 +68,7 @@ export function IdUnion(members: TId[], options: ObjectOptions) {
 		...options
 	}
 
-	return UnionOneOf(members, extendedOptions)
+	return Type.Union(members, extendedOptions)
 }
 
 export function Id(elements: IdElement[], options: IdOptions = {}) {

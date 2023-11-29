@@ -11,7 +11,7 @@ import {
 export const OracleTableRow = Generic.IdentifiedNode(
 	Type.Ref(Id.OracleTableRowId),
 	TableRowNullableMixin,
-	{ $id: '#/$defs/OracleTableRow' }
+	{ $id: 'OracleTableRow' }
 )
 export type OracleTableRow = Static<typeof OracleTableRow>
 
@@ -72,7 +72,7 @@ export const OracleTable = Generic.RecursiveCollectable(
 			})
 		)
 	}),
-	{ $id: '#/$defs/OracleTable' }
+	{ $id: 'OracleTable' }
 )
 export type OracleTable = Static<typeof OracleTable>
 
@@ -92,12 +92,9 @@ const OracleCollectionBase = Utils.Assign(
 	{ [Generic.CollectionBrand]: 'Collection' }
 ) satisfies Generic.TCollection<TRef<typeof OracleTable>>
 
-export const OracleCollection = Generic.RecursiveCollection(
-	OracleCollectionBase,
-	{
-		$id: '#/$defs/OracleCollection'
-	}
-)
+export const OracleCollection = Generic.RecursiveCollection(OracleCollectionBase, {
+	$id: 'OracleCollection'
+})
 export type OracleCollection = Static<typeof OracleCollection>
 
 export type TOracleCollection = typeof OracleCollection

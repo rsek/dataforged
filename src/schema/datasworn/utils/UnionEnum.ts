@@ -4,9 +4,14 @@ import {
 	Kind,
 	TypeRegistry,
 	type SchemaOptions,
-	type TSchema
+	type TSchema,
+	Type,
+	TEnum,
+	Hint,
+	Static,
+	TypeClone
 } from '@sinclair/typebox'
-import { isInteger, set } from 'lodash-es'
+import { isInteger, omit, set } from 'lodash-es'
 import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 
 export const EnumDescription = Symbol('EnumDescription')
@@ -39,9 +44,39 @@ export function UnionEnum<T extends string[] | number[]>(
 	return result
 }
 
+export function TUnionEnum(schema: any): schema is TUnionEnum {
+	if (!Array.isArray(schema?.enum)) return false
+	return (
+		schema.enum.every((item) => typeof item === 'string') ||
+		schema.enum.every((item) => typeof item === 'number')
+	)
+}
+
 function UnionEnumCheck(
 	schema: TUnionEnum<(string | number)[]>,
 	value: unknown
 ) {
 	return schema.enum.includes(value as string | number)
+}
+
+export function ToEnum<T extends TUnionEnum>(schema: T) {
+	const anyOf = schema.enum.map((value) =>
+		Type.Literal(value, { description: schema[EnumDescription]?.[value] })
+	)
+	const options = omit(TypeClone.Type(schema), [
+		Kind,
+		EnumDescription,
+		Description,
+		'static',
+		'enum'
+	])
+
+	const result: TEnum = Type.Union(anyOf, {
+		...options,
+		description: schema[Description],
+
+		[Hint]: 'Enum'
+	})
+
+	return result
 }

@@ -25,7 +25,7 @@ export const ImpactRule = Type.Object(
 		})
 	},
 	{
-		$id: '#/$defs/ImpactRule',
+		$id: 'ImpactRule',
 		description: 'Describes a standard impact/debility.'
 	}
 )
@@ -44,7 +44,7 @@ export const ImpactCategory = Type.Object(
 		})
 	},
 	{
-		$id: '#/$defs/ImpactCategory',
+		$id: 'ImpactCategory',
 		description: 'Describes a category of standard impacts/debilities.'
 	}
 )

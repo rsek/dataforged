@@ -20,89 +20,80 @@ import * as Utils from './Utils.js'
 export const Ruleset = Type.Object(
 	{
 		// ruleset ID isn't optional in source, so we don't flag it with IdentifiedNode
-		id: Type.Ref<typeof Id.RulesetId>('#/$defs/RulesetId'),
+		id: Type.Ref<typeof Id.RulesetId>('RulesetId'),
 		package_type: Type.Literal('ruleset'),
-		rules: Utils.SourceOptional(Type.Ref<TRules>('#/$defs/Rules')),
+		rules: Utils.SourceOptional(Type.Ref<TRules>('Rules')),
 		datasworn_version: Utils.Computed(Type.Ref(Metadata.SemanticVersion)),
 		oracles: Utils.SourceOptional(
-			Generic.Dictionary(
-				Type.Ref<TOracleCollection>('#/$defs/OracleCollection'),
-				{
-					default: undefined,
-					description:
-						'A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.'
-				}
-			)
+			Generic.Dictionary(Type.Ref<TOracleCollection>('OracleCollection'), {
+				default: undefined,
+				description:
+					'A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.'
+			})
 		),
 		moves: Utils.SourceOptional(
-			Generic.Dictionary(
-				Type.Ref<TUnsafe<MoveCategory>>('#/$defs/MoveCategory'),
-				{
-					default: undefined,
-					description:
-						'A dictionary object containing move categories, which contain moves.'
-				}
-			)
+			Generic.Dictionary(Type.Ref<TUnsafe<MoveCategory>>('MoveCategory'), {
+				default: undefined,
+				description:
+					'A dictionary object containing move categories, which contain moves.'
+			})
 		),
 		assets: Utils.SourceOptional(
-			Generic.Dictionary(Type.Ref<TAssetType>('#/$defs/AssetType'), {
+			Generic.Dictionary(Type.Ref<TAssetType>('AssetType'), {
 				default: undefined,
 				description:
 					'A dictionary object containing asset types, which contain assets.'
 			})
 		),
 		atlas: Type.Optional(
-			Generic.Dictionary(Type.Ref<TAtlas>('#/$defs/Atlas'), {
+			Generic.Dictionary(Type.Ref<TAtlas>('Atlas'), {
 				default: undefined,
 				description:
 					'A dictionary object containing atlas collections, which contain atlas entries.'
 			})
 		),
 		npcs: Type.Optional(
-			Generic.Dictionary(Type.Ref<TNpcCollection>('#/$defs/NpcCollection'), {
+			Generic.Dictionary(Type.Ref<TNpcCollection>('NpcCollection'), {
 				default: undefined,
 				description:
 					'A dictionary object containing NPC collections, which contain NPCs.'
 			})
 		),
 		truths: Type.Optional(
-			Generic.Dictionary(Type.Ref<TTruth>('#/$defs/Truth'), {
+			Generic.Dictionary(Type.Ref<TTruth>('Truth'), {
 				default: undefined,
 				description: 'A dictionary object of truth categories.'
 			})
 		),
 		rarities: Type.Optional(
-			Generic.Dictionary(Type.Ref<TRarity>('#/$defs/Rarity'), {
+			Generic.Dictionary(Type.Ref<TRarity>('Rarity'), {
 				default: undefined,
 				description:
 					'A dictionary object containing rarities, like those presented in Ironsworn: Delve.'
 			})
 		),
 		delve_sites: Type.Optional(
-			Generic.Dictionary(Type.Ref<TDelveSite>('#/$defs/DelveSite'), {
+			Generic.Dictionary(Type.Ref<TDelveSite>('DelveSite'), {
 				default: undefined,
 				description:
 					'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
 			})
 		),
 		site_themes: Type.Optional(
-			Generic.Dictionary(Type.Ref<TDelveSiteTheme>('#/$defs/DelveSiteTheme'), {
+			Generic.Dictionary(Type.Ref<TDelveSiteTheme>('DelveSiteTheme'), {
 				default: undefined,
 				description: 'A dictionary object containing delve site themes.'
 			})
 		),
 		site_domains: Type.Optional(
-			Generic.Dictionary(
-				Type.Ref<TDelveSiteDomain>('#/$defs/DelveSiteDomain'),
-				{
-					default: undefined,
-					description: 'A dictionary object containing delve site domains.'
-				}
-			)
+			Generic.Dictionary(Type.Ref<TDelveSiteDomain>('DelveSiteDomain'), {
+				default: undefined,
+				description: 'A dictionary object containing delve site domains.'
+			})
 		)
 	},
 	{
-		$id: '#/$defs/Ruleset',
+		$id: 'Ruleset',
 
 		description:
 			'A standalone Datasworn package that describes its own ruleset.'
@@ -118,16 +109,16 @@ export const Expansion = Utils.Assign(
 			'datasworn_version'
 		]),
 		Type.Object({
-			id: Type.Ref<typeof Id.ExpansionId>('#/$defs/ExpansionId'),
+			id: Type.Ref<typeof Id.ExpansionId>('ExpansionId'),
 			datasworn_version: Utils.Computed(Type.Ref(Metadata.SemanticVersion)),
 			package_type: Type.Literal('expansion'),
-			ruleset: Type.Ref<typeof Id.RulesetId>('#/$defs/RulesetId')
+			ruleset: Type.Ref<typeof Id.RulesetId>('RulesetId')
 		})
 	],
 	{
 		description:
 			'A Datasworn package that relies on an external package to provide its ruleset.',
-		$id: '#/$defs/Expansion'
+		$id: 'Expansion'
 	}
 )
 export type Expansion = Static<typeof Expansion>
@@ -139,7 +130,7 @@ export const RulesPackage = Utils.DiscriminatedUnion(
 		description:
 			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.'
 		// title: 'RulesPackage'
-		// $id: '#/$defs/RulesPackage'
+		// $id: 'RulesPackage'
 	}
 )
 export type RulesPackage = Static<typeof RulesPackage>

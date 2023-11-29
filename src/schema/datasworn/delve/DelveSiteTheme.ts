@@ -8,14 +8,14 @@ import * as Generic from '../Generic.js'
 export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.ThemeFeatureRowId),
 	TableRowMixin,
-	{ $id: '#/$defs/DelveSiteThemeFeatureRow' }
+	{ $id: 'DelveSiteThemeFeatureRow' }
 )
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
 
 export const DelveSiteThemeDangerRow = Generic.IdentifiedNode(
 	Type.Ref(Id.ThemeDangerRowId),
 	TableRowMixin,
-	{ $id: '#/$defs/DelveSiteThemeDangerRow' }
+	{ $id: 'DelveSiteThemeDangerRow' }
 )
 const DelveSiteThemeFeatures = Type.Array(Type.Ref(DelveSiteThemeFeatureRow))
 const DelveSiteThemeDangers = Type.Array(Type.Ref(DelveSiteThemeDangerRow))
@@ -71,7 +71,7 @@ export const DelveSiteTheme = Generic.SourcedNode(
 	}),
 	{
 		description: 'A delve site theme card.',
-		$id: '#/$defs/DelveSiteTheme'
+		$id: 'DelveSiteTheme'
 	}
 )
 export type DelveSiteTheme = Static<typeof DelveSiteTheme>

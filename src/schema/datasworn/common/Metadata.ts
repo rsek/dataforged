@@ -3,19 +3,19 @@ import * as Id from '../common/Id.js'
 import { Nullable } from '../utils/Nullable.js'
 
 export const SvgImageUrl = Type.RegExp(/\.svg$/i, {
-	$id: '#/$defs/SvgImageUrl',
+	$id: 'SvgImageUrl',
 	format: 'uri-reference',
 	description: 'A relative URL pointing to a vector image in the SVG format.'
 })
 export type SvgImageUrl = Static<typeof SvgImageUrl>
 export const WebpImageUrl = Type.RegExp(/\.webp$/i, {
-	$id: '#/$defs/WebpImageUrl',
+	$id: 'WebpImageUrl',
 	format: 'uri-reference',
 	description: 'A relative URL pointing to a raster image in the WEBP format.'
 })
 export type WebpImageUrl = Static<typeof WebpImageUrl>
 export const CssColor = Type.String({
-	$id: '#/$defs/CssColor',
+	$id: 'CssColor',
 	description:
 		'A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value'
 })
@@ -24,11 +24,10 @@ export type CssColor = Static<typeof CssColor>
 export const SemanticVersion = Type.RegExp(
 	/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/,
 	{
-		$id: '#/$defs/SemanticVersion'
+		$id: 'SemanticVersion'
 	}
 )
 export type SemanticVersion = Static<typeof SemanticVersion>
-
 
 export const Source = Type.Object(
 	{
@@ -101,7 +100,7 @@ export const Source = Type.Object(
 	},
 	{
 		description: 'Metadata describing the original source of this item',
-		$id: '#/$defs/Source'
+		$id: 'Source'
 	}
 )
 
@@ -118,7 +117,7 @@ export const Suggestions = Type.Partial(
 		atlas: Type.Array(Type.Ref(Id.AtlasEntryId)),
 		rarities: Type.Array(Type.Ref(Id.RarityId))
 	}),
-	{ $id: '#/$defs/Suggestions' }
+	{ $id: 'Suggestions' }
 )
 
 export type Suggestions = Static<typeof Suggestions>

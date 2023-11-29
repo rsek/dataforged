@@ -18,7 +18,7 @@ export const Move = Utils.DiscriminatedUnion(
 	[MoveActionRoll, MoveNoRoll, MoveProgressRoll, MoveSpecialTrack],
 	'roll_type',
 	{
-		$id: '#/$defs/Move',
+		$id: 'Move',
 		title: 'Move'
 	}
 )
@@ -38,7 +38,7 @@ export const MoveEnhancement = Utils.DiscriminatedUnion(
 	],
 	'roll_type',
 	{
-		$id: '#/$defs/MoveEnhancement'
+		$id: 'MoveEnhancement'
 	}
 )
 export type TMoveEnhancement = typeof MoveEnhancement
@@ -51,7 +51,7 @@ export type MoveEnhancement =
 export const MoveCategory = Generic.Collection(
 	Type.Ref(Id.MoveCategoryId),
 	Type.Ref(Move),
-	{ $id: '#/$defs/MoveCategory' }
+	{ $id: 'MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>
 export type TMoveCategory = typeof MoveCategory

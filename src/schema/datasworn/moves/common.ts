@@ -40,7 +40,7 @@ export const MoveRollType = UnionEnumFromRecord(
 		special_track:
 			'A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).'
 	},
-	{ $id: '#/$defs/MoveRollType' }
+	{ $id: 'MoveRollType' }
 )
 
 export type MoveRollType = Static<typeof MoveRollType>
@@ -53,7 +53,7 @@ export const MoveOutcomeType = UnionEnumFromRecord(
 		[Outcome.StrongHit]: 'The score is greater than both challenge dice.'
 	},
 	{
-		$id: '#/$defs/MoveOutcomeType'
+		$id: 'MoveOutcomeType'
 	}
 )
 export type MoveOutcomeType = Static<typeof MoveOutcomeType>
@@ -76,7 +76,7 @@ export const ActionRollMethod = UnionEnumFromRecord(
 		...rollMethodForceOutcome,
 		...rollMethodOutcomeCommon
 	},
-	{ $id: '#/$defs/ActionRollMethod' }
+	{ $id: 'ActionRollMethod' }
 )
 export type ActionRollMethod = Static<typeof ActionRollMethod>
 
@@ -85,7 +85,7 @@ export const SpecialTrackRollMethod = UnionEnumFromRecord(
 		...rollMethodForceOutcome,
 		...rollMethodOutcomeCommon
 	},
-	{ $id: '#/$defs/SpecialTrackRollMethod' }
+	{ $id: 'SpecialTrackRollMethod' }
 )
 
 export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
@@ -96,7 +96,7 @@ export const ProgressRollMethod = UnionEnumFromRecord(
 		progress_roll:
 			'Make a progress roll on a progress track associated with this move.'
 	},
-	{ $id: '#/$defs/ProgressRollMethod' }
+	{ $id: 'ProgressRollMethod' }
 )
 export type ProgressRollMethod = Static<typeof ProgressRollMethod>
 
@@ -108,26 +108,26 @@ export const MoveOutcome = Type.Object(
 		})
 		// count_as: Type.Optional(Type.Ref(MoveOutcomeType))
 	},
-	{ $id: '#/$defs/MoveOutcome' }
+	{ $id: 'MoveOutcome' }
 )
 export type MoveOutcome = Static<typeof MoveOutcome>
 
 // export const MoveOutcomeMatchable = Assign(
 // [	MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) })],
-// 	{ $id: '#/$defs/MoveOutcomeMatchable' }
+// 	{ $id: 'MoveOutcomeMatchable' }
 // )
 // export type MoveOutcomeMatchable = Static<typeof MoveOutcomeMatchable>
 
 export const MoveOutcomes = Type.Object(
 	{
-		[Outcome.StrongHit]: Type.Ref<typeof MoveOutcome>('#/$defs/MoveOutcome'),
-		// [Outcome.StrongHit]: Type.Ref<typeof MoveOutcomeMatchable>('#/$defs/MoveOutcomeMatchable'),
-		[Outcome.WeakHit]: Type.Ref<typeof MoveOutcome>('#/$defs/MoveOutcome'),
-		[Outcome.Miss]: Type.Ref<typeof MoveOutcome>('#/$defs/MoveOutcome')
-		// [Outcome.Miss]: Type.Ref<typeof MoveOutcomeMatchable>('#/$defs/MoveOutcomeMatchable'),
+		[Outcome.StrongHit]: Type.Ref<typeof MoveOutcome>('MoveOutcome'),
+		// [Outcome.StrongHit]: Type.Ref<typeof MoveOutcomeMatchable>('MoveOutcomeMatchable'),
+		[Outcome.WeakHit]: Type.Ref<typeof MoveOutcome>('MoveOutcome'),
+		[Outcome.Miss]: Type.Ref<typeof MoveOutcome>('MoveOutcome')
+		// [Outcome.Miss]: Type.Ref<typeof MoveOutcomeMatchable>('MoveOutcomeMatchable'),
 	},
 	{
-		$id: '#/$defs/MoveOutcomes',
+		$id: 'MoveOutcomes',
 		description: `A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
 
   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.`

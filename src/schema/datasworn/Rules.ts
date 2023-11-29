@@ -39,7 +39,7 @@ export const Rules = Type.Object(
 		)
 	},
 	{
-		$id: '#/$defs/Rules',
+		$id: 'Rules',
 		description:
 			'Describes rules for player characters in this ruleset, such as stats and condition meters.'
 	}
@@ -48,7 +48,7 @@ export type Rules = Static<typeof Rules>
 export type TRules = typeof Rules
 
 export const RulesExpansion = Type.Partial(Rules, {
-	$id: '#/$defs/RulesExpansion'
+	$id: 'RulesExpansion'
 })
 
 export type RulesExpansion = Static<typeof RulesExpansion>

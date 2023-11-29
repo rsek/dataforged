@@ -22,7 +22,7 @@ export const NpcNature = Type.Ref(Localize.Label, {
 		'Monster',
 		'Vehicle'
 	],
-	$id: '#/$defs/NpcNature'
+	$id: 'NpcNature'
 })
 export type NpcNature = Static<typeof NpcNature>
 
@@ -42,7 +42,7 @@ export const NpcVariant = Generic.IdentifiedNode(
 	Type.Ref(Id.NpcVariantId),
 	Type.Pick(NpcMixin, ['name', 'rank', 'nature', 'summary', 'description']),
 	{
-		$id: '#/$defs/NpcVariant'
+		$id: 'NpcVariant'
 	}
 )
 
@@ -57,7 +57,7 @@ export const Npc = Generic.Collectable(
 		})
 	]),
 	{
-		$id: '#/$defs/Npc',
+		$id: 'Npc',
 		description:
 			'A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.'
 	}
@@ -69,7 +69,7 @@ export const NpcCollection = Generic.Collection(
 	Type.Ref(Id.NpcCollectionId),
 	Type.Ref(Npc),
 	{
-		$id: '#/$defs/NpcCollection'
+		$id: 'NpcCollection'
 	}
 )
 export type NpcCollection = Static<typeof NpcCollection>

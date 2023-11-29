@@ -24,7 +24,7 @@ import type * as Localize from './Localize.js'
 import * as Utils from '../Utils.js'
 import * as Generic from '../Generic.js'
 
-const InputName = Type.Ref<typeof Localize.Label>('#/$defs/Label', {
+const InputName = Type.Ref<typeof Localize.Label>('Label', {
 	description:
 		'A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).'
 })
@@ -121,11 +121,14 @@ export const Clock = Utils.Assign(
 				description:
 					'The minimum number of filled clock segments. This is always 0.'
 			},
-			max: Utils.UnionEnum([4, 6, 8, 10], {
-				[JsonTypeDef]: { schema: { type: 'int8' } },
-				description:
-					'The size of the clock -- in other words, the maximum number of filled clock segments.'
-			})
+			max: Type.Enum(
+				{ 4: 4, 6: 6, 8: 8, 10: 10 },
+				{
+					[JsonTypeDef]: { schema: { type: 'int8' } },
+					description:
+						'The size of the clock -- in other words, the maximum number of filled clock segments.'
+				}
+			)
 		})
 	],
 	{
@@ -253,7 +256,7 @@ export interface Choices<T> {
 }
 
 const SelectOptionGroupBase = Type.Object({
-	name: Type.Ref<typeof Localize.Label>('#/$defs/Label', {
+	name: Type.Ref<typeof Localize.Label>('Label', {
 		description: 'A label for this option group.'
 	}),
 	option_type: Type.Literal('option_group')
@@ -283,7 +286,7 @@ export type SelectOptionGroup<Option extends SelectOption<any>> = Static<
 
 const SelectBase = Input(
 	Utils.Nullable(
-		Type.Ref<typeof Id.DictKey>('#/$defs/DictKey', {
+		Type.Ref<typeof Id.DictKey>('DictKey', {
 			description:
 				'The key of the currently selected choice from the `choices` property, or `null` if none is selected.',
 			default: null

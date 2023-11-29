@@ -8,13 +8,13 @@ import * as Generic from '../Generic.js'
 export const DelveSiteDomainFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.DomainFeatureRowId),
 	TableRowMixin,
-	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
+	{ $id: 'DelveSiteDomainFeatureRow' }
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
 export const DelveSiteDomainDangerRow = Generic.IdentifiedNode(
 	Type.Ref(Id.DomainDangerRowId),
 	TableRowMixin,
-	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
+	{ $id: 'DelveSiteDomainDangerRow' }
 )
 export type DelveSiteDomainDangerRow = Static<typeof DelveSiteDomainDangerRow>
 
@@ -106,7 +106,7 @@ export const DelveSiteDomain = Generic.SourcedNode(
 		)
 	}),
 	{
-		$id: '#/$defs/DelveSiteDomain',
+		$id: 'DelveSiteDomain',
 		description: 'A delve site domain card.'
 	}
 )

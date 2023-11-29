@@ -44,7 +44,7 @@ export const AssetAbility = Generic.IdentifiedNode(
 			})
 		)
 	}),
-	{ $id: '#/$defs/AssetAbility' }
+	{ $id: 'AssetAbility' }
 )
 export type AssetAbility = Static<typeof AssetAbility>
 export type TAssetAbility = typeof AssetAbility

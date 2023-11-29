@@ -19,7 +19,7 @@ export const SpecialTrackRule = Type.Object(
 		})
 	},
 	{
-		$id: '#/$defs/SpecialTrackRule',
+		$id: 'SpecialTrackRule',
 		description:
 			'Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).'
 	}

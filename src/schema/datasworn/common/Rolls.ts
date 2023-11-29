@@ -5,9 +5,9 @@ import { Id, Localize } from '../common/index.js'
 export const DiceNotation = Type.RegExp(
 	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
 	{
-		$id: '#/$defs/DiceNotation',
-		examples: ['1d100', '1d6+2'],
-		format: 'dice_notation'
+		$id: 'DiceNotation',
+		examples: ['1d100', '1d6+2']
+		// format: 'dice_notation'
 	}
 )
 export type DiceNotation = Static<typeof DiceNotation>
@@ -20,7 +20,7 @@ export const OracleTableRollMethod = UnionEnumFromRecord(
 	},
 	{
 		default: 'no_duplicates',
-		$id: '#/$defs/OracleTableRollMethod',
+		$id: 'OracleTableRollMethod',
 		description:
 			'Special roll instructions to use when rolling multiple times on a single oracle table.'
 	}
@@ -45,7 +45,7 @@ export const OracleTableRoll = Type.Object(
 		times: Type.Optional(Type.Integer({ minimum: 1, default: 1 })),
 		method: Type.Optional(Type.Ref(OracleTableRollMethod))
 	},
-	{ $id: '#/$defs/OracleTableRoll' }
+	{ $id: 'OracleTableRoll' }
 )
 export type OracleTableRoll = Static<typeof OracleTableRoll>
 export const OracleRollTemplate = Type.Object(
@@ -73,7 +73,7 @@ export const OracleRollTemplate = Type.Object(
 		)
 	},
 	{
-		$id: '#/$defs/OracleRollTemplate',
+		$id: 'OracleRollTemplate',
 		description: `Provides string templates that may be used in place of the static row text from \`OracleTableRow#result\`, \`OracleTableRow#summary\`, and \`OracleTableRow#description\`.
 
   These strings are formatted in Markdown, but use a special syntax for their placeholders: \`{{result:some_oracle_table_id}}\`. The placeholder should be replaced with the value of a rolled (or selected) \`OracleTableRow#result\` from the target oracle table ID.`
@@ -85,6 +85,6 @@ export const OracleTableMatchBehavior = Type.Object(
 	{
 		text: Type.Ref(Localize.MarkdownString)
 	},
-	{ $id: '#/$defs/OracleTableMatchBehavior', title: 'Match behavior' }
+	{ $id: 'OracleTableMatchBehavior', title: 'Match behavior' }
 )
 export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>

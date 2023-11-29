@@ -17,7 +17,7 @@ export const ConditionMeterRule = Utils.Assign(
 		Inputs.Meter(Type.Integer({ default: 0 }), Type.Integer({ default: 5 }))
 	],
 	{
-		$id: '#/$defs/ConditionMeterRule',
+		$id: 'ConditionMeterRule',
 		description: 'Describes a standard player character condition meter.'
 	}
 )

@@ -23,7 +23,7 @@ export const TriggerBy = Type.Object(
 		ally: Type.Boolean({ default: false })
 	},
 	{
-		$id: '#/$defs/TriggerBy',
+		$id: 'TriggerBy',
 		description:
 			"Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
 	}
