@@ -5,11 +5,9 @@ import {
 	PKG_DIR_NODE,
 	PKG_SCOPE_OFFICIAL,
 	ROOT_SOURCE_DATA,
-	SCHEMA_OUT,
-	TYPES_OUT
+	SCHEMA_OUT
 } from '../../const.js'
 import Log from '../../utils/Log.js'
-import { exec } from 'child_process'
 import { shellify } from '../../../shellify.js'
 
 const rootDir = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL, 'core')
