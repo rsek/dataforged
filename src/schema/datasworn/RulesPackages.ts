@@ -1,5 +1,5 @@
 import { Type, type Static, type TUnsafe } from '@sinclair/typebox'
-import { type Id } from './common/index.js'
+import { type Id, Metadata } from './common/index.js'
 import * as Generic from './Generic.js'
 
 import { type TAssetType } from './Assets.js'
@@ -23,6 +23,7 @@ export const Ruleset = Type.Object(
 		id: Type.Ref<typeof Id.RulesetId>('#/$defs/RulesetId'),
 		package_type: Type.Literal('ruleset'),
 		rules: Utils.SourceOptional(Type.Ref<TRules>('#/$defs/Rules')),
+		datasworn_version: Utils.Computed(Type.Ref(Metadata.SemanticVersion)),
 		oracles: Utils.SourceOptional(
 			Generic.Dictionary(
 				Type.Ref<TOracleCollection>('#/$defs/OracleCollection'),
@@ -110,9 +111,14 @@ export type Ruleset = Static<typeof Ruleset>
 
 export const Expansion = Utils.Assign(
 	[
-		Type.Omit(Type.Partial(Ruleset), ['id', 'package_type']),
+		Type.Omit(Type.Partial(Ruleset), [
+			'id',
+			'package_type',
+			'datasworn_version'
+		]),
 		Type.Object({
 			id: Type.Ref<typeof Id.ExpansionId>('#/$defs/ExpansionId'),
+			datasworn_version: Utils.Computed(Type.Ref(Metadata.SemanticVersion)),
 			package_type: Type.Literal('expansion'),
 			ruleset: Type.Ref<typeof Id.RulesetId>('#/$defs/RulesetId')
 		})

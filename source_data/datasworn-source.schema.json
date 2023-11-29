@@ -374,6 +374,11 @@
 			"type": "string",
 			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
 		},
+		"SemanticVersion": {
+			"title": "SemanticVersion",
+			"type": "string",
+			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+		},
 		"Source": {
 			"title": "Source",
 			"type": "object",
@@ -5894,6 +5899,9 @@
 				"id": {
 					"$ref": "#/$defs/RulesetId"
 				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion"
+				},
 				"package_type": {
 					"type": "string",
 					"const": "ruleset"
@@ -6011,6 +6019,9 @@
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/ExpansionId"
+				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion"
 				},
 				"package_type": {
 					"type": "string",

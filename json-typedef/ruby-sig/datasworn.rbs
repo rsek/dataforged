@@ -10,8 +10,9 @@ module Datasworn
   end
 
   class RulesPackageExpansion < RulesPackage
-    attr_accessor enhances: NamespaceID
-    attr_accessor id: NamespaceID
+    attr_accessor datasworn_version: SemanticVersion
+    attr_accessor id: ExpansionID
+    attr_accessor ruleset: RulesetID
     attr_accessor assets: Hash[String, AssetType]?
     attr_accessor atlas: Hash[String, Atlas]?
     attr_accessor delve_sites: Hash[String, DelveSite]?
@@ -30,7 +31,8 @@ module Datasworn
 
   class RulesPackageRuleset < RulesPackage
     attr_accessor assets: Hash[String, AssetType]
-    attr_accessor id: NamespaceID
+    attr_accessor datasworn_version: SemanticVersion
+    attr_accessor id: RulesetID
     attr_accessor moves: Hash[String, MoveCategory]
     attr_accessor oracles: Hash[String, OracleCollection]
     attr_accessor rules: Rules
@@ -951,6 +953,13 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
+  class ExpansionID
+    attr_accessor value: String
+
+    def self.from_json_data: (untyped) -> ExpansionID
+    def to_json_data: () -> untyped
+  end
+
   class I18nHint
     attr_accessor part_of_speech: PartOfSpeech?
 
@@ -1211,13 +1220,6 @@ module Datasworn
     SPECIAL_TRACK: MoveRollType
 
     def self.from_json_data: (untyped) -> MoveRollType
-    def to_json_data: () -> untyped
-  end
-
-  class NamespaceID
-    attr_accessor value: String
-
-    def self.from_json_data: (untyped) -> NamespaceID
     def to_json_data: () -> untyped
   end
 
@@ -1622,6 +1624,20 @@ module Datasworn
     attr_accessor stats: Hash[String, StatRule]?
 
     def self.from_json_data: (untyped) -> RulesExpansion
+    def to_json_data: () -> untyped
+  end
+
+  class RulesetID
+    attr_accessor value: String
+
+    def self.from_json_data: (untyped) -> RulesetID
+    def to_json_data: () -> untyped
+  end
+
+  class SemanticVersion
+    attr_accessor value: String
+
+    def self.from_json_data: (untyped) -> SemanticVersion
     def to_json_data: () -> untyped
   end
 

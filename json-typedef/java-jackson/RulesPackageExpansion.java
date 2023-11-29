@@ -9,11 +9,14 @@ import java.util.Map;
 
 @JsonSerialize
 public class RulesPackageExpansion extends RulesPackage {
-    @JsonProperty("enhances")
-    private NamespaceId enhances;
+    @JsonProperty("datasworn_version")
+    private SemanticVersion dataswornVersion;
 
     @JsonProperty("id")
-    private NamespaceId id;
+    private ExpansionId id;
+
+    @JsonProperty("ruleset")
+    private RulesetId ruleset;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("assets")
@@ -63,31 +66,45 @@ public class RulesPackageExpansion extends RulesPackage {
     }
 
     /**
-     * Getter for enhances.<p>
+     * Getter for dataswornVersion.<p>
      */
-    public NamespaceId getEnhances() {
-        return enhances;
+    public SemanticVersion getDataswornVersion() {
+        return dataswornVersion;
     }
 
     /**
-     * Setter for enhances.<p>
+     * Setter for dataswornVersion.<p>
      */
-    public void setEnhances(NamespaceId enhances) {
-        this.enhances = enhances;
+    public void setDataswornVersion(SemanticVersion dataswornVersion) {
+        this.dataswornVersion = dataswornVersion;
     }
 
     /**
      * Getter for id.<p>
      */
-    public NamespaceId getId() {
+    public ExpansionId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(NamespaceId id) {
+    public void setId(ExpansionId id) {
         this.id = id;
+    }
+
+    /**
+     * Getter for ruleset.<p>
+     */
+    public RulesetId getRuleset() {
+        return ruleset;
+    }
+
+    /**
+     * Setter for ruleset.<p>
+     */
+    public void setRuleset(RulesetId ruleset) {
+        this.ruleset = ruleset;
     }
 
     /**

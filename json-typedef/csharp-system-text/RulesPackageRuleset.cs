@@ -16,8 +16,11 @@ namespace Datasworn
         [JsonPropertyName("assets")]
         public IDictionary<string, AssetType> Assets { get; set; }
 
+        [JsonPropertyName("datasworn_version")]
+        public SemanticVersion DataswornVersion { get; set; }
+
         [JsonPropertyName("id")]
-        public NamespaceId Id { get; set; }
+        public RulesetId Id { get; set; }
 
         /// <summary>
         /// A dictionary object containing move categories, which contain moves.

@@ -3,115 +3,41 @@
 	"title": "DataswornSource v0.0.0-dev",
 	"type": "object",
 	"description": "Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.\n\nThe source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.",
-	"required": ["id"],
+	"required": ["package_type"],
 	"properties": {
-		"id": {
-			"$ref": "#/$defs/NamespaceId"
-		},
-		"rules": {
-			"$ref": "#/$defs/Rules"
-		},
-		"oracles": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/OracleCollection"
-				}
-			}
-		},
-		"assets": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing asset types, which contain assets.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/AssetType"
-				}
-			}
-		},
-		"atlas": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing atlas collections, which contain atlas entries.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/Atlas"
-				}
-			}
-		},
-		"delve_sites": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/DelveSite"
-				}
-			}
-		},
-		"moves": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing move categories, which contain moves.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/MoveCategory"
-				}
-			}
-		},
-		"npcs": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing NPC collections, which contain NPCs.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/NpcCollection"
-				}
-			}
-		},
-		"rarities": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/Rarity"
-				}
-			}
-		},
-		"site_domains": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing delve site domains.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/DelveSiteDomain"
-				}
-			}
-		},
-		"site_themes": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing delve site themes.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/DelveSiteTheme"
-				}
-			}
-		},
-		"truths": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object of truth categories.",
-			"patternProperties": {
-				"^([a-z][a-z_]*)$": {
-					"$ref": "#/$defs/Truth"
-				}
-			}
+		"package_type": {
+			"enum": ["ruleset", "expansion"]
 		}
 	},
+	"additionalProperties": true,
+	"allOf": [
+		{
+			"if": {
+				"properties": {
+					"package_type": {
+						"const": "ruleset",
+						"type": "string"
+					}
+				}
+			},
+			"then": {
+				"$ref": "#/$defs/Ruleset"
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"package_type": {
+						"const": "expansion",
+						"type": "string"
+					}
+				}
+			},
+			"then": {
+				"$ref": "#/$defs/Expansion"
+			}
+		}
+	],
 	"$defs": {
 		"AssetAbilityControlFieldId": {
 			"title": "AssetAbilityControlFieldId",
@@ -240,6 +166,13 @@
 			"type": "string",
 			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
+		"ExpansionId": {
+			"title": "ExpansionId",
+			"type": "string",
+			"description": "The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.",
+			"examples": ["delve"],
+			"pattern": "^([a-z0-9_]{3,})$"
+		},
 		"ImpactRuleCollectionId": {
 			"title": "ImpactRuleCollectionId",
 			"type": "string",
@@ -305,12 +238,6 @@
 				"*/moves/*/face_danger",
 				"*/assets/ritual/*/abilities/*/moves/*"
 			]
-		},
-		"NamespaceId": {
-			"title": "NamespaceId",
-			"type": "string",
-			"examples": ["classic", "delve", "starforged", "sundered_isles"],
-			"pattern": "^([a-z0-9_]{3,})$"
 		},
 		"NpcCollectionId": {
 			"title": "NpcCollectionId",
@@ -398,6 +325,13 @@
 			"examples": ["classic/rarities/ayethins_journal"],
 			"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
 		},
+		"RulesetId": {
+			"title": "RulesetId",
+			"type": "string",
+			"description": "The ID of standalone Datasworn package that describes its own ruleset.",
+			"examples": ["classic", "starforged"],
+			"pattern": "^([a-z0-9_]{3,})$"
+		},
 		"SpecialTrackRuleId": {
 			"title": "SpecialTrackRuleId",
 			"type": "string",
@@ -439,6 +373,11 @@
 			"title": "CssColor",
 			"type": "string",
 			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
+		},
+		"SemanticVersion": {
+			"title": "SemanticVersion",
+			"type": "string",
+			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
 		},
 		"Source": {
 			"title": "Source",
@@ -773,6 +712,54 @@
 			"type": "object",
 			"description": "Describes rules for player characters in this ruleset, such as stats and condition meters.",
 			"required": ["condition_meters", "impacts", "special_tracks", "stats"],
+			"properties": {
+				"condition_meters": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the standard condition meters used by player characters in this ruleset.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/ConditionMeterRule"
+						}
+					}
+				},
+				"impacts": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the standard impacts/debilities used by player characters in this ruleset.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/ImpactCategory"
+						}
+					}
+				},
+				"special_tracks": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/SpecialTrackRule"
+						}
+					}
+				},
+				"stats": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "Describes the standard stats used by player characters in this ruleset.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/StatRule"
+						}
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"RulesExpansion": {
+			"title": "RulesExpansion",
+			"type": "object",
+			"description": "Describes rules for player characters in this ruleset, such as stats and condition meters.",
 			"properties": {
 				"condition_meters": {
 					"type": "object",
@@ -5899,6 +5886,252 @@
 				},
 				"i18n": {
 					"$ref": "#/$defs/I18nHints"
+				}
+			},
+			"additionalProperties": false
+		},
+		"Ruleset": {
+			"title": "Ruleset",
+			"type": "object",
+			"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
+			"required": ["id", "package_type"],
+			"properties": {
+				"id": {
+					"$ref": "#/$defs/RulesetId"
+				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion"
+				},
+				"package_type": {
+					"type": "string",
+					"const": "ruleset"
+				},
+				"rules": {
+					"$ref": "#/$defs/Rules"
+				},
+				"oracles": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/OracleCollection"
+						}
+					}
+				},
+				"assets": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing asset types, which contain assets.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/AssetType"
+						}
+					}
+				},
+				"atlas": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing atlas collections, which contain atlas entries.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Atlas"
+						}
+					}
+				},
+				"moves": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing move categories, which contain moves.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/MoveCategory"
+						}
+					}
+				},
+				"npcs": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing NPC collections, which contain NPCs.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/NpcCollection"
+						}
+					}
+				},
+				"rarities": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Rarity"
+						}
+					}
+				},
+				"delve_sites": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSite"
+						}
+					}
+				},
+				"site_domains": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing delve site domains.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteDomain"
+						}
+					}
+				},
+				"site_themes": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing delve site themes.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteTheme"
+						}
+					}
+				},
+				"truths": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object of truth categories.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Truth"
+						}
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"Expansion": {
+			"title": "Expansion",
+			"type": "object",
+			"required": ["id", "package_type", "ruleset"],
+			"properties": {
+				"id": {
+					"$ref": "#/$defs/ExpansionId"
+				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion"
+				},
+				"package_type": {
+					"type": "string",
+					"const": "expansion"
+				},
+				"ruleset": {
+					"$ref": "#/$defs/RulesetId"
+				},
+				"rules": {
+					"$ref": "#/$defs/Rules"
+				},
+				"oracles": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/OracleCollection"
+						}
+					}
+				},
+				"assets": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing asset types, which contain assets.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/AssetType"
+						}
+					}
+				},
+				"atlas": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing atlas collections, which contain atlas entries.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Atlas"
+						}
+					}
+				},
+				"moves": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing move categories, which contain moves.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/MoveCategory"
+						}
+					}
+				},
+				"npcs": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing NPC collections, which contain NPCs.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/NpcCollection"
+						}
+					}
+				},
+				"rarities": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Rarity"
+						}
+					}
+				},
+				"delve_sites": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSite"
+						}
+					}
+				},
+				"site_domains": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing delve site domains.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteDomain"
+						}
+					}
+				},
+				"site_themes": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object containing delve site themes.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteTheme"
+						}
+					}
+				},
+				"truths": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "A dictionary object of truth categories.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Truth"
+						}
+					}
 				}
 			},
 			"additionalProperties": false

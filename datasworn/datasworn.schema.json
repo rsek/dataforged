@@ -374,6 +374,11 @@
 			"type": "string",
 			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
 		},
+		"SemanticVersion": {
+			"title": "SemanticVersion",
+			"type": "string",
+			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+		},
 		"Source": {
 			"title": "Source",
 			"type": "object",
@@ -5872,10 +5877,21 @@
 			"title": "Ruleset",
 			"type": "object",
 			"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
-			"required": ["id", "package_type", "rules", "oracles", "assets", "moves"],
+			"required": [
+				"id",
+				"datasworn_version",
+				"package_type",
+				"rules",
+				"oracles",
+				"assets",
+				"moves"
+			],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/RulesetId"
+				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion"
 				},
 				"package_type": {
 					"type": "string",
@@ -5989,10 +6005,13 @@
 		"Expansion": {
 			"title": "Expansion",
 			"type": "object",
-			"required": ["id", "package_type", "ruleset"],
+			"required": ["id", "datasworn_version", "package_type", "ruleset"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/ExpansionId"
+				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion"
 				},
 				"package_type": {
 					"type": "string",

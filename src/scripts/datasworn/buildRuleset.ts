@@ -63,7 +63,7 @@ export async function buildRuleset(
 			try {
 				const sourceData = await loadRulesetFile(filePath, ajv)
 
-				const builtData = await buildRulesetData(sourceData, ajv, { filePath })
+				const builtData = await buildRulesetData(sourceData)
 
 				builtFiles.set(filePath, builtData)
 			} catch (error) {

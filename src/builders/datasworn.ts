@@ -1,8 +1,4 @@
-import {
-	sourcedTransformer,
-	type SourceHaver,
-	transform
-} from './transformer.js'
+import { sourcedTransformer, transform } from './transformer.js'
 import { mapValues } from 'lodash-es'
 import { OracleCollection } from './oracles.js'
 import { AssetType } from './assets.js'
@@ -13,8 +9,17 @@ import { Truth } from './truths.js'
 import { NpcCollection } from './npcs.js'
 import { Atlas } from './atlas.js'
 import { type In, type Out } from '../types/index.js'
+import { VERSION } from '../scripts/const.js'
 
 export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
+	datasworn_version: function (
+		this: SourceHaver,
+		data: In.Datasworn,
+		key: string | number,
+		parent: null
+	) {
+		return VERSION
+	},
 	rules: function (
 		this: SourceHaver,
 		data: In.Datasworn,

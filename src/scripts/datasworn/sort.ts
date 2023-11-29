@@ -21,6 +21,7 @@ export const dataSwornKeyOrder = [
 	'id',
 	'title',
 	'name',
+	'datasworn_version',
 	'label',
 	'canonical_name',
 	...typeKeys,

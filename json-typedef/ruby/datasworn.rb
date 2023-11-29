@@ -19,8 +19,9 @@ module Datasworn
   end
 
   class RulesPackageExpansion < RulesPackage
-    attr_accessor :enhances
+    attr_accessor :datasworn_version
     attr_accessor :id
+    attr_accessor :ruleset
     attr_accessor :assets
     attr_accessor :atlas
     attr_accessor :delve_sites
@@ -36,8 +37,9 @@ module Datasworn
     def self.from_json_data(data)
       out = RulesPackageExpansion.new
       out.package_type = "expansion"
-      out.enhances = Datasworn::from_json_data(NamespaceID, data["enhances"])
-      out.id = Datasworn::from_json_data(NamespaceID, data["id"])
+      out.datasworn_version = Datasworn::from_json_data(SemanticVersion, data["datasworn_version"])
+      out.id = Datasworn::from_json_data(ExpansionID, data["id"])
+      out.ruleset = Datasworn::from_json_data(RulesetID, data["ruleset"])
       out.assets = Datasworn::from_json_data(Hash[String, AssetType], data["assets"])
       out.atlas = Datasworn::from_json_data(Hash[String, Atlas], data["atlas"])
       out.delve_sites = Datasworn::from_json_data(Hash[String, DelveSite], data["delve_sites"])
@@ -54,8 +56,9 @@ module Datasworn
 
     def to_json_data
       data = { "package_type" => "expansion" }
-      data["enhances"] = Datasworn::to_json_data(enhances)
+      data["datasworn_version"] = Datasworn::to_json_data(datasworn_version)
       data["id"] = Datasworn::to_json_data(id)
+      data["ruleset"] = Datasworn::to_json_data(ruleset)
       data["assets"] = Datasworn::to_json_data(assets) unless assets.nil?
       data["atlas"] = Datasworn::to_json_data(atlas) unless atlas.nil?
       data["delve_sites"] = Datasworn::to_json_data(delve_sites) unless delve_sites.nil?
@@ -73,6 +76,7 @@ module Datasworn
 
   class RulesPackageRuleset < RulesPackage
     attr_accessor :assets
+    attr_accessor :datasworn_version
     attr_accessor :id
     attr_accessor :moves
     attr_accessor :oracles
@@ -89,7 +93,8 @@ module Datasworn
       out = RulesPackageRuleset.new
       out.package_type = "ruleset"
       out.assets = Datasworn::from_json_data(Hash[String, AssetType], data["assets"])
-      out.id = Datasworn::from_json_data(NamespaceID, data["id"])
+      out.datasworn_version = Datasworn::from_json_data(SemanticVersion, data["datasworn_version"])
+      out.id = Datasworn::from_json_data(RulesetID, data["id"])
       out.moves = Datasworn::from_json_data(Hash[String, MoveCategory], data["moves"])
       out.oracles = Datasworn::from_json_data(Hash[String, OracleCollection], data["oracles"])
       out.rules = Datasworn::from_json_data(Rules, data["rules"])
@@ -106,6 +111,7 @@ module Datasworn
     def to_json_data
       data = { "package_type" => "ruleset" }
       data["assets"] = Datasworn::to_json_data(assets)
+      data["datasworn_version"] = Datasworn::to_json_data(datasworn_version)
       data["id"] = Datasworn::to_json_data(id)
       data["moves"] = Datasworn::to_json_data(moves)
       data["oracles"] = Datasworn::to_json_data(oracles)
@@ -2566,6 +2572,22 @@ module Datasworn
     end
   end
 
+  # The ID of a Datasworn package that enhances another Datasworn package, and
+  # relies on another package to provide its ruleset.
+  class ExpansionID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = ExpansionID.new
+      out.value = Datasworn.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Datasworn.to_json_data(value)
+    end
+  end
+
   class I18nHint
     attr_accessor :part_of_speech
 
@@ -3273,20 +3295,6 @@ module Datasworn
 
     def to_json_data
       value
-    end
-  end
-
-  class NamespaceID
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = NamespaceID.new
-      out.value = Datasworn.from_json_data(String, data)
-      out
-    end
-
-    def to_json_data
-      Datasworn.to_json_data(value)
     end
   end
 
@@ -4508,6 +4516,35 @@ module Datasworn
       data["special_tracks"] = Datasworn::to_json_data(special_tracks) unless special_tracks.nil?
       data["stats"] = Datasworn::to_json_data(stats) unless stats.nil?
       data
+    end
+  end
+
+  # The ID of standalone Datasworn package that describes its own ruleset.
+  class RulesetID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = RulesetID.new
+      out.value = Datasworn.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Datasworn.to_json_data(value)
+    end
+  end
+
+  class SemanticVersion
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = SemanticVersion.new
+      out.value = Datasworn.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Datasworn.to_json_data(value)
     end
   end
 

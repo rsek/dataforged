@@ -53,9 +53,11 @@ func (v *RulesPackage) UnmarshalJSON(b []byte) error {
 }
 
 type RulesPackageExpansion struct {
-	Enhances NamespaceID `json:"enhances"`
+	DataswornVersion SemanticVersion `json:"datasworn_version"`
 
-	ID NamespaceID `json:"id"`
+	ID ExpansionID `json:"id"`
+
+	Ruleset RulesetID `json:"ruleset"`
 
 	// A dictionary object containing asset types, which contain assets.
 	Assets map[string]AssetType `json:"assets,omitempty"`
@@ -98,7 +100,9 @@ type RulesPackageRuleset struct {
 	// A dictionary object containing asset types, which contain assets.
 	Assets map[string]AssetType `json:"assets"`
 
-	ID NamespaceID `json:"id"`
+	DataswornVersion SemanticVersion `json:"datasworn_version"`
+
+	ID RulesetID `json:"id"`
 
 	// A dictionary object containing move categories, which contain moves.
 	Moves map[string]MoveCategory `json:"moves"`
@@ -1672,6 +1676,10 @@ type DomainDangerRowID = string
 
 type DomainFeatureRowID = string
 
+// The ID of a Datasworn package that enhances another Datasworn package, and
+// relies on another package to provide its ruleset.
+type ExpansionID = string
+
 type I18nHint struct {
 	PartOfSpeech *PartOfSpeech `json:"part_of_speech,omitempty"`
 }
@@ -2112,8 +2120,6 @@ const (
 // Ironsworn), Failure (Delve), or Legacies (Starforged).
 	MoveRollTypeSpecialTrack MoveRollType = "special_track"
 )
-
-type NamespaceID = string
 
 // A non-player character entry, similar to those in Chapter 5 of the Ironsworn
 // Rulebook, or Chapter 4 of Starforged.
@@ -2750,6 +2756,11 @@ type RulesExpansion struct {
 	// Describes the standard stats used by player characters in this ruleset.
 	Stats map[string]StatRule `json:"stats,omitempty"`
 }
+
+// The ID of standalone Datasworn package that describes its own ruleset.
+type RulesetID = string
+
+type SemanticVersion = string
 
 type SourceAuthor struct {
 	Name string `json:"name"`

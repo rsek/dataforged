@@ -18,11 +18,14 @@ pub enum RulesPackage {
 
 #[derive(Serialize, Deserialize)]
 pub struct RulesPackageExpansion {
-    #[serde(rename = "enhances")]
-    pub enhances: NamespaceId,
+    #[serde(rename = "datasworn_version")]
+    pub dataswornVersion: SemanticVersion,
 
     #[serde(rename = "id")]
-    pub id: NamespaceId,
+    pub id: ExpansionId,
+
+    #[serde(rename = "ruleset")]
+    pub ruleset: RulesetId,
 
     /// A dictionary object containing asset types, which contain assets.
     #[serde(rename = "assets")]
@@ -89,8 +92,11 @@ pub struct RulesPackageRuleset {
     #[serde(rename = "assets")]
     pub assets: HashMap<String, AssetType>,
 
+    #[serde(rename = "datasworn_version")]
+    pub dataswornVersion: SemanticVersion,
+
     #[serde(rename = "id")]
-    pub id: NamespaceId,
+    pub id: RulesetId,
 
     /// A dictionary object containing move categories, which contain moves.
     #[serde(rename = "moves")]
@@ -1782,6 +1788,10 @@ pub type DomainDangerRowId = String;
 
 pub type DomainFeatureRowId = String;
 
+/// The ID of a Datasworn package that enhances another Datasworn package, and
+/// relies on another package to provide its ruleset.
+pub type ExpansionId = String;
+
 #[derive(Serialize, Deserialize)]
 pub struct I18nHint {
     #[serde(rename = "part_of_speech")]
@@ -2291,8 +2301,6 @@ pub enum MoveRollType {
     #[serde(rename = "special_track")]
     SpecialTrack,
 }
-
-pub type NamespaceId = String;
 
 /// A non-player character entry, similar to those in Chapter 5 of the Ironsworn
 /// Rulebook, or Chapter 4 of Starforged.
@@ -3077,6 +3085,11 @@ pub struct RulesExpansion {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub stats: Option<Box<HashMap<String, StatRule>>>,
 }
+
+/// The ID of standalone Datasworn package that describes its own ruleset.
+pub type RulesetId = String;
+
+pub type SemanticVersion = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct SourceAuthor {

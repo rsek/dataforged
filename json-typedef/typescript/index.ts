@@ -8,8 +8,9 @@ export type RulesPackage = RulesPackageExpansion | RulesPackageRuleset;
 
 export interface RulesPackageExpansion {
   package_type: "expansion";
-  enhances: NamespaceId;
-  id: NamespaceId;
+  datasworn_version: SemanticVersion;
+  id: ExpansionId;
+  ruleset: RulesetId;
 
   /**
    * A dictionary object containing asset types, which contain assets.
@@ -74,7 +75,8 @@ export interface RulesPackageRuleset {
    * A dictionary object containing asset types, which contain assets.
    */
   assets: { [key: string]: AssetType };
-  id: NamespaceId;
+  datasworn_version: SemanticVersion;
+  id: RulesetId;
 
   /**
    * A dictionary object containing move categories, which contain moves.
@@ -1554,6 +1556,12 @@ export type DomainDangerRowId = string;
 
 export type DomainFeatureRowId = string;
 
+/**
+ * The ID of a Datasworn package that enhances another Datasworn package, and
+ * relies on another package to provide its ruleset.
+ */
+export type ExpansionId = string;
+
 export interface I18nHint {
   part_of_speech?: PartOfSpeech;
 }
@@ -1993,8 +2001,6 @@ export enum MoveRollType {
    */
   SpecialTrack = "special_track",
 }
-
-export type NamespaceId = string;
 
 /**
  * A non-player character entry, similar to those in Chapter 5 of the Ironsworn
@@ -2701,6 +2707,13 @@ export interface RulesExpansion {
    */
   stats?: { [key: string]: StatRule };
 }
+
+/**
+ * The ID of standalone Datasworn package that describes its own ruleset.
+ */
+export type RulesetId = string;
+
+export type SemanticVersion = string;
 
 export interface SourceAuthor {
   name: string;

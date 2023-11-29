@@ -1,6 +1,6 @@
 import { merge } from 'lodash-es'
 import { type Out } from '../../types/index.js'
-import type AJV from '../validation/ajv.js'
+import { sortDataswornKeys } from './sort.js'
 
 export function mergeRulesetData(data: Map<string, Out.Datasworn>) {
 	const ruleset: Out.Datasworn = {}
@@ -13,5 +13,5 @@ export function mergeRulesetData(data: Map<string, Out.Datasworn>) {
 		merge(ruleset, data)
 	}
 
-	return ruleset
+	return sortDataswornKeys(ruleset)
 }

@@ -10,11 +10,14 @@ namespace Datasworn
         [JsonPropertyName("package_type")]
         public string PackageType { get => "expansion"; }
 
-        [JsonPropertyName("enhances")]
-        public NamespaceId Enhances { get; set; }
+        [JsonPropertyName("datasworn_version")]
+        public SemanticVersion DataswornVersion { get; set; }
 
         [JsonPropertyName("id")]
-        public NamespaceId Id { get; set; }
+        public ExpansionId Id { get; set; }
+
+        [JsonPropertyName("ruleset")]
+        public RulesetId Ruleset { get; set; }
 
         /// <summary>
         /// A dictionary object containing asset types, which contain assets.

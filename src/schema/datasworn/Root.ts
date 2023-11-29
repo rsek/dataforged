@@ -1,7 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { SCHEMA_ID, SOURCE_SCHEMA_ID, VERSION } from '../../scripts/const.js'
 
-import { RulesPackage } from './Rulesets.js'
+import { RulesPackage } from './RulesPackages.js'
 import { SchemaRoot, InputSchemaRoot } from './root/SchemaRoot.js'
 import Defs from './Defs.js'
 

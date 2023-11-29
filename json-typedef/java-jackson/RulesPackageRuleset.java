@@ -12,8 +12,11 @@ public class RulesPackageRuleset extends RulesPackage {
     @JsonProperty("assets")
     private Map<String, AssetType> assets;
 
+    @JsonProperty("datasworn_version")
+    private SemanticVersion dataswornVersion;
+
     @JsonProperty("id")
-    private NamespaceId id;
+    private RulesetId id;
 
     @JsonProperty("moves")
     private Map<String, MoveCategory> moves;
@@ -72,16 +75,30 @@ public class RulesPackageRuleset extends RulesPackage {
     }
 
     /**
+     * Getter for dataswornVersion.<p>
+     */
+    public SemanticVersion getDataswornVersion() {
+        return dataswornVersion;
+    }
+
+    /**
+     * Setter for dataswornVersion.<p>
+     */
+    public void setDataswornVersion(SemanticVersion dataswornVersion) {
+        this.dataswornVersion = dataswornVersion;
+    }
+
+    /**
      * Getter for id.<p>
      */
-    public NamespaceId getId() {
+    public RulesetId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(NamespaceId id) {
+    public void setId(RulesetId id) {
         this.id = id;
     }
 

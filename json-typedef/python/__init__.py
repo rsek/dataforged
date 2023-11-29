@@ -30,8 +30,9 @@ class RulesPackage:
 
 @dataclass
 class RulesPackageExpansion(RulesPackage):
-    enhances: 'NamespaceID'
-    id: 'NamespaceID'
+    datasworn_version: 'SemanticVersion'
+    id: 'ExpansionID'
+    ruleset: 'RulesetID'
     assets: 'Optional[Dict[str, AssetType]]'
     """
     A dictionary object containing asset types, which contain assets.
@@ -92,8 +93,9 @@ class RulesPackageExpansion(RulesPackage):
     def from_json_data(cls, data: Any) -> 'RulesPackageExpansion':
         return cls(
             "expansion",
-            _from_json_data(NamespaceID, data.get("enhances")),
-            _from_json_data(NamespaceID, data.get("id")),
+            _from_json_data(SemanticVersion, data.get("datasworn_version")),
+            _from_json_data(ExpansionID, data.get("id")),
+            _from_json_data(RulesetID, data.get("ruleset")),
             _from_json_data(Optional[Dict[str, AssetType]], data.get("assets")),
             _from_json_data(Optional[Dict[str, Atlas]], data.get("atlas")),
             _from_json_data(Optional[Dict[str, DelveSite]], data.get("delve_sites")),
@@ -109,8 +111,9 @@ class RulesPackageExpansion(RulesPackage):
 
     def to_json_data(self) -> Any:
         data = { "package_type": "expansion" }
-        data["enhances"] = _to_json_data(self.enhances)
+        data["datasworn_version"] = _to_json_data(self.datasworn_version)
         data["id"] = _to_json_data(self.id)
+        data["ruleset"] = _to_json_data(self.ruleset)
         if self.assets is not None:
              data["assets"] = _to_json_data(self.assets)
         if self.atlas is not None:
@@ -142,7 +145,8 @@ class RulesPackageRuleset(RulesPackage):
     A dictionary object containing asset types, which contain assets.
     """
 
-    id: 'NamespaceID'
+    datasworn_version: 'SemanticVersion'
+    id: 'RulesetID'
     moves: 'Dict[str, MoveCategory]'
     """
     A dictionary object containing move categories, which contain moves.
@@ -199,7 +203,8 @@ class RulesPackageRuleset(RulesPackage):
         return cls(
             "ruleset",
             _from_json_data(Dict[str, AssetType], data.get("assets")),
-            _from_json_data(NamespaceID, data.get("id")),
+            _from_json_data(SemanticVersion, data.get("datasworn_version")),
+            _from_json_data(RulesetID, data.get("id")),
             _from_json_data(Dict[str, MoveCategory], data.get("moves")),
             _from_json_data(Dict[str, OracleCollection], data.get("oracles")),
             _from_json_data(Rules, data.get("rules")),
@@ -215,6 +220,7 @@ class RulesPackageRuleset(RulesPackage):
     def to_json_data(self) -> Any:
         data = { "package_type": "ruleset" }
         data["assets"] = _to_json_data(self.assets)
+        data["datasworn_version"] = _to_json_data(self.datasworn_version)
         data["id"] = _to_json_data(self.id)
         data["moves"] = _to_json_data(self.moves)
         data["oracles"] = _to_json_data(self.oracles)
@@ -3226,6 +3232,22 @@ class DomainFeatureRowID:
         return _to_json_data(self.value)
 
 @dataclass
+class ExpansionID:
+    """
+    The ID of a Datasworn package that enhances another Datasworn package, and
+    relies on another package to provide its ruleset.
+    """
+
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'ExpansionID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class I18nHint:
     part_of_speech: 'Optional[PartOfSpeech]'
 
@@ -4129,17 +4151,6 @@ class MoveRollType(Enum):
 
     def to_json_data(self) -> Any:
         return self.value
-
-@dataclass
-class NamespaceID:
-    value: 'str'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'NamespaceID':
-        return cls(_from_json_data(str, data))
-
-    def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
 
 @dataclass
 class Npc:
@@ -5507,6 +5518,32 @@ class RulesExpansion:
         if self.stats is not None:
              data["stats"] = _to_json_data(self.stats)
         return data
+
+@dataclass
+class RulesetID:
+    """
+    The ID of standalone Datasworn package that describes its own ruleset.
+    """
+
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'RulesetID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class SemanticVersion:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SemanticVersion':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class SourceAuthor:

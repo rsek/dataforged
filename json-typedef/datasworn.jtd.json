@@ -4,16 +4,13 @@
 		"ruleset": {
 			"properties": {
 				"id": {
-					"ref": "NamespaceId",
-					"metadata": {
-						"examples": [
-							"classic",
-							"starforged"
-						]
-					}
+					"ref": "RulesetId"
 				},
 				"rules": {
 					"ref": "Rules"
+				},
+				"datasworn_version": {
+					"ref": "SemanticVersion"
 				},
 				"oracles": {
 					"values": {
@@ -112,15 +109,13 @@
 		"expansion": {
 			"properties": {
 				"id": {
-					"ref": "NamespaceId",
-					"metadata": {
-						"examples": [
-							"delve"
-						]
-					}
+					"ref": "ExpansionId"
 				},
-				"enhances": {
-					"ref": "NamespaceId"
+				"datasworn_version": {
+					"ref": "SemanticVersion"
+				},
+				"ruleset": {
+					"ref": "RulesetId"
 				}
 			},
 			"optionalProperties": {
@@ -385,6 +380,16 @@
 				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 			}
 		},
+		"ExpansionId": {
+			"type": "string",
+			"metadata": {
+				"description": "The ID of a Datasworn package that enhances another Datasworn package, and relies on another package to provide its ruleset.",
+				"examples": [
+					"delve"
+				],
+				"pattern": "^([a-z0-9_]{3,})$"
+			}
+		},
 		"ImpactRuleCollectionId": {
 			"type": "string",
 			"metadata": {
@@ -434,18 +439,6 @@
 					"*/moves/*/face_danger",
 					"*/assets/ritual/*/abilities/*/moves/*"
 				]
-			}
-		},
-		"NamespaceId": {
-			"type": "string",
-			"metadata": {
-				"examples": [
-					"classic",
-					"delve",
-					"starforged",
-					"sundered_isles"
-				],
-				"pattern": "^([a-z0-9_]{3,})$"
 			}
 		},
 		"NpcCollectionId": {
@@ -537,6 +530,17 @@
 				"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
 			}
 		},
+		"RulesetId": {
+			"type": "string",
+			"metadata": {
+				"description": "The ID of standalone Datasworn package that describes its own ruleset.",
+				"examples": [
+					"classic",
+					"starforged"
+				],
+				"pattern": "^([a-z0-9_]{3,})$"
+			}
+		},
 		"SpecialTrackRuleId": {
 			"type": "string",
 			"metadata": {
@@ -590,6 +594,12 @@
 			"type": "string",
 			"metadata": {
 				"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
+			}
+		},
+		"SemanticVersion": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
 			}
 		},
 		"Source": {

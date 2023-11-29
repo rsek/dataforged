@@ -5,15 +5,19 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public class NamespaceId {
+/**
+ * The ID of a Datasworn package that enhances another Datasworn package, and
+ * relies on another package to provide its ruleset.
+ */
+public class ExpansionId {
     @JsonValue
     private String value;
 
-    public NamespaceId() {
+    public ExpansionId() {
     }
 
     @JsonCreator
-    public NamespaceId(String value) {
+    public ExpansionId(String value) {
         this.value = value;
     }
 
