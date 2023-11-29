@@ -82,7 +82,7 @@ export async function buildRuleset(
 	// console.log(ruleset)
 
 	const toWrite: Array<Promise<void>> = [
-		writeRuleset(path.join(destDir, 'all.json'), ruleset)
+		writeRuleset(path.join(destDir, `${ruleset.id}.json`), ruleset)
 	]
 
 	/** JSON transformer to strip underscore (macro) properties */

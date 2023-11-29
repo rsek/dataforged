@@ -12,7 +12,19 @@ export const IronswornClassic: DataPackageConfig = {
 		source: path.join(ROOT_SOURCE_DATA, 'classic')
 	},
 	id: 'classic',
-	pkg: { name: 'ironsworn-classic', scope: PKG_SCOPE_OFFICIAL }
+	pkg: {
+		name: 'ironsworn-classic',
+		scope: PKG_SCOPE_OFFICIAL,
+		keywords: ['ironsworn', 'datasworn', 'TTRPG'],
+		authors: [
+			{
+				name: 'rsek',
+				email: 'r.sekouri@gmail.com',
+				url: 'https://github.com/rsek'
+			}
+		],
+		description: 'Datasworn JSON data for the Ironsworn RPG.'
+	}
 }
 
 export const IronswornClassicDelve: DataPackageConfig = {
@@ -23,7 +35,16 @@ export const IronswornClassicDelve: DataPackageConfig = {
 	id: 'delve',
 	pkg: {
 		name: 'ironsworn-classic-delve',
-		scope: PKG_SCOPE_OFFICIAL
+		scope: PKG_SCOPE_OFFICIAL,
+		description: 'Datasworn JSON data for the Ironsworn: Delve expansion.',
+		keywords: ['ironsworn', 'datasworn', 'TTRPG', 'delve', 'ironsworn-delve'],
+		authors: [
+			{
+				name: 'rsek',
+				email: 'r.sekouri@gmail.com',
+				url: 'https://github.com/rsek'
+			}
+		]
 	}
 }
 
@@ -37,7 +58,19 @@ export const Starforged: DataPackageConfig = {
 			path.join(ROOT_SOURCE_DATA, 'starforged', 'icons')
 		]
 	},
-	pkg: { name: 'starforged', scope: PKG_SCOPE_OFFICIAL }
+	pkg: {
+		name: 'starforged',
+		scope: PKG_SCOPE_OFFICIAL,
+		description: 'Datasworn JSON data for Ironsworn: Starforged.',
+		keywords: ['ironsworn', 'datasworn', 'starforged', 'TTRPG'],
+		authors: [
+			{
+				name: 'rsek',
+				email: 'r.sekouri@gmail.com',
+				url: 'https://github.com/rsek'
+			}
+		]
+	}
 }
 
 // export const SunderedIsles: DataPackageConfig = {

@@ -19,6 +19,15 @@ export const DataPackageConfig = Type.Object({
 		name: Type.String({
 			description: 'The package ID, not including its scope (see `scope`).'
 		}),
+		description: Type.String(),
+		keywords: Type.Array(Type.String()),
+		authors: Type.Array(
+			Type.Object({
+				name: Type.String(),
+				email: Type.String({ format: 'email' }),
+				url: Type.String({ format: 'uri' })
+			})
+		),
 		scope: UnionEnumFromRecord(
 			{
 				[PKG_SCOPE_OFFICIAL]: 'Official Ironsworn content.',

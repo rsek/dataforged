@@ -3981,7 +3981,7 @@ export interface Source18 {
   url: string;
 }
 /**
- * Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.
+ * A standalone Datasworn package that describes its own ruleset.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "Ruleset".
@@ -4053,7 +4053,7 @@ export interface Ruleset {
   };
 }
 /**
- * A standalone Datasworn package that describes its own ruleset.
+ * A Datasworn package that relies on an external package to provide its ruleset.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "Expansion".

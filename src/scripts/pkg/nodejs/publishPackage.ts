@@ -1,11 +1,12 @@
-import path from 'path'
 import { shellify } from '../../../shellify.js'
-import { PKG_DIR_NODE } from '../../const.js'
 import { config as pkg } from './buildCorePackage.js'
+import { setPackageVersions } from './setPackageVersions.js'
+
+await setPackageVersions()
 
 function publishCorePackage() {
 	shellify({
-		command: 'npm publish',
+		command: 'npm publish --otp $OTP',
 		args: [pkg.rootDir],
 		options: {
 			tag: 'next',
@@ -14,4 +15,4 @@ function publishCorePackage() {
 	})
 }
 
-publishCorePackage()
+// publishCorePackage()

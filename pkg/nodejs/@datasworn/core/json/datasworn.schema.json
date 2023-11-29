@@ -1,6 +1,6 @@
 {
 	"$id": "https://ironswornrpg.com/datasworn.schema.json",
-	"title": "Datasworn v0.0.0-dev",
+	"title": "Datasworn v0.0.1-dev",
 	"type": "object",
 	"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
 	"required": ["package_type"],
@@ -5891,7 +5891,7 @@
 		"Ruleset": {
 			"title": "Ruleset",
 			"type": "object",
-			"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
+			"description": "A standalone Datasworn package that describes its own ruleset.",
 			"required": [
 				"id",
 				"datasworn_version",
@@ -6020,7 +6020,7 @@
 		"Expansion": {
 			"title": "Expansion",
 			"type": "object",
-			"description": "A standalone Datasworn package that describes its own ruleset.",
+			"description": "A Datasworn package that relies on an external package to provide its ruleset.",
 			"required": ["id", "datasworn_version", "package_type", "ruleset"],
 			"properties": {
 				"id": {

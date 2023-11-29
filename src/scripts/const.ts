@@ -2,7 +2,7 @@ import path from 'path'
 
 export const PKG_NAME = 'Datasworn'
 
-export const VERSION = '0.0.0-dev'
+export const VERSION = '0.0.1-dev'
 
 export const PKG_SCOPE_OFFICIAL = '@datasworn'
 export const PKG_SCOPE_COMMUNITY = '@datasworn-community-content'

@@ -2,7 +2,9 @@ import path from 'path'
 import fs from 'fs-extra'
 import Log from '../../utils/Log.js'
 import { type DataPackageConfig } from '../../../schema/tools/build/index.js'
-import { PKG_DIR_NODE, ROOT_OUTPUT } from '../../const.js'
+import { PKG_DIR_NODE, ROOT_OUTPUT, VERSION } from '../../const.js'
+import { writeJSON } from '../../utils/readWrite.js'
+import { updateJSON } from './updateJSON.js'
 
 /** Assemble a package using data in {@link ROOT_OUTPUT} */
 export async function buildDataPackage({ id, pkg, paths }: DataPackageConfig) {
@@ -14,12 +16,17 @@ export async function buildDataPackage({ id, pkg, paths }: DataPackageConfig) {
 	const pkgRoot = path.join(PKG_DIR_NODE, pkgID)
 	const pkgJsonDest = path.join(pkgRoot, 'json')
 
+	const nodePackageJsonPath = path.join(pkgRoot, 'package.json')
+
+	const { name, scope, ...packageUpdate } = pkg
+
+	await updateJSON(nodePackageJsonPath, { ...packageUpdate, version: VERSION })
+
 	await fs.emptyDir(pkgJsonDest)
 	await fs.copy(jsonSrc, pkgJsonDest)
 
 	for await (const assetSrc of paths.assets ?? []) {
 		const assetDest = path.join(pkgRoot, assetSrc.split('/').pop() as string)
-
 
 		const exists = await fs.exists(assetSrc)
 
@@ -33,3 +40,4 @@ export async function buildDataPackage({ id, pkg, paths }: DataPackageConfig) {
 
 	return Log.info(`✅ Finished building ${pkgID}`)
 }
+

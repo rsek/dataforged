@@ -1,6 +1,6 @@
 {
 	"$id": "https://ironswornrpg.com/datasworn-source.schema.json",
-	"title": "DataswornSource v0.0.0-dev",
+	"title": "DataswornSource v0.0.1-dev",
 	"type": "object",
 	"description": "Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.\n\nThe source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.",
 	"required": ["package_type"],
@@ -855,8 +855,7 @@
 		"ChallengeRank": {
 			"title": "ChallengeRank",
 			"description": "Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
-			"enum": [1, 2, 3, 4, 5],
-			"typescriptType": "1|2|3|4|5"
+			"enum": [1, 2, 3, 4, 5]
 		},
 		"ProgressTrackTypeInfo": {
 			"title": "ProgressTrackTypeInfo",
@@ -3157,8 +3156,7 @@
 							},
 							"max": {
 								"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
-								"enum": [4, 6, 8, 10],
-								"typescriptType": "4|6|8|10"
+								"enum": [4, 6, 8, 10]
 							},
 							"field_type": {
 								"const": "clock",
