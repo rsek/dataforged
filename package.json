@@ -11,8 +11,7 @@
 		"build:io-types": "ts-node ./src/scripts/write-io-types.ts",
 		"build:json": "ts-node ./src/scripts/datasworn/writeDatasworn.ts",
 		"build:pkg": "ts-node ./src/scripts/pkg/nodejs/buildPackages.ts",
-		"build": "npm run build:schema && npm run build:json && npm run build:jtd && npm run build:io-types && npm run build:pkg",
-		"readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json"
+		"build": "npm run build:schema && npm run build:json && npm run build:jtd && npm run build:io-types && npm run build:pkg"
 	},
 	"files": [
 		"docs",
