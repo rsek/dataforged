@@ -4,6 +4,10 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Internationalization/localization hints for the text content of this
+    /// object.
+    /// </summary>
     public class I18nHints
     {
         [JsonPropertyName("description")]

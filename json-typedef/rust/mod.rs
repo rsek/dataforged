@@ -1410,7 +1410,7 @@ pub type ConditionMeterRuleId = String;
 /// US/docs/Web/CSS/color_value
 pub type CssColor = String;
 
-/// A delve site with a theme, domain, and denizen table.
+/// A delve site with a theme, domain, and denizens.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSite {
     #[serde(rename = "denizens")]
@@ -1513,7 +1513,7 @@ pub enum DelveSiteDenizenFrequency {
 
 pub type DelveSiteDenizenId = String;
 
-/// A delve site domain card.
+/// A delve site Domain card.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteDomain {
     #[serde(rename = "dangers")]
@@ -1566,6 +1566,7 @@ pub struct DelveSiteDomain {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// Represents a single Danger entry from a delve site Domain card.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteDomainDangerRow {
     /// The unique Datasworn ID for this item.
@@ -1580,13 +1581,18 @@ pub struct DelveSiteDomainDangerRow {
     #[serde(rename = "min")]
     pub min: i16,
 
+    /// The primary text content of this row.
     #[serde(rename = "result")]
     pub result: MarkdownString,
 
+    /// Optional tertiary text content for this row. Generally, this is longer
+    /// than both `result` and `summary`.
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<Box<MarkdownString>>,
 
+    /// Hints that the identified table should be rendered inside this table
+    /// row.
     #[serde(rename = "embed_table")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub embedTable: Option<Box<OracleTableId>>,
@@ -1599,6 +1605,7 @@ pub struct DelveSiteDomainDangerRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<SvgImageUrl>>,
 
+    /// Further oracle rolls prompted by this table row.
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub rolls: Option<Box<Vec<OracleTableRoll>>>,
@@ -1607,6 +1614,8 @@ pub struct DelveSiteDomainDangerRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 
+    /// Optional secondary text content for this row. Generally, this is longer
+    /// than `result`.
     #[serde(rename = "summary")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<MarkdownString>>,
@@ -1616,6 +1625,7 @@ pub struct DelveSiteDomainDangerRow {
     pub template: Option<Box<OracleRollTemplate>>,
 }
 
+/// Represents a single Feature entry from a delve site Domain card.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteDomainFeatureRow {
     /// The unique Datasworn ID for this item.
@@ -1630,13 +1640,18 @@ pub struct DelveSiteDomainFeatureRow {
     #[serde(rename = "min")]
     pub min: i16,
 
+    /// The primary text content of this row.
     #[serde(rename = "result")]
     pub result: MarkdownString,
 
+    /// Optional tertiary text content for this row. Generally, this is longer
+    /// than both `result` and `summary`.
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<Box<MarkdownString>>,
 
+    /// Hints that the identified table should be rendered inside this table
+    /// row.
     #[serde(rename = "embed_table")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub embedTable: Option<Box<OracleTableId>>,
@@ -1649,6 +1664,7 @@ pub struct DelveSiteDomainFeatureRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<SvgImageUrl>>,
 
+    /// Further oracle rolls prompted by this table row.
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub rolls: Option<Box<Vec<OracleTableRoll>>>,
@@ -1657,6 +1673,8 @@ pub struct DelveSiteDomainFeatureRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 
+    /// Optional secondary text content for this row. Generally, this is longer
+    /// than `result`.
     #[serde(rename = "summary")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<MarkdownString>>,
@@ -1714,6 +1732,7 @@ pub struct DelveSiteTheme {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// Represents a single Danger entry from a delve site Theme card.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteThemeDangerRow {
     /// The unique Datasworn ID for this item.
@@ -1728,13 +1747,18 @@ pub struct DelveSiteThemeDangerRow {
     #[serde(rename = "min")]
     pub min: i16,
 
+    /// The primary text content of this row.
     #[serde(rename = "result")]
     pub result: MarkdownString,
 
+    /// Optional tertiary text content for this row. Generally, this is longer
+    /// than both `result` and `summary`.
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<Box<MarkdownString>>,
 
+    /// Hints that the identified table should be rendered inside this table
+    /// row.
     #[serde(rename = "embed_table")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub embedTable: Option<Box<OracleTableId>>,
@@ -1747,6 +1771,7 @@ pub struct DelveSiteThemeDangerRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<SvgImageUrl>>,
 
+    /// Further oracle rolls prompted by this table row.
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub rolls: Option<Box<Vec<OracleTableRoll>>>,
@@ -1755,6 +1780,8 @@ pub struct DelveSiteThemeDangerRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 
+    /// Optional secondary text content for this row. Generally, this is longer
+    /// than `result`.
     #[serde(rename = "summary")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<MarkdownString>>,
@@ -1764,6 +1791,7 @@ pub struct DelveSiteThemeDangerRow {
     pub template: Option<Box<OracleRollTemplate>>,
 }
 
+/// Represents a single Feature entry from a delve site Theme card.
 #[derive(Serialize, Deserialize)]
 pub struct DelveSiteThemeFeatureRow {
     /// The unique Datasworn ID for this item.
@@ -1778,13 +1806,18 @@ pub struct DelveSiteThemeFeatureRow {
     #[serde(rename = "min")]
     pub min: i16,
 
+    /// The primary text content of this row.
     #[serde(rename = "result")]
     pub result: MarkdownString,
 
+    /// Optional tertiary text content for this row. Generally, this is longer
+    /// than both `result` and `summary`.
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<Box<MarkdownString>>,
 
+    /// Hints that the identified table should be rendered inside this table
+    /// row.
     #[serde(rename = "embed_table")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub embedTable: Option<Box<OracleTableId>>,
@@ -1797,6 +1830,7 @@ pub struct DelveSiteThemeFeatureRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<SvgImageUrl>>,
 
+    /// Further oracle rolls prompted by this table row.
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub rolls: Option<Box<Vec<OracleTableRoll>>>,
@@ -1805,6 +1839,8 @@ pub struct DelveSiteThemeFeatureRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 
+    /// Optional secondary text content for this row. Generally, this is longer
+    /// than `result`.
     #[serde(rename = "summary")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<MarkdownString>>,
@@ -1851,6 +1887,7 @@ pub struct I18nHintsTemplate {
     pub summary: Option<Box<I18nHint>>,
 }
 
+/// Internationalization/localization hints for the text content of this object.
 #[derive(Serialize, Deserialize)]
 pub struct I18nHints {
     #[serde(rename = "description")]
@@ -2674,6 +2711,8 @@ pub struct OracleRollTemplate {
     pub summary: Option<Box<TemplateString>>,
 }
 
+/// Represents a single oracle table, or a single table column of a table that
+/// has multiple "Roll" or "Result" columns.
 #[derive(Serialize, Deserialize)]
 pub struct OracleTable {
     /// The roll used to select a result on this table.
@@ -2869,6 +2908,7 @@ pub enum OracleTableRollMethod {
     NoDuplicates,
 }
 
+/// Represents a row in an oracle table.
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableRow {
     /// The unique Datasworn ID for this item.
@@ -2883,13 +2923,18 @@ pub struct OracleTableRow {
     #[serde(rename = "min")]
     pub min: i16,
 
+    /// The primary text content of this row.
     #[serde(rename = "result")]
     pub result: MarkdownString,
 
+    /// Optional tertiary text content for this row. Generally, this is longer
+    /// than both `result` and `summary`.
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<Box<MarkdownString>>,
 
+    /// Hints that the identified table should be rendered inside this table
+    /// row.
     #[serde(rename = "embed_table")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub embedTable: Option<Box<OracleTableId>>,
@@ -2902,6 +2947,7 @@ pub struct OracleTableRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<SvgImageUrl>>,
 
+    /// Further oracle rolls prompted by this table row.
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub rolls: Option<Box<Vec<OracleTableRoll>>>,
@@ -2910,6 +2956,8 @@ pub struct OracleTableRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 
+    /// Optional secondary text content for this row. Generally, this is longer
+    /// than `result`.
     #[serde(rename = "summary")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<MarkdownString>>,
@@ -3307,8 +3355,10 @@ pub type ThemeDangerRowId = String;
 
 pub type ThemeFeatureRowId = String;
 
+/// Describes trigger conditions for a move that makes an action roll.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerActionRoll {
+    /// Specific conditions that qualify for this trigger.
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerActionRollCondition>,
 
@@ -3370,13 +3420,16 @@ pub struct TriggerActionRollEnhancement {
 /// the player, but some asset abilities can trigger from an ally's move.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerBy {
+    /// Can this trigger be activated by one of the player's allies?
     #[serde(rename = "ally")]
     pub ally: bool,
 
+    /// Can this trigger be activated by the player who owns this?
     #[serde(rename = "player")]
     pub player: bool,
 }
 
+/// Describes trigger conditions for a move that makes no rolls.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerNoRoll {
     #[serde(rename = "conditions")]
@@ -3411,6 +3464,7 @@ pub struct TriggerNoRollEnhancement {
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerProgressRoll {
+    /// Specific conditions that qualify for this trigger.
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerProgressRollCondition>,
 
@@ -3470,6 +3524,7 @@ pub struct TriggerProgressRollEnhancement {
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerSpecialTrack {
+    /// Specific conditions that qualify for this trigger.
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerSpecialTrackCondition>,
 
@@ -3606,6 +3661,7 @@ pub struct TruthOption {
 
 pub type TruthOptionId = String;
 
+/// Represents a row in an oracle table.
 #[derive(Serialize, Deserialize)]
 pub struct TruthOptionTableRow {
     /// High end of the dice range for this table row.
@@ -3616,13 +3672,18 @@ pub struct TruthOptionTableRow {
     #[serde(rename = "min")]
     pub min: i16,
 
+    /// The primary text content of this row.
     #[serde(rename = "result")]
     pub result: MarkdownString,
 
+    /// Optional tertiary text content for this row. Generally, this is longer
+    /// than both `result` and `summary`.
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<Box<MarkdownString>>,
 
+    /// Hints that the identified table should be rendered inside this table
+    /// row.
     #[serde(rename = "embed_table")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub embedTable: Option<Box<OracleTableId>>,
@@ -3635,6 +3696,7 @@ pub struct TruthOptionTableRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<SvgImageUrl>>,
 
+    /// Further oracle rolls prompted by this table row.
     #[serde(rename = "rolls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub rolls: Option<Box<Vec<OracleTableRoll>>>,
@@ -3643,6 +3705,8 @@ pub struct TruthOptionTableRow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 
+    /// Optional secondary text content for this row. Generally, this is longer
+    /// than `result`.
     #[serde(rename = "summary")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<MarkdownString>>,

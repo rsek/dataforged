@@ -1198,7 +1198,7 @@ export type ConditionMeterRuleId = string;
  */
 export type CssColor = string;
 /**
- * A delve site with a theme, domain, and denizen table.
+ * A delve site with a theme, domain, and denizens.
  */
 export interface DelveSite {
     denizens: DelveSiteDenizen[];
@@ -1260,7 +1260,7 @@ export declare enum DelveSiteDenizenFrequency {
 }
 export type DelveSiteDenizenId = string;
 /**
- * A delve site domain card.
+ * A delve site Domain card.
  */
 export interface DelveSiteDomain {
     dangers: DelveSiteDomainDangerRow[];
@@ -1296,6 +1296,9 @@ export interface DelveSiteDomain {
     name_oracle?: OracleTableId;
     suggestions?: Suggestions;
 }
+/**
+ * Represents a single Danger entry from a delve site Domain card.
+ */
 export interface DelveSiteDomainDangerRow {
     /**
      * The unique Datasworn ID for this item.
@@ -1309,16 +1312,36 @@ export interface DelveSiteDomainDangerRow {
      * Low end of the dice range for this table row.
      */
     min: number;
+    /**
+     * The primary text content of this row.
+     */
     result: MarkdownString;
+    /**
+     * Optional tertiary text content for this row. Generally, this is longer than
+     * both `result` and `summary`.
+     */
     description?: MarkdownString;
+    /**
+     * Hints that the identified table should be rendered inside this table row.
+     */
     embed_table?: OracleTableId;
     i18n?: I18nHints;
     icon?: SvgImageUrl;
+    /**
+     * Further oracle rolls prompted by this table row.
+     */
     rolls?: OracleTableRoll[];
     suggestions?: Suggestions;
+    /**
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
+     */
     summary?: MarkdownString;
     template?: OracleRollTemplate;
 }
+/**
+ * Represents a single Feature entry from a delve site Domain card.
+ */
 export interface DelveSiteDomainFeatureRow {
     /**
      * The unique Datasworn ID for this item.
@@ -1332,13 +1355,30 @@ export interface DelveSiteDomainFeatureRow {
      * Low end of the dice range for this table row.
      */
     min: number;
+    /**
+     * The primary text content of this row.
+     */
     result: MarkdownString;
+    /**
+     * Optional tertiary text content for this row. Generally, this is longer than
+     * both `result` and `summary`.
+     */
     description?: MarkdownString;
+    /**
+     * Hints that the identified table should be rendered inside this table row.
+     */
     embed_table?: OracleTableId;
     i18n?: I18nHints;
     icon?: SvgImageUrl;
+    /**
+     * Further oracle rolls prompted by this table row.
+     */
     rolls?: OracleTableRoll[];
     suggestions?: Suggestions;
+    /**
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
+     */
     summary?: MarkdownString;
     template?: OracleRollTemplate;
 }
@@ -1373,6 +1413,9 @@ export interface DelveSiteTheme {
     icon?: SvgImageUrl;
     suggestions?: Suggestions;
 }
+/**
+ * Represents a single Danger entry from a delve site Theme card.
+ */
 export interface DelveSiteThemeDangerRow {
     /**
      * The unique Datasworn ID for this item.
@@ -1386,16 +1429,36 @@ export interface DelveSiteThemeDangerRow {
      * Low end of the dice range for this table row.
      */
     min: number;
+    /**
+     * The primary text content of this row.
+     */
     result: MarkdownString;
+    /**
+     * Optional tertiary text content for this row. Generally, this is longer than
+     * both `result` and `summary`.
+     */
     description?: MarkdownString;
+    /**
+     * Hints that the identified table should be rendered inside this table row.
+     */
     embed_table?: OracleTableId;
     i18n?: I18nHints;
     icon?: SvgImageUrl;
+    /**
+     * Further oracle rolls prompted by this table row.
+     */
     rolls?: OracleTableRoll[];
     suggestions?: Suggestions;
+    /**
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
+     */
     summary?: MarkdownString;
     template?: OracleRollTemplate;
 }
+/**
+ * Represents a single Feature entry from a delve site Theme card.
+ */
 export interface DelveSiteThemeFeatureRow {
     /**
      * The unique Datasworn ID for this item.
@@ -1409,13 +1472,30 @@ export interface DelveSiteThemeFeatureRow {
      * Low end of the dice range for this table row.
      */
     min: number;
+    /**
+     * The primary text content of this row.
+     */
     result: MarkdownString;
+    /**
+     * Optional tertiary text content for this row. Generally, this is longer than
+     * both `result` and `summary`.
+     */
     description?: MarkdownString;
+    /**
+     * Hints that the identified table should be rendered inside this table row.
+     */
     embed_table?: OracleTableId;
     i18n?: I18nHints;
     icon?: SvgImageUrl;
+    /**
+     * Further oracle rolls prompted by this table row.
+     */
     rolls?: OracleTableRoll[];
     suggestions?: Suggestions;
+    /**
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
+     */
     summary?: MarkdownString;
     template?: OracleRollTemplate;
 }
@@ -1440,6 +1520,9 @@ export interface I18nHintsTemplate {
     result?: I18nHint;
     summary?: I18nHint;
 }
+/**
+ * Internationalization/localization hints for the text content of this object.
+ */
 export interface I18nHints {
     description?: I18nHint;
     result?: I18nHint;
@@ -2052,6 +2135,10 @@ export interface OracleRollTemplate {
      */
     summary?: TemplateString;
 }
+/**
+ * Represents a single oracle table, or a single table column of a table that
+ * has multiple "Roll" or "Result" columns.
+ */
 export interface OracleTable {
     /**
      * The roll used to select a result on this table.
@@ -2204,6 +2291,9 @@ export declare enum OracleTableRollMethod {
      */
     NoDuplicates = "no_duplicates"
 }
+/**
+ * Represents a row in an oracle table.
+ */
 export interface OracleTableRow {
     /**
      * The unique Datasworn ID for this item.
@@ -2217,13 +2307,30 @@ export interface OracleTableRow {
      * Low end of the dice range for this table row.
      */
     min: number;
+    /**
+     * The primary text content of this row.
+     */
     result: MarkdownString;
+    /**
+     * Optional tertiary text content for this row. Generally, this is longer than
+     * both `result` and `summary`.
+     */
     description?: MarkdownString;
+    /**
+     * Hints that the identified table should be rendered inside this table row.
+     */
     embed_table?: OracleTableId;
     i18n?: I18nHints;
     icon?: SvgImageUrl;
+    /**
+     * Further oracle rolls prompted by this table row.
+     */
     rolls?: OracleTableRoll[];
     suggestions?: Suggestions;
+    /**
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
+     */
     summary?: MarkdownString;
     template?: OracleRollTemplate;
 }
@@ -2576,7 +2683,13 @@ export type SvgImageUrl = string;
 export type TemplateString = string;
 export type ThemeDangerRowId = string;
 export type ThemeFeatureRowId = string;
+/**
+ * Describes trigger conditions for a move that makes an action roll.
+ */
 export interface TriggerActionRoll {
+    /**
+     * Specific conditions that qualify for this trigger.
+     */
     conditions: TriggerActionRollCondition[];
     /**
      * A markdown string containing the primary trigger text for this move.
@@ -2618,9 +2731,18 @@ export interface TriggerActionRollEnhancement {
  * the player, but some asset abilities can trigger from an ally's move.
  */
 export interface TriggerBy {
+    /**
+     * Can this trigger be activated by one of the player's allies?
+     */
     ally: boolean;
+    /**
+     * Can this trigger be activated by the player who owns this?
+     */
     player: boolean;
 }
+/**
+ * Describes trigger conditions for a move that makes no rolls.
+ */
 export interface TriggerNoRoll {
     conditions: TriggerNoRollCondition[];
     /**
@@ -2642,6 +2764,9 @@ export interface TriggerNoRollEnhancement {
     conditions: TriggerNoRollCondition[];
 }
 export interface TriggerProgressRoll {
+    /**
+     * Specific conditions that qualify for this trigger.
+     */
     conditions: TriggerProgressRollCondition[];
     /**
      * A markdown string containing the primary trigger text for this move.
@@ -2679,6 +2804,9 @@ export interface TriggerProgressRollEnhancement {
     conditions: TriggerProgressRollConditionEnhancement[];
 }
 export interface TriggerSpecialTrack {
+    /**
+     * Specific conditions that qualify for this trigger.
+     */
     conditions: TriggerSpecialTrackCondition[];
     /**
      * A markdown string containing the primary trigger text for this move.
@@ -2763,6 +2891,9 @@ export interface TruthOption {
     table?: TruthOptionTableRow[];
 }
 export type TruthOptionId = string;
+/**
+ * Represents a row in an oracle table.
+ */
 export interface TruthOptionTableRow {
     /**
      * High end of the dice range for this table row.
@@ -2772,13 +2903,30 @@ export interface TruthOptionTableRow {
      * Low end of the dice range for this table row.
      */
     min: number;
+    /**
+     * The primary text content of this row.
+     */
     result: MarkdownString;
+    /**
+     * Optional tertiary text content for this row. Generally, this is longer than
+     * both `result` and `summary`.
+     */
     description?: MarkdownString;
+    /**
+     * Hints that the identified table should be rendered inside this table row.
+     */
     embed_table?: OracleTableId;
     i18n?: I18nHints;
     icon?: SvgImageUrl;
+    /**
+     * Further oracle rolls prompted by this table row.
+     */
     rolls?: OracleTableRoll[];
     suggestions?: Suggestions;
+    /**
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
+     */
     summary?: MarkdownString;
     template?: OracleRollTemplate;
 }

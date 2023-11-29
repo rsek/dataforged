@@ -164,7 +164,9 @@ export type TriggerActionRollCondition = Static<
 export const TriggerActionRoll = Trigger(
 	Type.Array(Type.Ref(TriggerActionRollCondition)),
 	{
-		$id: 'TriggerActionRoll'
+		$id: 'TriggerActionRoll',
+		description:
+			'Describes trigger conditions for a move that makes an action roll.'
 	}
 )
 export type TriggerActionRoll = Static<typeof TriggerActionRoll>
@@ -219,7 +221,10 @@ export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
 export const TriggerNoRoll = Trigger(
 	Utils.Nullable(Type.Array(Type.Ref(TriggerNoRollCondition))),
-	{ $id: 'TriggerNoRoll' }
+	{
+		$id: 'TriggerNoRoll',
+		description: 'Describes trigger conditions for a move that makes no rolls.'
+	}
 )
 
 export type TriggerNoRoll = Static<typeof TriggerNoRoll>

@@ -5,6 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Represents a single oracle table, or a single table column of a table
+    /// that has multiple "Roll" or "Result" columns.
+    /// </summary>
     public class OracleTable
     {
         /// <summary>

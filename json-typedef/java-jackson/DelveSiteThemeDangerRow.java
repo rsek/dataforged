@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Represents a single Danger entry from a delve site Theme card.
+ */
 @JsonSerialize
 public class DelveSiteThemeDangerRow {
     @JsonProperty("id")
@@ -106,6 +109,7 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Getter for result.<p>
+     * The primary text content of this row.
      */
     public MarkdownString getResult() {
         return result;
@@ -113,6 +117,7 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Setter for result.<p>
+     * The primary text content of this row.
      */
     public void setResult(MarkdownString result) {
         this.result = result;
@@ -120,6 +125,8 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Getter for description.<p>
+     * Optional tertiary text content for this row. Generally, this is longer
+     * than both `result` and `summary`.
      */
     public MarkdownString getDescription() {
         return description;
@@ -127,6 +134,8 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Setter for description.<p>
+     * Optional tertiary text content for this row. Generally, this is longer
+     * than both `result` and `summary`.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
@@ -134,6 +143,7 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Getter for embedTable.<p>
+     * Hints that the identified table should be rendered inside this table row.
      */
     public OracleTableId getEmbedTable() {
         return embedTable;
@@ -141,6 +151,7 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Setter for embedTable.<p>
+     * Hints that the identified table should be rendered inside this table row.
      */
     public void setEmbedTable(OracleTableId embedTable) {
         this.embedTable = embedTable;
@@ -176,6 +187,7 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Getter for rolls.<p>
+     * Further oracle rolls prompted by this table row.
      */
     public List<OracleTableRoll> getRolls() {
         return rolls;
@@ -183,6 +195,7 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Setter for rolls.<p>
+     * Further oracle rolls prompted by this table row.
      */
     public void setRolls(List<OracleTableRoll> rolls) {
         this.rolls = rolls;
@@ -204,6 +217,8 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Getter for summary.<p>
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
      */
     public MarkdownString getSummary() {
         return summary;
@@ -211,6 +226,8 @@ public class DelveSiteThemeDangerRow {
 
     /**
      * Setter for summary.<p>
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
      */
     public void setSummary(MarkdownString summary) {
         this.summary = summary;

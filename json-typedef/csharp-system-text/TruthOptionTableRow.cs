@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Represents a row in an oracle table.
+    /// </summary>
     public class TruthOptionTableRow
     {
         /// <summary>
@@ -19,13 +22,24 @@ namespace Datasworn
         [JsonPropertyName("min")]
         public short Min { get; set; }
 
+        /// <summary>
+        /// The primary text content of this row.
+        /// </summary>
         [JsonPropertyName("result")]
         public MarkdownString Result { get; set; }
 
+        /// <summary>
+        /// Optional tertiary text content for this row. Generally, this is
+        /// longer than both `result` and `summary`.
+        /// </summary>
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Description { get; set; }
 
+        /// <summary>
+        /// Hints that the identified table should be rendered inside this table
+        /// row.
+        /// </summary>
         [JsonPropertyName("embed_table")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public OracleTableId? EmbedTable { get; set; }
@@ -38,6 +52,9 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public SvgImageUrl? Icon { get; set; }
 
+        /// <summary>
+        /// Further oracle rolls prompted by this table row.
+        /// </summary>
         [JsonPropertyName("rolls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<OracleTableRoll> Rolls { get; set; }
@@ -46,6 +63,10 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Suggestions? Suggestions { get; set; }
 
+        /// <summary>
+        /// Optional secondary text content for this row. Generally, this is
+        /// longer than `result`.
+        /// </summary>
         [JsonPropertyName("summary")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Summary { get; set; }

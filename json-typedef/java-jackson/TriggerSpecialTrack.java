@@ -19,6 +19,7 @@ public class TriggerSpecialTrack {
 
     /**
      * Getter for conditions.<p>
+     * Specific conditions that qualify for this trigger.
      */
     public List<TriggerSpecialTrackCondition> getConditions() {
         return conditions;
@@ -26,6 +27,7 @@ public class TriggerSpecialTrack {
 
     /**
      * Setter for conditions.<p>
+     * Specific conditions that qualify for this trigger.
      */
     public void setConditions(List<TriggerSpecialTrackCondition> conditions) {
         this.conditions = conditions;

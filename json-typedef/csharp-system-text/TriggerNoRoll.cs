@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Describes trigger conditions for a move that makes no rolls.
+    /// </summary>
     public class TriggerNoRoll
     {
         [JsonPropertyName("conditions")]

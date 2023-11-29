@@ -95,6 +95,7 @@ export function DiscriminatedUnion<
 			.join(' | '),
 		allOf,
 		// oneOf,
+		$comment: `Deserialize as a discriminated union/polymorphic object type, using the \`${discriminator}\` property as a discriminator.`,
 		required: [discriminator],
 		additionalProperties: true,
 		properties,

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
 /**
- * A delve site domain card.
+ * A delve site Domain card.
  */
 @JsonSerialize
 public class DelveSiteDomain {

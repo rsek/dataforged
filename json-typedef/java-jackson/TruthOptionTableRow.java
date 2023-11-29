@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Represents a row in an oracle table.
+ */
 @JsonSerialize
 public class TruthOptionTableRow {
     @JsonProperty("max")
@@ -87,6 +90,7 @@ public class TruthOptionTableRow {
 
     /**
      * Getter for result.<p>
+     * The primary text content of this row.
      */
     public MarkdownString getResult() {
         return result;
@@ -94,6 +98,7 @@ public class TruthOptionTableRow {
 
     /**
      * Setter for result.<p>
+     * The primary text content of this row.
      */
     public void setResult(MarkdownString result) {
         this.result = result;
@@ -101,6 +106,8 @@ public class TruthOptionTableRow {
 
     /**
      * Getter for description.<p>
+     * Optional tertiary text content for this row. Generally, this is longer
+     * than both `result` and `summary`.
      */
     public MarkdownString getDescription() {
         return description;
@@ -108,6 +115,8 @@ public class TruthOptionTableRow {
 
     /**
      * Setter for description.<p>
+     * Optional tertiary text content for this row. Generally, this is longer
+     * than both `result` and `summary`.
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
@@ -115,6 +124,7 @@ public class TruthOptionTableRow {
 
     /**
      * Getter for embedTable.<p>
+     * Hints that the identified table should be rendered inside this table row.
      */
     public OracleTableId getEmbedTable() {
         return embedTable;
@@ -122,6 +132,7 @@ public class TruthOptionTableRow {
 
     /**
      * Setter for embedTable.<p>
+     * Hints that the identified table should be rendered inside this table row.
      */
     public void setEmbedTable(OracleTableId embedTable) {
         this.embedTable = embedTable;
@@ -157,6 +168,7 @@ public class TruthOptionTableRow {
 
     /**
      * Getter for rolls.<p>
+     * Further oracle rolls prompted by this table row.
      */
     public List<OracleTableRoll> getRolls() {
         return rolls;
@@ -164,6 +176,7 @@ public class TruthOptionTableRow {
 
     /**
      * Setter for rolls.<p>
+     * Further oracle rolls prompted by this table row.
      */
     public void setRolls(List<OracleTableRoll> rolls) {
         this.rolls = rolls;
@@ -185,6 +198,8 @@ public class TruthOptionTableRow {
 
     /**
      * Getter for summary.<p>
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
      */
     public MarkdownString getSummary() {
         return summary;
@@ -192,6 +207,8 @@ public class TruthOptionTableRow {
 
     /**
      * Setter for summary.<p>
+     * Optional secondary text content for this row. Generally, this is longer
+     * than `result`.
      */
     public void setSummary(MarkdownString summary) {
         this.summary = summary;

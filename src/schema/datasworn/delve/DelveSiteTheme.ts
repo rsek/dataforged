@@ -8,14 +8,22 @@ import * as Generic from '../Generic.js'
 export const DelveSiteThemeFeatureRow = Generic.IdentifiedNode(
 	Type.Ref(Id.ThemeFeatureRowId),
 	TableRowMixin,
-	{ $id: 'DelveSiteThemeFeatureRow' }
+	{
+		$id: 'DelveSiteThemeFeatureRow',
+		description:
+			'Represents a single Feature entry from a delve site Theme card.'
+	}
 )
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
 
 export const DelveSiteThemeDangerRow = Generic.IdentifiedNode(
 	Type.Ref(Id.ThemeDangerRowId),
 	TableRowMixin,
-	{ $id: 'DelveSiteThemeDangerRow' }
+	{
+		$id: 'DelveSiteThemeDangerRow',
+		description:
+			'Represents a single Danger entry from a delve site Theme card.'
+	}
 )
 const DelveSiteThemeFeatures = Type.Array(Type.Ref(DelveSiteThemeFeatureRow))
 const DelveSiteThemeDangers = Type.Array(Type.Ref(DelveSiteThemeDangerRow))

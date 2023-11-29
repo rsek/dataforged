@@ -12,13 +12,34 @@ import * as Utils from '../Utils.js'
 import { WithDefaults, setDescriptions } from '../utils/typebox.js'
 
 const TableRowBase = Type.Object({
-	result: Type.Ref(Localize.MarkdownString),
+	result: Type.Ref(Localize.MarkdownString, {
+		description: 'The primary text content of this row.'
+	}),
 	icon: Type.Optional(Type.Ref(Metadata.SvgImageUrl)),
-	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-	description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-	rolls: Type.Optional(Type.Array(Type.Ref(Rolls.OracleTableRoll))),
+	summary: Type.Optional(
+		Type.Ref(Localize.MarkdownString, {
+			description:
+				'Optional secondary text content for this row. Generally, this is longer than `result`.'
+		})
+	),
+	description: Type.Optional(
+		Type.Ref(Localize.MarkdownString, {
+			description:
+				'Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`.'
+		})
+	),
+	rolls: Type.Optional(
+		Type.Array(Type.Ref(Rolls.OracleTableRoll), {
+			description: 'Further oracle rolls prompted by this table row.'
+		})
+	),
 	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
-	embed_table: Type.Optional(Type.Ref(Id.OracleTableId)),
+	embed_table: Type.Optional(
+		Type.Ref(Id.OracleTableId, {
+			description:
+				'Hints that the identified table should be rendered inside this table row.'
+		})
+	),
 	template: Type.Optional(Type.Ref(Rolls.OracleRollTemplate)),
 	i18n: Type.Optional(Type.Ref(Localize.I18nHints))
 })

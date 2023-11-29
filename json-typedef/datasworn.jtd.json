@@ -789,6 +789,9 @@
 						}
 					}
 				}
+			},
+			"metadata": {
+				"description": "Internationalization/localization hints for the text content of this object."
 			}
 		},
 		"Label": {
@@ -1694,7 +1697,9 @@
 					}
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "Represents a single oracle table, or a single table column of a table that has multiple \"Roll\" or \"Result\" columns."
+			}
 		},
 		"OracleTableColumn": {
 			"properties": {
@@ -1785,7 +1790,10 @@
 					}
 				},
 				"result": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "The primary text content of this row."
+					}
 				},
 				"min": {
 					"type": "int16",
@@ -1805,21 +1813,33 @@
 					"ref": "SvgImageUrl"
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
+					}
 				},
 				"rolls": {
 					"elements": {
 						"ref": "OracleTableRoll"
+					},
+					"metadata": {
+						"description": "Further oracle rolls prompted by this table row."
 					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"embed_table": {
-					"ref": "OracleTableId"
+					"ref": "OracleTableId",
+					"metadata": {
+						"description": "Hints that the identified table should be rendered inside this table row."
+					}
 				},
 				"template": {
 					"ref": "OracleRollTemplate"
@@ -1828,7 +1848,9 @@
 					"ref": "I18nHints"
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "Represents a row in an oracle table."
+			}
 		},
 		"OracleTableStyle": {
 			"enum": [
@@ -2486,8 +2508,14 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerActionRollCondition"
+					},
+					"metadata": {
+						"description": "Specific conditions that qualify for this trigger."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes trigger conditions for a move that makes an action roll."
 			}
 		},
 		"TriggerActionRollCondition": {
@@ -2554,10 +2582,16 @@
 		"TriggerBy": {
 			"properties": {
 				"player": {
-					"type": "boolean"
+					"type": "boolean",
+					"metadata": {
+						"description": "Can this trigger be activated by the player who owns this?"
+					}
 				},
 				"ally": {
-					"type": "boolean"
+					"type": "boolean",
+					"metadata": {
+						"description": "Can this trigger be activated by one of the player's allies?"
+					}
 				}
 			},
 			"metadata": {
@@ -2578,6 +2612,9 @@
 						"ref": "TriggerNoRollCondition"
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes trigger conditions for a move that makes no rolls."
 			}
 		},
 		"TriggerNoRollCondition": {
@@ -2614,6 +2651,9 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerProgressRollCondition"
+					},
+					"metadata": {
+						"description": "Specific conditions that qualify for this trigger."
 					}
 				}
 			}
@@ -2691,6 +2731,9 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerSpecialTrackCondition"
+					},
+					"metadata": {
+						"description": "Specific conditions that qualify for this trigger."
 					}
 				}
 			}
@@ -3969,7 +4012,10 @@
 		"TruthOptionTableRow": {
 			"properties": {
 				"result": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "The primary text content of this row."
+					}
 				},
 				"min": {
 					"type": "int16",
@@ -3989,21 +4035,33 @@
 					"ref": "SvgImageUrl"
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
+					}
 				},
 				"rolls": {
 					"elements": {
 						"ref": "OracleTableRoll"
+					},
+					"metadata": {
+						"description": "Further oracle rolls prompted by this table row."
 					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"embed_table": {
-					"ref": "OracleTableId"
+					"ref": "OracleTableId",
+					"metadata": {
+						"description": "Hints that the identified table should be rendered inside this table row."
+					}
 				},
 				"template": {
 					"ref": "OracleRollTemplate"
@@ -4012,7 +4070,9 @@
 					"ref": "I18nHints"
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "Represents a row in an oracle table."
+			}
 		},
 		"Atlas": {
 			"properties": {
@@ -4303,7 +4363,7 @@
 				}
 			},
 			"metadata": {
-				"description": "A delve site with a theme, domain, and denizen table."
+				"description": "A delve site with a theme, domain, and denizens."
 			}
 		},
 		"DelveSiteDenizen": {
@@ -4404,7 +4464,7 @@
 				}
 			},
 			"metadata": {
-				"description": "A delve site domain card."
+				"description": "A delve site Domain card."
 			}
 		},
 		"DelveSiteDomainDangerRow": {
@@ -4416,7 +4476,10 @@
 					}
 				},
 				"result": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "The primary text content of this row."
+					}
 				},
 				"min": {
 					"type": "int16",
@@ -4436,21 +4499,33 @@
 					"ref": "SvgImageUrl"
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
+					}
 				},
 				"rolls": {
 					"elements": {
 						"ref": "OracleTableRoll"
+					},
+					"metadata": {
+						"description": "Further oracle rolls prompted by this table row."
 					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"embed_table": {
-					"ref": "OracleTableId"
+					"ref": "OracleTableId",
+					"metadata": {
+						"description": "Hints that the identified table should be rendered inside this table row."
+					}
 				},
 				"template": {
 					"ref": "OracleRollTemplate"
@@ -4459,7 +4534,9 @@
 					"ref": "I18nHints"
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "Represents a single Danger entry from a delve site Domain card."
+			}
 		},
 		"DelveSiteDomainFeatureRow": {
 			"properties": {
@@ -4470,7 +4547,10 @@
 					}
 				},
 				"result": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "The primary text content of this row."
+					}
 				},
 				"min": {
 					"type": "int16",
@@ -4490,21 +4570,33 @@
 					"ref": "SvgImageUrl"
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
+					}
 				},
 				"rolls": {
 					"elements": {
 						"ref": "OracleTableRoll"
+					},
+					"metadata": {
+						"description": "Further oracle rolls prompted by this table row."
 					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"embed_table": {
-					"ref": "OracleTableId"
+					"ref": "OracleTableId",
+					"metadata": {
+						"description": "Hints that the identified table should be rendered inside this table row."
+					}
 				},
 				"template": {
 					"ref": "OracleRollTemplate"
@@ -4513,7 +4605,9 @@
 					"ref": "I18nHints"
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "Represents a single Feature entry from a delve site Domain card."
+			}
 		},
 		"DelveSiteTheme": {
 			"properties": {
@@ -4579,7 +4673,10 @@
 					}
 				},
 				"result": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "The primary text content of this row."
+					}
 				},
 				"min": {
 					"type": "int16",
@@ -4599,21 +4696,33 @@
 					"ref": "SvgImageUrl"
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
+					}
 				},
 				"rolls": {
 					"elements": {
 						"ref": "OracleTableRoll"
+					},
+					"metadata": {
+						"description": "Further oracle rolls prompted by this table row."
 					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"embed_table": {
-					"ref": "OracleTableId"
+					"ref": "OracleTableId",
+					"metadata": {
+						"description": "Hints that the identified table should be rendered inside this table row."
+					}
 				},
 				"template": {
 					"ref": "OracleRollTemplate"
@@ -4622,7 +4731,9 @@
 					"ref": "I18nHints"
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "Represents a single Danger entry from a delve site Theme card."
+			}
 		},
 		"DelveSiteThemeFeatureRow": {
 			"properties": {
@@ -4633,7 +4744,10 @@
 					}
 				},
 				"result": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "The primary text content of this row."
+					}
 				},
 				"min": {
 					"type": "int16",
@@ -4653,21 +4767,33 @@
 					"ref": "SvgImageUrl"
 				},
 				"summary": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
+					}
 				},
 				"description": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
+					}
 				},
 				"rolls": {
 					"elements": {
 						"ref": "OracleTableRoll"
+					},
+					"metadata": {
+						"description": "Further oracle rolls prompted by this table row."
 					}
 				},
 				"suggestions": {
 					"ref": "Suggestions"
 				},
 				"embed_table": {
-					"ref": "OracleTableId"
+					"ref": "OracleTableId",
+					"metadata": {
+						"description": "Hints that the identified table should be rendered inside this table row."
+					}
 				},
 				"template": {
 					"ref": "OracleRollTemplate"
@@ -4676,7 +4802,9 @@
 					"ref": "I18nHints"
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "Represents a single Feature entry from a delve site Theme card."
+			}
 		}
 	}
 }

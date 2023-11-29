@@ -7,6 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Represents a single oracle table, or a single table column of a table that
+ * has multiple "Roll" or "Result" columns.
+ */
 @JsonSerialize
 public class OracleTable {
     @JsonProperty("dice")

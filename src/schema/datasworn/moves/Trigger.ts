@@ -11,6 +11,7 @@ import {
 } from '@sinclair/typebox'
 import { Localize } from '../common/index.js'
 import {
+	setDescriptions,
 	type TFuzzyNull,
 	type TFuzzyObject,
 	type TFuzzyRef
@@ -19,8 +20,15 @@ import * as Utils from '../Utils.js'
 
 export const TriggerBy = Type.Object(
 	{
-		player: Type.Boolean({ default: true }),
-		ally: Type.Boolean({ default: false })
+		player: Type.Boolean({
+			default: true,
+			description: 'Can this trigger be activated by the player who owns this?'
+		}),
+		ally: Type.Boolean({
+			default: false,
+			description:
+				"Can this trigger be activated by one of the player's allies?"
+		})
 	},
 	{
 		$id: 'TriggerBy',
@@ -135,7 +143,12 @@ export function Trigger<
 	T extends TFuzzyNull<TArray<TFuzzyRef<TTriggerCondition>>>
 >(conditions: T, options: ObjectOptions = {}) {
 	return Utils.Assign(
-		[TriggerMixin, Type.Object({ conditions })],
+		[
+			TriggerMixin,
+			setDescriptions(Type.Object({ conditions }), {
+				conditions: 'Specific conditions that qualify for this trigger.'
+			})
+		],
 		options
 	) as TTrigger<T>
 }

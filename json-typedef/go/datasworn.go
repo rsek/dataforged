@@ -1446,7 +1446,7 @@ type ConditionMeterRuleID = string
 // US/docs/Web/CSS/color_value
 type CSSColor = string
 
-// A delve site with a theme, domain, and denizen table.
+// A delve site with a theme, domain, and denizens.
 type DelveSite struct {
 	Denizens []DelveSiteDenizen `json:"denizens"`
 
@@ -1517,7 +1517,7 @@ const (
 
 type DelveSiteDenizenID = string
 
-// A delve site domain card.
+// A delve site Domain card.
 type DelveSiteDomain struct {
 	Dangers []DelveSiteDomainDangerRow `json:"dangers"`
 
@@ -1553,6 +1553,7 @@ type DelveSiteDomain struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// Represents a single Danger entry from a delve site Domain card.
 type DelveSiteDomainDangerRow struct {
 	// The unique Datasworn ID for this item.
 	ID DomainDangerRowID `json:"id"`
@@ -1563,25 +1564,33 @@ type DelveSiteDomainDangerRow struct {
 	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
+	// The primary text content of this row.
 	Result MarkdownString `json:"result"`
 
+	// Optional tertiary text content for this row. Generally, this is longer than
+	// both `result` and `summary`.
 	Description *MarkdownString `json:"description,omitempty"`
 
+	// Hints that the identified table should be rendered inside this table row.
 	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
+	// Further oracle rolls prompted by this table row.
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// Optional secondary text content for this row. Generally, this is longer
+	// than `result`.
 	Summary *MarkdownString `json:"summary,omitempty"`
 
 	Template *OracleRollTemplate `json:"template,omitempty"`
 }
 
+// Represents a single Feature entry from a delve site Domain card.
 type DelveSiteDomainFeatureRow struct {
 	// The unique Datasworn ID for this item.
 	ID DomainFeatureRowID `json:"id"`
@@ -1592,20 +1601,27 @@ type DelveSiteDomainFeatureRow struct {
 	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
+	// The primary text content of this row.
 	Result MarkdownString `json:"result"`
 
+	// Optional tertiary text content for this row. Generally, this is longer than
+	// both `result` and `summary`.
 	Description *MarkdownString `json:"description,omitempty"`
 
+	// Hints that the identified table should be rendered inside this table row.
 	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
+	// Further oracle rolls prompted by this table row.
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// Optional secondary text content for this row. Generally, this is longer
+	// than `result`.
 	Summary *MarkdownString `json:"summary,omitempty"`
 
 	Template *OracleRollTemplate `json:"template,omitempty"`
@@ -1644,6 +1660,7 @@ type DelveSiteTheme struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// Represents a single Danger entry from a delve site Theme card.
 type DelveSiteThemeDangerRow struct {
 	// The unique Datasworn ID for this item.
 	ID ThemeDangerRowID `json:"id"`
@@ -1654,25 +1671,33 @@ type DelveSiteThemeDangerRow struct {
 	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
+	// The primary text content of this row.
 	Result MarkdownString `json:"result"`
 
+	// Optional tertiary text content for this row. Generally, this is longer than
+	// both `result` and `summary`.
 	Description *MarkdownString `json:"description,omitempty"`
 
+	// Hints that the identified table should be rendered inside this table row.
 	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
+	// Further oracle rolls prompted by this table row.
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// Optional secondary text content for this row. Generally, this is longer
+	// than `result`.
 	Summary *MarkdownString `json:"summary,omitempty"`
 
 	Template *OracleRollTemplate `json:"template,omitempty"`
 }
 
+// Represents a single Feature entry from a delve site Theme card.
 type DelveSiteThemeFeatureRow struct {
 	// The unique Datasworn ID for this item.
 	ID ThemeFeatureRowID `json:"id"`
@@ -1683,20 +1708,27 @@ type DelveSiteThemeFeatureRow struct {
 	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
+	// The primary text content of this row.
 	Result MarkdownString `json:"result"`
 
+	// Optional tertiary text content for this row. Generally, this is longer than
+	// both `result` and `summary`.
 	Description *MarkdownString `json:"description,omitempty"`
 
+	// Hints that the identified table should be rendered inside this table row.
 	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
+	// Further oracle rolls prompted by this table row.
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// Optional secondary text content for this row. Generally, this is longer
+	// than `result`.
 	Summary *MarkdownString `json:"summary,omitempty"`
 
 	Template *OracleRollTemplate `json:"template,omitempty"`
@@ -1729,6 +1761,7 @@ type I18nHintsTemplate struct {
 	Summary *I18nHint `json:"summary,omitempty"`
 }
 
+// Internationalization/localization hints for the text content of this object.
 type I18nHints struct {
 	Description *I18nHint `json:"description,omitempty"`
 
@@ -2426,6 +2459,8 @@ type OracleRollTemplate struct {
 	Summary *TemplateString `json:"summary,omitempty"`
 }
 
+// Represents a single oracle table, or a single table column of a table that
+// has multiple "Roll" or "Result" columns.
 type OracleTable struct {
 	// The roll used to select a result on this table.
 	Dice DiceNotation `json:"dice"`
@@ -2608,6 +2643,7 @@ const (
 	OracleTableRollMethodNoDuplicates OracleTableRollMethod = "no_duplicates"
 )
 
+// Represents a row in an oracle table.
 type OracleTableRow struct {
 	// The unique Datasworn ID for this item.
 	ID OracleTableRowID `json:"id"`
@@ -2618,20 +2654,27 @@ type OracleTableRow struct {
 	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
+	// The primary text content of this row.
 	Result MarkdownString `json:"result"`
 
+	// Optional tertiary text content for this row. Generally, this is longer than
+	// both `result` and `summary`.
 	Description *MarkdownString `json:"description,omitempty"`
 
+	// Hints that the identified table should be rendered inside this table row.
 	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
+	// Further oracle rolls prompted by this table row.
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// Optional secondary text content for this row. Generally, this is longer
+	// than `result`.
 	Summary *MarkdownString `json:"summary,omitempty"`
 
 	Template *OracleRollTemplate `json:"template,omitempty"`
@@ -2932,7 +2975,9 @@ type ThemeDangerRowID = string
 
 type ThemeFeatureRowID = string
 
+// Describes trigger conditions for a move that makes an action roll.
 type TriggerActionRoll struct {
+	// Specific conditions that qualify for this trigger.
 	Conditions []TriggerActionRollCondition `json:"conditions"`
 
 	// A markdown string containing the primary trigger text for this move.
@@ -2973,11 +3018,14 @@ type TriggerActionRollEnhancement struct {
 // Information on who can trigger this trigger condition. Usually this is just
 // the player, but some asset abilities can trigger from an ally's move.
 type TriggerBy struct {
+	// Can this trigger be activated by one of the player's allies?
 	Ally bool `json:"ally"`
 
+	// Can this trigger be activated by the player who owns this?
 	Player bool `json:"player"`
 }
 
+// Describes trigger conditions for a move that makes no rolls.
 type TriggerNoRoll struct {
 	Conditions []TriggerNoRollCondition `json:"conditions"`
 
@@ -3000,6 +3048,7 @@ type TriggerNoRollEnhancement struct {
 }
 
 type TriggerProgressRoll struct {
+	// Specific conditions that qualify for this trigger.
 	Conditions []TriggerProgressRollCondition `json:"conditions"`
 
 	// A markdown string containing the primary trigger text for this move.
@@ -3038,6 +3087,7 @@ type TriggerProgressRollEnhancement struct {
 }
 
 type TriggerSpecialTrack struct {
+	// Specific conditions that qualify for this trigger.
 	Conditions []TriggerSpecialTrackCondition `json:"conditions"`
 
 	// A markdown string containing the primary trigger text for this move.
@@ -3127,6 +3177,7 @@ type TruthOption struct {
 
 type TruthOptionID = string
 
+// Represents a row in an oracle table.
 type TruthOptionTableRow struct {
 	// High end of the dice range for this table row.
 	Max int16 `json:"max"`
@@ -3134,20 +3185,27 @@ type TruthOptionTableRow struct {
 	// Low end of the dice range for this table row.
 	Min int16 `json:"min"`
 
+	// The primary text content of this row.
 	Result MarkdownString `json:"result"`
 
+	// Optional tertiary text content for this row. Generally, this is longer than
+	// both `result` and `summary`.
 	Description *MarkdownString `json:"description,omitempty"`
 
+	// Hints that the identified table should be rendered inside this table row.
 	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
 
 	I18n *I18nHints `json:"i18n,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
+	// Further oracle rolls prompted by this table row.
 	Rolls []OracleTableRoll `json:"rolls,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 
+	// Optional secondary text content for this row. Generally, this is longer
+	// than `result`.
 	Summary *MarkdownString `json:"summary,omitempty"`
 
 	Template *OracleRollTemplate `json:"template,omitempty"`

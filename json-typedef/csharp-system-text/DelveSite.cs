@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// A delve site with a theme, domain, and denizen table.
+    /// A delve site with a theme, domain, and denizens.
     /// </summary>
     public class DelveSite
     {

@@ -109,7 +109,7 @@ export const DelveSite = Generic.SourcedNode(
 	}),
 	{
 		$id: 'DelveSite',
-		description: 'A delve site with a theme, domain, and denizen table.'
+		description: 'A delve site with a theme, domain, and denizens.'
 	}
 )
 

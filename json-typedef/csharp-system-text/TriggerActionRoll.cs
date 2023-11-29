@@ -5,8 +5,14 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Describes trigger conditions for a move that makes an action roll.
+    /// </summary>
     public class TriggerActionRoll
     {
+        /// <summary>
+        /// Specific conditions that qualify for this trigger.
+        /// </summary>
         [JsonPropertyName("conditions")]
         public IList<TriggerActionRollCondition> Conditions { get; set; }
 

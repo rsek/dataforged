@@ -19,6 +19,7 @@ public class TriggerProgressRoll {
 
     /**
      * Getter for conditions.<p>
+     * Specific conditions that qualify for this trigger.
      */
     public List<TriggerProgressRollCondition> getConditions() {
         return conditions;
@@ -26,6 +27,7 @@ public class TriggerProgressRoll {
 
     /**
      * Setter for conditions.<p>
+     * Specific conditions that qualify for this trigger.
      */
     public void setConditions(List<TriggerProgressRollCondition> conditions) {
         this.conditions = conditions;

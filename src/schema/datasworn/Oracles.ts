@@ -11,7 +11,7 @@ import {
 export const OracleTableRow = Generic.IdentifiedNode(
 	Type.Ref(Id.OracleTableRowId),
 	TableRowNullableMixin,
-	{ $id: 'OracleTableRow' }
+	{ $id: 'OracleTableRow', description: 'Represents a row in an oracle table.' }
 )
 export type OracleTableRow = Static<typeof OracleTableRow>
 
@@ -72,7 +72,11 @@ export const OracleTable = Generic.RecursiveCollectable(
 			})
 		)
 	}),
-	{ $id: 'OracleTable' }
+	{
+		$id: 'OracleTable',
+		description:
+			'Represents a single oracle table, or a single table column of a table that has multiple "Roll" or "Result" columns.'
+	}
 )
 export type OracleTable = Static<typeof OracleTable>
 

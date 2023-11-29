@@ -2684,7 +2684,7 @@ class CSSColor:
 @dataclass
 class DelveSite:
     """
-    A delve site with a theme, domain, and denizen table.
+    A delve site with a theme, domain, and denizens.
     """
 
     denizens: 'List[DelveSiteDenizen]'
@@ -2836,7 +2836,7 @@ class DelveSiteDenizenID:
 @dataclass
 class DelveSiteDomain:
     """
-    A delve site domain card.
+    A delve site Domain card.
     """
 
     dangers: 'List[DelveSiteDomainDangerRow]'
@@ -2915,6 +2915,10 @@ class DelveSiteDomain:
 
 @dataclass
 class DelveSiteDomainDangerRow:
+    """
+    Represents a single Danger entry from a delve site Domain card.
+    """
+
     id: 'DomainDangerRowID'
     """
     The unique Datasworn ID for this item.
@@ -2931,13 +2935,35 @@ class DelveSiteDomainDangerRow:
     """
 
     result: 'MarkdownString'
+    """
+    The primary text content of this row.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    Optional tertiary text content for this row. Generally, this is longer than
+    both `result` and `summary`.
+    """
+
     embed_table: 'Optional[OracleTableID]'
+    """
+    Hints that the identified table should be rendered inside this table row.
+    """
+
     i18n: 'Optional[I18nHints]'
     icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
+    """
+    Further oracle rolls prompted by this table row.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    Optional secondary text content for this row. Generally, this is longer
+    than `result`.
+    """
+
     template: 'Optional[OracleRollTemplate]'
 
     @classmethod
@@ -2983,6 +3009,10 @@ class DelveSiteDomainDangerRow:
 
 @dataclass
 class DelveSiteDomainFeatureRow:
+    """
+    Represents a single Feature entry from a delve site Domain card.
+    """
+
     id: 'DomainFeatureRowID'
     """
     The unique Datasworn ID for this item.
@@ -2999,13 +3029,35 @@ class DelveSiteDomainFeatureRow:
     """
 
     result: 'MarkdownString'
+    """
+    The primary text content of this row.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    Optional tertiary text content for this row. Generally, this is longer than
+    both `result` and `summary`.
+    """
+
     embed_table: 'Optional[OracleTableID]'
+    """
+    Hints that the identified table should be rendered inside this table row.
+    """
+
     i18n: 'Optional[I18nHints]'
     icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
+    """
+    Further oracle rolls prompted by this table row.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    Optional secondary text content for this row. Generally, this is longer
+    than `result`.
+    """
+
     template: 'Optional[OracleRollTemplate]'
 
     @classmethod
@@ -3141,6 +3193,10 @@ class DelveSiteTheme:
 
 @dataclass
 class DelveSiteThemeDangerRow:
+    """
+    Represents a single Danger entry from a delve site Theme card.
+    """
+
     id: 'ThemeDangerRowID'
     """
     The unique Datasworn ID for this item.
@@ -3157,13 +3213,35 @@ class DelveSiteThemeDangerRow:
     """
 
     result: 'MarkdownString'
+    """
+    The primary text content of this row.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    Optional tertiary text content for this row. Generally, this is longer than
+    both `result` and `summary`.
+    """
+
     embed_table: 'Optional[OracleTableID]'
+    """
+    Hints that the identified table should be rendered inside this table row.
+    """
+
     i18n: 'Optional[I18nHints]'
     icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
+    """
+    Further oracle rolls prompted by this table row.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    Optional secondary text content for this row. Generally, this is longer
+    than `result`.
+    """
+
     template: 'Optional[OracleRollTemplate]'
 
     @classmethod
@@ -3209,6 +3287,10 @@ class DelveSiteThemeDangerRow:
 
 @dataclass
 class DelveSiteThemeFeatureRow:
+    """
+    Represents a single Feature entry from a delve site Theme card.
+    """
+
     id: 'ThemeFeatureRowID'
     """
     The unique Datasworn ID for this item.
@@ -3225,13 +3307,35 @@ class DelveSiteThemeFeatureRow:
     """
 
     result: 'MarkdownString'
+    """
+    The primary text content of this row.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    Optional tertiary text content for this row. Generally, this is longer than
+    both `result` and `summary`.
+    """
+
     embed_table: 'Optional[OracleTableID]'
+    """
+    Hints that the identified table should be rendered inside this table row.
+    """
+
     i18n: 'Optional[I18nHints]'
     icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
+    """
+    Further oracle rolls prompted by this table row.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    Optional secondary text content for this row. Generally, this is longer
+    than `result`.
+    """
+
     template: 'Optional[OracleRollTemplate]'
 
     @classmethod
@@ -3392,6 +3496,10 @@ class I18nHintsTemplate:
 
 @dataclass
 class I18nHints:
+    """
+    Internationalization/localization hints for the text content of this object.
+    """
+
     description: 'Optional[I18nHint]'
     result: 'Optional[I18nHint]'
     summary: 'Optional[I18nHint]'
@@ -4847,6 +4955,11 @@ class OracleRollTemplate:
 
 @dataclass
 class OracleTable:
+    """
+    Represents a single oracle table, or a single table column of a table that
+    has multiple "Roll" or "Result" columns.
+    """
+
     dice: 'DiceNotation'
     """
     The roll used to select a result on this table.
@@ -5204,6 +5317,10 @@ class OracleTableRollMethod(Enum):
 
 @dataclass
 class OracleTableRow:
+    """
+    Represents a row in an oracle table.
+    """
+
     id: 'OracleTableRowID'
     """
     The unique Datasworn ID for this item.
@@ -5220,13 +5337,35 @@ class OracleTableRow:
     """
 
     result: 'MarkdownString'
+    """
+    The primary text content of this row.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    Optional tertiary text content for this row. Generally, this is longer than
+    both `result` and `summary`.
+    """
+
     embed_table: 'Optional[OracleTableID]'
+    """
+    Hints that the identified table should be rendered inside this table row.
+    """
+
     i18n: 'Optional[I18nHints]'
     icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
+    """
+    Further oracle rolls prompted by this table row.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    Optional secondary text content for this row. Generally, this is longer
+    than `result`.
+    """
+
     template: 'Optional[OracleRollTemplate]'
 
     @classmethod
@@ -6021,7 +6160,15 @@ class ThemeFeatureRowID:
 
 @dataclass
 class TriggerActionRoll:
+    """
+    Describes trigger conditions for a move that makes an action roll.
+    """
+
     conditions: 'List[TriggerActionRollCondition]'
+    """
+    Specific conditions that qualify for this trigger.
+    """
+
     text: 'MarkdownString'
     """
     A markdown string containing the primary trigger text for this move.
@@ -6135,7 +6282,15 @@ class TriggerBy:
     """
 
     ally: 'bool'
+    """
+    Can this trigger be activated by one of the player's allies?
+    """
+
     player: 'bool'
+    """
+    Can this trigger be activated by the player who owns this?
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerBy':
@@ -6152,6 +6307,10 @@ class TriggerBy:
 
 @dataclass
 class TriggerNoRoll:
+    """
+    Describes trigger conditions for a move that makes no rolls.
+    """
+
     conditions: 'List[TriggerNoRollCondition]'
     text: 'MarkdownString'
     """
@@ -6217,6 +6376,10 @@ class TriggerNoRollEnhancement:
 @dataclass
 class TriggerProgressRoll:
     conditions: 'List[TriggerProgressRollCondition]'
+    """
+    Specific conditions that qualify for this trigger.
+    """
+
     text: 'MarkdownString'
     """
     A markdown string containing the primary trigger text for this move.
@@ -6325,6 +6488,10 @@ class TriggerProgressRollEnhancement:
 @dataclass
 class TriggerSpecialTrack:
     conditions: 'List[TriggerSpecialTrackCondition]'
+    """
+    Specific conditions that qualify for this trigger.
+    """
+
     text: 'MarkdownString'
     """
     A markdown string containing the primary trigger text for this move.
@@ -6577,6 +6744,10 @@ class TruthOptionID:
 
 @dataclass
 class TruthOptionTableRow:
+    """
+    Represents a row in an oracle table.
+    """
+
     max: 'int'
     """
     High end of the dice range for this table row.
@@ -6588,13 +6759,35 @@ class TruthOptionTableRow:
     """
 
     result: 'MarkdownString'
+    """
+    The primary text content of this row.
+    """
+
     description: 'Optional[MarkdownString]'
+    """
+    Optional tertiary text content for this row. Generally, this is longer than
+    both `result` and `summary`.
+    """
+
     embed_table: 'Optional[OracleTableID]'
+    """
+    Hints that the identified table should be rendered inside this table row.
+    """
+
     i18n: 'Optional[I18nHints]'
     icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
+    """
+    Further oracle rolls prompted by this table row.
+    """
+
     suggestions: 'Optional[Suggestions]'
     summary: 'Optional[MarkdownString]'
+    """
+    Optional secondary text content for this row. Generally, this is longer
+    than `result`.
+    """
+
     template: 'Optional[OracleRollTemplate]'
 
     @classmethod

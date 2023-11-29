@@ -68,6 +68,10 @@ export const I18nHints = Type.Object(
 			})
 		)
 	},
-	{ $id: 'I18nHints' }
+	{
+		$id: 'I18nHints',
+		description:
+			'Internationalization/localization hints for the text content of this object.'
+	}
 )
 export type I18nHints = Static<typeof I18nHints>

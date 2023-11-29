@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// A delve site domain card.
+    /// A delve site Domain card.
     /// </summary>
     public class DelveSiteDomain
     {

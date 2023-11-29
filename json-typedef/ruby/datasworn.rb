@@ -2029,7 +2029,7 @@ module Datasworn
     end
   end
 
-  # A delve site with a theme, domain, and denizen table.
+  # A delve site with a theme, domain, and denizens.
   class DelveSite
     attr_accessor :denizens
     attr_accessor :description
@@ -2177,7 +2177,7 @@ module Datasworn
     end
   end
 
-  # A delve site domain card.
+  # A delve site Domain card.
   class DelveSiteDomain
     attr_accessor :dangers
     attr_accessor :features
@@ -2240,6 +2240,7 @@ module Datasworn
     end
   end
 
+  # Represents a single Danger entry from a delve site Domain card.
   class DelveSiteDomainDangerRow
     # The unique Datasworn ID for this item.
     attr_accessor :id
@@ -2249,13 +2250,25 @@ module Datasworn
 
     # Low end of the dice range for this table row.
     attr_accessor :min
+
+    # The primary text content of this row.
     attr_accessor :result
+
+    # Optional tertiary text content for this row. Generally, this is longer
+    # than both `result` and `summary`.
     attr_accessor :description
+
+    # Hints that the identified table should be rendered inside this table row.
     attr_accessor :embed_table
     attr_accessor :i18n
     attr_accessor :icon
+
+    # Further oracle rolls prompted by this table row.
     attr_accessor :rolls
     attr_accessor :suggestions
+
+    # Optional secondary text content for this row. Generally, this is longer
+    # than `result`.
     attr_accessor :summary
     attr_accessor :template
 
@@ -2294,6 +2307,7 @@ module Datasworn
     end
   end
 
+  # Represents a single Feature entry from a delve site Domain card.
   class DelveSiteDomainFeatureRow
     # The unique Datasworn ID for this item.
     attr_accessor :id
@@ -2303,13 +2317,25 @@ module Datasworn
 
     # Low end of the dice range for this table row.
     attr_accessor :min
+
+    # The primary text content of this row.
     attr_accessor :result
+
+    # Optional tertiary text content for this row. Generally, this is longer
+    # than both `result` and `summary`.
     attr_accessor :description
+
+    # Hints that the identified table should be rendered inside this table row.
     attr_accessor :embed_table
     attr_accessor :i18n
     attr_accessor :icon
+
+    # Further oracle rolls prompted by this table row.
     attr_accessor :rolls
     attr_accessor :suggestions
+
+    # Optional secondary text content for this row. Generally, this is longer
+    # than `result`.
     attr_accessor :summary
     attr_accessor :template
 
@@ -2430,6 +2456,7 @@ module Datasworn
     end
   end
 
+  # Represents a single Danger entry from a delve site Theme card.
   class DelveSiteThemeDangerRow
     # The unique Datasworn ID for this item.
     attr_accessor :id
@@ -2439,13 +2466,25 @@ module Datasworn
 
     # Low end of the dice range for this table row.
     attr_accessor :min
+
+    # The primary text content of this row.
     attr_accessor :result
+
+    # Optional tertiary text content for this row. Generally, this is longer
+    # than both `result` and `summary`.
     attr_accessor :description
+
+    # Hints that the identified table should be rendered inside this table row.
     attr_accessor :embed_table
     attr_accessor :i18n
     attr_accessor :icon
+
+    # Further oracle rolls prompted by this table row.
     attr_accessor :rolls
     attr_accessor :suggestions
+
+    # Optional secondary text content for this row. Generally, this is longer
+    # than `result`.
     attr_accessor :summary
     attr_accessor :template
 
@@ -2484,6 +2523,7 @@ module Datasworn
     end
   end
 
+  # Represents a single Feature entry from a delve site Theme card.
   class DelveSiteThemeFeatureRow
     # The unique Datasworn ID for this item.
     attr_accessor :id
@@ -2493,13 +2533,25 @@ module Datasworn
 
     # Low end of the dice range for this table row.
     attr_accessor :min
+
+    # The primary text content of this row.
     attr_accessor :result
+
+    # Optional tertiary text content for this row. Generally, this is longer
+    # than both `result` and `summary`.
     attr_accessor :description
+
+    # Hints that the identified table should be rendered inside this table row.
     attr_accessor :embed_table
     attr_accessor :i18n
     attr_accessor :icon
+
+    # Further oracle rolls prompted by this table row.
     attr_accessor :rolls
     attr_accessor :suggestions
+
+    # Optional secondary text content for this row. Generally, this is longer
+    # than `result`.
     attr_accessor :summary
     attr_accessor :template
 
@@ -2663,6 +2715,7 @@ module Datasworn
     end
   end
 
+  # Internationalization/localization hints for the text content of this object.
   class I18nHints
     attr_accessor :description
     attr_accessor :result
@@ -3838,6 +3891,8 @@ module Datasworn
     end
   end
 
+  # Represents a single oracle table, or a single table column of a table that
+  # has multiple "Roll" or "Result" columns.
   class OracleTable
     # The roll used to select a result on this table.
     attr_accessor :dice
@@ -4159,6 +4214,7 @@ module Datasworn
     end
   end
 
+  # Represents a row in an oracle table.
   class OracleTableRow
     # The unique Datasworn ID for this item.
     attr_accessor :id
@@ -4168,13 +4224,25 @@ module Datasworn
 
     # Low end of the dice range for this table row.
     attr_accessor :min
+
+    # The primary text content of this row.
     attr_accessor :result
+
+    # Optional tertiary text content for this row. Generally, this is longer
+    # than both `result` and `summary`.
     attr_accessor :description
+
+    # Hints that the identified table should be rendered inside this table row.
     attr_accessor :embed_table
     attr_accessor :i18n
     attr_accessor :icon
+
+    # Further oracle rolls prompted by this table row.
     attr_accessor :rolls
     attr_accessor :suggestions
+
+    # Optional secondary text content for this row. Generally, this is longer
+    # than `result`.
     attr_accessor :summary
     attr_accessor :template
 
@@ -4925,7 +4993,9 @@ module Datasworn
     end
   end
 
+  # Describes trigger conditions for a move that makes an action roll.
   class TriggerActionRoll
+    # Specific conditions that qualify for this trigger.
     attr_accessor :conditions
 
     # A markdown string containing the primary trigger text for this move.
@@ -5026,7 +5096,10 @@ module Datasworn
   # Information on who can trigger this trigger condition. Usually this is just
   # the player, but some asset abilities can trigger from an ally's move.
   class TriggerBy
+    # Can this trigger be activated by one of the player's allies?
     attr_accessor :ally
+
+    # Can this trigger be activated by the player who owns this?
     attr_accessor :player
 
     def self.from_json_data(data)
@@ -5044,6 +5117,7 @@ module Datasworn
     end
   end
 
+  # Describes trigger conditions for a move that makes no rolls.
   class TriggerNoRoll
     attr_accessor :conditions
 
@@ -5106,6 +5180,7 @@ module Datasworn
   end
 
   class TriggerProgressRoll
+    # Specific conditions that qualify for this trigger.
     attr_accessor :conditions
 
     # A markdown string containing the primary trigger text for this move.
@@ -5204,6 +5279,7 @@ module Datasworn
   end
 
   class TriggerSpecialTrack
+    # Specific conditions that qualify for this trigger.
     attr_accessor :conditions
 
     # A markdown string containing the primary trigger text for this move.
@@ -5430,19 +5506,32 @@ module Datasworn
     end
   end
 
+  # Represents a row in an oracle table.
   class TruthOptionTableRow
     # High end of the dice range for this table row.
     attr_accessor :max
 
     # Low end of the dice range for this table row.
     attr_accessor :min
+
+    # The primary text content of this row.
     attr_accessor :result
+
+    # Optional tertiary text content for this row. Generally, this is longer
+    # than both `result` and `summary`.
     attr_accessor :description
+
+    # Hints that the identified table should be rendered inside this table row.
     attr_accessor :embed_table
     attr_accessor :i18n
     attr_accessor :icon
+
+    # Further oracle rolls prompted by this table row.
     attr_accessor :rolls
     attr_accessor :suggestions
+
+    # Optional secondary text content for this row. Generally, this is longer
+    # than `result`.
     attr_accessor :summary
     attr_accessor :template
 

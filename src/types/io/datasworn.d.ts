@@ -616,9 +616,31 @@ export type MarkdownString11 = string;
  */
 export type OracleTableRowId1 = string;
 /**
- * Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString12 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString13 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString14 = string;
+/**
+ * Hints that the identified table should be rendered inside this table row.
  */
 export type OracleTableId3 = string;
+/**
+ * Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.
+ */
+export type OracleTableId4 = string;
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
@@ -760,25 +782,25 @@ export type Label19 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString12 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString13 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString14 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
 export type MarkdownString15 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString16 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString17 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString18 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -788,7 +810,7 @@ export type MoveId2 = StandardMoveId | AssetMoveId;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString16 = string;
+export type MarkdownString19 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -822,13 +844,13 @@ export type WebpImageUrl4 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString17 = string;
+export type MarkdownString20 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString18 = string;
+export type MarkdownString21 = string;
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
@@ -857,19 +879,19 @@ export type Label23 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString19 = string;
+export type MarkdownString22 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString20 = string;
+export type MarkdownString23 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString21 = string;
+export type MarkdownString24 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -900,13 +922,13 @@ export type Label25 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString22 = string;
+export type MarkdownString25 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString23 = string;
+export type MarkdownString26 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -919,7 +941,7 @@ export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString24 = string;
+export type MarkdownString27 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -929,7 +951,7 @@ export type MoveId6 = StandardMoveId | AssetMoveId;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString25 = string;
+export type MarkdownString28 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -964,13 +986,13 @@ export type Label27 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString26 = string;
+export type MarkdownString29 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString27 = string;
+export type MarkdownString30 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -996,7 +1018,7 @@ export type SpecialTrackRollMethod =
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString28 = string;
+export type MarkdownString31 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -1006,7 +1028,7 @@ export type MoveId8 = StandardMoveId | AssetMoveId;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString29 = string;
+export type MarkdownString32 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -1080,7 +1102,7 @@ export type AssetOptionField = {
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString30 = string;
+export type MarkdownString33 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -1186,13 +1208,13 @@ export type WebpImageUrl5 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString31 = string;
+export type MarkdownString34 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString32 = string;
+export type MarkdownString35 = string;
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
@@ -1213,6 +1235,28 @@ export type Label35 = string;
  * The unique Datasworn ID for this item.
  */
 export type TruthOptionId1 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString36 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString37 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString38 = string;
+/**
+ * Hints that the identified table should be rendered inside this table row.
+ */
+export type OracleTableId5 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -1246,13 +1290,13 @@ export type WebpImageUrl6 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString33 = string;
+export type MarkdownString39 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString34 = string;
+export type MarkdownString40 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -1345,13 +1389,57 @@ export type Label45 = string;
  */
 export type DomainFeatureRowId1 = string;
 /**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString41 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString42 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString43 = string;
+/**
+ * Hints that the identified table should be rendered inside this table row.
+ */
+export type OracleTableId6 = string;
+/**
  * The unique Datasworn ID for this item.
  */
 export type DomainDangerRowId1 = string;
 /**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString44 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString45 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString46 = string;
+/**
+ * Hints that the identified table should be rendered inside this table row.
+ */
+export type OracleTableId7 = string;
+/**
  * An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.
  */
-export type OracleTableId4 = string;
+export type OracleTableId8 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -1369,9 +1457,53 @@ export type Label47 = string;
  */
 export type ThemeFeatureRowId1 = string;
 /**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString47 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString48 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString49 = string;
+/**
+ * Hints that the identified table should be rendered inside this table row.
+ */
+export type OracleTableId9 = string;
+/**
  * The unique Datasworn ID for this item.
  */
 export type ThemeDangerRowId1 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString50 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString51 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString52 = string;
+/**
+ * Hints that the identified table should be rendered inside this table row.
+ */
+export type OracleTableId10 = string;
 /**
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "RulesPackage".
@@ -1446,6 +1578,8 @@ export interface I18NHint {
   part_of_speech?: PartOfSpeech;
 }
 /**
+ * Internationalization/localization hints for the text content of this object.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "I18nHints".
  */
@@ -1873,6 +2007,8 @@ export interface OracleCollection {
   replaces?: OracleCollectionId3;
 }
 /**
+ * Represents a single oracle table, or a single table column of a table that has multiple "Roll" or "Result" columns.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
@@ -1894,7 +2030,7 @@ export interface OracleTable {
   table: OracleTableRow[];
   source: Source3;
   _i18n?: I18NHints1;
-  replaces?: OracleTableId3;
+  replaces?: OracleTableId4;
 }
 /**
  * Most oracle tables are insensitive to matches, but a few define special match behavior.
@@ -1916,12 +2052,15 @@ export interface OracleTableRow {
    */
   max: number | null;
   icon?: SvgImageUrl;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  result: MarkdownString12;
+  summary?: MarkdownString13;
+  description?: MarkdownString14;
   template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId;
+  embed_table?: OracleTableId3;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -1965,6 +2104,9 @@ export interface Source3 {
    */
   url: string;
 }
+/**
+ * Internationalization/localization hints for the text content of this object.
+ */
 export interface I18NHints1 {
   result?: I18NHint;
   summary?: I18NHint;
@@ -2097,6 +2239,8 @@ export interface OracleTableRenderingStandalone {
   };
 }
 /**
+ * Represents a row in an oracle table.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "OracleTableRow".
  */
@@ -2111,12 +2255,15 @@ export interface OracleTableRow1 {
    */
   max: number | null;
   icon?: SvgImageUrl;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  result: MarkdownString12;
+  summary?: MarkdownString13;
+  description?: MarkdownString14;
   template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId;
+  embed_table?: OracleTableId3;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -2135,7 +2282,7 @@ export interface MoveActionRoll {
    */
   roll_type: "action_roll";
   trigger: TriggerActionRoll;
-  text: MarkdownString14;
+  text: MarkdownString17;
   outcomes: MoveOutcomes;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -2146,11 +2293,16 @@ export interface MoveActionRoll {
   replaces?: MoveId2;
 }
 /**
+ * Describes trigger conditions for a move that makes an action roll.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "TriggerActionRoll".
  */
 export interface TriggerActionRoll {
-  text: MarkdownString12;
+  text: MarkdownString15;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
   conditions: TriggerActionRollCondition[];
 }
 /**
@@ -2158,7 +2310,7 @@ export interface TriggerActionRoll {
  * via the `definition` "TriggerActionRollCondition".
  */
 export interface TriggerActionRollCondition {
-  text?: MarkdownString13;
+  text?: MarkdownString16;
   by?: TriggerBy;
   method: ActionRollMethod;
   /**
@@ -2173,7 +2325,13 @@ export interface TriggerActionRollCondition {
  * via the `definition` "TriggerBy".
  */
 export interface TriggerBy {
+  /**
+   * Can this trigger be activated by one of the player's allies?
+   */
   ally: boolean;
+  /**
+   * Can this trigger be activated by the player who owns this?
+   */
   player: boolean;
 }
 /**
@@ -2194,7 +2352,7 @@ export interface MoveOutcomes {
  * via the `definition` "MoveOutcome".
  */
 export interface MoveOutcome {
-  text: MarkdownString15;
+  text: MarkdownString18;
 }
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
@@ -2260,7 +2418,7 @@ export interface TriggerActionRollEnhancement {
  * via the `definition` "TriggerActionRollConditionEnhancement".
  */
 export interface TriggerActionRollConditionEnhancement {
-  text?: MarkdownString16;
+  text?: MarkdownString19;
   by?: TriggerBy;
   /**
    * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
@@ -2286,8 +2444,8 @@ export interface MoveCategory {
   color?: CssColor5;
   icon?: SvgImageUrl4;
   images?: WebpImageUrl4[];
-  summary?: MarkdownString17;
-  description?: MarkdownString18;
+  summary?: MarkdownString20;
+  description?: MarkdownString21;
   contents?: {
     [k: string]: Move;
   };
@@ -2348,7 +2506,7 @@ export interface MoveNoRoll {
    */
   roll_type: "no_roll";
   trigger: TriggerNoRoll;
-  text: MarkdownString21;
+  text: MarkdownString24;
   outcomes: null;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -2359,11 +2517,16 @@ export interface MoveNoRoll {
   replaces?: MoveId4;
 }
 /**
+ * Describes trigger conditions for a move that makes no rolls.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "TriggerNoRoll".
  */
 export interface TriggerNoRoll {
-  text: MarkdownString19;
+  text: MarkdownString22;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
   conditions: TriggerNoRollCondition[] | null;
 }
 /**
@@ -2371,7 +2534,7 @@ export interface TriggerNoRoll {
  * via the `definition` "TriggerNoRollCondition".
  */
 export interface TriggerNoRollCondition {
-  text?: MarkdownString20;
+  text?: MarkdownString23;
   by?: TriggerBy;
   method: null;
   /**
@@ -2453,7 +2616,7 @@ export interface MoveProgressRoll {
    */
   roll_type: "progress_roll";
   trigger: TriggerProgressRoll;
-  text: MarkdownString24;
+  text: MarkdownString27;
   outcomes: MoveOutcomes;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -2469,7 +2632,10 @@ export interface MoveProgressRoll {
  * via the `definition` "TriggerProgressRoll".
  */
 export interface TriggerProgressRoll {
-  text: MarkdownString22;
+  text: MarkdownString25;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
   conditions: TriggerProgressRollCondition[];
 }
 /**
@@ -2477,7 +2643,7 @@ export interface TriggerProgressRoll {
  * via the `definition` "TriggerProgressRollCondition".
  */
 export interface TriggerProgressRollCondition {
-  text?: MarkdownString23;
+  text?: MarkdownString26;
   by?: TriggerBy;
   method: ProgressRollMethod;
   /**
@@ -2569,7 +2735,7 @@ export interface TriggerProgressRollEnhancement {
  * via the `definition` "TriggerProgressRollConditionEnhancement".
  */
 export interface TriggerProgressRollConditionEnhancement {
-  text?: MarkdownString25;
+  text?: MarkdownString28;
   by?: TriggerBy;
   /**
    * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
@@ -2590,7 +2756,7 @@ export interface MoveSpecialTrack {
    */
   roll_type: "special_track";
   trigger: TriggerSpecialTrack;
-  text: MarkdownString28;
+  text: MarkdownString31;
   outcomes: MoveOutcomes;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -2605,7 +2771,10 @@ export interface MoveSpecialTrack {
  * via the `definition` "TriggerSpecialTrack".
  */
 export interface TriggerSpecialTrack {
-  text: MarkdownString26;
+  text: MarkdownString29;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
   conditions: TriggerSpecialTrackCondition[];
 }
 /**
@@ -2613,7 +2782,7 @@ export interface TriggerSpecialTrack {
  * via the `definition` "TriggerSpecialTrackCondition".
  */
 export interface TriggerSpecialTrackCondition {
-  text?: MarkdownString27;
+  text?: MarkdownString30;
   by?: TriggerBy;
   method: SpecialTrackRollMethod;
   /**
@@ -2694,7 +2863,7 @@ export interface TriggerSpecialTrackEnhancement {
  * via the `definition` "TriggerSpecialTrackConditionEnhancement".
  */
 export interface TriggerSpecialTrackConditionEnhancement {
-  text?: MarkdownString29;
+  text?: MarkdownString32;
   by?: TriggerBy;
   /**
    * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
@@ -2817,7 +2986,7 @@ export interface Asset {
    */
   shared: boolean;
   attachments?: AssetAttachment;
-  requirement?: MarkdownString30;
+  requirement?: MarkdownString33;
   abilities: AssetAbility[];
   /**
    * Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.
@@ -3073,8 +3242,8 @@ export interface AssetType {
   color?: CssColor7;
   icon?: SvgImageUrl6;
   images?: WebpImageUrl5[];
-  summary?: MarkdownString31;
-  description?: MarkdownString32;
+  summary?: MarkdownString34;
+  description?: MarkdownString35;
   contents?: {
     [k: string]: Asset;
   };
@@ -3158,6 +3327,8 @@ export interface TruthOption {
   table?: TruthOptionTableRow[];
 }
 /**
+ * Represents a row in an oracle table.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "TruthOptionTableRow".
  */
@@ -3171,12 +3342,15 @@ export interface TruthOptionTableRow {
    */
   max: number | null;
   icon?: SvgImageUrl;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  result: MarkdownString36;
+  summary?: MarkdownString37;
+  description?: MarkdownString38;
   template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId;
+  embed_table?: OracleTableId5;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3238,8 +3412,8 @@ export interface Atlas {
   color?: CssColor8;
   icon?: SvgImageUrl7;
   images?: WebpImageUrl6[];
-  summary?: MarkdownString33;
-  description?: MarkdownString34;
+  summary?: MarkdownString39;
+  description?: MarkdownString40;
   contents?: {
     [k: string]: AtlasEntry;
   };
@@ -3422,7 +3596,7 @@ export interface Source15 {
   url: string;
 }
 /**
- * A delve site with a theme, domain, and denizen table.
+ * A delve site with a theme, domain, and denizens.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSite".
@@ -3578,7 +3752,7 @@ export interface DelveSiteDenizen {
   npc?: NpcId2;
 }
 /**
- * A delve site domain card.
+ * A delve site Domain card.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSiteDomain".
@@ -3689,9 +3863,11 @@ export interface DelveSiteDomain {
   description?: MarkdownString;
   suggestions?: Suggestions;
   source: Source17;
-  name_oracle?: OracleTableId4;
+  name_oracle?: OracleTableId8;
 }
 /**
+ * Represents a single Feature entry from a delve site Domain card.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSiteDomainFeatureRow".
  */
@@ -3706,16 +3882,21 @@ export interface DelveSiteDomainFeatureRow {
    */
   max: number;
   icon?: SvgImageUrl;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  result: MarkdownString41;
+  summary?: MarkdownString42;
+  description?: MarkdownString43;
   template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId;
+  embed_table?: OracleTableId6;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
 /**
+ * Represents a single Danger entry from a delve site Domain card.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSiteDomainDangerRow".
  */
@@ -3730,12 +3911,15 @@ export interface DelveSiteDomainDangerRow {
    */
   max: number;
   icon?: SvgImageUrl;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  result: MarkdownString44;
+  summary?: MarkdownString45;
+  description?: MarkdownString46;
   template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId;
+  embed_table?: OracleTableId7;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3893,6 +4077,8 @@ export interface DelveSiteTheme {
   source: Source18;
 }
 /**
+ * Represents a single Feature entry from a delve site Theme card.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSiteThemeFeatureRow".
  */
@@ -3907,16 +4093,21 @@ export interface DelveSiteThemeFeatureRow {
    */
   max: number;
   icon?: SvgImageUrl;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  result: MarkdownString47;
+  summary?: MarkdownString48;
+  description?: MarkdownString49;
   template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId;
+  embed_table?: OracleTableId9;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
 /**
+ * Represents a single Danger entry from a delve site Theme card.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSiteThemeDangerRow".
  */
@@ -3931,12 +4122,15 @@ export interface DelveSiteThemeDangerRow {
    */
   max: number;
   icon?: SvgImageUrl;
-  result: MarkdownString;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  result: MarkdownString50;
+  summary?: MarkdownString51;
+  description?: MarkdownString52;
   template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId;
+  embed_table?: OracleTableId10;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }

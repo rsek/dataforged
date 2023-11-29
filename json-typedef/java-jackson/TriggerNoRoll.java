@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Describes trigger conditions for a move that makes no rolls.
+ */
 @JsonSerialize
 public class TriggerNoRoll {
     @JsonProperty("conditions")

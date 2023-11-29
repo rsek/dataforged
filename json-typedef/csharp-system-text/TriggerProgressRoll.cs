@@ -7,6 +7,9 @@ namespace Datasworn
 {
     public class TriggerProgressRoll
     {
+        /// <summary>
+        /// Specific conditions that qualify for this trigger.
+        /// </summary>
         [JsonPropertyName("conditions")]
         public IList<TriggerProgressRollCondition> Conditions { get; set; }
 

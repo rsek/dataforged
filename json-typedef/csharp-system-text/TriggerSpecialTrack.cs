@@ -7,6 +7,9 @@ namespace Datasworn
 {
     public class TriggerSpecialTrack
     {
+        /// <summary>
+        /// Specific conditions that qualify for this trigger.
+        /// </summary>
         [JsonPropertyName("conditions")]
         public IList<TriggerSpecialTrackCondition> Conditions { get; set; }
 

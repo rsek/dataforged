@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Describes trigger conditions for a move that makes an action roll.
+ */
 @JsonSerialize
 public class TriggerActionRoll {
     @JsonProperty("conditions")
@@ -19,6 +22,7 @@ public class TriggerActionRoll {
 
     /**
      * Getter for conditions.<p>
+     * Specific conditions that qualify for this trigger.
      */
     public List<TriggerActionRollCondition> getConditions() {
         return conditions;
@@ -26,6 +30,7 @@ public class TriggerActionRoll {
 
     /**
      * Setter for conditions.<p>
+     * Specific conditions that qualify for this trigger.
      */
     public void setConditions(List<TriggerActionRollCondition> conditions) {
         this.conditions = conditions;

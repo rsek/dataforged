@@ -22,6 +22,7 @@ public class TriggerBy {
 
     /**
      * Getter for ally.<p>
+     * Can this trigger be activated by one of the player's allies?
      */
     public Boolean getAlly() {
         return ally;
@@ -29,6 +30,7 @@ public class TriggerBy {
 
     /**
      * Setter for ally.<p>
+     * Can this trigger be activated by one of the player's allies?
      */
     public void setAlly(Boolean ally) {
         this.ally = ally;
@@ -36,6 +38,7 @@ public class TriggerBy {
 
     /**
      * Getter for player.<p>
+     * Can this trigger be activated by the player who owns this?
      */
     public Boolean getPlayer() {
         return player;
@@ -43,6 +46,7 @@ public class TriggerBy {
 
     /**
      * Setter for player.<p>
+     * Can this trigger be activated by the player who owns this?
      */
     public void setPlayer(Boolean player) {
         this.player = player;

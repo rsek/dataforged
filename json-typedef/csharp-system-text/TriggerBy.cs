@@ -11,9 +11,15 @@ namespace Datasworn
     /// </summary>
     public class TriggerBy
     {
+        /// <summary>
+        /// Can this trigger be activated by one of the player's allies?
+        /// </summary>
         [JsonPropertyName("ally")]
         public bool Ally { get; set; }
 
+        /// <summary>
+        /// Can this trigger be activated by the player who owns this?
+        /// </summary>
         [JsonPropertyName("player")]
         public bool Player { get; set; }
     }

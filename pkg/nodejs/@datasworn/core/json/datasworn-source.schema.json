@@ -2,6 +2,7 @@
 	"$id": "https://ironswornrpg.com/datasworn-source.schema.json",
 	"title": "DataswornSource v0.0.1-dev",
 	"type": "object",
+	"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `package_type` property as a discriminator.",
 	"description": "Source data schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin.\n\nThe source data omits IDs, and makes properties that provide a default value optional; these values are inserted during validation/processing to produce the JSON for distribution.",
 	"required": ["package_type"],
 	"properties": {
@@ -547,6 +548,7 @@
 		"I18nHints": {
 			"title": "I18nHints",
 			"type": "object",
+			"description": "Internationalization/localization hints for the text content of this object.",
 			"properties": {
 				"result": {
 					"$ref": "#/$defs/I18nHint"
@@ -1254,6 +1256,7 @@
 		"OracleCollectionRendering": {
 			"title": "OracleCollectionRendering",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `style` property as a discriminator.",
 			"description": "Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.",
 			"required": ["style"],
 			"properties": {
@@ -1357,6 +1360,7 @@
 		"OracleTable": {
 			"title": "OracleTable",
 			"type": "object",
+			"description": "Represents a single oracle table, or a single table column of a table that has multiple \"Roll\" or \"Result\" columns.",
 			"required": ["name", "table", "source"],
 			"properties": {
 				"id": {
@@ -1469,6 +1473,7 @@
 		"OracleTableRendering": {
 			"title": "OracleTableRendering",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `style` property as a discriminator.",
 			"description": "Describes the presentation of this table.",
 			"default": {
 				"style": "standalone",
@@ -1593,6 +1598,7 @@
 		"OracleTableRow": {
 			"title": "OracleTableRow",
 			"type": "object",
+			"description": "Represents a row in an oracle table.",
 			"required": ["result"],
 			"properties": {
 				"id": {
@@ -1629,25 +1635,30 @@
 					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "The primary text content of this row."
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
 				},
 				"template": {
 					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
+					"description": "Further oracle rolls prompted by this table row.",
 					"items": {
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
 				"embed_table": {
-					"$ref": "#/$defs/OracleTableId"
+					"$ref": "#/$defs/OracleTableId",
+					"description": "Hints that the identified table should be rendered inside this table row."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -1679,6 +1690,7 @@
 		"ActionRollOption": {
 			"title": "ActionRollOption",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `using` property as a discriminator.",
 			"required": ["using"],
 			"properties": {
 				"using": {
@@ -1804,6 +1816,7 @@
 		"Move": {
 			"title": "Move",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `roll_type` property as a discriminator.",
 			"required": ["roll_type"],
 			"properties": {
 				"roll_type": {
@@ -2019,6 +2032,7 @@
 		"MoveEnhancement": {
 			"title": "MoveEnhancement",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `roll_type` property as a discriminator.",
 			"required": ["roll_type"],
 			"properties": {
 				"roll_type": {
@@ -2553,6 +2567,7 @@
 		"TriggerActionRoll": {
 			"title": "TriggerActionRoll",
 			"type": "object",
+			"description": "Describes trigger conditions for a move that makes an action roll.",
 			"required": ["text", "conditions"],
 			"properties": {
 				"text": {
@@ -2563,6 +2578,7 @@
 				},
 				"conditions": {
 					"type": "array",
+					"description": "Specific conditions that qualify for this trigger.",
 					"items": {
 						"$ref": "#/$defs/TriggerActionRollCondition"
 					}
@@ -2659,10 +2675,12 @@
 			"properties": {
 				"ally": {
 					"type": "boolean",
+					"description": "Can this trigger be activated by one of the player's allies?",
 					"default": false
 				},
 				"player": {
 					"type": "boolean",
+					"description": "Can this trigger be activated by the player who owns this?",
 					"default": true
 				}
 			},
@@ -2671,6 +2689,7 @@
 		"TriggerNoRoll": {
 			"title": "TriggerNoRoll",
 			"type": "object",
+			"description": "Describes trigger conditions for a move that makes no rolls.",
 			"required": ["text"],
 			"properties": {
 				"text": {
@@ -2680,6 +2699,7 @@
 					"pattern": ".*\\.{3}"
 				},
 				"conditions": {
+					"description": "Specific conditions that qualify for this trigger.",
 					"default": null,
 					"anyOf": [
 						{
@@ -2747,6 +2767,7 @@
 				},
 				"conditions": {
 					"type": "array",
+					"description": "Specific conditions that qualify for this trigger.",
 					"items": {
 						"$ref": "#/$defs/TriggerProgressRollCondition"
 					}
@@ -2850,6 +2871,7 @@
 				},
 				"conditions": {
 					"type": "array",
+					"description": "Specific conditions that qualify for this trigger.",
 					"items": {
 						"$ref": "#/$defs/TriggerSpecialTrackCondition"
 					}
@@ -3110,6 +3132,7 @@
 		"AssetAbilityControlField": {
 			"title": "AssetAbilityControlField",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
@@ -3273,6 +3296,7 @@
 		"AssetAbilityOptionField": {
 			"title": "AssetAbilityOptionField",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
@@ -3436,6 +3460,7 @@
 		"AssetConditionMeterControlField": {
 			"title": "AssetConditionMeterControlField",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"description": "A checkbox control field, rendered as part of an asset condition meter.",
 			"required": ["field_type"],
 			"properties": {
@@ -3560,6 +3585,7 @@
 		"AssetControlField": {
 			"title": "AssetControlField",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
@@ -3750,6 +3776,7 @@
 												}
 											}
 										],
+										"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `option_type` property as a discriminator.",
 										"required": ["option_type"],
 										"additionalProperties": true,
 										"properties": {
@@ -3865,6 +3892,7 @@
 		"AssetControlFieldEnhancement": {
 			"title": "AssetControlFieldEnhancement",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
@@ -3923,6 +3951,7 @@
 		"AssetOptionField": {
 			"title": "AssetOptionField",
 			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
@@ -4073,6 +4102,7 @@
 												}
 											}
 										],
+										"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `option_type` property as a discriminator.",
 										"required": ["option_type"],
 										"additionalProperties": true,
 										"properties": {
@@ -4254,6 +4284,7 @@
 												}
 											}
 										],
+										"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `option_type` property as a discriminator.",
 										"required": ["option_type"],
 										"additionalProperties": true,
 										"properties": {
@@ -4460,6 +4491,7 @@
 		"TruthOptionTableRow": {
 			"title": "TruthOptionTableRow",
 			"type": "object",
+			"description": "Represents a row in an oracle table.",
 			"required": ["result"],
 			"properties": {
 				"min": {
@@ -4492,25 +4524,30 @@
 					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "The primary text content of this row."
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
 				},
 				"template": {
 					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
+					"description": "Further oracle rolls prompted by this table row.",
 					"items": {
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
 				"embed_table": {
-					"$ref": "#/$defs/OracleTableId"
+					"$ref": "#/$defs/OracleTableId",
+					"description": "Hints that the identified table should be rendered inside this table row."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -4710,7 +4747,7 @@
 		"DelveSite": {
 			"title": "DelveSite",
 			"type": "object",
-			"description": "A delve site with a theme, domain, and denizen table.",
+			"description": "A delve site with a theme, domain, and denizens.",
 			"required": [
 				"name",
 				"rank",
@@ -5054,7 +5091,7 @@
 		"DelveSiteDomain": {
 			"title": "DelveSiteDomain",
 			"type": "object",
-			"description": "A delve site domain card.",
+			"description": "A delve site Domain card.",
 			"required": ["name", "summary", "features", "dangers", "source"],
 			"properties": {
 				"id": {
@@ -5386,6 +5423,7 @@
 		"DelveSiteDomainDangerRow": {
 			"title": "DelveSiteDomainDangerRow",
 			"type": "object",
+			"description": "Represents a single Danger entry from a delve site Domain card.",
 			"required": ["min", "max", "result"],
 			"properties": {
 				"id": {
@@ -5404,25 +5442,30 @@
 					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "The primary text content of this row."
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
 				},
 				"template": {
 					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
+					"description": "Further oracle rolls prompted by this table row.",
 					"items": {
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
 				"embed_table": {
-					"$ref": "#/$defs/OracleTableId"
+					"$ref": "#/$defs/OracleTableId",
+					"description": "Hints that the identified table should be rendered inside this table row."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -5436,6 +5479,7 @@
 		"DelveSiteDomainFeatureRow": {
 			"title": "DelveSiteDomainFeatureRow",
 			"type": "object",
+			"description": "Represents a single Feature entry from a delve site Domain card.",
 			"required": ["min", "max", "result"],
 			"properties": {
 				"id": {
@@ -5454,25 +5498,30 @@
 					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "The primary text content of this row."
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
 				},
 				"template": {
 					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
+					"description": "Further oracle rolls prompted by this table row.",
 					"items": {
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
 				"embed_table": {
-					"$ref": "#/$defs/OracleTableId"
+					"$ref": "#/$defs/OracleTableId",
+					"description": "Hints that the identified table should be rendered inside this table row."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -5814,6 +5863,7 @@
 		"DelveSiteThemeDangerRow": {
 			"title": "DelveSiteThemeDangerRow",
 			"type": "object",
+			"description": "Represents a single Danger entry from a delve site Theme card.",
 			"required": ["min", "max", "result"],
 			"properties": {
 				"id": {
@@ -5832,25 +5882,30 @@
 					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "The primary text content of this row."
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
 				},
 				"template": {
 					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
+					"description": "Further oracle rolls prompted by this table row.",
 					"items": {
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
 				"embed_table": {
-					"$ref": "#/$defs/OracleTableId"
+					"$ref": "#/$defs/OracleTableId",
+					"description": "Hints that the identified table should be rendered inside this table row."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -5864,6 +5919,7 @@
 		"DelveSiteThemeFeatureRow": {
 			"title": "DelveSiteThemeFeatureRow",
 			"type": "object",
+			"description": "Represents a single Feature entry from a delve site Theme card.",
 			"required": ["min", "max", "result"],
 			"properties": {
 				"id": {
@@ -5882,25 +5938,30 @@
 					"$ref": "#/$defs/SvgImageUrl"
 				},
 				"result": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "The primary text content of this row."
 				},
 				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional secondary text content for this row. Generally, this is longer than `result`."
 				},
 				"description": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "Optional tertiary text content for this row. Generally, this is longer than both `result` and `summary`."
 				},
 				"template": {
 					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
+					"description": "Further oracle rolls prompted by this table row.",
 					"items": {
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
 				"embed_table": {
-					"$ref": "#/$defs/OracleTableId"
+					"$ref": "#/$defs/OracleTableId",
+					"description": "Hints that the identified table should be rendered inside this table row."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"

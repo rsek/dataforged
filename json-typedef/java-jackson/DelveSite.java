@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
 /**
- * A delve site with a theme, domain, and denizen table.
+ * A delve site with a theme, domain, and denizens.
  */
 @JsonSerialize
 public class DelveSite {
