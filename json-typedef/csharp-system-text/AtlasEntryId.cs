@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for an AtlasEntry.
+    /// </summary>
     [JsonConverter(typeof(AtlasEntryIdJsonConverter))]
     public class AtlasEntryId
     {

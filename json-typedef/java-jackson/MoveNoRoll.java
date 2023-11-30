@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * A move that makes no progress rolls or action rolls.
+ */
 @JsonSerialize
 public class MoveNoRoll extends Move {
     @JsonProperty("id")
@@ -111,6 +114,7 @@ public class MoveNoRoll extends Move {
 
     /**
      * Getter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public TriggerNoRoll getTrigger() {
         return trigger;
@@ -118,6 +122,7 @@ public class MoveNoRoll extends Move {
 
     /**
      * Setter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public void setTrigger(TriggerNoRoll trigger) {
         this.trigger = trigger;

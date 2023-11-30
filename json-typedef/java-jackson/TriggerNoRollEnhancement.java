@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ */
 @JsonSerialize
 public class TriggerNoRollEnhancement {
     @JsonProperty("conditions")
@@ -16,6 +19,7 @@ public class TriggerNoRollEnhancement {
 
     /**
      * Getter for conditions.<p>
+     * Trigger conditions added to the enhanced move.
      */
     public List<TriggerNoRollCondition> getConditions() {
         return conditions;
@@ -23,6 +27,7 @@ public class TriggerNoRollEnhancement {
 
     /**
      * Setter for conditions.<p>
+     * Trigger conditions added to the enhanced move.
      */
     public void setConditions(List<TriggerNoRollCondition> conditions) {
         this.conditions = conditions;

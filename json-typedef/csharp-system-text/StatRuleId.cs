@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for a StatRule.
+    /// </summary>
     [JsonConverter(typeof(StatRuleIdJsonConverter))]
     public class StatRuleId
     {

@@ -19,6 +19,9 @@ namespace Datasworn
         [JsonPropertyName("assets")]
         public IDictionary<string, AssetType> Assets { get; set; }
 
+        /// <summary>
+        /// The version of the Datasworn format used by this data.
+        /// </summary>
         [JsonPropertyName("datasworn_version")]
         public SemanticVersion DataswornVersion { get; set; }
 

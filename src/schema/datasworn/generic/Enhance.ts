@@ -18,7 +18,10 @@ export function EnhanceMany<T extends TObject, ID extends TSchema = TString>(
 ) {
 	const base = Utils.OmitMeta(schema)
 	const mixin = Type.Object({
-		enhances: Type.Optional(Type.Array(wildcardID))
+		enhances: Utils.Nullable(Type.Array(wildcardID), {
+			description:
+				'An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.'
+		})
 	})
 	return Utils.Assign([mixin, base], options)
 }

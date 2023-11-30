@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Roll using the value of an asset control.
+    /// </summary>
     public class ActionRollOptionAssetControl : ActionRollOption
     {
         [JsonPropertyName("using")]
@@ -14,7 +17,7 @@ namespace Datasworn
         public IList<AssetIdWildcard> Assets { get; set; }
 
         /// <summary>
-        /// The key of the asset control field.
+        /// The dictionary key of the asset control field.
         /// </summary>
         [JsonPropertyName("control")]
         public DictKey Control { get; set; }

@@ -6,11 +6,14 @@
 				"id": {
 					"ref": "RulesetId"
 				},
+				"datasworn_version": {
+					"ref": "SemanticVersion",
+					"metadata": {
+						"description": "The version of the Datasworn format used by this data."
+					}
+				},
 				"rules": {
 					"ref": "Rules"
-				},
-				"datasworn_version": {
-					"ref": "SemanticVersion"
 				},
 				"oracles": {
 					"values": {
@@ -115,7 +118,10 @@
 					"ref": "ExpansionId"
 				},
 				"datasworn_version": {
-					"ref": "SemanticVersion"
+					"ref": "SemanticVersion",
+					"metadata": {
+						"description": "The version of the Datasworn format used by this data."
+					}
 				},
 				"ruleset": {
 					"ref": "RulesetId"
@@ -228,72 +234,84 @@
 		"AssetAbilityControlFieldId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AssetAbilityControlField.",
 				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/controls\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetAbilityId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AssetAbility.",
 				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)$"
 			}
 		},
 		"AssetAbilityOptionFieldId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AssetAbilityOptionField.",
 				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/options\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetConditionMeterControlFieldId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AssetConditionMeterControlField.",
 				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetControlFieldId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AssetControlField.",
 				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetControlFieldIdWildcard": {
 			"type": "string",
 			"metadata": {
+				"description": "A wildcarded ID that can be used to match multiple AssetControlFields.",
 				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/controls\\/(\\*|([a-z][a-z_]*))$"
 			}
 		},
 		"AssetId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an Asset.",
 				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetIdWildcard": {
 			"type": "string",
 			"metadata": {
+				"description": "A wildcarded ID that can be used to match multiple Assets.",
 				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 			}
 		},
 		"AssetOptionFieldId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AssetOptionField.",
 				"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AssetOptionFieldIdWildcard": {
 			"type": "string",
 			"metadata": {
+				"description": "A wildcarded ID that can be used to match multiple AssetOptionFields.",
 				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/options\\/(\\*|([a-z][a-z_]*))$"
 			}
 		},
 		"AssetTypeId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AssetType.",
 				"pattern": "^([a-z0-9_]{3,})\\/collections\\/assets\\/([a-z][a-z_]*)$"
 			}
 		},
 		"AtlasEntryId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an AtlasEntry.",
 				"examples": [
 					"classic/atlas/ironlands/hinterlands"
 				],
@@ -303,12 +321,14 @@
 		"AtlasEntryIdWildcard": {
 			"type": "string",
 			"metadata": {
+				"description": "A wildcarded ID that can be used to match multiple AtlasEntrys.",
 				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/atlas\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 			}
 		},
 		"AtlasId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an Atlas.",
 				"examples": [
 					"classic/collections/atlas/ironlands"
 				],
@@ -318,12 +338,14 @@
 		"AtlasIdWildcard": {
 			"type": "string",
 			"metadata": {
+				"description": "A wildcarded ID that can be used to match multiple Atlass.",
 				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/collections\\/atlas\\/(\\*|([a-z][a-z_]*))$"
 			}
 		},
 		"ConditionMeterRuleId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a ConditionMeterRule.",
 				"examples": [
 					"classic/rules/condition_meters/health",
 					"starforged/rules/condition_meters/spirit"
@@ -334,6 +356,7 @@
 		"DelveSiteDenizenId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a DelveSiteDenizen.",
 				"examples": [
 					"delve/delve_sites/alvas_rest/denizens/1-27"
 				],
@@ -343,6 +366,7 @@
 		"DelveSiteDomainId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a DelveSiteDomain.",
 				"examples": [
 					"delve/site_domains/shadowfen"
 				],
@@ -352,6 +376,7 @@
 		"DelveSiteId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a DelveSite.",
 				"examples": [
 					"delve/delve_sites/alvas_rest"
 				],
@@ -361,6 +386,7 @@
 		"DelveSiteThemeId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a DelveSiteTheme.",
 				"examples": [
 					"delve/site_themes/hallowed"
 				],
@@ -377,12 +403,14 @@
 		"DomainDangerRowId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a DomainDangerRow.",
 				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 			}
 		},
 		"DomainFeatureRowId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a DomainFeatureRow.",
 				"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 			}
 		},
@@ -399,6 +427,7 @@
 		"ImpactRuleCollectionId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an ImpactRuleCollection.",
 				"examples": [
 					"classic/collections/rules/impacts/conditions",
 					"starforged/collections/rules/impacts/vehicle_troubles"
@@ -409,6 +438,7 @@
 		"ImpactRuleId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an ImpactRule.",
 				"examples": [
 					"classic/rules/impacts/conditions/wounded",
 					"starforged/rules/impacts/vehicle_troubles/battered"
@@ -419,6 +449,7 @@
 		"MoveCategoryId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a MoveCategory.",
 				"examples": [
 					"starforged/collections/moves/adventure"
 				],
@@ -450,6 +481,7 @@
 		"NpcCollectionId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a NpcCollection.",
 				"examples": [
 					"classic/collections/npcs/firstborn",
 					"starforged/collections/npcs/sample_npcs"
@@ -460,6 +492,7 @@
 		"NpcId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a Npc.",
 				"examples": [
 					"classic/npcs/firstborn/elf",
 					"starforged/npcs/sample_npcs/chiton"
@@ -470,12 +503,14 @@
 		"NpcIdWildcard": {
 			"type": "string",
 			"metadata": {
+				"description": "A wildcarded ID that can be used to match multiple Npcs.",
 				"pattern": "^(\\*|([a-z0-9_]{3,}))\\/npcs\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 			}
 		},
 		"NpcVariantId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a NpcVariant.",
 				"examples": [
 					"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
 				],
@@ -485,6 +520,7 @@
 		"OracleCollectionId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an OracleCollection.",
 				"examples": [
 					"starforged/collections/oracles/core",
 					"starforged/collections/oracles/character/names",
@@ -496,6 +532,7 @@
 		"OracleTableId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for an OracleTable.",
 				"examples": [
 					"starforged/oracles/core/action",
 					"starforged/oracles/character/names/given",
@@ -530,6 +567,7 @@
 		"RarityId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a Rarity.",
 				"examples": [
 					"classic/rarities/ayethins_journal"
 				],
@@ -550,6 +588,7 @@
 		"SpecialTrackRuleId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a SpecialTrackRule.",
 				"examples": [
 					"classic/rules/special_tracks/bonds",
 					"delve/rules/special_tracks/failure",
@@ -561,24 +600,28 @@
 		"StatRuleId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a StatRule.",
 				"pattern": "^([a-z0-9_]{3,})\\/rules\\/stats\\/([a-z][a-z_]*)$"
 			}
 		},
 		"ThemeDangerRowId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a ThemeDangerRow.",
 				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 			}
 		},
 		"ThemeFeatureRowId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a ThemeFeatureRow.",
 				"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 			}
 		},
 		"TruthId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a Truth.",
 				"examples": [
 					"classic/truths/iron",
 					"starforged/truths/iron"
@@ -589,6 +632,7 @@
 		"TruthOptionId": {
 			"type": "string",
 			"metadata": {
+				"description": "A unique ID for a TruthOption.",
 				"examples": [
 					"classic/truths/iron/0",
 					"starforged/truths/iron/0"
@@ -931,7 +975,7 @@
 				},
 				"prevents_recovery": {
 					"elements": {
-						"ref": "DictKey"
+						"ref": "ConditionMeterId"
 					},
 					"metadata": {
 						"description": "Keys of ruleset condition meters, to which this impact prevents recovery."
@@ -1896,6 +1940,9 @@
 						"stat": {
 							"ref": "StatId"
 						}
+					},
+					"metadata": {
+						"description": "Roll using a standard player character stat."
 					}
 				},
 				"condition_meter": {
@@ -1903,6 +1950,9 @@
 						"condition_meter": {
 							"ref": "ConditionMeterId"
 						}
+					},
+					"metadata": {
+						"description": "Roll using the value of a standard player condition meter."
 					}
 				},
 				"asset_control": {
@@ -1915,13 +1965,16 @@
 						"control": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The key of the asset control field.",
+								"description": "The dictionary key of the asset control field.",
 								"examples": [
 									"health",
 									"integrity"
 								]
 							}
 						}
+					},
+					"metadata": {
+						"description": "Roll using the value of an asset control."
 					}
 				},
 				"asset_option": {
@@ -1934,9 +1987,12 @@
 						"option": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The key of the asset option field."
+								"description": "The dictionary key of the asset option field."
 							}
 						}
+					},
+					"metadata": {
+						"description": "Roll using the value of an asset option."
 					}
 				},
 				"attached_asset_control": {
@@ -1944,13 +2000,16 @@
 						"control": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The key of the asset control field.",
+								"description": "The dictionary key of the asset control field.",
 								"examples": [
 									"health",
 									"integrity"
 								]
 							}
 						}
+					},
+					"metadata": {
+						"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle."
 					}
 				},
 				"attached_asset_option": {
@@ -1958,9 +2017,12 @@
 						"option": {
 							"ref": "DictKey",
 							"metadata": {
-								"description": "The key of the asset option field."
+								"description": "The dictionary key of the asset option field."
 							}
 						}
+					},
+					"metadata": {
+						"description": "Roll using the value of an attached asset option."
 					}
 				},
 				"custom": {
@@ -1972,6 +2034,9 @@
 							"type": "int16",
 							"metadata": {}
 						}
+					},
+					"metadata": {
+						"description": "Roll using an integer value with customizable labels."
 					}
 				}
 			}
@@ -2028,7 +2093,10 @@
 							}
 						},
 						"trigger": {
-							"ref": "TriggerActionRoll"
+							"ref": "TriggerActionRoll",
+							"metadata": {
+								"description": "Trigger conditions for this move."
+							}
 						},
 						"outcomes": {
 							"ref": "MoveOutcomes"
@@ -2090,7 +2158,10 @@
 							}
 						},
 						"trigger": {
-							"ref": "TriggerNoRoll"
+							"ref": "TriggerNoRoll",
+							"metadata": {
+								"description": "Trigger conditions for this move."
+							}
 						}
 					},
 					"optionalProperties": {
@@ -2118,7 +2189,9 @@
 							}
 						}
 					},
-					"metadata": {}
+					"metadata": {
+						"description": "A move that makes no progress rolls or action rolls."
+					}
 				},
 				"progress_roll": {
 					"properties": {
@@ -2147,7 +2220,10 @@
 							}
 						},
 						"trigger": {
-							"ref": "TriggerProgressRoll"
+							"ref": "TriggerProgressRoll",
+							"metadata": {
+								"description": "Trigger conditions for this move."
+							}
 						},
 						"outcomes": {
 							"ref": "MoveOutcomes"
@@ -2185,7 +2261,7 @@
 						}
 					},
 					"metadata": {
-						"description": "A progress move that rolls on a standard progress track type (defined by the move object)."
+						"description": "A progress move that rolls on a standard progress track type (whose features are defined by this move object). For progress rolls that use special tracks, see MoveSpecialTrack."
 					}
 				},
 				"special_track": {
@@ -2215,7 +2291,10 @@
 							}
 						},
 						"trigger": {
-							"ref": "TriggerSpecialTrack"
+							"ref": "TriggerSpecialTrack",
+							"metadata": {
+								"description": "Trigger conditions for this move."
+							}
 						},
 						"outcomes": {
 							"ref": "MoveOutcomes"
@@ -2246,7 +2325,9 @@
 							}
 						}
 					},
-					"metadata": {}
+					"metadata": {
+						"description": "A progress move that rolls on a special track, such as Legacies (Starforged) or Bonds (classic Ironsworn). For progress moves that use standard progress tracks, see MoveProgressRoll instead."
+					}
 				}
 			}
 		},
@@ -2340,55 +2421,71 @@
 			"discriminator": "roll_type",
 			"mapping": {
 				"action_roll": {
-					"properties": {},
-					"optionalProperties": {
+					"properties": {
 						"enhances": {
 							"elements": {
 								"ref": "MoveIdWildcard"
 							}
-						},
+						}
+					},
+					"optionalProperties": {
 						"trigger": {
 							"ref": "TriggerActionRollEnhancement"
 						}
+					},
+					"metadata": {
+						"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value."
 					}
 				},
 				"no_roll": {
-					"properties": {},
-					"optionalProperties": {
+					"properties": {
 						"enhances": {
 							"elements": {
 								"ref": "MoveIdWildcard"
 							}
-						},
+						}
+					},
+					"optionalProperties": {
 						"trigger": {
 							"ref": "TriggerNoRollEnhancement"
 						}
+					},
+					"metadata": {
+						"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value."
 					}
 				},
 				"progress_roll": {
-					"properties": {},
-					"optionalProperties": {
+					"properties": {
 						"enhances": {
 							"elements": {
 								"ref": "MoveIdWildcard"
 							}
-						},
+						}
+					},
+					"optionalProperties": {
 						"trigger": {
 							"ref": "TriggerProgressRollEnhancement"
 						}
+					},
+					"metadata": {
+						"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value."
 					}
 				},
 				"special_track": {
-					"properties": {},
-					"optionalProperties": {
+					"properties": {
 						"enhances": {
 							"elements": {
 								"ref": "MoveIdWildcard"
 							}
-						},
+						}
+					},
+					"optionalProperties": {
 						"trigger": {
 							"ref": "TriggerSpecialTrackEnhancement"
 						}
+					},
+					"metadata": {
+						"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value."
 					}
 				}
 			}
@@ -2575,8 +2672,14 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerActionRollConditionEnhancement"
+					},
+					"metadata": {
+						"description": "Trigger conditions added to the enhanced move."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes changes/additions made to the enhanced move's trigger conditions."
 			}
 		},
 		"TriggerBy": {
@@ -2635,8 +2738,14 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerNoRollCondition"
+					},
+					"metadata": {
+						"description": "Trigger conditions added to the enhanced move."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes changes/additions made to the enhanced move's trigger conditions."
 			}
 		},
 		"TriggerProgressRoll": {
@@ -2715,8 +2824,14 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerProgressRollConditionEnhancement"
+					},
+					"metadata": {
+						"description": "Trigger conditions added to the enhanced move."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes changes/additions made to the enhanced move's trigger conditions."
 			}
 		},
 		"TriggerSpecialTrack": {
@@ -2805,8 +2920,14 @@
 				"conditions": {
 					"elements": {
 						"ref": "TriggerSpecialTrackConditionEnhancement"
+					},
+					"metadata": {
+						"description": "Trigger conditions added to the enhanced move."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Describes changes/additions made to the enhanced move's trigger conditions."
 			}
 		},
 		"Asset": {
@@ -2927,7 +3048,10 @@
 					}
 				},
 				"text": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "The complete rules text of this asset ability."
+					}
 				},
 				"enabled": {
 					"type": "boolean",
@@ -2938,7 +3062,10 @@
 			},
 			"optionalProperties": {
 				"name": {
-					"ref": "Label"
+					"ref": "Label",
+					"metadata": {
+						"description": "A handful of asset abilities have a label/name, for instance classic Ironsworn companion assets. Most canonical assets omit this property."
+					}
 				},
 				"moves": {
 					"values": {
@@ -2982,7 +3109,9 @@
 					}
 				}
 			},
-			"metadata": {}
+			"metadata": {
+				"description": "An asset ability: one of the purchasable features of an asset. Most assets have three."
+			}
 		},
 		"AssetAbilityControlField": {
 			"discriminator": "field_type",

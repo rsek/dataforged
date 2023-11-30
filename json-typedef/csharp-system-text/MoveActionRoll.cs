@@ -41,6 +41,9 @@ namespace Datasworn
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
 
+        /// <summary>
+        /// Trigger conditions for this move.
+        /// </summary>
         [JsonPropertyName("trigger")]
         public TriggerActionRoll Trigger { get; set; }
 

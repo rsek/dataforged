@@ -7,9 +7,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * An object that describes changes to a move. These changes should be applied
+ * recursively, altering only the specified properties; enhanced arrays should
+ * be concatencated with the original array value.
+ */
 @JsonSerialize
 public class MoveEnhancementActionRoll extends MoveEnhancement {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("enhances")
     private List<MoveIdWildcard> enhances;
 

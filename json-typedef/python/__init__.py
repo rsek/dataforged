@@ -36,6 +36,10 @@ class RulesPackageExpansion(RulesPackage):
     """
 
     datasworn_version: 'SemanticVersion'
+    """
+    The version of the Datasworn format used by this data.
+    """
+
     id: 'ExpansionID'
     ruleset: 'RulesetID'
     assets: 'Optional[Dict[str, AssetType]]'
@@ -155,6 +159,10 @@ class RulesPackageRuleset(RulesPackage):
     """
 
     datasworn_version: 'SemanticVersion'
+    """
+    The version of the Datasworn format used by this data.
+    """
+
     id: 'RulesetID'
     moves: 'Dict[str, MoveCategory]'
     """
@@ -316,10 +324,14 @@ class ActionRollOption:
 
 @dataclass
 class ActionRollOptionAssetControl(ActionRollOption):
+    """
+    Roll using the value of an asset control.
+    """
+
     assets: 'List[AssetIDWildcard]'
     control: 'DictKey'
     """
-    The key of the asset control field.
+    The dictionary key of the asset control field.
     """
 
 
@@ -339,10 +351,14 @@ class ActionRollOptionAssetControl(ActionRollOption):
 
 @dataclass
 class ActionRollOptionAssetOption(ActionRollOption):
+    """
+    Roll using the value of an asset option.
+    """
+
     assets: 'List[AssetIDWildcard]'
     option: 'DictKey'
     """
-    The key of the asset option field.
+    The dictionary key of the asset option field.
     """
 
 
@@ -362,9 +378,15 @@ class ActionRollOptionAssetOption(ActionRollOption):
 
 @dataclass
 class ActionRollOptionAttachedAssetControl(ActionRollOption):
+    """
+    Roll using the value of an attached asset control. For example, a Module
+    asset could use this to roll using the `integrity` control of an attached
+    Vehicle.
+    """
+
     control: 'DictKey'
     """
-    The key of the asset control field.
+    The dictionary key of the asset control field.
     """
 
 
@@ -382,9 +404,13 @@ class ActionRollOptionAttachedAssetControl(ActionRollOption):
 
 @dataclass
 class ActionRollOptionAttachedAssetOption(ActionRollOption):
+    """
+    Roll using the value of an attached asset option.
+    """
+
     option: 'DictKey'
     """
-    The key of the asset option field.
+    The dictionary key of the asset option field.
     """
 
 
@@ -402,6 +428,10 @@ class ActionRollOptionAttachedAssetOption(ActionRollOption):
 
 @dataclass
 class ActionRollOptionConditionMeter(ActionRollOption):
+    """
+    Roll using the value of a standard player condition meter.
+    """
+
     condition_meter: 'ConditionMeterID'
 
     @classmethod
@@ -418,6 +448,10 @@ class ActionRollOptionConditionMeter(ActionRollOption):
 
 @dataclass
 class ActionRollOptionCustom(ActionRollOption):
+    """
+    Roll using an integer value with customizable labels.
+    """
+
     name: 'Label'
     value: 'int'
 
@@ -437,6 +471,10 @@ class ActionRollOptionCustom(ActionRollOption):
 
 @dataclass
 class ActionRollOptionStat(ActionRollOption):
+    """
+    Roll using a standard player character stat.
+    """
+
     stat: 'StatID'
 
     @classmethod
@@ -621,6 +659,11 @@ class Asset:
 
 @dataclass
 class AssetAbility:
+    """
+    An asset ability: one of the purchasable features of an asset. Most assets
+    have three.
+    """
+
     enabled: 'bool'
     """
     Is this asset ability enabled?
@@ -632,6 +675,10 @@ class AssetAbility:
     """
 
     text: 'MarkdownString'
+    """
+    The complete rules text of this asset ability.
+    """
+
     controls: 'Optional[Dict[str, AssetAbilityControlField]]'
     """
     Fields whose values are expected to change over the life of the asset.
@@ -654,6 +701,11 @@ class AssetAbility:
     """
 
     name: 'Optional[Label]'
+    """
+    A handful of asset abilities have a label/name, for instance classic
+    Ironsworn companion assets. Most canonical assets omit this property.
+    """
+
     options: 'Optional[Dict[str, AssetAbilityOptionField]]'
     """
     Fields that are expected to be set once and remain the same through the life
@@ -873,6 +925,10 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
 
 @dataclass
 class AssetAbilityControlFieldID:
+    """
+    A unique ID for an AssetAbilityControlField.
+    """
+
     value: 'str'
 
     @classmethod
@@ -884,6 +940,10 @@ class AssetAbilityControlFieldID:
 
 @dataclass
 class AssetAbilityID:
+    """
+    A unique ID for an AssetAbility.
+    """
+
     value: 'str'
 
     @classmethod
@@ -946,6 +1006,10 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
 
 @dataclass
 class AssetAbilityOptionFieldID:
+    """
+    A unique ID for an AssetAbilityOptionField.
+    """
+
     value: 'str'
 
     @classmethod
@@ -1117,6 +1181,10 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
 
 @dataclass
 class AssetConditionMeterControlFieldID:
+    """
+    A unique ID for an AssetConditionMeterControlField.
+    """
+
     value: 'str'
 
     @classmethod
@@ -1639,6 +1707,10 @@ class AssetControlFieldEnhancementConditionMeter(AssetControlFieldEnhancement):
 
 @dataclass
 class AssetControlFieldID:
+    """
+    A unique ID for an AssetControlField.
+    """
+
     value: 'str'
 
     @classmethod
@@ -1650,6 +1722,10 @@ class AssetControlFieldID:
 
 @dataclass
 class AssetControlFieldIDWildcard:
+    """
+    A wildcarded ID that can be used to match multiple AssetControlFields.
+    """
+
     value: 'str'
 
     @classmethod
@@ -1715,6 +1791,10 @@ class AssetEnhancement:
 
 @dataclass
 class AssetID:
+    """
+    A unique ID for an Asset.
+    """
+
     value: 'str'
 
     @classmethod
@@ -1726,6 +1806,10 @@ class AssetID:
 
 @dataclass
 class AssetIDWildcard:
+    """
+    A wildcarded ID that can be used to match multiple Assets.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2200,6 +2284,10 @@ class AssetOptionFieldText(AssetOptionField):
 
 @dataclass
 class AssetOptionFieldID:
+    """
+    A unique ID for an AssetOptionField.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2211,6 +2299,10 @@ class AssetOptionFieldID:
 
 @dataclass
 class AssetOptionFieldIDWildcard:
+    """
+    A wildcarded ID that can be used to match multiple AssetOptionFields.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2330,6 +2422,10 @@ class AssetType:
 
 @dataclass
 class AssetTypeID:
+    """
+    A unique ID for an AssetType.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2522,6 +2618,10 @@ class AtlasEntry:
 
 @dataclass
 class AtlasEntryID:
+    """
+    A unique ID for an AtlasEntry.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2533,6 +2633,10 @@ class AtlasEntryID:
 
 @dataclass
 class AtlasEntryIDWildcard:
+    """
+    A wildcarded ID that can be used to match multiple AtlasEntrys.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2544,6 +2648,10 @@ class AtlasEntryIDWildcard:
 
 @dataclass
 class AtlasID:
+    """
+    A unique ID for an Atlas.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2555,6 +2663,10 @@ class AtlasID:
 
 @dataclass
 class AtlasIDWildcard:
+    """
+    A wildcarded ID that can be used to match multiple Atlass.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2656,6 +2768,10 @@ class ConditionMeterRule:
 
 @dataclass
 class ConditionMeterRuleID:
+    """
+    A unique ID for a ConditionMeterRule.
+    """
+
     value: 'str'
 
     @classmethod
@@ -2824,6 +2940,10 @@ class DelveSiteDenizenFrequency(Enum):
 
 @dataclass
 class DelveSiteDenizenID:
+    """
+    A unique ID for a DelveSiteDenizen.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3103,6 +3223,10 @@ class DelveSiteDomainFeatureRow:
 
 @dataclass
 class DelveSiteDomainID:
+    """
+    A unique ID for a DelveSiteDomain.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3114,6 +3238,10 @@ class DelveSiteDomainID:
 
 @dataclass
 class DelveSiteID:
+    """
+    A unique ID for a DelveSite.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3381,6 +3509,10 @@ class DelveSiteThemeFeatureRow:
 
 @dataclass
 class DelveSiteThemeID:
+    """
+    A unique ID for a DelveSiteTheme.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3418,6 +3550,10 @@ class DictKey:
 
 @dataclass
 class DomainDangerRowID:
+    """
+    A unique ID for a DomainDangerRow.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3429,6 +3565,10 @@ class DomainDangerRowID:
 
 @dataclass
 class DomainFeatureRowID:
+    """
+    A unique ID for a DomainFeatureRow.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3584,7 +3724,7 @@ class ImpactRule:
     Is this impact permanent?
     """
 
-    prevents_recovery: 'List[DictKey]'
+    prevents_recovery: 'List[ConditionMeterID]'
     """
     Keys of ruleset condition meters, to which this impact prevents recovery.
     """
@@ -3601,7 +3741,7 @@ class ImpactRule:
             _from_json_data(MarkdownString, data.get("description")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(bool, data.get("permanent")),
-            _from_json_data(List[DictKey], data.get("prevents_recovery")),
+            _from_json_data(List[ConditionMeterID], data.get("prevents_recovery")),
             _from_json_data(bool, data.get("shared")),
         )
 
@@ -3616,6 +3756,10 @@ class ImpactRule:
 
 @dataclass
 class ImpactRuleCollectionID:
+    """
+    A unique ID for an ImpactRuleCollection.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3627,6 +3771,10 @@ class ImpactRuleCollectionID:
 
 @dataclass
 class ImpactRuleID:
+    """
+    A unique ID for an ImpactRule.
+    """
+
     value: 'str'
 
     @classmethod
@@ -3717,6 +3865,10 @@ class MoveActionRoll(Move):
     """
 
     trigger: 'TriggerActionRoll'
+    """
+    Trigger conditions for this move.
+    """
+
     canonical_name: 'Optional[Label]'
     """
     The name of this item as it appears on the page in the book, if it's
@@ -3774,6 +3926,10 @@ class MoveActionRoll(Move):
 
 @dataclass
 class MoveNoRoll(Move):
+    """
+    A move that makes no progress rolls or action rolls.
+    """
+
     id: 'MoveID'
     """
     The unique Datasworn ID for this item.
@@ -3796,6 +3952,10 @@ class MoveNoRoll(Move):
     """
 
     trigger: 'TriggerNoRoll'
+    """
+    Trigger conditions for this move.
+    """
+
     canonical_name: 'Optional[Label]'
     """
     The name of this item as it appears on the page in the book, if it's
@@ -3852,8 +4012,9 @@ class MoveNoRoll(Move):
 @dataclass
 class MoveProgressRoll(Move):
     """
-    A progress move that rolls on a standard progress track type (defined by the
-    move object).
+    A progress move that rolls on a standard progress track type (whose features
+    are defined by this move object). For progress rolls that use special
+    tracks, see MoveSpecialTrack.
     """
 
     id: 'MoveID'
@@ -3884,6 +4045,10 @@ class MoveProgressRoll(Move):
     """
 
     trigger: 'TriggerProgressRoll'
+    """
+    Trigger conditions for this move.
+    """
+
     canonical_name: 'Optional[Label]'
     """
     The name of this item as it appears on the page in the book, if it's
@@ -3943,6 +4108,12 @@ class MoveProgressRoll(Move):
 
 @dataclass
 class MoveSpecialTrack(Move):
+    """
+    A progress move that rolls on a special track, such as Legacies (Starforged)
+    or Bonds (classic Ironsworn). For progress moves that use standard progress
+    tracks, see MoveProgressRoll instead.
+    """
+
     id: 'MoveID'
     """
     The unique Datasworn ID for this item.
@@ -3966,6 +4137,10 @@ class MoveSpecialTrack(Move):
     """
 
     trigger: 'TriggerSpecialTrack'
+    """
+    Trigger conditions for this move.
+    """
+
     canonical_name: 'Optional[Label]'
     """
     The name of this item as it appears on the page in the book, if it's
@@ -4131,6 +4306,10 @@ class MoveCategory:
 
 @dataclass
 class MoveCategoryID:
+    """
+    A unique ID for a MoveCategory.
+    """
+
     value: 'str'
 
     @classmethod
@@ -4160,84 +4339,104 @@ class MoveEnhancement:
 
 @dataclass
 class MoveEnhancementActionRoll(MoveEnhancement):
-    enhances: 'Optional[List[MoveIDWildcard]]'
+    """
+    An object that describes changes to a move. These changes should be applied
+    recursively, altering only the specified properties; enhanced arrays should
+    be concatencated with the original array value.
+    """
+
+    enhances: 'List[MoveIDWildcard]'
     trigger: 'Optional[TriggerActionRollEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementActionRoll':
         return cls(
             "action_roll",
-            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
+            _from_json_data(List[MoveIDWildcard], data.get("enhances")),
             _from_json_data(Optional[TriggerActionRollEnhancement], data.get("trigger")),
         )
 
     def to_json_data(self) -> Any:
         data = { "roll_type": "action_roll" }
-        if self.enhances is not None:
-             data["enhances"] = _to_json_data(self.enhances)
+        data["enhances"] = _to_json_data(self.enhances)
         if self.trigger is not None:
              data["trigger"] = _to_json_data(self.trigger)
         return data
 
 @dataclass
 class MoveEnhancementNoRoll(MoveEnhancement):
-    enhances: 'Optional[List[MoveIDWildcard]]'
+    """
+    An object that describes changes to a move. These changes should be applied
+    recursively, altering only the specified properties; enhanced arrays should
+    be concatencated with the original array value.
+    """
+
+    enhances: 'List[MoveIDWildcard]'
     trigger: 'Optional[TriggerNoRollEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementNoRoll':
         return cls(
             "no_roll",
-            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
+            _from_json_data(List[MoveIDWildcard], data.get("enhances")),
             _from_json_data(Optional[TriggerNoRollEnhancement], data.get("trigger")),
         )
 
     def to_json_data(self) -> Any:
         data = { "roll_type": "no_roll" }
-        if self.enhances is not None:
-             data["enhances"] = _to_json_data(self.enhances)
+        data["enhances"] = _to_json_data(self.enhances)
         if self.trigger is not None:
              data["trigger"] = _to_json_data(self.trigger)
         return data
 
 @dataclass
 class MoveEnhancementProgressRoll(MoveEnhancement):
-    enhances: 'Optional[List[MoveIDWildcard]]'
+    """
+    An object that describes changes to a move. These changes should be applied
+    recursively, altering only the specified properties; enhanced arrays should
+    be concatencated with the original array value.
+    """
+
+    enhances: 'List[MoveIDWildcard]'
     trigger: 'Optional[TriggerProgressRollEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementProgressRoll':
         return cls(
             "progress_roll",
-            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
+            _from_json_data(List[MoveIDWildcard], data.get("enhances")),
             _from_json_data(Optional[TriggerProgressRollEnhancement], data.get("trigger")),
         )
 
     def to_json_data(self) -> Any:
         data = { "roll_type": "progress_roll" }
-        if self.enhances is not None:
-             data["enhances"] = _to_json_data(self.enhances)
+        data["enhances"] = _to_json_data(self.enhances)
         if self.trigger is not None:
              data["trigger"] = _to_json_data(self.trigger)
         return data
 
 @dataclass
 class MoveEnhancementSpecialTrack(MoveEnhancement):
-    enhances: 'Optional[List[MoveIDWildcard]]'
+    """
+    An object that describes changes to a move. These changes should be applied
+    recursively, altering only the specified properties; enhanced arrays should
+    be concatencated with the original array value.
+    """
+
+    enhances: 'List[MoveIDWildcard]'
     trigger: 'Optional[TriggerSpecialTrackEnhancement]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveEnhancementSpecialTrack':
         return cls(
             "special_track",
-            _from_json_data(Optional[List[MoveIDWildcard]], data.get("enhances")),
+            _from_json_data(List[MoveIDWildcard], data.get("enhances")),
             _from_json_data(Optional[TriggerSpecialTrackEnhancement], data.get("trigger")),
         )
 
     def to_json_data(self) -> Any:
         data = { "roll_type": "special_track" }
-        if self.enhances is not None:
-             data["enhances"] = _to_json_data(self.enhances)
+        data["enhances"] = _to_json_data(self.enhances)
         if self.trigger is not None:
              data["trigger"] = _to_json_data(self.trigger)
         return data
@@ -4571,6 +4770,10 @@ class NpcCollection:
 
 @dataclass
 class NpcCollectionID:
+    """
+    A unique ID for a NpcCollection.
+    """
+
     value: 'str'
 
     @classmethod
@@ -4582,6 +4785,10 @@ class NpcCollectionID:
 
 @dataclass
 class NpcID:
+    """
+    A unique ID for a Npc.
+    """
+
     value: 'str'
 
     @classmethod
@@ -4593,6 +4800,10 @@ class NpcID:
 
 @dataclass
 class NpcIDWildcard:
+    """
+    A wildcarded ID that can be used to match multiple Npcs.
+    """
+
     value: 'str'
 
     @classmethod
@@ -4663,6 +4874,10 @@ class NpcVariant:
 
 @dataclass
 class NpcVariantID:
+    """
+    A unique ID for a NpcVariant.
+    """
+
     value: 'str'
 
     @classmethod
@@ -4790,6 +5005,10 @@ class OracleCollection:
 
 @dataclass
 class OracleCollectionID:
+    """
+    A unique ID for an OracleCollection.
+    """
+
     value: 'str'
 
     @classmethod
@@ -5143,6 +5362,10 @@ class OracleTableColumnContentKey(Enum):
 
 @dataclass
 class OracleTableID:
+    """
+    A unique ID for an OracleTable.
+    """
+
     value: 'str'
 
     @classmethod
@@ -5661,6 +5884,10 @@ class Rarity:
 
 @dataclass
 class RarityID:
+    """
+    A unique ID for a Rarity.
+    """
+
     value: 'str'
 
     @classmethod
@@ -5969,6 +6196,10 @@ class SpecialTrackRule:
 
 @dataclass
 class SpecialTrackRuleID:
+    """
+    A unique ID for a SpecialTrackRule.
+    """
+
     value: 'str'
 
     @classmethod
@@ -6048,6 +6279,10 @@ class StatRule:
 
 @dataclass
 class StatRuleID:
+    """
+    A unique ID for a StatRule.
+    """
+
     value: 'str'
 
     @classmethod
@@ -6138,6 +6373,10 @@ class TemplateString:
 
 @dataclass
 class ThemeDangerRowID:
+    """
+    A unique ID for a ThemeDangerRow.
+    """
+
     value: 'str'
 
     @classmethod
@@ -6149,6 +6388,10 @@ class ThemeDangerRowID:
 
 @dataclass
 class ThemeFeatureRowID:
+    """
+    A unique ID for a ThemeFeatureRow.
+    """
+
     value: 'str'
 
     @classmethod
@@ -6261,7 +6504,15 @@ class TriggerActionRollConditionEnhancement:
 
 @dataclass
 class TriggerActionRollEnhancement:
+    """
+    Describes changes/additions made to the enhanced move's trigger conditions.
+    """
+
     conditions: 'List[TriggerActionRollConditionEnhancement]'
+    """
+    Trigger conditions added to the enhanced move.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerActionRollEnhancement':
@@ -6360,7 +6611,15 @@ class TriggerNoRollCondition:
 
 @dataclass
 class TriggerNoRollEnhancement:
+    """
+    Describes changes/additions made to the enhanced move's trigger conditions.
+    """
+
     conditions: 'List[TriggerNoRollCondition]'
+    """
+    Trigger conditions added to the enhanced move.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerNoRollEnhancement':
@@ -6472,7 +6731,15 @@ class TriggerProgressRollConditionEnhancement:
 
 @dataclass
 class TriggerProgressRollEnhancement:
+    """
+    Describes changes/additions made to the enhanced move's trigger conditions.
+    """
+
     conditions: 'List[TriggerProgressRollConditionEnhancement]'
+    """
+    Trigger conditions added to the enhanced move.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerProgressRollEnhancement':
@@ -6604,7 +6871,15 @@ class TriggerSpecialTrackConditionOption:
 
 @dataclass
 class TriggerSpecialTrackEnhancement:
+    """
+    Describes changes/additions made to the enhanced move's trigger conditions.
+    """
+
     conditions: 'List[TriggerSpecialTrackConditionEnhancement]'
+    """
+    Trigger conditions added to the enhanced move.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerSpecialTrackEnhancement':
@@ -6681,6 +6956,10 @@ class Truth:
 
 @dataclass
 class TruthID:
+    """
+    A unique ID for a Truth.
+    """
+
     value: 'str'
 
     @classmethod
@@ -6733,6 +7012,10 @@ class TruthOption:
 
 @dataclass
 class TruthOptionID:
+    """
+    A unique ID for a TruthOption.
+    """
+
     value: 'str'
 
     @classmethod

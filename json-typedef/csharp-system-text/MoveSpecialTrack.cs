@@ -5,6 +5,11 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A progress move that rolls on a special track, such as Legacies
+    /// (Starforged) or Bonds (classic Ironsworn). For progress moves that use
+    /// standard progress tracks, see MoveProgressRoll instead.
+    /// </summary>
     public class MoveSpecialTrack : Move
     {
         [JsonPropertyName("roll_type")]
@@ -38,6 +43,9 @@ namespace Datasworn
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
 
+        /// <summary>
+        /// Trigger conditions for this move.
+        /// </summary>
         [JsonPropertyName("trigger")]
         public TriggerSpecialTrack Trigger { get; set; }
 

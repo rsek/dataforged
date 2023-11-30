@@ -14,6 +14,9 @@ namespace Datasworn
         [JsonPropertyName("package_type")]
         public string PackageType { get => "expansion"; }
 
+        /// <summary>
+        /// The version of the Datasworn format used by this data.
+        /// </summary>
         [JsonPropertyName("datasworn_version")]
         public SemanticVersion DataswornVersion { get; set; }
 

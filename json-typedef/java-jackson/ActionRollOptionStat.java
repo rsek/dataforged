@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Roll using a standard player character stat.
+ */
 @JsonSerialize
 public class ActionRollOptionStat extends ActionRollOption {
     @JsonProperty("stat")

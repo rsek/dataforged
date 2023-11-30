@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for an ImpactRuleCollection.
+    /// </summary>
     [JsonConverter(typeof(ImpactRuleCollectionIdJsonConverter))]
     public class ImpactRuleCollectionId
     {

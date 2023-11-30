@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for a ConditionMeterRule.
+    /// </summary>
     [JsonConverter(typeof(ConditionMeterRuleIdJsonConverter))]
     public class ConditionMeterRuleId
     {

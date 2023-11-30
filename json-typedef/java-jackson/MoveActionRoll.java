@@ -131,6 +131,7 @@ public class MoveActionRoll extends Move {
 
     /**
      * Getter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public TriggerActionRoll getTrigger() {
         return trigger;
@@ -138,6 +139,7 @@ public class MoveActionRoll extends Move {
 
     /**
      * Setter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public void setTrigger(TriggerActionRoll trigger) {
         this.trigger = trigger;

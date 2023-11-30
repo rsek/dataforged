@@ -293,17 +293,21 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 export function toJtdRoot<T extends TRoot>(schemaRoot: T) {
 	const definitions = {} as { [K in keyof T['$defs']]: JTD.Schema }
 
-	const base = toJtdForm(schemaRoot as any)
+  const rootType = 'RulesPackage'
 
-	if (isUndefined(base))
-		throw new Error('Unable to infer JSON Typedef form of root schema.')
-
-	for (const k in schemaRoot.$defs)
+	for (const k in schemaRoot.$defs) {
+		if (k === rootType) continue
 		try {
 			definitions[k] = toJtdForm(schemaRoot.$defs[k])
 		} catch (err) {
 			Log.error(`Couldn't convert ${schemaRoot.$defs[k].$id}`, err)
 		}
+	}
+
+	const base = toJtdForm(schemaRoot.$defs[rootType] as any)
+
+	if (isUndefined(base))
+		throw new Error('Unable to infer JSON Typedef form of root schema.')
 
 	return {
 		...base,

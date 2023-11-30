@@ -1,14 +1,14 @@
 import Codegen from '@sinclair/typebox-codegen'
 import Defs from '../schema/datasworn/Defs.js'
 import fs from 'fs-extra'
-import { mapValues } from 'lodash-es'
+import { isInteger, mapValues, omit, pick } from 'lodash-es'
 import {
 	TDiscriminatedUnion,
 	TUnionEnum,
 	ToEnum,
 	ToUnion
 } from '../schema/datasworn/Utils.js'
-import { TSchema, TypeClone, TypeGuard } from '@sinclair/typebox'
+import { TSchema, Type, TypeClone, TypeGuard } from '@sinclair/typebox'
 // import { CompilerOptions, ScriptTarget } from 'typescript'
 // import { shellify } from '../shellify.js'
 
@@ -24,37 +24,54 @@ import { TSchema, TypeClone, TypeGuard } from '@sinclair/typebox'
 // 	args: ['json-typedef/typescript/index.ts']
 // })
 
+// current status: this generates quicktype-friendly types... but quicktype mangles TS unions pretty badly :|
+// all this config/troubleshooting (which isn't complete yet!) makes
+/** Simplifies JSON schema types into types that are less precise, but friendlier to code generation tools like QuickType. */
 function simplifyRecursive(schema: TSchema) {
-	const base = TypeClone.Type(schema)
+	let base = TypeClone.Type(schema)
+	if (!base?.title && base?.$id) base.title = base.$id
 	switch (true) {
-		case TypeGuard.TUnion(schema): {
+		case TypeGuard.TLiteralNumber(base): {
+			return Type.Integer(pick(base, 'description', 'title'))
+		}
+		case TypeGuard.TIntersect(base): {
+			// this is used on DelveSite, DelveSiteDomain, and DelveSiteTheme to describe table rows with static numbers. allOf[0] is an unbounded array, while allOf[1] is a tuple.
+			return simplifyRecursive({
+				...pick(base, 'description', 'title'),
+				...base.allOf[0]
+			})
+		}
+		case TypeGuard.TRecord(base): {
+			base.additionalProperties = Object.values(base.patternProperties)[0]
+			return {
+				...pick(base, 'description', 'title'),
+				type: 'object',
+
+				patternProperties: {
+					'.*': Object.values(base.patternProperties)[0]
+				}
+			}
+		}
+		case TypeGuard.TUnion(base): {
 			base.anyOf = base.anyOf.map(simplifyRecursive)
-			break
+			return omit(base, 'required')
 		}
-		case TypeGuard.TIntersect(schema): {
-			base.allOf = base.allOf.map(simplifyRecursive)
-			break
-		}
-		case TDiscriminatedUnion(schema): {
-			const base = ToUnion(schema as any)
+		case TDiscriminatedUnion(base): {
+			base = ToUnion(base as any)
 			base.anyOf = base.anyOf?.map(simplifyRecursive)
-			return base
+			break
 		}
-		case TUnionEnum(schema):
-			return ToEnum(schema as any)
-		case TypeGuard.TObject(schema): {
+		case TUnionEnum(base):
+			if (base.enum.every(isInteger))
+				return Type.Integer(pick(base, 'description', 'title'))
+			return ToEnum(base as any)
+		case TypeGuard.TObject(base): {
 			base.properties = mapValues(base.properties, simplifyRecursive)
+			base.additionalProperties ||= false
 			break
 		}
-		case TypeGuard.TArray(schema): {
+		case TypeGuard.TArray(base): {
 			base.items = simplifyRecursive(base.items)
-			break
-		}
-		case TypeGuard.TRecord(schema): {
-			base.patternProperties = mapValues(
-				base.patternProperties,
-				simplifyRecursive
-			)
 			break
 		}
 	}
@@ -62,28 +79,45 @@ function simplifyRecursive(schema: TSchema) {
 	return base
 }
 
-const adjustedDefs = mapValues(Defs, simplifyRecursive)
+const definitions = mapValues(Defs, simplifyRecursive)
 
-const exports: Codegen.TypeBoxModel['exports'] = new Map(
-	Object.entries(adjustedDefs)
+const result = {
+	title: 'RulesPackage',
+
+	anyOf: [{ $ref: 'Ruleset' }, { $ref: 'Expansion' }],
+	definitions
+}
+
+const replacer = (k, v) => {
+	if (k === '$id') return undefined
+	if (k === '$ref' && typeof v === 'string') return '#/definitions/' + v
+
+	return v
+}
+
+const data = JSON.stringify( result, replacer, '\t'
 )
-exports.set('uri')
 
-const model: Codegen.TypeBoxModel = {
-	exports,
-	types: Object.values(adjustedDefs)
-}
 
-const result = Codegen.ModelToTypeScript.Generate(model)
+await fs.writeFile('simpleschema.json',data)
+// const exports: Codegen.TypeBoxModel['exports'] = new Map(
+// 	Object.entries(adjustedDefs)
+// )
 
-const prepend = `
-function format(type: string,value: string) {
-  switch (type) {
-    default:
-	    return true
-  }
-}
+// const model: Codegen.TypeBoxModel = {
+// 	exports,
+// 	types: Object.values(adjustedDefs)
+// }
 
-`
+// const result = Codegen.ModelToTypeScript.Generate(model)
 
-await fs.writeFile('tb-test.ts', prepend + result)
+// const prepend = `
+// function format(type: string,value: string) {
+//   switch (type) {
+//     default:
+// 	    return true
+//   }
+// }
+
+// `
+

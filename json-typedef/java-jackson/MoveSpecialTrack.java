@@ -7,6 +7,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * A progress move that rolls on a special track, such as Legacies (Starforged)
+ * or Bonds (classic Ironsworn). For progress moves that use standard progress
+ * tracks, see MoveProgressRoll instead.
+ */
 @JsonSerialize
 public class MoveSpecialTrack extends Move {
     @JsonProperty("id")
@@ -128,6 +133,7 @@ public class MoveSpecialTrack extends Move {
 
     /**
      * Getter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public TriggerSpecialTrack getTrigger() {
         return trigger;
@@ -135,6 +141,7 @@ public class MoveSpecialTrack extends Move {
 
     /**
      * Setter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public void setTrigger(TriggerSpecialTrack trigger) {
         this.trigger = trigger;

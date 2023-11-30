@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Roll using an integer value with customizable labels.
+    /// </summary>
     public class ActionRollOptionCustom : ActionRollOption
     {
         [JsonPropertyName("using")]

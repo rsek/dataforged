@@ -33,7 +33,7 @@ namespace Datasworn
         /// recovery.
         /// </summary>
         [JsonPropertyName("prevents_recovery")]
-        public IList<DictKey> PreventsRecovery { get; set; }
+        public IList<ConditionMeterId> PreventsRecovery { get; set; }
 
         /// <summary>
         /// Is this impact applied to all players at once?

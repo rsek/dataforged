@@ -8,7 +8,7 @@ import * as Oracles from './Oracles.js'
 import * as Rarities from './Rarities.js'
 import * as Rules from './Rules.js'
 import * as Truths from './Truths.js'
-import { Ruleset, Expansion } from './RulesPackages.js'
+import { RulesPackage, Ruleset, Expansion } from './RulesPackages.js'
 import {
 	Id,
 	Localize,
@@ -20,6 +20,9 @@ import {
 
 export type Defs = Record<string, TSchema>
 const Defs: Defs = {
+	RulesPackage,
+	Ruleset,
+	Expansion,
 	...Id,
 	...Metadata,
 	...Localize,
@@ -34,9 +37,6 @@ const Defs: Defs = {
 	...Atlas,
 	...Player,
 	...Rarities,
-	...DelveSites,
-	...Rules,
-	Ruleset,
-	Expansion
+	...DelveSites
 }
 export default Defs

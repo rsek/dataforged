@@ -55,6 +55,7 @@ func (v *RulesPackage) UnmarshalJSON(b []byte) error {
 // A Datasworn package that relies on an external package to provide its
 // ruleset.
 type RulesPackageExpansion struct {
+	// The version of the Datasworn format used by this data.
 	DataswornVersion SemanticVersion `json:"datasworn_version"`
 
 	ID ExpansionID `json:"id"`
@@ -103,6 +104,7 @@ type RulesPackageRuleset struct {
 	// A dictionary object containing asset types, which contain assets.
 	Assets map[string]AssetType `json:"assets"`
 
+	// The version of the Datasworn format used by this data.
 	DataswornVersion SemanticVersion `json:"datasworn_version"`
 
 	ID RulesetID `json:"id"`
@@ -239,40 +241,49 @@ func (v *ActionRollOption) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// Roll using the value of an asset control.
 type ActionRollOptionAssetControl struct {
 	Assets []AssetIDWildcard `json:"assets"`
 
-	// The key of the asset control field.
+	// The dictionary key of the asset control field.
 	Control DictKey `json:"control"`
 }
 
+// Roll using the value of an asset option.
 type ActionRollOptionAssetOption struct {
 	Assets []AssetIDWildcard `json:"assets"`
 
-	// The key of the asset option field.
+	// The dictionary key of the asset option field.
 	Option DictKey `json:"option"`
 }
 
+// Roll using the value of an attached asset control. For example, a Module
+// asset could use this to roll using the `integrity` control of an attached
+// Vehicle.
 type ActionRollOptionAttachedAssetControl struct {
-	// The key of the asset control field.
+	// The dictionary key of the asset control field.
 	Control DictKey `json:"control"`
 }
 
+// Roll using the value of an attached asset option.
 type ActionRollOptionAttachedAssetOption struct {
-	// The key of the asset option field.
+	// The dictionary key of the asset option field.
 	Option DictKey `json:"option"`
 }
 
+// Roll using the value of a standard player condition meter.
 type ActionRollOptionConditionMeter struct {
 	ConditionMeter ConditionMeterID `json:"condition_meter"`
 }
 
+// Roll using an integer value with customizable labels.
 type ActionRollOptionCustom struct {
 	Name Label `json:"name"`
 
 	Value int16 `json:"value"`
 }
 
+// Roll using a standard player character stat.
 type ActionRollOptionStat struct {
 	Stat StatID `json:"stat"`
 }
@@ -358,6 +369,8 @@ type Asset struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// An asset ability: one of the purchasable features of an asset. Most assets
+// have three.
 type AssetAbility struct {
 	// Is this asset ability enabled?
 	Enabled bool `json:"enabled"`
@@ -365,6 +378,7 @@ type AssetAbility struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityID `json:"id"`
 
+	// The complete rules text of this asset ability.
 	Text MarkdownString `json:"text"`
 
 	// Fields whose values are expected to change over the life of the asset.
@@ -380,6 +394,8 @@ type AssetAbility struct {
 	// Unique moves added by this asset ability.
 	Moves map[string]Move `json:"moves,omitempty"`
 
+	// A handful of asset abilities have a label/name, for instance classic
+	// Ironsworn companion assets. Most canonical assets omit this property.
 	Name *Label `json:"name,omitempty"`
 
 	// Fields that are expected to be set once and remain the same through the life
@@ -497,8 +513,10 @@ type AssetAbilityControlFieldCounter struct {
 	Value int16 `json:"value"`
 }
 
+// A unique ID for an AssetAbilityControlField.
 type AssetAbilityControlFieldID = string
 
+// A unique ID for an AssetAbility.
 type AssetAbilityID = string
 
 type AssetAbilityOptionField struct {
@@ -551,6 +569,7 @@ type AssetAbilityOptionFieldText struct {
 	Value string `json:"value"`
 }
 
+// A unique ID for an AssetAbilityOptionField.
 type AssetAbilityOptionFieldID = string
 
 // Describes which assets can be attached to this asset. Example: Starforged's
@@ -651,6 +670,7 @@ type AssetConditionMeterControlFieldCheckbox struct {
 	Value bool `json:"value"`
 }
 
+// A unique ID for an AssetConditionMeterControlField.
 type AssetConditionMeterControlFieldID = string
 
 type AssetControlField struct {
@@ -960,8 +980,10 @@ type AssetControlFieldEnhancementConditionMeter struct {
 	Max int8 `json:"max"`
 }
 
+// A unique ID for an AssetControlField.
 type AssetControlFieldID = string
 
+// A wildcarded ID that can be used to match multiple AssetControlFields.
 type AssetControlFieldIDWildcard = string
 
 // Describes enhancements made to this asset in a partial asset object. The
@@ -986,8 +1008,10 @@ type AssetEnhancement struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// A unique ID for an Asset.
 type AssetID = string
 
+// A wildcarded ID that can be used to match multiple Assets.
 type AssetIDWildcard = string
 
 type AssetOptionField struct {
@@ -1276,8 +1300,10 @@ type AssetOptionFieldText struct {
 	Value string `json:"value"`
 }
 
+// A unique ID for an AssetOptionField.
 type AssetOptionFieldID = string
 
+// A wildcarded ID that can be used to match multiple AssetOptionFields.
 type AssetOptionFieldIDWildcard = string
 
 type AssetType struct {
@@ -1325,6 +1351,7 @@ type AssetType struct {
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
+// A unique ID for an AssetType.
 type AssetTypeID = string
 
 type Atlas struct {
@@ -1403,12 +1430,16 @@ type AtlasEntry struct {
 	YourTruth *MarkdownString `json:"your_truth,omitempty"`
 }
 
+// A unique ID for an AtlasEntry.
 type AtlasEntryID = string
 
+// A wildcarded ID that can be used to match multiple AtlasEntrys.
 type AtlasEntryIDWildcard = string
 
+// A unique ID for an Atlas.
 type AtlasID = string
 
+// A wildcarded ID that can be used to match multiple Atlass.
 type AtlasIDWildcard = string
 
 // Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
@@ -1440,6 +1471,7 @@ type ConditionMeterRule struct {
 	Value int8 `json:"value"`
 }
 
+// A unique ID for a ConditionMeterRule.
 type ConditionMeterRuleID = string
 
 // A CSS color value. See: https://developer.mozilla.org/en-
@@ -1515,6 +1547,7 @@ const (
 	DelveSiteDenizenFrequencyVeryCommon DelveSiteDenizenFrequency = "very_common"
 )
 
+// A unique ID for a DelveSiteDenizen.
 type DelveSiteDenizenID = string
 
 // A delve site Domain card.
@@ -1627,8 +1660,10 @@ type DelveSiteDomainFeatureRow struct {
 	Template *OracleRollTemplate `json:"template,omitempty"`
 }
 
+// A unique ID for a DelveSiteDomain.
 type DelveSiteDomainID = string
 
+// A unique ID for a DelveSite.
 type DelveSiteID = string
 
 // A delve site theme card.
@@ -1734,6 +1769,7 @@ type DelveSiteThemeFeatureRow struct {
 	Template *OracleRollTemplate `json:"template,omitempty"`
 }
 
+// A unique ID for a DelveSiteTheme.
 type DelveSiteThemeID = string
 
 type DiceNotation = string
@@ -1741,8 +1777,10 @@ type DiceNotation = string
 // A key used in a Datasworn dictionary object.
 type DictKey = string
 
+// A unique ID for a DomainDangerRow.
 type DomainDangerRowID = string
 
+// A unique ID for a DomainFeatureRow.
 type DomainFeatureRowID = string
 
 // The ID of a Datasworn package that relies on an external package to provide
@@ -1796,14 +1834,16 @@ type ImpactRule struct {
 	Permanent bool `json:"permanent"`
 
 	// Keys of ruleset condition meters, to which this impact prevents recovery.
-	PreventsRecovery []DictKey `json:"prevents_recovery"`
+	PreventsRecovery []ConditionMeterID `json:"prevents_recovery"`
 
 	// Is this impact applied to all players at once?
 	Shared bool `json:"shared"`
 }
 
+// A unique ID for an ImpactRuleCollection.
 type ImpactRuleCollectionID = string
 
+// A unique ID for an ImpactRule.
 type ImpactRuleID = string
 
 // A localized plain text name or label.
@@ -1888,6 +1928,7 @@ type MoveActionRoll struct {
 	// The complete rules text of the move.
 	Text MarkdownString `json:"text"`
 
+	// Trigger conditions for this move.
 	Trigger TriggerActionRoll `json:"trigger"`
 
 	// The name of this item as it appears on the page in the book, if it's
@@ -1906,6 +1947,7 @@ type MoveActionRoll struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// A move that makes no progress rolls or action rolls.
 type MoveNoRoll struct {
 	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
@@ -1920,6 +1962,7 @@ type MoveNoRoll struct {
 	// The complete rules text of the move.
 	Text MarkdownString `json:"text"`
 
+	// Trigger conditions for this move.
 	Trigger TriggerNoRoll `json:"trigger"`
 
 	// The name of this item as it appears on the page in the book, if it's
@@ -1938,8 +1981,9 @@ type MoveNoRoll struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
-// A progress move that rolls on a standard progress track type (defined by the
-// move object).
+// A progress move that rolls on a standard progress track type (whose features
+// are defined by this move object). For progress rolls that use special tracks,
+// see MoveSpecialTrack.
 type MoveProgressRoll struct {
 	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
@@ -1959,6 +2003,7 @@ type MoveProgressRoll struct {
 	// Describes the common features of progress tracks associated with this move.
 	Tracks ProgressTrackTypeInfo `json:"tracks"`
 
+	// Trigger conditions for this move.
 	Trigger TriggerProgressRoll `json:"trigger"`
 
 	// The name of this item as it appears on the page in the book, if it's
@@ -1977,6 +2022,9 @@ type MoveProgressRoll struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// A progress move that rolls on a special track, such as Legacies (Starforged)
+// or Bonds (classic Ironsworn). For progress moves that use standard progress
+// tracks, see MoveProgressRoll instead.
 type MoveSpecialTrack struct {
 	// The unique Datasworn ID for this item.
 	ID MoveID `json:"id"`
@@ -1993,6 +2041,7 @@ type MoveSpecialTrack struct {
 	// The complete rules text of the move.
 	Text MarkdownString `json:"text"`
 
+	// Trigger conditions for this move.
 	Trigger TriggerSpecialTrack `json:"trigger"`
 
 	// The name of this item as it appears on the page in the book, if it's
@@ -2056,6 +2105,7 @@ type MoveCategory struct {
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
+// A unique ID for a MoveCategory.
 type MoveCategoryID = string
 
 type MoveEnhancement struct {
@@ -2113,26 +2163,38 @@ func (v *MoveEnhancement) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// An object that describes changes to a move. These changes should be applied
+// recursively, altering only the specified properties; enhanced arrays should
+// be concatencated with the original array value.
 type MoveEnhancementActionRoll struct {
-	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances"`
 
 	Trigger *TriggerActionRollEnhancement `json:"trigger,omitempty"`
 }
 
+// An object that describes changes to a move. These changes should be applied
+// recursively, altering only the specified properties; enhanced arrays should
+// be concatencated with the original array value.
 type MoveEnhancementNoRoll struct {
-	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances"`
 
 	Trigger *TriggerNoRollEnhancement `json:"trigger,omitempty"`
 }
 
+// An object that describes changes to a move. These changes should be applied
+// recursively, altering only the specified properties; enhanced arrays should
+// be concatencated with the original array value.
 type MoveEnhancementProgressRoll struct {
-	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances"`
 
 	Trigger *TriggerProgressRollEnhancement `json:"trigger,omitempty"`
 }
 
+// An object that describes changes to a move. These changes should be applied
+// recursively, altering only the specified properties; enhanced arrays should
+// be concatencated with the original array value.
 type MoveEnhancementSpecialTrack struct {
-	Enhances []MoveIDWildcard `json:"enhances,omitempty"`
+	Enhances []MoveIDWildcard `json:"enhances"`
 
 	Trigger *TriggerSpecialTrackEnhancement `json:"trigger,omitempty"`
 }
@@ -2280,10 +2342,13 @@ type NpcCollection struct {
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
+// A unique ID for a NpcCollection.
 type NpcCollectionID = string
 
+// A unique ID for a Npc.
 type NpcID = string
 
+// A wildcarded ID that can be used to match multiple Npcs.
 type NpcIDWildcard = string
 
 // A localized category label describing the nature of this NPC.
@@ -2310,6 +2375,7 @@ type NpcVariant struct {
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
+// A unique ID for a NpcVariant.
 type NpcVariantID = string
 
 type OracleCollection struct {
@@ -2361,6 +2427,7 @@ type OracleCollection struct {
 	Summary *MarkdownString `json:"summary,omitempty"`
 }
 
+// A unique ID for an OracleCollection.
 type OracleCollectionID = string
 
 // Describes the presentation of this oracle collection, which might represent a
@@ -2541,6 +2608,7 @@ const (
 	OracleTableColumnContentKeySummary OracleTableColumnContentKey = "summary"
 )
 
+// A unique ID for an OracleTable.
 type OracleTableID = string
 
 // Oracle table wildcards can also use '**' to represent any number of
@@ -2800,6 +2868,7 @@ type Rarity struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+// A unique ID for a Rarity.
 type RarityID = string
 
 // Describes rules for player characters in this ruleset, such as stats and
@@ -2916,6 +2985,7 @@ type SpecialTrackRule struct {
 	Shared bool `json:"shared"`
 }
 
+// A unique ID for a SpecialTrackRule.
 type SpecialTrackRuleID = string
 
 // Special, ruleset-specific progress tracks. Usually, one exists per player
@@ -2941,6 +3011,7 @@ type StatRule struct {
 	Label Label `json:"label"`
 }
 
+// A unique ID for a StatRule.
 type StatRuleID = string
 
 type Suggestions struct {
@@ -2971,8 +3042,10 @@ type SvgImageURL = string
 // `result` key, for example `{{result:starforged/oracles/core/action}}`
 type TemplateString = string
 
+// A unique ID for a ThemeDangerRow.
 type ThemeDangerRowID = string
 
+// A unique ID for a ThemeFeatureRow.
 type ThemeFeatureRowID = string
 
 // Describes trigger conditions for a move that makes an action roll.
@@ -3011,7 +3084,9 @@ type TriggerActionRollConditionEnhancement struct {
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
+// Describes changes/additions made to the enhanced move's trigger conditions.
 type TriggerActionRollEnhancement struct {
+	// Trigger conditions added to the enhanced move.
 	Conditions []TriggerActionRollConditionEnhancement `json:"conditions"`
 }
 
@@ -3043,7 +3118,9 @@ type TriggerNoRollCondition struct {
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
+// Describes changes/additions made to the enhanced move's trigger conditions.
 type TriggerNoRollEnhancement struct {
+	// Trigger conditions added to the enhanced move.
 	Conditions []TriggerNoRollCondition `json:"conditions"`
 }
 
@@ -3082,7 +3159,9 @@ type TriggerProgressRollConditionEnhancement struct {
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
+// Describes changes/additions made to the enhanced move's trigger conditions.
 type TriggerProgressRollEnhancement struct {
+	// Trigger conditions added to the enhanced move.
 	Conditions []TriggerProgressRollConditionEnhancement `json:"conditions"`
 }
 
@@ -3127,7 +3206,9 @@ type TriggerSpecialTrackConditionOption struct {
 	Using SpecialTrackType `json:"using"`
 }
 
+// Describes changes/additions made to the enhanced move's trigger conditions.
 type TriggerSpecialTrackEnhancement struct {
+	// Trigger conditions added to the enhanced move.
 	Conditions []TriggerSpecialTrackConditionEnhancement `json:"conditions"`
 }
 
@@ -3156,6 +3237,7 @@ type Truth struct {
 	YourCharacter *MarkdownString `json:"your_character,omitempty"`
 }
 
+// A unique ID for a Truth.
 type TruthID = string
 
 type TruthOption struct {
@@ -3175,6 +3257,7 @@ type TruthOption struct {
 	Table []TruthOptionTableRow `json:"table,omitempty"`
 }
 
+// A unique ID for a TruthOption.
 type TruthOptionID = string
 
 // Represents a row in an oracle table.

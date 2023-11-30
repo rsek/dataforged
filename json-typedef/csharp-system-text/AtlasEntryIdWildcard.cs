@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A wildcarded ID that can be used to match multiple AtlasEntrys.
+    /// </summary>
     [JsonConverter(typeof(AtlasEntryIdWildcardJsonConverter))]
     public class AtlasEntryIdWildcard
     {

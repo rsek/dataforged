@@ -5,13 +5,17 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// An object that describes changes to a move. These changes should be
+    /// applied recursively, altering only the specified properties; enhanced
+    /// arrays should be concatencated with the original array value.
+    /// </summary>
     public class MoveEnhancementSpecialTrack : MoveEnhancement
     {
         [JsonPropertyName("roll_type")]
         public string RollType { get => "special_track"; }
 
         [JsonPropertyName("enhances")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<MoveIdWildcard> Enhances { get; set; }
 
         [JsonPropertyName("trigger")]

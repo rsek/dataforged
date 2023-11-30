@@ -5,6 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// An asset ability: one of the purchasable features of an asset. Most
+    /// assets have three.
+    /// </summary>
     public class AssetAbility
     {
         /// <summary>
@@ -19,6 +23,9 @@ namespace Datasworn
         [JsonPropertyName("id")]
         public AssetAbilityId Id { get; set; }
 
+        /// <summary>
+        /// The complete rules text of this asset ability.
+        /// </summary>
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
 
@@ -52,6 +59,11 @@ namespace Datasworn
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, Move> Moves { get; set; }
 
+        /// <summary>
+        /// A handful of asset abilities have a label/name, for instance
+        /// classic Ironsworn companion assets. Most canonical assets omit this
+        /// property.
+        /// </summary>
         [JsonPropertyName("name")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Label? Name { get; set; }

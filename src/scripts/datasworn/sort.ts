@@ -136,12 +136,13 @@ export function sortDataswornKeys<T extends Record<string, unknown>>(
 }
 
 const schemaKeyOrder = [
+	'$schema',
 	'$id',
 	'$ref',
 	'title',
 	'type',
-	'$comment',
 	'description',
+	'$comment',
 	'const',
 	'default',
 	'minimum',

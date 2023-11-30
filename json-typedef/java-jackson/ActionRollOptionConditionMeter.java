@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Roll using the value of a standard player condition meter.
+ */
 @JsonSerialize
 public class ActionRollOptionConditionMeter extends ActionRollOption {
     @JsonProperty("condition_meter")

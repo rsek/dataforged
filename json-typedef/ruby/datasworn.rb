@@ -193,6 +193,7 @@ module Datasworn
     end
   end
 
+  # Roll using the value of an asset control.
   class ActionRollOptionAssetControl < ActionRollOption
     attr_accessor :assets
     attr_accessor :control
@@ -213,6 +214,7 @@ module Datasworn
     end
   end
 
+  # Roll using the value of an asset option.
   class ActionRollOptionAssetOption < ActionRollOption
     attr_accessor :assets
     attr_accessor :option
@@ -233,6 +235,9 @@ module Datasworn
     end
   end
 
+  # Roll using the value of an attached asset control. For example, a Module
+  # asset could use this to roll using the `integrity` control of an attached
+  # Vehicle.
   class ActionRollOptionAttachedAssetControl < ActionRollOption
     attr_accessor :control
 
@@ -250,6 +255,7 @@ module Datasworn
     end
   end
 
+  # Roll using the value of an attached asset option.
   class ActionRollOptionAttachedAssetOption < ActionRollOption
     attr_accessor :option
 
@@ -267,6 +273,7 @@ module Datasworn
     end
   end
 
+  # Roll using the value of a standard player condition meter.
   class ActionRollOptionConditionMeter < ActionRollOption
     attr_accessor :condition_meter
 
@@ -284,6 +291,7 @@ module Datasworn
     end
   end
 
+  # Roll using an integer value with customizable labels.
   class ActionRollOptionCustom < ActionRollOption
     attr_accessor :name
     attr_accessor :value
@@ -304,6 +312,7 @@ module Datasworn
     end
   end
 
+  # Roll using a standard player character stat.
   class ActionRollOptionStat < ActionRollOption
     attr_accessor :stat
 
@@ -463,12 +472,16 @@ module Datasworn
     end
   end
 
+  # An asset ability: one of the purchasable features of an asset. Most assets
+  # have three.
   class AssetAbility
     # Is this asset ability enabled?
     attr_accessor :enabled
 
     # The unique Datasworn ID for this item.
     attr_accessor :id
+
+    # The complete rules text of this asset ability.
     attr_accessor :text
 
     # Fields whose values are expected to change over the life of the asset.
@@ -483,6 +496,9 @@ module Datasworn
 
     # Unique moves added by this asset ability.
     attr_accessor :moves
+
+    # A handful of asset abilities have a label/name, for instance classic
+    # Ironsworn companion assets. Most canonical assets omit this property.
     attr_accessor :name
 
     # Fields that are expected to be set once and remain the same through the
@@ -620,6 +636,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AssetAbilityControlField.
   class AssetAbilityControlFieldID
     attr_accessor :value
 
@@ -634,6 +651,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AssetAbility.
   class AssetAbilityID
     attr_accessor :value
 
@@ -682,6 +700,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AssetAbilityOptionField.
   class AssetAbilityOptionFieldID
     attr_accessor :value
 
@@ -793,6 +812,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AssetConditionMeterControlField.
   class AssetConditionMeterControlFieldID
     attr_accessor :value
 
@@ -1158,6 +1178,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AssetControlField.
   class AssetControlFieldID
     attr_accessor :value
 
@@ -1172,6 +1193,7 @@ module Datasworn
     end
   end
 
+  # A wildcarded ID that can be used to match multiple AssetControlFields.
   class AssetControlFieldIDWildcard
     attr_accessor :value
 
@@ -1228,6 +1250,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an Asset.
   class AssetID
     attr_accessor :value
 
@@ -1242,6 +1265,7 @@ module Datasworn
     end
   end
 
+  # A wildcarded ID that can be used to match multiple Assets.
   class AssetIDWildcard
     attr_accessor :value
 
@@ -1610,6 +1634,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AssetOptionField.
   class AssetOptionFieldID
     attr_accessor :value
 
@@ -1624,6 +1649,7 @@ module Datasworn
     end
   end
 
+  # A wildcarded ID that can be used to match multiple AssetOptionFields.
   class AssetOptionFieldIDWildcard
     attr_accessor :value
 
@@ -1717,6 +1743,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AssetType.
   class AssetTypeID
     attr_accessor :value
 
@@ -1868,6 +1895,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an AtlasEntry.
   class AtlasEntryID
     attr_accessor :value
 
@@ -1882,6 +1910,7 @@ module Datasworn
     end
   end
 
+  # A wildcarded ID that can be used to match multiple AtlasEntrys.
   class AtlasEntryIDWildcard
     attr_accessor :value
 
@@ -1896,6 +1925,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an Atlas.
   class AtlasID
     attr_accessor :value
 
@@ -1910,6 +1940,7 @@ module Datasworn
     end
   end
 
+  # A wildcarded ID that can be used to match multiple Atlass.
   class AtlasIDWildcard
     attr_accessor :value
 
@@ -1999,6 +2030,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a ConditionMeterRule.
   class ConditionMeterRuleID
     attr_accessor :value
 
@@ -2163,6 +2195,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a DelveSiteDenizen.
   class DelveSiteDenizenID
     attr_accessor :value
 
@@ -2374,6 +2407,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a DelveSiteDomain.
   class DelveSiteDomainID
     attr_accessor :value
 
@@ -2388,6 +2422,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a DelveSite.
   class DelveSiteID
     attr_accessor :value
 
@@ -2590,6 +2625,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a DelveSiteTheme.
   class DelveSiteThemeID
     attr_accessor :value
 
@@ -2633,6 +2669,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a DomainDangerRow.
   class DomainDangerRowID
     attr_accessor :value
 
@@ -2647,6 +2684,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a DomainFeatureRow.
   class DomainFeatureRowID
     attr_accessor :value
 
@@ -2791,7 +2829,7 @@ module Datasworn
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
       out.label = Datasworn::from_json_data(Label, data["label"])
       out.permanent = Datasworn::from_json_data(TrueClass, data["permanent"])
-      out.prevents_recovery = Datasworn::from_json_data(Array[DictKey], data["prevents_recovery"])
+      out.prevents_recovery = Datasworn::from_json_data(Array[ConditionMeterID], data["prevents_recovery"])
       out.shared = Datasworn::from_json_data(TrueClass, data["shared"])
       out
     end
@@ -2807,6 +2845,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an ImpactRuleCollection.
   class ImpactRuleCollectionID
     attr_accessor :value
 
@@ -2821,6 +2860,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an ImpactRule.
   class ImpactRuleID
     attr_accessor :value
 
@@ -2927,6 +2967,7 @@ module Datasworn
     end
   end
 
+  # A move that makes no progress rolls or action rolls.
   class MoveNoRoll < Move
     attr_accessor :id
     attr_accessor :name
@@ -2968,8 +3009,9 @@ module Datasworn
     end
   end
 
-  # A progress move that rolls on a standard progress track type (defined by the
-  # move object).
+  # A progress move that rolls on a standard progress track type (whose features
+  # are defined by this move object). For progress rolls that use special
+  # tracks, see MoveSpecialTrack.
   class MoveProgressRoll < Move
     attr_accessor :id
     attr_accessor :name
@@ -3017,6 +3059,9 @@ module Datasworn
     end
   end
 
+  # A progress move that rolls on a special track, such as Legacies (Starforged)
+  # or Bonds (classic Ironsworn). For progress moves that use standard progress
+  # tracks, see MoveProgressRoll instead.
   class MoveSpecialTrack < Move
     attr_accessor :id
     attr_accessor :name
@@ -3140,6 +3185,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a MoveCategory.
   class MoveCategoryID
     attr_accessor :value
 
@@ -3167,6 +3213,9 @@ module Datasworn
     end
   end
 
+  # An object that describes changes to a move. These changes should be applied
+  # recursively, altering only the specified properties; enhanced arrays should
+  # be concatencated with the original array value.
   class MoveEnhancementActionRoll < MoveEnhancement
     attr_accessor :enhances
     attr_accessor :trigger
@@ -3181,12 +3230,15 @@ module Datasworn
 
     def to_json_data
       data = { "roll_type" => "action_roll" }
-      data["enhances"] = Datasworn::to_json_data(enhances) unless enhances.nil?
+      data["enhances"] = Datasworn::to_json_data(enhances)
       data["trigger"] = Datasworn::to_json_data(trigger) unless trigger.nil?
       data
     end
   end
 
+  # An object that describes changes to a move. These changes should be applied
+  # recursively, altering only the specified properties; enhanced arrays should
+  # be concatencated with the original array value.
   class MoveEnhancementNoRoll < MoveEnhancement
     attr_accessor :enhances
     attr_accessor :trigger
@@ -3201,12 +3253,15 @@ module Datasworn
 
     def to_json_data
       data = { "roll_type" => "no_roll" }
-      data["enhances"] = Datasworn::to_json_data(enhances) unless enhances.nil?
+      data["enhances"] = Datasworn::to_json_data(enhances)
       data["trigger"] = Datasworn::to_json_data(trigger) unless trigger.nil?
       data
     end
   end
 
+  # An object that describes changes to a move. These changes should be applied
+  # recursively, altering only the specified properties; enhanced arrays should
+  # be concatencated with the original array value.
   class MoveEnhancementProgressRoll < MoveEnhancement
     attr_accessor :enhances
     attr_accessor :trigger
@@ -3221,12 +3276,15 @@ module Datasworn
 
     def to_json_data
       data = { "roll_type" => "progress_roll" }
-      data["enhances"] = Datasworn::to_json_data(enhances) unless enhances.nil?
+      data["enhances"] = Datasworn::to_json_data(enhances)
       data["trigger"] = Datasworn::to_json_data(trigger) unless trigger.nil?
       data
     end
   end
 
+  # An object that describes changes to a move. These changes should be applied
+  # recursively, altering only the specified properties; enhanced arrays should
+  # be concatencated with the original array value.
   class MoveEnhancementSpecialTrack < MoveEnhancement
     attr_accessor :enhances
     attr_accessor :trigger
@@ -3241,7 +3299,7 @@ module Datasworn
 
     def to_json_data
       data = { "roll_type" => "special_track" }
-      data["enhances"] = Datasworn::to_json_data(enhances) unless enhances.nil?
+      data["enhances"] = Datasworn::to_json_data(enhances)
       data["trigger"] = Datasworn::to_json_data(trigger) unless trigger.nil?
       data
     end
@@ -3542,6 +3600,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a NpcCollection.
   class NpcCollectionID
     attr_accessor :value
 
@@ -3556,6 +3615,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a Npc.
   class NpcID
     attr_accessor :value
 
@@ -3570,6 +3630,7 @@ module Datasworn
     end
   end
 
+  # A wildcarded ID that can be used to match multiple Npcs.
   class NpcIDWildcard
     attr_accessor :value
 
@@ -3639,6 +3700,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a NpcVariant.
   class NpcVariantID
     attr_accessor :value
 
@@ -3738,6 +3800,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an OracleCollection.
   class OracleCollectionID
     attr_accessor :value
 
@@ -4044,6 +4107,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for an OracleTable.
   class OracleTableID
     attr_accessor :value
 
@@ -4539,6 +4603,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a Rarity.
   class RarityID
     attr_accessor :value
 
@@ -4804,6 +4869,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a SpecialTrackRule.
   class SpecialTrackRuleID
     attr_accessor :value
 
@@ -4879,6 +4945,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a StatRule.
   class StatRuleID
     attr_accessor :value
 
@@ -4965,6 +5032,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a ThemeDangerRow.
   class ThemeDangerRowID
     attr_accessor :value
 
@@ -4979,6 +5047,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a ThemeFeatureRow.
   class ThemeFeatureRowID
     attr_accessor :value
 
@@ -5077,7 +5146,9 @@ module Datasworn
     end
   end
 
+  # Describes changes/additions made to the enhanced move's trigger conditions.
   class TriggerActionRollEnhancement
+    # Trigger conditions added to the enhanced move.
     attr_accessor :conditions
 
     def self.from_json_data(data)
@@ -5163,7 +5234,9 @@ module Datasworn
     end
   end
 
+  # Describes changes/additions made to the enhanced move's trigger conditions.
   class TriggerNoRollEnhancement
+    # Trigger conditions added to the enhanced move.
     attr_accessor :conditions
 
     def self.from_json_data(data)
@@ -5262,7 +5335,9 @@ module Datasworn
     end
   end
 
+  # Describes changes/additions made to the enhanced move's trigger conditions.
   class TriggerProgressRollEnhancement
+    # Trigger conditions added to the enhanced move.
     attr_accessor :conditions
 
     def self.from_json_data(data)
@@ -5379,7 +5454,9 @@ module Datasworn
     end
   end
 
+  # Describes changes/additions made to the enhanced move's trigger conditions.
   class TriggerSpecialTrackEnhancement
+    # Trigger conditions added to the enhanced move.
     attr_accessor :conditions
 
     def self.from_json_data(data)
@@ -5442,6 +5519,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a Truth.
   class TruthID
     attr_accessor :value
 
@@ -5492,6 +5570,7 @@ module Datasworn
     end
   end
 
+  # A unique ID for a TruthOption.
   class TruthOptionID
     attr_accessor :value
 

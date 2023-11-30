@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A move that makes no progress rolls or action rolls.
+    /// </summary>
     public class MoveNoRoll : Move
     {
         [JsonPropertyName("roll_type")]
@@ -35,6 +38,9 @@ namespace Datasworn
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
 
+        /// <summary>
+        /// Trigger conditions for this move.
+        /// </summary>
         [JsonPropertyName("trigger")]
         public TriggerNoRoll Trigger { get; set; }
 

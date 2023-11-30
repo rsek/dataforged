@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * A unique ID for a DomainDangerRow.
+ */
 public class DomainDangerRowId {
     @JsonValue
     private String value;

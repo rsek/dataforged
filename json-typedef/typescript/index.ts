@@ -12,6 +12,10 @@ export type RulesPackage = RulesPackageExpansion | RulesPackageRuleset;
  */
 export interface RulesPackageExpansion {
   package_type: "expansion";
+
+  /**
+   * The version of the Datasworn format used by this data.
+   */
   datasworn_version: SemanticVersion;
   id: ExpansionId;
   ruleset: RulesetId;
@@ -82,6 +86,10 @@ export interface RulesPackageRuleset {
    * A dictionary object containing asset types, which contain assets.
    */
   assets: { [key: string]: AssetType };
+
+  /**
+   * The version of the Datasworn format used by this data.
+   */
   datasworn_version: SemanticVersion;
   id: RulesetId;
 
@@ -175,55 +183,78 @@ export enum ActionRollMethod {
 
 export type ActionRollOption = ActionRollOptionAssetControl | ActionRollOptionAssetOption | ActionRollOptionAttachedAssetControl | ActionRollOptionAttachedAssetOption | ActionRollOptionConditionMeter | ActionRollOptionCustom | ActionRollOptionStat;
 
+/**
+ * Roll using the value of an asset control.
+ */
 export interface ActionRollOptionAssetControl {
   using: "asset_control";
   assets: AssetIdWildcard[];
 
   /**
-   * The key of the asset control field.
+   * The dictionary key of the asset control field.
    */
   control: DictKey;
 }
 
+/**
+ * Roll using the value of an asset option.
+ */
 export interface ActionRollOptionAssetOption {
   using: "asset_option";
   assets: AssetIdWildcard[];
 
   /**
-   * The key of the asset option field.
+   * The dictionary key of the asset option field.
    */
   option: DictKey;
 }
 
+/**
+ * Roll using the value of an attached asset control. For example, a Module
+ * asset could use this to roll using the `integrity` control of an attached
+ * Vehicle.
+ */
 export interface ActionRollOptionAttachedAssetControl {
   using: "attached_asset_control";
 
   /**
-   * The key of the asset control field.
+   * The dictionary key of the asset control field.
    */
   control: DictKey;
 }
 
+/**
+ * Roll using the value of an attached asset option.
+ */
 export interface ActionRollOptionAttachedAssetOption {
   using: "attached_asset_option";
 
   /**
-   * The key of the asset option field.
+   * The dictionary key of the asset option field.
    */
   option: DictKey;
 }
 
+/**
+ * Roll using the value of a standard player condition meter.
+ */
 export interface ActionRollOptionConditionMeter {
   using: "condition_meter";
   condition_meter: ConditionMeterId;
 }
 
+/**
+ * Roll using an integer value with customizable labels.
+ */
 export interface ActionRollOptionCustom {
   using: "custom";
   name: Label;
   value: number;
 }
 
+/**
+ * Roll using a standard player character stat.
+ */
 export interface ActionRollOptionStat {
   using: "stat";
   stat: StatId;
@@ -345,6 +376,10 @@ export interface Asset {
   suggestions?: Suggestions;
 }
 
+/**
+ * An asset ability: one of the purchasable features of an asset. Most assets
+ * have three.
+ */
 export interface AssetAbility {
   /**
    * Is this asset ability enabled?
@@ -355,6 +390,10 @@ export interface AssetAbility {
    * The unique Datasworn ID for this item.
    */
   id: AssetAbilityId;
+
+  /**
+   * The complete rules text of this asset ability.
+   */
   text: MarkdownString;
 
   /**
@@ -377,6 +416,11 @@ export interface AssetAbility {
    * Unique moves added by this asset ability.
    */
   moves?: { [key: string]: Move };
+
+  /**
+   * A handful of asset abilities have a label/name, for instance classic
+   * Ironsworn companion assets. Most canonical assets omit this property.
+   */
   name?: Label;
 
   /**
@@ -488,8 +532,14 @@ export interface AssetAbilityControlFieldCounter {
   value: number;
 }
 
+/**
+ * A unique ID for an AssetAbilityControlField.
+ */
 export type AssetAbilityControlFieldId = string;
 
+/**
+ * A unique ID for an AssetAbility.
+ */
 export type AssetAbilityId = string;
 
 export type AssetAbilityOptionField = AssetAbilityOptionFieldText;
@@ -514,6 +564,9 @@ export interface AssetAbilityOptionFieldText {
   value: string;
 }
 
+/**
+ * A unique ID for an AssetAbilityOptionField.
+ */
 export type AssetAbilityOptionFieldId = string;
 
 /**
@@ -606,6 +659,9 @@ export interface AssetConditionMeterControlFieldCheckbox {
   value: boolean;
 }
 
+/**
+ * A unique ID for an AssetConditionMeterControlField.
+ */
 export type AssetConditionMeterControlFieldId = string;
 
 export type AssetControlField = AssetControlFieldCardFlip | AssetControlFieldCheckbox | AssetControlFieldConditionMeter | AssetControlFieldSelectEnhancement;
@@ -875,8 +931,14 @@ export interface AssetControlFieldEnhancementConditionMeter {
   max: number;
 }
 
+/**
+ * A unique ID for an AssetControlField.
+ */
 export type AssetControlFieldId = string;
 
+/**
+ * A wildcarded ID that can be used to match multiple AssetControlFields.
+ */
 export type AssetControlFieldIdWildcard = string;
 
 /**
@@ -909,8 +971,14 @@ export interface AssetEnhancement {
   suggestions?: Suggestions;
 }
 
+/**
+ * A unique ID for an Asset.
+ */
 export type AssetId = string;
 
+/**
+ * A wildcarded ID that can be used to match multiple Assets.
+ */
 export type AssetIdWildcard = string;
 
 export type AssetOptionField = AssetOptionFieldSelectEnhancement | AssetOptionFieldSelectStat | AssetOptionFieldText;
@@ -1137,8 +1205,14 @@ export interface AssetOptionFieldText {
   value: string;
 }
 
+/**
+ * A unique ID for an AssetOptionField.
+ */
 export type AssetOptionFieldId = string;
 
+/**
+ * A wildcarded ID that can be used to match multiple AssetOptionFields.
+ */
 export type AssetOptionFieldIdWildcard = string;
 
 export interface AssetType {
@@ -1203,6 +1277,9 @@ export interface AssetType {
   summary?: MarkdownString;
 }
 
+/**
+ * A unique ID for an AssetType.
+ */
 export type AssetTypeId = string;
 
 export interface Atlas {
@@ -1302,12 +1379,24 @@ export interface AtlasEntry {
   your_truth?: MarkdownString;
 }
 
+/**
+ * A unique ID for an AtlasEntry.
+ */
 export type AtlasEntryId = string;
 
+/**
+ * A wildcarded ID that can be used to match multiple AtlasEntrys.
+ */
 export type AtlasEntryIdWildcard = string;
 
+/**
+ * A unique ID for an Atlas.
+ */
 export type AtlasId = string;
 
+/**
+ * A wildcarded ID that can be used to match multiple Atlass.
+ */
 export type AtlasIdWildcard = string;
 
 /**
@@ -1357,6 +1446,9 @@ export interface ConditionMeterRule {
   value: number;
 }
 
+/**
+ * A unique ID for a ConditionMeterRule.
+ */
 export type ConditionMeterRuleId = string;
 
 /**
@@ -1437,6 +1529,9 @@ export enum DelveSiteDenizenFrequency {
   VeryCommon = "very_common",
 }
 
+/**
+ * A unique ID for a DelveSiteDenizen.
+ */
 export type DelveSiteDenizenId = string;
 
 /**
@@ -1584,8 +1679,14 @@ export interface DelveSiteDomainFeatureRow {
   template?: OracleRollTemplate;
 }
 
+/**
+ * A unique ID for a DelveSiteDomain.
+ */
 export type DelveSiteDomainId = string;
 
+/**
+ * A unique ID for a DelveSite.
+ */
 export type DelveSiteId = string;
 
 /**
@@ -1724,6 +1825,9 @@ export interface DelveSiteThemeFeatureRow {
   template?: OracleRollTemplate;
 }
 
+/**
+ * A unique ID for a DelveSiteTheme.
+ */
 export type DelveSiteThemeId = string;
 
 export type DiceNotation = string;
@@ -1733,8 +1837,14 @@ export type DiceNotation = string;
  */
 export type DictKey = string;
 
+/**
+ * A unique ID for a DomainDangerRow.
+ */
 export type DomainDangerRowId = string;
 
+/**
+ * A unique ID for a DomainFeatureRow.
+ */
 export type DomainFeatureRowId = string;
 
 /**
@@ -1805,7 +1915,7 @@ export interface ImpactRule {
   /**
    * Keys of ruleset condition meters, to which this impact prevents recovery.
    */
-  prevents_recovery: DictKey[];
+  prevents_recovery: ConditionMeterId[];
 
   /**
    * Is this impact applied to all players at once?
@@ -1813,8 +1923,14 @@ export interface ImpactRule {
   shared: boolean;
 }
 
+/**
+ * A unique ID for an ImpactRuleCollection.
+ */
 export type ImpactRuleCollectionId = string;
 
+/**
+ * A unique ID for an ImpactRule.
+ */
 export type ImpactRuleId = string;
 
 /**
@@ -1860,6 +1976,10 @@ export interface MoveActionRoll {
    * The complete rules text of the move.
    */
   text: MarkdownString;
+
+  /**
+   * Trigger conditions for this move.
+   */
   trigger: TriggerActionRoll;
 
   /**
@@ -1883,6 +2003,9 @@ export interface MoveActionRoll {
   suggestions?: Suggestions;
 }
 
+/**
+ * A move that makes no progress rolls or action rolls.
+ */
 export interface MoveNoRoll {
   roll_type: "no_roll";
 
@@ -1906,6 +2029,10 @@ export interface MoveNoRoll {
    * The complete rules text of the move.
    */
   text: MarkdownString;
+
+  /**
+   * Trigger conditions for this move.
+   */
   trigger: TriggerNoRoll;
 
   /**
@@ -1930,8 +2057,9 @@ export interface MoveNoRoll {
 }
 
 /**
- * A progress move that rolls on a standard progress track type (defined by the
- * move object).
+ * A progress move that rolls on a standard progress track type (whose features
+ * are defined by this move object). For progress rolls that use special tracks,
+ * see MoveSpecialTrack.
  */
 export interface MoveProgressRoll {
   roll_type: "progress_roll";
@@ -1962,6 +2090,10 @@ export interface MoveProgressRoll {
    * Describes the common features of progress tracks associated with this move.
    */
   tracks: ProgressTrackTypeInfo;
+
+  /**
+   * Trigger conditions for this move.
+   */
   trigger: TriggerProgressRoll;
 
   /**
@@ -1985,6 +2117,11 @@ export interface MoveProgressRoll {
   suggestions?: Suggestions;
 }
 
+/**
+ * A progress move that rolls on a special track, such as Legacies (Starforged)
+ * or Bonds (classic Ironsworn). For progress moves that use standard progress
+ * tracks, see MoveProgressRoll instead.
+ */
 export interface MoveSpecialTrack {
   roll_type: "special_track";
 
@@ -2009,6 +2146,10 @@ export interface MoveSpecialTrack {
    * The complete rules text of the move.
    */
   text: MarkdownString;
+
+  /**
+   * Trigger conditions for this move.
+   */
   trigger: TriggerSpecialTrack;
 
   /**
@@ -2094,31 +2235,54 @@ export interface MoveCategory {
   summary?: MarkdownString;
 }
 
+/**
+ * A unique ID for a MoveCategory.
+ */
 export type MoveCategoryId = string;
 
 export type MoveEnhancement = MoveEnhancementActionRoll | MoveEnhancementNoRoll | MoveEnhancementProgressRoll | MoveEnhancementSpecialTrack;
 
+/**
+ * An object that describes changes to a move. These changes should be applied
+ * recursively, altering only the specified properties; enhanced arrays should
+ * be concatencated with the original array value.
+ */
 export interface MoveEnhancementActionRoll {
   roll_type: "action_roll";
-  enhances?: MoveIdWildcard[];
+  enhances: MoveIdWildcard[];
   trigger?: TriggerActionRollEnhancement;
 }
 
+/**
+ * An object that describes changes to a move. These changes should be applied
+ * recursively, altering only the specified properties; enhanced arrays should
+ * be concatencated with the original array value.
+ */
 export interface MoveEnhancementNoRoll {
   roll_type: "no_roll";
-  enhances?: MoveIdWildcard[];
+  enhances: MoveIdWildcard[];
   trigger?: TriggerNoRollEnhancement;
 }
 
+/**
+ * An object that describes changes to a move. These changes should be applied
+ * recursively, altering only the specified properties; enhanced arrays should
+ * be concatencated with the original array value.
+ */
 export interface MoveEnhancementProgressRoll {
   roll_type: "progress_roll";
-  enhances?: MoveIdWildcard[];
+  enhances: MoveIdWildcard[];
   trigger?: TriggerProgressRollEnhancement;
 }
 
+/**
+ * An object that describes changes to a move. These changes should be applied
+ * recursively, altering only the specified properties; enhanced arrays should
+ * be concatencated with the original array value.
+ */
 export interface MoveEnhancementSpecialTrack {
   roll_type: "special_track";
-  enhances?: MoveIdWildcard[];
+  enhances: MoveIdWildcard[];
   trigger?: TriggerSpecialTrackEnhancement;
 }
 
@@ -2299,10 +2463,19 @@ export interface NpcCollection {
   summary?: MarkdownString;
 }
 
+/**
+ * A unique ID for a NpcCollection.
+ */
 export type NpcCollectionId = string;
 
+/**
+ * A unique ID for a Npc.
+ */
 export type NpcId = string;
 
+/**
+ * A wildcarded ID that can be used to match multiple Npcs.
+ */
 export type NpcIdWildcard = string;
 
 /**
@@ -2332,6 +2505,9 @@ export interface NpcVariant {
   summary?: MarkdownString;
 }
 
+/**
+ * A unique ID for a NpcVariant.
+ */
 export type NpcVariantId = string;
 
 export interface OracleCollection {
@@ -2398,6 +2574,9 @@ export interface OracleCollection {
   summary?: MarkdownString;
 }
 
+/**
+ * A unique ID for an OracleCollection.
+ */
 export type OracleCollectionId = string;
 
 /**
@@ -2589,6 +2768,9 @@ export enum OracleTableColumnContentKey {
   Summary = "summary",
 }
 
+/**
+ * A unique ID for an OracleTable.
+ */
 export type OracleTableId = string;
 
 /**
@@ -2868,6 +3050,9 @@ export interface Rarity {
   suggestions?: Suggestions;
 }
 
+/**
+ * A unique ID for a Rarity.
+ */
 export type RarityId = string;
 
 /**
@@ -3041,6 +3226,9 @@ export interface SpecialTrackRule {
   shared: boolean;
 }
 
+/**
+ * A unique ID for a SpecialTrackRule.
+ */
 export type SpecialTrackRuleId = string;
 
 /**
@@ -3076,6 +3264,9 @@ export interface StatRule {
   label: Label;
 }
 
+/**
+ * A unique ID for a StatRule.
+ */
 export type StatRuleId = string;
 
 export interface Suggestions {
@@ -3103,8 +3294,14 @@ export type SvgImageUrl = string;
  */
 export type TemplateString = string;
 
+/**
+ * A unique ID for a ThemeDangerRow.
+ */
 export type ThemeDangerRowId = string;
 
+/**
+ * A unique ID for a ThemeFeatureRow.
+ */
 export type ThemeFeatureRowId = string;
 
 /**
@@ -3155,7 +3352,13 @@ export interface TriggerActionRollConditionEnhancement {
   text?: MarkdownString;
 }
 
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ */
 export interface TriggerActionRollEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
   conditions: TriggerActionRollConditionEnhancement[];
 }
 
@@ -3199,7 +3402,13 @@ export interface TriggerNoRollCondition {
   text?: MarkdownString;
 }
 
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ */
 export interface TriggerNoRollEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
   conditions: TriggerNoRollCondition[];
 }
 
@@ -3248,7 +3457,13 @@ export interface TriggerProgressRollConditionEnhancement {
   text?: MarkdownString;
 }
 
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ */
 export interface TriggerProgressRollEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
   conditions: TriggerProgressRollConditionEnhancement[];
 }
 
@@ -3305,7 +3520,13 @@ export interface TriggerSpecialTrackConditionOption {
   using: SpecialTrackType;
 }
 
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ */
 export interface TriggerSpecialTrackEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
   conditions: TriggerSpecialTrackConditionEnhancement[];
 }
 
@@ -3340,6 +3561,9 @@ export interface Truth {
   your_character?: MarkdownString;
 }
 
+/**
+ * A unique ID for a Truth.
+ */
 export type TruthId = string;
 
 export interface TruthOption {
@@ -3356,6 +3580,9 @@ export interface TruthOption {
   table?: TruthOptionTableRow[];
 }
 
+/**
+ * A unique ID for a TruthOption.
+ */
 export type TruthOptionId = string;
 
 /**

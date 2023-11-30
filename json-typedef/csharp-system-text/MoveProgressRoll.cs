@@ -6,8 +6,9 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// A progress move that rolls on a standard progress track type (defined by
-    /// the move object).
+    /// A progress move that rolls on a standard progress track type (whose
+    /// features are defined by this move object). For progress rolls that use
+    /// special tracks, see MoveSpecialTrack.
     /// </summary>
     public class MoveProgressRoll : Move
     {
@@ -49,6 +50,9 @@ namespace Datasworn
         [JsonPropertyName("tracks")]
         public ProgressTrackTypeInfo Tracks { get; set; }
 
+        /// <summary>
+        /// Trigger conditions for this move.
+        /// </summary>
         [JsonPropertyName("trigger")]
         public TriggerProgressRoll Trigger { get; set; }
 

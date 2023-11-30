@@ -75,6 +75,11 @@ export function Id(elements: IdElement[], options: IdOptions = {}) {
 	const regex = new RegExp(`^${getPatternSubstrings(...elements).join('')}$`)
 	const result = Type.RegExp(regex, options) as TId
 	result[PatternElements] = elements
+	if (!result.description && result.$id) {
+		const targetName = result.$id.replace(/Id$/, '')
+		const indefiniteArticle = targetName.match(/^[AEIOU]/) ? 'an' : 'a'
+		result.description = `A unique ID for ${indefiniteArticle} ${targetName}.`
+	}
 	return result
 }
 export function RecursiveCollectableId(
@@ -116,6 +121,12 @@ export function toWildcard(base: TId, options: IdOptions = {}) {
 	if (base.title && !options.title)
 		options.title = base.title + ' (with wildcard)'
 	const elements = base[PatternElements].map((item) => _toWildcard(item))
+
+	if (!options.description && options.$id) {
+		const targetName = options.$id.replace(/IdWildcard$/, '')
+		options.description = `A wildcarded ID that can be used to match multiple ${targetName}s.`
+	}
+
 	return Id(elements, options)
 }
 

@@ -32,6 +32,7 @@ export const TriggerBy = Type.Object(
 	},
 	{
 		$id: 'TriggerBy',
+		title: 'TriggerBy',
 		description:
 			"Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
 	}
@@ -167,9 +168,16 @@ export function TriggerEnhancement<
 >(conditions: T, options: ObjectOptions) {
 	return Type.Object(
 		{
-			conditions
+			conditions: {
+				description: 'Trigger conditions added to the enhanced move.',
+				...conditions
+			} as T
 		},
-		options
+		{
+			description:
+				"Describes changes/additions made to the enhanced move's trigger conditions.",
+			...options
+		}
 	)
 }
 

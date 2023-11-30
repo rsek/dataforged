@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Roll using the value of an asset option.
+    /// </summary>
     public class ActionRollOptionAssetOption : ActionRollOption
     {
         [JsonPropertyName("using")]
@@ -14,7 +17,7 @@ namespace Datasworn
         public IList<AssetIdWildcard> Assets { get; set; }
 
         /// <summary>
-        /// The key of the asset option field.
+        /// The dictionary key of the asset option field.
         /// </summary>
         [JsonPropertyName("option")]
         public DictKey Option { get; set; }

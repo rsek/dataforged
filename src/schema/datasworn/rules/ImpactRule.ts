@@ -1,5 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, Id } from '../common/index.js'
+import { Localize, Id, Player } from '../common/index.js'
 import * as Generic from '../Generic.js'
 
 export const ImpactRule = Type.Object(
@@ -14,7 +14,7 @@ export const ImpactRule = Type.Object(
 			default: false,
 			description: 'Is this impact applied to all players at once?'
 		}),
-		prevents_recovery: Type.Array(Type.Ref(Id.DictKey), {
+		prevents_recovery: Type.Array(Type.Ref(Player.ConditionMeterId), {
 			default: [],
 			description:
 				'Keys of ruleset condition meters, to which this impact prevents recovery.'

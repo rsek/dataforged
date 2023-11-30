@@ -999,7 +999,7 @@ module Datasworn
     attr_accessor description: MarkdownString
     attr_accessor label: Label
     attr_accessor permanent: bool
-    attr_accessor prevents_recovery: Array[DictKey]
+    attr_accessor prevents_recovery: Array[ConditionMeterID]
     attr_accessor shared: bool
 
     def self.from_json_data: (untyped) -> ImpactRule
@@ -1139,7 +1139,7 @@ module Datasworn
   end
 
   class MoveEnhancementActionRoll < MoveEnhancement
-    attr_accessor enhances: Array[MoveIDWildcard]?
+    attr_accessor enhances: Array[MoveIDWildcard]
     attr_accessor trigger: TriggerActionRollEnhancement?
 
     def self.from_json_data: (untyped) -> MoveEnhancementActionRoll
@@ -1147,7 +1147,7 @@ module Datasworn
   end
 
   class MoveEnhancementNoRoll < MoveEnhancement
-    attr_accessor enhances: Array[MoveIDWildcard]?
+    attr_accessor enhances: Array[MoveIDWildcard]
     attr_accessor trigger: TriggerNoRollEnhancement?
 
     def self.from_json_data: (untyped) -> MoveEnhancementNoRoll
@@ -1155,7 +1155,7 @@ module Datasworn
   end
 
   class MoveEnhancementProgressRoll < MoveEnhancement
-    attr_accessor enhances: Array[MoveIDWildcard]?
+    attr_accessor enhances: Array[MoveIDWildcard]
     attr_accessor trigger: TriggerProgressRollEnhancement?
 
     def self.from_json_data: (untyped) -> MoveEnhancementProgressRoll
@@ -1163,7 +1163,7 @@ module Datasworn
   end
 
   class MoveEnhancementSpecialTrack < MoveEnhancement
-    attr_accessor enhances: Array[MoveIDWildcard]?
+    attr_accessor enhances: Array[MoveIDWildcard]
     attr_accessor trigger: TriggerSpecialTrackEnhancement?
 
     def self.from_json_data: (untyped) -> MoveEnhancementSpecialTrack

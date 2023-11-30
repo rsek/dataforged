@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * A unique ID for an ImpactRule.
+ */
 public class ImpactRuleId {
     @JsonValue
     private String value;

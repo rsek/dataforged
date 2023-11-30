@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for a ThemeDangerRow.
+    /// </summary>
     [JsonConverter(typeof(ThemeDangerRowIdJsonConverter))]
     public class ThemeDangerRowId
     {

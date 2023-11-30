@@ -8,8 +8,15 @@ import { AssetAbilityControlField, AssetAbilityOptionField } from './Fields.js'
 export const AssetAbility = Generic.IdentifiedNode(
 	Type.Ref(Id.AssetAbilityId),
 	Type.Object({
-		name: Type.Optional(Type.Ref(Localize.Label)),
-		text: Type.Ref(Localize.MarkdownString),
+		name: Type.Optional(
+			Type.Ref(Localize.Label, {
+				description:
+					'A handful of asset abilities have a label/name, for instance classic Ironsworn companion assets. Most canonical assets omit this property.'
+			})
+		),
+		text: Type.Ref(Localize.MarkdownString, {
+			description: 'The complete rules text of this asset ability.'
+		}),
 		enabled: Type.Boolean({
 			default: false,
 			description: 'Is this asset ability enabled?'
@@ -44,7 +51,11 @@ export const AssetAbility = Generic.IdentifiedNode(
 			})
 		)
 	}),
-	{ $id: 'AssetAbility' }
+	{
+		$id: 'AssetAbility',
+		description:
+			'An asset ability: one of the purchasable features of an asset. Most assets have three.'
+	}
 )
 export type AssetAbility = Static<typeof AssetAbility>
 export type TAssetAbility = typeof AssetAbility

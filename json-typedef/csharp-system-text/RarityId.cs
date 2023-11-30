@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for a Rarity.
+    /// </summary>
     [JsonConverter(typeof(RarityIdJsonConverter))]
     public class RarityId
     {

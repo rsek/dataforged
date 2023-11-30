@@ -18,13 +18,20 @@ import { type TTruth } from './Truths.js'
 import * as Utils from './Utils.js'
 import * as Rules from './Rules.js'
 
+
+const datasworn_version = Utils.Computed(
+	Type.Ref(Metadata.SemanticVersion, {
+		description: 'The version of the Datasworn format used by this data.'
+	})
+)
+
 export const Ruleset = Type.Object(
 	{
 		// ruleset ID isn't optional in source, so we don't flag it with IdentifiedNode
 		id: Type.Ref<typeof Id.RulesetId>('RulesetId'),
+		datasworn_version,
 		package_type: Type.Literal('ruleset'),
 		rules: Utils.SourceOptional(Type.Ref<TRules>('Rules')),
-		datasworn_version: Utils.Computed(Type.Ref(Metadata.SemanticVersion)),
 		oracles: Utils.SourceOptional(
 			Generic.Dictionary(Type.Ref<TOracleCollection>('OracleCollection'), {
 				default: undefined,
@@ -107,12 +114,12 @@ export const Expansion = Utils.Assign(
 		Type.Omit(Type.Partial(Ruleset), [
 			'id',
 			'package_type',
-			'datasworn_version',
-			'rules'
+			'rules',
+			'datasworn_version'
 		]),
 		Type.Object({
 			id: Type.Ref<typeof Id.ExpansionId>('ExpansionId'),
-			datasworn_version: Utils.Computed(Type.Ref(Metadata.SemanticVersion)),
+			datasworn_version,
 			package_type: Type.Literal('expansion'),
 			ruleset: Type.Ref<typeof Id.RulesetId>('RulesetId'),
 			rules: Type.Optional(Type.Ref(Rules.RulesExpansion))
@@ -131,9 +138,9 @@ export const RulesPackage = Utils.DiscriminatedUnion(
 	'package_type',
 	{
 		description:
-			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.'
-		// title: 'RulesPackage'
-		// $id: 'RulesPackage'
+			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
+		title: 'RulesPackage',
+		$id: 'RulesPackage'
 	}
 )
 export type RulesPackage = Static<typeof RulesPackage>

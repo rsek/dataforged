@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A wildcarded ID that can be used to match multiple Npcs.
+    /// </summary>
     [JsonConverter(typeof(NpcIdWildcardJsonConverter))]
     public class NpcIdWildcard
     {

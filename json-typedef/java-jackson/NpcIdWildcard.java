@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * A wildcarded ID that can be used to match multiple Npcs.
+ */
 public class NpcIdWildcard {
     @JsonValue
     private String value;

@@ -1,125 +1,402 @@
 {
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "https://ironswornrpg.com/datasworn.schema.json",
+	"$ref": "#/$defs/RulesPackage",
 	"title": "Datasworn v0.0.1-dev",
-	"type": "object",
-	"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `package_type` property as a discriminator.",
 	"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
-	"required": ["package_type"],
-	"properties": {
-		"package_type": {
-			"enum": ["ruleset", "expansion"]
-		}
-	},
-	"additionalProperties": true,
-	"allOf": [
-		{
-			"if": {
-				"properties": {
-					"package_type": {
-						"const": "ruleset",
-						"type": "string"
-					}
+	"$defs": {
+		"RulesPackage": {
+			"title": "RulesPackage",
+			"type": "object",
+			"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `package_type` property as a discriminator.",
+			"required": ["package_type"],
+			"properties": {
+				"package_type": {
+					"enum": ["ruleset", "expansion"]
 				}
 			},
-			"then": {
-				"$ref": "#/$defs/Ruleset"
+			"additionalProperties": true,
+			"allOf": [
+				{
+					"if": {
+						"properties": {
+							"package_type": {
+								"const": "ruleset",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/Ruleset"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"package_type": {
+								"const": "expansion",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/Expansion"
+					}
+				}
+			]
+		},
+		"Ruleset": {
+			"title": "Ruleset",
+			"type": "object",
+			"description": "A standalone Datasworn package that describes its own ruleset.",
+			"required": [
+				"id",
+				"datasworn_version",
+				"package_type",
+				"rules",
+				"oracles",
+				"assets",
+				"moves"
+			],
+			"properties": {
+				"id": {
+					"$ref": "#/$defs/RulesetId"
+				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion",
+					"description": "The version of the Datasworn format used by this data."
+				},
+				"package_type": {
+					"type": "string",
+					"const": "ruleset"
+				},
+				"rules": {
+					"$ref": "#/$defs/Rules"
+				},
+				"oracles": {
+					"type": "object",
+					"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/OracleCollection"
+						}
+					}
+				},
+				"assets": {
+					"type": "object",
+					"description": "A dictionary object containing asset types, which contain assets.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/AssetType"
+						}
+					}
+				},
+				"atlas": {
+					"type": "object",
+					"description": "A dictionary object containing atlas collections, which contain atlas entries.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Atlas"
+						}
+					}
+				},
+				"moves": {
+					"type": "object",
+					"description": "A dictionary object containing move categories, which contain moves.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/MoveCategory"
+						}
+					}
+				},
+				"npcs": {
+					"type": "object",
+					"description": "A dictionary object containing NPC collections, which contain NPCs.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/NpcCollection"
+						}
+					}
+				},
+				"rarities": {
+					"type": "object",
+					"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Rarity"
+						}
+					}
+				},
+				"delve_sites": {
+					"type": "object",
+					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSite"
+						}
+					}
+				},
+				"site_domains": {
+					"type": "object",
+					"description": "A dictionary object containing delve site domains.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteDomain"
+						}
+					}
+				},
+				"site_themes": {
+					"type": "object",
+					"description": "A dictionary object containing delve site themes.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteTheme"
+						}
+					}
+				},
+				"truths": {
+					"type": "object",
+					"description": "A dictionary object of truth categories.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Truth"
+						}
+					}
+				}
 			}
 		},
-		{
-			"if": {
-				"properties": {
-					"package_type": {
-						"const": "expansion",
-						"type": "string"
+		"Expansion": {
+			"title": "Expansion",
+			"type": "object",
+			"description": "A Datasworn package that relies on an external package to provide its ruleset.",
+			"required": ["id", "datasworn_version", "package_type", "ruleset"],
+			"properties": {
+				"id": {
+					"$ref": "#/$defs/ExpansionId"
+				},
+				"datasworn_version": {
+					"$ref": "#/$defs/SemanticVersion",
+					"description": "The version of the Datasworn format used by this data."
+				},
+				"package_type": {
+					"type": "string",
+					"const": "expansion"
+				},
+				"ruleset": {
+					"$ref": "#/$defs/RulesetId"
+				},
+				"rules": {
+					"$ref": "#/$defs/RulesExpansion"
+				},
+				"oracles": {
+					"type": "object",
+					"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/OracleCollection"
+						}
+					}
+				},
+				"assets": {
+					"type": "object",
+					"description": "A dictionary object containing asset types, which contain assets.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/AssetType"
+						}
+					}
+				},
+				"atlas": {
+					"type": "object",
+					"description": "A dictionary object containing atlas collections, which contain atlas entries.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Atlas"
+						}
+					}
+				},
+				"moves": {
+					"type": "object",
+					"description": "A dictionary object containing move categories, which contain moves.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/MoveCategory"
+						}
+					}
+				},
+				"npcs": {
+					"type": "object",
+					"description": "A dictionary object containing NPC collections, which contain NPCs.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/NpcCollection"
+						}
+					}
+				},
+				"rarities": {
+					"type": "object",
+					"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Rarity"
+						}
+					}
+				},
+				"delve_sites": {
+					"type": "object",
+					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSite"
+						}
+					}
+				},
+				"site_domains": {
+					"type": "object",
+					"description": "A dictionary object containing delve site domains.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteDomain"
+						}
+					}
+				},
+				"site_themes": {
+					"type": "object",
+					"description": "A dictionary object containing delve site themes.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/DelveSiteTheme"
+						}
+					}
+				},
+				"truths": {
+					"type": "object",
+					"description": "A dictionary object of truth categories.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"$ref": "#/$defs/Truth"
+						}
 					}
 				}
-			},
-			"then": {
-				"$ref": "#/$defs/Expansion"
 			}
-		}
-	],
-	"$defs": {
+		},
 		"AssetAbilityControlFieldId": {
 			"title": "AssetAbilityControlFieldId",
 			"type": "string",
+			"description": "A unique ID for an AssetAbilityControlField.",
 			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetAbilityId": {
 			"title": "AssetAbilityId",
 			"type": "string",
+			"description": "A unique ID for an AssetAbility.",
 			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)$"
 		},
 		"AssetAbilityOptionFieldId": {
 			"title": "AssetAbilityOptionFieldId",
 			"type": "string",
+			"description": "A unique ID for an AssetAbilityOptionField.",
 			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/options\\/([a-z][a-z_]*)$"
 		},
 		"AssetConditionMeterControlFieldId": {
 			"title": "AssetConditionMeterControlFieldId",
 			"type": "string",
+			"description": "A unique ID for an AssetConditionMeterControlField.",
 			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetControlFieldId": {
 			"title": "AssetControlFieldId",
 			"type": "string",
+			"description": "A unique ID for an AssetControlField.",
 			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetControlFieldIdWildcard": {
 			"title": "AssetControlFieldIdWildcard",
 			"type": "string",
+			"description": "A wildcarded ID that can be used to match multiple AssetControlFields.",
 			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/controls\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetId": {
 			"title": "AssetId",
 			"type": "string",
+			"description": "A unique ID for an Asset.",
 			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"AssetIdWildcard": {
 			"title": "AssetIdWildcard",
 			"type": "string",
+			"description": "A wildcarded ID that can be used to match multiple Assets.",
 			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetOptionFieldId": {
 			"title": "AssetOptionFieldId",
 			"type": "string",
+			"description": "A unique ID for an AssetOptionField.",
 			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
 		},
 		"AssetOptionFieldIdWildcard": {
 			"title": "AssetOptionFieldIdWildcard",
 			"type": "string",
+			"description": "A wildcarded ID that can be used to match multiple AssetOptionFields.",
 			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/options\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetTypeId": {
 			"title": "AssetTypeId",
 			"type": "string",
+			"description": "A unique ID for an AssetType.",
 			"pattern": "^([a-z0-9_]{3,})\\/collections\\/assets\\/([a-z][a-z_]*)$"
 		},
 		"AtlasEntryId": {
 			"title": "AtlasEntryId",
 			"type": "string",
+			"description": "A unique ID for an AtlasEntry.",
 			"examples": ["classic/atlas/ironlands/hinterlands"],
 			"pattern": "^([a-z0-9_]{3,})\\/atlas\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"AtlasEntryIdWildcard": {
 			"title": "AtlasEntryIdWildcard",
 			"type": "string",
+			"description": "A wildcarded ID that can be used to match multiple AtlasEntrys.",
 			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/atlas\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AtlasId": {
 			"title": "AtlasId",
 			"type": "string",
+			"description": "A unique ID for an Atlas.",
 			"examples": ["classic/collections/atlas/ironlands"],
 			"pattern": "^([a-z0-9_]{3,})\\/collections\\/atlas\\/([a-z][a-z_]*)$"
 		},
 		"AtlasIdWildcard": {
 			"title": "AtlasIdWildcard",
 			"type": "string",
+			"description": "A wildcarded ID that can be used to match multiple Atlass.",
 			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/collections\\/atlas\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"ConditionMeterRuleId": {
 			"title": "ConditionMeterRuleId",
 			"type": "string",
+			"description": "A unique ID for a ConditionMeterRule.",
 			"examples": [
 				"classic/rules/condition_meters/health",
 				"starforged/rules/condition_meters/spirit"
@@ -129,42 +406,48 @@
 		"DelveSiteDenizenId": {
 			"title": "DelveSiteDenizenId",
 			"type": "string",
+			"description": "A unique ID for a DelveSiteDenizen.",
 			"examples": ["delve/delve_sites/alvas_rest/denizens/1-27"],
 			"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)\\/denizens\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"DelveSiteDomainId": {
 			"title": "DelveSiteDomainId",
 			"type": "string",
+			"description": "A unique ID for a DelveSiteDomain.",
 			"examples": ["delve/site_domains/shadowfen"],
 			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteId": {
 			"title": "DelveSiteId",
 			"type": "string",
+			"description": "A unique ID for a DelveSite.",
 			"examples": ["delve/delve_sites/alvas_rest"],
 			"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteThemeId": {
 			"title": "DelveSiteThemeId",
 			"type": "string",
+			"description": "A unique ID for a DelveSiteTheme.",
 			"examples": ["delve/site_themes/hallowed"],
 			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)$"
 		},
 		"DictKey": {
 			"title": "DictKey",
 			"type": "string",
-			"$comment": "If you need to generate a key from a user-provided label, it's recommended to use a 'slugify' function/library, e.g. https://www.npmjs.com/package/slugify for NodeJS.",
 			"description": "A key used in a Datasworn dictionary object.",
+			"$comment": "If you need to generate a key from a user-provided label, it's recommended to use a 'slugify' function/library, e.g. https://www.npmjs.com/package/slugify for NodeJS.",
 			"pattern": "^([a-z][a-z_]*)$"
 		},
 		"DomainDangerRowId": {
 			"title": "DomainDangerRowId",
 			"type": "string",
+			"description": "A unique ID for a DomainDangerRow.",
 			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"DomainFeatureRowId": {
 			"title": "DomainFeatureRowId",
 			"type": "string",
+			"description": "A unique ID for a DomainFeatureRow.",
 			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"ExpansionId": {
@@ -177,6 +460,7 @@
 		"ImpactRuleCollectionId": {
 			"title": "ImpactRuleCollectionId",
 			"type": "string",
+			"description": "A unique ID for an ImpactRuleCollection.",
 			"examples": [
 				"classic/collections/rules/impacts/conditions",
 				"starforged/collections/rules/impacts/vehicle_troubles"
@@ -186,6 +470,7 @@
 		"ImpactRuleId": {
 			"title": "ImpactRuleId",
 			"type": "string",
+			"description": "A unique ID for an ImpactRule.",
 			"examples": [
 				"classic/rules/impacts/conditions/wounded",
 				"starforged/rules/impacts/vehicle_troubles/battered"
@@ -195,6 +480,7 @@
 		"MoveCategoryId": {
 			"title": "MoveCategoryId",
 			"type": "string",
+			"description": "A unique ID for a MoveCategory.",
 			"examples": ["starforged/collections/moves/adventure"],
 			"pattern": "^([a-z0-9_]{3,})\\/collections\\/moves\\/([a-z][a-z_]*)$"
 		},
@@ -243,6 +529,7 @@
 		"NpcCollectionId": {
 			"title": "NpcCollectionId",
 			"type": "string",
+			"description": "A unique ID for a NpcCollection.",
 			"examples": [
 				"classic/collections/npcs/firstborn",
 				"starforged/collections/npcs/sample_npcs"
@@ -252,6 +539,7 @@
 		"NpcId": {
 			"title": "NpcId",
 			"type": "string",
+			"description": "A unique ID for a Npc.",
 			"examples": [
 				"classic/npcs/firstborn/elf",
 				"starforged/npcs/sample_npcs/chiton"
@@ -261,11 +549,13 @@
 		"NpcIdWildcard": {
 			"title": "NpcIdWildcard",
 			"type": "string",
+			"description": "A wildcarded ID that can be used to match multiple Npcs.",
 			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/npcs\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"NpcVariantId": {
 			"title": "NpcVariantId",
 			"type": "string",
+			"description": "A unique ID for a NpcVariant.",
 			"examples": [
 				"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
 			],
@@ -274,6 +564,7 @@
 		"OracleCollectionId": {
 			"title": "OracleCollectionId",
 			"type": "string",
+			"description": "A unique ID for an OracleCollection.",
 			"examples": [
 				"starforged/collections/oracles/core",
 				"starforged/collections/oracles/character/names",
@@ -284,6 +575,7 @@
 		"OracleTableId": {
 			"title": "OracleTableId",
 			"type": "string",
+			"description": "A unique ID for an OracleTable.",
 			"examples": [
 				"starforged/oracles/core/action",
 				"starforged/oracles/character/names/given",
@@ -323,6 +615,7 @@
 		"RarityId": {
 			"title": "RarityId",
 			"type": "string",
+			"description": "A unique ID for a Rarity.",
 			"examples": ["classic/rarities/ayethins_journal"],
 			"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
 		},
@@ -336,6 +629,7 @@
 		"SpecialTrackRuleId": {
 			"title": "SpecialTrackRuleId",
 			"type": "string",
+			"description": "A unique ID for a SpecialTrackRule.",
 			"examples": [
 				"classic/rules/special_tracks/bonds",
 				"delve/rules/special_tracks/failure",
@@ -346,27 +640,32 @@
 		"StatRuleId": {
 			"title": "StatRuleId",
 			"type": "string",
+			"description": "A unique ID for a StatRule.",
 			"pattern": "^([a-z0-9_]{3,})\\/rules\\/stats\\/([a-z][a-z_]*)$"
 		},
 		"ThemeDangerRowId": {
 			"title": "ThemeDangerRowId",
 			"type": "string",
+			"description": "A unique ID for a ThemeDangerRow.",
 			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"ThemeFeatureRowId": {
 			"title": "ThemeFeatureRowId",
 			"type": "string",
+			"description": "A unique ID for a ThemeFeatureRow.",
 			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"TruthId": {
 			"title": "TruthId",
 			"type": "string",
+			"description": "A unique ID for a Truth.",
 			"examples": ["classic/truths/iron", "starforged/truths/iron"],
 			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)$"
 		},
 		"TruthOptionId": {
 			"title": "TruthOptionId",
 			"type": "string",
+			"description": "A unique ID for a TruthOption.",
 			"examples": ["classic/truths/iron/0", "starforged/truths/iron/0"],
 			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 		},
@@ -401,8 +700,8 @@
 				},
 				"date": {
 					"type": "string",
-					"$comment": "You may prefer to deserialize this as a Date object.",
 					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
+					"$comment": "You may prefer to deserialize this as a Date object.",
 					"format": "date"
 				},
 				"page": {
@@ -658,8 +957,8 @@
 				},
 				"contents": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "A dictionary object of the Impacts in this category.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactRule"
@@ -703,7 +1002,7 @@
 					"description": "Keys of ruleset condition meters, to which this impact prevents recovery.",
 					"default": [],
 					"items": {
-						"$ref": "#/$defs/DictKey"
+						"$ref": "#/$defs/ConditionMeterId"
 					}
 				}
 			}
@@ -716,8 +1015,8 @@
 			"properties": {
 				"condition_meters": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the standard condition meters used by player characters in this ruleset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ConditionMeterRule"
@@ -726,8 +1025,8 @@
 				},
 				"impacts": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the standard impacts/debilities used by player characters in this ruleset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactCategory"
@@ -736,8 +1035,8 @@
 				},
 				"special_tracks": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/SpecialTrackRule"
@@ -746,8 +1045,8 @@
 				},
 				"stats": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the standard stats used by player characters in this ruleset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/StatRule"
@@ -763,8 +1062,8 @@
 			"properties": {
 				"condition_meters": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the standard condition meters used by player characters in this ruleset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ConditionMeterRule"
@@ -773,8 +1072,8 @@
 				},
 				"impacts": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the standard impacts/debilities used by player characters in this ruleset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactCategory"
@@ -783,8 +1082,8 @@
 				},
 				"special_tracks": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/SpecialTrackRule"
@@ -793,8 +1092,8 @@
 				},
 				"stats": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Describes the standard stats used by player characters in this ruleset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/StatRule"
@@ -1244,8 +1543,8 @@
 		"OracleCollectionRendering": {
 			"title": "OracleCollectionRendering",
 			"type": "object",
-			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `style` property as a discriminator.",
 			"description": "Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `style` property as a discriminator.",
 			"required": ["style"],
 			"properties": {
 				"style": {
@@ -1456,8 +1755,8 @@
 		"OracleTableRendering": {
 			"title": "OracleTableRendering",
 			"type": "object",
-			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `style` property as a discriminator.",
 			"description": "Describes the presentation of this table.",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `style` property as a discriminator.",
 			"default": {
 				"style": "standalone",
 				"columns": {
@@ -1890,14 +2189,17 @@
 					"const": "action_roll"
 				},
 				"trigger": {
-					"$ref": "#/$defs/TriggerActionRoll"
+					"$ref": "#/$defs/TriggerActionRoll",
+					"title": "Trigger",
+					"description": "Trigger conditions for this move."
 				},
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
 					"description": "The complete rules text of the move."
 				},
 				"outcomes": {
-					"$ref": "#/$defs/MoveOutcomes"
+					"$ref": "#/$defs/MoveOutcomes",
+					"title": "MoveOutcomes"
 				},
 				"oracles": {
 					"type": "array",
@@ -1922,18 +2224,28 @@
 		"MoveActionRollEnhancement": {
 			"title": "MoveActionRollEnhancement",
 			"type": "object",
-			"required": ["roll_type"],
+			"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.",
+			"required": ["roll_type", "enhances"],
 			"properties": {
 				"roll_type": {
 					"type": "string",
-					"description": "A move that makes an action roll.",
+					"description": "A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.",
 					"const": "action_roll"
 				},
 				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIdWildcard"
-					}
+					"description": "An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveIdWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"trigger": {
 					"$ref": "#/$defs/TriggerActionRollEnhancement"
@@ -2075,6 +2387,7 @@
 		"MoveNoRoll": {
 			"title": "MoveNoRoll",
 			"type": "object",
+			"description": "A move that makes no progress rolls or action rolls.",
 			"required": [
 				"id",
 				"name",
@@ -2103,13 +2416,16 @@
 					"const": "no_roll"
 				},
 				"trigger": {
-					"$ref": "#/$defs/TriggerNoRoll"
+					"$ref": "#/$defs/TriggerNoRoll",
+					"title": "Trigger",
+					"description": "Trigger conditions for this move."
 				},
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
 					"description": "The complete rules text of the move."
 				},
 				"outcomes": {
+					"title": "MoveOutcomes",
 					"type": "null",
 					"default": null
 				},
@@ -2136,18 +2452,28 @@
 		"MoveNoRollEnhancement": {
 			"title": "MoveNoRollEnhancement",
 			"type": "object",
-			"required": ["roll_type"],
+			"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.",
+			"required": ["roll_type", "enhances"],
 			"properties": {
 				"roll_type": {
 					"type": "string",
-					"description": "A move that makes no action rolls or progress rolls.",
+					"description": "A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.",
 					"const": "no_roll"
 				},
 				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIdWildcard"
-					}
+					"description": "An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveIdWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"trigger": {
 					"$ref": "#/$defs/TriggerNoRollEnhancement"
@@ -2191,7 +2517,7 @@
 		"MoveProgressRoll": {
 			"title": "MoveProgressRoll",
 			"type": "object",
-			"description": "A progress move that rolls on a standard progress track type (defined by the move object).",
+			"description": "A progress move that rolls on a standard progress track type (whose features are defined by this move object). For progress rolls that use special tracks, see MoveSpecialTrack.",
 			"required": [
 				"id",
 				"name",
@@ -2221,14 +2547,17 @@
 					"const": "progress_roll"
 				},
 				"trigger": {
-					"$ref": "#/$defs/TriggerProgressRoll"
+					"$ref": "#/$defs/TriggerProgressRoll",
+					"title": "Trigger",
+					"description": "Trigger conditions for this move."
 				},
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
 					"description": "The complete rules text of the move."
 				},
 				"outcomes": {
-					"$ref": "#/$defs/MoveOutcomes"
+					"$ref": "#/$defs/MoveOutcomes",
+					"title": "MoveOutcomes"
 				},
 				"oracles": {
 					"type": "array",
@@ -2257,18 +2586,28 @@
 		"MoveProgressRollEnhancement": {
 			"title": "MoveProgressRollEnhancement",
 			"type": "object",
-			"required": ["roll_type"],
+			"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.",
+			"required": ["roll_type", "enhances"],
 			"properties": {
 				"roll_type": {
 					"type": "string",
-					"description": "A progress move that rolls on a standard progress track type (defined by this move).",
+					"description": "A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.",
 					"const": "progress_roll"
 				},
 				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIdWildcard"
-					}
+					"description": "An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveIdWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"trigger": {
 					"$ref": "#/$defs/TriggerProgressRollEnhancement"
@@ -2283,6 +2622,7 @@
 		"MoveSpecialTrack": {
 			"title": "MoveSpecialTrack",
 			"type": "object",
+			"description": "A progress move that rolls on a special track, such as Legacies (Starforged) or Bonds (classic Ironsworn). For progress moves that use standard progress tracks, see MoveProgressRoll instead.",
 			"required": [
 				"id",
 				"name",
@@ -2311,14 +2651,17 @@
 					"const": "special_track"
 				},
 				"trigger": {
-					"$ref": "#/$defs/TriggerSpecialTrack"
+					"$ref": "#/$defs/TriggerSpecialTrack",
+					"title": "Trigger",
+					"description": "Trigger conditions for this move."
 				},
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
 					"description": "The complete rules text of the move."
 				},
 				"outcomes": {
-					"$ref": "#/$defs/MoveOutcomes"
+					"$ref": "#/$defs/MoveOutcomes",
+					"title": "MoveOutcomes"
 				},
 				"oracles": {
 					"type": "array",
@@ -2343,18 +2686,28 @@
 		"MoveSpecialTrackEnhancement": {
 			"title": "MoveSpecialTrackEnhancement",
 			"type": "object",
-			"required": ["roll_type"],
+			"description": "An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.",
+			"required": ["roll_type", "enhances"],
 			"properties": {
 				"roll_type": {
 					"type": "string",
-					"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+					"description": "A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.",
 					"const": "special_track"
 				},
 				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIdWildcard"
-					}
+					"description": "An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveIdWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"trigger": {
 					"$ref": "#/$defs/TriggerSpecialTrackEnhancement"
@@ -2380,6 +2733,7 @@
 		"RollOptionAssetControl": {
 			"title": "RollOptionAssetControl",
 			"type": "object",
+			"description": "Roll using the value of an asset control.",
 			"required": ["using", "assets", "control"],
 			"properties": {
 				"using": {
@@ -2388,7 +2742,7 @@
 					"const": "asset_control"
 				},
 				"assets": {
-					"description": "Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
+					"description": "Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
 					"default": null,
 					"anyOf": [
 						{
@@ -2404,7 +2758,7 @@
 				},
 				"control": {
 					"$ref": "#/$defs/DictKey",
-					"description": "The key of the asset control field.",
+					"description": "The dictionary key of the asset control field.",
 					"examples": ["health", "integrity"]
 				}
 			}
@@ -2412,6 +2766,7 @@
 		"RollOptionAssetOption": {
 			"title": "RollOptionAssetOption",
 			"type": "object",
+			"description": "Roll using the value of an asset option.",
 			"required": ["using", "assets", "option"],
 			"properties": {
 				"using": {
@@ -2420,7 +2775,7 @@
 					"const": "asset_option"
 				},
 				"assets": {
-					"description": "Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
+					"description": "Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
 					"default": null,
 					"anyOf": [
 						{
@@ -2436,13 +2791,14 @@
 				},
 				"option": {
 					"$ref": "#/$defs/DictKey",
-					"description": "The key of the asset option field."
+					"description": "The dictionary key of the asset option field."
 				}
 			}
 		},
 		"RollOptionAttachedAssetControl": {
 			"title": "RollOptionAttachedAssetControl",
 			"type": "object",
+			"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
 			"required": ["using", "control"],
 			"properties": {
 				"using": {
@@ -2452,7 +2808,7 @@
 				},
 				"control": {
 					"$ref": "#/$defs/DictKey",
-					"description": "The key of the asset control field.",
+					"description": "The dictionary key of the asset control field.",
 					"examples": ["health", "integrity"]
 				}
 			}
@@ -2460,6 +2816,7 @@
 		"RollOptionAttachedAssetOption": {
 			"title": "RollOptionAttachedAssetOption",
 			"type": "object",
+			"description": "Roll using the value of an attached asset option.",
 			"required": ["using", "option"],
 			"properties": {
 				"using": {
@@ -2469,13 +2826,14 @@
 				},
 				"option": {
 					"$ref": "#/$defs/DictKey",
-					"description": "The key of the asset option field."
+					"description": "The dictionary key of the asset option field."
 				}
 			}
 		},
 		"RollOptionConditionMeter": {
 			"title": "RollOptionConditionMeter",
 			"type": "object",
+			"description": "Roll using the value of a standard player condition meter.",
 			"required": ["using", "condition_meter"],
 			"properties": {
 				"using": {
@@ -2491,6 +2849,7 @@
 		"RollOptionCustom": {
 			"title": "RollOptionCustom",
 			"type": "object",
+			"description": "Roll using an integer value with customizable labels.",
 			"required": ["name", "value", "using"],
 			"properties": {
 				"name": {
@@ -2510,6 +2869,7 @@
 		"RollOptionStat": {
 			"title": "RollOptionStat",
 			"type": "object",
+			"description": "Roll using a standard player character stat.",
 			"required": ["using", "stat"],
 			"properties": {
 				"using": {
@@ -2624,10 +2984,12 @@
 		"TriggerActionRollEnhancement": {
 			"title": "TriggerActionRollEnhancement",
 			"type": "object",
+			"description": "Describes changes/additions made to the enhanced move's trigger conditions.",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
+					"description": "Trigger conditions added to the enhanced move.",
 					"items": {
 						"$ref": "#/$defs/TriggerActionRollConditionEnhancement"
 					}
@@ -2707,10 +3069,12 @@
 		"TriggerNoRollEnhancement": {
 			"title": "TriggerNoRollEnhancement",
 			"type": "object",
+			"description": "Describes changes/additions made to the enhanced move's trigger conditions.",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
+					"description": "Trigger conditions added to the enhanced move.",
 					"items": {
 						"$ref": "#/$defs/TriggerNoRollCondition"
 					}
@@ -2807,10 +3171,12 @@
 		"TriggerProgressRollEnhancement": {
 			"title": "TriggerProgressRollEnhancement",
 			"type": "object",
+			"description": "Describes changes/additions made to the enhanced move's trigger conditions.",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
+					"description": "Trigger conditions added to the enhanced move.",
 					"items": {
 						"$ref": "#/$defs/TriggerProgressRollConditionEnhancement"
 					}
@@ -2916,10 +3282,12 @@
 		"TriggerSpecialTrackEnhancement": {
 			"title": "TriggerSpecialTrackEnhancement",
 			"type": "object",
+			"description": "Describes changes/additions made to the enhanced move's trigger conditions.",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
+					"description": "Trigger conditions added to the enhanced move.",
 					"items": {
 						"$ref": "#/$defs/TriggerSpecialTrackConditionEnhancement"
 					}
@@ -2975,8 +3343,8 @@
 				},
 				"options": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetOptionField"
@@ -3009,8 +3377,8 @@
 				},
 				"controls": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetControlField"
@@ -3029,6 +3397,7 @@
 		"AssetAbility": {
 			"title": "AssetAbility",
 			"type": "object",
+			"description": "An asset ability: one of the purchasable features of an asset. Most assets have three.",
 			"required": ["id", "enabled", "text"],
 			"properties": {
 				"id": {
@@ -3036,7 +3405,8 @@
 					"description": "The unique Datasworn ID for this item."
 				},
 				"name": {
-					"$ref": "#/$defs/Label"
+					"$ref": "#/$defs/Label",
+					"description": "A handful of asset abilities have a label/name, for instance classic Ironsworn companion assets. Most canonical assets omit this property."
 				},
 				"enabled": {
 					"type": "boolean",
@@ -3045,8 +3415,8 @@
 				},
 				"options": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Fields that are expected to be set once and remain the same through the life of the asset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetAbilityOptionField"
@@ -3054,12 +3424,13 @@
 					}
 				},
 				"text": {
-					"$ref": "#/$defs/MarkdownString"
+					"$ref": "#/$defs/MarkdownString",
+					"description": "The complete rules text of this asset ability."
 				},
 				"controls": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Fields whose values are expected to change over the life of the asset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetAbilityControlField"
@@ -3079,8 +3450,8 @@
 				},
 				"moves": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Unique moves added by this asset ability.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Move"
@@ -3379,8 +3750,8 @@
 				},
 				"controls": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Checkbox controls rendered as part of the condition meter.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetConditionMeterControlField"
@@ -3425,8 +3796,8 @@
 		"AssetConditionMeterControlField": {
 			"title": "AssetConditionMeterControlField",
 			"type": "object",
-			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"description": "A checkbox control field, rendered as part of an asset condition meter.",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
@@ -3926,8 +4297,8 @@
 				},
 				"controls": {
 					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
 					"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
+					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetControlFieldEnhancement"
@@ -5949,260 +6320,6 @@
 					"$ref": "#/$defs/I18nHints"
 				}
 			}
-		},
-		"Ruleset": {
-			"title": "Ruleset",
-			"type": "object",
-			"description": "A standalone Datasworn package that describes its own ruleset.",
-			"required": [
-				"id",
-				"datasworn_version",
-				"package_type",
-				"rules",
-				"oracles",
-				"assets",
-				"moves"
-			],
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/RulesetId"
-				},
-				"datasworn_version": {
-					"$ref": "#/$defs/SemanticVersion"
-				},
-				"package_type": {
-					"type": "string",
-					"const": "ruleset"
-				},
-				"rules": {
-					"$ref": "#/$defs/Rules"
-				},
-				"oracles": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/OracleCollection"
-						}
-					}
-				},
-				"assets": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing asset types, which contain assets.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/AssetType"
-						}
-					}
-				},
-				"atlas": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing atlas collections, which contain atlas entries.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/Atlas"
-						}
-					}
-				},
-				"moves": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing move categories, which contain moves.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/MoveCategory"
-						}
-					}
-				},
-				"npcs": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing NPC collections, which contain NPCs.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/NpcCollection"
-						}
-					}
-				},
-				"rarities": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/Rarity"
-						}
-					}
-				},
-				"delve_sites": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSite"
-						}
-					}
-				},
-				"site_domains": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing delve site domains.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSiteDomain"
-						}
-					}
-				},
-				"site_themes": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing delve site themes.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSiteTheme"
-						}
-					}
-				},
-				"truths": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object of truth categories.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/Truth"
-						}
-					}
-				}
-			}
-		},
-		"Expansion": {
-			"title": "Expansion",
-			"type": "object",
-			"description": "A Datasworn package that relies on an external package to provide its ruleset.",
-			"required": ["id", "datasworn_version", "package_type", "ruleset"],
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/ExpansionId"
-				},
-				"datasworn_version": {
-					"$ref": "#/$defs/SemanticVersion"
-				},
-				"package_type": {
-					"type": "string",
-					"const": "expansion"
-				},
-				"ruleset": {
-					"$ref": "#/$defs/RulesetId"
-				},
-				"rules": {
-					"$ref": "#/$defs/RulesExpansion"
-				},
-				"oracles": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/OracleCollection"
-						}
-					}
-				},
-				"assets": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing asset types, which contain assets.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/AssetType"
-						}
-					}
-				},
-				"atlas": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing atlas collections, which contain atlas entries.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/Atlas"
-						}
-					}
-				},
-				"moves": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing move categories, which contain moves.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/MoveCategory"
-						}
-					}
-				},
-				"npcs": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing NPC collections, which contain NPCs.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/NpcCollection"
-						}
-					}
-				},
-				"rarities": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/Rarity"
-						}
-					}
-				},
-				"delve_sites": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSite"
-						}
-					}
-				},
-				"site_domains": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing delve site domains.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSiteDomain"
-						}
-					}
-				},
-				"site_themes": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object containing delve site themes.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/DelveSiteTheme"
-						}
-					}
-				},
-				"truths": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"description": "A dictionary object of truth categories.",
-					"patternProperties": {
-						"^([a-z][a-z_]*)$": {
-							"$ref": "#/$defs/Truth"
-						}
-					}
-				}
-			}
 		}
-	},
-	"$schema": "http://json-schema.org/draft-07/schema#"
+	}
 }

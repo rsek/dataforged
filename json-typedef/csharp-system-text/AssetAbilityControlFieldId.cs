@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for an AssetAbilityControlField.
+    /// </summary>
     [JsonConverter(typeof(AssetAbilityControlFieldIdJsonConverter))]
     public class AssetAbilityControlFieldId
     {

@@ -20,6 +20,7 @@ pub enum RulesPackage {
 /// ruleset.
 #[derive(Serialize, Deserialize)]
 pub struct RulesPackageExpansion {
+    /// The version of the Datasworn format used by this data.
     #[serde(rename = "datasworn_version")]
     pub dataswornVersion: SemanticVersion,
 
@@ -95,6 +96,7 @@ pub struct RulesPackageRuleset {
     #[serde(rename = "assets")]
     pub assets: HashMap<String, AssetType>,
 
+    /// The version of the Datasworn format used by this data.
     #[serde(rename = "datasworn_version")]
     pub dataswornVersion: SemanticVersion,
 
@@ -208,46 +210,54 @@ pub enum ActionRollOption {
     Stat(ActionRollOptionStat),
 }
 
+/// Roll using the value of an asset control.
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionAssetControl {
     #[serde(rename = "assets")]
     pub assets: Vec<AssetIdWildcard>,
 
-    /// The key of the asset control field.
+    /// The dictionary key of the asset control field.
     #[serde(rename = "control")]
     pub control: DictKey,
 }
 
+/// Roll using the value of an asset option.
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionAssetOption {
     #[serde(rename = "assets")]
     pub assets: Vec<AssetIdWildcard>,
 
-    /// The key of the asset option field.
+    /// The dictionary key of the asset option field.
     #[serde(rename = "option")]
     pub option: DictKey,
 }
 
+/// Roll using the value of an attached asset control. For example, a Module
+/// asset could use this to roll using the `integrity` control of an attached
+/// Vehicle.
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionAttachedAssetControl {
-    /// The key of the asset control field.
+    /// The dictionary key of the asset control field.
     #[serde(rename = "control")]
     pub control: DictKey,
 }
 
+/// Roll using the value of an attached asset option.
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionAttachedAssetOption {
-    /// The key of the asset option field.
+    /// The dictionary key of the asset option field.
     #[serde(rename = "option")]
     pub option: DictKey,
 }
 
+/// Roll using the value of a standard player condition meter.
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionConditionMeter {
     #[serde(rename = "condition_meter")]
     pub conditionMeter: ConditionMeterId,
 }
 
+/// Roll using an integer value with customizable labels.
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionCustom {
     #[serde(rename = "name")]
@@ -257,6 +267,7 @@ pub struct ActionRollOptionCustom {
     pub value: i16,
 }
 
+/// Roll using a standard player character stat.
 #[derive(Serialize, Deserialize)]
 pub struct ActionRollOptionStat {
     #[serde(rename = "stat")]
@@ -375,6 +386,8 @@ pub struct Asset {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// An asset ability: one of the purchasable features of an asset. Most assets
+/// have three.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbility {
     /// Is this asset ability enabled?
@@ -385,6 +398,7 @@ pub struct AssetAbility {
     #[serde(rename = "id")]
     pub id: AssetAbilityId,
 
+    /// The complete rules text of this asset ability.
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
@@ -409,6 +423,8 @@ pub struct AssetAbility {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub moves: Option<Box<HashMap<String, Move>>>,
 
+    /// A handful of asset abilities have a label/name, for instance classic
+    /// Ironsworn companion assets. Most canonical assets omit this property.
     #[serde(rename = "name")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<Box<Label>>,
@@ -512,8 +528,10 @@ pub struct AssetAbilityControlFieldCounter {
     pub value: i16,
 }
 
+/// A unique ID for an AssetAbilityControlField.
 pub type AssetAbilityControlFieldId = String;
 
+/// A unique ID for an AssetAbility.
 pub type AssetAbilityId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -540,6 +558,7 @@ pub struct AssetAbilityOptionFieldText {
     pub value: String,
 }
 
+/// A unique ID for an AssetAbilityOptionField.
 pub type AssetAbilityOptionFieldId = String;
 
 /// Describes which assets can be attached to this asset. Example: Starforged's
@@ -622,6 +641,7 @@ pub struct AssetConditionMeterControlFieldCheckbox {
     pub value: bool,
 }
 
+/// A unique ID for an AssetConditionMeterControlField.
 pub type AssetConditionMeterControlFieldId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -887,8 +907,10 @@ pub struct AssetControlFieldEnhancementConditionMeter {
     pub max: i8,
 }
 
+/// A unique ID for an AssetControlField.
 pub type AssetControlFieldId = String;
 
+/// A wildcarded ID that can be used to match multiple AssetControlFields.
 pub type AssetControlFieldIdWildcard = String;
 
 /// Describes enhancements made to this asset in a partial asset object. The
@@ -925,8 +947,10 @@ pub struct AssetEnhancement {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// A unique ID for an Asset.
 pub type AssetId = String;
 
+/// A wildcarded ID that can be used to match multiple Assets.
 pub type AssetIdWildcard = String;
 
 #[derive(Serialize, Deserialize)]
@@ -1165,8 +1189,10 @@ pub struct AssetOptionFieldText {
     pub value: String,
 }
 
+/// A unique ID for an AssetOptionField.
 pub type AssetOptionFieldId = String;
 
+/// A wildcarded ID that can be used to match multiple AssetOptionFields.
 pub type AssetOptionFieldIdWildcard = String;
 
 #[derive(Serialize, Deserialize)]
@@ -1239,6 +1265,7 @@ pub struct AssetType {
     pub summary: Option<Box<MarkdownString>>,
 }
 
+/// A unique ID for an AssetType.
 pub type AssetTypeId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -1360,12 +1387,16 @@ pub struct AtlasEntry {
     pub yourTruth: Option<Box<MarkdownString>>,
 }
 
+/// A unique ID for an AtlasEntry.
 pub type AtlasEntryId = String;
 
+/// A wildcarded ID that can be used to match multiple AtlasEntrys.
 pub type AtlasEntryIdWildcard = String;
 
+/// A unique ID for an Atlas.
 pub type AtlasId = String;
 
+/// A wildcarded ID that can be used to match multiple Atlass.
 pub type AtlasIdWildcard = String;
 
 /// Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
@@ -1404,6 +1435,7 @@ pub struct ConditionMeterRule {
     pub value: i8,
 }
 
+/// A unique ID for a ConditionMeterRule.
 pub type ConditionMeterRuleId = String;
 
 /// A CSS color value. See: https://developer.mozilla.org/en-
@@ -1511,6 +1543,7 @@ pub enum DelveSiteDenizenFrequency {
     VeryCommon,
 }
 
+/// A unique ID for a DelveSiteDenizen.
 pub type DelveSiteDenizenId = String;
 
 /// A delve site Domain card.
@@ -1684,8 +1717,10 @@ pub struct DelveSiteDomainFeatureRow {
     pub template: Option<Box<OracleRollTemplate>>,
 }
 
+/// A unique ID for a DelveSiteDomain.
 pub type DelveSiteDomainId = String;
 
+/// A unique ID for a DelveSite.
 pub type DelveSiteId = String;
 
 /// A delve site theme card.
@@ -1850,6 +1885,7 @@ pub struct DelveSiteThemeFeatureRow {
     pub template: Option<Box<OracleRollTemplate>>,
 }
 
+/// A unique ID for a DelveSiteTheme.
 pub type DelveSiteThemeId = String;
 
 pub type DiceNotation = String;
@@ -1857,8 +1893,10 @@ pub type DiceNotation = String;
 /// A key used in a Datasworn dictionary object.
 pub type DictKey = String;
 
+/// A unique ID for a DomainDangerRow.
 pub type DomainDangerRowId = String;
 
+/// A unique ID for a DomainFeatureRow.
 pub type DomainFeatureRowId = String;
 
 /// The ID of a Datasworn package that relies on an external package to provide
@@ -1941,15 +1979,17 @@ pub struct ImpactRule {
     /// Keys of ruleset condition meters, to which this impact prevents
     /// recovery.
     #[serde(rename = "prevents_recovery")]
-    pub preventsRecovery: Vec<DictKey>,
+    pub preventsRecovery: Vec<ConditionMeterId>,
 
     /// Is this impact applied to all players at once?
     #[serde(rename = "shared")]
     pub shared: bool,
 }
 
+/// A unique ID for an ImpactRuleCollection.
 pub type ImpactRuleCollectionId = String;
 
+/// A unique ID for an ImpactRule.
 pub type ImpactRuleId = String;
 
 /// A localized plain text name or label.
@@ -2001,6 +2041,7 @@ pub struct MoveActionRoll {
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
+    /// Trigger conditions for this move.
     #[serde(rename = "trigger")]
     pub trigger: TriggerActionRoll,
 
@@ -2028,6 +2069,7 @@ pub struct MoveActionRoll {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// A move that makes no progress rolls or action rolls.
 #[derive(Serialize, Deserialize)]
 pub struct MoveNoRoll {
     /// The unique Datasworn ID for this item.
@@ -2047,6 +2089,7 @@ pub struct MoveNoRoll {
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
+    /// Trigger conditions for this move.
     #[serde(rename = "trigger")]
     pub trigger: TriggerNoRoll,
 
@@ -2074,8 +2117,9 @@ pub struct MoveNoRoll {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
-/// A progress move that rolls on a standard progress track type (defined by the
-/// move object).
+/// A progress move that rolls on a standard progress track type (whose features
+/// are defined by this move object). For progress rolls that use special
+/// tracks, see MoveSpecialTrack.
 #[derive(Serialize, Deserialize)]
 pub struct MoveProgressRoll {
     /// The unique Datasworn ID for this item.
@@ -2103,6 +2147,7 @@ pub struct MoveProgressRoll {
     #[serde(rename = "tracks")]
     pub tracks: ProgressTrackTypeInfo,
 
+    /// Trigger conditions for this move.
     #[serde(rename = "trigger")]
     pub trigger: TriggerProgressRoll,
 
@@ -2130,6 +2175,9 @@ pub struct MoveProgressRoll {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// A progress move that rolls on a special track, such as Legacies (Starforged)
+/// or Bonds (classic Ironsworn). For progress moves that use standard progress
+/// tracks, see MoveProgressRoll instead.
 #[derive(Serialize, Deserialize)]
 pub struct MoveSpecialTrack {
     /// The unique Datasworn ID for this item.
@@ -2152,6 +2200,7 @@ pub struct MoveSpecialTrack {
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
+    /// Trigger conditions for this move.
     #[serde(rename = "trigger")]
     pub trigger: TriggerSpecialTrack,
 
@@ -2249,6 +2298,7 @@ pub struct MoveCategory {
     pub summary: Option<Box<MarkdownString>>,
 }
 
+/// A unique ID for a MoveCategory.
 pub type MoveCategoryId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -2267,44 +2317,52 @@ pub enum MoveEnhancement {
     SpecialTrack(MoveEnhancementSpecialTrack),
 }
 
+/// An object that describes changes to a move. These changes should be applied
+/// recursively, altering only the specified properties; enhanced arrays should
+/// be concatencated with the original array value.
 #[derive(Serialize, Deserialize)]
 pub struct MoveEnhancementActionRoll {
     #[serde(rename = "enhances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
+    pub enhances: Vec<MoveIdWildcard>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger: Option<Box<TriggerActionRollEnhancement>>,
 }
 
+/// An object that describes changes to a move. These changes should be applied
+/// recursively, altering only the specified properties; enhanced arrays should
+/// be concatencated with the original array value.
 #[derive(Serialize, Deserialize)]
 pub struct MoveEnhancementNoRoll {
     #[serde(rename = "enhances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
+    pub enhances: Vec<MoveIdWildcard>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger: Option<Box<TriggerNoRollEnhancement>>,
 }
 
+/// An object that describes changes to a move. These changes should be applied
+/// recursively, altering only the specified properties; enhanced arrays should
+/// be concatencated with the original array value.
 #[derive(Serialize, Deserialize)]
 pub struct MoveEnhancementProgressRoll {
     #[serde(rename = "enhances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
+    pub enhances: Vec<MoveIdWildcard>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger: Option<Box<TriggerProgressRollEnhancement>>,
 }
 
+/// An object that describes changes to a move. These changes should be applied
+/// recursively, altering only the specified properties; enhanced arrays should
+/// be concatencated with the original array value.
 #[derive(Serialize, Deserialize)]
 pub struct MoveEnhancementSpecialTrack {
     #[serde(rename = "enhances")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub enhances: Option<Box<Vec<MoveIdWildcard>>>,
+    pub enhances: Vec<MoveIdWildcard>,
 
     #[serde(rename = "trigger")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -2511,10 +2569,13 @@ pub struct NpcCollection {
     pub summary: Option<Box<MarkdownString>>,
 }
 
+/// A unique ID for a NpcCollection.
 pub type NpcCollectionId = String;
 
+/// A unique ID for a Npc.
 pub type NpcId = String;
 
+/// A wildcarded ID that can be used to match multiple Npcs.
 pub type NpcIdWildcard = String;
 
 /// A localized category label describing the nature of this NPC.
@@ -2549,6 +2610,7 @@ pub struct NpcVariant {
     pub summary: Option<Box<MarkdownString>>,
 }
 
+/// A unique ID for a NpcVariant.
 pub type NpcVariantId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -2629,6 +2691,7 @@ pub struct OracleCollection {
     pub summary: Option<Box<MarkdownString>>,
 }
 
+/// A unique ID for an OracleCollection.
 pub type OracleCollectionId = String;
 
 /// Describes the presentation of this oracle collection, which might represent
@@ -2827,6 +2890,7 @@ pub enum OracleTableColumnContentKey {
     Summary,
 }
 
+/// A unique ID for an OracleTable.
 pub type OracleTableId = String;
 
 /// Oracle table wildcards can also use '**' to represent any number of
@@ -3118,6 +3182,7 @@ pub struct Rarity {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+/// A unique ID for a Rarity.
 pub type RarityId = String;
 
 /// Describes rules for player characters in this ruleset, such as stats and
@@ -3275,6 +3340,7 @@ pub struct SpecialTrackRule {
     pub shared: bool,
 }
 
+/// A unique ID for a SpecialTrackRule.
 pub type SpecialTrackRuleId = String;
 
 /// Special, ruleset-specific progress tracks. Usually, one exists per player
@@ -3303,6 +3369,7 @@ pub struct StatRule {
     pub label: Label,
 }
 
+/// A unique ID for a StatRule.
 pub type StatRuleId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -3351,8 +3418,10 @@ pub type SvgImageUrl = String;
 /// `result` key, for example `{{result:starforged/oracles/core/action}}`
 pub type TemplateString = String;
 
+/// A unique ID for a ThemeDangerRow.
 pub type ThemeDangerRowId = String;
 
+/// A unique ID for a ThemeFeatureRow.
 pub type ThemeFeatureRowId = String;
 
 /// Describes trigger conditions for a move that makes an action roll.
@@ -3410,8 +3479,10 @@ pub struct TriggerActionRollConditionEnhancement {
     pub text: Option<Box<MarkdownString>>,
 }
 
+/// Describes changes/additions made to the enhanced move's trigger conditions.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerActionRollEnhancement {
+    /// Trigger conditions added to the enhanced move.
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerActionRollConditionEnhancement>,
 }
@@ -3456,8 +3527,10 @@ pub struct TriggerNoRollCondition {
     pub text: Option<Box<MarkdownString>>,
 }
 
+/// Describes changes/additions made to the enhanced move's trigger conditions.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerNoRollEnhancement {
+    /// Trigger conditions added to the enhanced move.
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerNoRollCondition>,
 }
@@ -3516,8 +3589,10 @@ pub struct TriggerProgressRollConditionEnhancement {
     pub text: Option<Box<MarkdownString>>,
 }
 
+/// Describes changes/additions made to the enhanced move's trigger conditions.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerProgressRollEnhancement {
+    /// Trigger conditions added to the enhanced move.
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerProgressRollConditionEnhancement>,
 }
@@ -3584,8 +3659,10 @@ pub struct TriggerSpecialTrackConditionOption {
     pub using: SpecialTrackType,
 }
 
+/// Describes changes/additions made to the enhanced move's trigger conditions.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerSpecialTrackEnhancement {
+    /// Trigger conditions added to the enhanced move.
     #[serde(rename = "conditions")]
     pub conditions: Vec<TriggerSpecialTrackConditionEnhancement>,
 }
@@ -3628,6 +3705,7 @@ pub struct Truth {
     pub yourCharacter: Option<Box<MarkdownString>>,
 }
 
+/// A unique ID for a Truth.
 pub type TruthId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -3659,6 +3737,7 @@ pub struct TruthOption {
     pub table: Option<Box<Vec<TruthOptionTableRow>>>,
 }
 
+/// A unique ID for a TruthOption.
 pub type TruthOptionId = String;
 
 /// Represents a row in an oracle table.

@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * A wildcarded ID that can be used to match multiple Atlass.
+ */
 public class AtlasIdWildcard {
     @JsonValue
     private String value;

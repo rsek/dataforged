@@ -50,8 +50,12 @@ export function Move<
 		MoveBase,
 		Type.Object({
 			roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
-			trigger,
-			outcomes
+			trigger: {
+				title: 'Trigger',
+				description: 'Trigger conditions for this move.',
+				...trigger
+			} as Trigger,
+			outcomes: { title: 'MoveOutcomes', ...outcomes } as Outcomes
 		})
 	]) as TObject<
 		ObjectProperties<typeof MoveBase> & {
@@ -85,11 +89,18 @@ export function MoveEnhancement<
 	Trigger extends TRef<TTriggerEnhancement>
 >(rollType: RollType, trigger: Trigger, options: ObjectOptions = {}) {
 	const base = Type.Object({
-		roll_type: ExtractLiteralFromEnum(MoveRollType, rollType),
+		roll_type: ExtractLiteralFromEnum(MoveRollType, rollType, {
+			description:
+				'A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.'
+		}),
 		trigger: Type.Optional(trigger)
 	})
 
-	return Generic.EnhanceMany(base, Type.Ref(Id.MoveIdWildcard), options)
+	return Generic.EnhanceMany(base, Type.Ref(Id.MoveIdWildcard), {
+		description:
+			'An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.',
+		...options
+	})
 }
 export type MoveEnhancement<T extends MoveRollType, E> = Generic.EnhanceMany<{
 	roll_type: T

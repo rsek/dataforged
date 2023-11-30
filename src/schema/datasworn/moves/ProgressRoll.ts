@@ -27,7 +27,7 @@ export const TriggerProgressRollCondition = TriggerCondition(
 		default: 'progress_roll'
 	}),
 	Type.Array(Type.Ref<typeof ProgressRollOption>('ProgressRollOption')),
-	{ $id: 'TriggerProgressRollCondition' }
+	{ $id: 'TriggerProgressRollCondition', title: 'TriggerProgressRollCondition' }
 )
 
 export type TriggerProgressRollCondition = Static<
@@ -37,7 +37,8 @@ export type TriggerProgressRollCondition = Static<
 export const TriggerProgressRoll = Trigger(
 	Type.Array(Type.Ref(TriggerProgressRollCondition)),
 	{
-		$id: 'TriggerProgressRoll'
+		$id: 'TriggerProgressRoll',
+		title: 'TriggerProgressRoll'
 	}
 )
 
@@ -61,7 +62,7 @@ export const MoveProgressRoll = Utils.Assign(
 	{
 		title: 'Progress Move',
 		description:
-			'A progress move that rolls on a standard progress track type (defined by the move object).',
+			'A progress move that rolls on a standard progress track type (whose features are defined by this move object). For progress rolls that use special tracks, see MoveSpecialTrack.',
 		$id: 'MoveProgressRoll'
 	}
 )
@@ -70,12 +71,11 @@ export type MoveProgressRoll = Static<typeof MoveProgressRoll>
 
 // AUGMENTS
 
-export const TriggerProgressRollConditionEnhancement = TriggerConditionEnhancement(
-	TriggerProgressRollCondition,
-	{
-		$id: 'TriggerProgressRollConditionEnhancement'
-	}
-)
+export const TriggerProgressRollConditionEnhancement =
+	TriggerConditionEnhancement(TriggerProgressRollCondition, {
+		$id: 'TriggerProgressRollConditionEnhancement',
+		title: 'TriggerProgressRollConditionEnhancement'
+	})
 export type TriggerProgressRollConditionEnhancement = Static<
 	typeof TriggerProgressRollConditionEnhancement
 >
@@ -87,7 +87,8 @@ export const TriggerProgressRollEnhancement = TriggerEnhancement(
 		)
 	),
 	{
-		$id: 'TriggerProgressRollEnhancement'
+		$id: 'TriggerProgressRollEnhancement',
+		title: 'TriggerProgressRollEnhancement'
 	}
 )
 export type TriggerProgressRollEnhancement = Static<
@@ -111,7 +112,10 @@ export const TriggerSpecialTrackConditionOption = Type.Object(
 	{
 		using: Type.Ref<typeof Progress.SpecialTrackType>('SpecialTrackType')
 	},
-	{ $id: 'TriggerSpecialTrackConditionOption' }
+	{
+		$id: 'TriggerSpecialTrackConditionOption',
+		title: 'TriggerSpecialTrackConditionOption'
+	}
 )
 export type TriggerSpecialTrackConditionOption = Static<
 	typeof TriggerSpecialTrackConditionOption
@@ -124,7 +128,7 @@ export const TriggerSpecialTrackCondition = TriggerCondition(
 			'TriggerSpecialTrackConditionOption'
 		)
 	),
-	{ $id: 'TriggerSpecialTrackCondition' }
+	{ $id: 'TriggerSpecialTrackCondition', title: 'TriggerSpecialTrackCondition' }
 )
 export type TriggerSpecialTrackCondition = Static<
 	typeof TriggerSpecialTrackCondition
@@ -133,7 +137,8 @@ export type TriggerSpecialTrackCondition = Static<
 export const TriggerSpecialTrack = Trigger(
 	Type.Array(Type.Ref(TriggerSpecialTrackCondition)),
 	{
-		$id: 'TriggerSpecialTrack'
+		$id: 'TriggerSpecialTrack',
+		title: 'TriggerSpecialTrack'
 	}
 )
 
@@ -147,20 +152,21 @@ export const MoveSpecialTrack = Move(
 
 	{
 		title: 'Progress Move (special track roll)',
-		$id: 'MoveSpecialTrack'
+		$id: 'MoveSpecialTrack',
+		description:
+			'A progress move that rolls on a special track, such as Legacies (Starforged) or Bonds (classic Ironsworn). For progress moves that use standard progress tracks, see MoveProgressRoll instead.'
 	}
 )
 
 export type MoveSpecialTrack = Static<typeof MoveSpecialTrack>
 
-export const TriggerSpecialTrackConditionEnhancement = TriggerConditionEnhancement(
-	TriggerSpecialTrackCondition,
-	{
+export const TriggerSpecialTrackConditionEnhancement =
+	TriggerConditionEnhancement(TriggerSpecialTrackCondition, {
 		$id: 'TriggerSpecialTrackConditionEnhancement',
+		title: 'TriggerSpecialTrackConditionEnhancement',
 		description:
 			'A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).'
-	}
-)
+	})
 export type TriggerSpecialTrackConditionEnhancement = Static<
 	typeof TriggerSpecialTrackConditionEnhancement
 >
@@ -172,7 +178,8 @@ export const TriggerSpecialTrackEnhancement = TriggerEnhancement(
 		)
 	),
 	{
-		$id: 'TriggerSpecialTrackEnhancement'
+		$id: 'TriggerSpecialTrackEnhancement',
+		title: 'TriggerSpecialTrackEnhancement'
 	}
 )
 export type TriggerSpecialTrackEnhancement = TriggerEnhancement<

@@ -7,7 +7,7 @@ import Defs from './Defs.js'
 
 const $schema = 'http://json-schema.org/draft-07/schema#'
 
-export const Datasworn = SchemaRoot(RulesPackage, {
+export const Datasworn = SchemaRoot(Type.Ref(RulesPackage), {
 	$schema,
 	$id: SCHEMA_ID,
 	title: `Datasworn v${VERSION}`,
@@ -16,7 +16,7 @@ export const Datasworn = SchemaRoot(RulesPackage, {
 	$defs: Defs
 })
 
-export const DataswornSource = InputSchemaRoot(RulesPackage, {
+export const DataswornSource = InputSchemaRoot(Type.Ref(RulesPackage), {
 	$schema,
 	$id: SOURCE_SCHEMA_ID,
 	title: `DataswornSource v${VERSION}`,

@@ -5,8 +5,15 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Describes changes/additions made to the enhanced move's trigger
+    /// conditions.
+    /// </summary>
     public class TriggerSpecialTrackEnhancement
     {
+        /// <summary>
+        /// Trigger conditions added to the enhanced move.
+        /// </summary>
         [JsonPropertyName("conditions")]
         public IList<TriggerSpecialTrackConditionEnhancement> Conditions { get; set; }
     }

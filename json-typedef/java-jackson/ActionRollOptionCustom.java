@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Roll using an integer value with customizable labels.
+ */
 @JsonSerialize
 public class ActionRollOptionCustom extends ActionRollOption {
     @JsonProperty("name")

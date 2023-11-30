@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Roll using a standard player character stat.
+    /// </summary>
     public class ActionRollOptionStat : ActionRollOption
     {
         [JsonPropertyName("using")]

@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Roll using the value of a standard player condition meter.
+    /// </summary>
     public class ActionRollOptionConditionMeter : ActionRollOption
     {
         [JsonPropertyName("using")]

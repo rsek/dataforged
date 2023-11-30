@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Roll using the value of an attached asset option.
+ */
 @JsonSerialize
 public class ActionRollOptionAttachedAssetOption extends ActionRollOption {
     @JsonProperty("option")
@@ -15,7 +18,7 @@ public class ActionRollOptionAttachedAssetOption extends ActionRollOption {
 
     /**
      * Getter for option.<p>
-     * The key of the asset option field.
+     * The dictionary key of the asset option field.
      */
     public DictKey getOption() {
         return option;
@@ -23,7 +26,7 @@ public class ActionRollOptionAttachedAssetOption extends ActionRollOption {
 
     /**
      * Setter for option.<p>
-     * The key of the asset option field.
+     * The dictionary key of the asset option field.
      */
     public void setOption(DictKey option) {
         this.option = option;

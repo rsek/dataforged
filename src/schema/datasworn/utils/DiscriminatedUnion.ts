@@ -164,19 +164,9 @@ export function ToUnion<T extends TObject[]>(
 		Members
 	])
 
-	const anyOf = schema.allOf.map((item) => {
-		const subschema = item.then
+	const anyOf = schema.allOf.map(({ then }) => then) as T
 
-		switch (true) {
-			case TypeGuard.TObject(subschema):
-				break
+	// console.log(anyOf)
 
-			default:
-				break
-		}
-
-		return subschema
-	})
-
-	return Type.Union(anyOf, base)
+	return Type.Union(anyOf, omit(base, ['properties']))
 }

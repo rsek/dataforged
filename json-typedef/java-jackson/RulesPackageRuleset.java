@@ -79,6 +79,7 @@ public class RulesPackageRuleset extends RulesPackage {
 
     /**
      * Getter for dataswornVersion.<p>
+     * The version of the Datasworn format used by this data.
      */
     public SemanticVersion getDataswornVersion() {
         return dataswornVersion;
@@ -86,6 +87,7 @@ public class RulesPackageRuleset extends RulesPackage {
 
     /**
      * Setter for dataswornVersion.<p>
+     * The version of the Datasworn format used by this data.
      */
     public void setDataswornVersion(SemanticVersion dataswornVersion) {
         this.dataswornVersion = dataswornVersion;

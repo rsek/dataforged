@@ -5,6 +5,9 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * A unique ID for an AssetOptionField.
+ */
 public class AssetOptionFieldId {
     @JsonValue
     private String value;

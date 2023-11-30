@@ -8,6 +8,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * An asset ability: one of the purchasable features of an asset. Most assets
+ * have three.
+ */
 @JsonSerialize
 public class AssetAbility {
     @JsonProperty("enabled")
@@ -80,6 +84,7 @@ public class AssetAbility {
 
     /**
      * Getter for text.<p>
+     * The complete rules text of this asset ability.
      */
     public MarkdownString getText() {
         return text;
@@ -87,6 +92,7 @@ public class AssetAbility {
 
     /**
      * Setter for text.<p>
+     * The complete rules text of this asset ability.
      */
     public void setText(MarkdownString text) {
         this.text = text;
@@ -160,6 +166,8 @@ public class AssetAbility {
 
     /**
      * Getter for name.<p>
+     * A handful of asset abilities have a label/name, for instance classic
+     * Ironsworn companion assets. Most canonical assets omit this property.
      */
     public Label getName() {
         return name;
@@ -167,6 +175,8 @@ public class AssetAbility {
 
     /**
      * Setter for name.<p>
+     * A handful of asset abilities have a label/name, for instance classic
+     * Ironsworn companion assets. Most canonical assets omit this property.
      */
     public void setName(Label name) {
         this.name = name;

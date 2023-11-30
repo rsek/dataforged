@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A unique ID for an OracleTable.
+    /// </summary>
     [JsonConverter(typeof(OracleTableIdJsonConverter))]
     public class OracleTableId
     {

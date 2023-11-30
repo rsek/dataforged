@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// A wildcarded ID that can be used to match multiple AssetControlFields.
+    /// </summary>
     [JsonConverter(typeof(AssetControlFieldIdWildcardJsonConverter))]
     public class AssetControlFieldIdWildcard
     {

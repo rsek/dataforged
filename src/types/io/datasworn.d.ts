@@ -7,143 +7,174 @@
 
 /**
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetAbilityControlFieldId".
+ * via the `definition` "RulesPackage".
  */
-export type AssetAbilityControlFieldId = string;
+export type RulesPackage = Ruleset | Expansion;
 /**
+ * The ID of standalone Datasworn package that describes its own ruleset.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetAbilityId".
+ * via the `definition` "RulesetId".
  */
-export type AssetAbilityId = string;
+export type RulesetId = string;
 /**
+ * The version of the Datasworn format used by this data.
+ */
+export type SemanticVersion = string;
+/**
+ * A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).
+ */
+export type Label = string;
+/**
+ * A description of this condition meter.
+ */
+export type MarkdownString = string;
+/**
+ * A label for this impact category.
+ */
+export type Label1 = string;
+/**
+ * A description of this impact category.
+ */
+export type MarkdownString1 = string;
+/**
+ * The label for this impact.
+ */
+export type Label2 = string;
+/**
+ * A description of this impact.
+ */
+export type MarkdownString2 = string;
+/**
+ * A basic, rollable player character resource.
+ */
+export type ConditionMeterId = string;
+/**
+ * A label for this special track.
+ */
+export type Label3 = string;
+/**
+ * A description of this special track.
+ */
+export type MarkdownString3 = string;
+/**
+ * A label for this stat.
+ */
+export type Label4 = string;
+/**
+ * A description of this stat.
+ */
+export type MarkdownString4 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type OracleCollectionId = string;
+/**
+ * The primary name/label for this item.
+ */
+export type Label5 = string;
+/**
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
+ */
+export type Label6 = string;
+/**
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ */
+export type OracleCollectionId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor = string;
+/**
+ * An SVG icon associated with this collection.
+ */
+export type SvgImageUrl = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl = string;
+/**
+ * Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.
+ */
+export type OracleCollectionRendering = {
+  [k: string]: unknown;
+};
+/**
+ * A brief summary of this collection, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the "description" key instead.
+ */
+export type MarkdownString5 = string;
+/**
+ * A longer description of this collection, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead.
+ */
+export type MarkdownString6 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type OracleTableId = string;
+/**
+ * The primary name/label for this item.
+ */
+export type Label7 = string;
+/**
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
+ */
+export type Label8 = string;
+/**
+ * An icon that represents this table.
+ */
+export type SvgImageUrl1 = string;
+/**
+ * Extra images associated with this table.
+ */
+export type WebpImageUrl1 = string;
+/**
+ * The roll used to select a result on this table.
+ */
+export type DiceNotation = string;
+/**
+ * Describes how how to render this table, when presenting it as a standalone table.
+ */
+export type OracleTableRendering = {
+  [k: string]: unknown;
+};
+/**
+ * A brief summary of the oracle table's intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the "description" key instead.
+ */
+export type MarkdownString7 = string;
+/**
+ * A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead.
+ */
+export type MarkdownString8 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetAbilityOptionFieldId".
+ * via the `definition` "MarkdownString".
  */
-export type AssetAbilityOptionFieldId = string;
+export type MarkdownString9 = string;
 /**
+ * A unique ID for an OracleTable.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetConditionMeterControlFieldId".
+ * via the `definition` "OracleTableId".
  */
-export type AssetConditionMeterControlFieldId = string;
+export type OracleTableId1 = string;
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetControlFieldId".
- */
-export type AssetControlFieldId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetControlFieldIdWildcard".
- */
-export type AssetControlFieldIdWildcard = string;
-/**
+ * A unique ID for an Asset.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "AssetId".
  */
 export type AssetId = string;
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetIdWildcard".
- */
-export type AssetIdWildcard = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetOptionFieldId".
- */
-export type AssetOptionFieldId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetOptionFieldIdWildcard".
- */
-export type AssetOptionFieldIdWildcard = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetTypeId".
- */
-export type AssetTypeId = string;
-/**
+ * A unique ID for an AtlasEntry.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "AtlasEntryId".
  */
 export type AtlasEntryId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AtlasEntryIdWildcard".
- */
-export type AtlasEntryIdWildcard = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AtlasId".
- */
-export type AtlasId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AtlasIdWildcard".
- */
-export type AtlasIdWildcard = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ConditionMeterRuleId".
- */
-export type ConditionMeterRuleId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DelveSiteDenizenId".
- */
-export type DelveSiteDenizenId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DelveSiteDomainId".
- */
-export type DelveSiteDomainId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DelveSiteId".
- */
-export type DelveSiteId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DelveSiteThemeId".
- */
-export type DelveSiteThemeId = string;
-/**
- * A key used in a Datasworn dictionary object.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DictKey".
- */
-export type DictKey = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DomainDangerRowId".
- */
-export type DomainDangerRowId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DomainFeatureRowId".
- */
-export type DomainFeatureRowId = string;
-/**
- * The ID of a Datasworn package that relies on an external package to provide its ruleset.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ExpansionId".
- */
-export type ExpansionId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ImpactRuleCollectionId".
- */
-export type ImpactRuleCollectionId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ImpactRuleId".
- */
-export type ImpactRuleId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveCategoryId".
- */
-export type MoveCategoryId = string;
 /**
  * A move ID, for a standard move or a unique asset move
  *
@@ -160,142 +191,93 @@ export type StandardMoveId = string;
  */
 export type AssetMoveId = string;
 /**
- * A move ID with wildcards.
+ * A unique ID for a Npc.
  *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveIdWildcard".
- */
-export type MoveIdWildcard = StandardMoveIdWithWildcard | AssetMoveIdWithWildcard;
-export type StandardMoveIdWithWildcard = string;
-export type AssetMoveIdWithWildcard = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "NpcCollectionId".
- */
-export type NpcCollectionId = string;
-/**
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "NpcId".
  */
 export type NpcId = string;
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "NpcIdWildcard".
- */
-export type NpcIdWildcard = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "NpcVariantId".
- */
-export type NpcVariantId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleCollectionId".
- */
-export type OracleCollectionId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableId".
- */
-export type OracleTableId = string;
-/**
- * Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree.
+ * A unique ID for a Rarity.
  *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableIdWildcard".
- */
-export type OracleTableIdWildcard = string;
-/**
- * Normally, rows will end with two numbers separated by a dash, indicating their dice range.
- *
- * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRowId".
- */
-export type OracleTableRowId = string;
-/**
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "RarityId".
  */
 export type RarityId = string;
 /**
- * The ID of standalone Datasworn package that describes its own ruleset.
+ * A unique ID for a DelveSiteDomain.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RulesetId".
+ * via the `definition` "DelveSiteDomainId".
  */
-export type RulesetId = string;
+export type DelveSiteDomainId = string;
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "SpecialTrackRuleId".
- */
-export type SpecialTrackRuleId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "StatRuleId".
- */
-export type StatRuleId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ThemeDangerRowId".
- */
-export type ThemeDangerRowId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ThemeFeatureRowId".
- */
-export type ThemeFeatureRowId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TruthId".
- */
-export type TruthId = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TruthOptionId".
- */
-export type TruthOptionId = string;
-/**
- * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+ * A unique ID for a DelveSiteTheme.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "CssColor".
+ * via the `definition` "DelveSiteThemeId".
  */
-export type CssColor = string;
+export type DelveSiteThemeId = string;
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "SemanticVersion".
+ * The unique Datasworn ID for this item.
  */
-export type SemanticVersion = string;
-/**
- * The title of the source document.
- */
-export type Title = string;
-/**
- * An optional email contact for the author
- */
-export type Email = string;
-/**
- * An absolute URL pointing to the location where this element's license can be found.
- *
- * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
- */
-export type License = string | null;
+export type OracleTableRowId = string;
 /**
  * A relative URL pointing to a vector image in the SVG format.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "SvgImageUrl".
  */
-export type SvgImageUrl = string;
+export type SvgImageUrl2 = string;
 /**
- * A relative URL pointing to a raster image in the WEBP format.
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString10 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString11 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString12 = string;
+/**
+ * A string template that may be used in place of OracleTableRow#result.
+ */
+export type TemplateString = string;
+/**
+ * A string template that may be used in place of OracleTableRow#summary.
+ */
+export type TemplateString1 = string;
+/**
+ * A string template that may be used in place of OracleTableRow#description.
+ */
+export type TemplateString2 = string;
+/**
+ * Special roll instructions to use when rolling multiple times on a single oracle table.
+ *
+ *   * no_duplicates: Duplicates should be re-rolled.
+ *   * keep_duplicates: Duplicates should be kept.
+ *   * make_it_worse: Duplicates should be kept, and they compound to make things worse.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "WebpImageUrl".
+ * via the `definition` "OracleTableRollMethod".
  */
-export type WebpImageUrl = string;
+export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_it_worse";
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId2 = string;
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId3 = string;
 /**
  *   * common_noun: A common noun.
  *   * proper_noun: A proper noun.
@@ -319,308 +301,55 @@ export type PartOfSpeech =
   | "adjective"
   | "attributive_verb";
 /**
- * A localized plain text name or label.
+ * The title of the source document.
+ */
+export type Title = string;
+/**
+ * An optional email contact for the author
+ */
+export type Email = string;
+/**
+ * An absolute URL pointing to the location where this element's license can be found.
  *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "Label".
+ * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
  */
-export type Label = string;
+export type License = string | null;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MarkdownString".
+ * A unique ID for an OracleTable.
  */
-export type MarkdownString = string;
+export type OracleTableId4 = string;
 /**
- * A rich text string in Markdown with replaced values from oracle roll results.
- *
- * The custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`
- *
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TemplateString".
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
-export type TemplateString = string;
-/**
- * A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).
- */
-export type Label1 = string;
-/**
- * A description of this condition meter.
- */
-export type MarkdownString1 = string;
-/**
- * A label for this impact category.
- */
-export type Label2 = string;
-/**
- * A description of this impact category.
- */
-export type MarkdownString2 = string;
-/**
- * The label for this impact.
- */
-export type Label3 = string;
-/**
- * A description of this impact.
- */
-export type MarkdownString3 = string;
-/**
- * A label for this special track.
- */
-export type Label4 = string;
-/**
- * A description of this special track.
- */
-export type MarkdownString4 = string;
-/**
- * A label for this stat.
- */
-export type Label5 = string;
-/**
- * A description of this stat.
- */
-export type MarkdownString5 = string;
-/**
- * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
- *
- *   * 1: Troublesome
- *   * 2: Dangerous
- *   * 3: Formidable
- *   * 4: Extreme
- *   * 5: Epic
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ChallengeRank".
- */
-export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
-/**
- * A category label for progress tracks of this type.
- */
-export type Label6 = string;
-/**
- * A key used in a Datasworn dictionary object.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "SpecialTrackType".
- */
-export type DictKey1 = string;
+export type OracleCollectionId2 = string;
 /**
  * The unique Datasworn ID for this item.
  */
-export type NpcId1 = string;
+export type AssetTypeId = string;
 /**
  * The primary name/label for this item.
  */
-export type Label7 = string;
-/**
- * The name of this item as it appears on the page in the book, if it's different from `name`.
- */
-export type Label8 = string;
-/**
- * A localized category label describing the nature of this NPC.
- *
- * In Ironsworn classic, this is probably the singular form of the parent collection's name.
- *
- * For Starforged, see the table on p. 258 for examples.
- */
-export type NpcNature = string;
-/**
- * The suggested challenge rank for this NPC.
- */
-export type ChallengeRank1 = 1 | 2 | 3 | 4 | 5;
-/**
- * The unique Datasworn ID for this item.
- */
-export type NpcVariantId1 = string;
-/**
- * The suggested challenge rank for this NPC.
- */
-export type ChallengeRank2 = 1 | 2 | 3 | 4 | 5;
-/**
- * The unique Datasworn ID for this item.
- */
-export type NpcCollectionId1 = string;
-/**
- * A localized plain text name or label.
- */
 export type Label9 = string;
 /**
- * A localized plain text name or label.
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
  */
 export type Label10 = string;
 /**
  * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
-export type NpcCollectionId2 = string;
+export type AssetTypeId1 = string;
 /**
  * A thematic color associated with this collection.
  */
 export type CssColor1 = string;
 /**
- * An SVG icon associated with this collection.
+ * A relative URL pointing to a vector image in the SVG format.
  */
-export type SvgImageUrl1 = string;
-/**
- * Extra images associated with this collection.
- */
-export type WebpImageUrl1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString6 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString7 = string;
-/**
- * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
- */
-export type NpcCollectionId3 = string;
-/**
- * A localized plain text name or label.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "NpcNature".
- */
-export type Label11 = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DiceNotation".
- */
-export type DiceNotation = string;
-/**
- * A string template that may be used in place of OracleTableRow#result.
- */
-export type TemplateString1 = string;
-/**
- * A string template that may be used in place of OracleTableRow#summary.
- */
-export type TemplateString2 = string;
-/**
- * A string template that may be used in place of OracleTableRow#description.
- */
-export type TemplateString3 = string;
-/**
- * Special roll instructions to use when rolling multiple times on a single oracle table.
- *
- *   * no_duplicates: Duplicates should be re-rolled.
- *   * keep_duplicates: Duplicates should be kept.
- *   * make_it_worse: Duplicates should be kept, and they compound to make things worse.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRollMethod".
- */
-export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_it_worse";
-/**
- * The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.
- */
-export type OracleTableId1 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type OracleCollectionId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label12 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label13 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type OracleCollectionId2 = string;
-/**
- * A thematic color associated with this collection.
- */
-export type CssColor2 = string;
-/**
- * An SVG icon associated with this collection.
- */
-export type SvgImageUrl2 = string;
+export type SvgImageUrl3 = string;
 /**
  * Extra images associated with this collection.
  */
 export type WebpImageUrl2 = string;
-/**
- * Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.
- */
-export type OracleCollectionRendering = {
-  [k: string]: unknown;
-};
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString8 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString9 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type OracleTableId2 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label14 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label15 = string;
-/**
- * An icon that represents this table.
- */
-export type SvgImageUrl3 = string;
-/**
- * Extra images associated with this table.
- */
-export type WebpImageUrl3 = string;
-/**
- * The roll used to select a result on this table.
- */
-export type DiceNotation1 = string;
-/**
- * Describes how how to render this table, when presenting it as a standalone table.
- */
-export type OracleTableRendering = {
-  [k: string]: unknown;
-};
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString10 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString11 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type OracleTableRowId1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString12 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -634,17 +363,852 @@ export type MarkdownString13 = string;
  */
 export type MarkdownString14 = string;
 /**
- * Hints that the identified table should be rendered inside this table row.
+ * A unique ID for an Asset.
  */
-export type OracleTableId3 = string;
+export type AssetId1 = string;
 /**
- * Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.
+ * The primary name/label for this item.
  */
-export type OracleTableId4 = string;
+export type Label11 = string;
+/**
+ * The name of this item as it appears on the page in the book, if it's different from `name`.
+ */
+export type Label12 = string;
+/**
+ * A localized category label for this asset. This is the surtitle above the asset's name on the card.
+ */
+export type Label13 = string;
+/**
+ * A thematic color associated with this asset.
+ */
+export type CssColor2 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl4 = string;
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetOptionField".
+ */
+export type AssetOptionField = {
+  [k: string]: unknown;
+};
+/**
+ * A wildcarded ID that can be used to match multiple Assets.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetIdWildcard".
+ */
+export type AssetIdWildcard = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString15 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type AssetAbilityId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label14 = string;
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetAbilityOptionField".
+ */
+export type AssetAbilityOptionField = {
+  [k: string]: unknown;
+};
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString16 = string;
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetAbilityControlField".
+ */
+export type AssetAbilityControlField = {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetControlFieldEnhancement".
+ */
+export type AssetControlFieldEnhancement = {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveEnhancement".
+ */
+export type MoveEnhancement = {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "Move".
+ */
+export type Move = {
+  [k: string]: unknown;
+};
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetControlField".
+ */
+export type AssetControlField = {
+  [k: string]: unknown;
+};
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
+export type AssetTypeId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type AtlasId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label15 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label16 = string;
+/**
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ */
+export type AtlasId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor3 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl5 = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl3 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString17 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString18 = string;
+/**
+ * A unique ID for an AtlasEntry.
+ */
+export type AtlasEntryId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label17 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label18 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type AtlasId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type MoveCategoryId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label19 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label20 = string;
+/**
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ */
+export type MoveCategoryId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor4 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl6 = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl4 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString19 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString20 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type MoveCategoryId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type NpcCollectionId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label21 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label22 = string;
+/**
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
+ */
+export type NpcCollectionId1 = string;
+/**
+ * A thematic color associated with this collection.
+ */
+export type CssColor5 = string;
+/**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl7 = string;
+/**
+ * Extra images associated with this collection.
+ */
+export type WebpImageUrl5 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString21 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString22 = string;
+/**
+ * A unique ID for a Npc.
+ */
+export type NpcId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label23 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label24 = string;
+/**
+ * A localized category label describing the nature of this NPC.
+ *
+ * In Ironsworn classic, this is probably the singular form of the parent collection's name.
+ *
+ * For Starforged, see the table on p. 258 for examples.
+ */
+export type NpcNature = string;
+/**
+ * The suggested challenge rank for this NPC.
+ */
+export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type NpcVariantId = string;
+/**
+ * A localized plain text name or label.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "Label".
+ */
+export type Label25 = string;
+/**
+ * The suggested challenge rank for this NPC.
+ */
+export type ChallengeRank1 = 1 | 2 | 3 | 4 | 5;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type NpcCollectionId2 = string;
+/**
+ * A unique ID for a Rarity.
+ */
+export type RarityId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label26 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label27 = string;
+/**
+ * A unique ID for an Asset.
+ */
+export type AssetId2 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DelveSiteId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label28 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label29 = string;
+/**
+ * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
+ *
+ *   * 1: Troublesome
+ *   * 2: Dangerous
+ *   * 3: Formidable
+ *   * 4: Extreme
+ *   * 5: Epic
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ChallengeRank".
+ */
+export type ChallengeRank2 = 1 | 2 | 3 | 4 | 5;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DelveSiteDenizenId = string;
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "DelveSiteDenizenFrequency".
+ */
+export type DelveSiteDenizenFrequency = "very_common" | "common" | "uncommon" | "rare" | "unforeseen";
+/**
+ * A unique ID for a Npc.
+ */
+export type NpcId2 = string;
+/**
+ * A unique ID for an AtlasEntry.
+ */
+export type AtlasEntryId2 = string;
+/**
+ * A unique ID for a DelveSiteDomain.
+ */
+export type DelveSiteDomainId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label30 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label31 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DomainFeatureRowId = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString23 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString24 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString25 = string;
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId5 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type DomainDangerRowId = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString26 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString27 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString28 = string;
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId6 = string;
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId7 = string;
+/**
+ * A unique ID for a DelveSiteTheme.
+ */
+export type DelveSiteThemeId1 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label32 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label33 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type ThemeFeatureRowId = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString29 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString30 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString31 = string;
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId8 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type ThemeDangerRowId = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString32 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString33 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString34 = string;
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId9 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type TruthId = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label34 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label35 = string;
+/**
+ * The unique Datasworn ID for this item.
+ */
+export type TruthOptionId = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString35 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString36 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString37 = string;
+/**
+ * A unique ID for an OracleTable.
+ */
+export type OracleTableId10 = string;
+/**
+ * The ID of a Datasworn package that relies on an external package to provide its ruleset.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ExpansionId".
+ */
+export type ExpansionId = string;
+/**
+ * The version of the Datasworn format used by this data.
+ */
+export type SemanticVersion1 = string;
+/**
+ * A unique ID for an AssetAbilityControlField.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetAbilityControlFieldId".
+ */
+export type AssetAbilityControlFieldId = string;
+/**
+ * A unique ID for an AssetAbility.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetAbilityId".
+ */
+export type AssetAbilityId1 = string;
+/**
+ * A unique ID for an AssetAbilityOptionField.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetAbilityOptionFieldId".
+ */
+export type AssetAbilityOptionFieldId = string;
+/**
+ * A unique ID for an AssetConditionMeterControlField.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetConditionMeterControlFieldId".
+ */
+export type AssetConditionMeterControlFieldId = string;
+/**
+ * A unique ID for an AssetControlField.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetControlFieldId".
+ */
+export type AssetControlFieldId = string;
+/**
+ * A wildcarded ID that can be used to match multiple AssetControlFields.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetControlFieldIdWildcard".
+ */
+export type AssetControlFieldIdWildcard = string;
+/**
+ * A unique ID for an AssetOptionField.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetOptionFieldId".
+ */
+export type AssetOptionFieldId = string;
+/**
+ * A wildcarded ID that can be used to match multiple AssetOptionFields.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetOptionFieldIdWildcard".
+ */
+export type AssetOptionFieldIdWildcard = string;
+/**
+ * A unique ID for an AssetType.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetTypeId".
+ */
+export type AssetTypeId3 = string;
+/**
+ * A wildcarded ID that can be used to match multiple AtlasEntrys.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AtlasEntryIdWildcard".
+ */
+export type AtlasEntryIdWildcard = string;
+/**
+ * A unique ID for an Atlas.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AtlasId".
+ */
+export type AtlasId3 = string;
+/**
+ * A wildcarded ID that can be used to match multiple Atlass.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AtlasIdWildcard".
+ */
+export type AtlasIdWildcard = string;
+/**
+ * A unique ID for a ConditionMeterRule.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ConditionMeterRuleId".
+ */
+export type ConditionMeterRuleId = string;
+/**
+ * A unique ID for a DelveSiteDenizen.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "DelveSiteDenizenId".
+ */
+export type DelveSiteDenizenId1 = string;
+/**
+ * A unique ID for a DelveSite.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "DelveSiteId".
+ */
+export type DelveSiteId1 = string;
+/**
+ * A key used in a Datasworn dictionary object.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "DictKey".
+ */
+export type DictKey = string;
+/**
+ * A unique ID for a DomainDangerRow.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "DomainDangerRowId".
+ */
+export type DomainDangerRowId1 = string;
+/**
+ * A unique ID for a DomainFeatureRow.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "DomainFeatureRowId".
+ */
+export type DomainFeatureRowId1 = string;
+/**
+ * A unique ID for an ImpactRuleCollection.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ImpactRuleCollectionId".
+ */
+export type ImpactRuleCollectionId = string;
+/**
+ * A unique ID for an ImpactRule.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ImpactRuleId".
+ */
+export type ImpactRuleId = string;
+/**
+ * A unique ID for a MoveCategory.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveCategoryId".
+ */
+export type MoveCategoryId3 = string;
+/**
+ * A move ID with wildcards.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveIdWildcard".
+ */
+export type MoveIdWildcard = StandardMoveIdWithWildcard | AssetMoveIdWithWildcard;
+export type StandardMoveIdWithWildcard = string;
+export type AssetMoveIdWithWildcard = string;
+/**
+ * A unique ID for a NpcCollection.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "NpcCollectionId".
+ */
+export type NpcCollectionId3 = string;
+/**
+ * A wildcarded ID that can be used to match multiple Npcs.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "NpcIdWildcard".
+ */
+export type NpcIdWildcard = string;
+/**
+ * A unique ID for a NpcVariant.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "NpcVariantId".
+ */
+export type NpcVariantId1 = string;
+/**
+ * A unique ID for an OracleCollection.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleCollectionId".
+ */
 export type OracleCollectionId3 = string;
+/**
+ * Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableIdWildcard".
+ */
+export type OracleTableIdWildcard = string;
+/**
+ * Normally, rows will end with two numbers separated by a dash, indicating their dice range.
+ *
+ * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableRowId".
+ */
+export type OracleTableRowId1 = string;
+/**
+ * A unique ID for a SpecialTrackRule.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "SpecialTrackRuleId".
+ */
+export type SpecialTrackRuleId = string;
+/**
+ * A unique ID for a StatRule.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "StatRuleId".
+ */
+export type StatRuleId = string;
+/**
+ * A unique ID for a ThemeDangerRow.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ThemeDangerRowId".
+ */
+export type ThemeDangerRowId1 = string;
+/**
+ * A unique ID for a ThemeFeatureRow.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ThemeFeatureRowId".
+ */
+export type ThemeFeatureRowId1 = string;
+/**
+ * A unique ID for a Truth.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TruthId".
+ */
+export type TruthId1 = string;
+/**
+ * A unique ID for a TruthOption.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TruthOptionId".
+ */
+export type TruthOptionId1 = string;
+/**
+ * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "CssColor".
+ */
+export type CssColor6 = string;
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "SemanticVersion".
+ */
+export type SemanticVersion2 = string;
+/**
+ * A relative URL pointing to a raster image in the WEBP format.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "WebpImageUrl".
+ */
+export type WebpImageUrl6 = string;
+/**
+ * A rich text string in Markdown with replaced values from oracle roll results.
+ *
+ * The custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`
+ *
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TemplateString".
+ */
+export type TemplateString3 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label36 = string;
+/**
+ * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
+ * 'Canonical' examples:
+ *   * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.
+ *   * `failure_track`, described in Ironsworn: Delve
+ *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
+ *
+ *
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "SpecialTrackType".
+ */
+export type SpecialTrackType = string;
+/**
+ * A localized plain text name or label.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "NpcNature".
+ */
+export type Label37 = string;
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "DiceNotation".
+ */
+export type DiceNotation1 = string;
 /**
  * Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.
  *
@@ -655,9 +1219,9 @@ export type OracleCollectionRendering1 = {
   [k: string]: unknown;
 };
 /**
- * A localized plain text name or label.
+ * The column's header text.
  */
-export type Label16 = string;
+export type Label38 = string;
 /**
  * The value(s) from each OracleTableRow that is rendered in this column.
  *
@@ -673,11 +1237,11 @@ export type OracleTableColumnContentKey = "roll" | "result" | "summary" | "descr
 /**
  * The thematic color for this column.
  */
-export type CssColor3 = string;
+export type CssColor7 = string;
 /**
- * A key used in a Datasworn dictionary object.
+ * The key of the OracleTable (within this collection), whose data is used to render this column.
  */
-export type DictKey2 = string;
+export type DictKey1 = string;
 /**
  *   * tables: Presented as a collection of separate tables.
  *   * multi_table: Presented as a single table, with its OracleTable children rendered as columns.
@@ -687,13 +1251,13 @@ export type DictKey2 = string;
  */
 export type OracleCollectionStyle = "tables" | "multi_table";
 /**
- * A localized plain text name or label.
+ * The column's header text.
  */
-export type Label17 = string;
+export type Label39 = string;
 /**
  * The thematic color for this column.
  */
-export type CssColor4 = string;
+export type CssColor8 = string;
 /**
  * Describes the presentation of this table.
  *
@@ -753,54 +1317,41 @@ export type ActionRollUsing =
   | "attached_asset_control"
   | "attached_asset_option";
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "Move".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export type Move = {
-  [k: string]: unknown;
-};
-/**
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveId1 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label18 = string;
+export type Label40 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label19 = string;
+export type Label41 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString15 = string;
+export type MarkdownString38 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString16 = string;
+export type MarkdownString39 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString17 = string;
+export type MarkdownString40 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString18 = string;
+export type MarkdownString41 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -810,58 +1361,7 @@ export type MoveId2 = StandardMoveId | AssetMoveId;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString19 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type MoveCategoryId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label20 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label21 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type MoveCategoryId2 = string;
-/**
- * A thematic color associated with this collection.
- */
-export type CssColor5 = string;
-/**
- * A relative URL pointing to a vector image in the SVG format.
- */
-export type SvgImageUrl4 = string;
-/**
- * Extra images associated with this collection.
- */
-export type WebpImageUrl4 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString20 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString21 = string;
-/**
- * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
- */
-export type MoveCategoryId3 = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveEnhancement".
- */
-export type MoveEnhancement = {
-  [k: string]: unknown;
-};
+export type MarkdownString42 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -869,29 +1369,30 @@ export type MoveId3 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label22 = string;
+export type Label42 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label23 = string;
+export type Label43 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString22 = string;
+export type MarkdownString43 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString23 = string;
+export type MarkdownString44 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString24 = string;
+export type MarkdownString45 = string;
+export type MoveOutcomes1 = null;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -912,23 +1413,23 @@ export type MoveId5 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label24 = string;
+export type Label44 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label25 = string;
+export type Label45 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString25 = string;
+export type MarkdownString46 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString26 = string;
+export type MarkdownString47 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -941,7 +1442,7 @@ export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString27 = string;
+export type MarkdownString48 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -951,7 +1452,7 @@ export type MoveId6 = StandardMoveId | AssetMoveId;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString28 = string;
+export type MarkdownString49 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -976,23 +1477,23 @@ export type MoveId7 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label26 = string;
+export type Label46 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label27 = string;
+export type Label47 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString29 = string;
+export type MarkdownString50 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString30 = string;
+export type MarkdownString51 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -1014,11 +1515,21 @@ export type SpecialTrackRollMethod =
   | "lowest"
   | "all";
 /**
+ * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
+ * 'Canonical' examples:
+ *   * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.
+ *   * `failure_track`, described in Ironsworn: Delve
+ *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
+ *
+ *
+ */
+export type SpecialTrackType1 = string;
+/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString31 = string;
+export type MarkdownString52 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -1028,7 +1539,7 @@ export type MoveId8 = StandardMoveId | AssetMoveId;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString32 = string;
+export type MarkdownString53 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -1040,25 +1551,21 @@ export type MarkdownString32 = string;
  */
 export type ProgressRollMethod2 = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
 /**
- * A key used in a Datasworn dictionary object.
+ * The dictionary key of the asset control field.
+ */
+export type DictKey2 = string;
+/**
+ * The dictionary key of the asset option field.
  */
 export type DictKey3 = string;
 /**
- * A key used in a Datasworn dictionary object.
+ * The dictionary key of the asset control field.
  */
 export type DictKey4 = string;
 /**
- * A key used in a Datasworn dictionary object.
+ * The dictionary key of the asset option field.
  */
 export type DictKey5 = string;
-/**
- * A key used in a Datasworn dictionary object.
- */
-export type DictKey6 = string;
-/**
- * A basic, rollable player character resource.
- */
-export type ConditionMeterId = string;
 /**
  * A basic player character stat.
  */
@@ -1066,95 +1573,11 @@ export type StatId = string;
 /**
  * The unique Datasworn ID for this item.
  */
-export type AssetId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label28 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label29 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label30 = string;
-/**
- * A thematic color associated with this asset.
- */
-export type CssColor6 = string;
-/**
- * A relative URL pointing to a vector image in the SVG format.
- */
-export type SvgImageUrl5 = string;
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetOptionField".
- */
-export type AssetOptionField = {
-  [k: string]: unknown;
-};
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString33 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type AssetAbilityId1 = string;
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetAbilityOptionField".
- */
-export type AssetAbilityOptionField = {
-  [k: string]: unknown;
-};
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetAbilityControlField".
- */
-export type AssetAbilityControlField = {
-  [k: string]: unknown;
-};
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetControlFieldEnhancement".
- */
-export type AssetControlFieldEnhancement = {
-  [k: string]: unknown;
-};
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetControlField".
- */
-export type AssetControlField = {
-  [k: string]: unknown;
-};
-/**
- * The unique Datasworn ID for this item.
- */
 export type AssetControlFieldId1 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label31 = string;
+export type Label48 = string;
 /**
  * A checkbox control field, rendered as part of an asset condition meter.
  *
@@ -1176,501 +1599,94 @@ export type MoveIdWildcard1 = StandardMoveIdWithWildcard | AssetMoveIdWithWildca
  */
 export type MoveIdWildcard2 = StandardMoveIdWithWildcard | AssetMoveIdWithWildcard;
 /**
- * The unique Datasworn ID for this item.
- */
-export type AssetTypeId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label32 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label33 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type AssetTypeId2 = string;
-/**
- * A thematic color associated with this collection.
- */
-export type CssColor7 = string;
-/**
- * A relative URL pointing to a vector image in the SVG format.
- */
-export type SvgImageUrl6 = string;
-/**
- * Extra images associated with this collection.
- */
-export type WebpImageUrl5 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString34 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString35 = string;
-/**
- * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
- */
-export type AssetTypeId3 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type TruthId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label34 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label35 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type TruthOptionId1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString36 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString37 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString38 = string;
-/**
- * Hints that the identified table should be rendered inside this table row.
- */
-export type OracleTableId5 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type AtlasId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label36 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label37 = string;
-/**
- * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
- */
-export type AtlasId2 = string;
-/**
- * A thematic color associated with this collection.
- */
-export type CssColor8 = string;
-/**
- * A relative URL pointing to a vector image in the SVG format.
- */
-export type SvgImageUrl7 = string;
-/**
- * Extra images associated with this collection.
- */
-export type WebpImageUrl6 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString39 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString40 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type AtlasEntryId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label38 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label39 = string;
-/**
- * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
- */
-export type AtlasId3 = string;
-/**
- * A key used in a Datasworn dictionary object.
+ * A basic, rollable player character resource.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "ConditionMeterId".
  */
-export type DictKey7 = string;
+export type ConditionMeterId1 = string;
 /**
- * A key used in a Datasworn dictionary object.
+ * A basic player character stat.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "StatId".
  */
-export type DictKey8 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type RarityId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label40 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label41 = string;
-/**
- * The asset augmented by this rarity.
- */
-export type AssetId2 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type DelveSiteId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label42 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label43 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type DelveSiteDenizenId1 = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DelveSiteDenizenFrequency".
- */
-export type DelveSiteDenizenFrequency = "very_common" | "common" | "uncommon" | "rare" | "unforeseen";
-/**
- * The ID of the relevant NPC entry, if one is specified.
- */
-export type NpcId2 = string;
-/**
- * The ID of an atlas entry representing the region in which this delve site is located.
- */
-export type AtlasEntryId2 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type DelveSiteDomainId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label44 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label45 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type DomainFeatureRowId1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString41 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString42 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString43 = string;
-/**
- * Hints that the identified table should be rendered inside this table row.
- */
-export type OracleTableId6 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type DomainDangerRowId1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString44 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString45 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString46 = string;
-/**
- * Hints that the identified table should be rendered inside this table row.
- */
-export type OracleTableId7 = string;
-/**
- * An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.
- */
-export type OracleTableId8 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type DelveSiteThemeId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label46 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label47 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type ThemeFeatureRowId1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString47 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString48 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString49 = string;
-/**
- * Hints that the identified table should be rendered inside this table row.
- */
-export type OracleTableId9 = string;
-/**
- * The unique Datasworn ID for this item.
- */
-export type ThemeDangerRowId1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString50 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString51 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString52 = string;
-/**
- * Hints that the identified table should be rendered inside this table row.
- */
-export type OracleTableId10 = string;
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RulesPackage".
- */
-export type RulesPackage = Ruleset | Expansion;
+export type StatId1 = string;
 
 export interface Datasworn {
   [k: string]: unknown;
 }
 /**
- * Metadata describing the original source of this item
+ * A standalone Datasworn package that describes its own ruleset.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "Source".
+ * via the `definition` "Ruleset".
  */
-export interface Source {
-  title: Title;
+export interface Ruleset {
+  id: RulesetId;
+  datasworn_version: SemanticVersion;
+  package_type: "ruleset";
+  rules: Rules;
   /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
    */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "Suggestions".
- */
-export interface Suggestions {
-  oracles?: OracleTableId[];
-  assets?: AssetId[];
-  atlas?: AtlasEntryId[];
-  moves?: MoveId[];
-  npcs?: NpcId[];
-  rarities?: RarityId[];
-  site_domains?: DelveSiteDomainId[];
-  site_themes?: DelveSiteThemeId[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "I18nHint".
- */
-export interface I18NHint {
-  part_of_speech?: PartOfSpeech;
-}
-/**
- * Internationalization/localization hints for the text content of this object.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "I18nHints".
- */
-export interface I18NHints {
-  result?: I18NHint;
-  summary?: I18NHint;
-  description?: I18NHint;
-  template?: {
-    result?: I18NHint;
-    summary?: I18NHint;
-    description?: I18NHint;
+  oracles: {
+    [k: string]: OracleCollection;
   };
-}
-/**
- * Describes a standard player character condition meter.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ConditionMeterRule".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface ConditionMeterRule {
-  label: Label1;
   /**
-   * The minimum value of this meter.
+   * A dictionary object containing asset types, which contain assets.
    */
-  min: number;
-  /**
-   * The maximum value of this meter.
-   */
-  max: number;
-  /**
-   * The current value of this meter.
-   */
-  value: number;
-  /**
-   * Is this condition meter shared by all players?
-   */
-  shared: boolean;
-  description: MarkdownString1;
-}
-/**
- * Describes a category of standard impacts/debilities.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ImpactCategory".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface ImpactCategory {
-  label: Label2;
-  description: MarkdownString2;
-  /**
-   * A dictionary object of the Impacts in this category.
-   */
-  contents: {
-    [k: string]: ImpactRule;
+  assets: {
+    [k: string]: AssetType;
   };
-}
-/**
- * Describes a standard impact/debility.
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ImpactRule".
- */
-export interface ImpactRule {
-  label: Label3;
   /**
-   * Is this impact applied to all players at once?
+   * A dictionary object containing atlas collections, which contain atlas entries.
    */
-  shared: boolean;
-  description: MarkdownString3;
+  atlas?: {
+    [k: string]: Atlas;
+  };
   /**
-   * Is this impact permanent?
+   * A dictionary object containing move categories, which contain moves.
    */
-  permanent: boolean;
+  moves: {
+    [k: string]: MoveCategory;
+  };
   /**
-   * Keys of ruleset condition meters, to which this impact prevents recovery.
+   * A dictionary object containing NPC collections, which contain NPCs.
    */
-  prevents_recovery: DictKey[];
+  npcs?: {
+    [k: string]: NpcCollection;
+  };
+  /**
+   * A dictionary object containing rarities, like those presented in Ironsworn: Delve.
+   */
+  rarities?: {
+    [k: string]: Rarity;
+  };
+  /**
+   * A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve
+   */
+  delve_sites?: {
+    [k: string]: DelveSite;
+  };
+  /**
+   * A dictionary object containing delve site domains.
+   */
+  site_domains?: {
+    [k: string]: DelveSiteDomain;
+  };
+  /**
+   * A dictionary object containing delve site themes.
+   */
+  site_themes?: {
+    [k: string]: DelveSiteTheme;
+  };
+  /**
+   * A dictionary object of truth categories.
+   */
+  truths?: {
+    [k: string]: Truth;
+  };
 }
 /**
  * Describes rules for player characters in this ruleset, such as stats and condition meters.
@@ -1705,6 +1721,85 @@ export interface Rules {
   };
 }
 /**
+ * Describes a standard player character condition meter.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ConditionMeterRule".
+ */
+export interface ConditionMeterRule {
+  label: Label;
+  /**
+   * The minimum value of this meter.
+   */
+  min: number;
+  /**
+   * The maximum value of this meter.
+   */
+  max: number;
+  /**
+   * The current value of this meter.
+   */
+  value: number;
+  /**
+   * Is this condition meter shared by all players?
+   */
+  shared: boolean;
+  description: MarkdownString;
+}
+/**
+ * Describes a category of standard impacts/debilities.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ImpactCategory".
+ */
+export interface ImpactCategory {
+  label: Label1;
+  description: MarkdownString1;
+  /**
+   * A dictionary object of the Impacts in this category.
+   */
+  contents: {
+    [k: string]: ImpactRule;
+  };
+}
+/**
+ * Describes a standard impact/debility.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ImpactRule".
+ */
+export interface ImpactRule {
+  label: Label2;
+  /**
+   * Is this impact applied to all players at once?
+   */
+  shared: boolean;
+  description: MarkdownString2;
+  /**
+   * Is this impact permanent?
+   */
+  permanent: boolean;
+  /**
+   * Keys of ruleset condition meters, to which this impact prevents recovery.
+   */
+  prevents_recovery: ConditionMeterId[];
+}
+/**
  * Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1717,12 +1812,12 @@ export interface Rules {
  * via the `definition` "SpecialTrackRule".
  */
 export interface SpecialTrackRule {
-  label: Label4;
+  label: Label3;
   /**
    * Is this track shared by all players?
    */
   shared: boolean;
-  description: MarkdownString4;
+  description: MarkdownString3;
   /**
    * Is this track an optional rule?
    */
@@ -1741,261 +1836,30 @@ export interface SpecialTrackRule {
  * via the `definition` "StatRule".
  */
 export interface StatRule {
-  label: Label5;
-  description: MarkdownString5;
-}
-/**
- * Describes rules for player characters in this ruleset, such as stats and condition meters.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RulesExpansion".
- */
-export interface RulesExpansion {
-  /**
-   * Describes the standard condition meters used by player characters in this ruleset.
-   */
-  condition_meters?: {
-    [k: string]: ConditionMeterRule;
-  };
-  /**
-   * Describes the standard impacts/debilities used by player characters in this ruleset.
-   */
-  impacts?: {
-    [k: string]: ImpactCategory;
-  };
-  /**
-   * Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
-   */
-  special_tracks?: {
-    [k: string]: SpecialTrackRule;
-  };
-  /**
-   * Describes the standard stats used by player characters in this ruleset.
-   */
-  stats?: {
-    [k: string]: StatRule;
-  };
-}
-/**
- * Describes the features of a type of progress track.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ProgressTrackTypeInfo".
- */
-export interface ProgressTrackTypeInfo {
-  controls?: {
-    /**
-     * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "^([a-z][a-z_]*)$".
-     */
-    [k: string]: {};
-  };
-  category: Label6;
-}
-/**
- * A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "Npc".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface Npc {
-  id: NpcId1;
-  name: Label7;
-  canonical_name?: Label8;
-  nature: NpcNature;
-  rank: ChallengeRank1;
-  summary?: MarkdownString;
-  features: MarkdownString[];
-  drives: MarkdownString[];
-  tactics: MarkdownString[];
-  variants?: {
-    [k: string]: NpcVariant;
-  };
-  description: MarkdownString;
-  quest_starter: MarkdownString;
-  your_truth?: MarkdownString;
-  suggestions?: Suggestions;
-  source: Source1;
+  label: Label4;
+  description: MarkdownString4;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "NpcVariant".
- */
-export interface NpcVariant {
-  id: NpcVariantId1;
-  name: Label;
-  nature: NpcNature;
-  rank: ChallengeRank2;
-  summary?: MarkdownString;
-  description: MarkdownString;
-}
-/**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source1 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "NpcCollection".
- *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface NpcCollection {
-  id: NpcCollectionId1;
-  name: Label9;
-  canonical_name?: Label10;
-  enhances?: NpcCollectionId2;
-  color?: CssColor1;
-  icon?: SvgImageUrl1;
-  images?: WebpImageUrl1[];
-  summary?: MarkdownString6;
-  description?: MarkdownString7;
-  contents?: {
-    [k: string]: Npc;
-  };
-  suggestions?: Suggestions;
-  source: Source2;
-  replaces?: NpcCollectionId3;
-}
-/**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source2 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.
- *
- *   These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleRollTemplate".
- */
-export interface OracleRollTemplate {
-  result?: TemplateString1;
-  summary?: TemplateString2;
-  description?: TemplateString3;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableMatchBehavior".
- */
-export interface OracleTableMatchBehavior {
-  text: MarkdownString;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRoll".
- */
-export interface OracleTableRoll {
-  /**
-   * The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme". If this value is omitted, assume it's false.
-   */
-  auto?: boolean;
-  method?: OracleTableRollMethod;
-  oracle?: OracleTableId1;
-  times?: number;
-}
-/**
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "OracleCollection".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface OracleCollection {
-  id: OracleCollectionId1;
-  name: Label12;
-  canonical_name?: Label13;
-  enhances?: OracleCollectionId2;
-  color?: CssColor2;
-  icon?: SvgImageUrl2;
-  images?: WebpImageUrl2[];
+  id: OracleCollectionId;
+  name: Label5;
+  canonical_name?: Label6;
+  enhances?: OracleCollectionId1;
+  color?: CssColor;
+  icon?: SvgImageUrl;
+  images?: WebpImageUrl[];
   rendering?: OracleCollectionRendering;
-  summary?: MarkdownString8;
-  description?: MarkdownString9;
+  summary?: MarkdownString5;
+  description?: MarkdownString6;
   contents?: {
     [k: string]: OracleTable;
   };
@@ -2003,8 +1867,8 @@ export interface OracleCollection {
     [k: string]: OracleCollection;
   };
   suggestions?: Suggestions;
-  source: Source4;
-  replaces?: OracleCollectionId3;
+  source: Source1;
+  replaces?: OracleCollectionId2;
 }
 /**
  * Represents a single oracle table, or a single table column of a table that has multiple "Roll" or "Result" columns.
@@ -2016,33 +1880,47 @@ export interface OracleCollection {
  * via the `definition` "OracleTable".
  */
 export interface OracleTable {
-  id: OracleTableId2;
-  name: Label14;
-  canonical_name?: Label15;
-  icon?: SvgImageUrl3;
-  images?: WebpImageUrl3[];
-  dice: DiceNotation1;
+  id: OracleTableId;
+  name: Label7;
+  canonical_name?: Label8;
+  icon?: SvgImageUrl1;
+  images?: WebpImageUrl1[];
+  dice: DiceNotation;
   rendering?: OracleTableRendering;
-  summary?: MarkdownString10;
-  description?: MarkdownString11;
-  match?: OracleTableMatchBehavior1;
+  summary?: MarkdownString7;
+  description?: MarkdownString8;
+  match?: OracleTableMatchBehavior;
   suggestions?: Suggestions;
   table: OracleTableRow[];
-  source: Source3;
+  source: Source;
   _i18n?: I18NHints1;
   replaces?: OracleTableId4;
 }
 /**
  * Most oracle tables are insensitive to matches, but a few define special match behavior.
  */
-export interface OracleTableMatchBehavior1 {
-  text: MarkdownString;
+export interface OracleTableMatchBehavior {
+  text: MarkdownString9;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "Suggestions".
+ */
+export interface Suggestions {
+  oracles?: OracleTableId1[];
+  assets?: AssetId[];
+  atlas?: AtlasEntryId[];
+  moves?: MoveId[];
+  npcs?: NpcId[];
+  rarities?: RarityId[];
+  site_domains?: DelveSiteDomainId[];
+  site_themes?: DelveSiteThemeId[];
 }
 /**
  * An array of objects, each representing a single row of the table.
  */
 export interface OracleTableRow {
-  id: OracleTableRowId1;
+  id: OracleTableRowId;
   /**
    * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
@@ -2051,10 +1929,10 @@ export interface OracleTableRow {
    * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
   max: number | null;
-  icon?: SvgImageUrl;
-  result: MarkdownString12;
-  summary?: MarkdownString13;
-  description?: MarkdownString14;
+  icon?: SvgImageUrl2;
+  result: MarkdownString10;
+  summary?: MarkdownString11;
+  description?: MarkdownString12;
   template?: OracleRollTemplate;
   /**
    * Further oracle rolls prompted by this table row.
@@ -2065,9 +1943,58 @@ export interface OracleTableRow {
   i18n?: I18NHints;
 }
 /**
+ * Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.
+ *
+ *   These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleRollTemplate".
+ */
+export interface OracleRollTemplate {
+  result?: TemplateString;
+  summary?: TemplateString1;
+  description?: TemplateString2;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableRoll".
+ */
+export interface OracleTableRoll {
+  /**
+   * The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme". If this value is omitted, assume it's false.
+   */
+  auto?: boolean;
+  method?: OracleTableRollMethod;
+  oracle?: OracleTableId2;
+  times?: number;
+}
+/**
+ * Internationalization/localization hints for the text content of this object.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "I18nHints".
+ */
+export interface I18NHints {
+  result?: I18NHint;
+  summary?: I18NHint;
+  description?: I18NHint;
+  template?: {
+    result?: I18NHint;
+    summary?: I18NHint;
+    description?: I18NHint;
+  };
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "I18nHint".
+ */
+export interface I18NHint {
+  part_of_speech?: PartOfSpeech;
+}
+/**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source3 {
+export interface Source {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -2120,7 +2047,7 @@ export interface I18NHints1 {
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source4 {
+export interface Source1 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -2158,819 +2085,46 @@ export interface Source4 {
   url: string;
 }
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleCollectionRenderingMultiTable".
- */
-export interface OracleCollectionRenderingMultiTable {
-  /**
-   * Presented as a single table, with its OracleTable children rendered as columns.
-   */
-  style: "multi_table";
-  columns: {
-    [k: string]: OracleCollectionTableColumn;
-  };
-}
-/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleCollectionTableColumn".
+ * via the `definition` "AssetType".
  */
-export interface OracleCollectionTableColumn {
-  label: Label16;
-  content_type: OracleTableColumnContentKey;
-  color?: CssColor3;
-  table_key: DictKey2;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleCollectionRenderingTables".
- */
-export interface OracleCollectionRenderingTables {
-  /**
-   * Presented as a collection of separate tables.
-   */
-  style: "tables";
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableColumn".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface OracleTableColumn {
-  label: Label17;
-  content_type: OracleTableColumnContentKey;
-  color?: CssColor4;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRenderingColumn".
- */
-export interface OracleTableRenderingColumn {
-  /**
-   * Render as a single column of a table.
-   */
-  style: "column";
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRenderingEmbedInRow".
- */
-export interface OracleTableRenderingEmbedInRow {
-  /**
-   * Render as a table, within a row in another table.
-   */
-  style: "embed_in_row";
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRenderingStandalone".
- */
-export interface OracleTableRenderingStandalone {
-  /**
-   * Render as a standalone table.
-   */
-  style: "standalone";
-  columns: {
-    [k: string]: OracleTableColumn;
-  };
-}
-/**
- * Represents a row in an oracle table.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRow".
- */
-export interface OracleTableRow1 {
-  id: OracleTableRowId1;
-  /**
-   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
-   */
-  min: number | null;
-  /**
-   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
-   */
-  max: number | null;
-  icon?: SvgImageUrl;
-  result: MarkdownString12;
+export interface AssetType {
+  id: AssetTypeId;
+  name: Label9;
+  canonical_name?: Label10;
+  enhances?: AssetTypeId1;
+  color?: CssColor1;
+  icon?: SvgImageUrl3;
+  images?: WebpImageUrl2[];
   summary?: MarkdownString13;
   description?: MarkdownString14;
-  template?: OracleRollTemplate;
-  /**
-   * Further oracle rolls prompted by this table row.
-   */
-  rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId3;
-  suggestions?: Suggestions;
-  i18n?: I18NHints;
-}
-/**
- * A move that makes an action roll.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveActionRoll".
- */
-export interface MoveActionRoll {
-  id: MoveId1;
-  name: Label18;
-  canonical_name?: Label19;
-  /**
-   * A move that makes an action roll.
-   */
-  roll_type: "action_roll";
-  trigger: TriggerActionRoll;
-  text: MarkdownString17;
-  outcomes: MoveOutcomes;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableId[];
-  suggestions?: Suggestions;
-  source: Source5;
-  replaces?: MoveId2;
-}
-/**
- * Describes trigger conditions for a move that makes an action roll.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerActionRoll".
- */
-export interface TriggerActionRoll {
-  text: MarkdownString15;
-  /**
-   * Specific conditions that qualify for this trigger.
-   */
-  conditions: TriggerActionRollCondition[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerActionRollCondition".
- */
-export interface TriggerActionRollCondition {
-  text?: MarkdownString16;
-  by?: TriggerBy;
-  method: ActionRollMethod;
-  /**
-   * The options available when rolling with this trigger condition.
-   */
-  roll_options: ActionRollOption[];
-}
-/**
- * Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerBy".
- */
-export interface TriggerBy {
-  /**
-   * Can this trigger be activated by one of the player's allies?
-   */
-  ally: boolean;
-  /**
-   * Can this trigger be activated by the player who owns this?
-   */
-  player: boolean;
-}
-/**
- * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
- *
- *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveOutcomes".
- */
-export interface MoveOutcomes {
-  strong_hit: MoveOutcome;
-  weak_hit: MoveOutcome;
-  miss: MoveOutcome;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveOutcome".
- */
-export interface MoveOutcome {
-  text: MarkdownString18;
-}
-/**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source5 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveActionRollEnhancement".
- */
-export interface MoveActionRollEnhancement {
-  /**
-   * A move that makes an action roll.
-   */
-  roll_type: "action_roll";
-  enhances?: MoveIdWildcard[];
-  trigger?: TriggerActionRollEnhancement;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerActionRollEnhancement".
- */
-export interface TriggerActionRollEnhancement {
-  conditions: TriggerActionRollConditionEnhancement[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerActionRollConditionEnhancement".
- */
-export interface TriggerActionRollConditionEnhancement {
-  text?: MarkdownString19;
-  by?: TriggerBy;
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
-   */
-  method: ActionRollMethod | null;
-  roll_options: ActionRollOption[] | null;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveCategory".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface MoveCategory {
-  id: MoveCategoryId1;
-  name: Label20;
-  canonical_name?: Label21;
-  enhances?: MoveCategoryId2;
-  color?: CssColor5;
-  icon?: SvgImageUrl4;
-  images?: WebpImageUrl4[];
-  summary?: MarkdownString20;
-  description?: MarkdownString21;
   contents?: {
-    [k: string]: Move;
+    [k: string]: Asset;
   };
   suggestions?: Suggestions;
-  source: Source6;
-  replaces?: MoveCategoryId3;
+  source: Source3;
+  replaces?: AssetTypeId2;
 }
 /**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source6 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveNoRoll".
- */
-export interface MoveNoRoll {
-  id: MoveId3;
-  name: Label22;
-  canonical_name?: Label23;
-  /**
-   * A move that makes no action rolls or progress rolls.
-   */
-  roll_type: "no_roll";
-  trigger: TriggerNoRoll;
-  text: MarkdownString24;
-  outcomes: null;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableId[];
-  suggestions?: Suggestions;
-  source: Source7;
-  replaces?: MoveId4;
-}
-/**
- * Describes trigger conditions for a move that makes no rolls.
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerNoRoll".
- */
-export interface TriggerNoRoll {
-  text: MarkdownString22;
-  /**
-   * Specific conditions that qualify for this trigger.
-   */
-  conditions: TriggerNoRollCondition[] | null;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerNoRollCondition".
- */
-export interface TriggerNoRollCondition {
-  text?: MarkdownString23;
-  by?: TriggerBy;
-  method: null;
-  /**
-   * The options available when rolling with this trigger condition.
-   */
-  roll_options: null;
-}
-/**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source7 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveNoRollEnhancement".
- */
-export interface MoveNoRollEnhancement {
-  /**
-   * A move that makes no action rolls or progress rolls.
-   */
-  roll_type: "no_roll";
-  enhances?: MoveIdWildcard[];
-  trigger?: TriggerNoRollEnhancement;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerNoRollEnhancement".
- */
-export interface TriggerNoRollEnhancement {
-  conditions: TriggerNoRollCondition[];
-}
-/**
- * A progress move that rolls on a standard progress track type (defined by the move object).
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveProgressRoll".
- */
-export interface MoveProgressRoll {
-  id: MoveId5;
-  name: Label24;
-  canonical_name?: Label25;
-  /**
-   * A progress move that rolls on a standard progress track type (defined by this move).
-   */
-  roll_type: "progress_roll";
-  trigger: TriggerProgressRoll;
-  text: MarkdownString27;
-  outcomes: MoveOutcomes;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableId[];
-  suggestions?: Suggestions;
-  source: Source8;
-  replaces?: MoveId6;
-  tracks: ProgressTrackTypeInfo1;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerProgressRoll".
- */
-export interface TriggerProgressRoll {
-  text: MarkdownString25;
-  /**
-   * Specific conditions that qualify for this trigger.
-   */
-  conditions: TriggerProgressRollCondition[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerProgressRollCondition".
- */
-export interface TriggerProgressRollCondition {
-  text?: MarkdownString26;
-  by?: TriggerBy;
-  method: ProgressRollMethod;
-  /**
-   * The options available when rolling with this trigger condition.
-   */
-  roll_options: ProgressRollOption[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ProgressRollOption".
- */
-export interface ProgressRollOption {
-  using: "progress_track";
-}
-/**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source8 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * Describes the common features of progress tracks associated with this move.
- */
-export interface ProgressTrackTypeInfo1 {
-  controls?: {
-    /**
-     * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "^([a-z][a-z_]*)$".
-     */
-    [k: string]: {};
-  };
-  category: Label6;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveProgressRollEnhancement".
- */
-export interface MoveProgressRollEnhancement {
-  /**
-   * A progress move that rolls on a standard progress track type (defined by this move).
-   */
-  roll_type: "progress_roll";
-  enhances?: MoveIdWildcard[];
-  trigger?: TriggerProgressRollEnhancement;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerProgressRollEnhancement".
- */
-export interface TriggerProgressRollEnhancement {
-  conditions: TriggerProgressRollConditionEnhancement[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerProgressRollConditionEnhancement".
- */
-export interface TriggerProgressRollConditionEnhancement {
-  text?: MarkdownString28;
-  by?: TriggerBy;
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
-   */
-  method: ProgressRollMethod1 | null;
-  roll_options: ProgressRollOption[] | null;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveSpecialTrack".
- */
-export interface MoveSpecialTrack {
-  id: MoveId7;
-  name: Label26;
-  canonical_name?: Label27;
-  /**
-   * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
-   */
-  roll_type: "special_track";
-  trigger: TriggerSpecialTrack;
-  text: MarkdownString31;
-  outcomes: MoveOutcomes;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableId[];
-  suggestions?: Suggestions;
-  source: Source9;
-  replaces?: MoveId8;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerSpecialTrack".
- */
-export interface TriggerSpecialTrack {
-  text: MarkdownString29;
-  /**
-   * Specific conditions that qualify for this trigger.
-   */
-  conditions: TriggerSpecialTrackCondition[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerSpecialTrackCondition".
- */
-export interface TriggerSpecialTrackCondition {
-  text?: MarkdownString30;
-  by?: TriggerBy;
-  method: SpecialTrackRollMethod;
-  /**
-   * The options available when rolling with this trigger condition.
-   */
-  roll_options: TriggerSpecialTrackConditionOption[];
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerSpecialTrackConditionOption".
- */
-export interface TriggerSpecialTrackConditionOption {
-  using: DictKey1;
-}
-/**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source9 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "MoveSpecialTrackEnhancement".
- */
-export interface MoveSpecialTrackEnhancement {
-  /**
-   * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
-   */
-  roll_type: "special_track";
-  enhances?: MoveIdWildcard[];
-  trigger?: TriggerSpecialTrackEnhancement;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerSpecialTrackEnhancement".
- */
-export interface TriggerSpecialTrackEnhancement {
-  conditions: TriggerSpecialTrackConditionEnhancement[];
-}
-/**
- * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TriggerSpecialTrackConditionEnhancement".
- */
-export interface TriggerSpecialTrackConditionEnhancement {
-  text?: MarkdownString32;
-  by?: TriggerBy;
-  /**
-   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
-   */
-  method: SpecialTrackRollMethod | null;
-  roll_options: TriggerSpecialTrackConditionOption[] | null;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAssetControl".
- */
-export interface RollOptionAssetControl {
-  /**
-   * Roll using the value of an asset control.
-   */
-  using: "asset_control";
-  /**
-   * Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
-   */
-  assets: AssetIdWildcard[] | null;
-  control: DictKey3;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAssetOption".
- */
-export interface RollOptionAssetOption {
-  /**
-   * Roll using the value of an asset option.
-   */
-  using: "asset_option";
-  /**
-   * Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
-   */
-  assets: AssetIdWildcard[] | null;
-  option: DictKey4;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAttachedAssetControl".
- */
-export interface RollOptionAttachedAssetControl {
-  /**
-   * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
-   */
-  using: "attached_asset_control";
-  control: DictKey5;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAttachedAssetOption".
- */
-export interface RollOptionAttachedAssetOption {
-  /**
-   * Roll using the value of an attached asset option.
-   */
-  using: "attached_asset_option";
-  option: DictKey6;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionConditionMeter".
- */
-export interface RollOptionConditionMeter {
-  /**
-   * Roll using the value of a standard player condition meter.
-   */
-  using: "condition_meter";
-  condition_meter: ConditionMeterId;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionCustom".
- */
-export interface RollOptionCustom {
-  name: Label;
-  value: number;
-  /**
-   * Roll using an integer value with customizable labels.
-   */
-  using: "custom";
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionStat".
- */
-export interface RollOptionStat {
-  /**
-   * Roll using a standard player character stat.
-   */
-  using: "stat";
-  stat: StatId;
-}
-/**
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "Asset".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Asset {
   id: AssetId1;
-  name: Label28;
-  canonical_name?: Label29;
-  asset_type: Label30;
-  color?: CssColor6;
-  icon?: SvgImageUrl5;
+  name: Label11;
+  canonical_name?: Label12;
+  asset_type: Label13;
+  color?: CssColor2;
+  icon?: SvgImageUrl4;
   /**
    * Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.
    */
@@ -2986,7 +2140,7 @@ export interface Asset {
    */
   shared: boolean;
   attachments?: AssetAttachment;
-  requirement?: MarkdownString33;
+  requirement?: MarkdownString15;
   abilities: AssetAbility[];
   /**
    * Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.
@@ -2995,7 +2149,7 @@ export interface Asset {
     [k: string]: AssetControlField;
   };
   suggestions?: Suggestions;
-  source: Source10;
+  source: Source2;
 }
 /**
  * Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.
@@ -3017,8 +2171,8 @@ export interface AssetAttachment {
  * Abilities provided by this asset. Most assets have 3.
  */
 export interface AssetAbility {
-  id: AssetAbilityId1;
-  name?: Label;
+  id: AssetAbilityId;
+  name?: Label14;
   /**
    * Is this asset ability enabled?
    */
@@ -3029,7 +2183,7 @@ export interface AssetAbility {
   options?: {
     [k: string]: AssetAbilityOptionField;
   };
-  text: MarkdownString;
+  text: MarkdownString16;
   /**
    * Fields whose values are expected to change over the life of the asset.
    */
@@ -3072,7 +2226,7 @@ export interface AssetEnhancement {
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source10 {
+export interface Source2 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -3108,153 +2262,11 @@ export interface Source10 {
    * An absolute URL where the source document is available.
    */
   url: string;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetAbility".
- */
-export interface AssetAbility1 {
-  id: AssetAbilityId1;
-  name?: Label;
-  /**
-   * Is this asset ability enabled?
-   */
-  enabled: boolean;
-  /**
-   * Fields that are expected to be set once and remain the same through the life of the asset.
-   */
-  options?: {
-    [k: string]: AssetAbilityOptionField;
-  };
-  text: MarkdownString;
-  /**
-   * Fields whose values are expected to change over the life of the asset.
-   */
-  controls?: {
-    [k: string]: AssetAbilityControlField;
-  };
-  enhance_asset?: AssetEnhancement;
-  /**
-   * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
-   */
-  enhance_moves?: MoveEnhancement[];
-  /**
-   * Unique moves added by this asset ability.
-   */
-  moves?: {
-    [k: string]: Move;
-  };
-}
-/**
- * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetConditionMeter".
- */
-export interface AssetConditionMeter {
-  id: AssetControlFieldId1;
-  label: Label31;
-  field_type: "condition_meter";
-  /**
-   * The minimum value of this meter.
-   */
-  min: number;
-  /**
-   * The maximum value of this meter.
-   */
-  max: number;
-  /**
-   * The current value of this meter.
-   */
-  value: number;
-  /**
-   * Checkbox controls rendered as part of the condition meter.
-   */
-  controls?: {
-    [k: string]: AssetConditionMeterControlField;
-  };
-  /**
-   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
-   */
-  moves?: {
-    /**
-     * The ID(s) of recovery moves associated with this meter.
-     */
-    recover?: MoveIdWildcard1[];
-    /**
-     * The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.
-     */
-    suffer?: MoveIdWildcard2[];
-  };
-}
-/**
- * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetConditionMeterEnhancement".
- */
-export interface AssetConditionMeterEnhancement {
-  field_type: "condition_meter";
-  /**
-   * The maximum value of this meter.
-   */
-  max: number;
-}
-/**
- * Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetEnhancement".
- */
-export interface AssetEnhancement1 {
-  /**
-   * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
-   */
-  count_as_impact?: boolean;
-  /**
-   * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
-   */
-  shared?: boolean;
-  attachments?: AssetAttachment;
-  /**
-   * Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.
-   */
-  controls?: {
-    [k: string]: AssetControlFieldEnhancement;
-  };
-  suggestions?: Suggestions;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "AssetType".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface AssetType {
-  id: AssetTypeId1;
-  name: Label32;
-  canonical_name?: Label33;
-  enhances?: AssetTypeId2;
-  color?: CssColor7;
-  icon?: SvgImageUrl6;
-  images?: WebpImageUrl5[];
-  summary?: MarkdownString34;
-  description?: MarkdownString35;
-  contents?: {
-    [k: string]: Asset;
-  };
-  suggestions?: Suggestions;
-  source: Source11;
-  replaces?: AssetTypeId3;
 }
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source11 {
+export interface Source3 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -3292,128 +2304,25 @@ export interface Source11 {
   url: string;
 }
 /**
- * A setting truth category.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "Truth".
- *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
- */
-export interface Truth {
-  id: TruthId1;
-  name: Label34;
-  canonical_name?: Label35;
-  icon?: SvgImageUrl;
-  options: TruthOption[];
-  suggestions?: Suggestions;
-  source: Source12;
-  your_character?: MarkdownString;
-}
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TruthOption".
- */
-export interface TruthOption {
-  id: TruthOptionId1;
-  min?: number;
-  max?: number;
-  summary?: MarkdownString;
-  description: MarkdownString;
-  quest_starter: MarkdownString;
-  table?: TruthOptionTableRow[];
-}
-/**
- * Represents a row in an oracle table.
  *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "TruthOptionTableRow".
- */
-export interface TruthOptionTableRow {
-  /**
-   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
-   */
-  min: number | null;
-  /**
-   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
-   */
-  max: number | null;
-  icon?: SvgImageUrl;
-  result: MarkdownString36;
-  summary?: MarkdownString37;
-  description?: MarkdownString38;
-  template?: OracleRollTemplate;
-  /**
-   * Further oracle rolls prompted by this table row.
-   */
-  rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId5;
-  suggestions?: Suggestions;
-  i18n?: I18NHints;
-}
-/**
- * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
- */
-export interface Source12 {
-  title: Title;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  /**
-   * The page number where this item is described in full.
-   */
-  page?: number;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional URL for the author's website.
-       */
-      url?: string;
-      email?: Email;
-    }[]
-  ];
-  license: License;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "Atlas".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Atlas {
-  id: AtlasId1;
-  name: Label36;
-  canonical_name?: Label37;
-  enhances?: AtlasId2;
-  color?: CssColor8;
-  icon?: SvgImageUrl7;
-  images?: WebpImageUrl6[];
-  summary?: MarkdownString39;
-  description?: MarkdownString40;
+  id: AtlasId;
+  name: Label15;
+  canonical_name?: Label16;
+  enhances?: AtlasId1;
+  color?: CssColor3;
+  icon?: SvgImageUrl5;
+  images?: WebpImageUrl3[];
+  summary?: MarkdownString17;
+  description?: MarkdownString18;
   contents?: {
     [k: string]: AtlasEntry;
   };
@@ -3421,8 +2330,8 @@ export interface Atlas {
     [k: string]: Atlas;
   };
   suggestions?: Suggestions;
-  source: Source14;
-  replaces?: AtlasId3;
+  source: Source5;
+  replaces?: AtlasId2;
 }
 /**
  * An atlas entry, like the Ironlands region entries found in classic Ironsworn.
@@ -3435,20 +2344,20 @@ export interface Atlas {
  */
 export interface AtlasEntry {
   id: AtlasEntryId1;
-  name: Label38;
-  canonical_name?: Label39;
-  summary?: MarkdownString;
-  features: MarkdownString[];
-  description: MarkdownString;
-  quest_starter: MarkdownString;
-  your_truth?: MarkdownString;
+  name: Label17;
+  canonical_name?: Label18;
+  summary?: MarkdownString9;
+  features: MarkdownString9[];
+  description: MarkdownString9;
+  quest_starter: MarkdownString9;
+  your_truth?: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source13;
+  source: Source4;
 }
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source13 {
+export interface Source4 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -3488,7 +2397,224 @@ export interface Source13 {
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source14 {
+export interface Source5 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveCategory".
+ */
+export interface MoveCategory {
+  id: MoveCategoryId;
+  name: Label19;
+  canonical_name?: Label20;
+  enhances?: MoveCategoryId1;
+  color?: CssColor4;
+  icon?: SvgImageUrl6;
+  images?: WebpImageUrl4[];
+  summary?: MarkdownString19;
+  description?: MarkdownString20;
+  contents?: {
+    [k: string]: Move;
+  };
+  suggestions?: Suggestions;
+  source: Source6;
+  replaces?: MoveCategoryId2;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source6 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "NpcCollection".
+ */
+export interface NpcCollection {
+  id: NpcCollectionId;
+  name: Label21;
+  canonical_name?: Label22;
+  enhances?: NpcCollectionId1;
+  color?: CssColor5;
+  icon?: SvgImageUrl7;
+  images?: WebpImageUrl5[];
+  summary?: MarkdownString21;
+  description?: MarkdownString22;
+  contents?: {
+    [k: string]: Npc;
+  };
+  suggestions?: Suggestions;
+  source: Source8;
+  replaces?: NpcCollectionId2;
+}
+/**
+ * A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "Npc".
+ */
+export interface Npc {
+  id: NpcId1;
+  name: Label23;
+  canonical_name?: Label24;
+  nature: NpcNature;
+  rank: ChallengeRank;
+  summary?: MarkdownString9;
+  features: MarkdownString9[];
+  drives: MarkdownString9[];
+  tactics: MarkdownString9[];
+  variants?: {
+    [k: string]: NpcVariant;
+  };
+  description: MarkdownString9;
+  quest_starter: MarkdownString9;
+  your_truth?: MarkdownString9;
+  suggestions?: Suggestions;
+  source: Source7;
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "NpcVariant".
+ */
+export interface NpcVariant {
+  id: NpcVariantId;
+  name: Label25;
+  nature: NpcNature;
+  rank: ChallengeRank1;
+  summary?: MarkdownString9;
+  description: MarkdownString9;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source7 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source8 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -3528,23 +2654,23 @@ export interface Source14 {
 /**
  * A rarity, as described in Ironsworn: Delve.
  *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "Rarity".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface Rarity {
   id: RarityId1;
-  name: Label40;
-  canonical_name?: Label41;
-  icon?: SvgImageUrl;
-  description: MarkdownString;
+  name: Label26;
+  canonical_name?: Label27;
+  icon?: SvgImageUrl2;
+  description: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source15;
+  source: Source9;
   asset: AssetId2;
   /**
    * From Ironsworn: Delve, p. 174:
@@ -3558,7 +2684,7 @@ export interface Rarity {
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source15 {
+export interface Source9 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -3598,24 +2724,24 @@ export interface Source15 {
 /**
  * A delve site with a theme, domain, and denizens.
  *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSite".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSite {
-  id: DelveSiteId1;
-  name: Label42;
-  canonical_name?: Label43;
-  icon?: SvgImageUrl;
-  rank: ChallengeRank;
-  description: MarkdownString;
+  id: DelveSiteId;
+  name: Label28;
+  canonical_name?: Label29;
+  icon?: SvgImageUrl2;
+  rank: ChallengeRank2;
+  description: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source16;
+  source: Source10;
   denizens: DelveSiteDenizen[] &
     [
       {
@@ -3702,7 +2828,7 @@ export interface DelveSite {
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source16 {
+export interface Source10 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -3744,8 +2870,8 @@ export interface Source16 {
  * via the `definition` "DelveSiteDenizen".
  */
 export interface DelveSiteDenizen {
-  id: DelveSiteDenizenId1;
-  name?: Label;
+  id: DelveSiteDenizenId;
+  name?: Label25;
   min: number;
   max: number;
   frequency: DelveSiteDenizenFrequency;
@@ -3754,21 +2880,21 @@ export interface DelveSiteDenizen {
 /**
  * A delve site Domain card.
  *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSiteDomain".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSiteDomain {
   id: DelveSiteDomainId1;
-  name: Label44;
-  canonical_name?: Label45;
-  icon?: SvgImageUrl;
-  summary: MarkdownString;
+  name: Label30;
+  canonical_name?: Label31;
+  icon?: SvgImageUrl2;
+  summary: MarkdownString9;
   features: DelveSiteDomainFeatureRow[] &
     [
       {
@@ -3860,10 +2986,10 @@ export interface DelveSiteDomain {
         [k: string]: unknown;
       }
     ];
-  description?: MarkdownString;
+  description?: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source17;
-  name_oracle?: OracleTableId8;
+  source: Source11;
+  name_oracle?: OracleTableId7;
 }
 /**
  * Represents a single Feature entry from a delve site Domain card.
@@ -3872,7 +2998,7 @@ export interface DelveSiteDomain {
  * via the `definition` "DelveSiteDomainFeatureRow".
  */
 export interface DelveSiteDomainFeatureRow {
-  id: DomainFeatureRowId1;
+  id: DomainFeatureRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -3881,16 +3007,16 @@ export interface DelveSiteDomainFeatureRow {
    * High end of the dice range for this table row.
    */
   max: number;
-  icon?: SvgImageUrl;
-  result: MarkdownString41;
-  summary?: MarkdownString42;
-  description?: MarkdownString43;
+  icon?: SvgImageUrl2;
+  result: MarkdownString23;
+  summary?: MarkdownString24;
+  description?: MarkdownString25;
   template?: OracleRollTemplate;
   /**
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId6;
+  embed_table?: OracleTableId5;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3901,7 +3027,7 @@ export interface DelveSiteDomainFeatureRow {
  * via the `definition` "DelveSiteDomainDangerRow".
  */
 export interface DelveSiteDomainDangerRow {
-  id: DomainDangerRowId1;
+  id: DomainDangerRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -3910,23 +3036,23 @@ export interface DelveSiteDomainDangerRow {
    * High end of the dice range for this table row.
    */
   max: number;
-  icon?: SvgImageUrl;
-  result: MarkdownString44;
-  summary?: MarkdownString45;
-  description?: MarkdownString46;
+  icon?: SvgImageUrl2;
+  result: MarkdownString26;
+  summary?: MarkdownString27;
+  description?: MarkdownString28;
   template?: OracleRollTemplate;
   /**
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId7;
+  embed_table?: OracleTableId6;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source17 {
+export interface Source11 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -3966,21 +3092,21 @@ export interface Source17 {
 /**
  * A delve site theme card.
  *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "DelveSiteTheme".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface DelveSiteTheme {
   id: DelveSiteThemeId1;
-  name: Label46;
-  canonical_name?: Label47;
-  icon?: SvgImageUrl;
-  summary: MarkdownString;
+  name: Label32;
+  canonical_name?: Label33;
+  icon?: SvgImageUrl2;
+  summary: MarkdownString9;
   features: DelveSiteThemeFeatureRow[] &
     [
       {
@@ -4072,9 +3198,9 @@ export interface DelveSiteTheme {
         [k: string]: unknown;
       }
     ];
-  description?: MarkdownString;
+  description?: MarkdownString9;
   suggestions?: Suggestions;
-  source: Source18;
+  source: Source12;
 }
 /**
  * Represents a single Feature entry from a delve site Theme card.
@@ -4083,7 +3209,7 @@ export interface DelveSiteTheme {
  * via the `definition` "DelveSiteThemeFeatureRow".
  */
 export interface DelveSiteThemeFeatureRow {
-  id: ThemeFeatureRowId1;
+  id: ThemeFeatureRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -4092,16 +3218,16 @@ export interface DelveSiteThemeFeatureRow {
    * High end of the dice range for this table row.
    */
   max: number;
-  icon?: SvgImageUrl;
-  result: MarkdownString47;
-  summary?: MarkdownString48;
-  description?: MarkdownString49;
+  icon?: SvgImageUrl2;
+  result: MarkdownString29;
+  summary?: MarkdownString30;
+  description?: MarkdownString31;
   template?: OracleRollTemplate;
   /**
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId9;
+  embed_table?: OracleTableId8;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -4112,7 +3238,7 @@ export interface DelveSiteThemeFeatureRow {
  * via the `definition` "DelveSiteThemeDangerRow".
  */
 export interface DelveSiteThemeDangerRow {
-  id: ThemeDangerRowId1;
+  id: ThemeDangerRowId;
   /**
    * Low end of the dice range for this table row.
    */
@@ -4121,23 +3247,23 @@ export interface DelveSiteThemeDangerRow {
    * High end of the dice range for this table row.
    */
   max: number;
-  icon?: SvgImageUrl;
-  result: MarkdownString50;
-  summary?: MarkdownString51;
-  description?: MarkdownString52;
+  icon?: SvgImageUrl2;
+  result: MarkdownString32;
+  summary?: MarkdownString33;
+  description?: MarkdownString34;
   template?: OracleRollTemplate;
   /**
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId10;
+  embed_table?: OracleTableId9;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
 /**
  * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
  */
-export interface Source18 {
+export interface Source12 {
   title: Title;
   /**
    * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -4175,76 +3301,107 @@ export interface Source18 {
   url: string;
 }
 /**
- * A standalone Datasworn package that describes its own ruleset.
+ * A setting truth category.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "Ruleset".
+ * via the `definition` "Truth".
  */
-export interface Ruleset {
-  id: RulesetId;
-  datasworn_version: SemanticVersion;
-  package_type: "ruleset";
-  rules: Rules;
+export interface Truth {
+  id: TruthId;
+  name: Label34;
+  canonical_name?: Label35;
+  icon?: SvgImageUrl2;
+  options: TruthOption[];
+  suggestions?: Suggestions;
+  source: Source13;
+  your_character?: MarkdownString9;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TruthOption".
+ */
+export interface TruthOption {
+  id: TruthOptionId;
+  min?: number;
+  max?: number;
+  summary?: MarkdownString9;
+  description: MarkdownString9;
+  quest_starter: MarkdownString9;
+  table?: TruthOptionTableRow[];
+}
+/**
+ * Represents a row in an oracle table.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TruthOptionTableRow".
+ */
+export interface TruthOptionTableRow {
   /**
-   * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
+   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  oracles: {
-    [k: string]: OracleCollection;
-  };
+  min: number | null;
   /**
-   * A dictionary object containing asset types, which contain assets.
+   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  assets: {
-    [k: string]: AssetType;
-  };
+  max: number | null;
+  icon?: SvgImageUrl2;
+  result: MarkdownString35;
+  summary?: MarkdownString36;
+  description?: MarkdownString37;
+  template?: OracleRollTemplate;
   /**
-   * A dictionary object containing atlas collections, which contain atlas entries.
+   * Further oracle rolls prompted by this table row.
    */
-  atlas?: {
-    [k: string]: Atlas;
-  };
+  rolls?: OracleTableRoll[];
+  embed_table?: OracleTableId10;
+  suggestions?: Suggestions;
+  i18n?: I18NHints;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source13 {
+  title: Title;
   /**
-   * A dictionary object containing move categories, which contain moves.
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
    */
-  moves: {
-    [k: string]: MoveCategory;
-  };
+  date: string;
   /**
-   * A dictionary object containing NPC collections, which contain NPCs.
+   * The page number where this item is described in full.
    */
-  npcs?: {
-    [k: string]: NpcCollection;
-  };
+  page?: number;
   /**
-   * A dictionary object containing rarities, like those presented in Ironsworn: Delve.
+   * @minItems 1
    */
-  rarities?: {
-    [k: string]: Rarity;
-  };
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
   /**
-   * A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve
+   * An absolute URL where the source document is available.
    */
-  delve_sites?: {
-    [k: string]: DelveSite;
-  };
-  /**
-   * A dictionary object containing delve site domains.
-   */
-  site_domains?: {
-    [k: string]: DelveSiteDomain;
-  };
-  /**
-   * A dictionary object containing delve site themes.
-   */
-  site_themes?: {
-    [k: string]: DelveSiteTheme;
-  };
-  /**
-   * A dictionary object of truth categories.
-   */
-  truths?: {
-    [k: string]: Truth;
-  };
+  url: string;
 }
 /**
  * A Datasworn package that relies on an external package to provide its ruleset.
@@ -4254,7 +3411,7 @@ export interface Ruleset {
  */
 export interface Expansion {
   id: ExpansionId;
-  datasworn_version: SemanticVersion;
+  datasworn_version: SemanticVersion1;
   package_type: "expansion";
   ruleset: RulesetId;
   rules?: RulesExpansion;
@@ -4318,4 +3475,1080 @@ export interface Expansion {
   truths?: {
     [k: string]: Truth;
   };
+}
+/**
+ * Describes rules for player characters in this ruleset, such as stats and condition meters.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RulesExpansion".
+ */
+export interface RulesExpansion {
+  /**
+   * Describes the standard condition meters used by player characters in this ruleset.
+   */
+  condition_meters?: {
+    [k: string]: ConditionMeterRule;
+  };
+  /**
+   * Describes the standard impacts/debilities used by player characters in this ruleset.
+   */
+  impacts?: {
+    [k: string]: ImpactCategory;
+  };
+  /**
+   * Describes the special tracks used by player characters in this ruleset, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+   */
+  special_tracks?: {
+    [k: string]: SpecialTrackRule;
+  };
+  /**
+   * Describes the standard stats used by player characters in this ruleset.
+   */
+  stats?: {
+    [k: string]: StatRule;
+  };
+}
+/**
+ * Metadata describing the original source of this item
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "Source".
+ */
+export interface Source14 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * Describes the features of a type of progress track.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ProgressTrackTypeInfo".
+ */
+export interface ProgressTrackTypeInfo {
+  controls?: {
+    /**
+     * This interface was referenced by `undefined`'s JSON-Schema definition
+     * via the `patternProperty` "^([a-z][a-z_]*)$".
+     */
+    [k: string]: {};
+  };
+  category: Label36;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableMatchBehavior".
+ */
+export interface OracleTableMatchBehavior1 {
+  text: MarkdownString9;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleCollectionRenderingMultiTable".
+ */
+export interface OracleCollectionRenderingMultiTable {
+  /**
+   * Presented as a single table, with its OracleTable children rendered as columns.
+   */
+  style: "multi_table";
+  columns: {
+    [k: string]: OracleCollectionTableColumn;
+  };
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleCollectionTableColumn".
+ */
+export interface OracleCollectionTableColumn {
+  label: Label38;
+  content_type: OracleTableColumnContentKey;
+  color?: CssColor7;
+  table_key: DictKey1;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleCollectionRenderingTables".
+ */
+export interface OracleCollectionRenderingTables {
+  /**
+   * Presented as a collection of separate tables.
+   */
+  style: "tables";
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableColumn".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^([a-z][a-z_]*)$".
+ */
+export interface OracleTableColumn {
+  label: Label39;
+  content_type: OracleTableColumnContentKey;
+  color?: CssColor8;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableRenderingColumn".
+ */
+export interface OracleTableRenderingColumn {
+  /**
+   * Render as a single column of a table.
+   */
+  style: "column";
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableRenderingEmbedInRow".
+ */
+export interface OracleTableRenderingEmbedInRow {
+  /**
+   * Render as a table, within a row in another table.
+   */
+  style: "embed_in_row";
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableRenderingStandalone".
+ */
+export interface OracleTableRenderingStandalone {
+  /**
+   * Render as a standalone table.
+   */
+  style: "standalone";
+  columns: {
+    [k: string]: OracleTableColumn;
+  };
+}
+/**
+ * Represents a row in an oracle table.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "OracleTableRow".
+ */
+export interface OracleTableRow1 {
+  id: OracleTableRowId;
+  /**
+   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  min: number | null;
+  /**
+   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  max: number | null;
+  icon?: SvgImageUrl2;
+  result: MarkdownString10;
+  summary?: MarkdownString11;
+  description?: MarkdownString12;
+  template?: OracleRollTemplate;
+  /**
+   * Further oracle rolls prompted by this table row.
+   */
+  rolls?: OracleTableRoll[];
+  embed_table?: OracleTableId3;
+  suggestions?: Suggestions;
+  i18n?: I18NHints;
+}
+/**
+ * A move that makes an action roll.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveActionRoll".
+ */
+export interface MoveActionRoll {
+  id: MoveId1;
+  name: Label40;
+  canonical_name?: Label41;
+  /**
+   * A move that makes an action roll.
+   */
+  roll_type: "action_roll";
+  trigger: Trigger;
+  text: MarkdownString40;
+  outcomes: MoveOutcomes;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableId1[];
+  suggestions?: Suggestions;
+  source: Source15;
+  replaces?: MoveId2;
+}
+/**
+ * Trigger conditions for this move.
+ */
+export interface Trigger {
+  text: MarkdownString38;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerActionRollCondition[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerActionRollCondition".
+ */
+export interface TriggerActionRollCondition {
+  text?: MarkdownString39;
+  by?: TriggerBy;
+  method: ActionRollMethod;
+  /**
+   * The options available when rolling with this trigger condition.
+   */
+  roll_options: ActionRollOption[];
+}
+/**
+ * Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerBy".
+ */
+export interface TriggerBy {
+  /**
+   * Can this trigger be activated by one of the player's allies?
+   */
+  ally: boolean;
+  /**
+   * Can this trigger be activated by the player who owns this?
+   */
+  player: boolean;
+}
+/**
+ * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+ *
+ *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
+ */
+export interface MoveOutcomes {
+  strong_hit: MoveOutcome;
+  weak_hit: MoveOutcome;
+  miss: MoveOutcome;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveOutcome".
+ */
+export interface MoveOutcome {
+  text: MarkdownString41;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source15 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveActionRollEnhancement".
+ */
+export interface MoveActionRollEnhancement {
+  /**
+   * A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.
+   */
+  roll_type: "action_roll";
+  /**
+   * An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.
+   */
+  enhances: MoveIdWildcard[] | null;
+  trigger?: TriggerActionRollEnhancement;
+}
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerActionRollEnhancement".
+ */
+export interface TriggerActionRollEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
+  conditions: TriggerActionRollConditionEnhancement[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerActionRollConditionEnhancement".
+ */
+export interface TriggerActionRollConditionEnhancement {
+  text?: MarkdownString42;
+  by?: TriggerBy;
+  /**
+   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
+   */
+  method: ActionRollMethod | null;
+  roll_options: ActionRollOption[] | null;
+}
+/**
+ * A move that makes no progress rolls or action rolls.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveNoRoll".
+ */
+export interface MoveNoRoll {
+  id: MoveId3;
+  name: Label42;
+  canonical_name?: Label43;
+  /**
+   * A move that makes no action rolls or progress rolls.
+   */
+  roll_type: "no_roll";
+  trigger: Trigger1;
+  text: MarkdownString45;
+  outcomes: MoveOutcomes1;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableId1[];
+  suggestions?: Suggestions;
+  source: Source16;
+  replaces?: MoveId4;
+}
+/**
+ * Trigger conditions for this move.
+ */
+export interface Trigger1 {
+  text: MarkdownString43;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerNoRollCondition[] | null;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerNoRollCondition".
+ */
+export interface TriggerNoRollCondition {
+  text?: MarkdownString44;
+  by?: TriggerBy;
+  method: null;
+  /**
+   * The options available when rolling with this trigger condition.
+   */
+  roll_options: null;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source16 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveNoRollEnhancement".
+ */
+export interface MoveNoRollEnhancement {
+  /**
+   * A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.
+   */
+  roll_type: "no_roll";
+  /**
+   * An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.
+   */
+  enhances: MoveIdWildcard[] | null;
+  trigger?: TriggerNoRollEnhancement;
+}
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerNoRollEnhancement".
+ */
+export interface TriggerNoRollEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
+  conditions: TriggerNoRollCondition[];
+}
+/**
+ * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+ *
+ *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveOutcomes".
+ */
+export interface MoveOutcomes2 {
+  strong_hit: MoveOutcome;
+  weak_hit: MoveOutcome;
+  miss: MoveOutcome;
+}
+/**
+ * A progress move that rolls on a standard progress track type (whose features are defined by this move object). For progress rolls that use special tracks, see MoveSpecialTrack.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveProgressRoll".
+ */
+export interface MoveProgressRoll {
+  id: MoveId5;
+  name: Label44;
+  canonical_name?: Label45;
+  /**
+   * A progress move that rolls on a standard progress track type (defined by this move).
+   */
+  roll_type: "progress_roll";
+  trigger: Trigger2;
+  text: MarkdownString48;
+  outcomes: MoveOutcomes3;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableId1[];
+  suggestions?: Suggestions;
+  source: Source17;
+  replaces?: MoveId6;
+  tracks: ProgressTrackTypeInfo1;
+}
+/**
+ * Trigger conditions for this move.
+ */
+export interface Trigger2 {
+  text: MarkdownString46;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerProgressRollCondition[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerProgressRollCondition".
+ */
+export interface TriggerProgressRollCondition {
+  text?: MarkdownString47;
+  by?: TriggerBy;
+  method: ProgressRollMethod;
+  /**
+   * The options available when rolling with this trigger condition.
+   */
+  roll_options: ProgressRollOption[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ProgressRollOption".
+ */
+export interface ProgressRollOption {
+  using: "progress_track";
+}
+/**
+ * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+ *
+ *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
+ */
+export interface MoveOutcomes3 {
+  strong_hit: MoveOutcome;
+  weak_hit: MoveOutcome;
+  miss: MoveOutcome;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source17 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * Describes the common features of progress tracks associated with this move.
+ */
+export interface ProgressTrackTypeInfo1 {
+  controls?: {
+    /**
+     * This interface was referenced by `undefined`'s JSON-Schema definition
+     * via the `patternProperty` "^([a-z][a-z_]*)$".
+     */
+    [k: string]: {};
+  };
+  category: Label36;
+}
+/**
+ * An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveProgressRollEnhancement".
+ */
+export interface MoveProgressRollEnhancement {
+  /**
+   * A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.
+   */
+  roll_type: "progress_roll";
+  /**
+   * An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.
+   */
+  enhances: MoveIdWildcard[] | null;
+  trigger?: TriggerProgressRollEnhancement;
+}
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerProgressRollEnhancement".
+ */
+export interface TriggerProgressRollEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
+  conditions: TriggerProgressRollConditionEnhancement[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerProgressRollConditionEnhancement".
+ */
+export interface TriggerProgressRollConditionEnhancement {
+  text?: MarkdownString49;
+  by?: TriggerBy;
+  /**
+   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
+   */
+  method: ProgressRollMethod1 | null;
+  roll_options: ProgressRollOption[] | null;
+}
+/**
+ * A progress move that rolls on a special track, such as Legacies (Starforged) or Bonds (classic Ironsworn). For progress moves that use standard progress tracks, see MoveProgressRoll instead.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveSpecialTrack".
+ */
+export interface MoveSpecialTrack {
+  id: MoveId7;
+  name: Label46;
+  canonical_name?: Label47;
+  /**
+   * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+   */
+  roll_type: "special_track";
+  trigger: Trigger3;
+  text: MarkdownString52;
+  outcomes: MoveOutcomes4;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableId1[];
+  suggestions?: Suggestions;
+  source: Source18;
+  replaces?: MoveId8;
+}
+/**
+ * Trigger conditions for this move.
+ */
+export interface Trigger3 {
+  text: MarkdownString50;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerSpecialTrackCondition[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerSpecialTrackCondition".
+ */
+export interface TriggerSpecialTrackCondition {
+  text?: MarkdownString51;
+  by?: TriggerBy;
+  method: SpecialTrackRollMethod;
+  /**
+   * The options available when rolling with this trigger condition.
+   */
+  roll_options: TriggerSpecialTrackConditionOption[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerSpecialTrackConditionOption".
+ */
+export interface TriggerSpecialTrackConditionOption {
+  using: SpecialTrackType1;
+}
+/**
+ * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+ *
+ *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
+ */
+export interface MoveOutcomes4 {
+  strong_hit: MoveOutcome;
+  weak_hit: MoveOutcome;
+  miss: MoveOutcome;
+}
+/**
+ * Attribution for the original source (such as a book or website) of this item, including the author and licensing information.
+ */
+export interface Source18 {
+  title: Title;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  /**
+   * The page number where this item is described in full.
+   */
+  page?: number;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional URL for the author's website.
+       */
+      url?: string;
+      email?: Email;
+    }[]
+  ];
+  license: License;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
+ * An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "MoveSpecialTrackEnhancement".
+ */
+export interface MoveSpecialTrackEnhancement {
+  /**
+   * A move must have this `roll_type` to receive this enhancement. This is in addition to any other restrictions made by other properties.
+   */
+  roll_type: "special_track";
+  /**
+   * An array of wildcard IDs. An item must match one of the wildcard IDs to receive this enhancement. If this is `null`, any ID is valid.
+   */
+  enhances: MoveIdWildcard[] | null;
+  trigger?: TriggerSpecialTrackEnhancement;
+}
+/**
+ * Describes changes/additions made to the enhanced move's trigger conditions.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerSpecialTrackEnhancement".
+ */
+export interface TriggerSpecialTrackEnhancement {
+  /**
+   * Trigger conditions added to the enhanced move.
+   */
+  conditions: TriggerSpecialTrackConditionEnhancement[];
+}
+/**
+ * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerSpecialTrackConditionEnhancement".
+ */
+export interface TriggerSpecialTrackConditionEnhancement {
+  text?: MarkdownString53;
+  by?: TriggerBy;
+  /**
+   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
+   */
+  method: SpecialTrackRollMethod | null;
+  roll_options: TriggerSpecialTrackConditionOption[] | null;
+}
+/**
+ * Roll using the value of an asset control.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionAssetControl".
+ */
+export interface RollOptionAssetControl {
+  /**
+   * Roll using the value of an asset control.
+   */
+  using: "asset_control";
+  /**
+   * Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
+   */
+  assets: AssetIdWildcard[] | null;
+  control: DictKey2;
+}
+/**
+ * Roll using the value of an asset option.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionAssetOption".
+ */
+export interface RollOptionAssetOption {
+  /**
+   * Roll using the value of an asset option.
+   */
+  using: "asset_option";
+  /**
+   * Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
+   */
+  assets: AssetIdWildcard[] | null;
+  option: DictKey3;
+}
+/**
+ * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionAttachedAssetControl".
+ */
+export interface RollOptionAttachedAssetControl {
+  /**
+   * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
+   */
+  using: "attached_asset_control";
+  control: DictKey4;
+}
+/**
+ * Roll using the value of an attached asset option.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionAttachedAssetOption".
+ */
+export interface RollOptionAttachedAssetOption {
+  /**
+   * Roll using the value of an attached asset option.
+   */
+  using: "attached_asset_option";
+  option: DictKey5;
+}
+/**
+ * Roll using the value of a standard player condition meter.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionConditionMeter".
+ */
+export interface RollOptionConditionMeter {
+  /**
+   * Roll using the value of a standard player condition meter.
+   */
+  using: "condition_meter";
+  condition_meter: ConditionMeterId;
+}
+/**
+ * Roll using an integer value with customizable labels.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionCustom".
+ */
+export interface RollOptionCustom {
+  name: Label25;
+  value: number;
+  /**
+   * Roll using an integer value with customizable labels.
+   */
+  using: "custom";
+}
+/**
+ * Roll using a standard player character stat.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionStat".
+ */
+export interface RollOptionStat {
+  /**
+   * Roll using a standard player character stat.
+   */
+  using: "stat";
+  stat: StatId;
+}
+/**
+ * Describes trigger conditions for a move that makes an action roll.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerActionRoll".
+ */
+export interface TriggerActionRoll {
+  text: MarkdownString38;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerActionRollCondition[];
+}
+/**
+ * Describes trigger conditions for a move that makes no rolls.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerNoRoll".
+ */
+export interface TriggerNoRoll {
+  text: MarkdownString43;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerNoRollCondition[] | null;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerProgressRoll".
+ */
+export interface TriggerProgressRoll {
+  text: MarkdownString46;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerProgressRollCondition[];
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "TriggerSpecialTrack".
+ */
+export interface TriggerSpecialTrack {
+  text: MarkdownString50;
+  /**
+   * Specific conditions that qualify for this trigger.
+   */
+  conditions: TriggerSpecialTrackCondition[];
+}
+/**
+ * An asset ability: one of the purchasable features of an asset. Most assets have three.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetAbility".
+ */
+export interface AssetAbility1 {
+  id: AssetAbilityId;
+  name?: Label14;
+  /**
+   * Is this asset ability enabled?
+   */
+  enabled: boolean;
+  /**
+   * Fields that are expected to be set once and remain the same through the life of the asset.
+   */
+  options?: {
+    [k: string]: AssetAbilityOptionField;
+  };
+  text: MarkdownString16;
+  /**
+   * Fields whose values are expected to change over the life of the asset.
+   */
+  controls?: {
+    [k: string]: AssetAbilityControlField;
+  };
+  enhance_asset?: AssetEnhancement;
+  /**
+   * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
+   */
+  enhance_moves?: MoveEnhancement[];
+  /**
+   * Unique moves added by this asset ability.
+   */
+  moves?: {
+    [k: string]: Move;
+  };
+}
+/**
+ * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetConditionMeter".
+ */
+export interface AssetConditionMeter {
+  id: AssetControlFieldId1;
+  label: Label48;
+  field_type: "condition_meter";
+  /**
+   * The minimum value of this meter.
+   */
+  min: number;
+  /**
+   * The maximum value of this meter.
+   */
+  max: number;
+  /**
+   * The current value of this meter.
+   */
+  value: number;
+  /**
+   * Checkbox controls rendered as part of the condition meter.
+   */
+  controls?: {
+    [k: string]: AssetConditionMeterControlField;
+  };
+  /**
+   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
+   */
+  moves?: {
+    /**
+     * The ID(s) of recovery moves associated with this meter.
+     */
+    recover?: MoveIdWildcard1[];
+    /**
+     * The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.
+     */
+    suffer?: MoveIdWildcard2[];
+  };
+}
+/**
+ * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetConditionMeterEnhancement".
+ */
+export interface AssetConditionMeterEnhancement {
+  field_type: "condition_meter";
+  /**
+   * The maximum value of this meter.
+   */
+  max: number;
+}
+/**
+ * Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetEnhancement".
+ */
+export interface AssetEnhancement1 {
+  /**
+   * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
+   */
+  count_as_impact?: boolean;
+  /**
+   * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
+   */
+  shared?: boolean;
+  attachments?: AssetAttachment;
+  /**
+   * Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.
+   */
+  controls?: {
+    [k: string]: AssetControlFieldEnhancement;
+  };
+  suggestions?: Suggestions;
 }

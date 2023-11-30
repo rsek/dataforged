@@ -8,8 +8,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
 /**
- * A progress move that rolls on a standard progress track type (defined by the
- * move object).
+ * A progress move that rolls on a standard progress track type (whose features
+ * are defined by this move object). For progress rolls that use special tracks,
+ * see MoveSpecialTrack.
  */
 @JsonSerialize
 public class MoveProgressRoll extends Move {
@@ -153,6 +154,7 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Getter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public TriggerProgressRoll getTrigger() {
         return trigger;
@@ -160,6 +162,7 @@ public class MoveProgressRoll extends Move {
 
     /**
      * Setter for trigger.<p>
+     * Trigger conditions for this move.
      */
     public void setTrigger(TriggerProgressRoll trigger) {
         this.trigger = trigger;

@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
+/**
+ * Roll using the value of an asset option.
+ */
 @JsonSerialize
 public class ActionRollOptionAssetOption extends ActionRollOption {
     @JsonProperty("assets")
@@ -33,7 +36,7 @@ public class ActionRollOptionAssetOption extends ActionRollOption {
 
     /**
      * Getter for option.<p>
-     * The key of the asset option field.
+     * The dictionary key of the asset option field.
      */
     public DictKey getOption() {
         return option;
@@ -41,7 +44,7 @@ public class ActionRollOptionAssetOption extends ActionRollOption {
 
     /**
      * Setter for option.<p>
-     * The key of the asset option field.
+     * The dictionary key of the asset option field.
      */
     public void setOption(DictKey option) {
         this.option = option;

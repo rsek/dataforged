@@ -35,14 +35,18 @@ function ActionRollOptionBase<
 	Using extends ActionRollUsing,
 	Props extends TObject
 >(using: Using, props: Props, options: ObjectOptions = {}) {
+	const constant = Utils.ExtractLiteralFromEnum(ActionRollUsing, using)
 	return Utils.Assign(
 		[
 			props,
 			Type.Object({
-				using: Utils.ExtractLiteralFromEnum(ActionRollUsing, using)
+				using: constant
 			})
 		],
-		options
+		{
+			description: constant.description,
+			...options
+		}
 	)
 }
 
@@ -52,10 +56,10 @@ export const RollOptionAssetControl = ActionRollOptionBase(
 		assets: Utils.Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
 			default: null,
 			description:
-				"Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
+				"Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
 		}),
 		control: Type.Ref(Id.DictKey, {
-			description: 'The key of the asset control field.',
+			description: 'The dictionary key of the asset control field.',
 			examples: ['health', 'integrity']
 		})
 	}),
@@ -80,10 +84,10 @@ export const RollOptionAssetOption = ActionRollOptionBase(
 		assets: Utils.Nullable(Type.Array(Type.Ref(Id.AssetIdWildcard)), {
 			default: null,
 			description:
-				"Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
+				"Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
 		}),
 		option: Type.Ref(Id.DictKey, {
-			description: 'The key of the asset option field.'
+			description: 'The dictionary key of the asset option field.'
 		})
 	}),
 	{ $id: 'RollOptionAssetOption' }
@@ -155,7 +159,7 @@ export type ActionRollOption = Static<typeof ActionRollOption>
 export const TriggerActionRollCondition = TriggerCondition(
 	Type.Ref<typeof ActionRollMethod>('ActionRollMethod'),
 	Type.Array(Type.Ref(ActionRollOption)),
-	{ $id: 'TriggerActionRollCondition' }
+	{ $id: 'TriggerActionRollCondition', title: 'TriggerActionRollCondition' }
 )
 export type TriggerActionRollCondition = Static<
 	typeof TriggerActionRollCondition
@@ -165,6 +169,7 @@ export const TriggerActionRoll = Trigger(
 	Type.Array(Type.Ref(TriggerActionRollCondition)),
 	{
 		$id: 'TriggerActionRoll',
+		title: 'TriggerActionRoll',
 		description:
 			'Describes trigger conditions for a move that makes an action roll.'
 	}
@@ -188,12 +193,11 @@ export type MoveActionRoll = Move<
 	MoveOutcomes
 >
 
-export const TriggerActionRollConditionEnhancement = TriggerConditionEnhancement(
-	TriggerActionRollCondition,
-	{
-		$id: 'TriggerActionRollConditionEnhancement'
-	}
-)
+export const TriggerActionRollConditionEnhancement =
+	TriggerConditionEnhancement(TriggerActionRollCondition, {
+		$id: 'TriggerActionRollConditionEnhancement',
+		title: 'TriggerActionRollConditionEnhancement'
+	})
 
 export type TriggerActionRollConditionEnhancement = Static<
 	typeof TriggerActionRollConditionEnhancement
@@ -202,7 +206,8 @@ export type TriggerActionRollConditionEnhancement = Static<
 export const TriggerActionRollEnhancement = TriggerEnhancement(
 	Type.Array(Type.Ref(TriggerActionRollConditionEnhancement)),
 	{
-		$id: 'TriggerActionRollEnhancement'
+		$id: 'TriggerActionRollEnhancement',
+		title: 'TriggerActionRollEnhancement'
 	}
 )
 export type TriggerActionRollEnhancement = Static<
@@ -214,7 +219,7 @@ export type TriggerActionRollEnhancement = Static<
 export const TriggerNoRollCondition = TriggerCondition(
 	Type.Null({ default: null }),
 	Type.Null({ default: null }),
-	{ $id: 'TriggerNoRollCondition' }
+	{ $id: 'TriggerNoRollCondition', title: 'TriggerNoRollCondition' }
 )
 
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
@@ -223,6 +228,7 @@ export const TriggerNoRoll = Trigger(
 	Utils.Nullable(Type.Array(Type.Ref(TriggerNoRollCondition))),
 	{
 		$id: 'TriggerNoRoll',
+		title: 'TriggerNoRoll',
 		description: 'Describes trigger conditions for a move that makes no rolls.'
 	}
 )
@@ -234,7 +240,8 @@ export const MoveNoRoll = Move(
 	Type.Ref(TriggerNoRoll),
 	Type.Null({ default: null }),
 	{
-		$id: 'MoveNoRoll'
+		$id: 'MoveNoRoll',
+		description: 'A move that makes no progress rolls or action rolls.'
 	}
 )
 
@@ -244,7 +251,8 @@ export const TriggerNoRollEnhancement = TriggerEnhancement(
 	// triggers without rolls don't need their own condition enhancement type
 	Type.Array(Type.Ref(TriggerNoRollCondition)),
 	{
-		$id: 'TriggerNoRollEnhancement'
+		$id: 'TriggerNoRollEnhancement',
+		title: 'TriggerNoRollEnhancement'
 	}
 )
 export type TriggerNoRollEnhancement = Static<typeof TriggerNoRollEnhancement>

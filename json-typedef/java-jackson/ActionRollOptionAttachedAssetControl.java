@@ -5,6 +5,11 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Roll using the value of an attached asset control. For example, a Module
+ * asset could use this to roll using the `integrity` control of an attached
+ * Vehicle.
+ */
 @JsonSerialize
 public class ActionRollOptionAttachedAssetControl extends ActionRollOption {
     @JsonProperty("control")
@@ -15,7 +20,7 @@ public class ActionRollOptionAttachedAssetControl extends ActionRollOption {
 
     /**
      * Getter for control.<p>
-     * The key of the asset control field.
+     * The dictionary key of the asset control field.
      */
     public DictKey getControl() {
         return control;
@@ -23,7 +28,7 @@ public class ActionRollOptionAttachedAssetControl extends ActionRollOption {
 
     /**
      * Setter for control.<p>
-     * The key of the asset control field.
+     * The dictionary key of the asset control field.
      */
     public void setControl(DictKey control) {
         this.control = control;
