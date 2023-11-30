@@ -45,7 +45,7 @@ export function SetOptional<
 		base.required = base.required.filter((k) => toRemove.includes(k))
 
 	return Type.Object(base.properties, {
-		...omit(base, ['properties']),
+		...omit(base, ['properties', 'required']),
 		...options
 	})
 }

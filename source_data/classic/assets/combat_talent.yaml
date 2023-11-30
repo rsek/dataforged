@@ -346,20 +346,22 @@ assets:
         # icon not on game-icons
         requirement: If you wear armor...
         # FIXME
-        # controls:
-        #   equipped:
-        # TODO: should there be a distinction between assets that count *as* an impact, and assets that *apply* a specific impact?
-        # what about assets that *require* an impact?
-        # alternatively, could this handle like, IDK, checkbox impacts?
-        # field_type: select_enhancement
-        # name: Equipped
-        # options:
-        #   lightly_armored:
-        #     name: Lightly armored
-        #     value: {}
-        #   geared_for_war:
-        #     name: Geared for war
-        #     value: { count_as_impact: true }
+        controls:
+          equipped:
+            # TODO: should there be a distinction between assets that count *as* an impact, and assets that *apply* a specific impact?
+            # what about assets that *require* an impact?
+            # alternatively, could this handle like, IDK, checkbox impacts?
+            field_type: select_enhancement
+            label: Equipped
+            choices:
+              lightly_armored:
+                label: Lightly armored
+                option_type: option
+                enhance_asset: { count_as_impact: false }
+              geared_for_war:
+                label: Geared for war
+                option_type: option
+                enhance_asset: { count_as_impact: true }
         abilities:
           - text: |-
               When you equip or adjust your armor, choose one.

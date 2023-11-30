@@ -20,7 +20,7 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
     private Short max;
 
     @JsonProperty("min")
-    private Byte min;
+    private Short min;
 
     @JsonProperty("value")
     private Short value;
@@ -82,7 +82,7 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
      * Getter for min.<p>
      * The (inclusive) minimum value.
      */
-    public Byte getMin() {
+    public Short getMin() {
         return min;
     }
 
@@ -90,7 +90,7 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
      * Setter for min.<p>
      * The (inclusive) minimum value.
      */
-    public void setMin(Byte min) {
+    public void setMin(Short min) {
         this.min = min;
     }
 

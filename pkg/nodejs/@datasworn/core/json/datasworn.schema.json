@@ -999,10 +999,10 @@
 				},
 				"prevents_recovery": {
 					"type": "array",
-					"description": "Keys of ruleset condition meters, to which this impact prevents recovery.",
+					"description": "Any ruleset condition meters that can't recover when this impact is active.",
 					"default": [],
 					"items": {
-						"$ref": "#/$defs/ConditionMeterId"
+						"$ref": "#/$defs/ConditionMeterKey"
 					}
 				}
 			}
@@ -1195,6 +1195,283 @@
 				"bonds_legacy",
 				"discoveries_legacy"
 			]
+		},
+		"RollOptionAssetControl": {
+			"title": "RollOptionAssetControl",
+			"type": "object",
+			"description": "A reference to the value of an asset control.",
+			"required": ["using", "assets", "control"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"description": "A reference to the value of an asset control.",
+					"const": "asset_control"
+				},
+				"assets": {
+					"description": "Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetIdWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"control": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The dictionary key of the asset control field.",
+					"examples": ["health", "integrity"]
+				}
+			}
+		},
+		"AssetOptionValueRef": {
+			"title": "AssetOptionValueRef",
+			"type": "object",
+			"description": "A reference to the value of an asset option.",
+			"required": ["using", "assets", "option"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"description": "A reference to the value of an asset option.",
+					"const": "asset_option"
+				},
+				"assets": {
+					"description": "Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetIdWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"option": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The dictionary key of the asset option field."
+				}
+			}
+		},
+		"AttachedAssetControlValueRef": {
+			"title": "AttachedAssetControlValueRef",
+			"type": "object",
+			"description": "A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
+			"required": ["using", "control"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"description": "A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
+					"const": "attached_asset_control"
+				},
+				"control": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The dictionary key of the asset control field.",
+					"examples": ["health", "integrity"]
+				}
+			}
+		},
+		"AttachedAssetOptionValueRef": {
+			"title": "AttachedAssetOptionValueRef",
+			"type": "object",
+			"description": "A reference to the value of an attached asset option.",
+			"required": ["using", "option"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"description": "A reference to the value of an attached asset option.",
+					"const": "attached_asset_option"
+				},
+				"option": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The dictionary key of the asset option field."
+				}
+			}
+		},
+		"ConditionMeterValueRef": {
+			"title": "ConditionMeterValueRef",
+			"type": "object",
+			"description": "A reference to the value of a standard player condition meter.",
+			"required": ["using", "condition_meter"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"description": "A reference to the value of a standard player condition meter.",
+					"const": "condition_meter"
+				},
+				"condition_meter": {
+					"$ref": "#/$defs/ConditionMeterKey"
+				}
+			}
+		},
+		"CustomValue": {
+			"title": "CustomValue",
+			"type": "object",
+			"description": "An arbitrary static integer value with a label.",
+			"required": ["label", "using", "value"],
+			"properties": {
+				"label": {
+					"$ref": "#/$defs/Label"
+				},
+				"using": {
+					"type": "string",
+					"description": "An arbitrary static integer value with a label.",
+					"const": "custom"
+				},
+				"value": {
+					"type": "integer"
+				}
+			}
+		},
+		"RollableValue": {
+			"title": "RollableValue",
+			"type": "object",
+			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `using` property as a discriminator.",
+			"required": ["using"],
+			"properties": {
+				"using": {
+					"enum": [
+						"stat",
+						"condition_meter",
+						"asset_control",
+						"asset_option",
+						"attached_asset_control",
+						"attached_asset_option",
+						"custom"
+					]
+				}
+			},
+			"additionalProperties": true,
+			"allOf": [
+				{
+					"if": {
+						"properties": {
+							"using": {
+								"const": "stat",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/StatValueRef"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"using": {
+								"const": "condition_meter",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/ConditionMeterValueRef"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"using": {
+								"const": "asset_control",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/RollOptionAssetControl"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"using": {
+								"const": "asset_option",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/AssetOptionValueRef"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"using": {
+								"const": "attached_asset_control",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/AttachedAssetControlValueRef"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"using": {
+								"const": "attached_asset_option",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/AttachedAssetOptionValueRef"
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"using": {
+								"const": "custom",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/CustomValue"
+					}
+				}
+			]
+		},
+		"RollableValueType": {
+			"title": "RollableValueType",
+			"description": "  * stat: A reference to the value of a standard player character stat.\n  * condition_meter: A reference to the value of a standard player condition meter.\n  * asset_control: A reference to the value of an asset control.\n  * asset_option: A reference to the value of an asset option.\n  * custom: An arbitrary static integer value with a label.\n  * attached_asset_control: A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.\n  * attached_asset_option: A reference to the value of an attached asset option.",
+			"enum": [
+				"stat",
+				"condition_meter",
+				"asset_control",
+				"asset_option",
+				"custom",
+				"attached_asset_control",
+				"attached_asset_option"
+			]
+		},
+		"StatValueRef": {
+			"title": "StatValueRef",
+			"type": "object",
+			"description": "A reference to the value of a standard player character stat.",
+			"required": ["using", "stat"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"description": "A reference to the value of a standard player character stat.",
+					"const": "stat"
+				},
+				"stat": {
+					"$ref": "#/$defs/StatKey"
+				}
+			}
 		},
 		"Npc": {
 			"title": "Npc",
@@ -1391,12 +1668,12 @@
 				}
 			}
 		},
-		"DiceNotation": {
-			"title": "DiceNotation",
+		"DiceExpression": {
+			"title": "DiceExpression",
 			"type": "string",
+			"description": "A simple dice roll expression with an optional modifer.",
 			"examples": ["1d100", "1d6+2"],
-			"format": "dice_notation",
-			"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?"
+			"pattern": "([1-9][0-9]*)d([1-9][0-9]*)([+-]([1-9][0-9]*))?"
 		},
 		"OracleRollTemplate": {
 			"title": "OracleRollTemplate",
@@ -1433,21 +1710,45 @@
 		"OracleTableRoll": {
 			"title": "OracleTableRoll",
 			"type": "object",
+			"required": ["dice", "auto", "method", "oracle", "times"],
 			"properties": {
+				"dice": {
+					"description": "The dice roll to make on the oracle table. Set it to `null` if you just want the table's default.",
+					"default": null,
+					"anyOf": [
+						{
+							"$ref": "#/$defs/DiceExpression"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
 				"auto": {
 					"type": "boolean",
-					"description": "The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as \"Action + Theme\". If this value is omitted, assume it's false.",
+					"description": "Both Ironsworn and Starforged explicitly recommend *against* rolling all details at once. That said, some oracle results only provide useful information once a secondary roll occurs, such as \"Action + Theme\".",
 					"default": false
 				},
 				"method": {
-					"$ref": "#/$defs/OracleTableRollMethod"
+					"$ref": "#/$defs/OracleTableRollMethod",
+					"description": "Special rules on how the oracle table roll is performed.",
+					"default": "no_duplicates"
 				},
 				"oracle": {
-					"$ref": "#/$defs/OracleTableId",
-					"description": "The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table."
+					"description": "The ID of the oracle table to be rolled. A `null` value indicates that it's a roll on the same table.",
+					"default": null,
+					"anyOf": [
+						{
+							"$ref": "#/$defs/OracleTableId"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"times": {
 					"type": "integer",
+					"description": "The number of times to roll.",
 					"default": 1,
 					"minimum": 1
 				}
@@ -1456,7 +1757,6 @@
 		"OracleTableRollMethod": {
 			"title": "OracleTableRollMethod",
 			"description": "Special roll instructions to use when rolling multiple times on a single oracle table.\n\n  * no_duplicates: Duplicates should be re-rolled.\n  * keep_duplicates: Duplicates should be kept.\n  * make_it_worse: Duplicates should be kept, and they compound to make things worse.",
-			"default": "no_duplicates",
 			"enum": ["no_duplicates", "keep_duplicates", "make_it_worse"]
 		},
 		"OracleCollection": {
@@ -1671,7 +1971,7 @@
 					}
 				},
 				"dice": {
-					"$ref": "#/$defs/DiceNotation",
+					"$ref": "#/$defs/DiceExpression",
 					"description": "The roll used to select a result on this table.",
 					"default": "1d100"
 				},
@@ -1963,132 +2263,6 @@
 				"highest",
 				"lowest",
 				"all"
-			]
-		},
-		"ActionRollOption": {
-			"title": "ActionRollOption",
-			"type": "object",
-			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `using` property as a discriminator.",
-			"required": ["using"],
-			"properties": {
-				"using": {
-					"enum": [
-						"stat",
-						"condition_meter",
-						"asset_control",
-						"asset_option",
-						"attached_asset_control",
-						"attached_asset_option",
-						"custom"
-					]
-				}
-			},
-			"additionalProperties": true,
-			"allOf": [
-				{
-					"if": {
-						"properties": {
-							"using": {
-								"const": "stat",
-								"type": "string"
-							}
-						}
-					},
-					"then": {
-						"$ref": "#/$defs/RollOptionStat"
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"using": {
-								"const": "condition_meter",
-								"type": "string"
-							}
-						}
-					},
-					"then": {
-						"$ref": "#/$defs/RollOptionConditionMeter"
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"using": {
-								"const": "asset_control",
-								"type": "string"
-							}
-						}
-					},
-					"then": {
-						"$ref": "#/$defs/RollOptionAssetControl"
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"using": {
-								"const": "asset_option",
-								"type": "string"
-							}
-						}
-					},
-					"then": {
-						"$ref": "#/$defs/RollOptionAssetOption"
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"using": {
-								"const": "attached_asset_control",
-								"type": "string"
-							}
-						}
-					},
-					"then": {
-						"$ref": "#/$defs/RollOptionAttachedAssetControl"
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"using": {
-								"const": "attached_asset_option",
-								"type": "string"
-							}
-						}
-					},
-					"then": {
-						"$ref": "#/$defs/RollOptionAttachedAssetOption"
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"using": {
-								"const": "custom",
-								"type": "string"
-							}
-						}
-					},
-					"then": {
-						"$ref": "#/$defs/RollOptionCustom"
-					}
-				}
-			]
-		},
-		"ActionRollUsing": {
-			"title": "ActionRollUsing",
-			"description": "  * stat: Roll using a standard player character stat.\n  * condition_meter: Roll using the value of a standard player condition meter.\n  * asset_control: Roll using the value of an asset control.\n  * asset_option: Roll using the value of an asset option.\n  * custom: Roll using an integer value with customizable labels.\n  * attached_asset_control: Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.\n  * attached_asset_option: Roll using the value of an attached asset option.",
-			"enum": [
-				"stat",
-				"condition_meter",
-				"asset_control",
-				"asset_option",
-				"custom",
-				"attached_asset_control",
-				"attached_asset_option"
 			]
 		},
 		"Move": {
@@ -2730,158 +2904,6 @@
 				}
 			}
 		},
-		"RollOptionAssetControl": {
-			"title": "RollOptionAssetControl",
-			"type": "object",
-			"description": "Roll using the value of an asset control.",
-			"required": ["using", "assets", "control"],
-			"properties": {
-				"using": {
-					"type": "string",
-					"description": "Roll using the value of an asset control.",
-					"const": "asset_control"
-				},
-				"assets": {
-					"description": "Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
-					"default": null,
-					"anyOf": [
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/AssetIdWildcard"
-							}
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"control": {
-					"$ref": "#/$defs/DictKey",
-					"description": "The dictionary key of the asset control field.",
-					"examples": ["health", "integrity"]
-				}
-			}
-		},
-		"RollOptionAssetOption": {
-			"title": "RollOptionAssetOption",
-			"type": "object",
-			"description": "Roll using the value of an asset option.",
-			"required": ["using", "assets", "option"],
-			"properties": {
-				"using": {
-					"type": "string",
-					"description": "Roll using the value of an asset option.",
-					"const": "asset_option"
-				},
-				"assets": {
-					"description": "Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
-					"default": null,
-					"anyOf": [
-						{
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/AssetIdWildcard"
-							}
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"option": {
-					"$ref": "#/$defs/DictKey",
-					"description": "The dictionary key of the asset option field."
-				}
-			}
-		},
-		"RollOptionAttachedAssetControl": {
-			"title": "RollOptionAttachedAssetControl",
-			"type": "object",
-			"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
-			"required": ["using", "control"],
-			"properties": {
-				"using": {
-					"type": "string",
-					"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
-					"const": "attached_asset_control"
-				},
-				"control": {
-					"$ref": "#/$defs/DictKey",
-					"description": "The dictionary key of the asset control field.",
-					"examples": ["health", "integrity"]
-				}
-			}
-		},
-		"RollOptionAttachedAssetOption": {
-			"title": "RollOptionAttachedAssetOption",
-			"type": "object",
-			"description": "Roll using the value of an attached asset option.",
-			"required": ["using", "option"],
-			"properties": {
-				"using": {
-					"type": "string",
-					"description": "Roll using the value of an attached asset option.",
-					"const": "attached_asset_option"
-				},
-				"option": {
-					"$ref": "#/$defs/DictKey",
-					"description": "The dictionary key of the asset option field."
-				}
-			}
-		},
-		"RollOptionConditionMeter": {
-			"title": "RollOptionConditionMeter",
-			"type": "object",
-			"description": "Roll using the value of a standard player condition meter.",
-			"required": ["using", "condition_meter"],
-			"properties": {
-				"using": {
-					"type": "string",
-					"description": "Roll using the value of a standard player condition meter.",
-					"const": "condition_meter"
-				},
-				"condition_meter": {
-					"$ref": "#/$defs/ConditionMeterId"
-				}
-			}
-		},
-		"RollOptionCustom": {
-			"title": "RollOptionCustom",
-			"type": "object",
-			"description": "Roll using an integer value with customizable labels.",
-			"required": ["name", "value", "using"],
-			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"value": {
-					"type": "integer",
-					"minimum": 0
-				},
-				"using": {
-					"type": "string",
-					"description": "Roll using an integer value with customizable labels.",
-					"const": "custom"
-				}
-			}
-		},
-		"RollOptionStat": {
-			"title": "RollOptionStat",
-			"type": "object",
-			"description": "Roll using a standard player character stat.",
-			"required": ["using", "stat"],
-			"properties": {
-				"using": {
-					"type": "string",
-					"description": "Roll using a standard player character stat.",
-					"const": "stat"
-				},
-				"stat": {
-					"$ref": "#/$defs/StatId"
-				}
-			}
-		},
 		"SpecialTrackRollMethod": {
 			"title": "SpecialTrackRollMethod",
 			"description": "  * miss: An automatic miss.\n  * weak_hit: An automatic weak hit.\n  * strong_hit: An automatic strong hit.\n  * player_choice: The player chooses which roll option to use.\n  * highest: Use the roll option with the best/highest value.\n  * lowest: Use the roll option with the worst/lowest value.\n  * all: Use **every** roll option at once.",
@@ -2935,7 +2957,7 @@
 					"type": "array",
 					"description": "The options available when rolling with this trigger condition.",
 					"items": {
-						"$ref": "#/$defs/ActionRollOption"
+						"$ref": "#/$defs/RollableValue"
 					}
 				}
 			}
@@ -2971,7 +2993,7 @@
 							"type": "array",
 							"description": "The options available when rolling with this trigger condition.",
 							"items": {
-								"$ref": "#/$defs/ActionRollOption"
+								"$ref": "#/$defs/RollableValue"
 							}
 						},
 						{
@@ -3343,7 +3365,7 @@
 				},
 				"options": {
 					"type": "object",
-					"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
+					"description": "Options are input fields set when the player purchases the asset. They're likely to remain the same through the life of the asset. Typically, they are rendered at the top of the asset card.",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
@@ -3550,7 +3572,6 @@
 							},
 							"min": {
 								"default": 0,
-								"const": 0,
 								"type": "integer",
 								"description": "The (inclusive) minimum value."
 							},
@@ -4020,35 +4041,24 @@
 													"title": "SelectEnhancementOption",
 													"type": "object",
 													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
 														"option_type": {
 															"const": "option",
 															"type": "string"
 														},
-														"selected": {
-															"description": "Is this option currently selected?",
-															"type": "boolean"
+														"enhance_asset": {
+															"$ref": "#/$defs/AssetEnhancement"
 														},
-														"label": {
-															"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-															"$ref": "#/$defs/Label"
-														},
-														"value": {
-															"description": "The current value of this input.",
-															"type": "object",
-															"properties": {
-																"enhance_asset": {
-																	"$ref": "#/$defs/AssetEnhancement"
-																},
-																"enhance_moves": {
-																	"type": "array",
-																	"items": {
-																		"$ref": "#/$defs/MoveEnhancement"
-																	}
-																}
+														"enhance_moves": {
+															"type": "array",
+															"items": {
+																"$ref": "#/$defs/MoveEnhancement"
 															}
 														}
 													},
-													"required": ["option_type", "label", "value"],
+													"required": ["label", "option_type"],
 													"additionalProperties": false
 												}
 											},
@@ -4085,35 +4095,24 @@
 																	"title": "SelectEnhancementOption",
 																	"type": "object",
 																	"properties": {
+																		"label": {
+																			"$ref": "#/$defs/Label"
+																		},
 																		"option_type": {
 																			"const": "option",
 																			"type": "string"
 																		},
-																		"selected": {
-																			"description": "Is this option currently selected?",
-																			"type": "boolean"
+																		"enhance_asset": {
+																			"$ref": "#/$defs/AssetEnhancement"
 																		},
-																		"label": {
-																			"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-																			"$ref": "#/$defs/Label"
-																		},
-																		"value": {
-																			"description": "The current value of this input.",
-																			"type": "object",
-																			"properties": {
-																				"enhance_asset": {
-																					"$ref": "#/$defs/AssetEnhancement"
-																				},
-																				"enhance_moves": {
-																					"type": "array",
-																					"items": {
-																						"$ref": "#/$defs/MoveEnhancement"
-																					}
-																				}
+																		"enhance_moves": {
+																			"type": "array",
+																			"items": {
+																				"$ref": "#/$defs/MoveEnhancement"
 																			}
 																		}
 																	},
-																	"required": ["option_type", "label", "value"]
+																	"required": ["label", "option_type"]
 																}
 															}
 														}
@@ -4313,11 +4312,12 @@
 		"AssetOptionField": {
 			"title": "AssetOptionField",
 			"type": "object",
+			"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
 			"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.",
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
-					"enum": ["select_stat", "select_enhancement", "text"]
+					"enum": ["select_value", "select_enhancement", "text"]
 				}
 			},
 			"additionalProperties": true,
@@ -4326,7 +4326,7 @@
 					"if": {
 						"properties": {
 							"field_type": {
-								"const": "select_stat",
+								"const": "select_value",
 								"type": "string"
 							}
 						}
@@ -4334,7 +4334,7 @@
 					"then": {
 						"description": "Represents a list of mutually exclusive choices.",
 						"$comment": "Semantics are similar to the HTML `<select>` element",
-						"title": "SelectStatField",
+						"title": "SelectValueField",
 						"type": "object",
 						"properties": {
 							"id": {
@@ -4369,8 +4369,8 @@
 											{
 												"if": {
 													"properties": {
-														"option_type": {
-															"const": "option",
+														"using": {
+															"const": "stat",
 															"type": "string"
 														}
 													}
@@ -4378,103 +4378,322 @@
 												"then": {
 													"description": "Represents an option in a list of choices.",
 													"$comment": "Semantics are similar to the HTML `<option>` element.",
-													"title": "SelectStatOption",
 													"type": "object",
 													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
 														"option_type": {
 															"const": "option",
 															"type": "string"
 														},
-														"selected": {
-															"description": "Is this option currently selected?",
-															"type": "boolean"
+														"stat": {
+															"$ref": "#/$defs/StatKey"
 														},
-														"label": {
-															"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-															"$ref": "#/$defs/Label"
-														},
-														"value": {
-															"description": "The current value of this input.",
-															"$ref": "#/$defs/StatId"
+														"using": {
+															"description": "A reference to the value of a standard player character stat.",
+															"const": "stat",
+															"type": "string"
 														}
 													},
-													"required": ["option_type", "label", "value"],
+													"required": ["label", "option_type", "stat", "using"],
 													"additionalProperties": false
 												}
 											},
 											{
 												"if": {
 													"properties": {
-														"option_type": {
-															"const": "option_group",
+														"using": {
+															"const": "condition_meter",
 															"type": "string"
 														}
 													}
 												},
 												"then": {
-													"description": "Represents a grouping of options in a list of choices.",
-													"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
-													"title": "SelectStatOptionGroup",
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
 													"type": "object",
 													"properties": {
-														"name": {
-															"description": "A label for this option group.",
+														"label": {
 															"$ref": "#/$defs/Label"
 														},
 														"option_type": {
-															"const": "option_group",
+															"const": "option",
 															"type": "string"
 														},
-														"choices": {
-															"$comment": "Deserialize as a dictionary object.",
-															"type": "object",
-															"patternProperties": {
-																"^([a-z][a-z_]*)$": {
-																	"description": "Represents an option in a list of choices.",
-																	"$comment": "Semantics are similar to the HTML `<option>` element.",
-																	"title": "SelectStatOption",
-																	"type": "object",
-																	"properties": {
-																		"option_type": {
-																			"const": "option",
-																			"type": "string"
-																		},
-																		"selected": {
-																			"description": "Is this option currently selected?",
-																			"type": "boolean"
-																		},
-																		"label": {
-																			"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-																			"$ref": "#/$defs/Label"
-																		},
-																		"value": {
-																			"description": "The current value of this input.",
-																			"$ref": "#/$defs/StatId"
-																		}
-																	},
-																	"required": ["option_type", "label", "value"]
-																}
-															}
+														"condition_meter": {
+															"$ref": "#/$defs/ConditionMeterKey"
+														},
+														"using": {
+															"description": "A reference to the value of a standard player condition meter.",
+															"const": "condition_meter",
+															"type": "string"
 														}
 													},
-													"required": ["name", "option_type", "choices"],
+													"required": [
+														"label",
+														"option_type",
+														"condition_meter",
+														"using"
+													],
+													"additionalProperties": false
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"using": {
+															"const": "asset_control",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"type": "object",
+													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"assets": {
+															"default": null,
+															"description": "Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
+															"anyOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"$ref": "#/$defs/AssetIdWildcard"
+																	}
+																},
+																{
+																	"type": "null"
+																}
+															]
+														},
+														"control": {
+															"description": "The dictionary key of the asset control field.",
+															"examples": ["health", "integrity"],
+															"$ref": "#/$defs/DictKey"
+														},
+														"using": {
+															"description": "A reference to the value of an asset control.",
+															"const": "asset_control",
+															"type": "string"
+														}
+													},
+													"required": [
+														"label",
+														"option_type",
+														"assets",
+														"control",
+														"using"
+													],
+													"additionalProperties": false
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"using": {
+															"const": "asset_option",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"type": "object",
+													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"assets": {
+															"default": null,
+															"description": "Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
+															"anyOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"$ref": "#/$defs/AssetIdWildcard"
+																	}
+																},
+																{
+																	"type": "null"
+																}
+															]
+														},
+														"option": {
+															"description": "The dictionary key of the asset option field.",
+															"$ref": "#/$defs/DictKey"
+														},
+														"using": {
+															"description": "A reference to the value of an asset option.",
+															"const": "asset_option",
+															"type": "string"
+														}
+													},
+													"required": [
+														"label",
+														"option_type",
+														"assets",
+														"option",
+														"using"
+													],
+													"additionalProperties": false
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"using": {
+															"const": "attached_asset_control",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"type": "object",
+													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"control": {
+															"description": "The dictionary key of the asset control field.",
+															"examples": ["health", "integrity"],
+															"$ref": "#/$defs/DictKey"
+														},
+														"using": {
+															"description": "A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
+															"const": "attached_asset_control",
+															"type": "string"
+														}
+													},
+													"required": [
+														"label",
+														"option_type",
+														"control",
+														"using"
+													],
+													"additionalProperties": false
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"using": {
+															"const": "attached_asset_option",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"type": "object",
+													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"option": {
+															"description": "The dictionary key of the asset option field.",
+															"$ref": "#/$defs/DictKey"
+														},
+														"using": {
+															"description": "A reference to the value of an attached asset option.",
+															"const": "attached_asset_option",
+															"type": "string"
+														}
+													},
+													"required": [
+														"label",
+														"option_type",
+														"option",
+														"using"
+													],
+													"additionalProperties": false
+												}
+											},
+											{
+												"if": {
+													"properties": {
+														"using": {
+															"const": "custom",
+															"type": "string"
+														}
+													}
+												},
+												"then": {
+													"description": "Represents an option in a list of choices.",
+													"$comment": "Semantics are similar to the HTML `<option>` element.",
+													"type": "object",
+													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
+														"option_type": {
+															"const": "option",
+															"type": "string"
+														},
+														"value": {
+															"type": "integer"
+														},
+														"using": {
+															"description": "An arbitrary static integer value with a label.",
+															"const": "custom",
+															"type": "string"
+														}
+													},
+													"required": [
+														"label",
+														"option_type",
+														"value",
+														"using"
+													],
 													"additionalProperties": false
 												}
 											}
 										],
-										"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `option_type` property as a discriminator.",
-										"required": ["option_type"],
+										"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `using` property as a discriminator.",
+										"required": ["using"],
 										"additionalProperties": true,
 										"properties": {
-											"option_type": {
-												"enum": ["option", "option_group"]
+											"using": {
+												"enum": [
+													"stat",
+													"condition_meter",
+													"asset_control",
+													"asset_option",
+													"attached_asset_control",
+													"attached_asset_option",
+													"custom"
+												]
 											}
 										}
 									}
 								}
 							},
 							"field_type": {
-								"const": "select_stat",
+								"const": "select_value",
 								"type": "string"
 							}
 						},
@@ -4541,35 +4760,24 @@
 													"title": "SelectEnhancementOption",
 													"type": "object",
 													"properties": {
+														"label": {
+															"$ref": "#/$defs/Label"
+														},
 														"option_type": {
 															"const": "option",
 															"type": "string"
 														},
-														"selected": {
-															"description": "Is this option currently selected?",
-															"type": "boolean"
+														"enhance_asset": {
+															"$ref": "#/$defs/AssetEnhancement"
 														},
-														"label": {
-															"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-															"$ref": "#/$defs/Label"
-														},
-														"value": {
-															"description": "The current value of this input.",
-															"type": "object",
-															"properties": {
-																"enhance_asset": {
-																	"$ref": "#/$defs/AssetEnhancement"
-																},
-																"enhance_moves": {
-																	"type": "array",
-																	"items": {
-																		"$ref": "#/$defs/MoveEnhancement"
-																	}
-																}
+														"enhance_moves": {
+															"type": "array",
+															"items": {
+																"$ref": "#/$defs/MoveEnhancement"
 															}
 														}
 													},
-													"required": ["option_type", "label", "value"],
+													"required": ["label", "option_type"],
 													"additionalProperties": false
 												}
 											},
@@ -4606,35 +4814,24 @@
 																	"title": "SelectEnhancementOption",
 																	"type": "object",
 																	"properties": {
+																		"label": {
+																			"$ref": "#/$defs/Label"
+																		},
 																		"option_type": {
 																			"const": "option",
 																			"type": "string"
 																		},
-																		"selected": {
-																			"description": "Is this option currently selected?",
-																			"type": "boolean"
+																		"enhance_asset": {
+																			"$ref": "#/$defs/AssetEnhancement"
 																		},
-																		"label": {
-																			"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-																			"$ref": "#/$defs/Label"
-																		},
-																		"value": {
-																			"description": "The current value of this input.",
-																			"type": "object",
-																			"properties": {
-																				"enhance_asset": {
-																					"$ref": "#/$defs/AssetEnhancement"
-																				},
-																				"enhance_moves": {
-																					"type": "array",
-																					"items": {
-																						"$ref": "#/$defs/MoveEnhancement"
-																					}
-																				}
+																		"enhance_moves": {
+																			"type": "array",
+																			"items": {
+																				"$ref": "#/$defs/MoveEnhancement"
 																			}
 																		}
 																	},
-																	"required": ["option_type", "label", "value"]
+																	"required": ["label", "option_type"]
 																}
 															}
 														}
@@ -5044,15 +5241,15 @@
 				}
 			}
 		},
-		"ConditionMeterId": {
+		"ConditionMeterKey": {
 			"$ref": "#/$defs/DictKey",
-			"title": "ConditionMeterId",
-			"description": "A basic, rollable player character resource.",
+			"title": "ConditionMeterKey",
+			"description": "A basic, rollable player character resource specified by the ruleset.",
 			"examples": ["health", "spirit", "supply"]
 		},
-		"StatId": {
+		"StatKey": {
 			"$ref": "#/$defs/DictKey",
-			"title": "StatId",
+			"title": "StatKey",
 			"description": "A basic player character stat.",
 			"examples": ["edge", "heart", "iron", "shadow", "wits"]
 		},

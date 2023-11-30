@@ -19,6 +19,7 @@ import {
 import { type TUnionEnum } from '../utils/UnionEnum.js'
 import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 import { type TDiscriminatedUnion } from '../utils/DiscriminatedUnion.js'
+import { type TNullable } from '../Utils.js'
 
 export const SchemaKind = [
 	'Array',
@@ -37,7 +38,8 @@ export const SchemaKind = [
 	// custom types
 	'UnionOneOf',
 	'UnionEnum',
-	'DiscriminatedUnion'
+	'DiscriminatedUnion',
+	'Nullable'
 ] as const
 
 interface SchemaKindMap extends Record<SchemaKind, TSchema> {
@@ -54,9 +56,11 @@ interface SchemaKindMap extends Record<SchemaKind, TSchema> {
 	String: TString
 	Tuple: TTuple
 	Union: TUnion
+	// custom types
 	UnionOneOf: TUnionOneOf<TSchema[]>
 	UnionEnum: TUnionEnum
-	DiscriminatedUnion: TDiscriminatedUnion
+	DiscriminatedUnion: TDiscriminatedUnion<TObject[], string>
+	Nullable: TNullable
 }
 
 export type SchemaKind = (typeof SchemaKind)[number]

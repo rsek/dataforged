@@ -1,12 +1,16 @@
 import { type JSONSchema } from 'json-schema-to-typescript'
 
+
+
 const typeKeys = [
 	'asset_type',
 	'card_type',
 	'content_type',
 	'field_type',
 	'roll_type',
-	'package_type'
+	'package_type',
+	'option_type',
+	'using'
 ]
 
 export const unsortableKeys = [
@@ -14,15 +18,16 @@ export const unsortableKeys = [
 	'controls',
 	'contents',
 	'options',
-	'collections'
+	'collections',
+	'choices'
 ]
 
-export const dataSwornKeyOrder = [
+export const dataSwornKeyOrder: string[] = [
 	'id',
 	'title',
 	'name',
-	'datasworn_version',
 	'label',
+	'datasworn_version',
 	'canonical_name',
 	...typeKeys,
 	'ruleset',
@@ -46,7 +51,6 @@ export const dataSwornKeyOrder = [
 	'count_as_impact',
 	'shared',
 	'attachments',
-	'using',
 	'trigger',
 	'roll',
 	'result',

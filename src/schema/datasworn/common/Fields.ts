@@ -15,6 +15,8 @@ import * as Player from './Player.js'
 import * as Utils from '../Utils.js'
 import * as Generic from '../Generic.js'
 import type * as Id from './Id.js'
+import { RollableValue } from './RollableValues.js'
+import { Members } from '../../../scripts/json-typedef/symbol.js'
 
 export const EnhanceableProperties = Symbol('EnhanceableProperties')
 
@@ -36,7 +38,7 @@ function InputField<
 		base,
 		Type.Object({ [DISCRIMINATOR]: Type.Literal(discriminator) })
 	]) as unknown as TObject<
-		T['properties'] & { [DISCRIMINATOR]: TLiteral<Discriminator> }
+		T['properties'] & { [DISCRIMINATOR]: TLiteral<Discriminator>; id: Id.AnyID }
 	>
 
 	const result = Generic.IdentifiedNode(id, mixin, {
@@ -88,7 +90,7 @@ export function CounterField(id: TRef<TString>) {
 	})
 }
 export type TCounterField = ReturnType<typeof CounterField>
-export type CounterField = Static<typeof CounterField>
+export type CounterField = Static<TCounterField>
 
 export function ClockField(id: TRef<TString>, options: ObjectOptions = {}) {
 	const { $comment, description } = Base.Clock
@@ -118,7 +120,9 @@ export type TConditionMeterField = ReturnType<typeof ConditionMeterField>
 export type ConditionMeterField = Static<TConditionMeterField>
 
 function SelectField<
-	Option extends Base.TSelectOption<TSchema>,
+	Option extends
+		| Base.TSelectOption<TObject>
+		| Utils.TDiscriminatedUnion<Base.TSelectOption<TObject>[], string>,
 	Discriminator extends string
 >(
 	optionSchema: Option,
@@ -129,27 +133,45 @@ function SelectField<
 	return InputField(Base.Select(optionSchema), discriminator, id, options)
 }
 
-export function SelectStatField(
+function SelectFieldWithGroups<
+	Option extends Base.TSelectOption<TObject>,
+	Discriminator extends string
+>(
+	optionSchema: Option,
+	discriminator: Discriminator,
 	id: TRef<TString>,
 	options: ObjectOptions = {}
 ) {
-	return SelectField(
-		Base.SelectOption(Type.Ref(Player.StatId), {
-			title: 'SelectStatOption'
-		}),
-		'select_stat',
+	return InputField(
+		Base.SelectWithGroups(optionSchema),
+		discriminator,
 		id,
-		{ title: 'SelectStatField', ...options }
+		options
 	)
 }
-export type TSelectStatField = ReturnType<typeof SelectStatField>
-export type SelectStatField = Static<TSelectStatField>
+
+const SelectValueOption = Utils.DiscriminatedUnion(
+	RollableValue[Members].map((subschema) => Base.SelectOption(subschema)),
+	'using'
+)
+
+export function SelectValueField(
+	id: TRef<TString>,
+	options: ObjectOptions = {}
+) {
+	return SelectField(SelectValueOption, 'select_value', id, {
+		title: 'SelectValueField',
+		...options
+	})
+}
+export type TSelectValueField = ReturnType<typeof SelectValueField>
+export type SelectValueField = Static<TSelectValueField>
 
 export function SelectEnhancementField(
 	id: TRef<TString>,
 	options: ObjectOptions = {}
 ) {
-	return SelectField(
+	return SelectFieldWithGroups(
 		Base.SelectOption(
 			Type.Partial(
 				Type.Object({

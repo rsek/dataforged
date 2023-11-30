@@ -63,80 +63,6 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class ActionRollOption
-    attr_accessor using: String
-
-    def self.from_json_data: (untyped) -> ActionRollOption
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollOptionAssetControl < ActionRollOption
-    attr_accessor assets: Array[AssetIDWildcard]
-    attr_accessor control: DictKey
-
-    def self.from_json_data: (untyped) -> ActionRollOptionAssetControl
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollOptionAssetOption < ActionRollOption
-    attr_accessor assets: Array[AssetIDWildcard]
-    attr_accessor option: DictKey
-
-    def self.from_json_data: (untyped) -> ActionRollOptionAssetOption
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollOptionAttachedAssetControl < ActionRollOption
-    attr_accessor control: DictKey
-
-    def self.from_json_data: (untyped) -> ActionRollOptionAttachedAssetControl
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollOptionAttachedAssetOption < ActionRollOption
-    attr_accessor option: DictKey
-
-    def self.from_json_data: (untyped) -> ActionRollOptionAttachedAssetOption
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollOptionConditionMeter < ActionRollOption
-    attr_accessor condition_meter: ConditionMeterID
-
-    def self.from_json_data: (untyped) -> ActionRollOptionConditionMeter
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollOptionCustom < ActionRollOption
-    attr_accessor name: Label
-    attr_accessor value: Integer
-
-    def self.from_json_data: (untyped) -> ActionRollOptionCustom
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollOptionStat < ActionRollOption
-    attr_accessor stat: StatID
-
-    def self.from_json_data: (untyped) -> ActionRollOptionStat
-    def to_json_data: () -> untyped
-  end
-
-  class ActionRollUsing
-    attr_accessor value: String
-
-    ASSET_CONTROL: ActionRollUsing
-    ASSET_OPTION: ActionRollUsing
-    ATTACHED_ASSET_CONTROL: ActionRollUsing
-    ATTACHED_ASSET_OPTION: ActionRollUsing
-    CONDITION_METER: ActionRollUsing
-    CUSTOM: ActionRollUsing
-    STAT: ActionRollUsing
-
-    def self.from_json_data: (untyped) -> ActionRollUsing
-    def to_json_data: () -> untyped
-  end
-
   class Asset
     attr_accessor abilities: Array[AssetAbility]
     attr_accessor asset_type: Label
@@ -351,18 +277,10 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class AssetControlFieldSelectEnhancementChoiceOptionValue
-    attr_accessor enhance_asset: AssetEnhancement?
-    attr_accessor enhance_moves: Array[MoveEnhancement]?
-
-    def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancementChoiceOptionValue
-    def to_json_data: () -> untyped
-  end
-
   class AssetControlFieldSelectEnhancementChoiceOption < AssetControlFieldSelectEnhancementChoice
     attr_accessor label: Label
-    attr_accessor value: AssetControlFieldSelectEnhancementChoiceOptionValue
-    attr_accessor selected: bool?
+    attr_accessor enhance_asset: AssetEnhancement?
+    attr_accessor enhance_moves: Array[MoveEnhancement]?
 
     def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancementChoiceOption
     def to_json_data: () -> untyped
@@ -377,19 +295,11 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue
-    attr_accessor enhance_asset: AssetEnhancement?
-    attr_accessor enhance_moves: Array[MoveEnhancement]?
-
-    def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue
-    def to_json_data: () -> untyped
-  end
-
   class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice
     attr_accessor label: Label
     attr_accessor option_type: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
-    attr_accessor value: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue
-    attr_accessor selected: bool?
+    attr_accessor enhance_asset: AssetEnhancement?
+    attr_accessor enhance_moves: Array[MoveEnhancement]?
 
     def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancementChoiceOptionGroupChoice
     def to_json_data: () -> untyped
@@ -480,18 +390,10 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class AssetOptionFieldSelectEnhancementChoiceOptionValue
-    attr_accessor enhance_asset: AssetEnhancement?
-    attr_accessor enhance_moves: Array[MoveEnhancement]?
-
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancementChoiceOptionValue
-    def to_json_data: () -> untyped
-  end
-
   class AssetOptionFieldSelectEnhancementChoiceOption < AssetOptionFieldSelectEnhancementChoice
     attr_accessor label: Label
-    attr_accessor value: AssetOptionFieldSelectEnhancementChoiceOptionValue
-    attr_accessor selected: bool?
+    attr_accessor enhance_asset: AssetEnhancement?
+    attr_accessor enhance_moves: Array[MoveEnhancement]?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancementChoiceOption
     def to_json_data: () -> untyped
@@ -506,19 +408,11 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue
-    attr_accessor enhance_asset: AssetEnhancement?
-    attr_accessor enhance_moves: Array[MoveEnhancement]?
-
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue
-    def to_json_data: () -> untyped
-  end
-
   class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice
     attr_accessor label: Label
     attr_accessor option_type: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
-    attr_accessor value: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue
-    attr_accessor selected: bool?
+    attr_accessor enhance_asset: AssetEnhancement?
+    attr_accessor enhance_moves: Array[MoveEnhancement]?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice
     def to_json_data: () -> untyped
@@ -542,56 +436,148 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class AssetOptionFieldSelectStatChoice
-    attr_accessor option_type: String
+  class AssetOptionFieldSelectValueChoice
+    attr_accessor using: String
 
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectStatChoice
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoice
     def to_json_data: () -> untyped
   end
 
-  class AssetOptionFieldSelectStatChoiceOption < AssetOptionFieldSelectStatChoice
-    attr_accessor label: Label
-    attr_accessor value: StatID
-    attr_accessor selected: bool?
-
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectStatChoiceOption
-    def to_json_data: () -> untyped
-  end
-
-  class AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType
+  class AssetOptionFieldSelectValueChoiceAssetControlOptionType
     attr_accessor value: String
 
-    OPTION: AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType
+    OPTION: AssetOptionFieldSelectValueChoiceAssetControlOptionType
 
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAssetControlOptionType
     def to_json_data: () -> untyped
   end
 
-  class AssetOptionFieldSelectStatChoiceOptionGroupChoice
+  class AssetOptionFieldSelectValueChoiceAssetControl < AssetOptionFieldSelectValueChoice
+    attr_accessor assets: Array[AssetIDWildcard]
+    attr_accessor control: DictKey
     attr_accessor label: Label
-    attr_accessor option_type: AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType
-    attr_accessor value: StatID
-    attr_accessor selected: bool?
+    attr_accessor option_type: AssetOptionFieldSelectValueChoiceAssetControlOptionType
 
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectStatChoiceOptionGroupChoice
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAssetControl
     def to_json_data: () -> untyped
   end
 
-  class AssetOptionFieldSelectStatChoiceOptionGroup < AssetOptionFieldSelectStatChoice
-    attr_accessor choices: Hash[String, AssetOptionFieldSelectStatChoiceOptionGroupChoice]
-    attr_accessor name: Label
+  class AssetOptionFieldSelectValueChoiceAssetOptionOptionType
+    attr_accessor value: String
 
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectStatChoiceOptionGroup
+    OPTION: AssetOptionFieldSelectValueChoiceAssetOptionOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAssetOptionOptionType
     def to_json_data: () -> untyped
   end
 
-  class AssetOptionFieldSelectStat < AssetOptionField
-    attr_accessor choices: Hash[String, AssetOptionFieldSelectStatChoice]
+  class AssetOptionFieldSelectValueChoiceAssetOption < AssetOptionFieldSelectValueChoice
+    attr_accessor assets: Array[AssetIDWildcard]
+    attr_accessor label: Label
+    attr_accessor option: DictKey
+    attr_accessor option_type: AssetOptionFieldSelectValueChoiceAssetOptionOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAssetOption
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType
+    attr_accessor value: String
+
+    OPTION: AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceAttachedAssetControl < AssetOptionFieldSelectValueChoice
+    attr_accessor control: DictKey
+    attr_accessor label: Label
+    attr_accessor option_type: AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAttachedAssetControl
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType
+    attr_accessor value: String
+
+    OPTION: AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceAttachedAssetOption < AssetOptionFieldSelectValueChoice
+    attr_accessor label: Label
+    attr_accessor option: DictKey
+    attr_accessor option_type: AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAttachedAssetOption
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceConditionMeterOptionType
+    attr_accessor value: String
+
+    OPTION: AssetOptionFieldSelectValueChoiceConditionMeterOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceConditionMeterOptionType
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceConditionMeter < AssetOptionFieldSelectValueChoice
+    attr_accessor condition_meter: ConditionMeterKey
+    attr_accessor label: Label
+    attr_accessor option_type: AssetOptionFieldSelectValueChoiceConditionMeterOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceConditionMeter
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceCustomOptionType
+    attr_accessor value: String
+
+    OPTION: AssetOptionFieldSelectValueChoiceCustomOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceCustomOptionType
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceCustom < AssetOptionFieldSelectValueChoice
+    attr_accessor label: Label
+    attr_accessor option_type: AssetOptionFieldSelectValueChoiceCustomOptionType
+    attr_accessor value: Integer
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceCustom
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceStatOptionType
+    attr_accessor value: String
+
+    OPTION: AssetOptionFieldSelectValueChoiceStatOptionType
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceStatOptionType
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValueChoiceStat < AssetOptionFieldSelectValueChoice
+    attr_accessor label: Label
+    attr_accessor option_type: AssetOptionFieldSelectValueChoiceStatOptionType
+    attr_accessor stat: StatKey
+
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceStat
+    def to_json_data: () -> untyped
+  end
+
+  class AssetOptionFieldSelectValue < AssetOptionField
+    attr_accessor choices: Hash[String, AssetOptionFieldSelectValueChoice]
     attr_accessor id: AssetOptionFieldID
     attr_accessor label: Label
     attr_accessor value: DictKey
 
-    def self.from_json_data: (untyped) -> AssetOptionFieldSelectStat
+    def self.from_json_data: (untyped) -> AssetOptionFieldSelectValue
     def to_json_data: () -> untyped
   end
 
@@ -715,10 +701,10 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class ConditionMeterID
+  class ConditionMeterKey
     attr_accessor value: DictKey
 
-    def self.from_json_data: (untyped) -> ConditionMeterID
+    def self.from_json_data: (untyped) -> ConditionMeterKey
     def to_json_data: () -> untyped
   end
 
@@ -925,10 +911,10 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class DiceNotation
+  class DiceExpression
     attr_accessor value: String
 
-    def self.from_json_data: (untyped) -> DiceNotation
+    def self.from_json_data: (untyped) -> DiceExpression
     def to_json_data: () -> untyped
   end
 
@@ -999,7 +985,7 @@ module Datasworn
     attr_accessor description: MarkdownString
     attr_accessor label: Label
     attr_accessor permanent: bool
-    attr_accessor prevents_recovery: Array[ConditionMeterID]
+    attr_accessor prevents_recovery: Array[ConditionMeterKey]
     attr_accessor shared: bool
 
     def self.from_json_data: (untyped) -> ImpactRule
@@ -1388,7 +1374,7 @@ module Datasworn
   end
 
   class OracleTable
-    attr_accessor dice: DiceNotation
+    attr_accessor dice: DiceExpression
     attr_accessor id: OracleTableID
     attr_accessor name: Label
     attr_accessor source: Source
@@ -1477,10 +1463,11 @@ module Datasworn
   end
 
   class OracleTableRoll
-    attr_accessor auto: bool?
-    attr_accessor method: OracleTableRollMethod?
-    attr_accessor oracle: OracleTableID?
-    attr_accessor times: Integer?
+    attr_accessor auto: bool
+    attr_accessor dice: DiceExpression
+    attr_accessor method: OracleTableRollMethod
+    attr_accessor oracle: OracleTableID
+    attr_accessor times: Integer
 
     def self.from_json_data: (untyped) -> OracleTableRoll
     def to_json_data: () -> untyped
@@ -1607,6 +1594,80 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
+  class RollableValue
+    attr_accessor using: String
+
+    def self.from_json_data: (untyped) -> RollableValue
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueAssetControl < RollableValue
+    attr_accessor assets: Array[AssetIDWildcard]
+    attr_accessor control: DictKey
+
+    def self.from_json_data: (untyped) -> RollableValueAssetControl
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueAssetOption < RollableValue
+    attr_accessor assets: Array[AssetIDWildcard]
+    attr_accessor option: DictKey
+
+    def self.from_json_data: (untyped) -> RollableValueAssetOption
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueAttachedAssetControl < RollableValue
+    attr_accessor control: DictKey
+
+    def self.from_json_data: (untyped) -> RollableValueAttachedAssetControl
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueAttachedAssetOption < RollableValue
+    attr_accessor option: DictKey
+
+    def self.from_json_data: (untyped) -> RollableValueAttachedAssetOption
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueConditionMeter < RollableValue
+    attr_accessor condition_meter: ConditionMeterKey
+
+    def self.from_json_data: (untyped) -> RollableValueConditionMeter
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueCustom < RollableValue
+    attr_accessor label: Label
+    attr_accessor value: Integer
+
+    def self.from_json_data: (untyped) -> RollableValueCustom
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueStat < RollableValue
+    attr_accessor stat: StatKey
+
+    def self.from_json_data: (untyped) -> RollableValueStat
+    def to_json_data: () -> untyped
+  end
+
+  class RollableValueType
+    attr_accessor value: String
+
+    ASSET_CONTROL: RollableValueType
+    ASSET_OPTION: RollableValueType
+    ATTACHED_ASSET_CONTROL: RollableValueType
+    ATTACHED_ASSET_OPTION: RollableValueType
+    CONDITION_METER: RollableValueType
+    CUSTOM: RollableValueType
+    STAT: RollableValueType
+
+    def self.from_json_data: (untyped) -> RollableValueType
+    def to_json_data: () -> untyped
+  end
+
   class Rules
     attr_accessor condition_meters: Hash[String, ConditionMeterRule]
     attr_accessor impacts: Hash[String, ImpactCategory]
@@ -1701,10 +1762,10 @@ module Datasworn
     def to_json_data: () -> untyped
   end
 
-  class StatID
+  class StatKey
     attr_accessor value: DictKey
 
-    def self.from_json_data: (untyped) -> StatID
+    def self.from_json_data: (untyped) -> StatKey
     def to_json_data: () -> untyped
   end
 
@@ -1775,7 +1836,7 @@ module Datasworn
 
   class TriggerActionRollCondition
     attr_accessor method: ActionRollMethod
-    attr_accessor roll_options: Array[ActionRollOption]
+    attr_accessor roll_options: Array[RollableValue]
     attr_accessor by: TriggerBy?
     attr_accessor text: MarkdownString?
 
@@ -1785,7 +1846,7 @@ module Datasworn
 
   class TriggerActionRollConditionEnhancement
     attr_accessor method: ActionRollMethod
-    attr_accessor roll_options: Array[ActionRollOption]
+    attr_accessor roll_options: Array[RollableValue]
     attr_accessor by: TriggerBy?
     attr_accessor text: MarkdownString?
 

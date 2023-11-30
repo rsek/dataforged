@@ -18,7 +18,7 @@ export type OracleTableRow = Static<typeof OracleTableRow>
 export const OracleTable = Generic.RecursiveCollectable(
 	Type.Ref(Id.OracleTableId),
 	Type.Object({
-		dice: Type.Ref(Rolls.DiceNotation, {
+		dice: Type.Ref(Rolls.DiceExpression, {
 			default: '1d100',
 			description: 'The roll used to select a result on this table.'
 		}),

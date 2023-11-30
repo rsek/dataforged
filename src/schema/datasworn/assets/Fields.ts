@@ -115,7 +115,7 @@ export const AssetConditionMeter = Utils.Assign(
 export type AssetConditionMeter = Simplify<Static<typeof AssetConditionMeter>>
 
 const AssetOptionFields = [
-	Fields.SelectStatField,
+	Fields.SelectValueField,
 	Fields.SelectEnhancementField,
 	Fields.TextField
 ].map((fn) => fn(Type.Ref(Id.AssetOptionFieldId)))
@@ -123,7 +123,11 @@ const AssetOptionFields = [
 export const AssetOptionField = Utils.DiscriminatedUnion(
 	AssetOptionFields,
 	Fields.DISCRIMINATOR,
-	{ $id: 'AssetOptionField' }
+	{
+		$id: 'AssetOptionField',
+		description:
+			'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
+	}
 )
 export type AssetOptionField = Static<typeof AssetOptionField>
 export type TAssetOptionField = typeof AssetOptionField

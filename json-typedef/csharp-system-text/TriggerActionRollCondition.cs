@@ -14,7 +14,7 @@ namespace Datasworn
         /// The options available when rolling with this trigger condition.
         /// </summary>
         [JsonPropertyName("roll_options")]
-        public IList<ActionRollOption> RollOptions { get; set; }
+        public IList<RollableValue> RollOptions { get; set; }
 
         [JsonPropertyName("by")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

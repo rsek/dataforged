@@ -33,7 +33,7 @@ namespace Datasworn
         /// The (inclusive) minimum value.
         /// </summary>
         [JsonPropertyName("min")]
-        public sbyte Min { get; set; }
+        public short Min { get; set; }
 
         /// <summary>
         /// The current value of this input.

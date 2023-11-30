@@ -586,27 +586,32 @@ assets:
             field_type: text
           linked_stat:
             label: Linked stat
-            field_type: select_stat
+            field_type: select_value
             choices:
               edge:
                 label: Edge
-                value: edge
+                using: stat
+                stat: edge
                 option_type: option
               heart:
                 label: Heart
-                value: heart
+                using: stat
+                stat: heart
                 option_type: option
               iron:
                 label: Iron
-                value: iron
+                using: stat
+                stat: iron
                 option_type: option
               shadow:
                 label: Shadow
-                value: shadow
+                using: stat
+                stat: shadow
                 option_type: option
               wits:
                 label: Wits
-                value: wits
+                using: stat
+                stat: wits
                 option_type: option
         abilities:
           - text: |-
@@ -1295,13 +1300,13 @@ assets:
                       # time_gap
                       roll_options:
                         - using: custom
-                          name: Minutes
+                          label: Minutes
                           value: 4
                         - using: custom
-                          name: Hours
+                          label: Hours
                           value: 3
                         - using: custom
-                          name: Days
+                          label: Days
                           value: 2
                 text: *LooperMove
                 outcomes:

@@ -6,11 +6,6 @@
  */
 
 /**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RulesPackage".
- */
-export type RulesPackage = Ruleset | Expansion;
-/**
  * The ID of standalone Datasworn package that describes its own ruleset.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
@@ -46,9 +41,9 @@ export type Label2 = string;
  */
 export type MarkdownString2 = string;
 /**
- * A basic, rollable player character resource.
+ * A basic, rollable player character resource specified by the ruleset.
  */
-export type ConditionMeterId = string;
+export type ConditionMeterKey = string;
 /**
  * A label for this special track.
  */
@@ -130,7 +125,7 @@ export type WebpImageUrl1 = string;
 /**
  * The roll used to select a result on this table.
  */
-export type DiceNotation = string;
+export type DiceExpression = string;
 /**
  * Describes how how to render this table, when presenting it as a standalone table.
  */
@@ -260,24 +255,20 @@ export type TemplateString1 = string;
  */
 export type TemplateString2 = string;
 /**
- * Special roll instructions to use when rolling multiple times on a single oracle table.
- *
- *   * no_duplicates: Duplicates should be re-rolled.
- *   * keep_duplicates: Duplicates should be kept.
- *   * make_it_worse: Duplicates should be kept, and they compound to make things worse.
+ * A simple dice roll expression with an optional modifer.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "OracleTableRollMethod".
+ * via the `definition` "DiceExpression".
+ */
+export type DiceExpression1 = string;
+/**
+ * Special rules on how the oracle table roll is performed.
  */
 export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_it_worse";
 /**
  * A unique ID for an OracleTable.
  */
 export type OracleTableId2 = string;
-/**
- * A unique ID for an OracleTable.
- */
-export type OracleTableId3 = string;
 /**
  *   * common_noun: A common noun.
  *   * proper_noun: A proper noun.
@@ -317,7 +308,7 @@ export type License = string | null;
 /**
  * A unique ID for an OracleTable.
  */
-export type OracleTableId4 = string;
+export type OracleTableId3 = string;
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
@@ -387,6 +378,8 @@ export type CssColor2 = string;
  */
 export type SvgImageUrl4 = string;
 /**
+ * Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  *
@@ -765,7 +758,7 @@ export type MarkdownString25 = string;
 /**
  * A unique ID for an OracleTable.
  */
-export type OracleTableId5 = string;
+export type OracleTableId4 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -791,11 +784,11 @@ export type MarkdownString28 = string;
 /**
  * A unique ID for an OracleTable.
  */
-export type OracleTableId6 = string;
+export type OracleTableId5 = string;
 /**
  * A unique ID for an OracleTable.
  */
-export type OracleTableId7 = string;
+export type OracleTableId6 = string;
 /**
  * A unique ID for a DelveSiteTheme.
  */
@@ -833,7 +826,7 @@ export type MarkdownString31 = string;
 /**
  * A unique ID for an OracleTable.
  */
-export type OracleTableId8 = string;
+export type OracleTableId7 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -859,7 +852,7 @@ export type MarkdownString34 = string;
 /**
  * A unique ID for an OracleTable.
  */
-export type OracleTableId9 = string;
+export type OracleTableId8 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -897,7 +890,7 @@ export type MarkdownString37 = string;
 /**
  * A unique ID for an OracleTable.
  */
-export type OracleTableId10 = string;
+export type OracleTableId9 = string;
 /**
  * The ID of a Datasworn package that relies on an external package to provide its ruleset.
  *
@@ -1198,6 +1191,53 @@ export type Label36 = string;
  */
 export type SpecialTrackType = string;
 /**
+ * The dictionary key of the asset control field.
+ */
+export type DictKey1 = string;
+/**
+ * The dictionary key of the asset option field.
+ */
+export type DictKey2 = string;
+/**
+ * The dictionary key of the asset control field.
+ */
+export type DictKey3 = string;
+/**
+ * The dictionary key of the asset option field.
+ */
+export type DictKey4 = string;
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollableValue".
+ */
+export type RollableValue = {
+  [k: string]: unknown;
+};
+/**
+ *   * stat: A reference to the value of a standard player character stat.
+ *   * condition_meter: A reference to the value of a standard player condition meter.
+ *   * asset_control: A reference to the value of an asset control.
+ *   * asset_option: A reference to the value of an asset option.
+ *   * custom: An arbitrary static integer value with a label.
+ *   * attached_asset_control: A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
+ *   * attached_asset_option: A reference to the value of an attached asset option.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollableValueType".
+ */
+export type RollableValueType =
+  | "stat"
+  | "condition_meter"
+  | "asset_control"
+  | "asset_option"
+  | "custom"
+  | "attached_asset_control"
+  | "attached_asset_option";
+/**
+ * A basic player character stat.
+ */
+export type StatKey = string;
+/**
  * A localized plain text name or label.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
@@ -1205,10 +1245,16 @@ export type SpecialTrackType = string;
  */
 export type Label37 = string;
 /**
+ * Special roll instructions to use when rolling multiple times on a single oracle table.
+ *
+ *   * no_duplicates: Duplicates should be re-rolled.
+ *   * keep_duplicates: Duplicates should be kept.
+ *   * make_it_worse: Duplicates should be kept, and they compound to make things worse.
+ *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "DiceNotation".
+ * via the `definition` "OracleTableRollMethod".
  */
-export type DiceNotation1 = string;
+export type OracleTableRollMethod1 = "no_duplicates" | "keep_duplicates" | "make_it_worse";
 /**
  * Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns.
  *
@@ -1241,7 +1287,7 @@ export type CssColor7 = string;
 /**
  * The key of the OracleTable (within this collection), whose data is used to render this column.
  */
-export type DictKey1 = string;
+export type DictKey5 = string;
 /**
  *   * tables: Presented as a collection of separate tables.
  *   * multi_table: Presented as a single table, with its OracleTable children rendered as columns.
@@ -1289,33 +1335,6 @@ export type OracleTableStyle = "standalone" | "embed_in_row" | "column";
  * via the `definition` "ActionRollMethod".
  */
 export type ActionRollMethod = "miss" | "weak_hit" | "strong_hit" | "player_choice" | "highest" | "lowest" | "all";
-/**
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ActionRollOption".
- */
-export type ActionRollOption = {
-  [k: string]: unknown;
-};
-/**
- *   * stat: Roll using a standard player character stat.
- *   * condition_meter: Roll using the value of a standard player condition meter.
- *   * asset_control: Roll using the value of an asset control.
- *   * asset_option: Roll using the value of an asset option.
- *   * custom: Roll using an integer value with customizable labels.
- *   * attached_asset_control: Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
- *   * attached_asset_option: Roll using the value of an attached asset option.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ActionRollUsing".
- */
-export type ActionRollUsing =
-  | "stat"
-  | "condition_meter"
-  | "asset_control"
-  | "asset_option"
-  | "custom"
-  | "attached_asset_control"
-  | "attached_asset_option";
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -1551,26 +1570,6 @@ export type MarkdownString53 = string;
  */
 export type ProgressRollMethod2 = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
 /**
- * The dictionary key of the asset control field.
- */
-export type DictKey2 = string;
-/**
- * The dictionary key of the asset option field.
- */
-export type DictKey3 = string;
-/**
- * The dictionary key of the asset control field.
- */
-export type DictKey4 = string;
-/**
- * The dictionary key of the asset option field.
- */
-export type DictKey5 = string;
-/**
- * A basic player character stat.
- */
-export type StatId = string;
-/**
  * The unique Datasworn ID for this item.
  */
 export type AssetControlFieldId1 = string;
@@ -1599,21 +1598,28 @@ export type MoveIdWildcard1 = StandardMoveIdWithWildcard | AssetMoveIdWithWildca
  */
 export type MoveIdWildcard2 = StandardMoveIdWithWildcard | AssetMoveIdWithWildcard;
 /**
- * A basic, rollable player character resource.
+ * A basic, rollable player character resource specified by the ruleset.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "ConditionMeterId".
+ * via the `definition` "ConditionMeterKey".
  */
-export type ConditionMeterId1 = string;
+export type ConditionMeterKey1 = string;
 /**
  * A basic player character stat.
  *
  * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "StatId".
+ * via the `definition` "StatKey".
  */
-export type StatId1 = string;
+export type StatKey1 = string;
 
 export interface Datasworn {
+  [k: string]: unknown;
+}
+/**
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RulesPackage".
+ */
+export interface RulesPackage {
   [k: string]: unknown;
 }
 /**
@@ -1795,9 +1801,9 @@ export interface ImpactRule {
    */
   permanent: boolean;
   /**
-   * Keys of ruleset condition meters, to which this impact prevents recovery.
+   * Any ruleset condition meters that can't recover when this impact is active.
    */
-  prevents_recovery: ConditionMeterId[];
+  prevents_recovery: ConditionMeterKey[];
 }
 /**
  * Describes a special track like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
@@ -1885,7 +1891,7 @@ export interface OracleTable {
   canonical_name?: Label8;
   icon?: SvgImageUrl1;
   images?: WebpImageUrl1[];
-  dice: DiceNotation;
+  dice: DiceExpression;
   rendering?: OracleTableRendering;
   summary?: MarkdownString7;
   description?: MarkdownString8;
@@ -1894,7 +1900,7 @@ export interface OracleTable {
   table: OracleTableRow[];
   source: Source;
   _i18n?: I18NHints1;
-  replaces?: OracleTableId4;
+  replaces?: OracleTableId3;
 }
 /**
  * Most oracle tables are insensitive to matches, but a few define special match behavior.
@@ -1938,7 +1944,7 @@ export interface OracleTableRow {
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId3;
+  embed_table?: OracleTableId2;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -1961,12 +1967,22 @@ export interface OracleRollTemplate {
  */
 export interface OracleTableRoll {
   /**
-   * The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme". If this value is omitted, assume it's false.
+   * The dice roll to make on the oracle table. Set it to `null` if you just want the table's default.
    */
-  auto?: boolean;
-  method?: OracleTableRollMethod;
-  oracle?: OracleTableId2;
-  times?: number;
+  dice: DiceExpression1 | null;
+  /**
+   * Both Ironsworn and Starforged explicitly recommend *against* rolling all details at once. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme".
+   */
+  auto: boolean;
+  method: OracleTableRollMethod;
+  /**
+   * The ID of the oracle table to be rolled. A `null` value indicates that it's a roll on the same table.
+   */
+  oracle: OracleTableId1 | null;
+  /**
+   * The number of times to roll.
+   */
+  times: number;
 }
 /**
  * Internationalization/localization hints for the text content of this object.
@@ -2126,7 +2142,7 @@ export interface Asset {
   color?: CssColor2;
   icon?: SvgImageUrl4;
   /**
-   * Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.
+   * Options are input fields set when the player purchases the asset. They're likely to remain the same through the life of the asset. Typically, they are rendered at the top of the asset card.
    */
   options?: {
     [k: string]: AssetOptionField;
@@ -2989,7 +3005,7 @@ export interface DelveSiteDomain {
   description?: MarkdownString9;
   suggestions?: Suggestions;
   source: Source11;
-  name_oracle?: OracleTableId7;
+  name_oracle?: OracleTableId6;
 }
 /**
  * Represents a single Feature entry from a delve site Domain card.
@@ -3016,7 +3032,7 @@ export interface DelveSiteDomainFeatureRow {
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId5;
+  embed_table?: OracleTableId4;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3045,7 +3061,7 @@ export interface DelveSiteDomainDangerRow {
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId6;
+  embed_table?: OracleTableId5;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3227,7 +3243,7 @@ export interface DelveSiteThemeFeatureRow {
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId8;
+  embed_table?: OracleTableId7;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3256,7 +3272,7 @@ export interface DelveSiteThemeDangerRow {
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId9;
+  embed_table?: OracleTableId8;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3359,7 +3375,7 @@ export interface TruthOptionTableRow {
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId10;
+  embed_table?: OracleTableId9;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3568,6 +3584,106 @@ export interface ProgressTrackTypeInfo {
   category: Label36;
 }
 /**
+ * A reference to the value of an asset control.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "RollOptionAssetControl".
+ */
+export interface RollOptionAssetControl {
+  /**
+   * A reference to the value of an asset control.
+   */
+  using: "asset_control";
+  /**
+   * Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
+   */
+  assets: AssetIdWildcard[] | null;
+  control: DictKey1;
+}
+/**
+ * A reference to the value of an asset option.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AssetOptionValueRef".
+ */
+export interface AssetOptionValueRef {
+  /**
+   * A reference to the value of an asset option.
+   */
+  using: "asset_option";
+  /**
+   * Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
+   */
+  assets: AssetIdWildcard[] | null;
+  option: DictKey2;
+}
+/**
+ * A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AttachedAssetControlValueRef".
+ */
+export interface AttachedAssetControlValueRef {
+  /**
+   * A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
+   */
+  using: "attached_asset_control";
+  control: DictKey3;
+}
+/**
+ * A reference to the value of an attached asset option.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "AttachedAssetOptionValueRef".
+ */
+export interface AttachedAssetOptionValueRef {
+  /**
+   * A reference to the value of an attached asset option.
+   */
+  using: "attached_asset_option";
+  option: DictKey4;
+}
+/**
+ * A reference to the value of a standard player condition meter.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "ConditionMeterValueRef".
+ */
+export interface ConditionMeterValueRef {
+  /**
+   * A reference to the value of a standard player condition meter.
+   */
+  using: "condition_meter";
+  condition_meter: ConditionMeterKey;
+}
+/**
+ * An arbitrary static integer value with a label.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "CustomValue".
+ */
+export interface CustomValue {
+  label: Label25;
+  /**
+   * An arbitrary static integer value with a label.
+   */
+  using: "custom";
+  value: number;
+}
+/**
+ * A reference to the value of a standard player character stat.
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "StatValueRef".
+ */
+export interface StatValueRef {
+  /**
+   * A reference to the value of a standard player character stat.
+   */
+  using: "stat";
+  stat: StatKey;
+}
+/**
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "OracleTableMatchBehavior".
  */
@@ -3598,7 +3714,7 @@ export interface OracleCollectionTableColumn {
   label: Label38;
   content_type: OracleTableColumnContentKey;
   color?: CssColor7;
-  table_key: DictKey1;
+  table_key: DictKey5;
 }
 /**
  * This interface was referenced by `Datasworn`'s JSON-Schema
@@ -3680,7 +3796,7 @@ export interface OracleTableRow1 {
    * Further oracle rolls prompted by this table row.
    */
   rolls?: OracleTableRoll[];
-  embed_table?: OracleTableId3;
+  embed_table?: OracleTableId2;
   suggestions?: Suggestions;
   i18n?: I18NHints;
 }
@@ -3730,7 +3846,7 @@ export interface TriggerActionRollCondition {
   /**
    * The options available when rolling with this trigger condition.
    */
-  roll_options: ActionRollOption[];
+  roll_options: RollableValue[];
 }
 /**
  * Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.
@@ -3845,7 +3961,7 @@ export interface TriggerActionRollConditionEnhancement {
    * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
    */
   method: ActionRollMethod | null;
-  roll_options: ActionRollOption[] | null;
+  roll_options: RollableValue[] | null;
 }
 /**
  * A move that makes no progress rolls or action rolls.
@@ -4286,106 +4402,6 @@ export interface TriggerSpecialTrackConditionEnhancement {
    */
   method: SpecialTrackRollMethod | null;
   roll_options: TriggerSpecialTrackConditionOption[] | null;
-}
-/**
- * Roll using the value of an asset control.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAssetControl".
- */
-export interface RollOptionAssetControl {
-  /**
-   * Roll using the value of an asset control.
-   */
-  using: "asset_control";
-  /**
-   * Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
-   */
-  assets: AssetIdWildcard[] | null;
-  control: DictKey2;
-}
-/**
- * Roll using the value of an asset option.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAssetOption".
- */
-export interface RollOptionAssetOption {
-  /**
-   * Roll using the value of an asset option.
-   */
-  using: "asset_option";
-  /**
-   * Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
-   */
-  assets: AssetIdWildcard[] | null;
-  option: DictKey3;
-}
-/**
- * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAttachedAssetControl".
- */
-export interface RollOptionAttachedAssetControl {
-  /**
-   * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
-   */
-  using: "attached_asset_control";
-  control: DictKey4;
-}
-/**
- * Roll using the value of an attached asset option.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionAttachedAssetOption".
- */
-export interface RollOptionAttachedAssetOption {
-  /**
-   * Roll using the value of an attached asset option.
-   */
-  using: "attached_asset_option";
-  option: DictKey5;
-}
-/**
- * Roll using the value of a standard player condition meter.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionConditionMeter".
- */
-export interface RollOptionConditionMeter {
-  /**
-   * Roll using the value of a standard player condition meter.
-   */
-  using: "condition_meter";
-  condition_meter: ConditionMeterId;
-}
-/**
- * Roll using an integer value with customizable labels.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionCustom".
- */
-export interface RollOptionCustom {
-  name: Label25;
-  value: number;
-  /**
-   * Roll using an integer value with customizable labels.
-   */
-  using: "custom";
-}
-/**
- * Roll using a standard player character stat.
- *
- * This interface was referenced by `Datasworn`'s JSON-Schema
- * via the `definition` "RollOptionStat".
- */
-export interface RollOptionStat {
-  /**
-   * Roll using a standard player character stat.
-   */
-  using: "stat";
-  stat: StatId;
 }
 /**
  * Describes trigger conditions for a move that makes an action roll.

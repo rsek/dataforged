@@ -15,11 +15,12 @@ import {
 	Metadata,
 	Player,
 	Progress,
-	Rolls
+	Rolls,
+	RollableValues
 } from './common/index.js'
 
 export type Defs = Record<string, TSchema>
-const Defs: Defs = {
+const entries: [string, TSchema][] = Object.values({
 	RulesPackage,
 	Ruleset,
 	Expansion,
@@ -28,6 +29,7 @@ const Defs: Defs = {
 	...Localize,
 	...Rules,
 	...Progress,
+	...RollableValues,
 	...Npcs,
 	...Rolls,
 	...Oracles,
@@ -38,5 +40,19 @@ const Defs: Defs = {
 	...Player,
 	...Rarities,
 	...DelveSites
-}
+}).map((entry) => {
+	if (typeof entry.$id !== 'string')
+		throw new Error(
+			`Schema in definitions is missing an $id:\n${JSON.stringify(
+				entry,
+				undefined,
+				'\t'
+			)}`
+		)
+	return [entry.$id, entry]
+})
+
+const Defs: Defs = Object.fromEntries(entries)
+// await fs.writeJson('baddefs.json', Defs, { spaces: '\t' })
+
 export default Defs

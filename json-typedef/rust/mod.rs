@@ -186,128 +186,6 @@ pub enum ActionRollMethod {
 }
 
 #[derive(Serialize, Deserialize)]
-#[serde(tag = "using")]
-pub enum ActionRollOption {
-    #[serde(rename = "asset_control")]
-    AssetControl(ActionRollOptionAssetControl),
-
-    #[serde(rename = "asset_option")]
-    AssetOption(ActionRollOptionAssetOption),
-
-    #[serde(rename = "attached_asset_control")]
-    AttachedAssetControl(ActionRollOptionAttachedAssetControl),
-
-    #[serde(rename = "attached_asset_option")]
-    AttachedAssetOption(ActionRollOptionAttachedAssetOption),
-
-    #[serde(rename = "condition_meter")]
-    ConditionMeter(ActionRollOptionConditionMeter),
-
-    #[serde(rename = "custom")]
-    Custom(ActionRollOptionCustom),
-
-    #[serde(rename = "stat")]
-    Stat(ActionRollOptionStat),
-}
-
-/// Roll using the value of an asset control.
-#[derive(Serialize, Deserialize)]
-pub struct ActionRollOptionAssetControl {
-    #[serde(rename = "assets")]
-    pub assets: Vec<AssetIdWildcard>,
-
-    /// The dictionary key of the asset control field.
-    #[serde(rename = "control")]
-    pub control: DictKey,
-}
-
-/// Roll using the value of an asset option.
-#[derive(Serialize, Deserialize)]
-pub struct ActionRollOptionAssetOption {
-    #[serde(rename = "assets")]
-    pub assets: Vec<AssetIdWildcard>,
-
-    /// The dictionary key of the asset option field.
-    #[serde(rename = "option")]
-    pub option: DictKey,
-}
-
-/// Roll using the value of an attached asset control. For example, a Module
-/// asset could use this to roll using the `integrity` control of an attached
-/// Vehicle.
-#[derive(Serialize, Deserialize)]
-pub struct ActionRollOptionAttachedAssetControl {
-    /// The dictionary key of the asset control field.
-    #[serde(rename = "control")]
-    pub control: DictKey,
-}
-
-/// Roll using the value of an attached asset option.
-#[derive(Serialize, Deserialize)]
-pub struct ActionRollOptionAttachedAssetOption {
-    /// The dictionary key of the asset option field.
-    #[serde(rename = "option")]
-    pub option: DictKey,
-}
-
-/// Roll using the value of a standard player condition meter.
-#[derive(Serialize, Deserialize)]
-pub struct ActionRollOptionConditionMeter {
-    #[serde(rename = "condition_meter")]
-    pub conditionMeter: ConditionMeterId,
-}
-
-/// Roll using an integer value with customizable labels.
-#[derive(Serialize, Deserialize)]
-pub struct ActionRollOptionCustom {
-    #[serde(rename = "name")]
-    pub name: Label,
-
-    #[serde(rename = "value")]
-    pub value: i16,
-}
-
-/// Roll using a standard player character stat.
-#[derive(Serialize, Deserialize)]
-pub struct ActionRollOptionStat {
-    #[serde(rename = "stat")]
-    pub stat: StatId,
-}
-
-#[derive(Serialize, Deserialize)]
-pub enum ActionRollUsing {
-    /// Roll using the value of an asset control.
-    #[serde(rename = "asset_control")]
-    AssetControl,
-
-    /// Roll using the value of an asset option.
-    #[serde(rename = "asset_option")]
-    AssetOption,
-
-    /// Roll using the value of an attached asset control. For example, a
-    /// Module asset could use this to roll using the `integrity` control of an
-    /// attached Vehicle.
-    #[serde(rename = "attached_asset_control")]
-    AttachedAssetControl,
-
-    /// Roll using the value of an attached asset option.
-    #[serde(rename = "attached_asset_option")]
-    AttachedAssetOption,
-
-    /// Roll using the value of a standard player condition meter.
-    #[serde(rename = "condition_meter")]
-    ConditionMeter,
-
-    /// Roll using an integer value with customizable labels.
-    #[serde(rename = "custom")]
-    Custom,
-
-    /// Roll using a standard player character stat.
-    #[serde(rename = "stat")]
-    Stat,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct Asset {
     #[serde(rename = "abilities")]
     pub abilities: Vec<AssetAbility>,
@@ -368,10 +246,9 @@ pub struct Asset {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<Box<SvgImageUrl>>,
 
-    /// Options are asset input fields which are set once, usually when the
-    /// character takes the asset. The most common example is the "name" field
-    /// on companion assets. A more complex example is the choice of a god's
-    /// stat for the Devotant asset.
+    /// Options are input fields set when the player purchases the asset.
+    /// They're likely to remain the same through the life of the asset.
+    /// Typically, they are rendered at the top of the asset card.
     #[serde(rename = "options")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Box<HashMap<String, AssetOptionField>>>,
@@ -521,7 +398,7 @@ pub struct AssetAbilityControlFieldCounter {
 
     /// The (inclusive) minimum value.
     #[serde(rename = "min")]
-    pub min: i8,
+    pub min: i16,
 
     /// The current value of this input.
     #[serde(rename = "value")]
@@ -783,9 +660,12 @@ pub enum AssetControlFieldSelectEnhancementChoice {
     OptionGroup(AssetControlFieldSelectEnhancementChoiceOptionGroup),
 }
 
-/// The current value of this input.
+/// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
-pub struct AssetControlFieldSelectEnhancementChoiceOptionValue {
+pub struct AssetControlFieldSelectEnhancementChoiceOption {
+    #[serde(rename = "label")]
+    pub label: Label,
+
     #[serde(rename = "enhance_asset")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceAsset: Option<Box<AssetEnhancement>>,
@@ -793,25 +673,6 @@ pub struct AssetControlFieldSelectEnhancementChoiceOptionValue {
     #[serde(rename = "enhance_moves")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceMoves: Option<Box<Vec<MoveEnhancement>>>,
-}
-
-/// Represents an option in a list of choices.
-#[derive(Serialize, Deserialize)]
-pub struct AssetControlFieldSelectEnhancementChoiceOption {
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    /// The current value of this input.
-    #[serde(rename = "value")]
-    pub value: AssetControlFieldSelectEnhancementChoiceOptionValue,
-
-    /// Is this option currently selected?
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -820,9 +681,15 @@ pub enum AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType {
     Option,
 }
 
-/// The current value of this input.
+/// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
-pub struct AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue {
+pub struct AssetControlFieldSelectEnhancementChoiceOptionGroupChoice {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType,
+
     #[serde(rename = "enhance_asset")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceAsset: Option<Box<AssetEnhancement>>,
@@ -830,28 +697,6 @@ pub struct AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue {
     #[serde(rename = "enhance_moves")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceMoves: Option<Box<Vec<MoveEnhancement>>>,
-}
-
-/// Represents an option in a list of choices.
-#[derive(Serialize, Deserialize)]
-pub struct AssetControlFieldSelectEnhancementChoiceOptionGroupChoice {
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    #[serde(rename = "option_type")]
-    pub optionType: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType,
-
-    /// The current value of this input.
-    #[serde(rename = "value")]
-    pub value: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue,
-
-    /// Is this option currently selected?
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
 }
 
 /// Represents a grouping of options in a list of choices.
@@ -953,14 +798,18 @@ pub type AssetId = String;
 /// A wildcarded ID that can be used to match multiple Assets.
 pub type AssetIdWildcard = String;
 
+/// Options are asset input fields which are set once, usually when the
+/// character takes the asset. The most common example is the "name" field on
+/// companion assets. A more complex example is the choice of a god's stat for
+/// the Devotant asset.
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "field_type")]
 pub enum AssetOptionField {
     #[serde(rename = "select_enhancement")]
     SelectEnhancement(AssetOptionFieldSelectEnhancement),
 
-    #[serde(rename = "select_stat")]
-    SelectStat(AssetOptionFieldSelectStat),
+    #[serde(rename = "select_value")]
+    SelectValue(AssetOptionFieldSelectValue),
 
     #[serde(rename = "text")]
     Text(AssetOptionFieldText),
@@ -976,9 +825,12 @@ pub enum AssetOptionFieldSelectEnhancementChoice {
     OptionGroup(AssetOptionFieldSelectEnhancementChoiceOptionGroup),
 }
 
-/// The current value of this input.
+/// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectEnhancementChoiceOptionValue {
+pub struct AssetOptionFieldSelectEnhancementChoiceOption {
+    #[serde(rename = "label")]
+    pub label: Label,
+
     #[serde(rename = "enhance_asset")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceAsset: Option<Box<AssetEnhancement>>,
@@ -986,25 +838,6 @@ pub struct AssetOptionFieldSelectEnhancementChoiceOptionValue {
     #[serde(rename = "enhance_moves")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceMoves: Option<Box<Vec<MoveEnhancement>>>,
-}
-
-/// Represents an option in a list of choices.
-#[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectEnhancementChoiceOption {
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    /// The current value of this input.
-    #[serde(rename = "value")]
-    pub value: AssetOptionFieldSelectEnhancementChoiceOptionValue,
-
-    /// Is this option currently selected?
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1013,9 +846,15 @@ pub enum AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType {
     Option,
 }
 
-/// The current value of this input.
+/// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue {
+pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType,
+
     #[serde(rename = "enhance_asset")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceAsset: Option<Box<AssetEnhancement>>,
@@ -1023,28 +862,6 @@ pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue {
     #[serde(rename = "enhance_moves")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enhanceMoves: Option<Box<Vec<MoveEnhancement>>>,
-}
-
-/// Represents an option in a list of choices.
-#[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    #[serde(rename = "option_type")]
-    pub optionType: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType,
-
-    /// The current value of this input.
-    #[serde(rename = "value")]
-    pub value: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue,
-
-    /// Is this option currently selected?
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
 }
 
 /// Represents a grouping of options in a list of choices.
@@ -1083,78 +900,178 @@ pub struct AssetOptionFieldSelectEnhancement {
 }
 
 #[derive(Serialize, Deserialize)]
-#[serde(tag = "option_type")]
-pub enum AssetOptionFieldSelectStatChoice {
-    #[serde(rename = "option")]
-    Option(AssetOptionFieldSelectStatChoiceOption),
+#[serde(tag = "using")]
+pub enum AssetOptionFieldSelectValueChoice {
+    #[serde(rename = "asset_control")]
+    AssetControl(AssetOptionFieldSelectValueChoiceAssetControl),
 
-    #[serde(rename = "option_group")]
-    OptionGroup(AssetOptionFieldSelectStatChoiceOptionGroup),
-}
+    #[serde(rename = "asset_option")]
+    AssetOption(AssetOptionFieldSelectValueChoiceAssetOption),
 
-/// Represents an option in a list of choices.
-#[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectStatChoiceOption {
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
-    #[serde(rename = "label")]
-    pub label: Label,
+    #[serde(rename = "attached_asset_control")]
+    AttachedAssetControl(AssetOptionFieldSelectValueChoiceAttachedAssetControl),
 
-    /// The current value of this input.
-    #[serde(rename = "value")]
-    pub value: StatId,
+    #[serde(rename = "attached_asset_option")]
+    AttachedAssetOption(AssetOptionFieldSelectValueChoiceAttachedAssetOption),
 
-    /// Is this option currently selected?
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
+    #[serde(rename = "condition_meter")]
+    ConditionMeter(AssetOptionFieldSelectValueChoiceConditionMeter),
+
+    #[serde(rename = "custom")]
+    Custom(AssetOptionFieldSelectValueChoiceCustom),
+
+    #[serde(rename = "stat")]
+    Stat(AssetOptionFieldSelectValueChoiceStat),
 }
 
 #[derive(Serialize, Deserialize)]
-pub enum AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType {
+pub enum AssetOptionFieldSelectValueChoiceAssetControlOptionType {
     #[serde(rename = "option")]
     Option,
 }
 
 /// Represents an option in a list of choices.
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectStatChoiceOptionGroupChoice {
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
+pub struct AssetOptionFieldSelectValueChoiceAssetControl {
+    #[serde(rename = "assets")]
+    pub assets: Vec<AssetIdWildcard>,
+
+    /// The dictionary key of the asset control field.
+    #[serde(rename = "control")]
+    pub control: DictKey,
+
     #[serde(rename = "label")]
     pub label: Label,
 
     #[serde(rename = "option_type")]
-    pub optionType: AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType,
-
-    /// The current value of this input.
-    #[serde(rename = "value")]
-    pub value: StatId,
-
-    /// Is this option currently selected?
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
+    pub optionType: AssetOptionFieldSelectValueChoiceAssetControlOptionType,
 }
 
-/// Represents a grouping of options in a list of choices.
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectStatChoiceOptionGroup {
-    #[serde(rename = "choices")]
-    pub choices: HashMap<String, AssetOptionFieldSelectStatChoiceOptionGroupChoice>,
+pub enum AssetOptionFieldSelectValueChoiceAssetOptionOptionType {
+    #[serde(rename = "option")]
+    Option,
+}
 
-    /// A label for this option group.
-    #[serde(rename = "name")]
-    pub name: Label,
+/// Represents an option in a list of choices.
+#[derive(Serialize, Deserialize)]
+pub struct AssetOptionFieldSelectValueChoiceAssetOption {
+    #[serde(rename = "assets")]
+    pub assets: Vec<AssetIdWildcard>,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    /// The dictionary key of the asset option field.
+    #[serde(rename = "option")]
+    pub option: DictKey,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetOptionFieldSelectValueChoiceAssetOptionOptionType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType {
+    #[serde(rename = "option")]
+    Option,
+}
+
+/// Represents an option in a list of choices.
+#[derive(Serialize, Deserialize)]
+pub struct AssetOptionFieldSelectValueChoiceAttachedAssetControl {
+    /// The dictionary key of the asset control field.
+    #[serde(rename = "control")]
+    pub control: DictKey,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType {
+    #[serde(rename = "option")]
+    Option,
+}
+
+/// Represents an option in a list of choices.
+#[derive(Serialize, Deserialize)]
+pub struct AssetOptionFieldSelectValueChoiceAttachedAssetOption {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    /// The dictionary key of the asset option field.
+    #[serde(rename = "option")]
+    pub option: DictKey,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum AssetOptionFieldSelectValueChoiceConditionMeterOptionType {
+    #[serde(rename = "option")]
+    Option,
+}
+
+/// Represents an option in a list of choices.
+#[derive(Serialize, Deserialize)]
+pub struct AssetOptionFieldSelectValueChoiceConditionMeter {
+    #[serde(rename = "condition_meter")]
+    pub conditionMeter: ConditionMeterKey,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetOptionFieldSelectValueChoiceConditionMeterOptionType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum AssetOptionFieldSelectValueChoiceCustomOptionType {
+    #[serde(rename = "option")]
+    Option,
+}
+
+/// Represents an option in a list of choices.
+#[derive(Serialize, Deserialize)]
+pub struct AssetOptionFieldSelectValueChoiceCustom {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetOptionFieldSelectValueChoiceCustomOptionType,
+
+    #[serde(rename = "value")]
+    pub value: i16,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum AssetOptionFieldSelectValueChoiceStatOptionType {
+    #[serde(rename = "option")]
+    Option,
+}
+
+/// Represents an option in a list of choices.
+#[derive(Serialize, Deserialize)]
+pub struct AssetOptionFieldSelectValueChoiceStat {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "option_type")]
+    pub optionType: AssetOptionFieldSelectValueChoiceStatOptionType,
+
+    #[serde(rename = "stat")]
+    pub stat: StatKey,
 }
 
 /// Represents a list of mutually exclusive choices.
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectStat {
+pub struct AssetOptionFieldSelectValue {
     #[serde(rename = "choices")]
-    pub choices: HashMap<String, AssetOptionFieldSelectStatChoice>,
+    pub choices: HashMap<String, AssetOptionFieldSelectValueChoice>,
 
     /// The unique Datasworn ID for this item.
     #[serde(rename = "id")]
@@ -1402,8 +1319,8 @@ pub type AtlasIdWildcard = String;
 /// Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
 pub type ChallengeRank = u8;
 
-/// A basic, rollable player character resource.
-pub type ConditionMeterId = DictKey;
+/// A basic, rollable player character resource specified by the ruleset.
+pub type ConditionMeterKey = DictKey;
 
 /// Describes a standard player character condition meter.
 #[derive(Serialize, Deserialize)]
@@ -1888,7 +1805,8 @@ pub struct DelveSiteThemeFeatureRow {
 /// A unique ID for a DelveSiteTheme.
 pub type DelveSiteThemeId = String;
 
-pub type DiceNotation = String;
+/// A simple dice roll expression with an optional modifer.
+pub type DiceExpression = String;
 
 /// A key used in a Datasworn dictionary object.
 pub type DictKey = String;
@@ -1976,10 +1894,10 @@ pub struct ImpactRule {
     #[serde(rename = "permanent")]
     pub permanent: bool,
 
-    /// Keys of ruleset condition meters, to which this impact prevents
-    /// recovery.
+    /// Any ruleset condition meters that can't recover when this impact is
+    /// active.
     #[serde(rename = "prevents_recovery")]
-    pub preventsRecovery: Vec<ConditionMeterId>,
+    pub preventsRecovery: Vec<ConditionMeterKey>,
 
     /// Is this impact applied to all players at once?
     #[serde(rename = "shared")]
@@ -2780,7 +2698,7 @@ pub struct OracleRollTemplate {
 pub struct OracleTable {
     /// The roll used to select a result on this table.
     #[serde(rename = "dice")]
-    pub dice: DiceNotation,
+    pub dice: DiceExpression,
 
     /// The unique Datasworn ID for this item.
     #[serde(rename = "id")]
@@ -2931,28 +2849,25 @@ pub struct OracleTableRenderingStandalone {
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableRoll {
-    /// The rulebook explicitly cautions *against* rolling all details at once,
-    /// so rolling every referenced oracle automatically is not recommended.
-    /// That said, some oracle results only provide useful information once
-    /// a secondary roll occurs, such as "Action + Theme". If this value is
-    /// omitted, assume it's false.
+    /// Both Ironsworn and Starforged explicitly recommend *against* rolling
+    /// all details at once. That said, some oracle results only provide useful
+    /// information once a secondary roll occurs, such as "Action + Theme".
     #[serde(rename = "auto")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub auto: Option<Box<bool>>,
+    pub auto: bool,
 
+    #[serde(rename = "dice")]
+    pub dice: DiceExpression,
+
+    /// Special rules on how the oracle table roll is performed.
     #[serde(rename = "method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub method: Option<Box<OracleTableRollMethod>>,
+    pub method: OracleTableRollMethod,
 
-    /// The ID of the oracle table to be rolled. If omitted, it defaults to the
-    /// ID of this oracle table.
     #[serde(rename = "oracle")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub oracle: Option<Box<OracleTableId>>,
+    pub oracle: OracleTableId,
 
+    /// The number of times to roll.
     #[serde(rename = "times")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub times: Option<Box<i16>>,
+    pub times: i16,
 }
 
 /// Special roll instructions to use when rolling multiple times on a single
@@ -3185,6 +3100,128 @@ pub struct Rarity {
 /// A unique ID for a Rarity.
 pub type RarityId = String;
 
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "using")]
+pub enum RollableValue {
+    #[serde(rename = "asset_control")]
+    AssetControl(RollableValueAssetControl),
+
+    #[serde(rename = "asset_option")]
+    AssetOption(RollableValueAssetOption),
+
+    #[serde(rename = "attached_asset_control")]
+    AttachedAssetControl(RollableValueAttachedAssetControl),
+
+    #[serde(rename = "attached_asset_option")]
+    AttachedAssetOption(RollableValueAttachedAssetOption),
+
+    #[serde(rename = "condition_meter")]
+    ConditionMeter(RollableValueConditionMeter),
+
+    #[serde(rename = "custom")]
+    Custom(RollableValueCustom),
+
+    #[serde(rename = "stat")]
+    Stat(RollableValueStat),
+}
+
+/// A reference to the value of an asset control.
+#[derive(Serialize, Deserialize)]
+pub struct RollableValueAssetControl {
+    #[serde(rename = "assets")]
+    pub assets: Vec<AssetIdWildcard>,
+
+    /// The dictionary key of the asset control field.
+    #[serde(rename = "control")]
+    pub control: DictKey,
+}
+
+/// A reference to the value of an asset option.
+#[derive(Serialize, Deserialize)]
+pub struct RollableValueAssetOption {
+    #[serde(rename = "assets")]
+    pub assets: Vec<AssetIdWildcard>,
+
+    /// The dictionary key of the asset option field.
+    #[serde(rename = "option")]
+    pub option: DictKey,
+}
+
+/// A reference to the value of an attached asset control. For example, a Module
+/// asset could use this to roll using the `integrity` control of an attached
+/// Vehicle.
+#[derive(Serialize, Deserialize)]
+pub struct RollableValueAttachedAssetControl {
+    /// The dictionary key of the asset control field.
+    #[serde(rename = "control")]
+    pub control: DictKey,
+}
+
+/// A reference to the value of an attached asset option.
+#[derive(Serialize, Deserialize)]
+pub struct RollableValueAttachedAssetOption {
+    /// The dictionary key of the asset option field.
+    #[serde(rename = "option")]
+    pub option: DictKey,
+}
+
+/// A reference to the value of a standard player condition meter.
+#[derive(Serialize, Deserialize)]
+pub struct RollableValueConditionMeter {
+    #[serde(rename = "condition_meter")]
+    pub conditionMeter: ConditionMeterKey,
+}
+
+/// An arbitrary static integer value with a label.
+#[derive(Serialize, Deserialize)]
+pub struct RollableValueCustom {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    pub value: i16,
+}
+
+/// A reference to the value of a standard player character stat.
+#[derive(Serialize, Deserialize)]
+pub struct RollableValueStat {
+    #[serde(rename = "stat")]
+    pub stat: StatKey,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum RollableValueType {
+    /// A reference to the value of an asset control.
+    #[serde(rename = "asset_control")]
+    AssetControl,
+
+    /// A reference to the value of an asset option.
+    #[serde(rename = "asset_option")]
+    AssetOption,
+
+    /// A reference to the value of an attached asset control. For example, a
+    /// Module asset could use this to roll using the `integrity` control of an
+    /// attached Vehicle.
+    #[serde(rename = "attached_asset_control")]
+    AttachedAssetControl,
+
+    /// A reference to the value of an attached asset option.
+    #[serde(rename = "attached_asset_option")]
+    AttachedAssetOption,
+
+    /// A reference to the value of a standard player condition meter.
+    #[serde(rename = "condition_meter")]
+    ConditionMeter,
+
+    /// An arbitrary static integer value with a label.
+    #[serde(rename = "custom")]
+    Custom,
+
+    /// A reference to the value of a standard player character stat.
+    #[serde(rename = "stat")]
+    Stat,
+}
+
 /// Describes rules for player characters in this ruleset, such as stats and
 /// condition meters.
 #[derive(Serialize, Deserialize)]
@@ -3355,7 +3392,7 @@ pub type SpecialTrackRuleId = String;
 pub type SpecialTrackType = DictKey;
 
 /// A basic player character stat.
-pub type StatId = DictKey;
+pub type StatKey = DictKey;
 
 /// Describes a standard player character stat.
 #[derive(Serialize, Deserialize)]
@@ -3446,7 +3483,7 @@ pub struct TriggerActionRollCondition {
 
     /// The options available when rolling with this trigger condition.
     #[serde(rename = "roll_options")]
-    pub rollOptions: Vec<ActionRollOption>,
+    pub rollOptions: Vec<RollableValue>,
 
     #[serde(rename = "by")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -3466,7 +3503,7 @@ pub struct TriggerActionRollConditionEnhancement {
 
     /// The options available when rolling with this trigger condition.
     #[serde(rename = "roll_options")]
-    pub rollOptions: Vec<ActionRollOption>,
+    pub rollOptions: Vec<RollableValue>,
 
     #[serde(rename = "by")]
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -14,7 +14,7 @@ import java.util.List;
 @JsonSerialize
 public class OracleTable {
     @JsonProperty("dice")
-    private DiceNotation dice;
+    private DiceExpression dice;
 
     @JsonProperty("id")
     private OracleTableId id;
@@ -75,7 +75,7 @@ public class OracleTable {
      * Getter for dice.<p>
      * The roll used to select a result on this table.
      */
-    public DiceNotation getDice() {
+    public DiceExpression getDice() {
         return dice;
     }
 
@@ -83,7 +83,7 @@ public class OracleTable {
      * Setter for dice.<p>
      * The roll used to select a result on this table.
      */
-    public void setDice(DiceNotation dice) {
+    public void setDice(DiceExpression dice) {
         this.dice = dice;
     }
 

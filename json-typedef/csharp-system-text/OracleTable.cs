@@ -15,7 +15,7 @@ namespace Datasworn
         /// The roll used to select a result on this table.
         /// </summary>
         [JsonPropertyName("dice")]
-        public DiceNotation Dice { get; set; }
+        public DiceExpression Dice { get; set; }
 
         /// <summary>
         /// The unique Datasworn ID for this item.

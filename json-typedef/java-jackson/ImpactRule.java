@@ -21,7 +21,7 @@ public class ImpactRule {
     private Boolean permanent;
 
     @JsonProperty("prevents_recovery")
-    private List<ConditionMeterId> preventsRecovery;
+    private List<ConditionMeterKey> preventsRecovery;
 
     @JsonProperty("shared")
     private Boolean shared;
@@ -79,17 +79,19 @@ public class ImpactRule {
 
     /**
      * Getter for preventsRecovery.<p>
-     * Keys of ruleset condition meters, to which this impact prevents recovery.
+     * Any ruleset condition meters that can't recover when this impact is
+     * active.
      */
-    public List<ConditionMeterId> getPreventsRecovery() {
+    public List<ConditionMeterKey> getPreventsRecovery() {
         return preventsRecovery;
     }
 
     /**
      * Setter for preventsRecovery.<p>
-     * Keys of ruleset condition meters, to which this impact prevents recovery.
+     * Any ruleset condition meters that can't recover when this impact is
+     * active.
      */
-    public void setPreventsRecovery(List<ConditionMeterId> preventsRecovery) {
+    public void setPreventsRecovery(List<ConditionMeterKey> preventsRecovery) {
         this.preventsRecovery = preventsRecovery;
     }
 

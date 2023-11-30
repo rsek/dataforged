@@ -5,10 +5,16 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+/**
+ * Options are asset input fields which are set once, usually when the character
+ * takes the asset. The most common example is the "name" field on companion
+ * assets. A more complex example is the choice of a god's stat for the Devotant
+ * asset.
+ */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "field_type")
 @JsonSubTypes({
     @JsonSubTypes.Type(name = "select_enhancement", value = AssetOptionFieldSelectEnhancement.class),
-    @JsonSubTypes.Type(name = "select_stat", value = AssetOptionFieldSelectStat.class),
+    @JsonSubTypes.Type(name = "select_value", value = AssetOptionFieldSelectValue.class),
     @JsonSubTypes.Type(name = "text", value = AssetOptionFieldText.class),
 })
 public abstract class AssetOptionField {

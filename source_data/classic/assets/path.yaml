@@ -418,28 +418,33 @@ assets:
             value: null
           stat:
             label: Stat
-            field_type: select_stat
+            field_type: select_value
             value: null
             choices:
               edge:
                 label: Edge
-                value: edge
+                using: stat
+                stat: edge
                 option_type: option
               heart:
                 label: Heart
-                value: heart
+                using: stat
+                stat: heart
                 option_type: option
               iron:
                 label: Iron
-                value: iron
+                using: stat
+                stat: iron
                 option_type: option
               shadow:
                 label: Shadow
-                value: shadow
+                using: stat
+                stat: shadow
                 option_type: option
               wits:
                 label: Wits
-                value: wits
+                using: stat
+                stat: wits
                 option_type: option
         abilities:
           - text: |-
@@ -922,24 +927,28 @@ assets:
         options:
           material:
             label: Material
-            field_type: select_stat
+            field_type: select_value
             value: null
             choices:
               thunderwood:
                 label: Thunderwood
-                value: edge
+                using: stat
+                stat: edge
                 option_type: option
               bloodwood:
                 label: Bloodwood
-                value: iron
+                using: stat
+                stat: iron
                 option_type: option
               ghostwood:
                 label: Ghostwood
-                value: shadow
+                using: stat
+                stat: shadow
                 option_type: option
               whisperwood:
                 label: Whisperwood
-                value: wits
+                using: stat
+                stat: wits
                 option_type: option
         abilities:
           - enabled: true

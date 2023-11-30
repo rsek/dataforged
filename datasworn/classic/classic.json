@@ -338,8 +338,10 @@
 							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": true,
 									"method": "make_it_worse",
+									"oracle": null,
 									"times": 2
 								}
 							]
@@ -4589,7 +4591,10 @@
 							"result": "Roll twice",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": true,
+									"method": "no_duplicates",
+									"oracle": null,
 									"times": 2
 								}
 							]
@@ -4621,7 +4626,9 @@
 							"result": "**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": false,
+									"method": "no_duplicates",
 									"oracle": "classic/oracles/settlement/name/landscape_feature",
 									"times": 1
 								}
@@ -4635,7 +4642,9 @@
 							"result": "**A manmade edifice.** What is it? Why is it important to this settlement’s history?,",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": false,
+									"method": "no_duplicates",
 									"oracle": "classic/oracles/settlement/name/manmade_edifice",
 									"times": 1
 								}
@@ -4649,7 +4658,9 @@
 							"result": "**A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": false,
+									"method": "no_duplicates",
 									"oracle": "classic/oracles/settlement/name/creature",
 									"times": 1
 								}
@@ -4663,7 +4674,9 @@
 							"result": "**A historical event.** What happened here? What place or practice commemorates this event?",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": false,
+									"method": "no_duplicates",
 									"oracle": "classic/oracles/settlement/name/historical_event",
 									"times": 1
 								}
@@ -4677,7 +4690,9 @@
 							"result": "**A word in an Old World language.** What culture is represented by this word? What does it translate to?",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": false,
+									"method": "no_duplicates",
 									"oracle": "classic/oracles/settlement/name/old_world_language",
 									"times": 1
 								}
@@ -4691,7 +4706,9 @@
 							"result": "**A season or environmental aspect.** What influence does the weather have on this settlement?",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": false,
+									"method": "no_duplicates",
 									"oracle": "classic/oracles/settlement/name/environmental_aspect",
 									"times": 1
 								}
@@ -4705,7 +4722,9 @@
 							"result": "Something Else...",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": true,
+									"method": "no_duplicates",
 									"oracle": "classic/oracles/settlement/name/something_else",
 									"times": 1
 								}
@@ -6833,7 +6852,10 @@
 							"result": "Roll twice",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": true,
+									"method": "no_duplicates",
+									"oracle": null,
 									"times": 2
 								}
 							]
@@ -12074,8 +12096,10 @@
 							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": true,
 									"method": "make_it_worse",
+									"oracle": null,
 									"times": 2
 								}
 							]
@@ -12222,8 +12246,10 @@
 							"result": "Roll twice more on this table. Both results occur. If they are the same result, make it more dramatic.",
 							"rolls": [
 								{
+									"dice": null,
 									"auto": true,
 									"method": "make_it_worse",
+									"oracle": null,
 									"times": 2
 								}
 							]
@@ -14352,6 +14378,30 @@
 							]
 						}
 					],
+					"controls": {
+						"equipped": {
+							"id": "classic/assets/combat_talent/ironclad/controls/equipped",
+							"label": "Equipped",
+							"field_type": "select_enhancement",
+							"value": null,
+							"choices": {
+								"lightly_armored": {
+									"label": "Lightly armored",
+									"option_type": "option",
+									"enhance_asset": {
+										"count_as_impact": false
+									}
+								},
+								"geared_for_war": {
+									"label": "Geared for war",
+									"option_type": "option",
+									"enhance_asset": {
+										"count_as_impact": true
+									}
+								}
+							}
+						}
+					},
 					"source": {
 						"title": "Ironsworn Assets Master Set",
 						"date": "2019-06-05",
@@ -15785,33 +15835,38 @@
 						"stat": {
 							"id": "classic/assets/path/devotant/options/stat",
 							"label": "Stat",
-							"field_type": "select_stat",
+							"field_type": "select_value",
 							"value": null,
 							"choices": {
 								"edge": {
 									"label": "Edge",
-									"value": "edge",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "edge"
 								},
 								"heart": {
 									"label": "Heart",
-									"value": "heart",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "heart"
 								},
 								"iron": {
 									"label": "Iron",
-									"value": "iron",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "iron"
 								},
 								"shadow": {
 									"label": "Shadow",
-									"value": "shadow",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "shadow"
 								},
 								"wits": {
 									"label": "Wits",
-									"value": "wits",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "wits"
 								}
 							}
 						}
@@ -16749,28 +16804,32 @@
 						"material": {
 							"id": "classic/assets/path/masked/options/material",
 							"label": "Material",
-							"field_type": "select_stat",
+							"field_type": "select_value",
 							"value": null,
 							"choices": {
 								"thunderwood": {
 									"label": "Thunderwood",
-									"value": "edge",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "edge"
 								},
 								"bloodwood": {
 									"label": "Bloodwood",
-									"value": "iron",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "iron"
 								},
 								"ghostwood": {
 									"label": "Ghostwood",
-									"value": "shadow",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "shadow"
 								},
 								"whisperwood": {
 									"label": "Whisperwood",
-									"value": "wits",
-									"option_type": "option"
+									"option_type": "option",
+									"using": "stat",
+									"stat": "wits"
 								}
 							}
 						}

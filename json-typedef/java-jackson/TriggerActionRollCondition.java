@@ -13,7 +13,7 @@ public class TriggerActionRollCondition {
     private ActionRollMethod method;
 
     @JsonProperty("roll_options")
-    private List<ActionRollOption> rollOptions;
+    private List<RollableValue> rollOptions;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("by")
@@ -44,7 +44,7 @@ public class TriggerActionRollCondition {
      * Getter for rollOptions.<p>
      * The options available when rolling with this trigger condition.
      */
-    public List<ActionRollOption> getRollOptions() {
+    public List<RollableValue> getRollOptions() {
         return rollOptions;
     }
 
@@ -52,7 +52,7 @@ public class TriggerActionRollCondition {
      * Setter for rollOptions.<p>
      * The options available when rolling with this trigger condition.
      */
-    public void setRollOptions(List<ActionRollOption> rollOptions) {
+    public void setRollOptions(List<RollableValue> rollOptions) {
         this.rollOptions = rollOptions;
     }
 

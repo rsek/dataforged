@@ -1,15 +1,15 @@
 id: sundered_isles
 package_type: ruleset
-source: &Source
-  title: Sundered Isles Book Preview
-  authors:
-    - name: Shawn Tomkin
-  license: null
-  url: https://ironswornrpg.com
-  date: 2023-09-11
 oracles:
   overland:
-    source: *Source
+    source:
+      <<: &Source
+        title: Sundered Isles Book Preview
+        authors:
+          - name: Shawn Tomkin
+        license: null
+        url: https://ironswornrpg.com
+        date: 2023-09-11
     name: Overland Adventures
     contents:
       regions:
@@ -19,13 +19,13 @@ oracles:
           style: standalone
           columns:
             roll:
-              name: Roll
+              label: Roll
               content_type: roll
             result:
-              name: Result
+              label: Result
               content_type: result
             detail:
-              name: Detail
+              label: Detail
               content_type: summary
         table:
           - min: 1
@@ -869,18 +869,21 @@ oracles:
           style: multi_table
           columns:
             myriads:
+              label: Myriads
               table_key: myriads
               content_type: roll
             margins:
+              label: Margins
               table_key: margins
               content_type: roll
             reaches:
+              label: Reaches
               table_key: reaches
               content_type: roll
             result:
               table_key: myriads
               content_type: result
-              name: Result
+              label: Result
         contents:
           myriads:
             source: *Source

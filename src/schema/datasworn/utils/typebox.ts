@@ -17,7 +17,7 @@ import {
 	type TSchema,
 	type TString
 } from '@sinclair/typebox'
-import { isEmpty } from 'lodash-es'
+import { isEmpty, isUndefined } from 'lodash-es'
 import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
 import { type TUnionEnum } from './UnionEnum.js'
 import { type TDiscriminatedUnion } from './DiscriminatedUnion.js'
@@ -40,7 +40,8 @@ export function keysWithDefaults<T extends TObject>(schema: T) {
 	for (const [key, subschema] of Object.entries(schema.properties)) {
 		// skip if it's already optional
 		if (TypeGuard.TOptional(subschema)) continue
-		if (typeof subschema.default === 'undefined') continue
+		if (isUndefined(subschema.default)) continue
+
 		keys.push(key)
 	}
 

@@ -88,11 +88,11 @@ export function DiscriminatedUnion<
 		type: 'object',
 		params: undefined as any,
 		static: undefined as any,
-		tsType: schemas
-			.map((schema) =>
-				schema.$id ? schema.$id.replace('#/$defs/', '') : schema.title
-			)
-			.join(' | '),
+		// tsType: schemas
+		// 	.map((schema) =>
+		// 		schema.$id ? schema.$id.replace('#/$defs/', '') : schema.title
+		// 	)
+		// 	.join(' | '),
 		allOf,
 		// oneOf,
 		$comment: `Deserialize as a discriminated union/polymorphic object type, using the \`${discriminator}\` property as a discriminator.`,

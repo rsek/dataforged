@@ -1,17 +1,20 @@
 id: sundered_isles
 package_type: ruleset
-source: &Source
-  title: Sundered Isles Book Preview
-  authors:
-    - name: Shawn Tomkin
-  license: null
-  url: https://ironswornrpg.com
-  date: 2023-09-11
 oracles:
   move:
     name: Move Oracles
+    source:
+      <<: &Source
+        title: Sundered Isles Book Preview
+        authors:
+          - name: Shawn Tomkin
+        license: null
+        url: https://ironswornrpg.com
+        date: 2023-09-11
     contents:
       begin_a_session:
+        source:
+          <<: *Source
         name: Begin a Session
         table:
           - min: 1
@@ -45,6 +48,8 @@ oracles:
             max: 100
             result: Unforeseen aid is on the way or within reach
       make_a_discovery:
+        source:
+          <<: *Source
         name: Make a Discovery
         table:
           - min: 1
@@ -108,6 +113,8 @@ oracles:
             max: 100
             result: Roll twice
       confront_chaos:
+        source:
+          <<: *Source
         name: Confront Chaos
         table:
           - min: 1
@@ -171,6 +178,8 @@ oracles:
             max: 100
             result: Wrathful beast of monstrous proportions
       take_decisive_action:
+        source:
+          <<: *Source
         name: Take Decisive Action
         table:
           - min: 1
@@ -192,6 +201,8 @@ oracles:
             max: 100
             result: 'It gets complicated: The true nature of a foe or objective is revealed'
       endure_harm:
+        source:
+          <<: *Source
         name: Endure Harm
         table:
           - min: 1
@@ -210,6 +221,8 @@ oracles:
             max: 100
             result: You are still standing.
       endure_stress:
+        source:
+          <<: *Source
         name: Endure Stress
         table:
           - min: 1
@@ -225,6 +238,8 @@ oracles:
             max: 100
             result: You persevere.
       withstand_damage:
+        source:
+          <<: *Source
         name: Withstand Damage
         table:
           - min: 1
@@ -252,6 +267,8 @@ oracles:
             max: 100
             result: Against all odds, the vehicle holds together.
       pay_the_price:
+        source:
+          <<: *Source
         name: Pay the Price
         table:
           - min: 1

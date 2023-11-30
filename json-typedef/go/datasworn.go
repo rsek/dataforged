@@ -168,153 +168,6 @@ const (
 	ActionRollMethodWeakHit ActionRollMethod = "weak_hit"
 )
 
-type ActionRollOption struct {
-	Using string
-
-	AssetControl ActionRollOptionAssetControl
-
-	AssetOption ActionRollOptionAssetOption
-
-	AttachedAssetControl ActionRollOptionAttachedAssetControl
-
-	AttachedAssetOption ActionRollOptionAttachedAssetOption
-
-	ConditionMeter ActionRollOptionConditionMeter
-
-	Custom ActionRollOptionCustom
-
-	Stat ActionRollOptionStat
-}
-
-func (v ActionRollOption) MarshalJSON() ([]byte, error) {
-	switch v.Using {
-	case "asset_control":
-		return json.Marshal(struct { T string `json:"using"`; ActionRollOptionAssetControl }{ v.Using, v.AssetControl })
-	case "asset_option":
-		return json.Marshal(struct { T string `json:"using"`; ActionRollOptionAssetOption }{ v.Using, v.AssetOption })
-	case "attached_asset_control":
-		return json.Marshal(struct { T string `json:"using"`; ActionRollOptionAttachedAssetControl }{ v.Using, v.AttachedAssetControl })
-	case "attached_asset_option":
-		return json.Marshal(struct { T string `json:"using"`; ActionRollOptionAttachedAssetOption }{ v.Using, v.AttachedAssetOption })
-	case "condition_meter":
-		return json.Marshal(struct { T string `json:"using"`; ActionRollOptionConditionMeter }{ v.Using, v.ConditionMeter })
-	case "custom":
-		return json.Marshal(struct { T string `json:"using"`; ActionRollOptionCustom }{ v.Using, v.Custom })
-	case "stat":
-		return json.Marshal(struct { T string `json:"using"`; ActionRollOptionStat }{ v.Using, v.Stat })
-	}
-
-	return nil, fmt.Errorf("bad Using value: %s", v.Using)
-}
-
-func (v *ActionRollOption) UnmarshalJSON(b []byte) error {
-	var t struct { T string `json:"using"` }
-	if err := json.Unmarshal(b, &t); err != nil {
-		return err
-	}
-
-	var err error
-	switch t.T {
-	case "asset_control":
-		err = json.Unmarshal(b, &v.AssetControl)
-	case "asset_option":
-		err = json.Unmarshal(b, &v.AssetOption)
-	case "attached_asset_control":
-		err = json.Unmarshal(b, &v.AttachedAssetControl)
-	case "attached_asset_option":
-		err = json.Unmarshal(b, &v.AttachedAssetOption)
-	case "condition_meter":
-		err = json.Unmarshal(b, &v.ConditionMeter)
-	case "custom":
-		err = json.Unmarshal(b, &v.Custom)
-	case "stat":
-		err = json.Unmarshal(b, &v.Stat)
-	default:
-		err = fmt.Errorf("bad Using value: %s", t.T)
-	}
-
-	if err != nil {
-		return err
-	}
-
-	v.Using = t.T
-	return nil
-}
-
-// Roll using the value of an asset control.
-type ActionRollOptionAssetControl struct {
-	Assets []AssetIDWildcard `json:"assets"`
-
-	// The dictionary key of the asset control field.
-	Control DictKey `json:"control"`
-}
-
-// Roll using the value of an asset option.
-type ActionRollOptionAssetOption struct {
-	Assets []AssetIDWildcard `json:"assets"`
-
-	// The dictionary key of the asset option field.
-	Option DictKey `json:"option"`
-}
-
-// Roll using the value of an attached asset control. For example, a Module
-// asset could use this to roll using the `integrity` control of an attached
-// Vehicle.
-type ActionRollOptionAttachedAssetControl struct {
-	// The dictionary key of the asset control field.
-	Control DictKey `json:"control"`
-}
-
-// Roll using the value of an attached asset option.
-type ActionRollOptionAttachedAssetOption struct {
-	// The dictionary key of the asset option field.
-	Option DictKey `json:"option"`
-}
-
-// Roll using the value of a standard player condition meter.
-type ActionRollOptionConditionMeter struct {
-	ConditionMeter ConditionMeterID `json:"condition_meter"`
-}
-
-// Roll using an integer value with customizable labels.
-type ActionRollOptionCustom struct {
-	Name Label `json:"name"`
-
-	Value int16 `json:"value"`
-}
-
-// Roll using a standard player character stat.
-type ActionRollOptionStat struct {
-	Stat StatID `json:"stat"`
-}
-
-type ActionRollUsing string
-
-const (
-// Roll using the value of an asset control.
-	ActionRollUsingAssetControl ActionRollUsing = "asset_control"
-
-// Roll using the value of an asset option.
-	ActionRollUsingAssetOption ActionRollUsing = "asset_option"
-
-// Roll using the value of an attached asset control. For example, a Module
-// asset could use this to roll using the `integrity` control of an attached
-// Vehicle.
-	ActionRollUsingAttachedAssetControl ActionRollUsing = "attached_asset_control"
-
-// Roll using the value of an attached asset option.
-	ActionRollUsingAttachedAssetOption ActionRollUsing = "attached_asset_option"
-
-// Roll using the value of a standard player condition meter.
-	ActionRollUsingConditionMeter ActionRollUsing = "condition_meter"
-
-// Roll using an integer value with customizable labels.
-	ActionRollUsingCustom ActionRollUsing = "custom"
-
-// Roll using a standard player character stat.
-	ActionRollUsingStat ActionRollUsing = "stat"
-)
-
 type Asset struct {
 	Abilities []AssetAbility `json:"abilities"`
 
@@ -357,10 +210,9 @@ type Asset struct {
 	// This asset's icon.
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
-	// Options are asset input fields which are set once, usually when the
-	// character takes the asset. The most common example is the "name" field on
-	// companion assets. A more complex example is the choice of a god's stat for
-	// the Devotant asset.
+	// Options are input fields set when the player purchases the asset. They're
+	// likely to remain the same through the life of the asset. Typically, they are
+	// rendered at the top of the asset card.
 	Options map[string]AssetOptionField `json:"options,omitempty"`
 
 	// Describes prerequisites for purchasing or using this asset.
@@ -507,7 +359,7 @@ type AssetAbilityControlFieldCounter struct {
 	Max int16 `json:"max"`
 
 	// The (inclusive) minimum value.
-	Min int8 `json:"min"`
+	Min int16 `json:"min"`
 
 	// The current value of this input.
 	Value int16 `json:"value"`
@@ -857,25 +709,13 @@ func (v *AssetControlFieldSelectEnhancementChoice) UnmarshalJSON(b []byte) error
 	return nil
 }
 
-// The current value of this input.
-type AssetControlFieldSelectEnhancementChoiceOptionValue struct {
+// Represents an option in a list of choices.
+type AssetControlFieldSelectEnhancementChoiceOption struct {
+	Label Label `json:"label"`
+
 	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
 
 	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
-}
-
-// Represents an option in a list of choices.
-type AssetControlFieldSelectEnhancementChoiceOption struct {
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
-
-	// The current value of this input.
-	Value AssetControlFieldSelectEnhancementChoiceOptionValue `json:"value"`
-
-	// Is this option currently selected?
-	Selected *bool `json:"selected,omitempty"`
 }
 
 type AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType string
@@ -884,27 +724,15 @@ const (
 	AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionTypeOption AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType = "option"
 )
 
-// The current value of this input.
-type AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue struct {
-	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
-
-	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
-}
-
 // Represents an option in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOptionGroupChoice struct {
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
 	OptionType AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
-	// The current value of this input.
-	Value AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue `json:"value"`
+	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
 
-	// Is this option currently selected?
-	Selected *bool `json:"selected,omitempty"`
+	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
 }
 
 // Represents a grouping of options in a list of choices.
@@ -1014,12 +842,16 @@ type AssetID = string
 // A wildcarded ID that can be used to match multiple Assets.
 type AssetIDWildcard = string
 
+// Options are asset input fields which are set once, usually when the character
+// takes the asset. The most common example is the "name" field on companion
+// assets. A more complex example is the choice of a god's stat for the Devotant
+// asset.
 type AssetOptionField struct {
 	FieldType string
 
 	SelectEnhancement AssetOptionFieldSelectEnhancement
 
-	SelectStat AssetOptionFieldSelectStat
+	SelectValue AssetOptionFieldSelectValue
 
 	Text AssetOptionFieldText
 }
@@ -1028,8 +860,8 @@ func (v AssetOptionField) MarshalJSON() ([]byte, error) {
 	switch v.FieldType {
 	case "select_enhancement":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectEnhancement }{ v.FieldType, v.SelectEnhancement })
-	case "select_stat":
-		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectStat }{ v.FieldType, v.SelectStat })
+	case "select_value":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectValue }{ v.FieldType, v.SelectValue })
 	case "text":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldText }{ v.FieldType, v.Text })
 	}
@@ -1047,8 +879,8 @@ func (v *AssetOptionField) UnmarshalJSON(b []byte) error {
 	switch t.T {
 	case "select_enhancement":
 		err = json.Unmarshal(b, &v.SelectEnhancement)
-	case "select_stat":
-		err = json.Unmarshal(b, &v.SelectStat)
+	case "select_value":
+		err = json.Unmarshal(b, &v.SelectValue)
 	case "text":
 		err = json.Unmarshal(b, &v.Text)
 	default:
@@ -1106,25 +938,13 @@ func (v *AssetOptionFieldSelectEnhancementChoice) UnmarshalJSON(b []byte) error 
 	return nil
 }
 
-// The current value of this input.
-type AssetOptionFieldSelectEnhancementChoiceOptionValue struct {
+// Represents an option in a list of choices.
+type AssetOptionFieldSelectEnhancementChoiceOption struct {
+	Label Label `json:"label"`
+
 	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
 
 	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
-}
-
-// Represents an option in a list of choices.
-type AssetOptionFieldSelectEnhancementChoiceOption struct {
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
-
-	// The current value of this input.
-	Value AssetOptionFieldSelectEnhancementChoiceOptionValue `json:"value"`
-
-	// Is this option currently selected?
-	Selected *bool `json:"selected,omitempty"`
 }
 
 type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType string
@@ -1133,27 +953,15 @@ const (
 	AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionTypeOption AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType = "option"
 )
 
-// The current value of this input.
-type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue struct {
-	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
-
-	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
-}
-
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice struct {
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
 	Label Label `json:"label"`
 
 	OptionType AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
-	// The current value of this input.
-	Value AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue `json:"value"`
+	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
 
-	// Is this option currently selected?
-	Selected *bool `json:"selected,omitempty"`
+	EnhanceMoves []MoveEnhancement `json:"enhance_moves,omitempty"`
 }
 
 // Represents a grouping of options in a list of choices.
@@ -1183,96 +991,195 @@ type AssetOptionFieldSelectEnhancement struct {
 	Value DictKey `json:"value"`
 }
 
-type AssetOptionFieldSelectStatChoice struct {
-	OptionType string
+type AssetOptionFieldSelectValueChoice struct {
+	Using string
 
-	Option AssetOptionFieldSelectStatChoiceOption
+	AssetControl AssetOptionFieldSelectValueChoiceAssetControl
 
-	OptionGroup AssetOptionFieldSelectStatChoiceOptionGroup
+	AssetOption AssetOptionFieldSelectValueChoiceAssetOption
+
+	AttachedAssetControl AssetOptionFieldSelectValueChoiceAttachedAssetControl
+
+	AttachedAssetOption AssetOptionFieldSelectValueChoiceAttachedAssetOption
+
+	ConditionMeter AssetOptionFieldSelectValueChoiceConditionMeter
+
+	Custom AssetOptionFieldSelectValueChoiceCustom
+
+	Stat AssetOptionFieldSelectValueChoiceStat
 }
 
-func (v AssetOptionFieldSelectStatChoice) MarshalJSON() ([]byte, error) {
-	switch v.OptionType {
-	case "option":
-		return json.Marshal(struct { T string `json:"option_type"`; AssetOptionFieldSelectStatChoiceOption }{ v.OptionType, v.Option })
-	case "option_group":
-		return json.Marshal(struct { T string `json:"option_type"`; AssetOptionFieldSelectStatChoiceOptionGroup }{ v.OptionType, v.OptionGroup })
+func (v AssetOptionFieldSelectValueChoice) MarshalJSON() ([]byte, error) {
+	switch v.Using {
+	case "asset_control":
+		return json.Marshal(struct { T string `json:"using"`; AssetOptionFieldSelectValueChoiceAssetControl }{ v.Using, v.AssetControl })
+	case "asset_option":
+		return json.Marshal(struct { T string `json:"using"`; AssetOptionFieldSelectValueChoiceAssetOption }{ v.Using, v.AssetOption })
+	case "attached_asset_control":
+		return json.Marshal(struct { T string `json:"using"`; AssetOptionFieldSelectValueChoiceAttachedAssetControl }{ v.Using, v.AttachedAssetControl })
+	case "attached_asset_option":
+		return json.Marshal(struct { T string `json:"using"`; AssetOptionFieldSelectValueChoiceAttachedAssetOption }{ v.Using, v.AttachedAssetOption })
+	case "condition_meter":
+		return json.Marshal(struct { T string `json:"using"`; AssetOptionFieldSelectValueChoiceConditionMeter }{ v.Using, v.ConditionMeter })
+	case "custom":
+		return json.Marshal(struct { T string `json:"using"`; AssetOptionFieldSelectValueChoiceCustom }{ v.Using, v.Custom })
+	case "stat":
+		return json.Marshal(struct { T string `json:"using"`; AssetOptionFieldSelectValueChoiceStat }{ v.Using, v.Stat })
 	}
 
-	return nil, fmt.Errorf("bad OptionType value: %s", v.OptionType)
+	return nil, fmt.Errorf("bad Using value: %s", v.Using)
 }
 
-func (v *AssetOptionFieldSelectStatChoice) UnmarshalJSON(b []byte) error {
-	var t struct { T string `json:"option_type"` }
+func (v *AssetOptionFieldSelectValueChoice) UnmarshalJSON(b []byte) error {
+	var t struct { T string `json:"using"` }
 	if err := json.Unmarshal(b, &t); err != nil {
 		return err
 	}
 
 	var err error
 	switch t.T {
-	case "option":
-		err = json.Unmarshal(b, &v.Option)
-	case "option_group":
-		err = json.Unmarshal(b, &v.OptionGroup)
+	case "asset_control":
+		err = json.Unmarshal(b, &v.AssetControl)
+	case "asset_option":
+		err = json.Unmarshal(b, &v.AssetOption)
+	case "attached_asset_control":
+		err = json.Unmarshal(b, &v.AttachedAssetControl)
+	case "attached_asset_option":
+		err = json.Unmarshal(b, &v.AttachedAssetOption)
+	case "condition_meter":
+		err = json.Unmarshal(b, &v.ConditionMeter)
+	case "custom":
+		err = json.Unmarshal(b, &v.Custom)
+	case "stat":
+		err = json.Unmarshal(b, &v.Stat)
 	default:
-		err = fmt.Errorf("bad OptionType value: %s", t.T)
+		err = fmt.Errorf("bad Using value: %s", t.T)
 	}
 
 	if err != nil {
 		return err
 	}
 
-	v.OptionType = t.T
+	v.Using = t.T
 	return nil
 }
 
-// Represents an option in a list of choices.
-type AssetOptionFieldSelectStatChoiceOption struct {
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
-
-	// The current value of this input.
-	Value StatID `json:"value"`
-
-	// Is this option currently selected?
-	Selected *bool `json:"selected,omitempty"`
-}
-
-type AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType string
+type AssetOptionFieldSelectValueChoiceAssetControlOptionType string
 
 const (
-	AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionTypeOption AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType = "option"
+	AssetOptionFieldSelectValueChoiceAssetControlOptionTypeOption AssetOptionFieldSelectValueChoiceAssetControlOptionType = "option"
 )
 
 // Represents an option in a list of choices.
-type AssetOptionFieldSelectStatChoiceOptionGroupChoice struct {
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
+type AssetOptionFieldSelectValueChoiceAssetControl struct {
+	Assets []AssetIDWildcard `json:"assets"`
+
+	// The dictionary key of the asset control field.
+	Control DictKey `json:"control"`
+
 	Label Label `json:"label"`
 
-	OptionType AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType `json:"option_type"`
-
-	// The current value of this input.
-	Value StatID `json:"value"`
-
-	// Is this option currently selected?
-	Selected *bool `json:"selected,omitempty"`
+	OptionType AssetOptionFieldSelectValueChoiceAssetControlOptionType `json:"option_type"`
 }
 
-// Represents a grouping of options in a list of choices.
-type AssetOptionFieldSelectStatChoiceOptionGroup struct {
-	Choices map[string]AssetOptionFieldSelectStatChoiceOptionGroupChoice `json:"choices"`
+type AssetOptionFieldSelectValueChoiceAssetOptionOptionType string
 
-	// A label for this option group.
-	Name Label `json:"name"`
+const (
+	AssetOptionFieldSelectValueChoiceAssetOptionOptionTypeOption AssetOptionFieldSelectValueChoiceAssetOptionOptionType = "option"
+)
+
+// Represents an option in a list of choices.
+type AssetOptionFieldSelectValueChoiceAssetOption struct {
+	Assets []AssetIDWildcard `json:"assets"`
+
+	Label Label `json:"label"`
+
+	// The dictionary key of the asset option field.
+	Option DictKey `json:"option"`
+
+	OptionType AssetOptionFieldSelectValueChoiceAssetOptionOptionType `json:"option_type"`
+}
+
+type AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType string
+
+const (
+	AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionTypeOption AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType = "option"
+)
+
+// Represents an option in a list of choices.
+type AssetOptionFieldSelectValueChoiceAttachedAssetControl struct {
+	// The dictionary key of the asset control field.
+	Control DictKey `json:"control"`
+
+	Label Label `json:"label"`
+
+	OptionType AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType `json:"option_type"`
+}
+
+type AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType string
+
+const (
+	AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionTypeOption AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType = "option"
+)
+
+// Represents an option in a list of choices.
+type AssetOptionFieldSelectValueChoiceAttachedAssetOption struct {
+	Label Label `json:"label"`
+
+	// The dictionary key of the asset option field.
+	Option DictKey `json:"option"`
+
+	OptionType AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType `json:"option_type"`
+}
+
+type AssetOptionFieldSelectValueChoiceConditionMeterOptionType string
+
+const (
+	AssetOptionFieldSelectValueChoiceConditionMeterOptionTypeOption AssetOptionFieldSelectValueChoiceConditionMeterOptionType = "option"
+)
+
+// Represents an option in a list of choices.
+type AssetOptionFieldSelectValueChoiceConditionMeter struct {
+	ConditionMeter ConditionMeterKey `json:"condition_meter"`
+
+	Label Label `json:"label"`
+
+	OptionType AssetOptionFieldSelectValueChoiceConditionMeterOptionType `json:"option_type"`
+}
+
+type AssetOptionFieldSelectValueChoiceCustomOptionType string
+
+const (
+	AssetOptionFieldSelectValueChoiceCustomOptionTypeOption AssetOptionFieldSelectValueChoiceCustomOptionType = "option"
+)
+
+// Represents an option in a list of choices.
+type AssetOptionFieldSelectValueChoiceCustom struct {
+	Label Label `json:"label"`
+
+	OptionType AssetOptionFieldSelectValueChoiceCustomOptionType `json:"option_type"`
+
+	Value int16 `json:"value"`
+}
+
+type AssetOptionFieldSelectValueChoiceStatOptionType string
+
+const (
+	AssetOptionFieldSelectValueChoiceStatOptionTypeOption AssetOptionFieldSelectValueChoiceStatOptionType = "option"
+)
+
+// Represents an option in a list of choices.
+type AssetOptionFieldSelectValueChoiceStat struct {
+	Label Label `json:"label"`
+
+	OptionType AssetOptionFieldSelectValueChoiceStatOptionType `json:"option_type"`
+
+	Stat StatKey `json:"stat"`
 }
 
 // Represents a list of mutually exclusive choices.
-type AssetOptionFieldSelectStat struct {
-	Choices map[string]AssetOptionFieldSelectStatChoice `json:"choices"`
+type AssetOptionFieldSelectValue struct {
+	Choices map[string]AssetOptionFieldSelectValueChoice `json:"choices"`
 
 	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
@@ -1445,8 +1352,8 @@ type AtlasIDWildcard = string
 // Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
 type ChallengeRank = uint8
 
-// A basic, rollable player character resource.
-type ConditionMeterID = DictKey
+// A basic, rollable player character resource specified by the ruleset.
+type ConditionMeterKey = DictKey
 
 // Describes a standard player character condition meter.
 type ConditionMeterRule struct {
@@ -1772,7 +1679,8 @@ type DelveSiteThemeFeatureRow struct {
 // A unique ID for a DelveSiteTheme.
 type DelveSiteThemeID = string
 
-type DiceNotation = string
+// A simple dice roll expression with an optional modifer.
+type DiceExpression = string
 
 // A key used in a Datasworn dictionary object.
 type DictKey = string
@@ -1833,8 +1741,8 @@ type ImpactRule struct {
 	// Is this impact permanent?
 	Permanent bool `json:"permanent"`
 
-	// Keys of ruleset condition meters, to which this impact prevents recovery.
-	PreventsRecovery []ConditionMeterID `json:"prevents_recovery"`
+	// Any ruleset condition meters that can't recover when this impact is active.
+	PreventsRecovery []ConditionMeterKey `json:"prevents_recovery"`
 
 	// Is this impact applied to all players at once?
 	Shared bool `json:"shared"`
@@ -2530,7 +2438,7 @@ type OracleRollTemplate struct {
 // has multiple "Roll" or "Result" columns.
 type OracleTable struct {
 	// The roll used to select a result on this table.
-	Dice DiceNotation `json:"dice"`
+	Dice DiceExpression `json:"dice"`
 
 	// The unique Datasworn ID for this item.
 	ID OracleTableID `json:"id"`
@@ -2680,20 +2588,20 @@ type OracleTableRenderingStandalone struct {
 }
 
 type OracleTableRoll struct {
-	// The rulebook explicitly cautions *against* rolling all details at once,
-	// so rolling every referenced oracle automatically is not recommended. That
-	// said, some oracle results only provide useful information once a secondary
-	// roll occurs, such as "Action + Theme". If this value is omitted, assume
-	// it's false.
-	Auto *bool `json:"auto,omitempty"`
+	// Both Ironsworn and Starforged explicitly recommend *against* rolling
+	// all details at once. That said, some oracle results only provide useful
+	// information once a secondary roll occurs, such as "Action + Theme".
+	Auto bool `json:"auto"`
 
-	Method *OracleTableRollMethod `json:"method,omitempty"`
+	Dice DiceExpression `json:"dice"`
 
-	// The ID of the oracle table to be rolled. If omitted, it defaults to the ID
-	// of this oracle table.
-	Oracle *OracleTableID `json:"oracle,omitempty"`
+	// Special rules on how the oracle table roll is performed.
+	Method OracleTableRollMethod `json:"method"`
 
-	Times *int16 `json:"times,omitempty"`
+	Oracle OracleTableID `json:"oracle"`
+
+	// The number of times to roll.
+	Times int16 `json:"times"`
 }
 
 // Special roll instructions to use when rolling multiple times on a single
@@ -2871,6 +2779,153 @@ type Rarity struct {
 // A unique ID for a Rarity.
 type RarityID = string
 
+type RollableValue struct {
+	Using string
+
+	AssetControl RollableValueAssetControl
+
+	AssetOption RollableValueAssetOption
+
+	AttachedAssetControl RollableValueAttachedAssetControl
+
+	AttachedAssetOption RollableValueAttachedAssetOption
+
+	ConditionMeter RollableValueConditionMeter
+
+	Custom RollableValueCustom
+
+	Stat RollableValueStat
+}
+
+func (v RollableValue) MarshalJSON() ([]byte, error) {
+	switch v.Using {
+	case "asset_control":
+		return json.Marshal(struct { T string `json:"using"`; RollableValueAssetControl }{ v.Using, v.AssetControl })
+	case "asset_option":
+		return json.Marshal(struct { T string `json:"using"`; RollableValueAssetOption }{ v.Using, v.AssetOption })
+	case "attached_asset_control":
+		return json.Marshal(struct { T string `json:"using"`; RollableValueAttachedAssetControl }{ v.Using, v.AttachedAssetControl })
+	case "attached_asset_option":
+		return json.Marshal(struct { T string `json:"using"`; RollableValueAttachedAssetOption }{ v.Using, v.AttachedAssetOption })
+	case "condition_meter":
+		return json.Marshal(struct { T string `json:"using"`; RollableValueConditionMeter }{ v.Using, v.ConditionMeter })
+	case "custom":
+		return json.Marshal(struct { T string `json:"using"`; RollableValueCustom }{ v.Using, v.Custom })
+	case "stat":
+		return json.Marshal(struct { T string `json:"using"`; RollableValueStat }{ v.Using, v.Stat })
+	}
+
+	return nil, fmt.Errorf("bad Using value: %s", v.Using)
+}
+
+func (v *RollableValue) UnmarshalJSON(b []byte) error {
+	var t struct { T string `json:"using"` }
+	if err := json.Unmarshal(b, &t); err != nil {
+		return err
+	}
+
+	var err error
+	switch t.T {
+	case "asset_control":
+		err = json.Unmarshal(b, &v.AssetControl)
+	case "asset_option":
+		err = json.Unmarshal(b, &v.AssetOption)
+	case "attached_asset_control":
+		err = json.Unmarshal(b, &v.AttachedAssetControl)
+	case "attached_asset_option":
+		err = json.Unmarshal(b, &v.AttachedAssetOption)
+	case "condition_meter":
+		err = json.Unmarshal(b, &v.ConditionMeter)
+	case "custom":
+		err = json.Unmarshal(b, &v.Custom)
+	case "stat":
+		err = json.Unmarshal(b, &v.Stat)
+	default:
+		err = fmt.Errorf("bad Using value: %s", t.T)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	v.Using = t.T
+	return nil
+}
+
+// A reference to the value of an asset control.
+type RollableValueAssetControl struct {
+	Assets []AssetIDWildcard `json:"assets"`
+
+	// The dictionary key of the asset control field.
+	Control DictKey `json:"control"`
+}
+
+// A reference to the value of an asset option.
+type RollableValueAssetOption struct {
+	Assets []AssetIDWildcard `json:"assets"`
+
+	// The dictionary key of the asset option field.
+	Option DictKey `json:"option"`
+}
+
+// A reference to the value of an attached asset control. For example, a Module
+// asset could use this to roll using the `integrity` control of an attached
+// Vehicle.
+type RollableValueAttachedAssetControl struct {
+	// The dictionary key of the asset control field.
+	Control DictKey `json:"control"`
+}
+
+// A reference to the value of an attached asset option.
+type RollableValueAttachedAssetOption struct {
+	// The dictionary key of the asset option field.
+	Option DictKey `json:"option"`
+}
+
+// A reference to the value of a standard player condition meter.
+type RollableValueConditionMeter struct {
+	ConditionMeter ConditionMeterKey `json:"condition_meter"`
+}
+
+// An arbitrary static integer value with a label.
+type RollableValueCustom struct {
+	Label Label `json:"label"`
+
+	Value int16 `json:"value"`
+}
+
+// A reference to the value of a standard player character stat.
+type RollableValueStat struct {
+	Stat StatKey `json:"stat"`
+}
+
+type RollableValueType string
+
+const (
+// A reference to the value of an asset control.
+	RollableValueTypeAssetControl RollableValueType = "asset_control"
+
+// A reference to the value of an asset option.
+	RollableValueTypeAssetOption RollableValueType = "asset_option"
+
+// A reference to the value of an attached asset control. For example, a Module
+// asset could use this to roll using the `integrity` control of an attached
+// Vehicle.
+	RollableValueTypeAttachedAssetControl RollableValueType = "attached_asset_control"
+
+// A reference to the value of an attached asset option.
+	RollableValueTypeAttachedAssetOption RollableValueType = "attached_asset_option"
+
+// A reference to the value of a standard player condition meter.
+	RollableValueTypeConditionMeter RollableValueType = "condition_meter"
+
+// An arbitrary static integer value with a label.
+	RollableValueTypeCustom RollableValueType = "custom"
+
+// A reference to the value of a standard player character stat.
+	RollableValueTypeStat RollableValueType = "stat"
+)
+
 // Describes rules for player characters in this ruleset, such as stats and
 // condition meters.
 type Rules struct {
@@ -3000,7 +3055,7 @@ type SpecialTrackRuleID = string
 type SpecialTrackType = DictKey
 
 // A basic player character stat.
-type StatID = DictKey
+type StatKey = DictKey
 
 // Describes a standard player character stat.
 type StatRule struct {
@@ -3064,7 +3119,7 @@ type TriggerActionRollCondition struct {
 	Method ActionRollMethod `json:"method"`
 
 	// The options available when rolling with this trigger condition.
-	RollOptions []ActionRollOption `json:"roll_options"`
+	RollOptions []RollableValue `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
 
@@ -3076,7 +3131,7 @@ type TriggerActionRollConditionEnhancement struct {
 	Method ActionRollMethod `json:"method"`
 
 	// The options available when rolling with this trigger condition.
-	RollOptions []ActionRollOption `json:"roll_options"`
+	RollOptions []RollableValue `json:"roll_options"`
 
 	By *TriggerBy `json:"by,omitempty"`
 

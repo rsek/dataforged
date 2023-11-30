@@ -272,10 +272,9 @@ public class Asset {
 
     /**
      * Getter for options.<p>
-     * Options are asset input fields which are set once, usually when the
-     * character takes the asset. The most common example is the "name" field
-     * on companion assets. A more complex example is the choice of a god's stat
-     * for the Devotant asset.
+     * Options are input fields set when the player purchases the asset. They're
+     * likely to remain the same through the life of the asset. Typically, they
+     * are rendered at the top of the asset card.
      */
     public Map<String, AssetOptionField> getOptions() {
         return options;
@@ -283,10 +282,9 @@ public class Asset {
 
     /**
      * Setter for options.<p>
-     * Options are asset input fields which are set once, usually when the
-     * character takes the asset. The most common example is the "name" field
-     * on companion assets. A more complex example is the choice of a god's stat
-     * for the Devotant asset.
+     * Options are input fields set when the player purchases the asset. They're
+     * likely to remain the same through the life of the asset. Typically, they
+     * are rendered at the top of the asset card.
      */
     public void setOptions(Map<String, AssetOptionField> options) {
         this.options = options;

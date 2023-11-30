@@ -2,25 +2,23 @@
 
 package Datasworn;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
 public class OracleTableRoll {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("auto")
     private Boolean auto;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("dice")
+    private DiceExpression dice;
+
     @JsonProperty("method")
     private OracleTableRollMethod method;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("oracle")
     private OracleTableId oracle;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("times")
     private Short times;
 
@@ -29,11 +27,9 @@ public class OracleTableRoll {
 
     /**
      * Getter for auto.<p>
-     * The rulebook explicitly cautions *against* rolling all details at once,
-     * so rolling every referenced oracle automatically is not recommended.
-     * That said, some oracle results only provide useful information once
-     * a secondary roll occurs, such as "Action + Theme". If this value is
-     * omitted, assume it's false.
+     * Both Ironsworn and Starforged explicitly recommend *against* rolling
+     * all details at once. That said, some oracle results only provide useful
+     * information once a secondary roll occurs, such as "Action + Theme".
      */
     public Boolean getAuto() {
         return auto;
@@ -41,18 +37,31 @@ public class OracleTableRoll {
 
     /**
      * Setter for auto.<p>
-     * The rulebook explicitly cautions *against* rolling all details at once,
-     * so rolling every referenced oracle automatically is not recommended.
-     * That said, some oracle results only provide useful information once
-     * a secondary roll occurs, such as "Action + Theme". If this value is
-     * omitted, assume it's false.
+     * Both Ironsworn and Starforged explicitly recommend *against* rolling
+     * all details at once. That said, some oracle results only provide useful
+     * information once a secondary roll occurs, such as "Action + Theme".
      */
     public void setAuto(Boolean auto) {
         this.auto = auto;
     }
 
     /**
+     * Getter for dice.<p>
+     */
+    public DiceExpression getDice() {
+        return dice;
+    }
+
+    /**
+     * Setter for dice.<p>
+     */
+    public void setDice(DiceExpression dice) {
+        this.dice = dice;
+    }
+
+    /**
      * Getter for method.<p>
+     * Special rules on how the oracle table roll is performed.
      */
     public OracleTableRollMethod getMethod() {
         return method;
@@ -60,6 +69,7 @@ public class OracleTableRoll {
 
     /**
      * Setter for method.<p>
+     * Special rules on how the oracle table roll is performed.
      */
     public void setMethod(OracleTableRollMethod method) {
         this.method = method;
@@ -67,8 +77,6 @@ public class OracleTableRoll {
 
     /**
      * Getter for oracle.<p>
-     * The ID of the oracle table to be rolled. If omitted, it defaults to the
-     * ID of this oracle table.
      */
     public OracleTableId getOracle() {
         return oracle;
@@ -76,8 +84,6 @@ public class OracleTableRoll {
 
     /**
      * Setter for oracle.<p>
-     * The ID of the oracle table to be rolled. If omitted, it defaults to the
-     * ID of this oracle table.
      */
     public void setOracle(OracleTableId oracle) {
         this.oracle = oracle;
@@ -85,6 +91,7 @@ public class OracleTableRoll {
 
     /**
      * Getter for times.<p>
+     * The number of times to roll.
      */
     public Short getTimes() {
         return times;
@@ -92,6 +99,7 @@ public class OracleTableRoll {
 
     /**
      * Setter for times.<p>
+     * The number of times to roll.
      */
     public void setTimes(Short times) {
         this.times = times;

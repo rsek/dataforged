@@ -29,11 +29,11 @@ namespace Datasworn
         public bool Permanent { get; set; }
 
         /// <summary>
-        /// Keys of ruleset condition meters, to which this impact prevents
-        /// recovery.
+        /// Any ruleset condition meters that can't recover when this impact
+        /// is active.
         /// </summary>
         [JsonPropertyName("prevents_recovery")]
-        public IList<ConditionMeterId> PreventsRecovery { get; set; }
+        public IList<ConditionMeterKey> PreventsRecovery { get; set; }
 
         /// <summary>
         /// Is this impact applied to all players at once?

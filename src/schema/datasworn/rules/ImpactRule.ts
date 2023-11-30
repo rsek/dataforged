@@ -14,10 +14,10 @@ export const ImpactRule = Type.Object(
 			default: false,
 			description: 'Is this impact applied to all players at once?'
 		}),
-		prevents_recovery: Type.Array(Type.Ref(Player.ConditionMeterId), {
+		prevents_recovery: Type.Array(Type.Ref(Player.ConditionMeterKey), {
 			default: [],
 			description:
-				'Keys of ruleset condition meters, to which this impact prevents recovery.'
+				"Any ruleset condition meters that can't recover when this impact is active."
 		}),
 		permanent: Type.Boolean({
 			default: false,

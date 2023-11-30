@@ -7,30 +7,30 @@ namespace Datasworn
     public class OracleTableRoll
     {
         /// <summary>
-        /// The rulebook explicitly cautions *against* rolling all details
-        /// at once, so rolling every referenced oracle automatically is not
-        /// recommended. That said, some oracle results only provide useful
-        /// information once a secondary roll occurs, such as "Action + Theme".
-        /// If this value is omitted, assume it's false.
+        /// Both Ironsworn and Starforged explicitly recommend *against* rolling
+        /// all details at once. That said, some oracle results only provide
+        /// useful information once a secondary roll occurs, such as "Action
+        /// + Theme".
         /// </summary>
         [JsonPropertyName("auto")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public bool? Auto { get; set; }
+        public bool Auto { get; set; }
 
-        [JsonPropertyName("method")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleTableRollMethod? Method { get; set; }
+        [JsonPropertyName("dice")]
+        public DiceExpression Dice { get; set; }
 
         /// <summary>
-        /// The ID of the oracle table to be rolled. If omitted, it defaults to
-        /// the ID of this oracle table.
+        /// Special rules on how the oracle table roll is performed.
         /// </summary>
-        [JsonPropertyName("oracle")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleTableId? Oracle { get; set; }
+        [JsonPropertyName("method")]
+        public OracleTableRollMethod Method { get; set; }
 
+        [JsonPropertyName("oracle")]
+        public OracleTableId Oracle { get; set; }
+
+        /// <summary>
+        /// The number of times to roll.
+        /// </summary>
         [JsonPropertyName("times")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public short? Times { get; set; }
+        public short Times { get; set; }
     }
 }

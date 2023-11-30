@@ -5,6 +5,7 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.util.List;
 
 /**
  * Represents an option in a list of choices.
@@ -14,21 +15,19 @@ public class AssetOptionFieldSelectEnhancementChoiceOption extends AssetOptionFi
     @JsonProperty("label")
     private Label label;
 
-    @JsonProperty("value")
-    private AssetOptionFieldSelectEnhancementChoiceOptionValue value;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("enhance_asset")
+    private AssetEnhancement enhanceAsset;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("selected")
-    private Boolean selected;
+    @JsonProperty("enhance_moves")
+    private List<MoveEnhancement> enhanceMoves;
 
     public AssetOptionFieldSelectEnhancementChoiceOption() {
     }
 
     /**
      * Getter for label.<p>
-     * A localized label for this input. In some contexts it may be undesirable
-     * to render this text, but it should always be exposed to assistive
-     * technology (e.g. with `aria-label` in HTML).
      */
     public Label getLabel() {
         return label;
@@ -36,43 +35,36 @@ public class AssetOptionFieldSelectEnhancementChoiceOption extends AssetOptionFi
 
     /**
      * Setter for label.<p>
-     * A localized label for this input. In some contexts it may be undesirable
-     * to render this text, but it should always be exposed to assistive
-     * technology (e.g. with `aria-label` in HTML).
      */
     public void setLabel(Label label) {
         this.label = label;
     }
 
     /**
-     * Getter for value.<p>
-     * The current value of this input.
+     * Getter for enhanceAsset.<p>
      */
-    public AssetOptionFieldSelectEnhancementChoiceOptionValue getValue() {
-        return value;
+    public AssetEnhancement getEnhanceAsset() {
+        return enhanceAsset;
     }
 
     /**
-     * Setter for value.<p>
-     * The current value of this input.
+     * Setter for enhanceAsset.<p>
      */
-    public void setValue(AssetOptionFieldSelectEnhancementChoiceOptionValue value) {
-        this.value = value;
+    public void setEnhanceAsset(AssetEnhancement enhanceAsset) {
+        this.enhanceAsset = enhanceAsset;
     }
 
     /**
-     * Getter for selected.<p>
-     * Is this option currently selected?
+     * Getter for enhanceMoves.<p>
      */
-    public Boolean getSelected() {
-        return selected;
+    public List<MoveEnhancement> getEnhanceMoves() {
+        return enhanceMoves;
     }
 
     /**
-     * Setter for selected.<p>
-     * Is this option currently selected?
+     * Setter for enhanceMoves.<p>
      */
-    public void setSelected(Boolean selected) {
-        this.selected = selected;
+    public void setEnhanceMoves(List<MoveEnhancement> enhanceMoves) {
+        this.enhanceMoves = enhanceMoves;
     }
 }

@@ -41,7 +41,10 @@ for await (const filePath of [SCHEMA_OUT, SCHEMA_IN]) {
 		{
 			definitions: {
 				...definitions,
-				RulesPackage: { title: 'RulesPackage', tsType: RulesPackage.tsType }
+				RulesPackage: {
+					title: 'RulesPackage'
+					// tsType: RulesPackage.tsType
+				}
 			}
 		},
 		startCase(basename),

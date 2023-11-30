@@ -975,10 +975,10 @@
 				},
 				"prevents_recovery": {
 					"elements": {
-						"ref": "ConditionMeterId"
+						"ref": "ConditionMeterKey"
 					},
 					"metadata": {
-						"description": "Keys of ruleset condition meters, to which this impact prevents recovery."
+						"description": "Any ruleset condition meters that can't recover when this impact is active."
 					}
 				},
 				"permanent": {
@@ -1188,6 +1188,136 @@
 					"bonds_legacy",
 					"discoveries_legacy"
 				]
+			}
+		},
+		"RollableValue": {
+			"discriminator": "using",
+			"mapping": {
+				"stat": {
+					"properties": {
+						"stat": {
+							"ref": "StatKey"
+						}
+					},
+					"metadata": {
+						"description": "A reference to the value of a standard player character stat."
+					}
+				},
+				"condition_meter": {
+					"properties": {
+						"condition_meter": {
+							"ref": "ConditionMeterKey"
+						}
+					},
+					"metadata": {
+						"description": "A reference to the value of a standard player condition meter."
+					}
+				},
+				"asset_control": {
+					"properties": {
+						"assets": {
+							"elements": {
+								"ref": "AssetIdWildcard"
+							}
+						},
+						"control": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset control field.",
+								"examples": [
+									"health",
+									"integrity"
+								]
+							}
+						}
+					},
+					"metadata": {
+						"description": "A reference to the value of an asset control."
+					}
+				},
+				"asset_option": {
+					"properties": {
+						"assets": {
+							"elements": {
+								"ref": "AssetIdWildcard"
+							}
+						},
+						"option": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset option field."
+							}
+						}
+					},
+					"metadata": {
+						"description": "A reference to the value of an asset option."
+					}
+				},
+				"attached_asset_control": {
+					"properties": {
+						"control": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset control field.",
+								"examples": [
+									"health",
+									"integrity"
+								]
+							}
+						}
+					},
+					"metadata": {
+						"description": "A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle."
+					}
+				},
+				"attached_asset_option": {
+					"properties": {
+						"option": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset option field."
+							}
+						}
+					},
+					"metadata": {
+						"description": "A reference to the value of an attached asset option."
+					}
+				},
+				"custom": {
+					"properties": {
+						"label": {
+							"ref": "Label"
+						},
+						"value": {
+							"type": "int16"
+						}
+					},
+					"metadata": {
+						"description": "An arbitrary static integer value with a label."
+					}
+				}
+			}
+		},
+		"RollableValueType": {
+			"enum": [
+				"stat",
+				"condition_meter",
+				"asset_control",
+				"asset_option",
+				"custom",
+				"attached_asset_control",
+				"attached_asset_option"
+			],
+			"metadata": {
+				"enumDescription": {
+					"stat": "A reference to the value of a standard player character stat.",
+					"condition_meter": "A reference to the value of a standard player condition meter.",
+					"asset_control": "A reference to the value of an asset control.",
+					"asset_option": "A reference to the value of an asset option.",
+					"custom": "An arbitrary static integer value with a label.",
+					"attached_asset_control": "A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
+					"attached_asset_option": "A reference to the value of an attached asset option."
+				}
 			}
 		},
 		"Npc": {
@@ -1406,15 +1536,15 @@
 			},
 			"metadata": {}
 		},
-		"DiceNotation": {
+		"DiceExpression": {
 			"type": "string",
 			"metadata": {
+				"description": "A simple dice roll expression with an optional modifer.",
 				"examples": [
 					"1d100",
 					"1d6+2"
 				],
-				"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?",
-				"format": "dice_notation"
+				"pattern": "([1-9][0-9]*)d([1-9][0-9]*)([+-]([1-9][0-9]*))?"
 			}
 		},
 		"OracleRollTemplate": {
@@ -1453,25 +1583,30 @@
 			}
 		},
 		"OracleTableRoll": {
-			"optionalProperties": {
+			"properties": {
 				"oracle": {
-					"ref": "OracleTableId",
-					"metadata": {
-						"description": "The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table."
-					}
+					"ref": "OracleTableId"
 				},
 				"auto": {
 					"type": "boolean",
 					"metadata": {
-						"description": "The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as \"Action + Theme\". If this value is omitted, assume it's false."
+						"description": "Both Ironsworn and Starforged explicitly recommend *against* rolling all details at once. That said, some oracle results only provide useful information once a secondary roll occurs, such as \"Action + Theme\"."
 					}
 				},
 				"times": {
 					"type": "int16",
-					"metadata": {}
+					"metadata": {
+						"description": "The number of times to roll."
+					}
 				},
 				"method": {
-					"ref": "OracleTableRollMethod"
+					"ref": "OracleTableRollMethod",
+					"metadata": {
+						"description": "Special rules on how the oracle table roll is performed."
+					}
+				},
+				"dice": {
+					"ref": "DiceExpression"
 				}
 			}
 		},
@@ -1669,7 +1804,7 @@
 					}
 				},
 				"dice": {
-					"ref": "DiceNotation",
+					"ref": "DiceExpression",
 					"metadata": {
 						"description": "The roll used to select a result on this table."
 					}
@@ -1929,137 +2064,6 @@
 					"highest": "Use the roll option with the best/highest value.",
 					"lowest": "Use the roll option with the worst/lowest value.",
 					"all": "Use **every** roll option at once."
-				}
-			}
-		},
-		"ActionRollOption": {
-			"discriminator": "using",
-			"mapping": {
-				"stat": {
-					"properties": {
-						"stat": {
-							"ref": "StatId"
-						}
-					},
-					"metadata": {
-						"description": "Roll using a standard player character stat."
-					}
-				},
-				"condition_meter": {
-					"properties": {
-						"condition_meter": {
-							"ref": "ConditionMeterId"
-						}
-					},
-					"metadata": {
-						"description": "Roll using the value of a standard player condition meter."
-					}
-				},
-				"asset_control": {
-					"properties": {
-						"assets": {
-							"elements": {
-								"ref": "AssetIdWildcard"
-							}
-						},
-						"control": {
-							"ref": "DictKey",
-							"metadata": {
-								"description": "The dictionary key of the asset control field.",
-								"examples": [
-									"health",
-									"integrity"
-								]
-							}
-						}
-					},
-					"metadata": {
-						"description": "Roll using the value of an asset control."
-					}
-				},
-				"asset_option": {
-					"properties": {
-						"assets": {
-							"elements": {
-								"ref": "AssetIdWildcard"
-							}
-						},
-						"option": {
-							"ref": "DictKey",
-							"metadata": {
-								"description": "The dictionary key of the asset option field."
-							}
-						}
-					},
-					"metadata": {
-						"description": "Roll using the value of an asset option."
-					}
-				},
-				"attached_asset_control": {
-					"properties": {
-						"control": {
-							"ref": "DictKey",
-							"metadata": {
-								"description": "The dictionary key of the asset control field.",
-								"examples": [
-									"health",
-									"integrity"
-								]
-							}
-						}
-					},
-					"metadata": {
-						"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle."
-					}
-				},
-				"attached_asset_option": {
-					"properties": {
-						"option": {
-							"ref": "DictKey",
-							"metadata": {
-								"description": "The dictionary key of the asset option field."
-							}
-						}
-					},
-					"metadata": {
-						"description": "Roll using the value of an attached asset option."
-					}
-				},
-				"custom": {
-					"properties": {
-						"name": {
-							"ref": "Label"
-						},
-						"value": {
-							"type": "int16",
-							"metadata": {}
-						}
-					},
-					"metadata": {
-						"description": "Roll using an integer value with customizable labels."
-					}
-				}
-			}
-		},
-		"ActionRollUsing": {
-			"enum": [
-				"stat",
-				"condition_meter",
-				"asset_control",
-				"asset_option",
-				"custom",
-				"attached_asset_control",
-				"attached_asset_option"
-			],
-			"metadata": {
-				"enumDescription": {
-					"stat": "Roll using a standard player character stat.",
-					"condition_meter": "Roll using the value of a standard player condition meter.",
-					"asset_control": "Roll using the value of an asset control.",
-					"asset_option": "Roll using the value of an asset option.",
-					"custom": "Roll using an integer value with customizable labels.",
-					"attached_asset_control": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
-					"attached_asset_option": "Roll using the value of an attached asset option."
 				}
 			}
 		},
@@ -2622,7 +2626,7 @@
 				},
 				"roll_options": {
 					"elements": {
-						"ref": "ActionRollOption"
+						"ref": "RollableValue"
 					},
 					"metadata": {
 						"description": "The options available when rolling with this trigger condition."
@@ -2648,7 +2652,7 @@
 				},
 				"roll_options": {
 					"elements": {
-						"ref": "ActionRollOption"
+						"ref": "RollableValue"
 					},
 					"metadata": {
 						"description": "The options available when rolling with this trigger condition."
@@ -3015,7 +3019,7 @@
 					},
 					"metadata": {
 						"propertyPattern": "^([a-z][a-z_]*)$",
-						"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset."
+						"description": "Options are input fields set when the player purchases the asset. They're likely to remain the same through the life of the asset. Typically, they are rendered at the top of the asset card."
 					}
 				},
 				"requirement": {
@@ -3175,7 +3179,7 @@
 							}
 						},
 						"min": {
-							"type": "int8",
+							"type": "int16",
 							"metadata": {
 								"description": "The (inclusive) minimum value."
 							}
@@ -3472,32 +3476,16 @@
 									"option": {
 										"properties": {
 											"label": {
-												"ref": "Label",
-												"metadata": {
-													"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-												}
-											},
-											"value": {
-												"optionalProperties": {
-													"enhance_asset": {
-														"ref": "AssetEnhancement"
-													},
-													"enhance_moves": {
-														"elements": {
-															"ref": "MoveEnhancement"
-														}
-													}
-												},
-												"metadata": {
-													"description": "The current value of this input."
-												}
+												"ref": "Label"
 											}
 										},
 										"optionalProperties": {
-											"selected": {
-												"type": "boolean",
-												"metadata": {
-													"description": "Is this option currently selected?"
+											"enhance_asset": {
+												"ref": "AssetEnhancement"
+											},
+											"enhance_moves": {
+												"elements": {
+													"ref": "MoveEnhancement"
 												}
 											}
 										},
@@ -3516,38 +3504,22 @@
 											"choices": {
 												"values": {
 													"properties": {
+														"label": {
+															"ref": "Label"
+														},
 														"option_type": {
 															"enum": [
 																"option"
 															]
-														},
-														"label": {
-															"ref": "Label",
-															"metadata": {
-																"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-															}
-														},
-														"value": {
-															"optionalProperties": {
-																"enhance_asset": {
-																	"ref": "AssetEnhancement"
-																},
-																"enhance_moves": {
-																	"elements": {
-																		"ref": "MoveEnhancement"
-																	}
-																}
-															},
-															"metadata": {
-																"description": "The current value of this input."
-															}
 														}
 													},
 													"optionalProperties": {
-														"selected": {
-															"type": "boolean",
-															"metadata": {
-																"description": "Is this option currently selected?"
+														"enhance_asset": {
+															"ref": "AssetEnhancement"
+														},
+														"enhance_moves": {
+															"elements": {
+																"ref": "MoveEnhancement"
 															}
 														}
 													},
@@ -3706,7 +3678,7 @@
 		"AssetOptionField": {
 			"discriminator": "field_type",
 			"mapping": {
-				"select_stat": {
+				"select_value": {
 					"properties": {
 						"id": {
 							"ref": "AssetOptionFieldId",
@@ -3728,28 +3700,67 @@
 						},
 						"choices": {
 							"values": {
-								"discriminator": "option_type",
+								"discriminator": "using",
 								"mapping": {
-									"option": {
+									"stat": {
 										"properties": {
 											"label": {
-												"ref": "Label",
-												"metadata": {
-													"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-												}
+												"ref": "Label"
 											},
-											"value": {
-												"ref": "StatId",
-												"metadata": {
-													"description": "The current value of this input."
-												}
+											"option_type": {
+												"enum": [
+													"option"
+												]
+											},
+											"stat": {
+												"ref": "StatKey"
 											}
 										},
-										"optionalProperties": {
-											"selected": {
-												"type": "boolean",
+										"metadata": {
+											"description": "Represents an option in a list of choices."
+										}
+									},
+									"condition_meter": {
+										"properties": {
+											"label": {
+												"ref": "Label"
+											},
+											"option_type": {
+												"enum": [
+													"option"
+												]
+											},
+											"condition_meter": {
+												"ref": "ConditionMeterKey"
+											}
+										},
+										"metadata": {
+											"description": "Represents an option in a list of choices."
+										}
+									},
+									"asset_control": {
+										"properties": {
+											"label": {
+												"ref": "Label"
+											},
+											"option_type": {
+												"enum": [
+													"option"
+												]
+											},
+											"assets": {
+												"elements": {
+													"ref": "AssetIdWildcard"
+												}
+											},
+											"control": {
+												"ref": "DictKey",
 												"metadata": {
-													"description": "Is this option currently selected?"
+													"description": "The dictionary key of the asset control field.",
+													"examples": [
+														"health",
+														"integrity"
+													]
 												}
 											}
 										},
@@ -3757,54 +3768,94 @@
 											"description": "Represents an option in a list of choices."
 										}
 									},
-									"option_group": {
+									"asset_option": {
 										"properties": {
-											"name": {
-												"ref": "Label",
-												"metadata": {
-													"description": "A label for this option group."
+											"label": {
+												"ref": "Label"
+											},
+											"option_type": {
+												"enum": [
+													"option"
+												]
+											},
+											"assets": {
+												"elements": {
+													"ref": "AssetIdWildcard"
 												}
 											},
-											"choices": {
-												"values": {
-													"properties": {
-														"option_type": {
-															"enum": [
-																"option"
-															]
-														},
-														"label": {
-															"ref": "Label",
-															"metadata": {
-																"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-															}
-														},
-														"value": {
-															"ref": "StatId",
-															"metadata": {
-																"description": "The current value of this input."
-															}
-														}
-													},
-													"optionalProperties": {
-														"selected": {
-															"type": "boolean",
-															"metadata": {
-																"description": "Is this option currently selected?"
-															}
-														}
-													},
-													"metadata": {
-														"description": "Represents an option in a list of choices."
-													}
-												},
+											"option": {
+												"ref": "DictKey",
 												"metadata": {
-													"propertyPattern": "^([a-z][a-z_]*)$"
+													"description": "The dictionary key of the asset option field."
 												}
 											}
 										},
 										"metadata": {
-											"description": "Represents a grouping of options in a list of choices."
+											"description": "Represents an option in a list of choices."
+										}
+									},
+									"attached_asset_control": {
+										"properties": {
+											"label": {
+												"ref": "Label"
+											},
+											"option_type": {
+												"enum": [
+													"option"
+												]
+											},
+											"control": {
+												"ref": "DictKey",
+												"metadata": {
+													"description": "The dictionary key of the asset control field.",
+													"examples": [
+														"health",
+														"integrity"
+													]
+												}
+											}
+										},
+										"metadata": {
+											"description": "Represents an option in a list of choices."
+										}
+									},
+									"attached_asset_option": {
+										"properties": {
+											"label": {
+												"ref": "Label"
+											},
+											"option_type": {
+												"enum": [
+													"option"
+												]
+											},
+											"option": {
+												"ref": "DictKey",
+												"metadata": {
+													"description": "The dictionary key of the asset option field."
+												}
+											}
+										},
+										"metadata": {
+											"description": "Represents an option in a list of choices."
+										}
+									},
+									"custom": {
+										"properties": {
+											"label": {
+												"ref": "Label"
+											},
+											"option_type": {
+												"enum": [
+													"option"
+												]
+											},
+											"value": {
+												"type": "int16"
+											}
+										},
+										"metadata": {
+											"description": "Represents an option in a list of choices."
 										}
 									}
 								}
@@ -3845,32 +3896,16 @@
 									"option": {
 										"properties": {
 											"label": {
-												"ref": "Label",
-												"metadata": {
-													"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-												}
-											},
-											"value": {
-												"optionalProperties": {
-													"enhance_asset": {
-														"ref": "AssetEnhancement"
-													},
-													"enhance_moves": {
-														"elements": {
-															"ref": "MoveEnhancement"
-														}
-													}
-												},
-												"metadata": {
-													"description": "The current value of this input."
-												}
+												"ref": "Label"
 											}
 										},
 										"optionalProperties": {
-											"selected": {
-												"type": "boolean",
-												"metadata": {
-													"description": "Is this option currently selected?"
+											"enhance_asset": {
+												"ref": "AssetEnhancement"
+											},
+											"enhance_moves": {
+												"elements": {
+													"ref": "MoveEnhancement"
 												}
 											}
 										},
@@ -3889,38 +3924,22 @@
 											"choices": {
 												"values": {
 													"properties": {
+														"label": {
+															"ref": "Label"
+														},
 														"option_type": {
 															"enum": [
 																"option"
 															]
-														},
-														"label": {
-															"ref": "Label",
-															"metadata": {
-																"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-															}
-														},
-														"value": {
-															"optionalProperties": {
-																"enhance_asset": {
-																	"ref": "AssetEnhancement"
-																},
-																"enhance_moves": {
-																	"elements": {
-																		"ref": "MoveEnhancement"
-																	}
-																}
-															},
-															"metadata": {
-																"description": "The current value of this input."
-															}
 														}
 													},
 													"optionalProperties": {
-														"selected": {
-															"type": "boolean",
-															"metadata": {
-																"description": "Is this option currently selected?"
+														"enhance_asset": {
+															"ref": "AssetEnhancement"
+														},
+														"enhance_moves": {
+															"elements": {
+																"ref": "MoveEnhancement"
 															}
 														}
 													},
@@ -3970,6 +3989,9 @@
 						"description": "Represents an input that accepts plain text."
 					}
 				}
+			},
+			"metadata": {
+				"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset."
 			}
 		},
 		"AssetType": {
@@ -4349,10 +4371,10 @@
 				"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn."
 			}
 		},
-		"ConditionMeterId": {
+		"ConditionMeterKey": {
 			"ref": "DictKey",
 			"metadata": {
-				"description": "A basic, rollable player character resource.",
+				"description": "A basic, rollable player character resource specified by the ruleset.",
 				"examples": [
 					"health",
 					"spirit",
@@ -4360,7 +4382,7 @@
 				]
 			}
 		},
-		"StatId": {
+		"StatKey": {
 			"ref": "DictKey",
 			"metadata": {
 				"description": "A basic player character stat.",

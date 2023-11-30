@@ -13,3 +13,6 @@ export * as Fields from './Fields.js'
 
 // depends on Fields
 export * as Inputs from './Inputs.js'
+
+// depends on Id, Localize, Player
+export * as RollableValues from './RollableValues.js'

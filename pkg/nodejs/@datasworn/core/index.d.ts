@@ -187,105 +187,6 @@ export declare enum ActionRollMethod {
      */
     WeakHit = "weak_hit"
 }
-export type ActionRollOption = ActionRollOptionAssetControl | ActionRollOptionAssetOption | ActionRollOptionAttachedAssetControl | ActionRollOptionAttachedAssetOption | ActionRollOptionConditionMeter | ActionRollOptionCustom | ActionRollOptionStat;
-/**
- * Roll using the value of an asset control.
- */
-export interface ActionRollOptionAssetControl {
-    using: "asset_control";
-    assets: AssetIdWildcard[];
-    /**
-     * The dictionary key of the asset control field.
-     */
-    control: DictKey;
-}
-/**
- * Roll using the value of an asset option.
- */
-export interface ActionRollOptionAssetOption {
-    using: "asset_option";
-    assets: AssetIdWildcard[];
-    /**
-     * The dictionary key of the asset option field.
-     */
-    option: DictKey;
-}
-/**
- * Roll using the value of an attached asset control. For example, a Module
- * asset could use this to roll using the `integrity` control of an attached
- * Vehicle.
- */
-export interface ActionRollOptionAttachedAssetControl {
-    using: "attached_asset_control";
-    /**
-     * The dictionary key of the asset control field.
-     */
-    control: DictKey;
-}
-/**
- * Roll using the value of an attached asset option.
- */
-export interface ActionRollOptionAttachedAssetOption {
-    using: "attached_asset_option";
-    /**
-     * The dictionary key of the asset option field.
-     */
-    option: DictKey;
-}
-/**
- * Roll using the value of a standard player condition meter.
- */
-export interface ActionRollOptionConditionMeter {
-    using: "condition_meter";
-    condition_meter: ConditionMeterId;
-}
-/**
- * Roll using an integer value with customizable labels.
- */
-export interface ActionRollOptionCustom {
-    using: "custom";
-    name: Label;
-    value: number;
-}
-/**
- * Roll using a standard player character stat.
- */
-export interface ActionRollOptionStat {
-    using: "stat";
-    stat: StatId;
-}
-export declare enum ActionRollUsing {
-    /**
-     * Roll using the value of an asset control.
-     */
-    AssetControl = "asset_control",
-    /**
-     * Roll using the value of an asset option.
-     */
-    AssetOption = "asset_option",
-    /**
-     * Roll using the value of an attached asset control. For example, a Module
-     * asset could use this to roll using the `integrity` control of an attached
-     * Vehicle.
-     */
-    AttachedAssetControl = "attached_asset_control",
-    /**
-     * Roll using the value of an attached asset option.
-     */
-    AttachedAssetOption = "attached_asset_option",
-    /**
-     * Roll using the value of a standard player condition meter.
-     */
-    ConditionMeter = "condition_meter",
-    /**
-     * Roll using an integer value with customizable labels.
-     */
-    Custom = "custom",
-    /**
-     * Roll using a standard player character stat.
-     */
-    Stat = "stat"
-}
 export interface Asset {
     abilities: AssetAbility[];
     /**
@@ -340,10 +241,9 @@ export interface Asset {
      */
     icon?: SvgImageUrl;
     /**
-     * Options are asset input fields which are set once, usually when the
-     * character takes the asset. The most common example is the "name" field on
-     * companion assets. A more complex example is the choice of a god's stat for
-     * the Devotant asset.
+     * Options are input fields set when the player purchases the asset. They're
+     * likely to remain the same through the life of the asset. Typically, they
+     * are rendered at the top of the asset card.
      */
     options?: {
         [key: string]: AssetOptionField;
@@ -720,61 +620,25 @@ export interface AssetControlFieldConditionMeter {
 }
 export type AssetControlFieldSelectEnhancementChoice = AssetControlFieldSelectEnhancementChoiceOption | AssetControlFieldSelectEnhancementChoiceOptionGroup;
 /**
- * The current value of this input.
- */
-export interface AssetControlFieldSelectEnhancementChoiceOptionValue {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-}
-/**
  * Represents an option in a list of choices.
  */
 export interface AssetControlFieldSelectEnhancementChoiceOption {
     option_type: "option";
-    /**
-     * A localized label for this input. In some contexts it may be undesirable to
-     * render this text, but it should always be exposed to assistive technology
-     * (e.g. with `aria-label` in HTML).
-     */
     label: Label;
-    /**
-     * The current value of this input.
-     */
-    value: AssetControlFieldSelectEnhancementChoiceOptionValue;
-    /**
-     * Is this option currently selected?
-     */
-    selected?: boolean;
+    enhance_asset?: AssetEnhancement;
+    enhance_moves?: MoveEnhancement[];
 }
 export declare enum AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType {
     Option = "option"
 }
 /**
- * The current value of this input.
- */
-export interface AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-}
-/**
  * Represents an option in a list of choices.
  */
 export interface AssetControlFieldSelectEnhancementChoiceOptionGroupChoice {
-    /**
-     * A localized label for this input. In some contexts it may be undesirable to
-     * render this text, but it should always be exposed to assistive technology
-     * (e.g. with `aria-label` in HTML).
-     */
     label: Label;
     option_type: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType;
-    /**
-     * The current value of this input.
-     */
-    value: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceValue;
-    /**
-     * Is this option currently selected?
-     */
-    selected?: boolean;
+    enhance_asset?: AssetEnhancement;
+    enhance_moves?: MoveEnhancement[];
 }
 /**
  * Represents a grouping of options in a list of choices.
@@ -873,64 +737,34 @@ export type AssetId = string;
  * A wildcarded ID that can be used to match multiple Assets.
  */
 export type AssetIdWildcard = string;
-export type AssetOptionField = AssetOptionFieldSelectEnhancement | AssetOptionFieldSelectStat | AssetOptionFieldText;
-export type AssetOptionFieldSelectEnhancementChoice = AssetOptionFieldSelectEnhancementChoiceOption | AssetOptionFieldSelectEnhancementChoiceOptionGroup;
 /**
- * The current value of this input.
+ * Options are asset input fields which are set once, usually when the character
+ * takes the asset. The most common example is the "name" field on companion
+ * assets. A more complex example is the choice of a god's stat for the Devotant
+ * asset.
  */
-export interface AssetOptionFieldSelectEnhancementChoiceOptionValue {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-}
+export type AssetOptionField = AssetOptionFieldSelectEnhancement | AssetOptionFieldSelectValue | AssetOptionFieldText;
+export type AssetOptionFieldSelectEnhancementChoice = AssetOptionFieldSelectEnhancementChoiceOption | AssetOptionFieldSelectEnhancementChoiceOptionGroup;
 /**
  * Represents an option in a list of choices.
  */
 export interface AssetOptionFieldSelectEnhancementChoiceOption {
     option_type: "option";
-    /**
-     * A localized label for this input. In some contexts it may be undesirable to
-     * render this text, but it should always be exposed to assistive technology
-     * (e.g. with `aria-label` in HTML).
-     */
     label: Label;
-    /**
-     * The current value of this input.
-     */
-    value: AssetOptionFieldSelectEnhancementChoiceOptionValue;
-    /**
-     * Is this option currently selected?
-     */
-    selected?: boolean;
+    enhance_asset?: AssetEnhancement;
+    enhance_moves?: MoveEnhancement[];
 }
 export declare enum AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType {
     Option = "option"
 }
 /**
- * The current value of this input.
- */
-export interface AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue {
-    enhance_asset?: AssetEnhancement;
-    enhance_moves?: MoveEnhancement[];
-}
-/**
  * Represents an option in a list of choices.
  */
 export interface AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
-    /**
-     * A localized label for this input. In some contexts it may be undesirable to
-     * render this text, but it should always be exposed to assistive technology
-     * (e.g. with `aria-label` in HTML).
-     */
     label: Label;
     option_type: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType;
-    /**
-     * The current value of this input.
-     */
-    value: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceValue;
-    /**
-     * Is this option currently selected?
-     */
-    selected?: boolean;
+    enhance_asset?: AssetEnhancement;
+    enhance_moves?: MoveEnhancement[];
 }
 /**
  * Represents a grouping of options in a list of choices.
@@ -971,70 +805,112 @@ export interface AssetOptionFieldSelectEnhancement {
      */
     value: DictKey;
 }
-export type AssetOptionFieldSelectStatChoice = AssetOptionFieldSelectStatChoiceOption | AssetOptionFieldSelectStatChoiceOptionGroup;
-/**
- * Represents an option in a list of choices.
- */
-export interface AssetOptionFieldSelectStatChoiceOption {
-    option_type: "option";
-    /**
-     * A localized label for this input. In some contexts it may be undesirable to
-     * render this text, but it should always be exposed to assistive technology
-     * (e.g. with `aria-label` in HTML).
-     */
-    label: Label;
-    /**
-     * The current value of this input.
-     */
-    value: StatId;
-    /**
-     * Is this option currently selected?
-     */
-    selected?: boolean;
-}
-export declare enum AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType {
+export type AssetOptionFieldSelectValueChoice = AssetOptionFieldSelectValueChoiceAssetControl | AssetOptionFieldSelectValueChoiceAssetOption | AssetOptionFieldSelectValueChoiceAttachedAssetControl | AssetOptionFieldSelectValueChoiceAttachedAssetOption | AssetOptionFieldSelectValueChoiceConditionMeter | AssetOptionFieldSelectValueChoiceCustom | AssetOptionFieldSelectValueChoiceStat;
+export declare enum AssetOptionFieldSelectValueChoiceAssetControlOptionType {
     Option = "option"
 }
 /**
  * Represents an option in a list of choices.
  */
-export interface AssetOptionFieldSelectStatChoiceOptionGroupChoice {
+export interface AssetOptionFieldSelectValueChoiceAssetControl {
+    using: "asset_control";
+    assets: AssetIdWildcard[];
     /**
-     * A localized label for this input. In some contexts it may be undesirable to
-     * render this text, but it should always be exposed to assistive technology
-     * (e.g. with `aria-label` in HTML).
+     * The dictionary key of the asset control field.
      */
+    control: DictKey;
     label: Label;
-    option_type: AssetOptionFieldSelectStatChoiceOptionGroupChoiceOptionType;
-    /**
-     * The current value of this input.
-     */
-    value: StatId;
-    /**
-     * Is this option currently selected?
-     */
-    selected?: boolean;
+    option_type: AssetOptionFieldSelectValueChoiceAssetControlOptionType;
+}
+export declare enum AssetOptionFieldSelectValueChoiceAssetOptionOptionType {
+    Option = "option"
 }
 /**
- * Represents a grouping of options in a list of choices.
+ * Represents an option in a list of choices.
  */
-export interface AssetOptionFieldSelectStatChoiceOptionGroup {
-    option_type: "option_group";
-    choices: {
-        [key: string]: AssetOptionFieldSelectStatChoiceOptionGroupChoice;
-    };
+export interface AssetOptionFieldSelectValueChoiceAssetOption {
+    using: "asset_option";
+    assets: AssetIdWildcard[];
+    label: Label;
     /**
-     * A label for this option group.
+     * The dictionary key of the asset option field.
      */
-    name: Label;
+    option: DictKey;
+    option_type: AssetOptionFieldSelectValueChoiceAssetOptionOptionType;
+}
+export declare enum AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType {
+    Option = "option"
+}
+/**
+ * Represents an option in a list of choices.
+ */
+export interface AssetOptionFieldSelectValueChoiceAttachedAssetControl {
+    using: "attached_asset_control";
+    /**
+     * The dictionary key of the asset control field.
+     */
+    control: DictKey;
+    label: Label;
+    option_type: AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType;
+}
+export declare enum AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType {
+    Option = "option"
+}
+/**
+ * Represents an option in a list of choices.
+ */
+export interface AssetOptionFieldSelectValueChoiceAttachedAssetOption {
+    using: "attached_asset_option";
+    label: Label;
+    /**
+     * The dictionary key of the asset option field.
+     */
+    option: DictKey;
+    option_type: AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType;
+}
+export declare enum AssetOptionFieldSelectValueChoiceConditionMeterOptionType {
+    Option = "option"
+}
+/**
+ * Represents an option in a list of choices.
+ */
+export interface AssetOptionFieldSelectValueChoiceConditionMeter {
+    using: "condition_meter";
+    condition_meter: ConditionMeterKey;
+    label: Label;
+    option_type: AssetOptionFieldSelectValueChoiceConditionMeterOptionType;
+}
+export declare enum AssetOptionFieldSelectValueChoiceCustomOptionType {
+    Option = "option"
+}
+/**
+ * Represents an option in a list of choices.
+ */
+export interface AssetOptionFieldSelectValueChoiceCustom {
+    using: "custom";
+    label: Label;
+    option_type: AssetOptionFieldSelectValueChoiceCustomOptionType;
+    value: number;
+}
+export declare enum AssetOptionFieldSelectValueChoiceStatOptionType {
+    Option = "option"
+}
+/**
+ * Represents an option in a list of choices.
+ */
+export interface AssetOptionFieldSelectValueChoiceStat {
+    using: "stat";
+    label: Label;
+    option_type: AssetOptionFieldSelectValueChoiceStatOptionType;
+    stat: StatKey;
 }
 /**
  * Represents a list of mutually exclusive choices.
  */
-export interface AssetOptionFieldSelectStat {
-    field_type: "select_stat";
+export interface AssetOptionFieldSelectValue {
+    field_type: "select_value";
     choices: {
-        [key: string]: AssetOptionFieldSelectStatChoice;
+        [key: string]: AssetOptionFieldSelectValueChoice;
     };
     /**
      * The unique Datasworn ID for this item.
@@ -1242,9 +1118,9 @@ export type AtlasIdWildcard = string;
  */
 export type ChallengeRank = number;
 /**
- * A basic, rollable player character resource.
+ * A basic, rollable player character resource specified by the ruleset.
  */
-export type ConditionMeterId = DictKey;
+export type ConditionMeterKey = DictKey;
 /**
  * Describes a standard player character condition meter.
  */
@@ -1600,7 +1476,10 @@ export interface DelveSiteThemeFeatureRow {
  * A unique ID for a DelveSiteTheme.
  */
 export type DelveSiteThemeId = string;
-export type DiceNotation = string;
+/**
+ * A simple dice roll expression with an optional modifer.
+ */
+export type DiceExpression = string;
 /**
  * A key used in a Datasworn dictionary object.
  */
@@ -1671,9 +1550,9 @@ export interface ImpactRule {
      */
     permanent: boolean;
     /**
-     * Keys of ruleset condition meters, to which this impact prevents recovery.
+     * Any ruleset condition meters that can't recover when this impact is active.
      */
-    prevents_recovery: ConditionMeterId[];
+    prevents_recovery: ConditionMeterKey[];
     /**
      * Is this impact applied to all players at once?
      */
@@ -2314,7 +2193,7 @@ export interface OracleTable {
     /**
      * The roll used to select a result on this table.
      */
-    dice: DiceNotation;
+    dice: DiceExpression;
     /**
      * The unique Datasworn ID for this item.
      */
@@ -2432,20 +2311,21 @@ export interface OracleTableRenderingStandalone {
 }
 export interface OracleTableRoll {
     /**
-     * The rulebook explicitly cautions *against* rolling all details at once,
-     * so rolling every referenced oracle automatically is not recommended. That
-     * said, some oracle results only provide useful information once a secondary
-     * roll occurs, such as "Action + Theme". If this value is omitted, assume
-     * it's false.
+     * Both Ironsworn and Starforged explicitly recommend *against* rolling
+     * all details at once. That said, some oracle results only provide useful
+     * information once a secondary roll occurs, such as "Action + Theme".
      */
-    auto?: boolean;
-    method?: OracleTableRollMethod;
+    auto: boolean;
+    dice: DiceExpression;
     /**
-     * The ID of the oracle table to be rolled. If omitted, it defaults to the ID
-     * of this oracle table.
+     * Special rules on how the oracle table roll is performed.
      */
-    oracle?: OracleTableId;
-    times?: number;
+    method: OracleTableRollMethod;
+    oracle: OracleTableId;
+    /**
+     * The number of times to roll.
+     */
+    times: number;
 }
 /**
  * Special roll instructions to use when rolling multiple times on a single
@@ -2647,6 +2527,105 @@ export interface Rarity {
  * A unique ID for a Rarity.
  */
 export type RarityId = string;
+export type RollableValue = RollableValueAssetControl | RollableValueAssetOption | RollableValueAttachedAssetControl | RollableValueAttachedAssetOption | RollableValueConditionMeter | RollableValueCustom | RollableValueStat;
+/**
+ * A reference to the value of an asset control.
+ */
+export interface RollableValueAssetControl {
+    using: "asset_control";
+    assets: AssetIdWildcard[];
+    /**
+     * The dictionary key of the asset control field.
+     */
+    control: DictKey;
+}
+/**
+ * A reference to the value of an asset option.
+ */
+export interface RollableValueAssetOption {
+    using: "asset_option";
+    assets: AssetIdWildcard[];
+    /**
+     * The dictionary key of the asset option field.
+     */
+    option: DictKey;
+}
+/**
+ * A reference to the value of an attached asset control. For example, a Module
+ * asset could use this to roll using the `integrity` control of an attached
+ * Vehicle.
+ */
+export interface RollableValueAttachedAssetControl {
+    using: "attached_asset_control";
+    /**
+     * The dictionary key of the asset control field.
+     */
+    control: DictKey;
+}
+/**
+ * A reference to the value of an attached asset option.
+ */
+export interface RollableValueAttachedAssetOption {
+    using: "attached_asset_option";
+    /**
+     * The dictionary key of the asset option field.
+     */
+    option: DictKey;
+}
+/**
+ * A reference to the value of a standard player condition meter.
+ */
+export interface RollableValueConditionMeter {
+    using: "condition_meter";
+    condition_meter: ConditionMeterKey;
+}
+/**
+ * An arbitrary static integer value with a label.
+ */
+export interface RollableValueCustom {
+    using: "custom";
+    label: Label;
+    value: number;
+}
+/**
+ * A reference to the value of a standard player character stat.
+ */
+export interface RollableValueStat {
+    using: "stat";
+    stat: StatKey;
+}
+export declare enum RollableValueType {
+    /**
+     * A reference to the value of an asset control.
+     */
+    AssetControl = "asset_control",
+    /**
+     * A reference to the value of an asset option.
+     */
+    AssetOption = "asset_option",
+    /**
+     * A reference to the value of an attached asset control. For example, a
+     * Module asset could use this to roll using the `integrity` control of an
+     * attached Vehicle.
+     */
+    AttachedAssetControl = "attached_asset_control",
+    /**
+     * A reference to the value of an attached asset option.
+     */
+    AttachedAssetOption = "attached_asset_option",
+    /**
+     * A reference to the value of a standard player condition meter.
+     */
+    ConditionMeter = "condition_meter",
+    /**
+     * An arbitrary static integer value with a label.
+     */
+    Custom = "custom",
+    /**
+     * A reference to the value of a standard player character stat.
+     */
+    Stat = "stat"
+}
 /**
  * Describes rules for player characters in this ruleset, such as stats and
  * condition meters.
@@ -2824,7 +2803,7 @@ export type SpecialTrackType = DictKey;
 /**
  * A basic player character stat.
  */
-export type StatId = DictKey;
+export type StatKey = DictKey;
 /**
  * Describes a standard player character stat.
  */
@@ -2893,7 +2872,7 @@ export interface TriggerActionRollCondition {
     /**
      * The options available when rolling with this trigger condition.
      */
-    roll_options: ActionRollOption[];
+    roll_options: RollableValue[];
     by?: TriggerBy;
     /**
      * A markdown string of any trigger text specific to this trigger condition.
@@ -2905,7 +2884,7 @@ export interface TriggerActionRollConditionEnhancement {
     /**
      * The options available when rolling with this trigger condition.
      */
-    roll_options: ActionRollOption[];
+    roll_options: RollableValue[];
     by?: TriggerBy;
     /**
      * A markdown string of any trigger text specific to this trigger condition.

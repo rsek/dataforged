@@ -6,6 +6,12 @@ using System.Text.Json.Serialization;
 
 namespace Datasworn
 {
+    /// <summary>
+    /// Options are asset input fields which are set once, usually when the
+    /// character takes the asset. The most common example is the "name" field
+    /// on companion assets. A more complex example is the choice of a god's
+    /// stat for the Devotant asset.
+    /// </summary>
     [JsonConverter(typeof(AssetOptionFieldJsonConverter))]
     public abstract class AssetOptionField
     {
@@ -22,8 +28,8 @@ namespace Datasworn
             {
                 case "select_enhancement":
                     return JsonSerializer.Deserialize<AssetOptionFieldSelectEnhancement>(ref readerCopy, options);
-                case "select_stat":
-                    return JsonSerializer.Deserialize<AssetOptionFieldSelectStat>(ref readerCopy, options);
+                case "select_value":
+                    return JsonSerializer.Deserialize<AssetOptionFieldSelectValue>(ref readerCopy, options);
                 case "text":
                     return JsonSerializer.Deserialize<AssetOptionFieldText>(ref readerCopy, options);
                 default:

@@ -20,7 +20,7 @@ import {
 } from '../utils/typebox.js'
 
 import type * as Id from './Id.js'
-import type * as Localize from './Localize.js'
+import * as Localize from './Localize.js'
 import * as Utils from '../Utils.js'
 import * as Generic from '../Generic.js'
 
@@ -91,7 +91,7 @@ export const Counter = Utils.Assign(
 	[
 		Input(Type.Integer({ default: 0 })),
 		Range({
-			min: LiteralZero,
+			min: Type.Integer({ default: 0 }),
 			max: Utils.Nullable(Type.Integer())
 		})
 	],
@@ -215,27 +215,24 @@ export type TTextInput = typeof TextInput
  * @abstract
  */
 const SelectOptionBase = Type.Object({
-	option_type: Type.Literal('option'),
-	selected: Type.Optional(
-		Type.Boolean({ description: 'Is this option currently selected?' })
-	)
+	label: Type.Ref(Localize.Label),
+	option_type: Type.Literal('option')
 })
 
-export function SelectOption<Value extends TSchema>(
-	value: Value,
+export function SelectOption<T extends TObject>(
+	schema: T,
 	options: ObjectOptions = {}
 ) {
-	const mixin = Input(value)
-	return Utils.Assign([SelectOptionBase, mixin], {
+	return Utils.Assign([SelectOptionBase, schema], {
 		description: 'Represents an option in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<option>` element.',
 		...options
 	})
 }
-export type TSelectOption<Value extends TSchema> = ReturnType<
-	typeof SelectOption<Value>
+export type TSelectOption<T extends TObject> = ReturnType<
+	typeof SelectOption<T>
 >
-export type SelectOption<Value> = Static<typeof SelectOptionBase> & Input<Value>
+export type SelectOption<T extends object> = T & Static<typeof SelectOptionBase>
 
 function Choices<T extends TSchema>(
 	choiceSchema: T,
@@ -259,7 +256,7 @@ const SelectOptionGroupBase = Type.Object({
 	}),
 	option_type: Type.Literal('option_group')
 })
-export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
+export function SelectOptionGroup<Option extends TSelectOption<TObject>>(
 	optionSchema: Option,
 	options: ObjectOptions = {}
 ) {
@@ -274,7 +271,7 @@ export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
 			ObjectProperties<typeof mixin>
 	>
 }
-export type TSelectOptionGroup<Option extends TSelectOption<TSchema>> =
+export type TSelectOptionGroup<Option extends TSelectOption<TObject>> =
 	ReturnType<typeof SelectOptionGroup<Option>>
 
 export type SelectOptionGroup<Option extends SelectOption<any>> = Static<
@@ -292,11 +289,7 @@ const SelectBase = Input(
 	)
 )
 
-/**
- * Represents a list of mutually exclusive choices.
- * @remarks Semantics are similar to the HTML `<select>` element.
- */
-export function Select<Option extends TSelectOption<TSchema>>(
+export function SelectWithGroups<Option extends TSelectOption<TObject>>(
 	optionSchema: Option,
 	options: ObjectOptions = {}
 ) {
@@ -314,7 +307,27 @@ export function Select<Option extends TSelectOption<TSchema>>(
 		ObjectProperties<typeof SelectBase> & ObjectProperties<typeof mixin>
 	>
 }
-export type TSelect<Option extends TSelectOption<TSchema>> = ReturnType<
+
+/**
+ * Represents a list of mutually exclusive choices.
+ * @remarks Semantics are similar to the HTML `<select>` element.
+ */
+export function Select<
+	Option extends
+		| TSelectOption<TObject>
+		| Utils.TDiscriminatedUnion<TSelectOption<TObject>[], string>
+>(optionSchema: Option, options: ObjectOptions = {}) {
+	const mixin = Choices(optionSchema)
+
+	return Utils.Assign([SelectBase, mixin], {
+		description: 'Represents a list of mutually exclusive choices.',
+		$comment: 'Semantics are similar to the HTML `<select>` element',
+		...options
+	}) as TObject<
+		ObjectProperties<typeof SelectBase> & ObjectProperties<typeof mixin>
+	>
+}
+export type TSelect<Option extends TSelectOption<TObject>> = ReturnType<
 	typeof Select<Option>
 >
 export type Select<Option extends SelectOption<any>> = Static<

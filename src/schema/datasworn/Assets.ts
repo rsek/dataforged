@@ -36,7 +36,7 @@ const AssetMixin = Type.Object({
 	options: Type.Optional(
 		Generic.Dictionary(Type.Ref<TAssetOptionField>('AssetOptionField'), {
 			description:
-				'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
+				"Options are input fields set when the player purchases the asset. They're likely to remain the same through the life of the asset. Typically, they are rendered at the top of the asset card."
 		})
 	),
 	requirement: Type.Optional(

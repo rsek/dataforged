@@ -1,16 +1,22 @@
-import { Type, type Static } from '@sinclair/typebox'
-import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
+import { type TString, Type, type Static } from '@sinclair/typebox'
 import { Id, Localize } from '../common/index.js'
+import { UnionEnumFromRecord } from '../utils/UnionEnumFromRecord.js'
+import { Nullable } from '../Utils.js'
 
-export const DiceNotation = Type.RegExp(
-	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
+export const DiceExpression = Type.RegExp(
+	/([1-9][0-9]*)d([1-9][0-9]*)([+-]([1-9][0-9]*))?/,
 	{
-		$id: 'DiceNotation',
-		examples: ['1d100', '1d6+2'],
-		format: 'dice_notation'
+		$id: 'DiceExpression',
+		description: 'A simple dice roll expression with an optional modifer.',
+		examples: ['1d100', '1d6+2']
+		// format: 'dice_notation'
 	}
-)
-export type DiceNotation = Static<typeof DiceNotation>
+) as TString & { static: DiceExpression }
+
+export type DiceExpression =
+	| `${number}d${number}`
+	| `${number}d${number}${'+' | '-'}${number}`
+
 export const OracleTableRollMethod = UnionEnumFromRecord(
 	{
 		no_duplicates: 'Duplicates should be re-rolled.',
@@ -19,7 +25,6 @@ export const OracleTableRollMethod = UnionEnumFromRecord(
 			'Duplicates should be kept, and they compound to make things worse.'
 	},
 	{
-		default: 'no_duplicates',
 		$id: 'OracleTableRollMethod',
 		description:
 			'Special roll instructions to use when rolling multiple times on a single oracle table.'
@@ -29,21 +34,30 @@ export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
 
 export const OracleTableRoll = Type.Object(
 	{
-		oracle: Type.Optional(
-			Type.Ref(Id.OracleTableId, {
-				description:
-					'The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.'
-			})
-		),
-		auto: Type.Optional(
-			Type.Boolean({
-				default: false,
-				description:
-					'The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme". If this value is omitted, assume it\'s false.'
-			})
-		),
-		times: Type.Optional(Type.Integer({ minimum: 1, default: 1 })),
-		method: Type.Optional(Type.Ref(OracleTableRollMethod))
+		oracle: Nullable(Type.Ref(Id.OracleTableId), {
+			default: null,
+			description:
+				"The ID of the oracle table to be rolled. A `null` value indicates that it's a roll on the same table."
+		}),
+		auto: Type.Boolean({
+			default: false,
+			description:
+				'Both Ironsworn and Starforged explicitly recommend *against* rolling all details at once. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme".'
+		}),
+		times: Type.Integer({
+			minimum: 1,
+			default: 1,
+			description: 'The number of times to roll.'
+		}),
+		method: Type.Ref(OracleTableRollMethod, {
+			description: 'Special rules on how the oracle table roll is performed.',
+			default: 'no_duplicates'
+		}),
+		dice: Nullable(Type.Ref(DiceExpression), {
+			default: null,
+			description:
+				"The dice roll to make on the oracle table. Set it to `null` if you just want the table's default."
+		})
 	},
 	{ $id: 'OracleTableRoll' }
 )

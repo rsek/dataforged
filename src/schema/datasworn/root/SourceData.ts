@@ -22,6 +22,7 @@ import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 import { keysWithDefaults } from '../utils/typebox.js'
 import { NiceSchema } from './NiceSchema.js'
 import { SchemaTransforms, type SchemaKind } from './SchemaTransform.js'
+import { type TNullable } from '../Utils.js'
 
 /**
  * Transform a schema into the more lenient format used for Datasworn source data.
@@ -35,7 +36,9 @@ export function SourceData<T extends TSchema>(
 	if (typeof transform === 'undefined')
 		throw new Error(`No transform available for Kind: ${schema[Kind]}`)
 
-	return NiceSchema(transform(schema as any, options))
+	const result = NiceSchema(transform(schema as any, options))
+
+	return result
 }
 
 const transforms: SchemaTransforms = {
@@ -56,6 +59,8 @@ const transforms: SchemaTransforms = {
 	Object: <T extends TObject>(schema: T, options: SchemaOptions) => {
 		const optionalProps = keysWithDefaults(schema)
 
+		if (schema.$id === 'OracleTableRoll') console.log(optionalProps)
+
 		for (const [key, property] of Object.entries<any>(schema.properties))
 			if (property[ComputedPropertyBrand] || property[SourceOptionalBrand])
 				optionalProps.push(key as any)
@@ -64,9 +69,17 @@ const transforms: SchemaTransforms = {
 
 		const base = SetOptional(schema, optionalProps)
 
-		const nuOptions = omit(TypeClone.Type(schema, options), Object.keys(base))
+		const nuOptions = omit(
+			TypeClone.Type(schema, options),
+			...Object.keys(base),
+			'required'
+		)
 
-		return TypeClone.Type(base, nuOptions) as T // defaults arent part of the type data, so it's close enough
+		if (schema.$id === 'OracleTableRoll') console.log(nuOptions)
+
+		const result = TypeClone.Type(base, nuOptions) as T // defaults arent part of the type data, so it's close enough
+
+		return result
 	},
 
 	Record: <T extends TRecord>(schema: T, options: SchemaOptions) => {
@@ -88,6 +101,14 @@ const transforms: SchemaTransforms = {
 		return result
 	},
 	Union: <T extends TUnion>(schema: T, options: SchemaOptions) => {
+		const result = TypeClone.Type(schema, options)
+
+		result.anyOf = result.anyOf.map((item) => SourceData(item))
+
+		return result
+	},
+
+	Nullable: <T extends TNullable>(schema: T, options: SchemaOptions) => {
 		const result = TypeClone.Type(schema, options)
 
 		result.anyOf = result.anyOf.map((item) => SourceData(item))

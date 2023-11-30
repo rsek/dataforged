@@ -5,15 +5,15 @@ import { UnionEnum } from './UnionEnum.js'
 import { omit } from 'lodash-es'
 
 export function generateRulesetSchemas(rules: Rules) {
-	const ConditionMeterId = UnionEnum(
+	const ConditionMeterKey = UnionEnum(
 		Object.keys(rules.condition_meters),
-		omit(TypeClone.Type(Player.ConditionMeterId), 'examples', 'type')
+		omit(TypeClone.Type(Player.ConditionMeterKey), 'examples', 'type')
 	)
 
-	const StatId = UnionEnum(
+	const StatKey = UnionEnum(
 		Object.keys(rules.stats),
-		omit(TypeClone.Type(Player.StatId), 'examples', 'type')
+		omit(TypeClone.Type(Player.StatKey), 'examples', 'type')
 	)
 
-	return { ConditionMeterId, StatId }
+	return { ConditionMeterKey, StatKey }
 }
