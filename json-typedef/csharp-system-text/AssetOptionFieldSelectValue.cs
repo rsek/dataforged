@@ -31,5 +31,12 @@ namespace Datasworn
         /// </summary>
         [JsonPropertyName("value")]
         public DictKey Value { get; set; }
+
+        /// <summary>
+        /// An icon associated with this input.
+        /// </summary>
+        [JsonPropertyName("icon")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public SvgImageUrl? Icon { get; set; }
     }
 }

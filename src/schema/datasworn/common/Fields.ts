@@ -11,12 +11,12 @@ import {
 import { type TMoveEnhancement } from '../Moves.js'
 import { type TAssetEnhancement } from '../assets/Enhancement.js'
 import * as Base from './Inputs.js'
-import * as Player from './Player.js'
 import * as Utils from '../Utils.js'
 import * as Generic from '../Generic.js'
 import type * as Id from './Id.js'
 import { RollableValue } from './RollableValues.js'
 import { Members } from '../../../scripts/json-typedef/symbol.js'
+import { Metadata } from './index.js'
 
 export const EnhanceableProperties = Symbol('EnhanceableProperties')
 
@@ -36,7 +36,14 @@ function InputField<
 
 	const mixin = Utils.Assign([
 		base,
-		Type.Object({ [DISCRIMINATOR]: Type.Literal(discriminator) })
+		Type.Object({
+			[DISCRIMINATOR]: Type.Literal(discriminator),
+			icon: Type.Optional(
+				Type.Ref(Metadata.SvgImageUrl, {
+					description: 'An icon associated with this input.'
+				})
+			)
+		})
 	]) as unknown as TObject<
 		T['properties'] & { [DISCRIMINATOR]: TLiteral<Discriminator>; id: Id.AnyID }
 	>

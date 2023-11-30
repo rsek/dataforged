@@ -51,6 +51,13 @@ namespace Datasworn
         public IDictionary<string, AssetConditionMeterControlField> Controls { get; set; }
 
         /// <summary>
+        /// An icon associated with this input.
+        /// </summary>
+        [JsonPropertyName("icon")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public SvgImageUrl? Icon { get; set; }
+
+        /// <summary>
         /// Provides hints for moves that interact with this condition meter,
         /// such as suffer and recovery moves.
         /// </summary>

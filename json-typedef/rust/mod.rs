@@ -348,6 +348,11 @@ pub struct AssetAbilityControlFieldCheckbox {
     /// Is the box checked?
     #[serde(rename = "value")]
     pub value: bool,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// A clock with 4 or more segments.
@@ -372,6 +377,11 @@ pub struct AssetAbilityControlFieldClock {
     /// The current number of filled clock segments.
     #[serde(rename = "value")]
     pub value: i8,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// A basic counter representing a non-rollable integer value. They usually
@@ -395,6 +405,11 @@ pub struct AssetAbilityControlFieldCounter {
     /// The current value of this input.
     #[serde(rename = "value")]
     pub value: i16,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// A unique ID for an AssetAbilityControlField.
@@ -422,6 +437,11 @@ pub struct AssetAbilityOptionFieldText {
 
     #[serde(rename = "value")]
     pub value: String,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// A unique ID for an AssetAbilityOptionField.
@@ -475,6 +495,11 @@ pub struct AssetConditionMeterControlFieldCardFlip {
     /// Is the card flipped over?
     #[serde(rename = "value")]
     pub value: bool,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// Represents a checkbox.
@@ -499,6 +524,11 @@ pub struct AssetConditionMeterControlFieldCheckbox {
     /// Is the box checked?
     #[serde(rename = "value")]
     pub value: bool,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// A unique ID for an AssetConditionMeterControlField.
@@ -544,6 +574,11 @@ pub struct AssetControlFieldCardFlip {
     /// Is the card flipped over?
     #[serde(rename = "value")]
     pub value: bool,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// Represents a checkbox.
@@ -568,6 +603,11 @@ pub struct AssetControlFieldCheckbox {
     /// Is the box checked?
     #[serde(rename = "value")]
     pub value: bool,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// Provides hints for moves that interact with this condition meter, such as
@@ -616,6 +656,11 @@ pub struct AssetControlFieldConditionMeter {
     #[serde(rename = "controls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub controls: Option<Box<HashMap<String, AssetConditionMeterControlField>>>,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 
     /// Provides hints for moves that interact with this condition meter, such
     /// as suffer and recovery moves.
@@ -703,6 +748,11 @@ pub struct AssetControlFieldSelectEnhancement {
     /// `null` if none is selected.
     #[serde(rename = "value")]
     pub value: DictKey,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -865,6 +915,11 @@ pub struct AssetOptionFieldSelectEnhancement {
     /// `null` if none is selected.
     #[serde(rename = "value")]
     pub value: DictKey,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1052,6 +1107,11 @@ pub struct AssetOptionFieldSelectValue {
     /// `null` if none is selected.
     #[serde(rename = "value")]
     pub value: DictKey,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// Represents an input that accepts plain text.
@@ -1066,6 +1126,11 @@ pub struct AssetOptionFieldText {
 
     #[serde(rename = "value")]
     pub value: String,
+
+    /// An icon associated with this input.
+    #[serde(rename = "icon")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<Box<SvgImageUrl>>,
 }
 
 /// A unique ID for an AssetOptionField.

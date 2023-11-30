@@ -2,6 +2,7 @@
 
 package Datasworn;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -24,6 +25,10 @@ public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
 
     @JsonProperty("value")
     private Boolean value;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("icon")
+    private SvgImageUrl icon;
 
     public AssetAbilityControlFieldCheckbox() {
     }
@@ -106,5 +111,21 @@ public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
      */
     public void setValue(Boolean value) {
         this.value = value;
+    }
+
+    /**
+     * Getter for icon.<p>
+     * An icon associated with this input.
+     */
+    public SvgImageUrl getIcon() {
+        return icon;
+    }
+
+    /**
+     * Setter for icon.<p>
+     * An icon associated with this input.
+     */
+    public void setIcon(SvgImageUrl icon) {
+        this.icon = icon;
     }
 }

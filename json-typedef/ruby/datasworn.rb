@@ -350,6 +350,7 @@ module Datasworn
     attr_accessor :is_impact
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetAbilityControlFieldCheckbox.new
@@ -359,6 +360,7 @@ module Datasworn
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -369,6 +371,7 @@ module Datasworn
       data["is_impact"] = Datasworn::to_json_data(is_impact)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -380,6 +383,7 @@ module Datasworn
     attr_accessor :max
     attr_accessor :min
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetAbilityControlFieldClock.new
@@ -389,6 +393,7 @@ module Datasworn
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -399,6 +404,7 @@ module Datasworn
       data["max"] = Datasworn::to_json_data(max)
       data["min"] = Datasworn::to_json_data(min)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -411,6 +417,7 @@ module Datasworn
     attr_accessor :max
     attr_accessor :min
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetAbilityControlFieldCounter.new
@@ -420,6 +427,7 @@ module Datasworn
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -430,6 +438,7 @@ module Datasworn
       data["max"] = Datasworn::to_json_data(max)
       data["min"] = Datasworn::to_json_data(min)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -479,6 +488,7 @@ module Datasworn
     attr_accessor :id
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetAbilityOptionFieldText.new
@@ -486,6 +496,7 @@ module Datasworn
       out.id = Datasworn::from_json_data(AssetAbilityOptionFieldID, data["id"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(String, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -494,6 +505,7 @@ module Datasworn
       data["id"] = Datasworn::to_json_data(id)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -557,6 +569,7 @@ module Datasworn
     attr_accessor :is_impact
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetConditionMeterControlFieldCardFlip.new
@@ -566,6 +579,7 @@ module Datasworn
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -576,6 +590,7 @@ module Datasworn
       data["is_impact"] = Datasworn::to_json_data(is_impact)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -587,6 +602,7 @@ module Datasworn
     attr_accessor :is_impact
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetConditionMeterControlFieldCheckbox.new
@@ -596,6 +612,7 @@ module Datasworn
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -606,6 +623,7 @@ module Datasworn
       data["is_impact"] = Datasworn::to_json_data(is_impact)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -647,6 +665,7 @@ module Datasworn
     attr_accessor :is_impact
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetControlFieldCardFlip.new
@@ -656,6 +675,7 @@ module Datasworn
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -666,6 +686,7 @@ module Datasworn
       data["is_impact"] = Datasworn::to_json_data(is_impact)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -677,6 +698,7 @@ module Datasworn
     attr_accessor :is_impact
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetControlFieldCheckbox.new
@@ -686,6 +708,7 @@ module Datasworn
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -696,6 +719,7 @@ module Datasworn
       data["is_impact"] = Datasworn::to_json_data(is_impact)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -737,6 +761,7 @@ module Datasworn
     attr_accessor :min
     attr_accessor :value
     attr_accessor :controls
+    attr_accessor :icon
     attr_accessor :moves
 
     def self.from_json_data(data)
@@ -748,6 +773,7 @@ module Datasworn
       out.min = Datasworn::from_json_data(Integer, data["min"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
       out.controls = Datasworn::from_json_data(Hash[String, AssetConditionMeterControlField], data["controls"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out.moves = Datasworn::from_json_data(AssetControlFieldConditionMeterMoves, data["moves"])
       out
     end
@@ -760,6 +786,7 @@ module Datasworn
       data["min"] = Datasworn::to_json_data(min)
       data["value"] = Datasworn::to_json_data(value)
       data["controls"] = Datasworn::to_json_data(controls) unless controls.nil?
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data["moves"] = Datasworn::to_json_data(moves) unless moves.nil?
       data
     end
@@ -877,6 +904,7 @@ module Datasworn
     attr_accessor :id
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetControlFieldSelectEnhancement.new
@@ -885,6 +913,7 @@ module Datasworn
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -894,6 +923,7 @@ module Datasworn
       data["id"] = Datasworn::to_json_data(id)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -1159,6 +1189,7 @@ module Datasworn
     attr_accessor :id
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetOptionFieldSelectEnhancement.new
@@ -1167,6 +1198,7 @@ module Datasworn
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -1176,6 +1208,7 @@ module Datasworn
       data["id"] = Datasworn::to_json_data(id)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -1530,6 +1563,7 @@ module Datasworn
     attr_accessor :id
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetOptionFieldSelectValue.new
@@ -1538,6 +1572,7 @@ module Datasworn
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -1547,6 +1582,7 @@ module Datasworn
       data["id"] = Datasworn::to_json_data(id)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end
@@ -1556,6 +1592,7 @@ module Datasworn
     attr_accessor :id
     attr_accessor :label
     attr_accessor :value
+    attr_accessor :icon
 
     def self.from_json_data(data)
       out = AssetOptionFieldText.new
@@ -1563,6 +1600,7 @@ module Datasworn
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(String, data["value"])
+      out.icon = Datasworn::from_json_data(SvgImageURL, data["icon"])
       out
     end
 
@@ -1571,6 +1609,7 @@ module Datasworn
       data["id"] = Datasworn::to_json_data(id)
       data["label"] = Datasworn::to_json_data(label)
       data["value"] = Datasworn::to_json_data(value)
+      data["icon"] = Datasworn::to_json_data(icon) unless icon.nil?
       data
     end
   end

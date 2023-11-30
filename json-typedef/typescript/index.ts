@@ -340,6 +340,11 @@ export interface AssetAbilityControlFieldCheckbox {
    * Is the box checked?
    */
   value: boolean;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -369,6 +374,11 @@ export interface AssetAbilityControlFieldClock {
    * The current number of filled clock segments.
    */
   value: number;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -394,6 +404,11 @@ export interface AssetAbilityControlFieldCounter {
    * The current value of this input.
    */
   value: number;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -420,6 +435,11 @@ export interface AssetAbilityOptionFieldText {
   id: AssetAbilityOptionFieldId;
   label: InputLabel;
   value: string;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -474,6 +494,11 @@ export interface AssetConditionMeterControlFieldCardFlip {
    * Is the card flipped over?
    */
   value: boolean;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -503,6 +528,11 @@ export interface AssetConditionMeterControlFieldCheckbox {
    * Is the box checked?
    */
   value: boolean;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -541,6 +571,11 @@ export interface AssetControlFieldCardFlip {
    * Is the card flipped over?
    */
   value: boolean;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -570,6 +605,11 @@ export interface AssetControlFieldCheckbox {
    * Is the box checked?
    */
   value: boolean;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -624,6 +664,11 @@ export interface AssetControlFieldConditionMeter {
    * Checkbox controls rendered as part of the condition meter.
    */
   controls?: { [key: string]: AssetConditionMeterControlField };
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 
   /**
    * Provides hints for moves that interact with this condition meter, such as
@@ -691,6 +736,11 @@ export interface AssetControlFieldSelectEnhancement {
    * `null` if none is selected.
    */
   value: DictKey;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 export type AssetControlFieldEnhancement = AssetControlFieldEnhancementConditionMeter;
@@ -827,6 +877,11 @@ export interface AssetOptionFieldSelectEnhancement {
    * `null` if none is selected.
    */
   value: DictKey;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 export type AssetOptionFieldSelectValueChoice = AssetOptionFieldSelectValueChoiceAssetControl | AssetOptionFieldSelectValueChoiceAssetOption | AssetOptionFieldSelectValueChoiceAttachedAssetControl | AssetOptionFieldSelectValueChoiceAttachedAssetOption | AssetOptionFieldSelectValueChoiceConditionMeter | AssetOptionFieldSelectValueChoiceCustom | AssetOptionFieldSelectValueChoiceStat;
@@ -965,6 +1020,11 @@ export interface AssetOptionFieldSelectValue {
    * `null` if none is selected.
    */
   value: DictKey;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**
@@ -979,6 +1039,11 @@ export interface AssetOptionFieldText {
   id: AssetOptionFieldId;
   label: InputLabel;
   value: string;
+
+  /**
+   * An icon associated with this input.
+   */
+  icon?: SvgImageUrl;
 }
 
 /**

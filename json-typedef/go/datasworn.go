@@ -320,6 +320,9 @@ type AssetAbilityControlFieldCheckbox struct {
 
 	// Is the box checked?
 	Value bool `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // A clock with 4 or more segments.
@@ -338,6 +341,9 @@ type AssetAbilityControlFieldClock struct {
 
 	// The current number of filled clock segments.
 	Value int8 `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // A basic counter representing a non-rollable integer value. They usually start
@@ -355,6 +361,9 @@ type AssetAbilityControlFieldCounter struct {
 
 	// The current value of this input.
 	Value int16 `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // A unique ID for an AssetAbilityControlField.
@@ -408,6 +417,9 @@ type AssetAbilityOptionFieldText struct {
 	Label InputLabel `json:"label"`
 
 	Value string `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // A unique ID for an AssetAbilityOptionField.
@@ -485,6 +497,9 @@ type AssetConditionMeterControlFieldCardFlip struct {
 
 	// Is the card flipped over?
 	Value bool `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // Represents a checkbox.
@@ -503,6 +518,9 @@ type AssetConditionMeterControlFieldCheckbox struct {
 
 	// Is the box checked?
 	Value bool `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // A unique ID for an AssetConditionMeterControlField.
@@ -581,6 +599,9 @@ type AssetControlFieldCardFlip struct {
 
 	// Is the card flipped over?
 	Value bool `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // Represents a checkbox.
@@ -599,6 +620,9 @@ type AssetControlFieldCheckbox struct {
 
 	// Is the box checked?
 	Value bool `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // Provides hints for moves that interact with this condition meter, such as
@@ -634,6 +658,9 @@ type AssetControlFieldConditionMeter struct {
 
 	// Checkbox controls rendered as part of the condition meter.
 	Controls map[string]AssetConditionMeterControlField `json:"controls,omitempty"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 
 	// Provides hints for moves that interact with this condition meter, such as
 	// suffer and recovery moves.
@@ -731,6 +758,9 @@ type AssetControlFieldSelectEnhancement struct {
 	// The key of the currently selected choice from the `choices` property, or
 	// `null` if none is selected.
 	Value DictKey `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 type AssetControlFieldEnhancement struct {
@@ -957,6 +987,9 @@ type AssetOptionFieldSelectEnhancement struct {
 	// The key of the currently selected choice from the `choices` property, or
 	// `null` if none is selected.
 	Value DictKey `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 type AssetOptionFieldSelectValueChoice struct {
@@ -1157,6 +1190,9 @@ type AssetOptionFieldSelectValue struct {
 	// The key of the currently selected choice from the `choices` property, or
 	// `null` if none is selected.
 	Value DictKey `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // Represents an input that accepts plain text.
@@ -1167,6 +1203,9 @@ type AssetOptionFieldText struct {
 	Label InputLabel `json:"label"`
 
 	Value string `json:"value"`
+
+	// An icon associated with this input.
+	Icon *SvgImageURL `json:"icon,omitempty"`
 }
 
 // A unique ID for an AssetOptionField.

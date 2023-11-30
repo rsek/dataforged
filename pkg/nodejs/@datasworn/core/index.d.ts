@@ -329,6 +329,10 @@ export interface AssetAbilityControlFieldCheckbox {
      * Is the box checked?
      */
     value: boolean;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * A clock with 4 or more segments.
@@ -353,6 +357,10 @@ export interface AssetAbilityControlFieldClock {
      * The current number of filled clock segments.
      */
     value: number;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * A basic counter representing a non-rollable integer value. They usually start
@@ -374,6 +382,10 @@ export interface AssetAbilityControlFieldCounter {
      * The current value of this input.
      */
     value: number;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * A unique ID for an AssetAbilityControlField.
@@ -395,6 +407,10 @@ export interface AssetAbilityOptionFieldText {
     id: AssetAbilityOptionFieldId;
     label: InputLabel;
     value: string;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * A unique ID for an AssetAbilityOptionField.
@@ -441,6 +457,10 @@ export interface AssetConditionMeterControlFieldCardFlip {
      * Is the card flipped over?
      */
     value: boolean;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * Represents a checkbox.
@@ -465,6 +485,10 @@ export interface AssetConditionMeterControlFieldCheckbox {
      * Is the box checked?
      */
     value: boolean;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * A unique ID for an AssetConditionMeterControlField.
@@ -496,6 +520,10 @@ export interface AssetControlFieldCardFlip {
      * Is the card flipped over?
      */
     value: boolean;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * Represents a checkbox.
@@ -520,6 +548,10 @@ export interface AssetControlFieldCheckbox {
      * Is the box checked?
      */
     value: boolean;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * Provides hints for moves that interact with this condition meter, such as
@@ -568,6 +600,10 @@ export interface AssetControlFieldConditionMeter {
     controls?: {
         [key: string]: AssetConditionMeterControlField;
     };
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
     /**
      * Provides hints for moves that interact with this condition meter, such as
      * suffer and recovery moves.
@@ -629,6 +665,10 @@ export interface AssetControlFieldSelectEnhancement {
      * `null` if none is selected.
      */
     value: DictKey;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 export type AssetControlFieldEnhancement = AssetControlFieldEnhancementConditionMeter;
 /**
@@ -750,6 +790,10 @@ export interface AssetOptionFieldSelectEnhancement {
      * `null` if none is selected.
      */
     value: DictKey;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 export type AssetOptionFieldSelectValueChoice = AssetOptionFieldSelectValueChoiceAssetControl | AssetOptionFieldSelectValueChoiceAssetOption | AssetOptionFieldSelectValueChoiceAttachedAssetControl | AssetOptionFieldSelectValueChoiceAttachedAssetOption | AssetOptionFieldSelectValueChoiceConditionMeter | AssetOptionFieldSelectValueChoiceCustom | AssetOptionFieldSelectValueChoiceStat;
 export declare enum AssetOptionFieldSelectValueChoiceAssetControlOptionType {
@@ -868,6 +912,10 @@ export interface AssetOptionFieldSelectValue {
      * `null` if none is selected.
      */
     value: DictKey;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * Represents an input that accepts plain text.
@@ -880,6 +928,10 @@ export interface AssetOptionFieldText {
     id: AssetOptionFieldId;
     label: InputLabel;
     value: string;
+    /**
+     * An icon associated with this input.
+     */
+    icon?: SvgImageUrl;
 }
 /**
  * A unique ID for an AssetOptionField.

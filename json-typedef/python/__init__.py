@@ -557,6 +557,11 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
     Is the box checked?
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldCheckbox':
@@ -567,6 +572,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
             _from_json_data(bool, data.get("is_impact")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -576,6 +582,8 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
         data["is_impact"] = _to_json_data(self.is_impact)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -606,6 +614,11 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
     The current number of filled clock segments.
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldClock':
@@ -616,6 +629,7 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
             _from_json_data(int, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -625,6 +639,8 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -651,6 +667,11 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
     The current value of this input.
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldCounter':
@@ -661,6 +682,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
             _from_json_data(int, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -670,6 +692,8 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -730,6 +754,11 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
 
     label: 'InputLabel'
     value: 'str'
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldText':
@@ -738,6 +767,7 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
             _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(str, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -745,6 +775,8 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -840,6 +872,11 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
     Is the card flipped over?
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetConditionMeterControlFieldCardFlip':
@@ -850,6 +887,7 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
             _from_json_data(bool, data.get("is_impact")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -859,6 +897,8 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
         data["is_impact"] = _to_json_data(self.is_impact)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -889,6 +929,11 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
     Is the box checked?
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetConditionMeterControlFieldCheckbox':
@@ -899,6 +944,7 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
             _from_json_data(bool, data.get("is_impact")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -908,6 +954,8 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
         data["is_impact"] = _to_json_data(self.is_impact)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -973,6 +1021,11 @@ class AssetControlFieldCardFlip(AssetControlField):
     Is the card flipped over?
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetControlFieldCardFlip':
@@ -983,6 +1036,7 @@ class AssetControlFieldCardFlip(AssetControlField):
             _from_json_data(bool, data.get("is_impact")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -992,6 +1046,8 @@ class AssetControlFieldCardFlip(AssetControlField):
         data["is_impact"] = _to_json_data(self.is_impact)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -1022,6 +1078,11 @@ class AssetControlFieldCheckbox(AssetControlField):
     Is the box checked?
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetControlFieldCheckbox':
@@ -1032,6 +1093,7 @@ class AssetControlFieldCheckbox(AssetControlField):
             _from_json_data(bool, data.get("is_impact")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -1041,6 +1103,8 @@ class AssetControlFieldCheckbox(AssetControlField):
         data["is_impact"] = _to_json_data(self.is_impact)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -1113,6 +1177,11 @@ class AssetControlFieldConditionMeter(AssetControlField):
     Checkbox controls rendered as part of the condition meter.
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
     moves: 'Optional[AssetControlFieldConditionMeterMoves]'
     """
     Provides hints for moves that interact with this condition meter, such as
@@ -1130,6 +1199,7 @@ class AssetControlFieldConditionMeter(AssetControlField):
             _from_json_data(int, data.get("min")),
             _from_json_data(int, data.get("value")),
             _from_json_data(Optional[Dict[str, AssetConditionMeterControlField]], data.get("controls")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[AssetControlFieldConditionMeterMoves], data.get("moves")),
         )
 
@@ -1142,6 +1212,8 @@ class AssetControlFieldConditionMeter(AssetControlField):
         data["value"] = _to_json_data(self.value)
         if self.controls is not None:
              data["controls"] = _to_json_data(self.controls)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         if self.moves is not None:
              data["moves"] = _to_json_data(self.moves)
         return data
@@ -1277,6 +1349,11 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
     `null` if none is selected.
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancement':
@@ -1286,6 +1363,7 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
             _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -1294,6 +1372,8 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -1607,6 +1687,11 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
     `null` if none is selected.
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancement':
@@ -1616,6 +1701,7 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
             _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -1624,6 +1710,8 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -1933,6 +2021,11 @@ class AssetOptionFieldSelectValue(AssetOptionField):
     `null` if none is selected.
     """
 
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValue':
@@ -1942,6 +2035,7 @@ class AssetOptionFieldSelectValue(AssetOptionField):
             _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -1950,6 +2044,8 @@ class AssetOptionFieldSelectValue(AssetOptionField):
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass
@@ -1965,6 +2061,11 @@ class AssetOptionFieldText(AssetOptionField):
 
     label: 'InputLabel'
     value: 'str'
+    icon: 'Optional[SvgImageURL]'
+    """
+    An icon associated with this input.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldText':
@@ -1973,6 +2074,7 @@ class AssetOptionFieldText(AssetOptionField):
             _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(str, data.get("value")),
+            _from_json_data(Optional[SvgImageURL], data.get("icon")),
         )
 
     def to_json_data(self) -> Any:
@@ -1980,6 +2082,8 @@ class AssetOptionFieldText(AssetOptionField):
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
+        if self.icon is not None:
+             data["icon"] = _to_json_data(self.icon)
         return data
 
 @dataclass

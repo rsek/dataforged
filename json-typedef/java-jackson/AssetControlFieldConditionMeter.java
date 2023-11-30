@@ -35,6 +35,10 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
     private Map<String, AssetConditionMeterControlField> controls;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("icon")
+    private SvgImageUrl icon;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("moves")
     private AssetControlFieldConditionMeterMoves moves;
 
@@ -133,6 +137,22 @@ public class AssetControlFieldConditionMeter extends AssetControlField {
      */
     public void setControls(Map<String, AssetConditionMeterControlField> controls) {
         this.controls = controls;
+    }
+
+    /**
+     * Getter for icon.<p>
+     * An icon associated with this input.
+     */
+    public SvgImageUrl getIcon() {
+        return icon;
+    }
+
+    /**
+     * Setter for icon.<p>
+     * An icon associated with this input.
+     */
+    public void setIcon(SvgImageUrl icon) {
+        this.icon = icon;
     }
 
     /**

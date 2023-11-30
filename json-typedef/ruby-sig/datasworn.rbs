@@ -112,6 +112,7 @@ module Datasworn
     attr_accessor is_impact: bool
     attr_accessor label: InputLabel
     attr_accessor value: bool
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetAbilityControlFieldCheckbox
     def to_json_data: () -> untyped
@@ -123,6 +124,7 @@ module Datasworn
     attr_accessor max: Integer
     attr_accessor min: Integer
     attr_accessor value: Integer
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetAbilityControlFieldClock
     def to_json_data: () -> untyped
@@ -134,6 +136,7 @@ module Datasworn
     attr_accessor max: Integer
     attr_accessor min: Integer
     attr_accessor value: Integer
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetAbilityControlFieldCounter
     def to_json_data: () -> untyped
@@ -164,6 +167,7 @@ module Datasworn
     attr_accessor id: AssetAbilityOptionFieldID
     attr_accessor label: InputLabel
     attr_accessor value: String
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetAbilityOptionFieldText
     def to_json_data: () -> untyped
@@ -197,6 +201,7 @@ module Datasworn
     attr_accessor is_impact: bool
     attr_accessor label: InputLabel
     attr_accessor value: bool
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetConditionMeterControlFieldCardFlip
     def to_json_data: () -> untyped
@@ -208,6 +213,7 @@ module Datasworn
     attr_accessor is_impact: bool
     attr_accessor label: InputLabel
     attr_accessor value: bool
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetConditionMeterControlFieldCheckbox
     def to_json_data: () -> untyped
@@ -233,6 +239,7 @@ module Datasworn
     attr_accessor is_impact: bool
     attr_accessor label: InputLabel
     attr_accessor value: bool
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetControlFieldCardFlip
     def to_json_data: () -> untyped
@@ -244,6 +251,7 @@ module Datasworn
     attr_accessor is_impact: bool
     attr_accessor label: InputLabel
     attr_accessor value: bool
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetControlFieldCheckbox
     def to_json_data: () -> untyped
@@ -264,6 +272,7 @@ module Datasworn
     attr_accessor min: Integer
     attr_accessor value: Integer
     attr_accessor controls: Hash[String, AssetConditionMeterControlField]?
+    attr_accessor icon: SvgImageURL?
     attr_accessor moves: AssetControlFieldConditionMeterMoves?
 
     def self.from_json_data: (untyped) -> AssetControlFieldConditionMeter
@@ -318,6 +327,7 @@ module Datasworn
     attr_accessor id: AssetControlFieldID
     attr_accessor label: InputLabel
     attr_accessor value: DictKey
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancement
     def to_json_data: () -> untyped
@@ -431,6 +441,7 @@ module Datasworn
     attr_accessor id: AssetOptionFieldID
     attr_accessor label: InputLabel
     attr_accessor value: DictKey
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancement
     def to_json_data: () -> untyped
@@ -576,6 +587,7 @@ module Datasworn
     attr_accessor id: AssetOptionFieldID
     attr_accessor label: InputLabel
     attr_accessor value: DictKey
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectValue
     def to_json_data: () -> untyped
@@ -585,6 +597,7 @@ module Datasworn
     attr_accessor id: AssetOptionFieldID
     attr_accessor label: InputLabel
     attr_accessor value: String
+    attr_accessor icon: SvgImageURL?
 
     def self.from_json_data: (untyped) -> AssetOptionFieldText
     def to_json_data: () -> untyped

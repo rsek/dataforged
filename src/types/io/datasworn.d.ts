@@ -1577,6 +1577,10 @@ export type ProgressRollMethod2 = "miss" | "weak_hit" | "strong_hit" | "progress
  */
 export type AssetControlFieldId1 = string;
 /**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SvgImageUrl8 = string;
+/**
  * A checkbox control field, rendered as part of an asset condition meter.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -4506,6 +4510,7 @@ export interface AssetConditionMeter {
    * The maximum value of this meter.
    */
   max: number;
+  icon?: SvgImageUrl8;
   /**
    * The current value of this meter.
    */
