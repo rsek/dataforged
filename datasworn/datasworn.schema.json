@@ -3510,7 +3510,7 @@
 						}
 					},
 					"then": {
-						"description": "A clock with 4, 6, 8, or 10 segments.",
+						"description": "A clock with 4 or more segments.",
 						"$comment": "Semantics are similar to `<input type=\"number\">`, but rendered as a clock (a circle with equally sized wedges).",
 						"title": "ClockField",
 						"type": "object",
@@ -3535,8 +3535,10 @@
 							},
 							"max": {
 								"title": "ClockSize",
-								"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
-								"enum": [4, 6, 8, 10]
+								"multipleOf": 2,
+								"minimum": 2,
+								"description": "The size of the clock -- in other words, the maximum number of filled clock segments. Standard clocks have 4, 6, 8, or 10 segments.",
+								"type": "integer"
 							},
 							"field_type": {
 								"const": "clock",
@@ -3557,8 +3559,8 @@
 						}
 					},
 					"then": {
-						"description": "A counter that starts at zero, with an optional maximum value.",
-						"$comment": "Semantics are similar to `<input type=\"number\">`.",
+						"description": "A basic counter representing a non-rollable integer value. They usually start at 0, and may or may not have a maximum.",
+						"$comment": "Semantics are similar to `<input type=\"number\" step=\"1\">`",
 						"title": "CounterField",
 						"type": "object",
 						"properties": {
@@ -3581,6 +3583,7 @@
 							},
 							"max": {
 								"default": null,
+								"description": "The (inclusive) maximum value, or `null` if there's no maximum.",
 								"anyOf": [
 									{
 										"type": "integer"
@@ -3588,8 +3591,7 @@
 									{
 										"type": "null"
 									}
-								],
-								"description": "The (inclusive) maximum value."
+								]
 							},
 							"field_type": {
 								"const": "counter",

@@ -322,7 +322,7 @@ type AssetAbilityControlFieldCheckbox struct {
 	Value bool `json:"value"`
 }
 
-// A clock with 4, 6, 8, or 10 segments.
+// A clock with 4 or more segments.
 type AssetAbilityControlFieldClock struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
@@ -330,7 +330,7 @@ type AssetAbilityControlFieldClock struct {
 	Label InputLabel `json:"label"`
 
 	// The size of the clock -- in other words, the maximum number of filled clock
-	// segments.
+	// segments. Standard clocks have 4, 6, 8, or 10 segments.
 	Max int8 `json:"max"`
 
 	// The minimum number of filled clock segments. This is always 0.
@@ -340,7 +340,8 @@ type AssetAbilityControlFieldClock struct {
 	Value int8 `json:"value"`
 }
 
-// A counter that starts at zero, with an optional maximum value.
+// A basic counter representing a non-rollable integer value. They usually start
+// at 0, and may or may not have a maximum.
 type AssetAbilityControlFieldCounter struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`

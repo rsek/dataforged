@@ -88,13 +88,17 @@ export const Counter = Utils.Assign(
 		Input(Type.Integer({ default: 0 })),
 		Range({
 			min: Type.Integer({ default: 0 }),
-			max: Utils.Nullable(Type.Integer())
+			max: Utils.Nullable(Type.Integer(), {
+				default: null,
+				description:
+					"The (inclusive) maximum value, or `null` if there's no maximum."
+			})
 		})
 	],
 	{
 		description:
-			'A counter that starts at zero, with an optional maximum value.',
-		$comment: 'Semantics are similar to `<input type="number">`.'
+			'A basic counter representing a non-rollable integer value. They usually start at 0, and may or may not have a maximum.',
+		$comment: 'Semantics are similar to `<input type="number" step="1">`'
 	}
 ) satisfies TInput<TInteger>
 export type TCounter = typeof Counter
@@ -117,16 +121,19 @@ export const Clock = Utils.Assign(
 				description:
 					'The minimum number of filled clock segments. This is always 0.'
 			},
-			max: Utils.UnionEnum([4, 6, 8, 10], {
+			max: Type.Integer({
 				[JsonTypeDef]: { schema: { type: 'int8' } },
 				title: 'ClockSize',
+				multipleOf: 2,
+				minimum: 2,
+				// examples: [4, 6, 8, 10],
 				description:
-					'The size of the clock -- in other words, the maximum number of filled clock segments.'
+					'The size of the clock -- in other words, the maximum number of filled clock segments. Standard clocks have 4, 6, 8, or 10 segments.'
 			})
 		})
 	],
 	{
-		description: 'A clock with 4, 6, 8, or 10 segments.',
+		description: 'A clock with 4 or more segments.',
 		$comment:
 			'Semantics are similar to `<input type="number">`, but rendered as a clock (a circle with equally sized wedges).'
 	}

@@ -5,7 +5,8 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// A counter that starts at zero, with an optional maximum value.
+    /// A basic counter representing a non-rollable integer value. They usually
+    /// start at 0, and may or may not have a maximum.
     /// </summary>
     public class AssetAbilityControlFieldCounter : AssetAbilityControlField
     {

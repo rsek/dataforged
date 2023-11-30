@@ -373,7 +373,7 @@ module Datasworn
     end
   end
 
-  # A clock with 4, 6, 8, or 10 segments.
+  # A clock with 4 or more segments.
   class AssetAbilityControlFieldClock < AssetAbilityControlField
     attr_accessor :id
     attr_accessor :label
@@ -403,7 +403,8 @@ module Datasworn
     end
   end
 
-  # A counter that starts at zero, with an optional maximum value.
+  # A basic counter representing a non-rollable integer value. They usually
+  # start at 0, and may or may not have a maximum.
   class AssetAbilityControlFieldCounter < AssetAbilityControlField
     attr_accessor :id
     attr_accessor :label

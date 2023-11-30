@@ -350,7 +350,7 @@ pub struct AssetAbilityControlFieldCheckbox {
     pub value: bool,
 }
 
-/// A clock with 4, 6, 8, or 10 segments.
+/// A clock with 4 or more segments.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldClock {
     /// The unique Datasworn ID for this item.
@@ -361,7 +361,7 @@ pub struct AssetAbilityControlFieldClock {
     pub label: InputLabel,
 
     /// The size of the clock -- in other words, the maximum number of filled
-    /// clock segments.
+    /// clock segments. Standard clocks have 4, 6, 8, or 10 segments.
     #[serde(rename = "max")]
     pub max: i8,
 
@@ -374,7 +374,8 @@ pub struct AssetAbilityControlFieldClock {
     pub value: i8,
 }
 
-/// A counter that starts at zero, with an optional maximum value.
+/// A basic counter representing a non-rollable integer value. They usually
+/// start at 0, and may or may not have a maximum.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldCounter {
     /// The unique Datasworn ID for this item.

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
- * A clock with 4, 6, 8, or 10 segments.
+ * A clock with 4 or more segments.
  */
 @JsonSerialize
 public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
@@ -61,7 +61,7 @@ public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     /**
      * Getter for max.<p>
      * The size of the clock -- in other words, the maximum number of filled
-     * clock segments.
+     * clock segments. Standard clocks have 4, 6, 8, or 10 segments.
      */
     public Byte getMax() {
         return max;
@@ -70,7 +70,7 @@ public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     /**
      * Setter for max.<p>
      * The size of the clock -- in other words, the maximum number of filled
-     * clock segments.
+     * clock segments. Standard clocks have 4, 6, 8, or 10 segments.
      */
     public void setMax(Byte max) {
         this.max = max;

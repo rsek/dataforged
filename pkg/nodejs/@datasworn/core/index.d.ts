@@ -331,7 +331,7 @@ export interface AssetAbilityControlFieldCheckbox {
     value: boolean;
 }
 /**
- * A clock with 4, 6, 8, or 10 segments.
+ * A clock with 4 or more segments.
  */
 export interface AssetAbilityControlFieldClock {
     field_type: "clock";
@@ -342,9 +342,9 @@ export interface AssetAbilityControlFieldClock {
     label: InputLabel;
     /**
      * The size of the clock -- in other words, the maximum number of filled clock
-     * segments.
+     * segments. Standard clocks have 4, 6, 8, or 10 segments.
      */
-    max: 4 | 6 | 8 | 10;
+    max: number;
     /**
      * The minimum number of filled clock segments. This is always 0.
      */
@@ -355,7 +355,8 @@ export interface AssetAbilityControlFieldClock {
     value: number;
 }
 /**
- * A counter that starts at zero, with an optional maximum value.
+ * A basic counter representing a non-rollable integer value. They usually start
+ * at 0, and may or may not have a maximum.
  */
 export interface AssetAbilityControlFieldCounter {
     field_type: "counter";

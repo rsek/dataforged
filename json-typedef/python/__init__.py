@@ -581,7 +581,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
 @dataclass
 class AssetAbilityControlFieldClock(AssetAbilityControlField):
     """
-    A clock with 4, 6, 8, or 10 segments.
+    A clock with 4 or more segments.
     """
 
     id: 'AssetAbilityControlFieldID'
@@ -593,7 +593,7 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
     max: 'int'
     """
     The size of the clock -- in other words, the maximum number of filled clock
-    segments.
+    segments. Standard clocks have 4, 6, 8, or 10 segments.
     """
 
     min: 'int'
@@ -630,7 +630,8 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
 @dataclass
 class AssetAbilityControlFieldCounter(AssetAbilityControlField):
     """
-    A counter that starts at zero, with an optional maximum value.
+    A basic counter representing a non-rollable integer value. They usually
+    start at 0, and may or may not have a maximum.
     """
 
     id: 'AssetAbilityControlFieldID'

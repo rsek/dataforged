@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// A clock with 4, 6, 8, or 10 segments.
+    /// A clock with 4 or more segments.
     /// </summary>
     public class AssetAbilityControlFieldClock : AssetAbilityControlField
     {
@@ -23,7 +23,7 @@ namespace Datasworn
 
         /// <summary>
         /// The size of the clock -- in other words, the maximum number of
-        /// filled clock segments.
+        /// filled clock segments. Standard clocks have 4, 6, 8, or 10 segments.
         /// </summary>
         [JsonPropertyName("max")]
         public sbyte Max { get; set; }

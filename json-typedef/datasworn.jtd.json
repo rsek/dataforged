@@ -3150,13 +3150,12 @@
 						"max": {
 							"type": "int8",
 							"metadata": {
-								"description": "The size of the clock -- in other words, the maximum number of filled clock segments.",
-								"typescriptType": "4 | 6 | 8 | 10"
+								"description": "The size of the clock -- in other words, the maximum number of filled clock segments. Standard clocks have 4, 6, 8, or 10 segments."
 							}
 						}
 					},
 					"metadata": {
-						"description": "A clock with 4, 6, 8, or 10 segments."
+						"description": "A clock with 4 or more segments."
 					}
 				},
 				"counter": {
@@ -3187,7 +3186,7 @@
 						}
 					},
 					"metadata": {
-						"description": "A counter that starts at zero, with an optional maximum value."
+						"description": "A basic counter representing a non-rollable integer value. They usually start at 0, and may or may not have a maximum."
 					}
 				},
 				"checkbox": {
