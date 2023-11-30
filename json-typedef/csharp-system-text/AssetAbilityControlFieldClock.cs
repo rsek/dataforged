@@ -18,13 +18,8 @@ namespace Datasworn
         [JsonPropertyName("id")]
         public AssetAbilityControlFieldId Id { get; set; }
 
-        /// <summary>
-        /// A localized label for this input. In some contexts it may be
-        /// undesirable to render this text, but it should always be exposed to
-        /// assistive technology (e.g. with `aria-label` in HTML).
-        /// </summary>
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         /// <summary>
         /// The size of the clock -- in other words, the maximum number of

@@ -13,7 +13,7 @@ import java.util.List;
 @JsonSerialize
 public class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
     @JsonProperty("label")
-    private Label label;
+    private InputLabel label;
 
     @JsonProperty("option_type")
     private AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType optionType;
@@ -32,14 +32,14 @@ public class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
     /**
      * Getter for label.<p>
      */
-    public Label getLabel() {
+    public InputLabel getLabel() {
         return label;
     }
 
     /**
      * Setter for label.<p>
      */
-    public void setLabel(Label label) {
+    public void setLabel(InputLabel label) {
         this.label = label;
     }
 

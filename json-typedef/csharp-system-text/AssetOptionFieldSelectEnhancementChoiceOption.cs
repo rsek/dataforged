@@ -14,7 +14,7 @@ namespace Datasworn
         public string OptionType { get => "option"; }
 
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         [JsonPropertyName("enhance_asset")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

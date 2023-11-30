@@ -838,6 +838,13 @@
 				"description": "Internationalization/localization hints for the text content of this object."
 			}
 		},
+		"InputLabel": {
+			"type": "string",
+			"metadata": {
+				"description": "A localized label for an input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+				"pattern": "^[^A-Z]+$"
+			}
+		},
 		"Label": {
 			"type": "string",
 			"metadata": {
@@ -897,10 +904,7 @@
 					}
 				},
 				"label": {
-					"ref": "Label",
-					"metadata": {
-						"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-					}
+					"ref": "InputLabel"
 				},
 				"value": {
 					"type": "int8",
@@ -3129,10 +3133,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "int8",
@@ -3167,10 +3168,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "int16",
@@ -3201,10 +3199,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "boolean",
@@ -3243,10 +3238,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "string"
@@ -3289,10 +3281,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "boolean",
@@ -3326,10 +3315,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "boolean",
@@ -3371,10 +3357,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "int8",
@@ -3458,10 +3441,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"ref": "DictKey",
@@ -3476,7 +3456,7 @@
 									"option": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											}
 										},
 										"optionalProperties": {
@@ -3505,7 +3485,7 @@
 												"values": {
 													"properties": {
 														"label": {
-															"ref": "Label"
+															"ref": "InputLabel"
 														},
 														"option_type": {
 															"enum": [
@@ -3556,10 +3536,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "boolean",
@@ -3593,10 +3570,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "boolean",
@@ -3687,10 +3661,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"ref": "DictKey",
@@ -3705,7 +3676,7 @@
 									"stat": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											},
 											"option_type": {
 												"enum": [
@@ -3723,7 +3694,7 @@
 									"condition_meter": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											},
 											"option_type": {
 												"enum": [
@@ -3741,7 +3712,7 @@
 									"asset_control": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											},
 											"option_type": {
 												"enum": [
@@ -3771,7 +3742,7 @@
 									"asset_option": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											},
 											"option_type": {
 												"enum": [
@@ -3797,7 +3768,7 @@
 									"attached_asset_control": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											},
 											"option_type": {
 												"enum": [
@@ -3822,7 +3793,7 @@
 									"attached_asset_option": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											},
 											"option_type": {
 												"enum": [
@@ -3843,7 +3814,7 @@
 									"custom": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											},
 											"option_type": {
 												"enum": [
@@ -3878,10 +3849,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"ref": "DictKey",
@@ -3896,7 +3864,7 @@
 									"option": {
 										"properties": {
 											"label": {
-												"ref": "Label"
+												"ref": "InputLabel"
 											}
 										},
 										"optionalProperties": {
@@ -3925,7 +3893,7 @@
 												"values": {
 													"properties": {
 														"label": {
-															"ref": "Label"
+															"ref": "InputLabel"
 														},
 														"option_type": {
 															"enum": [
@@ -3976,10 +3944,7 @@
 							}
 						},
 						"label": {
-							"ref": "Label",
-							"metadata": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
-							}
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "string"

@@ -15,7 +15,7 @@ public class AssetOptionFieldSelectValueChoiceAssetOption extends AssetOptionFie
     private List<AssetIdWildcard> assets;
 
     @JsonProperty("label")
-    private Label label;
+    private InputLabel label;
 
     @JsonProperty("option")
     private DictKey option;
@@ -43,14 +43,14 @@ public class AssetOptionFieldSelectValueChoiceAssetOption extends AssetOptionFie
     /**
      * Getter for label.<p>
      */
-    public Label getLabel() {
+    public InputLabel getLabel() {
         return label;
     }
 
     /**
      * Setter for label.<p>
      */
-    public void setLabel(Label label) {
+    public void setLabel(InputLabel label) {
         this.label = label;
     }
 

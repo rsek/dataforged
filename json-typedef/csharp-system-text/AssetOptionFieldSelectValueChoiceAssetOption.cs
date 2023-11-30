@@ -17,7 +17,7 @@ namespace Datasworn
         public IList<AssetIdWildcard> Assets { get; set; }
 
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         /// <summary>
         /// The dictionary key of the asset option field.

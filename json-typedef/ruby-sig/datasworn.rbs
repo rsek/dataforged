@@ -110,7 +110,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetAbilityControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetAbilityControlFieldCheckbox
@@ -119,7 +119,7 @@ module Datasworn
 
   class AssetAbilityControlFieldClock < AssetAbilityControlField
     attr_accessor id: AssetAbilityControlFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor max: Integer
     attr_accessor min: Integer
     attr_accessor value: Integer
@@ -130,7 +130,7 @@ module Datasworn
 
   class AssetAbilityControlFieldCounter < AssetAbilityControlField
     attr_accessor id: AssetAbilityControlFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor max: Integer
     attr_accessor min: Integer
     attr_accessor value: Integer
@@ -162,7 +162,7 @@ module Datasworn
 
   class AssetAbilityOptionFieldText < AssetAbilityOptionField
     attr_accessor id: AssetAbilityOptionFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: String
 
     def self.from_json_data: (untyped) -> AssetAbilityOptionFieldText
@@ -195,7 +195,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetConditionMeterControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetConditionMeterControlFieldCardFlip
@@ -206,7 +206,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetConditionMeterControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetConditionMeterControlFieldCheckbox
@@ -231,7 +231,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetControlFieldCardFlip
@@ -242,7 +242,7 @@ module Datasworn
     attr_accessor disables_asset: bool
     attr_accessor id: AssetControlFieldID
     attr_accessor is_impact: bool
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: bool
 
     def self.from_json_data: (untyped) -> AssetControlFieldCheckbox
@@ -259,7 +259,7 @@ module Datasworn
 
   class AssetControlFieldConditionMeter < AssetControlField
     attr_accessor id: AssetControlFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor max: Integer
     attr_accessor min: Integer
     attr_accessor value: Integer
@@ -278,7 +278,7 @@ module Datasworn
   end
 
   class AssetControlFieldSelectEnhancementChoiceOption < AssetControlFieldSelectEnhancementChoice
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor enhance_asset: AssetEnhancement?
     attr_accessor enhance_moves: Array[MoveEnhancement]?
 
@@ -296,7 +296,7 @@ module Datasworn
   end
 
   class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option_type: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
     attr_accessor enhance_asset: AssetEnhancement?
     attr_accessor enhance_moves: Array[MoveEnhancement]?
@@ -316,7 +316,7 @@ module Datasworn
   class AssetControlFieldSelectEnhancement < AssetControlField
     attr_accessor choices: Hash[String, AssetControlFieldSelectEnhancementChoice]
     attr_accessor id: AssetControlFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: DictKey
 
     def self.from_json_data: (untyped) -> AssetControlFieldSelectEnhancement
@@ -391,7 +391,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectEnhancementChoiceOption < AssetOptionFieldSelectEnhancementChoice
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor enhance_asset: AssetEnhancement?
     attr_accessor enhance_moves: Array[MoveEnhancement]?
 
@@ -409,7 +409,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option_type: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
     attr_accessor enhance_asset: AssetEnhancement?
     attr_accessor enhance_moves: Array[MoveEnhancement]?
@@ -429,7 +429,7 @@ module Datasworn
   class AssetOptionFieldSelectEnhancement < AssetOptionField
     attr_accessor choices: Hash[String, AssetOptionFieldSelectEnhancementChoice]
     attr_accessor id: AssetOptionFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: DictKey
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectEnhancement
@@ -455,7 +455,7 @@ module Datasworn
   class AssetOptionFieldSelectValueChoiceAssetControl < AssetOptionFieldSelectValueChoice
     attr_accessor assets: Array[AssetIDWildcard]
     attr_accessor control: DictKey
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option_type: AssetOptionFieldSelectValueChoiceAssetControlOptionType
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAssetControl
@@ -473,7 +473,7 @@ module Datasworn
 
   class AssetOptionFieldSelectValueChoiceAssetOption < AssetOptionFieldSelectValueChoice
     attr_accessor assets: Array[AssetIDWildcard]
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option: DictKey
     attr_accessor option_type: AssetOptionFieldSelectValueChoiceAssetOptionOptionType
 
@@ -492,7 +492,7 @@ module Datasworn
 
   class AssetOptionFieldSelectValueChoiceAttachedAssetControl < AssetOptionFieldSelectValueChoice
     attr_accessor control: DictKey
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option_type: AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceAttachedAssetControl
@@ -509,7 +509,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectValueChoiceAttachedAssetOption < AssetOptionFieldSelectValueChoice
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option: DictKey
     attr_accessor option_type: AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType
 
@@ -528,7 +528,7 @@ module Datasworn
 
   class AssetOptionFieldSelectValueChoiceConditionMeter < AssetOptionFieldSelectValueChoice
     attr_accessor condition_meter: ConditionMeterKey
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option_type: AssetOptionFieldSelectValueChoiceConditionMeterOptionType
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectValueChoiceConditionMeter
@@ -545,7 +545,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectValueChoiceCustom < AssetOptionFieldSelectValueChoice
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option_type: AssetOptionFieldSelectValueChoiceCustomOptionType
     attr_accessor value: Integer
 
@@ -563,7 +563,7 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectValueChoiceStat < AssetOptionFieldSelectValueChoice
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor option_type: AssetOptionFieldSelectValueChoiceStatOptionType
     attr_accessor stat: StatKey
 
@@ -574,7 +574,7 @@ module Datasworn
   class AssetOptionFieldSelectValue < AssetOptionField
     attr_accessor choices: Hash[String, AssetOptionFieldSelectValueChoice]
     attr_accessor id: AssetOptionFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: DictKey
 
     def self.from_json_data: (untyped) -> AssetOptionFieldSelectValue
@@ -583,7 +583,7 @@ module Datasworn
 
   class AssetOptionFieldText < AssetOptionField
     attr_accessor id: AssetOptionFieldID
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor value: String
 
     def self.from_json_data: (untyped) -> AssetOptionFieldText
@@ -710,7 +710,7 @@ module Datasworn
 
   class ConditionMeterRule
     attr_accessor description: MarkdownString
-    attr_accessor label: Label
+    attr_accessor label: InputLabel
     attr_accessor max: Integer
     attr_accessor min: Integer
     attr_accessor shared: bool
@@ -1003,6 +1003,13 @@ module Datasworn
     attr_accessor value: String
 
     def self.from_json_data: (untyped) -> ImpactRuleID
+    def to_json_data: () -> untyped
+  end
+
+  class InputLabel
+    attr_accessor value: String
+
+    def self.from_json_data: (untyped) -> InputLabel
     def to_json_data: () -> untyped
   end
 

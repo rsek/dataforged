@@ -128,7 +128,7 @@ export const CustomValue = RollableValueBase(
 )
 export type CustomValue = Static<typeof CustomValue>
 
-const types = [
+const valueTypes = [
 	StatValueRef,
 	ConditionMeterValueRef,
 	AssetControlValueRef,
@@ -138,7 +138,7 @@ const types = [
 	CustomValue
 ]
 
-export const RollableValue = Utils.DiscriminatedUnion(types, 'using', {
+export const RollableValue = Utils.DiscriminatedUnion(valueTypes, 'using', {
 	$id: 'RollableValue'
 })
 

@@ -334,13 +334,7 @@ export interface AssetAbilityControlFieldCheckbox {
    * classic) when its value is set to `true`?
    */
   is_impact: boolean;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * Is the box checked?
@@ -358,13 +352,7 @@ export interface AssetAbilityControlFieldClock {
    * The unique Datasworn ID for this item.
    */
   id: AssetAbilityControlFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * The size of the clock -- in other words, the maximum number of filled clock
@@ -393,13 +381,7 @@ export interface AssetAbilityControlFieldCounter {
    * The unique Datasworn ID for this item.
    */
   id: AssetAbilityControlFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
   max: number;
 
   /**
@@ -435,13 +417,7 @@ export interface AssetAbilityOptionFieldText {
    * The unique Datasworn ID for this item.
    */
   id: AssetAbilityOptionFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
   value: string;
 }
 
@@ -491,13 +467,7 @@ export interface AssetConditionMeterControlFieldCardFlip {
    * classic) when its value is set to `true`?
    */
   is_impact: boolean;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * Is the card flipped over?
@@ -526,13 +496,7 @@ export interface AssetConditionMeterControlFieldCheckbox {
    * classic) when its value is set to `true`?
    */
   is_impact: boolean;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * Is the box checked?
@@ -570,13 +534,7 @@ export interface AssetControlFieldCardFlip {
    * classic) when its value is set to `true`?
    */
   is_impact: boolean;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * Is the card flipped over?
@@ -605,13 +563,7 @@ export interface AssetControlFieldCheckbox {
    * classic) when its value is set to `true`?
    */
   is_impact: boolean;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * Is the box checked?
@@ -650,13 +602,7 @@ export interface AssetControlFieldConditionMeter {
    * The unique Datasworn ID for this item.
    */
   id: AssetControlFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * The maximum value of this meter.
@@ -692,7 +638,7 @@ export type AssetControlFieldSelectEnhancementChoice = AssetControlFieldSelectEn
  */
 export interface AssetControlFieldSelectEnhancementChoiceOption {
   option_type: "option";
-  label: Label;
+  label: InputLabel;
   enhance_asset?: AssetEnhancement;
   enhance_moves?: MoveEnhancement[];
 }
@@ -705,7 +651,7 @@ export enum AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType 
  * Represents an option in a list of choices.
  */
 export interface AssetControlFieldSelectEnhancementChoiceOptionGroupChoice {
-  label: Label;
+  label: InputLabel;
   option_type: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType;
   enhance_asset?: AssetEnhancement;
   enhance_moves?: MoveEnhancement[];
@@ -737,13 +683,7 @@ export interface AssetControlFieldSelectEnhancement {
    * The unique Datasworn ID for this item.
    */
   id: AssetControlFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * The key of the currently selected choice from the `choices` property, or
@@ -834,7 +774,7 @@ export type AssetOptionFieldSelectEnhancementChoice = AssetOptionFieldSelectEnha
  */
 export interface AssetOptionFieldSelectEnhancementChoiceOption {
   option_type: "option";
-  label: Label;
+  label: InputLabel;
   enhance_asset?: AssetEnhancement;
   enhance_moves?: MoveEnhancement[];
 }
@@ -847,7 +787,7 @@ export enum AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType {
  * Represents an option in a list of choices.
  */
 export interface AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
-  label: Label;
+  label: InputLabel;
   option_type: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType;
   enhance_asset?: AssetEnhancement;
   enhance_moves?: MoveEnhancement[];
@@ -879,13 +819,7 @@ export interface AssetOptionFieldSelectEnhancement {
    * The unique Datasworn ID for this item.
    */
   id: AssetOptionFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * The key of the currently selected choice from the `choices` property, or
@@ -911,7 +845,7 @@ export interface AssetOptionFieldSelectValueChoiceAssetControl {
    * The dictionary key of the asset control field.
    */
   control: DictKey;
-  label: Label;
+  label: InputLabel;
   option_type: AssetOptionFieldSelectValueChoiceAssetControlOptionType;
 }
 
@@ -925,7 +859,7 @@ export enum AssetOptionFieldSelectValueChoiceAssetOptionOptionType {
 export interface AssetOptionFieldSelectValueChoiceAssetOption {
   using: "asset_option";
   assets: AssetIdWildcard[];
-  label: Label;
+  label: InputLabel;
 
   /**
    * The dictionary key of the asset option field.
@@ -948,7 +882,7 @@ export interface AssetOptionFieldSelectValueChoiceAttachedAssetControl {
    * The dictionary key of the asset control field.
    */
   control: DictKey;
-  label: Label;
+  label: InputLabel;
   option_type: AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType;
 }
 
@@ -961,7 +895,7 @@ export enum AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType {
  */
 export interface AssetOptionFieldSelectValueChoiceAttachedAssetOption {
   using: "attached_asset_option";
-  label: Label;
+  label: InputLabel;
 
   /**
    * The dictionary key of the asset option field.
@@ -980,7 +914,7 @@ export enum AssetOptionFieldSelectValueChoiceConditionMeterOptionType {
 export interface AssetOptionFieldSelectValueChoiceConditionMeter {
   using: "condition_meter";
   condition_meter: ConditionMeterKey;
-  label: Label;
+  label: InputLabel;
   option_type: AssetOptionFieldSelectValueChoiceConditionMeterOptionType;
 }
 
@@ -993,7 +927,7 @@ export enum AssetOptionFieldSelectValueChoiceCustomOptionType {
  */
 export interface AssetOptionFieldSelectValueChoiceCustom {
   using: "custom";
-  label: Label;
+  label: InputLabel;
   option_type: AssetOptionFieldSelectValueChoiceCustomOptionType;
   value: number;
 }
@@ -1007,7 +941,7 @@ export enum AssetOptionFieldSelectValueChoiceStatOptionType {
  */
 export interface AssetOptionFieldSelectValueChoiceStat {
   using: "stat";
-  label: Label;
+  label: InputLabel;
   option_type: AssetOptionFieldSelectValueChoiceStatOptionType;
   stat: StatKey;
 }
@@ -1023,13 +957,7 @@ export interface AssetOptionFieldSelectValue {
    * The unique Datasworn ID for this item.
    */
   id: AssetOptionFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * The key of the currently selected choice from the `choices` property, or
@@ -1048,13 +976,7 @@ export interface AssetOptionFieldText {
    * The unique Datasworn ID for this item.
    */
   id: AssetOptionFieldId;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
   value: string;
 }
 
@@ -1270,13 +1192,7 @@ export interface ConditionMeterRule {
    * A description of this condition meter.
    */
   description: MarkdownString;
-
-  /**
-   * A localized label for this input. In some contexts it may be undesirable to
-   * render this text, but it should always be exposed to assistive technology
-   * (e.g. with `aria-label` in HTML).
-   */
-  label: Label;
+  label: InputLabel;
 
   /**
    * The maximum value of this meter.
@@ -1788,6 +1704,13 @@ export type ImpactRuleCollectionId = string;
  * A unique ID for an ImpactRule.
  */
 export type ImpactRuleId = string;
+
+/**
+ * A localized label for an input. In some contexts it may be undesirable to
+ * render this text, but it should always be exposed to assistive technology
+ * (e.g. with `aria-label` in HTML).
+ */
+export type InputLabel = string;
 
 /**
  * A localized plain text name or label.

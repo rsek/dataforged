@@ -13,7 +13,7 @@ namespace Datasworn
         public string Using { get => "custom"; }
 
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         [JsonPropertyName("option_type")]
         public AssetOptionFieldSelectValueChoiceCustomOptionType OptionType { get; set; }

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class AssetOptionFieldSelectValueChoiceAttachedAssetOption extends AssetOptionFieldSelectValueChoice {
     @JsonProperty("label")
-    private Label label;
+    private InputLabel label;
 
     @JsonProperty("option")
     private DictKey option;
@@ -25,14 +25,14 @@ public class AssetOptionFieldSelectValueChoiceAttachedAssetOption extends AssetO
     /**
      * Getter for label.<p>
      */
-    public Label getLabel() {
+    public InputLabel getLabel() {
         return label;
     }
 
     /**
      * Setter for label.<p>
      */
-    public void setLabel(Label label) {
+    public void setLabel(InputLabel label) {
         this.label = label;
     }
 

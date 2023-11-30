@@ -16,7 +16,7 @@ namespace Datasworn
         public ConditionMeterKey ConditionMeter { get; set; }
 
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         [JsonPropertyName("option_type")]
         public AssetOptionFieldSelectValueChoiceConditionMeterOptionType OptionType { get; set; }

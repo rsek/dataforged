@@ -17,9 +17,12 @@ export type RulesetId = string;
  */
 export type SemanticVersion = string;
 /**
- * A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).
+ * A localized label for an input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).
+ *
+ * This interface was referenced by `Datasworn`'s JSON-Schema
+ * via the `definition` "InputLabel".
  */
-export type Label = string;
+export type InputLabel = string;
 /**
  * A description of this condition meter.
  */
@@ -27,7 +30,7 @@ export type MarkdownString = string;
 /**
  * A label for this impact category.
  */
-export type Label1 = string;
+export type Label = string;
 /**
  * A description of this impact category.
  */
@@ -35,7 +38,7 @@ export type MarkdownString1 = string;
 /**
  * The label for this impact.
  */
-export type Label2 = string;
+export type Label1 = string;
 /**
  * A description of this impact.
  */
@@ -47,7 +50,7 @@ export type ConditionMeterKey = string;
 /**
  * A label for this special track.
  */
-export type Label3 = string;
+export type Label2 = string;
 /**
  * A description of this special track.
  */
@@ -55,7 +58,7 @@ export type MarkdownString3 = string;
 /**
  * A label for this stat.
  */
-export type Label4 = string;
+export type Label3 = string;
 /**
  * A description of this stat.
  */
@@ -67,11 +70,11 @@ export type OracleCollectionId = string;
 /**
  * The primary name/label for this item.
  */
-export type Label5 = string;
+export type Label4 = string;
 /**
  * The name of this item as it appears on the page in the book, if it's different from `name`.
  */
-export type Label6 = string;
+export type Label5 = string;
 /**
  * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
@@ -109,11 +112,11 @@ export type OracleTableId = string;
 /**
  * The primary name/label for this item.
  */
-export type Label7 = string;
+export type Label6 = string;
 /**
  * The name of this item as it appears on the page in the book, if it's different from `name`.
  */
-export type Label8 = string;
+export type Label7 = string;
 /**
  * An icon that represents this table.
  */
@@ -320,11 +323,11 @@ export type AssetTypeId = string;
 /**
  * The primary name/label for this item.
  */
-export type Label9 = string;
+export type Label8 = string;
 /**
  * The name of this item as it appears on the page in the book, if it's different from `name`.
  */
-export type Label10 = string;
+export type Label9 = string;
 /**
  * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
@@ -360,15 +363,15 @@ export type AssetId1 = string;
 /**
  * The primary name/label for this item.
  */
-export type Label11 = string;
+export type Label10 = string;
 /**
  * The name of this item as it appears on the page in the book, if it's different from `name`.
  */
-export type Label12 = string;
+export type Label11 = string;
 /**
  * A localized category label for this asset. This is the surtitle above the asset's name on the card.
  */
-export type Label13 = string;
+export type Label12 = string;
 /**
  * A thematic color associated with this asset.
  */
@@ -409,7 +412,7 @@ export type AssetAbilityId = string;
 /**
  * A localized plain text name or label.
  */
-export type Label14 = string;
+export type Label13 = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^([a-z][a-z_]*)$".
@@ -487,11 +490,11 @@ export type AtlasId = string;
 /**
  * A localized plain text name or label.
  */
-export type Label15 = string;
+export type Label14 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label16 = string;
+export type Label15 = string;
 /**
  * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
@@ -527,11 +530,11 @@ export type AtlasEntryId1 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label17 = string;
+export type Label16 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label18 = string;
+export type Label17 = string;
 /**
  * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
@@ -543,11 +546,11 @@ export type MoveCategoryId = string;
 /**
  * A localized plain text name or label.
  */
-export type Label19 = string;
+export type Label18 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label20 = string;
+export type Label19 = string;
 /**
  * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
@@ -587,11 +590,11 @@ export type NpcCollectionId = string;
 /**
  * A localized plain text name or label.
  */
-export type Label21 = string;
+export type Label20 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label22 = string;
+export type Label21 = string;
 /**
  * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
@@ -627,11 +630,11 @@ export type NpcId1 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label23 = string;
+export type Label22 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label24 = string;
+export type Label23 = string;
 /**
  * A localized category label describing the nature of this NPC.
  *
@@ -654,7 +657,7 @@ export type NpcVariantId = string;
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "Label".
  */
-export type Label25 = string;
+export type Label24 = string;
 /**
  * The suggested challenge rank for this NPC.
  */
@@ -670,11 +673,11 @@ export type RarityId1 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label26 = string;
+export type Label25 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label27 = string;
+export type Label26 = string;
 /**
  * A unique ID for an Asset.
  */
@@ -686,11 +689,11 @@ export type DelveSiteId = string;
 /**
  * A localized plain text name or label.
  */
-export type Label28 = string;
+export type Label27 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label29 = string;
+export type Label28 = string;
 /**
  * Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
  *
@@ -728,11 +731,11 @@ export type DelveSiteDomainId1 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label30 = string;
+export type Label29 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label31 = string;
+export type Label30 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -796,11 +799,11 @@ export type DelveSiteThemeId1 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label32 = string;
+export type Label31 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label33 = string;
+export type Label32 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -860,11 +863,11 @@ export type TruthId = string;
 /**
  * A localized plain text name or label.
  */
-export type Label34 = string;
+export type Label33 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label35 = string;
+export type Label34 = string;
 /**
  * The unique Datasworn ID for this item.
  */
@@ -1176,7 +1179,7 @@ export type TemplateString3 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label36 = string;
+export type Label35 = string;
 /**
  * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
  * 'Canonical' examples:
@@ -1243,7 +1246,7 @@ export type StatKey = string;
  * This interface was referenced by `Datasworn`'s JSON-Schema
  * via the `definition` "NpcNature".
  */
-export type Label37 = string;
+export type Label36 = string;
 /**
  * Special roll instructions to use when rolling multiple times on a single oracle table.
  *
@@ -1267,7 +1270,7 @@ export type OracleCollectionRendering1 = {
 /**
  * The column's header text.
  */
-export type Label38 = string;
+export type Label37 = string;
 /**
  * The value(s) from each OracleTableRow that is rendered in this column.
  *
@@ -1299,7 +1302,7 @@ export type OracleCollectionStyle = "tables" | "multi_table";
 /**
  * The column's header text.
  */
-export type Label39 = string;
+export type Label38 = string;
 /**
  * The thematic color for this column.
  */
@@ -1342,11 +1345,11 @@ export type MoveId1 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label40 = string;
+export type Label39 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label41 = string;
+export type Label40 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -1388,11 +1391,11 @@ export type MoveId3 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label42 = string;
+export type Label41 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label43 = string;
+export type Label42 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -1432,11 +1435,11 @@ export type MoveId5 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label44 = string;
+export type Label43 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label45 = string;
+export type Label44 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -1496,11 +1499,11 @@ export type MoveId7 = StandardMoveId | AssetMoveId;
 /**
  * A localized plain text name or label.
  */
-export type Label46 = string;
+export type Label45 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label47 = string;
+export type Label46 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -1573,10 +1576,6 @@ export type ProgressRollMethod2 = "miss" | "weak_hit" | "strong_hit" | "progress
  * The unique Datasworn ID for this item.
  */
 export type AssetControlFieldId1 = string;
-/**
- * A localized plain text name or label.
- */
-export type Label48 = string;
 /**
  * A checkbox control field, rendered as part of an asset condition meter.
  *
@@ -1739,7 +1738,7 @@ export interface Rules {
  * via the `definition` "ConditionMeterRule".
  */
 export interface ConditionMeterRule {
-  label: Label;
+  label: InputLabel;
   /**
    * The minimum value of this meter.
    */
@@ -1771,7 +1770,7 @@ export interface ConditionMeterRule {
  * via the `definition` "ImpactCategory".
  */
 export interface ImpactCategory {
-  label: Label1;
+  label: Label;
   description: MarkdownString1;
   /**
    * A dictionary object of the Impacts in this category.
@@ -1790,7 +1789,7 @@ export interface ImpactCategory {
  * via the `definition` "ImpactRule".
  */
 export interface ImpactRule {
-  label: Label2;
+  label: Label1;
   /**
    * Is this impact applied to all players at once?
    */
@@ -1818,7 +1817,7 @@ export interface ImpactRule {
  * via the `definition` "SpecialTrackRule".
  */
 export interface SpecialTrackRule {
-  label: Label3;
+  label: Label2;
   /**
    * Is this track shared by all players?
    */
@@ -1842,7 +1841,7 @@ export interface SpecialTrackRule {
  * via the `definition` "StatRule".
  */
 export interface StatRule {
-  label: Label4;
+  label: Label3;
   description: MarkdownString4;
 }
 /**
@@ -1857,8 +1856,8 @@ export interface StatRule {
  */
 export interface OracleCollection {
   id: OracleCollectionId;
-  name: Label5;
-  canonical_name?: Label6;
+  name: Label4;
+  canonical_name?: Label5;
   enhances?: OracleCollectionId1;
   color?: CssColor;
   icon?: SvgImageUrl;
@@ -1887,8 +1886,8 @@ export interface OracleCollection {
  */
 export interface OracleTable {
   id: OracleTableId;
-  name: Label7;
-  canonical_name?: Label8;
+  name: Label6;
+  canonical_name?: Label7;
   icon?: SvgImageUrl1;
   images?: WebpImageUrl1[];
   dice: DiceExpression;
@@ -2112,8 +2111,8 @@ export interface Source1 {
  */
 export interface AssetType {
   id: AssetTypeId;
-  name: Label9;
-  canonical_name?: Label10;
+  name: Label8;
+  canonical_name?: Label9;
   enhances?: AssetTypeId1;
   color?: CssColor1;
   icon?: SvgImageUrl3;
@@ -2136,9 +2135,9 @@ export interface AssetType {
  */
 export interface Asset {
   id: AssetId1;
-  name: Label11;
-  canonical_name?: Label12;
-  asset_type: Label13;
+  name: Label10;
+  canonical_name?: Label11;
+  asset_type: Label12;
   color?: CssColor2;
   icon?: SvgImageUrl4;
   /**
@@ -2188,7 +2187,7 @@ export interface AssetAttachment {
  */
 export interface AssetAbility {
   id: AssetAbilityId;
-  name?: Label14;
+  name?: Label13;
   /**
    * Is this asset ability enabled?
    */
@@ -2331,8 +2330,8 @@ export interface Source3 {
  */
 export interface Atlas {
   id: AtlasId;
-  name: Label15;
-  canonical_name?: Label16;
+  name: Label14;
+  canonical_name?: Label15;
   enhances?: AtlasId1;
   color?: CssColor3;
   icon?: SvgImageUrl5;
@@ -2360,8 +2359,8 @@ export interface Atlas {
  */
 export interface AtlasEntry {
   id: AtlasEntryId1;
-  name: Label17;
-  canonical_name?: Label18;
+  name: Label16;
+  canonical_name?: Label17;
   summary?: MarkdownString9;
   features: MarkdownString9[];
   description: MarkdownString9;
@@ -2462,8 +2461,8 @@ export interface Source5 {
  */
 export interface MoveCategory {
   id: MoveCategoryId;
-  name: Label19;
-  canonical_name?: Label20;
+  name: Label18;
+  canonical_name?: Label19;
   enhances?: MoveCategoryId1;
   color?: CssColor4;
   icon?: SvgImageUrl6;
@@ -2529,8 +2528,8 @@ export interface Source6 {
  */
 export interface NpcCollection {
   id: NpcCollectionId;
-  name: Label21;
-  canonical_name?: Label22;
+  name: Label20;
+  canonical_name?: Label21;
   enhances?: NpcCollectionId1;
   color?: CssColor5;
   icon?: SvgImageUrl7;
@@ -2555,8 +2554,8 @@ export interface NpcCollection {
  */
 export interface Npc {
   id: NpcId1;
-  name: Label23;
-  canonical_name?: Label24;
+  name: Label22;
+  canonical_name?: Label23;
   nature: NpcNature;
   rank: ChallengeRank;
   summary?: MarkdownString9;
@@ -2581,7 +2580,7 @@ export interface Npc {
  */
 export interface NpcVariant {
   id: NpcVariantId;
-  name: Label25;
+  name: Label24;
   nature: NpcNature;
   rank: ChallengeRank1;
   summary?: MarkdownString9;
@@ -2681,8 +2680,8 @@ export interface Source8 {
  */
 export interface Rarity {
   id: RarityId1;
-  name: Label26;
-  canonical_name?: Label27;
+  name: Label25;
+  canonical_name?: Label26;
   icon?: SvgImageUrl2;
   description: MarkdownString9;
   suggestions?: Suggestions;
@@ -2751,8 +2750,8 @@ export interface Source9 {
  */
 export interface DelveSite {
   id: DelveSiteId;
-  name: Label28;
-  canonical_name?: Label29;
+  name: Label27;
+  canonical_name?: Label28;
   icon?: SvgImageUrl2;
   rank: ChallengeRank2;
   description: MarkdownString9;
@@ -2887,7 +2886,7 @@ export interface Source10 {
  */
 export interface DelveSiteDenizen {
   id: DelveSiteDenizenId;
-  name?: Label25;
+  name?: Label24;
   min: number;
   max: number;
   frequency: DelveSiteDenizenFrequency;
@@ -2907,8 +2906,8 @@ export interface DelveSiteDenizen {
  */
 export interface DelveSiteDomain {
   id: DelveSiteDomainId1;
-  name: Label30;
-  canonical_name?: Label31;
+  name: Label29;
+  canonical_name?: Label30;
   icon?: SvgImageUrl2;
   summary: MarkdownString9;
   features: DelveSiteDomainFeatureRow[] &
@@ -3119,8 +3118,8 @@ export interface Source11 {
  */
 export interface DelveSiteTheme {
   id: DelveSiteThemeId1;
-  name: Label32;
-  canonical_name?: Label33;
+  name: Label31;
+  canonical_name?: Label32;
   icon?: SvgImageUrl2;
   summary: MarkdownString9;
   features: DelveSiteThemeFeatureRow[] &
@@ -3330,8 +3329,8 @@ export interface Source12 {
  */
 export interface Truth {
   id: TruthId;
-  name: Label34;
-  canonical_name?: Label35;
+  name: Label33;
+  canonical_name?: Label34;
   icon?: SvgImageUrl2;
   options: TruthOption[];
   suggestions?: Suggestions;
@@ -3581,7 +3580,7 @@ export interface ProgressTrackTypeInfo {
      */
     [k: string]: {};
   };
-  category: Label36;
+  category: Label35;
 }
 /**
  * A reference to the value of an asset control.
@@ -3663,7 +3662,7 @@ export interface ConditionMeterValueRef {
  * via the `definition` "CustomValue".
  */
 export interface CustomValue {
-  label: Label25;
+  label: Label24;
   /**
    * An arbitrary static integer value with a label.
    */
@@ -3711,7 +3710,7 @@ export interface OracleCollectionRenderingMultiTable {
  * via the `definition` "OracleCollectionTableColumn".
  */
 export interface OracleCollectionTableColumn {
-  label: Label38;
+  label: Label37;
   content_type: OracleTableColumnContentKey;
   color?: CssColor7;
   table_key: DictKey5;
@@ -3734,7 +3733,7 @@ export interface OracleCollectionRenderingTables {
  * via the `patternProperty` "^([a-z][a-z_]*)$".
  */
 export interface OracleTableColumn {
-  label: Label39;
+  label: Label38;
   content_type: OracleTableColumnContentKey;
   color?: CssColor8;
 }
@@ -3808,8 +3807,8 @@ export interface OracleTableRow1 {
  */
 export interface MoveActionRoll {
   id: MoveId1;
-  name: Label40;
-  canonical_name?: Label41;
+  name: Label39;
+  canonical_name?: Label40;
   /**
    * A move that makes an action roll.
    */
@@ -3971,8 +3970,8 @@ export interface TriggerActionRollConditionEnhancement {
  */
 export interface MoveNoRoll {
   id: MoveId3;
-  name: Label42;
-  canonical_name?: Label43;
+  name: Label41;
+  canonical_name?: Label42;
   /**
    * A move that makes no action rolls or progress rolls.
    */
@@ -4101,8 +4100,8 @@ export interface MoveOutcomes2 {
  */
 export interface MoveProgressRoll {
   id: MoveId5;
-  name: Label44;
-  canonical_name?: Label45;
+  name: Label43;
+  canonical_name?: Label44;
   /**
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
@@ -4210,7 +4209,7 @@ export interface ProgressTrackTypeInfo1 {
      */
     [k: string]: {};
   };
-  category: Label36;
+  category: Label35;
 }
 /**
  * An object that describes changes to a move. These changes should be applied recursively, altering only the specified properties; enhanced arrays should be concatencated with the original array value.
@@ -4262,8 +4261,8 @@ export interface TriggerProgressRollConditionEnhancement {
  */
 export interface MoveSpecialTrack {
   id: MoveId7;
-  name: Label46;
-  canonical_name?: Label47;
+  name: Label45;
+  canonical_name?: Label46;
   /**
    * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
    */
@@ -4459,7 +4458,7 @@ export interface TriggerSpecialTrack {
  */
 export interface AssetAbility1 {
   id: AssetAbilityId;
-  name?: Label14;
+  name?: Label13;
   /**
    * Is this asset ability enabled?
    */
@@ -4497,7 +4496,7 @@ export interface AssetAbility1 {
  */
 export interface AssetConditionMeter {
   id: AssetControlFieldId1;
-  label: Label48;
+  label: InputLabel;
   field_type: "condition_meter";
   /**
    * The minimum value of this meter.

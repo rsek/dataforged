@@ -14,7 +14,7 @@ public class AssetOptionFieldSelectValueChoiceConditionMeter extends AssetOption
     private ConditionMeterKey conditionMeter;
 
     @JsonProperty("label")
-    private Label label;
+    private InputLabel label;
 
     @JsonProperty("option_type")
     private AssetOptionFieldSelectValueChoiceConditionMeterOptionType optionType;
@@ -39,14 +39,14 @@ public class AssetOptionFieldSelectValueChoiceConditionMeter extends AssetOption
     /**
      * Getter for label.<p>
      */
-    public Label getLabel() {
+    public InputLabel getLabel() {
         return label;
     }
 
     /**
      * Setter for label.<p>
      */
-    public void setLabel(Label label) {
+    public void setLabel(InputLabel label) {
         this.label = label;
     }
 

@@ -342,11 +342,8 @@ pub struct AssetAbilityControlFieldCheckbox {
     #[serde(rename = "is_impact")]
     pub isImpact: bool,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// Is the box checked?
     #[serde(rename = "value")]
@@ -360,11 +357,8 @@ pub struct AssetAbilityControlFieldClock {
     #[serde(rename = "id")]
     pub id: AssetAbilityControlFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The size of the clock -- in other words, the maximum number of filled
     /// clock segments.
@@ -387,11 +381,8 @@ pub struct AssetAbilityControlFieldCounter {
     #[serde(rename = "id")]
     pub id: AssetAbilityControlFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "max")]
     pub max: i16,
@@ -425,11 +416,8 @@ pub struct AssetAbilityOptionFieldText {
     #[serde(rename = "id")]
     pub id: AssetAbilityOptionFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "value")]
     pub value: String,
@@ -480,11 +468,8 @@ pub struct AssetConditionMeterControlFieldCardFlip {
     #[serde(rename = "is_impact")]
     pub isImpact: bool,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// Is the card flipped over?
     #[serde(rename = "value")]
@@ -507,11 +492,8 @@ pub struct AssetConditionMeterControlFieldCheckbox {
     #[serde(rename = "is_impact")]
     pub isImpact: bool,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// Is the box checked?
     #[serde(rename = "value")]
@@ -555,11 +537,8 @@ pub struct AssetControlFieldCardFlip {
     #[serde(rename = "is_impact")]
     pub isImpact: bool,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// Is the card flipped over?
     #[serde(rename = "value")]
@@ -582,11 +561,8 @@ pub struct AssetControlFieldCheckbox {
     #[serde(rename = "is_impact")]
     pub isImpact: bool,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// Is the box checked?
     #[serde(rename = "value")]
@@ -620,11 +596,8 @@ pub struct AssetControlFieldConditionMeter {
     #[serde(rename = "id")]
     pub id: AssetControlFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The maximum value of this meter.
     #[serde(rename = "max")]
@@ -664,7 +637,7 @@ pub enum AssetControlFieldSelectEnhancementChoice {
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldSelectEnhancementChoiceOption {
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "enhance_asset")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -685,7 +658,7 @@ pub enum AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType {
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldSelectEnhancementChoiceOptionGroupChoice {
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "option_type")]
     pub optionType: AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType,
@@ -722,11 +695,8 @@ pub struct AssetControlFieldSelectEnhancement {
     #[serde(rename = "id")]
     pub id: AssetControlFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The key of the currently selected choice from the `choices` property, or
     /// `null` if none is selected.
@@ -829,7 +799,7 @@ pub enum AssetOptionFieldSelectEnhancementChoice {
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectEnhancementChoiceOption {
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "enhance_asset")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -850,7 +820,7 @@ pub enum AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType {
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice {
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "option_type")]
     pub optionType: AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType,
@@ -887,11 +857,8 @@ pub struct AssetOptionFieldSelectEnhancement {
     #[serde(rename = "id")]
     pub id: AssetOptionFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The key of the currently selected choice from the `choices` property, or
     /// `null` if none is selected.
@@ -941,7 +908,7 @@ pub struct AssetOptionFieldSelectValueChoiceAssetControl {
     pub control: DictKey,
 
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "option_type")]
     pub optionType: AssetOptionFieldSelectValueChoiceAssetControlOptionType,
@@ -960,7 +927,7 @@ pub struct AssetOptionFieldSelectValueChoiceAssetOption {
     pub assets: Vec<AssetIdWildcard>,
 
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The dictionary key of the asset option field.
     #[serde(rename = "option")]
@@ -984,7 +951,7 @@ pub struct AssetOptionFieldSelectValueChoiceAttachedAssetControl {
     pub control: DictKey,
 
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "option_type")]
     pub optionType: AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType,
@@ -1000,7 +967,7 @@ pub enum AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType {
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectValueChoiceAttachedAssetOption {
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The dictionary key of the asset option field.
     #[serde(rename = "option")]
@@ -1023,7 +990,7 @@ pub struct AssetOptionFieldSelectValueChoiceConditionMeter {
     pub conditionMeter: ConditionMeterKey,
 
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "option_type")]
     pub optionType: AssetOptionFieldSelectValueChoiceConditionMeterOptionType,
@@ -1039,7 +1006,7 @@ pub enum AssetOptionFieldSelectValueChoiceCustomOptionType {
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectValueChoiceCustom {
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "option_type")]
     pub optionType: AssetOptionFieldSelectValueChoiceCustomOptionType,
@@ -1058,7 +1025,7 @@ pub enum AssetOptionFieldSelectValueChoiceStatOptionType {
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldSelectValueChoiceStat {
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "option_type")]
     pub optionType: AssetOptionFieldSelectValueChoiceStatOptionType,
@@ -1077,11 +1044,8 @@ pub struct AssetOptionFieldSelectValue {
     #[serde(rename = "id")]
     pub id: AssetOptionFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The key of the currently selected choice from the `choices` property, or
     /// `null` if none is selected.
@@ -1096,11 +1060,8 @@ pub struct AssetOptionFieldText {
     #[serde(rename = "id")]
     pub id: AssetOptionFieldId,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     #[serde(rename = "value")]
     pub value: String,
@@ -1329,11 +1290,8 @@ pub struct ConditionMeterRule {
     #[serde(rename = "description")]
     pub description: MarkdownString,
 
-    /// A localized label for this input. In some contexts it may be undesirable
-    /// to render this text, but it should always be exposed to assistive
-    /// technology (e.g. with `aria-label` in HTML).
     #[serde(rename = "label")]
-    pub label: Label,
+    pub label: InputLabel,
 
     /// The maximum value of this meter.
     #[serde(rename = "max")]
@@ -1909,6 +1867,11 @@ pub type ImpactRuleCollectionId = String;
 
 /// A unique ID for an ImpactRule.
 pub type ImpactRuleId = String;
+
+/// A localized label for an input. In some contexts it may be undesirable to
+/// render this text, but it should always be exposed to assistive technology
+/// (e.g. with `aria-label` in HTML).
+pub type InputLabel = String;
 
 /// A localized plain text name or label.
 pub type Label = String;

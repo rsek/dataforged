@@ -871,6 +871,13 @@
 				}
 			}
 		},
+		"InputLabel": {
+			"title": "InputLabel",
+			"type": "string",
+			"description": "A localized label for an input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
+			"i18n": true,
+			"pattern": "^[^A-Z]+$"
+		},
 		"Label": {
 			"title": "Label",
 			"type": "string",
@@ -913,8 +920,7 @@
 			"required": ["label", "min", "max", "value", "shared", "description"],
 			"properties": {
 				"label": {
-					"$ref": "#/$defs/Label",
-					"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+					"$ref": "#/$defs/InputLabel"
 				},
 				"min": {
 					"type": "integer",
@@ -3514,8 +3520,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "The current number of filled clock segments.",
@@ -3562,8 +3567,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "The current value of this input.",
@@ -3616,8 +3620,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "Is the box checked?",
@@ -3684,8 +3687,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "The content of this text input, or `null` if it's empty",
@@ -3749,8 +3751,7 @@
 					"description": "The unique Datasworn ID for this item."
 				},
 				"label": {
-					"$ref": "#/$defs/Label",
-					"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML)."
+					"$ref": "#/$defs/InputLabel"
 				},
 				"field_type": {
 					"type": "string",
@@ -3847,8 +3848,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "Is the box checked?",
@@ -3900,8 +3900,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "Is the card flipped over?",
@@ -4002,8 +4001,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "The current value of this input.",
@@ -4042,7 +4040,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4096,7 +4094,7 @@
 																	"type": "object",
 																	"properties": {
 																		"label": {
-																			"$ref": "#/$defs/Label"
+																			"$ref": "#/$defs/InputLabel"
 																		},
 																		"option_type": {
 																			"const": "option",
@@ -4162,8 +4160,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "Is the box checked?",
@@ -4215,8 +4212,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "Is the card flipped over?",
@@ -4342,8 +4338,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "The current value of this input.",
@@ -4381,7 +4376,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4415,7 +4410,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4454,7 +4449,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4511,7 +4506,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4567,7 +4562,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4608,7 +4603,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4648,7 +4643,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4721,8 +4716,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "The current value of this input.",
@@ -4761,7 +4755,7 @@
 													"type": "object",
 													"properties": {
 														"label": {
-															"$ref": "#/$defs/Label"
+															"$ref": "#/$defs/InputLabel"
 														},
 														"option_type": {
 															"const": "option",
@@ -4815,7 +4809,7 @@
 																	"type": "object",
 																	"properties": {
 																		"label": {
-																			"$ref": "#/$defs/Label"
+																			"$ref": "#/$defs/InputLabel"
 																		},
 																		"option_type": {
 																			"const": "option",
@@ -4881,8 +4875,7 @@
 								"description": "The unique Datasworn ID for this item."
 							},
 							"label": {
-								"description": "A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).",
-								"$ref": "#/$defs/Label"
+								"$ref": "#/$defs/InputLabel"
 							},
 							"value": {
 								"description": "The content of this text input, or `null` if it's empty",

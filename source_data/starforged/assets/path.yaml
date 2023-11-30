@@ -238,10 +238,10 @@ assets:
         <<: *PathAsset
         options:
           one:
-            label: One
+            label: one
             field_type: text
           two:
-            label: Two
+            label: two
             field_type: text
           # TODO: work out a way to model the broken state here. it can't be a card flip, because there's two separate things to break
           # maybe an ability-specific disable toggle?
@@ -273,7 +273,7 @@ assets:
         <<: *PathAsset
         options:
           ideology:
-            label: Ideology
+            label: ideology
             field_type: text
         abilities:
           - text: |-
@@ -366,11 +366,11 @@ assets:
               You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
             options:
               name:
-                label: Name
+                label: name
                 field_type: text
             controls:
               oathbound:
-                label: Oathbound
+                label: oathbound
                 field_type: checkbox
                 value: false
             enhance_moves:
@@ -582,34 +582,34 @@ assets:
         <<: *PathAsset
         options:
           name:
-            label: Name
+            label: name
             field_type: text
           linked_stat:
-            label: Linked stat
+            label: linked stat
             field_type: select_value
             choices:
               edge:
-                label: Edge
+                label: edge
                 using: stat
                 stat: edge
                 option_type: option
               heart:
-                label: Heart
+                label: heart
                 using: stat
                 stat: heart
                 option_type: option
               iron:
-                label: Iron
+                label: iron
                 using: stat
                 stat: iron
                 option_type: option
               shadow:
-                label: Shadow
+                label: shadow
                 using: stat
                 stat: shadow
                 option_type: option
               wits:
-                label: Wits
+                label: wits
                 using: stat
                 stat: wits
                 option_type: option
@@ -903,7 +903,7 @@ assets:
               You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.
             controls:
               clock:
-                label: Notable foe or force tracks you down
+                label: notable foe or force tracks you down
                 field_type: clock
                 max: 4
                 value: 0
@@ -1014,7 +1014,7 @@ assets:
               Give your favorite gun a name. When you [Clash](id:starforged/moves/combat/clash) with it, add +1. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) or [Endure Stress](id:starforged/moves/suffer/endure_stress) while wielding it, add +1 and take +1 momentum on a hit.
             options:
               name:
-                label: Name
+                label: name
                 field_type: text
             enhance_moves:
               - enhances:
@@ -1300,13 +1300,13 @@ assets:
                       # time_gap
                       roll_options:
                         - using: custom
-                          label: Minutes
+                          label: minutes
                           value: 4
                         - using: custom
-                          label: Hours
+                          label: hours
                           value: 3
                         - using: custom
-                          label: Days
+                          label: days
                           value: 2
                 text: *LooperMove
                 outcomes:
@@ -2012,7 +2012,7 @@ assets:
         <<: *PathAsset
         options:
           last_of:
-            label: Last of
+            label: last of
             field_type: text
         abilities:
           - text: |-
@@ -2039,7 +2039,7 @@ assets:
               You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.
             options:
               relic:
-                label: Relic
+                label: relic
                 field_type: text
                 # position: ability_2_bottom
             enhance_moves:

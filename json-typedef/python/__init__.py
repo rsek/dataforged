@@ -551,13 +551,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
     classic) when its value is set to `true`?
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'bool'
     """
     Is the box checked?
@@ -571,7 +565,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -595,13 +589,7 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     max: 'int'
     """
     The size of the clock -- in other words, the maximum number of filled clock
@@ -624,7 +612,7 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
         return cls(
             "clock",
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
             _from_json_data(int, data.get("value")),
@@ -650,13 +638,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     max: 'int'
     min: 'int'
     """
@@ -674,7 +656,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
         return cls(
             "counter",
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
             _from_json_data(int, data.get("value")),
@@ -745,13 +727,7 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'str'
 
     @classmethod
@@ -759,7 +735,7 @@ class AssetAbilityOptionFieldText(AssetAbilityOptionField):
         return cls(
             "text",
             _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(str, data.get("value")),
         )
 
@@ -857,13 +833,7 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
     classic) when its value is set to `true`?
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'bool'
     """
     Is the card flipped over?
@@ -877,7 +847,7 @@ class AssetConditionMeterControlFieldCardFlip(AssetConditionMeterControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetConditionMeterControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -912,13 +882,7 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
     classic) when its value is set to `true`?
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'bool'
     """
     Is the box checked?
@@ -932,7 +896,7 @@ class AssetConditionMeterControlFieldCheckbox(AssetConditionMeterControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetConditionMeterControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -1002,13 +966,7 @@ class AssetControlFieldCardFlip(AssetControlField):
     classic) when its value is set to `true`?
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'bool'
     """
     Is the card flipped over?
@@ -1022,7 +980,7 @@ class AssetControlFieldCardFlip(AssetControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -1057,13 +1015,7 @@ class AssetControlFieldCheckbox(AssetControlField):
     classic) when its value is set to `true`?
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'bool'
     """
     Is the box checked?
@@ -1077,7 +1029,7 @@ class AssetControlFieldCheckbox(AssetControlField):
             _from_json_data(bool, data.get("disables_asset")),
             _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(bool, data.get("is_impact")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("value")),
         )
 
@@ -1139,13 +1091,7 @@ class AssetControlFieldConditionMeter(AssetControlField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     max: 'int'
     """
     The maximum value of this meter.
@@ -1178,7 +1124,7 @@ class AssetControlFieldConditionMeter(AssetControlField):
         return cls(
             "condition_meter",
             _from_json_data(AssetControlFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
             _from_json_data(int, data.get("value")),
@@ -1221,7 +1167,7 @@ class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnha
     Represents an option in a list of choices.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     enhance_asset: 'Optional[AssetEnhancement]'
     enhance_moves: 'Optional[List[MoveEnhancement]]'
 
@@ -1229,7 +1175,7 @@ class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnha
     def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOption':
         return cls(
             "option",
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
             _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
         )
@@ -1258,7 +1204,7 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
     Represents an option in a list of choices.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     option_type: 'AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType'
     enhance_asset: 'Optional[AssetEnhancement]'
     enhance_moves: 'Optional[List[MoveEnhancement]]'
@@ -1266,7 +1212,7 @@ class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOptionGroupChoice':
         return cls(
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data.get("option_type")),
             _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
             _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
@@ -1323,13 +1269,7 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'DictKey'
     """
     The key of the currently selected choice from the `choices` property, or
@@ -1343,7 +1283,7 @@ class AssetControlFieldSelectEnhancement(AssetControlField):
             "select_enhancement",
             _from_json_data(Dict[str, AssetControlFieldSelectEnhancementChoice], data.get("choices")),
             _from_json_data(AssetControlFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("value")),
         )
 
@@ -1557,7 +1497,7 @@ class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhanc
     Represents an option in a list of choices.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     enhance_asset: 'Optional[AssetEnhancement]'
     enhance_moves: 'Optional[List[MoveEnhancement]]'
 
@@ -1565,7 +1505,7 @@ class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhanc
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOption':
         return cls(
             "option",
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
             _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
         )
@@ -1594,7 +1534,7 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
     Represents an option in a list of choices.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     option_type: 'AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType'
     enhance_asset: 'Optional[AssetEnhancement]'
     enhance_moves: 'Optional[List[MoveEnhancement]]'
@@ -1602,7 +1542,7 @@ class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice':
         return cls(
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data.get("option_type")),
             _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
             _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
@@ -1659,13 +1599,7 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'DictKey'
     """
     The key of the currently selected choice from the `choices` property, or
@@ -1679,7 +1613,7 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
             "select_enhancement",
             _from_json_data(Dict[str, AssetOptionFieldSelectEnhancementChoice], data.get("choices")),
             _from_json_data(AssetOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("value")),
         )
 
@@ -1733,7 +1667,7 @@ class AssetOptionFieldSelectValueChoiceAssetControl(AssetOptionFieldSelectValueC
     The dictionary key of the asset control field.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     option_type: 'AssetOptionFieldSelectValueChoiceAssetControlOptionType'
 
     @classmethod
@@ -1742,7 +1676,7 @@ class AssetOptionFieldSelectValueChoiceAssetControl(AssetOptionFieldSelectValueC
             "asset_control",
             _from_json_data(List[AssetIDWildcard], data.get("assets")),
             _from_json_data(DictKey, data.get("control")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(AssetOptionFieldSelectValueChoiceAssetControlOptionType, data.get("option_type")),
         )
 
@@ -1770,7 +1704,7 @@ class AssetOptionFieldSelectValueChoiceAssetOption(AssetOptionFieldSelectValueCh
     """
 
     assets: 'List[AssetIDWildcard]'
-    label: 'Label'
+    label: 'InputLabel'
     option: 'DictKey'
     """
     The dictionary key of the asset option field.
@@ -1783,7 +1717,7 @@ class AssetOptionFieldSelectValueChoiceAssetOption(AssetOptionFieldSelectValueCh
         return cls(
             "asset_option",
             _from_json_data(List[AssetIDWildcard], data.get("assets")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("option")),
             _from_json_data(AssetOptionFieldSelectValueChoiceAssetOptionOptionType, data.get("option_type")),
         )
@@ -1816,7 +1750,7 @@ class AssetOptionFieldSelectValueChoiceAttachedAssetControl(AssetOptionFieldSele
     The dictionary key of the asset control field.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     option_type: 'AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType'
 
     @classmethod
@@ -1824,7 +1758,7 @@ class AssetOptionFieldSelectValueChoiceAttachedAssetControl(AssetOptionFieldSele
         return cls(
             "attached_asset_control",
             _from_json_data(DictKey, data.get("control")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType, data.get("option_type")),
         )
 
@@ -1850,7 +1784,7 @@ class AssetOptionFieldSelectValueChoiceAttachedAssetOption(AssetOptionFieldSelec
     Represents an option in a list of choices.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     option: 'DictKey'
     """
     The dictionary key of the asset option field.
@@ -1862,7 +1796,7 @@ class AssetOptionFieldSelectValueChoiceAttachedAssetOption(AssetOptionFieldSelec
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAttachedAssetOption':
         return cls(
             "attached_asset_option",
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("option")),
             _from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType, data.get("option_type")),
         )
@@ -1890,7 +1824,7 @@ class AssetOptionFieldSelectValueChoiceConditionMeter(AssetOptionFieldSelectValu
     """
 
     condition_meter: 'ConditionMeterKey'
-    label: 'Label'
+    label: 'InputLabel'
     option_type: 'AssetOptionFieldSelectValueChoiceConditionMeterOptionType'
 
     @classmethod
@@ -1898,7 +1832,7 @@ class AssetOptionFieldSelectValueChoiceConditionMeter(AssetOptionFieldSelectValu
         return cls(
             "condition_meter",
             _from_json_data(ConditionMeterKey, data.get("condition_meter")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(AssetOptionFieldSelectValueChoiceConditionMeterOptionType, data.get("option_type")),
         )
 
@@ -1924,7 +1858,7 @@ class AssetOptionFieldSelectValueChoiceCustom(AssetOptionFieldSelectValueChoice)
     Represents an option in a list of choices.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     option_type: 'AssetOptionFieldSelectValueChoiceCustomOptionType'
     value: 'int'
 
@@ -1932,7 +1866,7 @@ class AssetOptionFieldSelectValueChoiceCustom(AssetOptionFieldSelectValueChoice)
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceCustom':
         return cls(
             "custom",
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(AssetOptionFieldSelectValueChoiceCustomOptionType, data.get("option_type")),
             _from_json_data(int, data.get("value")),
         )
@@ -1959,7 +1893,7 @@ class AssetOptionFieldSelectValueChoiceStat(AssetOptionFieldSelectValueChoice):
     Represents an option in a list of choices.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     option_type: 'AssetOptionFieldSelectValueChoiceStatOptionType'
     stat: 'StatKey'
 
@@ -1967,7 +1901,7 @@ class AssetOptionFieldSelectValueChoiceStat(AssetOptionFieldSelectValueChoice):
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceStat':
         return cls(
             "stat",
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(AssetOptionFieldSelectValueChoiceStatOptionType, data.get("option_type")),
             _from_json_data(StatKey, data.get("stat")),
         )
@@ -1991,13 +1925,7 @@ class AssetOptionFieldSelectValue(AssetOptionField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'DictKey'
     """
     The key of the currently selected choice from the `choices` property, or
@@ -2011,7 +1939,7 @@ class AssetOptionFieldSelectValue(AssetOptionField):
             "select_value",
             _from_json_data(Dict[str, AssetOptionFieldSelectValueChoice], data.get("choices")),
             _from_json_data(AssetOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("value")),
         )
 
@@ -2034,13 +1962,7 @@ class AssetOptionFieldText(AssetOptionField):
     The unique Datasworn ID for this item.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     value: 'str'
 
     @classmethod
@@ -2048,7 +1970,7 @@ class AssetOptionFieldText(AssetOptionField):
         return cls(
             "text",
             _from_json_data(AssetOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(str, data.get("value")),
         )
 
@@ -2494,13 +2416,7 @@ class ConditionMeterRule:
     A description of this condition meter.
     """
 
-    label: 'Label'
-    """
-    A localized label for this input. In some contexts it may be undesirable to
-    render this text, but it should always be exposed to assistive technology
-    (e.g. with `aria-label` in HTML).
-    """
-
+    label: 'InputLabel'
     max: 'int'
     """
     The maximum value of this meter.
@@ -2526,7 +2442,7 @@ class ConditionMeterRule:
     def from_json_data(cls, data: Any) -> 'ConditionMeterRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
             _from_json_data(bool, data.get("shared")),
@@ -3560,6 +3476,23 @@ class ImpactRuleID:
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'ImpactRuleID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class InputLabel:
+    """
+    A localized label for an input. In some contexts it may be undesirable to
+    render this text, but it should always be exposed to assistive technology
+    (e.g. with `aria-label` in HTML).
+    """
+
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'InputLabel':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:

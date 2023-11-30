@@ -20,7 +20,7 @@ public class AssetControlFieldCheckbox extends AssetControlField {
     private Boolean isImpact;
 
     @JsonProperty("label")
-    private Label label;
+    private InputLabel label;
 
     @JsonProperty("value")
     private Boolean value;
@@ -80,21 +80,15 @@ public class AssetControlFieldCheckbox extends AssetControlField {
 
     /**
      * Getter for label.<p>
-     * A localized label for this input. In some contexts it may be undesirable
-     * to render this text, but it should always be exposed to assistive
-     * technology (e.g. with `aria-label` in HTML).
      */
-    public Label getLabel() {
+    public InputLabel getLabel() {
         return label;
     }
 
     /**
      * Setter for label.<p>
-     * A localized label for this input. In some contexts it may be undesirable
-     * to render this text, but it should always be exposed to assistive
-     * technology (e.g. with `aria-label` in HTML).
      */
-    public void setLabel(Label label) {
+    public void setLabel(InputLabel label) {
         this.label = label;
     }
 

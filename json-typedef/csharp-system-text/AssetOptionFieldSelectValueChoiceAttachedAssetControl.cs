@@ -19,7 +19,7 @@ namespace Datasworn
         public DictKey Control { get; set; }
 
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         [JsonPropertyName("option_type")]
         public AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType OptionType { get; set; }

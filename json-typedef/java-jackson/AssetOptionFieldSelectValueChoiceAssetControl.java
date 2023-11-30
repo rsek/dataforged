@@ -18,7 +18,7 @@ public class AssetOptionFieldSelectValueChoiceAssetControl extends AssetOptionFi
     private DictKey control;
 
     @JsonProperty("label")
-    private Label label;
+    private InputLabel label;
 
     @JsonProperty("option_type")
     private AssetOptionFieldSelectValueChoiceAssetControlOptionType optionType;
@@ -59,14 +59,14 @@ public class AssetOptionFieldSelectValueChoiceAssetControl extends AssetOptionFi
     /**
      * Getter for label.<p>
      */
-    public Label getLabel() {
+    public InputLabel getLabel() {
         return label;
     }
 
     /**
      * Setter for label.<p>
      */
-    public void setLabel(Label label) {
+    public void setLabel(InputLabel label) {
         this.label = label;
     }
 

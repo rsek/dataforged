@@ -11,7 +11,7 @@ namespace Datasworn
     public class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice
     {
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         [JsonPropertyName("option_type")]
         public AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType OptionType { get; set; }

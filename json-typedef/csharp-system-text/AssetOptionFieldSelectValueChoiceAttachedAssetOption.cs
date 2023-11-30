@@ -13,7 +13,7 @@ namespace Datasworn
         public string Using { get => "attached_asset_option"; }
 
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
 
         /// <summary>
         /// The dictionary key of the asset option field.

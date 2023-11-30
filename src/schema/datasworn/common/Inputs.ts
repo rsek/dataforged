@@ -24,10 +24,6 @@ import * as Localize from './Localize.js'
 import * as Utils from '../Utils.js'
 import * as Generic from '../Generic.js'
 
-const InputName = Type.Ref<typeof Localize.Label>('Label', {
-	description:
-		'A localized label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).'
-})
 
 /**
  * @abstract
@@ -38,7 +34,7 @@ export function Input<Value extends TSchema>(
 ) {
 	return Type.Object(
 		{
-			label: InputName,
+			label: Type.Ref(Localize.InputLabel),
 			value: {
 				description: 'The current value of this input.',
 				...value
@@ -215,7 +211,7 @@ export type TTextInput = typeof TextInput
  * @abstract
  */
 const SelectOptionBase = Type.Object({
-	label: Type.Ref(Localize.Label),
+	label: Type.Ref(Localize.InputLabel),
 	option_type: Type.Literal('option')
 })
 

@@ -59,7 +59,6 @@ const transforms: SchemaTransforms = {
 	Object: <T extends TObject>(schema: T, options: SchemaOptions) => {
 		const optionalProps = keysWithDefaults(schema)
 
-		if (schema.$id === 'OracleTableRoll') console.log(optionalProps)
 
 		for (const [key, property] of Object.entries<any>(schema.properties))
 			if (property[ComputedPropertyBrand] || property[SourceOptionalBrand])
@@ -75,7 +74,6 @@ const transforms: SchemaTransforms = {
 			'required'
 		)
 
-		if (schema.$id === 'OracleTableRoll') console.log(nuOptions)
 
 		const result = TypeClone.Type(base, nuOptions) as T // defaults arent part of the type data, so it's close enough
 

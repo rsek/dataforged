@@ -316,10 +316,7 @@ type AssetAbilityControlFieldCheckbox struct {
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// Is the box checked?
 	Value bool `json:"value"`
@@ -330,10 +327,7 @@ type AssetAbilityControlFieldClock struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The size of the clock -- in other words, the maximum number of filled clock
 	// segments.
@@ -351,10 +345,7 @@ type AssetAbilityControlFieldCounter struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityControlFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	Max int16 `json:"max"`
 
@@ -413,10 +404,7 @@ type AssetAbilityOptionFieldText struct {
 	// The unique Datasworn ID for this item.
 	ID AssetAbilityOptionFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	Value string `json:"value"`
 }
@@ -492,10 +480,7 @@ type AssetConditionMeterControlFieldCardFlip struct {
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// Is the card flipped over?
 	Value bool `json:"value"`
@@ -513,10 +498,7 @@ type AssetConditionMeterControlFieldCheckbox struct {
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// Is the box checked?
 	Value bool `json:"value"`
@@ -594,10 +576,7 @@ type AssetControlFieldCardFlip struct {
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// Is the card flipped over?
 	Value bool `json:"value"`
@@ -615,10 +594,7 @@ type AssetControlFieldCheckbox struct {
 	// classic) when its value is set to `true`?
 	IsImpact bool `json:"is_impact"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// Is the box checked?
 	Value bool `json:"value"`
@@ -644,10 +620,7 @@ type AssetControlFieldConditionMeter struct {
 	// The unique Datasworn ID for this item.
 	ID AssetControlFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The maximum value of this meter.
 	Max int8 `json:"max"`
@@ -711,7 +684,7 @@ func (v *AssetControlFieldSelectEnhancementChoice) UnmarshalJSON(b []byte) error
 
 // Represents an option in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOption struct {
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
 
@@ -726,7 +699,7 @@ const (
 
 // Represents an option in a list of choices.
 type AssetControlFieldSelectEnhancementChoiceOptionGroupChoice struct {
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	OptionType AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
@@ -752,10 +725,7 @@ type AssetControlFieldSelectEnhancement struct {
 	// The unique Datasworn ID for this item.
 	ID AssetControlFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The key of the currently selected choice from the `choices` property, or
 	// `null` if none is selected.
@@ -940,7 +910,7 @@ func (v *AssetOptionFieldSelectEnhancementChoice) UnmarshalJSON(b []byte) error 
 
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOption struct {
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	EnhanceAsset *AssetEnhancement `json:"enhance_asset,omitempty"`
 
@@ -955,7 +925,7 @@ const (
 
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice struct {
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	OptionType AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType `json:"option_type"`
 
@@ -981,10 +951,7 @@ type AssetOptionFieldSelectEnhancement struct {
 	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The key of the currently selected choice from the `choices` property, or
 	// `null` if none is selected.
@@ -1077,7 +1044,7 @@ type AssetOptionFieldSelectValueChoiceAssetControl struct {
 	// The dictionary key of the asset control field.
 	Control DictKey `json:"control"`
 
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	OptionType AssetOptionFieldSelectValueChoiceAssetControlOptionType `json:"option_type"`
 }
@@ -1092,7 +1059,7 @@ const (
 type AssetOptionFieldSelectValueChoiceAssetOption struct {
 	Assets []AssetIDWildcard `json:"assets"`
 
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The dictionary key of the asset option field.
 	Option DictKey `json:"option"`
@@ -1111,7 +1078,7 @@ type AssetOptionFieldSelectValueChoiceAttachedAssetControl struct {
 	// The dictionary key of the asset control field.
 	Control DictKey `json:"control"`
 
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	OptionType AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType `json:"option_type"`
 }
@@ -1124,7 +1091,7 @@ const (
 
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectValueChoiceAttachedAssetOption struct {
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The dictionary key of the asset option field.
 	Option DictKey `json:"option"`
@@ -1142,7 +1109,7 @@ const (
 type AssetOptionFieldSelectValueChoiceConditionMeter struct {
 	ConditionMeter ConditionMeterKey `json:"condition_meter"`
 
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	OptionType AssetOptionFieldSelectValueChoiceConditionMeterOptionType `json:"option_type"`
 }
@@ -1155,7 +1122,7 @@ const (
 
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectValueChoiceCustom struct {
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	OptionType AssetOptionFieldSelectValueChoiceCustomOptionType `json:"option_type"`
 
@@ -1170,7 +1137,7 @@ const (
 
 // Represents an option in a list of choices.
 type AssetOptionFieldSelectValueChoiceStat struct {
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	OptionType AssetOptionFieldSelectValueChoiceStatOptionType `json:"option_type"`
 
@@ -1184,10 +1151,7 @@ type AssetOptionFieldSelectValue struct {
 	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The key of the currently selected choice from the `choices` property, or
 	// `null` if none is selected.
@@ -1199,10 +1163,7 @@ type AssetOptionFieldText struct {
 	// The unique Datasworn ID for this item.
 	ID AssetOptionFieldID `json:"id"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	Value string `json:"value"`
 }
@@ -1360,10 +1321,7 @@ type ConditionMeterRule struct {
 	// A description of this condition meter.
 	Description MarkdownString `json:"description"`
 
-	// A localized label for this input. In some contexts it may be undesirable to
-	// render this text, but it should always be exposed to assistive technology
-	// (e.g. with `aria-label` in HTML).
-	Label Label `json:"label"`
+	Label InputLabel `json:"label"`
 
 	// The maximum value of this meter.
 	Max int8 `json:"max"`
@@ -1753,6 +1711,11 @@ type ImpactRuleCollectionID = string
 
 // A unique ID for an ImpactRule.
 type ImpactRuleID = string
+
+// A localized label for an input. In some contexts it may be undesirable to
+// render this text, but it should always be exposed to assistive technology
+// (e.g. with `aria-label` in HTML).
+type InputLabel = string
 
 // A localized plain text name or label.
 type Label = string

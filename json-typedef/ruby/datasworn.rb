@@ -357,7 +357,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -385,7 +385,7 @@ module Datasworn
       out = AssetAbilityControlFieldClock.new
       out.field_type = "clock"
       out.id = Datasworn::from_json_data(AssetAbilityControlFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
@@ -415,7 +415,7 @@ module Datasworn
       out = AssetAbilityControlFieldCounter.new
       out.field_type = "counter"
       out.id = Datasworn::from_json_data(AssetAbilityControlFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
@@ -483,7 +483,7 @@ module Datasworn
       out = AssetAbilityOptionFieldText.new
       out.field_type = "text"
       out.id = Datasworn::from_json_data(AssetAbilityOptionFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(String, data["value"])
       out
     end
@@ -563,7 +563,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetConditionMeterControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -593,7 +593,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetConditionMeterControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -653,7 +653,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -683,7 +683,7 @@ module Datasworn
       out.disables_asset = Datasworn::from_json_data(TrueClass, data["disables_asset"])
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
       out.is_impact = Datasworn::from_json_data(TrueClass, data["is_impact"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(TrueClass, data["value"])
       out
     end
@@ -742,7 +742,7 @@ module Datasworn
       out = AssetControlFieldConditionMeter.new
       out.field_type = "condition_meter"
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
@@ -784,7 +784,7 @@ module Datasworn
     def self.from_json_data(data)
       out = AssetControlFieldSelectEnhancementChoiceOption.new
       out.option_type = "option"
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
       out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
       out
@@ -830,7 +830,7 @@ module Datasworn
 
     def self.from_json_data(data)
       out = AssetControlFieldSelectEnhancementChoiceOptionGroupChoice.new
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option_type = Datasworn::from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data["option_type"])
       out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
       out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
@@ -882,7 +882,7 @@ module Datasworn
       out.field_type = "select_enhancement"
       out.choices = Datasworn::from_json_data(Hash[String, AssetControlFieldSelectEnhancementChoice], data["choices"])
       out.id = Datasworn::from_json_data(AssetControlFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
       out
     end
@@ -1066,7 +1066,7 @@ module Datasworn
     def self.from_json_data(data)
       out = AssetOptionFieldSelectEnhancementChoiceOption.new
       out.option_type = "option"
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
       out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
       out
@@ -1112,7 +1112,7 @@ module Datasworn
 
     def self.from_json_data(data)
       out = AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice.new
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data["option_type"])
       out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
       out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
@@ -1164,7 +1164,7 @@ module Datasworn
       out.field_type = "select_enhancement"
       out.choices = Datasworn::from_json_data(Hash[String, AssetOptionFieldSelectEnhancementChoice], data["choices"])
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
       out
     end
@@ -1229,7 +1229,7 @@ module Datasworn
       out.using = "asset_control"
       out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
       out.control = Datasworn::from_json_data(DictKey, data["control"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAssetControlOptionType, data["option_type"])
       out
     end
@@ -1277,7 +1277,7 @@ module Datasworn
       out = AssetOptionFieldSelectValueChoiceAssetOption.new
       out.using = "asset_option"
       out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option = Datasworn::from_json_data(DictKey, data["option"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAssetOptionOptionType, data["option_type"])
       out
@@ -1325,7 +1325,7 @@ module Datasworn
       out = AssetOptionFieldSelectValueChoiceAttachedAssetControl.new
       out.using = "attached_asset_control"
       out.control = Datasworn::from_json_data(DictKey, data["control"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType, data["option_type"])
       out
     end
@@ -1370,7 +1370,7 @@ module Datasworn
     def self.from_json_data(data)
       out = AssetOptionFieldSelectValueChoiceAttachedAssetOption.new
       out.using = "attached_asset_option"
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option = Datasworn::from_json_data(DictKey, data["option"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType, data["option_type"])
       out
@@ -1417,7 +1417,7 @@ module Datasworn
       out = AssetOptionFieldSelectValueChoiceConditionMeter.new
       out.using = "condition_meter"
       out.condition_meter = Datasworn::from_json_data(ConditionMeterKey, data["condition_meter"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceConditionMeterOptionType, data["option_type"])
       out
     end
@@ -1462,7 +1462,7 @@ module Datasworn
     def self.from_json_data(data)
       out = AssetOptionFieldSelectValueChoiceCustom.new
       out.using = "custom"
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceCustomOptionType, data["option_type"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
       out
@@ -1508,7 +1508,7 @@ module Datasworn
     def self.from_json_data(data)
       out = AssetOptionFieldSelectValueChoiceStat.new
       out.using = "stat"
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceStatOptionType, data["option_type"])
       out.stat = Datasworn::from_json_data(StatKey, data["stat"])
       out
@@ -1535,7 +1535,7 @@ module Datasworn
       out.field_type = "select_value"
       out.choices = Datasworn::from_json_data(Hash[String, AssetOptionFieldSelectValueChoice], data["choices"])
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
       out
     end
@@ -1560,7 +1560,7 @@ module Datasworn
       out = AssetOptionFieldText.new
       out.field_type = "text"
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(String, data["value"])
       out
     end
@@ -1929,10 +1929,6 @@ module Datasworn
   class ConditionMeterRule
     # A description of this condition meter.
     attr_accessor :description
-
-    # A localized label for this input. In some contexts it may be undesirable
-    # to render this text, but it should always be exposed to assistive
-    # technology (e.g. with `aria-label` in HTML).
     attr_accessor :label
 
     # The maximum value of this meter.
@@ -1950,7 +1946,7 @@ module Datasworn
     def self.from_json_data(data)
       out = ConditionMeterRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.max = Datasworn::from_json_data(Integer, data["max"])
       out.min = Datasworn::from_json_data(Integer, data["min"])
       out.shared = Datasworn::from_json_data(TrueClass, data["shared"])
@@ -2808,6 +2804,23 @@ module Datasworn
 
     def self.from_json_data(data)
       out = ImpactRuleID.new
+      out.value = Datasworn.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Datasworn.to_json_data(value)
+    end
+  end
+
+  # A localized label for an input. In some contexts it may be undesirable to
+  # render this text, but it should always be exposed to assistive technology
+  # (e.g. with `aria-label` in HTML).
+  class InputLabel
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = InputLabel.new
       out.value = Datasworn.from_json_data(String, data)
       out
     end

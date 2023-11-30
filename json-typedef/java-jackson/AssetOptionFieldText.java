@@ -14,7 +14,7 @@ public class AssetOptionFieldText extends AssetOptionField {
     private AssetOptionFieldId id;
 
     @JsonProperty("label")
-    private Label label;
+    private InputLabel label;
 
     @JsonProperty("value")
     private String value;
@@ -40,21 +40,15 @@ public class AssetOptionFieldText extends AssetOptionField {
 
     /**
      * Getter for label.<p>
-     * A localized label for this input. In some contexts it may be undesirable
-     * to render this text, but it should always be exposed to assistive
-     * technology (e.g. with `aria-label` in HTML).
      */
-    public Label getLabel() {
+    public InputLabel getLabel() {
         return label;
     }
 
     /**
      * Setter for label.<p>
-     * A localized label for this input. In some contexts it may be undesirable
-     * to render this text, but it should always be exposed to assistive
-     * technology (e.g. with `aria-label` in HTML).
      */
-    public void setLabel(Label label) {
+    public void setLabel(InputLabel label) {
         this.label = label;
     }
 
