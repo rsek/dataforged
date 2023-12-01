@@ -1,14 +1,17 @@
 import fs from 'fs-extra'
 
 import path from 'path'
-import { Datasworn, DataswornSource } from '../../schema/datasworn/Root.js'
+import {
+	DataswornRoot,
+	DataswornSourceRoot
+} from '../../schema/datasworn/Root.js'
 import { ROOT_TYPES_OUT } from '../const.js'
 import { extractDefs } from './schemaToTsDeclaration.js'
 import { writeCode } from '../utils/readWrite.js'
 
 const rootSchemas = {
-	Datasworn,
-	DataswornSource
+	Datasworn: DataswornRoot,
+	DataswornSource: DataswornSourceRoot
 }
 
 await fs.emptyDir(ROOT_TYPES_OUT)

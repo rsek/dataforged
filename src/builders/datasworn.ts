@@ -8,29 +8,33 @@ import { Rarity } from './rarities.js'
 import { Truth } from './truths.js'
 import { NpcCollection } from './npcs.js'
 import { Atlas } from './atlas.js'
-import { type In, type Out } from '../types/index.js'
 import { VERSION } from '../scripts/const.js'
+import type { Datasworn, DataswornSource } from '../types/index.js'
 
-export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
+export const RulesPackage = sourcedTransformer<
+	DataswornSource.RulesPackage,
+	Datasworn.RulesPackage,
+	null
+>({
 	datasworn_version: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
 		return VERSION
 	},
 	rules: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
 		return data.rules
 	},
 	oracles: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
@@ -39,32 +43,32 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		)
 	},
 	assets: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
 		return mapValues(data.assets, (v, k) => transform(v, k, data, AssetType))
 	},
 	moves: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
 		return mapValues(data.moves, (v, k) => transform(v, k, data, MoveCategory))
 	},
 	npcs: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
 		return mapValues(data.npcs, (v, k) => transform(v, k, data, NpcCollection))
 	},
 	truths: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
@@ -74,16 +78,16 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 	},
 
 	atlas: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
 		return mapValues(data.atlas, (v, k) => transform(v, k, data, Atlas))
 	},
 	rarities: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
@@ -92,8 +96,8 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		)
 	},
 	delve_sites: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
@@ -102,8 +106,8 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		)
 	},
 	site_themes: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {
@@ -112,8 +116,8 @@ export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
 		)
 	},
 	site_domains: function (
-		this: In.Datasworn,
-		data: In.Datasworn,
+		this: DataswornSource.RulesPackage,
+		data: DataswornSource.RulesPackage,
 		key: string | number,
 		parent: null
 	) {

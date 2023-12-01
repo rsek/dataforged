@@ -29,7 +29,7 @@ interface SchemaOptions {
 const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'Datasworn',
-		rootSchema: Schema.Datasworn,
+		rootSchema: Schema.DataswornRoot,
 		paths: [CONST.SCHEMA_OUT],
 		messages: {
 			writeStart: '✏️  Writing schema for Datasworn',
@@ -38,7 +38,7 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'DataswornSource',
-		rootSchema: Schema.DataswornSource,
+		rootSchema: Schema.DataswornSourceRoot,
 		paths: [CONST.SCHEMA_IN],
 		messages: {
 			writeStart: '✏️  Writing schema for DataswornSource',
@@ -49,7 +49,7 @@ const schemaOptions: SchemaOptions[] = [
 
 const prettierOptions = await getPrettierOptions(CONST.SCHEMA_OUT)
 
-const metadataKeys = ['tsType']
+const metadataKeys = []
 
 function replacer(k: string, v: unknown) {
 	if (metadataKeys.includes(k)) return undefined

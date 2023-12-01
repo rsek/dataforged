@@ -1,26 +1,24 @@
 import {
 	sourcedTransformer,
 	type Transformer,
-	type SourceHaver,
 	transform
 } from './transformer.js'
+import { type SourcedNode } from '../schema/datasworn/generic/SourcedNode.js'
 import { trackID } from './id-tracker.js'
 import { cloneDeep } from 'lodash-es'
-import type * as In from '../types/DataswornSource.js'
-import type * as Out from '../types/Datasworn.js'
-
+import type { Datasworn, DataswornSource } from '../types/index.js'
 
 type FeatureOrDangerData =
-	| In.DelveSiteThemeDangerRow
-	| In.DelveSiteThemeFeatureRow
-	| In.DelveSiteDomainDangerRow
-	| In.DelveSiteDomainFeatureRow
+	| DataswornSource.DelveSiteThemeDangerRow
+	| DataswornSource.DelveSiteThemeFeatureRow
+	| DataswornSource.DelveSiteDomainDangerRow
+	| DataswornSource.DelveSiteDomainFeatureRow
 
 type FeatureOrDanger =
-	| Out.DelveSiteThemeDangerRow
-	| Out.DelveSiteThemeFeatureRow
-	| Out.DelveSiteDomainDangerRow
-	| Out.DelveSiteDomainFeatureRow
+	| Datasworn.DelveSiteThemeDangerRow
+	| Datasworn.DelveSiteThemeFeatureRow
+	| Datasworn.DelveSiteDomainDangerRow
+	| Datasworn.DelveSiteDomainFeatureRow
 
 interface FeatureOrDangerMap
 	extends Record<
@@ -28,12 +26,12 @@ interface FeatureOrDangerMap
 		Record<DelveSiteCardRowType, FeatureOrDanger>
 	> {
 	theme: {
-		feature: Out.DelveSiteThemeFeatureRow
-		danger: Out.DelveSiteThemeDangerRow
+		feature: Datasworn.DelveSiteThemeFeatureRow
+		danger: Datasworn.DelveSiteThemeDangerRow
 	}
 	domain: {
-		feature: Out.DelveSiteDomainFeatureRow
-		danger: Out.DelveSiteDomainDangerRow
+		feature: Datasworn.DelveSiteDomainFeatureRow
+		danger: Datasworn.DelveSiteDomainDangerRow
 	}
 }
 
@@ -57,72 +55,75 @@ function featureOrDanger<TCard extends keyof FeatureOrDangerMap>(
 }
 
 export const DelveSiteTheme = sourcedTransformer<
-	In.DelveSiteTheme,
-	Out.DelveSiteTheme
+	DataswornSource.DelveSiteTheme,
+	Datasworn.DelveSiteTheme
 >({
 	features: function (
-		this: SourceHaver,
-		data: In.DelveSiteTheme,
+		this: SourcedNode,
+		data: DataswornSource.DelveSiteTheme,
 		key: string | number,
-		parent: SourceHaver
+		parent: SourcedNode
 	) {
 		return data.features.map((row) =>
 			featureOrDanger(row, 'feature', this.id)
-		) as Out.DelveSiteTheme['features']
+		) as Datasworn.DelveSiteTheme['features']
 	},
 	dangers: function (
-		this: SourceHaver,
-		data: In.DelveSiteTheme,
+		this: SourcedNode,
+		data: DataswornSource.DelveSiteTheme,
 		key: string | number,
-		parent: SourceHaver
+		parent: SourcedNode
 	) {
 		return data.dangers.map((row) =>
 			featureOrDanger(row, 'danger', this.id)
-		) as Out.DelveSiteTheme['dangers']
+		) as Datasworn.DelveSiteTheme['dangers']
 	}
 })
 export const DelveSiteDomain = sourcedTransformer<
-	In.DelveSiteDomain,
-	Out.DelveSiteDomain
+	DataswornSource.DelveSiteDomain,
+	Datasworn.DelveSiteDomain
 >({
 	features: function (
-		this: SourceHaver,
-		data: In.DelveSiteDomain,
+		this: SourcedNode,
+		data: DataswornSource.DelveSiteDomain,
 		key: string | number,
-		parent: SourceHaver
+		parent: SourcedNode
 	) {
 		return data.features.map((row) =>
 			featureOrDanger(row, 'feature', this.id)
-		) as Out.DelveSiteDomain['features']
+		) as Datasworn.DelveSiteDomain['features']
 	},
 	dangers: function (
-		this: SourceHaver,
-		data: In.DelveSiteDomain,
+		this: SourcedNode,
+		data: DataswornSource.DelveSiteDomain,
 		key: string | number,
-		parent: SourceHaver
+		parent: SourcedNode
 	) {
 		return data.dangers.map((row) =>
 			featureOrDanger(row, 'danger', this.id)
-		) as Out.DelveSiteDomain['dangers']
+		) as Datasworn.DelveSiteDomain['dangers']
 	}
 })
 
-export const DelveSite = sourcedTransformer<In.DelveSite, Out.DelveSite>({
+export const DelveSite = sourcedTransformer<
+	DataswornSource.DelveSite,
+	Datasworn.DelveSite
+>({
 	denizens(data, key, parent) {
 		return data.denizens.map((row, index) =>
 			transform(row, index, this, DelveSiteDenizen)
-		) as Out.DelveSite['denizens']
+		) as Datasworn.DelveSite['denizens']
 	}
 })
 
 export const DelveSiteDenizen: Transformer<
-	In.DelveSiteDenizen,
-	Out.DelveSiteDenizen
+	DataswornSource.DelveSiteDenizen,
+	Datasworn.DelveSiteDenizen
 > = {
 	id: function (
-		data: In.DelveSiteDenizen,
+		data: DataswornSource.DelveSiteDenizen,
 		key: string | number,
-		parent: SourceHaver
+		parent: SourcedNode
 	): string {
 		return trackID(`${parent.id}/denizens/${data.min}-${data.max}`)
 	}

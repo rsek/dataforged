@@ -23,5 +23,5 @@ export async function loadRulesetFile(filePath: string, ajv: typeof AJV) {
 		throw new Error(`Source data in ${filePath} is invalid`)
 	}
 
-	return sourceData as In.RulesPackage
+	return sourceData as DataswornSource.RulesPackage
 }

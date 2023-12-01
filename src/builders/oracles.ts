@@ -2,22 +2,27 @@ import { trackID } from './id-tracker.js'
 import {
 	transform,
 	sourcedTransformer,
-	type SourceHaver,
 	type Transformer,
 	recursiveCollectionTransformer
 } from './transformer.js'
-import type * as SchemaIn from '../types/DataswornSource.js'
-import type * as SchemaOut from '../types/Datasworn.js'
+import { type SourcedNode } from '../schema/datasworn/generic/SourcedNode.js'
+
 import { cloneDeep, merge } from 'lodash-es'
+import type { Datasworn, DataswornSource } from '../types/index.js'
 
 export const OracleTableRow: Transformer<
-	SchemaIn.OracleTableRow,
-	SchemaOut.OracleTableRow
+	DataswornSource.OracleTableRow,
+	Datasworn.OracleTableRow,
+	Datasworn.OracleTable
 > = {
 	rolls(data, key, parent) {
-		return data.rolls as SchemaOut.OracleTableRoll[]
+		return data.rolls as Datasworn.OracleTableRoll[]
 	},
-	id(data: SchemaIn.OracleTableRow, key: string | number, parent: SourceHaver) {
+	id(
+		data: DataswornSource.OracleTableRow,
+		key: string | number,
+		parent: SourcedNode
+	) {
 		// if the row has a valid range, use that instead of the index
 		if (data.max != null && data.min != null) key = `${data.min}-${data.max}`
 		const id = `${parent.id}/${key}`
@@ -27,15 +32,16 @@ export const OracleTableRow: Transformer<
 }
 
 export const OracleTable = sourcedTransformer<
-	SchemaIn.OracleTable,
-	SchemaOut.OracleTable
+	DataswornSource.OracleTable,
+	Datasworn.OracleTable,
+	Datasworn.OracleCollection
 >({
 	table: function (
-		this: SourceHaver,
-		data: SchemaIn.OracleTable,
+		this: SourcedNode,
+		data: DataswornSource.OracleTable,
 		key: string | number,
-		parent: SourceHaver
-	): SchemaOut.OracleTableRow[] {
+		parent: SourcedNode
+	): Datasworn.OracleTableRow[] {
 		return data.table.map((row, i) => {
 			const rowData =
 				data._i18n == null ? row : merge({ i18n: cloneDeep(data._i18n) }, row)
@@ -46,7 +52,8 @@ export const OracleTable = sourcedTransformer<
 })
 
 export const OracleCollection = recursiveCollectionTransformer<
-	SchemaIn.OracleCollection,
-	SchemaOut.OracleCollection,
+	DataswornSource.OracleCollection,
+	Datasworn.OracleCollection,
+	null,
 	typeof OracleTable
 >('oracles', OracleTable, {})

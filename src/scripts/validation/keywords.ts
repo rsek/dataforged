@@ -26,12 +26,6 @@ export const KEYWORDS: Record<string, Omit<KeywordDefinition, 'keyword'>> = {
 				'If `true`, this schema is used only to compile the JSON, and is removed from the final output schema.'
 		})
 	},
-	tsType: {
-		metaSchema: Type.String({
-			description:
-				"Overrides the type that's generated from the schema. See https://github.com/bcherny/json-schema-to-typescript"
-		})
-	},
 	isSourcedNode: {
 		type: 'object',
 		metaSchema: Type.Boolean({})

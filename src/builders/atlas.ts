@@ -1,14 +1,18 @@
-import type * as In from '../types/DataswornSource.js'
-import type * as Out from '../types/Datasworn.js'
+import type { Datasworn, DataswornSource } from '../types/index.js'
+
 import {
 	recursiveCollectionTransformer,
 	sourcedTransformer
-} from './transformer'
+} from './transformer.js'
 
-export const AtlasEntry = sourcedTransformer<In.AtlasEntry, Out.AtlasEntry>({})
+export const AtlasEntry = sourcedTransformer<
+	DataswornSource.AtlasEntry,
+	Datasworn.AtlasEntry,
+	Datasworn.Atlas
+>({})
 
 export const Atlas = recursiveCollectionTransformer<
-	In.Atlas,
-	Out.Atlas,
-	typeof AtlasEntry
+	DataswornSource.Atlas,
+	Datasworn.Atlas,
+	null
 >('atlas', AtlasEntry, {})

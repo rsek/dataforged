@@ -1,5 +1,5 @@
-import type * as In from '../types/DataswornSource.js'
-import type * as Out from '../types/Datasworn.js'
+import type { Datasworn, DataswornSource } from '../types/index.js'
+
 import {
 	sourcedTransformer,
 	collectionTransformer,
@@ -9,33 +9,33 @@ import {
 import { cloneDeep, mapValues } from 'lodash-es'
 import { Move } from './moves.js'
 import { trackID } from './id-tracker.js'
-import { type SourcedNode } from 'schema/datasworn/generic/SourcedNode.js'
-import { type Generic } from '../schema/datasworn/common/index.js'
+import { type SourcedNode } from '../schema/datasworn/generic/SourcedNode.js'
+import type * as Generic from '../schema/datasworn/Generic.js'
 
 export const Asset = sourcedTransformer<
-	In.Asset,
-	Out.Asset,
-	Generic.Collection<Out.Asset>
+	DataswornSource.Asset,
+	Datasworn.Asset,
+	Datasworn.AssetType
 >({
 	options: function (
 		this: SourcedNode,
-		data: In.Asset,
+		data: DataswornSource.Asset,
 		key: string | number,
 		parent: SourcedNode
-	): Record<string, Out.AssetOptionField> | undefined {
+	): Record<string, Datasworn.AssetOptionField> | undefined {
 		if (data.options == null) return undefined
 		return mapValues(data.options, (fieldData, fieldKey) => {
 			const field = cloneDeep(fieldData)
 			field.id = `${this.id}/options/${fieldKey}`
-			return field as Out.AssetOptionField
+			return field as Datasworn.AssetOptionField
 		})
 	},
 	controls: function (
 		this: SourcedNode,
-		data: In.Asset,
+		data: DataswornSource.Asset,
 		key: string | number,
 		parent: SourcedNode
-	): Record<string, Out.AssetConditionMeterControlField> | undefined {
+	): Record<string, Datasworn.AssetConditionMeterControlField> | undefined {
 		if (data.controls == null) return undefined
 		return mapValues(data.controls, (fieldData, fieldKey) => {
 			const field = cloneDeep(fieldData)
@@ -46,28 +46,32 @@ export const Asset = sourcedTransformer<
 					if (Object.prototype.hasOwnProperty.call(field.controls, k))
 						field.controls[k].id = `${field.id}/controls/${k}`
 
-			return field as Out.AssetConditionMeterControlField
+			return field as Datasworn.AssetConditionMeterControlField
 		})
 	},
 	abilities: function (
 		this: SourcedNode,
-		data: In.Asset,
+		data: DataswornSource.Asset,
 		key: string | number,
 		parent: SourcedNode
-	): [Out.AssetAbility, Out.AssetAbility, Out.AssetAbility] {
+	): [Datasworn.AssetAbility, Datasworn.AssetAbility, Datasworn.AssetAbility] {
 		return data.abilities.map((ability, index) =>
 			transform(ability, index, this, AssetAbility)
-		) as [Out.AssetAbility, Out.AssetAbility, Out.AssetAbility]
+		) as [
+			Datasworn.AssetAbility,
+			Datasworn.AssetAbility,
+			Datasworn.AssetAbility
+		]
 	}
 })
 
 export const AssetAbility: Transformer<
-	In.AssetAbility,
-	Out.AssetAbility,
-	Out.Asset
+	DataswornSource.AssetAbility,
+	Datasworn.AssetAbility,
+	Datasworn.Asset
 > = {
 	id: function (
-		data: In.AssetAbility,
+		data: DataswornSource.AssetAbility,
 		key: string | number,
 		parent: SourcedNode
 	): string {
@@ -75,10 +79,10 @@ export const AssetAbility: Transformer<
 	},
 	moves: function (
 		this: SourcedNode,
-		data: In.AssetAbility,
+		data: DataswornSource.AssetAbility,
 		key: string | number,
 		parent: SourcedNode
-	): Record<string, Out.Move> | undefined {
+	): Record<string, Datasworn.Move> | undefined {
 		if (data.moves == null) return
 		return mapValues(data.moves, (moveData, moveKey) =>
 			transform(moveData, moveKey, { id: `${this.id}/moves` }, Move)
@@ -86,56 +90,56 @@ export const AssetAbility: Transformer<
 	},
 	options: function (
 		this: SourcedNode,
-		data: In.AssetAbility,
+		data: DataswornSource.AssetAbility,
 		key: string | number,
 		parent: SourcedNode
-	): Record<string, Out.AssetAbilityOptionField> | undefined {
+	): Record<string, Datasworn.AssetAbilityOptionField> | undefined {
 		if (data.options == null) return undefined
 		return mapValues(data.options, (fieldData, fieldKey) => {
 			const field = cloneDeep(fieldData)
 			field.id = `${this.id}/options/${fieldKey}`
-			return field as Out.AssetAbilityOptionField
+			return field as Datasworn.AssetAbilityOptionField
 		})
 	},
 	controls: function (
 		this: SourcedNode,
-		data: In.AssetAbility,
+		data: DataswornSource.AssetAbility,
 		key: string | number,
 		parent: SourcedNode
-	): Record<string, Out.AssetAbilityControlField> | undefined {
+	): Record<string, Datasworn.AssetAbilityControlField> | undefined {
 		if (data.controls == null) return undefined
 		return mapValues(data.controls, (fieldData, fieldKey) => {
 			const field = cloneDeep(fieldData)
 			field.id = `${this.id}/controls/${fieldKey}`
-			return field as Out.AssetAbilityControlField
+			return field as Datasworn.AssetAbilityControlField
 		})
 	},
 
 	enhance_asset: function (
 		this: SourcedNode,
-		data: In.AssetAbility,
+		data: DataswornSource.AssetAbility,
 		key: string | number,
 		parent: SourcedNode
-	): Out.AssetEnhancement | undefined {
+	): Datasworn.AssetEnhancement | undefined {
 		if (data.enhance_moves == null) return undefined
 
-		return data.enhance_asset as Out.AssetEnhancement
+		return data.enhance_asset as Datasworn.AssetEnhancement
 	},
 
 	enhance_moves: function (
 		this: SourcedNode,
-		data: In.AssetAbility,
+		data: DataswornSource.AssetAbility,
 		key: string | number,
 		parent: SourcedNode
-	): Out.MoveEnhancement[] | undefined {
+	): Datasworn.MoveEnhancement[] | undefined {
 		if (data.enhance_moves == null) return undefined
 
-		return data.enhance_moves as Out.MoveEnhancement[]
+		return data.enhance_moves as Datasworn.MoveEnhancement[]
 	}
 }
 
-export const AssetType = collectionTransformer<In.AssetType, Out.AssetType>(
-	'assets',
-	Asset,
-	{}
-)
+export const AssetType = collectionTransformer<
+	DataswornSource.AssetType,
+	Datasworn.AssetType,
+	null
+>('assets', Asset, {})

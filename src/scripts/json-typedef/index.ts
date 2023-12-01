@@ -3,13 +3,13 @@ import * as JTD from 'jtd'
 import Log from '../utils/Log.js'
 import { toJtdRoot } from './utils.js'
 
-import { Datasworn } from '../../schema/datasworn/index.js'
+import { DataswornRoot } from '../../schema/datasworn/index.js'
 import { isEmpty } from 'lodash-es'
 import { buildTypeDefs } from './buildTypeDefs.js'
 import { JTD_JSON_PATH } from './const.js'
 import { log } from 'console'
 
-const root: JTD.Schema = toJtdRoot(Datasworn)
+const root: JTD.Schema = toJtdRoot(DataswornRoot)
 
 const referenceNames = new Set<string>()
 

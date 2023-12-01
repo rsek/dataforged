@@ -8,8 +8,8 @@ import {
 import { sortTopLevelCollection } from './sortCollection.js'
 import { type Draft07 } from 'json-schema-library'
 
-const metadataKeys = ['tsType']
-export function cleanRuleset(datasworn: Out.RulesPackage, jsl: Draft07) {
+const metadataKeys: string[] = []
+export function cleanRuleset(datasworn: Datasworn.RulesPackage, jsl: Draft07) {
 	const sortedPointers: Record<string, unknown> = {}
 
 	// sort non-dictionary objects
@@ -55,7 +55,7 @@ export function cleanRuleset(datasworn: Out.RulesPackage, jsl: Draft07) {
 		if (JsonPointer.has(jsonOut, pointer))
 			JsonPointer.set(jsonOut, pointer, sortedValue)
 
-	return jsonOut as Out.RulesPackage
+	return jsonOut as Datasworn.RulesPackage
 }
 
 function replacer(key: string, value: unknown) {

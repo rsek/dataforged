@@ -50,7 +50,9 @@ export const PartOfSpeech = UnionEnumFromRecord(
 		gerund:
 			'Gerund or present participle of a verb, e.g. "going", "seeing", "waving"',
 		adjective: 'An adjective.',
-		attributive_verb: 'A verb used as an adjective, to modify a noun.'
+		attributive_verb: 'A verb used as an adjective, to modify a noun.',
+		adjective_as_proper_noun: 'An adjective used as a proper noun.',
+		common_noun_as_proper_noun: 'An common noun used as a proper noun.'
 	},
 	{ $id: 'PartOfSpeech' }
 )
@@ -58,7 +60,11 @@ export type PartOfSpeech = Static<typeof PartOfSpeech>
 
 export const I18nHint = Type.Object(
 	{
-		part_of_speech: Type.Optional(Type.Ref(PartOfSpeech))
+		part_of_speech: Type.Optional(
+			Type.Ref(PartOfSpeech, {
+				description: 'The part of speech for this string.'
+			})
+		)
 	},
 	{ $id: 'I18nHint' }
 )

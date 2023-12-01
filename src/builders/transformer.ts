@@ -1,19 +1,25 @@
 import { cloneDeep, forEach, mapValues } from 'lodash-es'
 import { trackID } from './id-tracker.js'
 
-import { type Rules } from '../schema/datasworn/Rules.js'
-import { type SourcedNode } from 'schema/datasworn/generic/SourcedNode.js'
+import { type SetOptional } from 'type-fest'
 import {
+	type RecursiveCollectionSource,
 	type Collection,
-	type RecursiveCollection
-} from 'schema/datasworn/Collection.js'
-import type * as Out from '../types/Datasworn.js'
+	type RecursiveCollection,
+	type CollectionSource
+} from '../schema/datasworn/Generic.js'
+import { type Rules } from '../schema/datasworn/Rules.js'
+import { type SourcedNode } from '../schema/datasworn/generic/SourcedNode.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>
 
+type SourceData<T extends object> = 'id' extends keyof T
+	? SetOptional<T, 'id'>
+	: T
+
 export function sourcedTransformer<
-	TIn extends YamlSource<SourcedNode>,
+	TIn extends SourceData<SourcedNode>,
 	TOut extends SourcedNode,
 	TParent extends SourcedNode | Rules | null
 >(
@@ -37,20 +43,16 @@ export function sourcedTransformer<
 
 			return trackID(parent.id.replace('/collections/', '/') + `/${key}`)
 		},
-		source: function (
-			data: TIn,
-			key: string | number,
-			parent: SourcedNode | null
-		): Out.Source {
-			return data.source as any
-		},
+		// source: function (
+		// 	data: TIn,
+		// 	key: string | number,
+		// 	parent: SourcedNode | null
+		// ): Datasworn.Source {
+		// 	return data.source as any
+		// },
 		...partialTransformer
 	} as Transformer<TIn, TOut, TParent>
 }
-
-type YamlSource<T> = T extends { id: string }
-	? Omit<T, 'id'> & Partial<Pick<T, 'id'>>
-	: T
 
 type Collected<T extends { contents?: Record<string, any> }> = T extends {
 	contents?: Record<string, infer U>
@@ -59,9 +61,9 @@ type Collected<T extends { contents?: Record<string, any> }> = T extends {
 	: never
 
 export function collectionTransformer<
-	TIn extends YamlSource<Collection<YamlSource<SourcedNode>>>,
-	TOut extends Collection<SourcedNode>,
-	TParent extends SourcedNode = SourcedNode
+	TIn extends CollectionSource,
+	TOut extends Collection,
+	TParent extends SourcedNode | null = null
 >(
 	collectionKey: string,
 	itemTransformer: Transformer<Collected<TIn>, Collected<TOut>, TOut>,
@@ -72,13 +74,6 @@ export function collectionTransformer<
 	isRecursive = false
 ) {
 	let result = {
-		source: function (
-			data: TIn,
-			key: string | number,
-			parent: TParent
-		): Out.Source {
-			return data.source as Out.Source
-		},
 		id: function (data: TIn, key: string | number, parent: TParent): string {
 			const baseId = parent.id.replace('/collections/', '/')
 			const [namespace, _cKey, ...tail] = baseId.split('/')
@@ -122,11 +117,9 @@ export function collectionTransformer<
 }
 
 export function recursiveCollectionTransformer<
-	TIn extends YamlSource<
-		RecursiveCollection<Collection<YamlSource<SourcedNode>>>
-	>,
-	TOut extends RecursiveCollection<Collection<SourcedNode>>,
-	TParent extends SourcedNode,
+	TIn extends RecursiveCollectionSource,
+	TOut extends RecursiveCollection,
+	TParent extends SourcedNode | null,
 	TItemTransformer extends Transformer<
 		Collected<TIn>,
 		Collected<TOut>,

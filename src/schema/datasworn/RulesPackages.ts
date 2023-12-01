@@ -18,7 +18,6 @@ import { type TTruth } from './Truths.js'
 import * as Utils from './Utils.js'
 import * as Rules from './Rules.js'
 
-
 const datasworn_version = Utils.Computed(
 	Type.Ref(Metadata.SemanticVersion, {
 		description: 'The version of the Datasworn format used by this data.'

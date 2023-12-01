@@ -94,17 +94,26 @@ export type TCollection<T extends TRef> = TSourcedNode<
 	>
 > & { [CollectionBrand]: 'Collection' }
 
-export type Collection<T = any> = SourcedNode<{
-	id: string
-	color?: string
-	summary?: string
-	description?: string
-	images?: string[]
-	icon?: string
-	enhances?: string
-	replaces?: string
-	contents: Record<string, T>
-}>
+export type Collection<T extends IdentifiedNode = IdentifiedNode> =
+	SourcedNode<{
+		id: string
+		color?: string
+		summary?: string
+		description?: string
+		images?: string[]
+		icon?: string
+		enhances?: string
+		replaces?: string
+		contents: Record<string, T>
+	}>
+
+export type CollectionSource<T extends IdentifiedNode = IdentifiedNode> =
+	TypeFest.SetOptional<
+		Omit<Collection<T>, 'contents'> & {
+			contents?: Record<string, TypeFest.SetOptional<T, 'id'>>
+		},
+		'id'
+	>
 
 export const RecursiveCollectionBrand = Symbol('RecursiveCollection')
 
@@ -158,12 +167,26 @@ export type TRecursiveCollection<
 	}[Depth extends -1 ? 'done' : 'recur']
 
 export type RecursiveCollection<
-	T extends Collection<IdentifiedNode>,
+	T extends Collection<IdentifiedNode> = Collection<IdentifiedNode>,
 	Depth extends number = 3
 > = {
 	done: T
 	recur: RecursiveCollection<T, [-1, 0, 1, 2][Depth]> &
 		T & {
 			collections: Record<string, RecursiveCollection<T, [-1, -1, 0, 1][Depth]>>
+		}
+}[Depth extends -1 ? 'done' : 'recur']
+
+export type RecursiveCollectionSource<
+	T extends CollectionSource = CollectionSource,
+	Depth extends number = 3
+> = {
+	done: T
+	recur: RecursiveCollectionSource<T, [-1, 0, 1, 2][Depth]> &
+		T & {
+			collections?: Record<
+				string,
+				RecursiveCollectionSource<T, [-1, -1, 0, 1][Depth]>
+			>
 		}
 }[Depth extends -1 ? 'done' : 'recur']

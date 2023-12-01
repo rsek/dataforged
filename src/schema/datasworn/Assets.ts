@@ -79,4 +79,3 @@ export type AssetType = Generic.Collection<Asset>
 export * from './assets/Ability.js'
 export * from './assets/Enhancement.js'
 export * from './assets/Fields.js'
-

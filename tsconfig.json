@@ -1,25 +1,18 @@
 {
 	"$schema": "http://json.schemastore.org/tsconfig",
 	// "extends": "ts-node/node16/tsconfig.json",
-	"include": [
-		"./src/builders",
-		"./src/schema",
-		"./src/scripts",
-		"./src/typebox",
-		"./src/classes",
-		"src/scripts/json-typedef/*.ts",
-		"./src/global.d.ts",
-		"./src/*.ts"
-	],
+	"include": ["./src"],
 	"exclude": [
-		"./src/**/*.d.ts",
-		"./dist",
-		"./src/**/*.yaml"
-		// "./src/json-typedef"
+		"./src/adapter",
+		"./src/data-legacy",
+		"./src/extras",
+		"./src/templates"
 	],
 	"compilerOptions": {
 		"paths": {
-			"*": ["types/*.d.ts"]
+			"*": ["./src/types/index.d.ts"],
+			"Datasworn": ["./src/types/Datasworn.d.ts"],
+			"DataswornSource": ["./src/types/DataswornSource.d.ts"]
 		},
 		"outDir": "dist",
 		"rootDir": "src",
@@ -42,7 +35,8 @@
 		"noImplicitAny": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"typeRoots": ["types", "node_modules/@types"]
+		// "types": ["./src/types/index.d.ts"],
+		"typeRoots": ["./src/types", "./node_modules/@types"]
 	},
 	"ts-node": {
 		// It is faster to skip typechecking.

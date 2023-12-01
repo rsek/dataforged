@@ -1,5 +1,5 @@
 import { TypeCompiler } from '@sinclair/typebox/compiler'
-import { DataswornSource } from '../../schema/datasworn/Root.js'
+import { DataswornSourceRoot } from '../../schema/datasworn/Root.js'
 import { omit } from 'lodash-es'
 
 // console.log(
@@ -7,8 +7,8 @@ import { omit } from 'lodash-es'
 // )
 
 const SourceValidator = TypeCompiler.Compile(
-	DataswornSource,
-	Object.values(DataswornSource.$defs)
+	DataswornSourceRoot,
+	Object.values(DataswornSourceRoot.$defs)
 )
 
 

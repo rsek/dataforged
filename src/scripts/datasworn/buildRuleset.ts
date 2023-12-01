@@ -56,7 +56,7 @@ export async function buildRuleset(
 		})
 	)
 
-	const builtFiles = new Map<string, Out.RulesPackage>()
+	const builtFiles = new Map<string, Datasworn.RulesPackage>()
 
 	await Promise.all(
 		sourceFiles.map(async (filePath) => {
@@ -122,4 +122,4 @@ export async function buildRuleset(
 
 type SourcebookMetadataKeys = (typeof metadataKeys)[number]
 
-type SourcebookMetadata = Pick<Out.RulesPackage, SourcebookMetadataKeys>
+type SourcebookMetadata = Pick<Datasworn.RulesPackage, SourcebookMetadataKeys>
