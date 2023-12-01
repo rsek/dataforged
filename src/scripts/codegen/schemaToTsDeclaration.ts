@@ -21,7 +21,10 @@ import {
 	TNullable,
 	TUnionEnum
 } from '../../schema/datasworn/Utils.js'
-import { writeCode } from '../utils/readWrite.js'
+
+export function extractDefs(defs: Record<string, TSchema>) {
+	return mapValues(defs, (v, k) => renderDefinition(k, v))
+}
 
 const extractableKeywords: string[] = ['min', 'max', 'i18n']
 
@@ -210,9 +213,6 @@ function renderDefinition(identifier: string, schema: TSchema) {
 	}
 }
 
-function extractDefs(defs: Record<string, TSchema>) {
-	return mapValues(defs, (v, k) => renderDefinition(k, v))
-}
 function renderJsValue(value: unknown): string {
 	let result: string
 	switch (true) {
@@ -252,13 +252,4 @@ function formatSourceCode(code: string) {
 	if (code.includes('\n')) code = wrapCodeBlock(indent(code))
 
 	return code
-}
-
-export default async function writeTypescriptDeclarationFile(
-	schemaDefs: Record<string, TSchema>,
-	path: string
-) {
-	const fileContents = Object.values(extractDefs(schemaDefs)).join('\n\n')
-
-	await writeCode(path, fileContents)
 }
