@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
- * Information on who can trigger this trigger condition. Usually this is just
+ * Information on who can activate this trigger condition. Usually this is just
  * the player, but some asset abilities can trigger from an ally's move.
  */
 @JsonSerialize

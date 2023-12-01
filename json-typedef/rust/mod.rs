@@ -3454,7 +3454,7 @@ pub struct TriggerActionRollEnhancement {
     pub conditions: Vec<TriggerActionRollConditionEnhancement>,
 }
 
-/// Information on who can trigger this trigger condition. Usually this is just
+/// Information on who can activate this trigger condition. Usually this is just
 /// the player, but some asset abilities can trigger from an ally's move.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerBy {

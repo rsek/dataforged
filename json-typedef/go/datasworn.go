@@ -3067,7 +3067,7 @@ type TriggerActionRollEnhancement struct {
 	Conditions []TriggerActionRollConditionEnhancement `json:"conditions"`
 }
 
-// Information on who can trigger this trigger condition. Usually this is just
+// Information on who can activate this trigger condition. Usually this is just
 // the player, but some asset abilities can trigger from an ally's move.
 type TriggerBy struct {
 	// Can this trigger be activated by one of the player's allies?
