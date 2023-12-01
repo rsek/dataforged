@@ -2,7 +2,7 @@
 
 import JsonSchema from 'json-schema-library'
 
-import { type Datasworn } from '../../types/io/datasworn.js'
+import { type Datasworn } from '../../types/Datasworn.js'
 
 import JSONPointer from 'jsonpointer'
 

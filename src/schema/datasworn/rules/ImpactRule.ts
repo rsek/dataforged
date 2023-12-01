@@ -4,7 +4,7 @@ import * as Generic from '../Generic.js'
 
 export const ImpactRule = Type.Object(
 	{
-		label: Type.Ref(Localize.Label, {
+		label: Type.Ref(Localize.InputLabel, {
 			description: 'The label for this impact.'
 		}),
 		description: Type.Ref(Localize.MarkdownString, {
@@ -33,7 +33,7 @@ export type ImpactRule = Static<typeof ImpactRule>
 
 export const ImpactCategory = Type.Object(
 	{
-		label: Type.Ref(Localize.Label, {
+		label: Type.Ref(Localize.InputLabel, {
 			description: 'A label for this impact category.'
 		}),
 		description: Type.Ref(Localize.MarkdownString, {

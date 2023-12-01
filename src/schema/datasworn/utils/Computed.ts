@@ -6,6 +6,7 @@ import {
 	type Static
 } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
+import { TSelectEnhancementField } from '../common/Fields.js'
 
 /** Symbol indicating that this property is computed at build time, and is therefore optional in DataswornSource */
 export const ComputedPropertyBrand = Symbol('ComputedProperty')
@@ -67,3 +68,22 @@ export function SourceOptional<T extends TSchema>(
 export type TSourceOptional<T extends TSchema> = T & {
 	[SourceOptionalBrand]: 'SourceOptional'
 }
+
+export const GetSourceDataSchema = Symbol('GetSourceDataSchema')
+
+/** Provide an override value  */
+export function setSourceDataSchema<
+	T extends TSchema,
+	SourceSchema extends TSchema
+>(schema: T, sourceSchema: SourceSchema | ((schema: T) => SourceSchema)) {
+	const base = {
+		...TypeClone.Type(schema),
+		[GetSourceDataSchema]:
+			typeof sourceSchema === 'function' ? sourceSchema : () => sourceSchema
+	} as THasSourceSchema<T, SourceSchema>
+	return base
+}
+export type THasSourceSchema<
+	T extends TSchema = TSchema,
+	SourceSchema extends TSchema = TSchema
+> = T & { [GetSourceDataSchema]: (schema: T) => SourceSchema }

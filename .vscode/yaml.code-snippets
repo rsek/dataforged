@@ -79,7 +79,7 @@
 		"scope": ["yaml", "markdown"],
 		"prefix": "lno",
 		"body": [
-			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/oracles/${2}/${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
+			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/oracles/${2:core}/${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
 		]
 	},
 	"Format asset": {
@@ -97,7 +97,7 @@
 		"scope": "yaml",
 		"prefix": "rows",
 		"body": [
-			"${CLIPBOARD/\\s*(?<low>[0-9]+)[-–]?(?<high>[0-9]+)?\\s*(?<result>[A-Z].+)\\s*\\n/  - low: $1\n    high: $2\n    result: $3\n/g}"
+			"${CLIPBOARD/\\s*(?<min>[0-9]+)[-–]?(?<max>[0-9]+)?\\s*(?<result>[A-Z].+|> [A-Z].+)\\s*\\n/  - min: $1\n    max: $2\n    result: $3\n/g}"
 		],
 		"description": "Formats table rows from Okular as YAML data"
 	},
@@ -105,7 +105,7 @@
 		"scope": "yaml",
 		"prefix": "srows",
 		"body": [
-			"${CLIPBOARD/\\s*(?<low>[0-9]+)[-–]?(?<high>[0-9]+)?\\s*(?<result>[A-Z].+)\\s+?(?<summary>[A-Z].+)\\s*\\n/- low: $1\n  high: $2\n  result: $3\n  summary: $4\n/g}"
+			"${CLIPBOARD/\\s*(?<min>[0-9]+)[-–]?(?<max>[0-9]+)?\\s*(?<result>[A-Z].+)\\s+?(?<summary>[A-Z].+)\\s*\\n/- min: $1\n  max: $2\n  result: $3\n  summary: $4\n/g}"
 		],
 		"description": "Formats table rows from Okular as YAML data"
 	},
@@ -113,7 +113,7 @@
 		"scope": "yaml",
 		"prefix": "brows",
 		"body": [
-			"${CLIPBOARD/\\s*(?<low>[0-9]+)[-–]?(?<high>[0-9]+)?\\s*\\n/- low: $1\n  high: $2\n  result:\n/g}"
+			"${CLIPBOARD/\\s*(?<min>[0-9]+)[-–]?(?<max>[0-9]+)?\\s*\\n/- min: $1\n  max: $2\n  result:\n/g}"
 		],
 		"description": "Formats table rows from Okular as YAML data"
 	},
@@ -122,7 +122,7 @@
 		"scope": "yaml",
 		"prefix": "1rows",
 		"body": [
-			"${CLIPBOARD/\\s*(?<low>[0-9]+)-?(?<high>[0-9]+)?\\s*(?<result>[A-Z].+)\\s*\\n/- low: $1\n  high: $1\n  result: $3\n/g}"
+			"${CLIPBOARD/\\s*(?<min>[0-9]+)-?(?<max>[0-9]+)?\\s*(?<result>[A-Z].+)\\s*\\n/- min: $1\n  max: $1\n  result: $3\n/g}"
 		],
 		"description": "Formats table rows from Okular as YAML data"
 	},
@@ -130,7 +130,7 @@
 		"scope": "yaml",
 		"prefix": "nrows",
 		"body": [
-			"${CLIPBOARD/(.*)\\n/- low: null\n  high: null\n  result: $1\n/g}"
+			"${CLIPBOARD/(.*)\\n/- result: $1\n/g}"
 		],
 		"description": "Formats table rows from Okular as YAML data"
 	},
@@ -140,6 +140,8 @@
 		"body": [
 			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"  name: ${10:}",
+      "  source:",
+      "    <<: *Source"
 			"  contents:",
 			"    ${0}"
 		]
@@ -150,6 +152,8 @@
 		"body": [
 			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"  name: ${10:}",
+      "  source:",
+      "    <<: *Source"
 			"  table:",
 			"    ${0}"
 		]
@@ -160,7 +164,7 @@
 		"body": [
 			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"  label: ${10:}",
-			"  content_type: ${12|range,result,summary,description|}",
+			"  content_type: ${12|roll,result,summary,description|}",
 			"${0}"
 		]
 	},
@@ -170,18 +174,23 @@
 		"body": [
 			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"  name: ${10:}",
+      "  source:",
+      "    <<: *Source",
 			"  rendering:",
 			"    style: multi_table",
 			"    columns:",
 			"      ${13}:",
+      "        label: ${12}",
 			"        table_key: ${13}",
-			"        content_type: range",
+			"        content_type: roll",
 			"      ${15}:",
+      "        label: ${14}",
 			"        table_key: ${15}",
-			"        content_type: range",
+			"        content_type: roll",
 			"      ${17}:",
+      "        label: ${16}",
 			"        table_key: ${17}",
-			"        content_type: range",
+			"        content_type: roll",
 			"      result:",
 			"        table_key: ${13}",
 			"        content_type: result",
@@ -189,20 +198,26 @@
 			"  contents:",
 			"    ${13:${12/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"      name: ${12}",
+      "      source:",
+      "        <<: *Source",
 			"      rendering:",
-			"        style: embed_as_column",
+			"        style: column",
 			"      table:",
 			"        ${24}",
 			"    ${15:${14/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"      name: ${14}",
+      "      source:",
+      "        <<: *Source",
 			"      rendering:",
-			"        style: embed_as_column",
+			"        style: column",
 			"      table:",
 			"        ${23}",
 			"    ${17:${16/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"      name: ${16}",
+      "      source:",
+      "        <<: *Source",
 			"      rendering:",
-			"        style: embed_as_column",
+			"        style: column",
 			"      table:",
 			"        ${22}",
 			"${0}"
@@ -214,18 +229,23 @@
 		"body": [
 			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
 			"  name: ${10:}",
+      "  source:",
+      "    <<: *Source",
 			"  rendering:",
 			"    style: multi_table",
 			"    columns:",
 			"      myriads:",
-			"        table_key: myriads",
-			"        content_type: range",
+			"        label: Myriads",
+      "        table_key: myriads",
+			"        content_type: roll",
 			"      margins:",
-			"        table_key: margins",
-			"        content_type: range",
+			"        label: Margins",
+      "        table_key: margins",
+			"        content_type: roll",
 			"      reaches:",
-			"        table_key: reaches",
-			"        content_type: range",
+			"        label: Reaches",
+      "        table_key: reaches",
+			"        content_type: roll",
 			"      result:",
 			"        table_key: myriads",
 			"        content_type: result",
@@ -233,43 +253,45 @@
 			"  contents:",
 			"    myriads:",
 			"      name: Myriads",
-			"      summary: Central Seas",
+			"      source:",
+      "        <<: *Source"
+      "      summary: Central Seas",
 			"      rendering:",
-			"        style: embed_as_column",
+			"        style: column",
 			"      table:",
 			"        ${24}",
 			"    margins:",
 			"      name: Margins",
-			"      summary: Outer Seas",
+			"      source:",
+      "        <<: *Source"
+      "      summary: Outer Seas",
 			"      rendering:",
-			"        style: embed_as_column",
+			"        style: column",
 			"      table:",
 			"        ${23}",
 			"    reaches:",
 			"      name: Reaches",
-			"      summary: Remote Seas",
+			"      source:",
+      "        <<: *Source"
+      "      summary: Remote Seas",
 			"      rendering:",
-			"        style: embed_as_column",
+			"        style: column",
 			"      table:",
 			"        ${22}",
 			"${0}"
 		]
 	},
-	"Sourcebook": {
+	"Source": {
 		"scope": "yaml",
-		"prefix": "sb",
+		"prefix": "src",
 		"body": [
-			"id: ${11:sundered_isles}",
-			"ruleset: ${12|starforged,classic|}",
 			"source:",
 			"  title: ${13:Sundered Isles Book Preview}",
 			"  authors:",
 			"    - name: Shawn Tomkin",
 			"  license: ${14:null}",
 			"  url: https://ironswornrpg.com",
-			"  date: 2023-09-11",
-			"${15|oracles,assets,moves,atlas|}:",
-			"  $0"
+			"  date: 2023-09-11"
 		]
 	}
 }

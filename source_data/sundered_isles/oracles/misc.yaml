@@ -1,0 +1,206 @@
+id: sundered_isles
+package_type: ruleset
+oracles:
+  misc:
+    name: Miscellaneous Oracles
+    source:
+      <<: &Source
+        title: Sundered Isles
+        date: 2023-11-29
+        authors:
+          - name: Shawn Tomkin
+        license: null
+        url: https://ironswornrpg.com
+    summary: Want inspiration for the focus or lesson of an interlude scene, such as the nature of a dream or the cause of a dispute? Roll on any combination of the Core oracles (pages 112–115) and interpret the response. Or use the Prompts table (page 192) to pick from among the Core oracles.
+    contents:
+      interlude_scenes:
+        name: Interlude Scenes
+        source:
+          <<: *Source
+        summary: If you want to explore an interlude scene, or are prompted by another table to trigger an interlude at a waypoint, check the table below for inspiration. To learn more about character interludes, see page 64.
+        rendering:
+          style: standalone
+          columns:
+            roll:
+              label: Roll
+              content_type: roll
+            result:
+              label: Result
+              content_type: result
+            prompts:
+              label: Prompts
+              content_type: summary
+        table:
+          - min: 1
+            max: 4
+            result: Chronicle your Adventures
+            summary: What do you describe within logs, journals, or maps? What place or adventure still calls to you?
+          - min: 5
+            max: 8
+            result: Commune with nature
+            summary: What flora or fauna do you encounter? What inspiration do you draw from the experience?
+          - min: 9
+            max: 11
+            result: Concoct a plan
+            summary: What new strategy do you devise? How will you put this plan in motion?
+          - min: 12
+            max: 14
+            result: Conduct research
+            summary: What is the nature of the research? What information or insight do you gain?
+          - min: 15
+            max: 17
+            result: Conduct training
+            summary: What skills or knowledge do you share? Who accepts the guidance, and who resists it?
+          - min: 18
+            max: 20
+            result: Confess a secret
+            summary: What do you reveal of your nature or background? How do others respond?
+          - min: 21
+            max: 24
+            result: Conjure up the past
+            summary: What is the subject of this reminiscence? Why is it meaningful in this moment?
+          - min: 25
+            max: 27
+            result: Create an object or artwork
+            summary: What do you create? What is it intended for?
+          - min: 28
+            max: 31
+            result: Experience a dream or vision
+            summary: What is the nature of the dream or vision? What meaning do you draw from it?
+          - min: 32
+            max: 34
+            result: Fight in a sparring match
+            summary: Who do you spar with? What issues do you provoke or resolve during the match?
+          - min: 35
+            max: 37
+            result: Find peace
+            summary: How do you reflect, meditate, or pray? What enlightenment do you gain?
+          - min: 38
+            max: 40
+            result: Hear a confession
+            summary: Who shares an aspect of their nature or background? What do they reveal?
+          - min: 41
+            max: 43
+            result: Indulge a vice
+            summary: What weakness or need do you indulge? How is this viewed by others?
+          - min: 44
+            max: 47
+            result: Join an event
+            summary: What is the occasion of this social gathering? How do you participate?
+          - min: 48
+            max: 50
+            result: Lead or join a song
+            summary: What is the subject of this song? Why is it meaningful to you or others?
+          - min: 51
+            max: 53
+            result: Motivate others
+            summary: Why is this motivation needed, and what is your approach? How do they respond?
+          - min: 54
+            max: 56
+            result: Play a game
+            summary: Who do you play with? What is discussed during the game?
+          - min: 57
+            max: 60
+            result: Practice a skill
+            summary: What talent do you hone? What do you learn from the exercise?
+          - min: 61
+            max: 64
+            result: Ready your gear
+            summary: How do you maintain your equipment or gear up? What are you preparing for?
+          - min: 65
+            max: 67
+            result: Record a message
+            summary: Who is the message meant for? What news or feelings do you share?
+          - min: 68
+            max: 70
+            result: Reinvent your look
+            summary: What inspires you to remake yourself? How do you debut your new look?
+          - min: 71
+            max: 73
+            result: Settle a conflict
+            summary: What caused this argument or fight? How do you resolve the situation?
+          - min: 74
+            max: 76
+            result: Share intimacy
+            summary: Who do you spend time with? How does your relationship evolve?
+          - min: 77
+            max: 79
+            result: Share your heritage
+            summary: What do you offer of your family's or people's history? What memory or regret does it evoke?
+          - min: 80
+            max: 82
+            result: Stay vigilant
+            summary: What are you on the lookout for? What do you spot or overhear?
+          - min: 83
+            max: 85
+            result: Stir up trouble
+            summary: What conflict do you incite or inflame? Why is the situation left unresolved?
+          - min: 86
+            max: 89
+            result: Take in the view
+            summary: What sublime or dramatic scenery do you witness? What emotion or memory does it inspire?
+          - min: 90
+            max: 92
+            result: Tell a tale
+            summary: What is the nature of this myth or legend? What emotion or lesson lingers after the telling?
+          - min: 93
+            max: 96
+            result: Undertake a communal labor
+            summary: What demanding project do you embark on with others? How does this bring you closer together?
+          - min: 97
+            max: 100
+            result: Undertake a menial task
+            summary: What solitary chore do you perform? What do you daydream about as you work?
+      prompts:
+        name: Prompts
+        source:
+          <<: *Source
+        summary: Use this table to choose a structured prompt from among the Core oracles (pages 112–115). Roll on each table and interpret the response as appropriate to the question and situation.
+        table:
+          - min: 1
+            max: 20
+            <<: &ActionTheme
+              result: '[Action](id:sundered_isles/oracles/core/action) + [Theme](id:sundered_isles/oracles/core/theme)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/action
+                - auto: true
+                  oracle: sundered_isles/oracles/core/theme
+          - min: 21
+            max: 40
+            <<: &ActionFocus
+              result: '[Action](id:sundered_isles/oracles/core/action) + [Focus](id:sundered_isles/oracles/core/focus)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/action
+                - auto: true
+                  oracle: sundered_isles/oracles/core/focus
+          - min: 41
+            max: 60
+            <<: &DescriptorTheme
+              result: '[Descriptor](id:sundered_isles/oracles/core/descriptor) + [Theme](id:sundered_isles/oracles/core/theme)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/descriptor
+                - auto: true
+                  oracle: sundered_isles/oracles/core/theme
+          - min: 61
+            max: 80
+            <<: &DescriptorFocus
+              result: '[Descriptor](id:sundered_isles/oracles/core/descriptor) + [Focus](id:sundered_isles/oracles/core/focus)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/descriptor
+                - auto: true
+                  oracle: sundered_isles/oracles/core/focus
+          - min: 81
+            max: 100
+            result: '[Action](id:sundered_isles/oracles/core/action) + [Descriptor](id:sundered_isles/oracles/core/descriptor) + [Focus](id:sundered_isles/oracles/core/focus)'
+            <<: &ActionDescriptorFocus
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/action
+                - auto: true
+                  oracle: sundered_isles/oracles/core/descriptor
+                - auto: true
+                  oracle: sundered_isles/oracles/core/focus

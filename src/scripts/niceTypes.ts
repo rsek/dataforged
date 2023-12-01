@@ -27,7 +27,7 @@ import { TSchema, Type, TypeClone, TypeGuard } from '@sinclair/typebox'
 // current status: this generates quicktype-friendly types... but quicktype mangles TS unions pretty badly :|
 // all this config/troubleshooting (which isn't complete yet!) makes
 /** Simplifies JSON schema types into types that are less precise, but friendlier to code generation tools like QuickType. */
-function simplifyRecursive(schema: TSchema) {
+export function simplifyRecursive(schema: TSchema, allowNumberEnums = false) {
 	let base = TypeClone.Type(schema)
 	if (!base?.title && base?.$id) base.title = base.$id
 	switch (true) {
@@ -62,7 +62,7 @@ function simplifyRecursive(schema: TSchema) {
 			break
 		}
 		case TUnionEnum(base):
-			if (base.enum.every(isInteger))
+			if (base.enum.every(isInteger) && !allowNumberEnums)
 				return Type.Integer(pick(base, 'description', 'title'))
 			return ToEnum(base as any)
 		case TypeGuard.TObject(base): {
@@ -79,27 +79,27 @@ function simplifyRecursive(schema: TSchema) {
 	return base
 }
 
-const definitions = mapValues(Defs, simplifyRecursive)
+// const definitions = mapValues(Defs, simplifyRecursive)
 
-const result = {
-	title: 'RulesPackage',
+// const result = {
+// 	title: 'RulesPackage',
 
-	anyOf: [{ $ref: 'Ruleset' }, { $ref: 'Expansion' }],
-	definitions
-}
+// 	anyOf: [{ $ref: 'Ruleset' }, { $ref: 'Expansion' }],
+// 	definitions
+// }
 
-const replacer = (k, v) => {
-	if (k === '$id') return undefined
-	if (k === '$ref' && typeof v === 'string') return '#/definitions/' + v
+// const replacer = (k, v) => {
+// 	if (k === '$id') return undefined
+// 	if (k === '$ref' && typeof v === 'string') return '#/definitions/' + v
 
-	return v
-}
+// 	return v
+// }
 
-const data = JSON.stringify( result, replacer, '\t'
-)
+// const data = JSON.stringify( result, replacer, '\t'
+// )
 
 
-await fs.writeFile('simpleschema.json',data)
+// await fs.writeFile('simpleschema.json',data)
 // const exports: Codegen.TypeBoxModel['exports'] = new Map(
 // 	Object.entries(adjustedDefs)
 // )

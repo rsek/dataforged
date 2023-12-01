@@ -1,10 +1,10 @@
 import { type ObjectOptions, type TObject } from '@sinclair/typebox'
 import { SourcedNode, type TSourcedNode } from './SourcedNode.js'
-import { type AnyID } from '../common/Id.js'
+import { type TAnyId } from '../common/Id.js'
 
 export const CollectableBrand = Symbol('Collectable')
 export const RecursiveCollectableBrand = Symbol('RecursiveCollectable')
-type CollectableID = AnyID
+type CollectableID = TAnyId
 
 export function Collectable<T extends TObject>(
 	id: CollectableID,
@@ -24,7 +24,7 @@ export type TCollectable<T extends TObject> = ReturnType<
 > & {
 	[CollectableBrand]: 'Collectable'
 }
-type RecursiveCollectableID = AnyID
+type RecursiveCollectableID = TAnyId
 
 export function RecursiveCollectable<T extends TObject>(
 	id: RecursiveCollectableID,

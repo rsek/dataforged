@@ -5,7 +5,7 @@ import { type TObject, type ObjectOptions, Type } from '@sinclair/typebox'
 import { setDescriptions } from '../utils/typebox.js'
 
 export function IdentifiedNode<T extends TObject>(
-	id: Id.AnyID,
+	id: Id.TAnyId,
 	schema: T,
 	options: ObjectOptions = {}
 ) {
@@ -34,6 +34,6 @@ export function IdentifiedNode<T extends TObject>(
 }
 
 export type TIdentifiedNode<T extends TObject> = TObject<
-	T['properties'] & { id: Utils.TComputed<Id.AnyID> }
+	T['properties'] & { id: Utils.TComputed<Id.TAnyId> }
 >
 export type IdentifiedNode<T extends object = object> = T & { id: string }

@@ -121,7 +121,7 @@ export type ConditionMeterValueRef = Static<typeof ConditionMeterValueRef>
 export const CustomValue = RollableValueBase(
 	'custom',
 	Type.Object({
-		label: Type.Ref(Localize.Label),
+		label: Type.Ref(Localize.InputLabel),
 		value: Type.Integer()
 	}),
 	{ $id: 'CustomValue' }

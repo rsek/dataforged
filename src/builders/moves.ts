@@ -1,5 +1,5 @@
-import type * as In from '../types/io/datasworn-source.js'
-import type * as Out from '../types/io/datasworn.js'
+import type * as In from '../types/DataswornSource.js'
+import type * as Out from '../types/Datasworn.js'
 import {
 	type SourceHaver,
 	collectionTransformer,

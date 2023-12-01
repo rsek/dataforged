@@ -48,7 +48,7 @@ const CollectionMixin = Type.Object({
 })
 
 export const CollectionBrand = Symbol('Collection')
-type TCollectionID = Id.AnyID
+type TCollectionID = Id.TAnyId
 type TCollectionIdMixin<T extends TRef = TRef> = TObject<{
 	enhances: TOptional<TCollectionID>
 	replaces: TOptional<TCollectionID>

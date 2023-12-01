@@ -5,8 +5,8 @@ import {
 	type Transformer
 } from './transformer.js'
 import { mapValues } from 'lodash-es'
-import type * as In from '../types/io/datasworn-source.js'
-import type * as Out from '../types/io/datasworn.js'
+import type * as In from '../types/DataswornSource.js'
+import type * as Out from '../types/Datasworn.js'
 
 export const NpcVariant: Transformer<In.NpcVariant, Out.NpcVariant, Out.Npc> = {
 	id(data, key, parent) {

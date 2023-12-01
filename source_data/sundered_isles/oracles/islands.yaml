@@ -474,28 +474,34 @@ oracles:
                 table:
                   - min: 1
                     max: 15
-                    result: &result0 Devastated
-                    summary: &summary0 Ravaged by natural forces or razed by despoilers
+                    <<: &Vitality.0
+                      result: Devastated
+                      summary: Ravaged by natural forces or razed by despoilers
                   - min: 16
                     max: 30
-                    result: &result1 Dying
-                    summary: &summary1 Withered woodlands, blighted scrub, or sickly marshes
+                    <<: &Vitality.1
+                      result: Dying
+                      summary: Withered woodlands, blighted scrub, or sickly marshes
                   - min: 31
                     max: 40
-                    result: &result2 Desolate
-                    summary: &summary2 Arid wastes
+                    <<: &Vitality.2
+                      result: Desolate
+                      summary: Arid wastes
                   - min: 41
                     max: 50
-                    result: &result3 Sparse
-                    summary: &summary3 Thin woodlands, bleak scrub, or stagnant marshes
+                    <<: &Vitality.3
+                      result: Sparse
+                      summary: Thin woodlands, bleak scrub, or stagnant marshes
                   - min: 51
                     max: 90
-                    result: &result4 Lush
-                    summary: &summary4 Verdant woodlands, dense jungles, or thriving swamps
+                    <<: &Vitality.4
+                      result: Lush
+                      summary: Verdant woodlands, dense jungles, or thriving swamps
                   - min: 91
                     max: 100
-                    result: &result5 Primeval
-                    summary: &summary5 Ancient jungles or impenetrable swamps
+                    <<: &Vitality.5
+                      result: Primeval
+                      summary: Ancient jungles or impenetrable swamps
               margins:
                 source: *Source
                 name: Margins
@@ -505,28 +511,22 @@ oracles:
                 table:
                   - min: 1
                     max: 10
-                    result: *result0
-                    summary: *summary0
+                    <<: *Vitality.0
                   - min: 11
                     max: 20
-                    result: *result1
-                    summary: *summary1
+                    <<: *Vitality.1
                   - min: 21
                     max: 25
-                    result: *result2
-                    summary: *summary2
+                    <<: *Vitality.2
                   - min: 26
                     max: 35
-                    result: *result3
-                    summary: *summary3
+                    <<: *Vitality.3
                   - min: 36
                     max: 85
-                    result: *result4
-                    summary: *summary4
+                    <<: *Vitality.4
                   - min: 86
                     max: 100
-                    result: *result5
-                    summary: *summary5
+                    <<: *Vitality.5
               reaches:
                 source: *Source
                 name: Reaches
@@ -536,28 +536,22 @@ oracles:
                 table:
                   - min: 1
                     max: 5
-                    result: *result0
-                    summary: *summary0
+                    <<: *Vitality.0
                   - min: 6
                     max: 10
-                    result: *result1
-                    summary: *summary1
+                    <<: *Vitality.1
                   - min: 11
                     max: 15
-                    result: *result2
-                    summary: *summary2
+                    <<: *Vitality.2
                   - min: 16
                     max: 25
-                    result: *result3
-                    summary: *summary3
+                    <<: *Vitality.3
                   - min: 26
                     max: 75
-                    result: *result4
-                    summary: *summary4
+                    <<: *Vitality.4
                   - min: 76
                     max: 100
-                    result: *result5
-                    summary: *summary5
+                    <<: *Vitality.5
       visible_habitation:
         source: *Source
         name: Visible Habitation
@@ -590,22 +584,28 @@ oracles:
             table:
               - min: 1
                 max: 35
-                result: &result0 No signs of habitation
+                <<: &VisibleHabitation.0
+                  result: No signs of habitation
               - min: 36
                 max: 40
-                result: &result1 Inland smoke
+                <<: &VisibleHabitation.1
+                  result: Inland smoke
               - min: 41
                 max: 45
-                result: &result2 Costal boats
+                <<: &VisibleHabitation.2
+                  result: Costal boats
               - min: 46
                 max: 50
-                result: &result3 Seaside camp
+                <<: &VisibleHabitation.3
+                  result: Seaside camp
               - min: 51
                 max: 85
-                result: &result4 Seaside settlement
+                <<: &VisibleHabitation.4
+                  result: Seaside settlement
               - min: 86
                 max: 100
-                result: &result5 Mutliple visible communities or extensive cultivation
+                <<: &VisibleHabitation.5
+                  result: Mutliple visible communities or extensive cultivation
           margins:
             source: *Source
             name: Margins
@@ -615,22 +615,22 @@ oracles:
             table:
               - min: 1
                 max: 50
-                result: *result0
+                <<: *VisibleHabitation.0
               - min: 51
                 max: 55
-                result: *result1
+                <<: *VisibleHabitation.1
               - min: 56
                 max: 60
-                result: *result2
+                <<: *VisibleHabitation.2
               - min: 61
                 max: 65
-                result: *result3
+                <<: *VisibleHabitation.3
               - min: 66
                 max: 90
-                result: *result4
+                <<: *VisibleHabitation.4
               - min: 91
                 max: 100
-                result: *result5
+                <<: *VisibleHabitation.5
           reaches:
             source: *Source
             name: Reaches
@@ -640,19 +640,19 @@ oracles:
             table:
               - min: 1
                 max: 65
-                result: *result0
+                <<: *VisibleHabitation.0
               - min: 66
                 max: 70
-                result: *result1
+                <<: *VisibleHabitation.1
               - min: 71
                 max: 75
-                result: *result2
+                <<: *VisibleHabitation.2
               - min: 76
                 max: 80
-                result: *result3
+                <<: *VisibleHabitation.3
               - min: 81
                 max: 95
-                result: *result4
+                <<: *VisibleHabitation.4
               - min: 96
                 max: 100
-                result: *result5
+                <<: *VisibleHabitation.5

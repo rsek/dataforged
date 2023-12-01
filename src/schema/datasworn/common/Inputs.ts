@@ -232,10 +232,10 @@ export function SelectOption<T extends TObject>(
 		...options
 	})
 }
-export type TSelectOption<T extends TObject> = ReturnType<
+export type TSelectChoice<T extends TObject> = ReturnType<
 	typeof SelectOption<T>
 >
-export type SelectOption<T extends object> = T & Static<typeof SelectOptionBase>
+export type SelectChoice<T extends object> = T & Static<typeof SelectOptionBase>
 
 function Choices<T extends TSchema>(
 	choiceSchema: T,
@@ -253,32 +253,32 @@ export interface Choices<T> {
 	choices: Record<string, T>
 }
 
-const SelectOptionGroupBase = Type.Object({
-	name: Type.Ref<typeof Localize.Label>('Label', {
+const SelectChoicesGroupBase = Type.Object({
+	name: Type.Ref(Localize.InputLabel, {
 		description: 'A label for this option group.'
 	}),
 	option_type: Type.Literal('option_group')
 })
-export function SelectOptionGroup<Option extends TSelectOption<TObject>>(
+export function SelectChoicesGroup<Option extends TRef<TSelectChoice<TObject>>>(
 	optionSchema: Option,
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(optionSchema)
-	return Utils.Assign([SelectOptionGroupBase, mixin], {
+	return Utils.Assign([SelectChoicesGroupBase, mixin], {
 		description: 'Represents a grouping of options in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
 		title: optionSchema.title ? optionSchema.title + 'Group' : undefined,
 		...options
 	}) as TObject<
-		ObjectProperties<typeof SelectOptionGroupBase> &
+		ObjectProperties<typeof SelectChoicesGroupBase> &
 			ObjectProperties<typeof mixin>
 	>
 }
-export type TSelectOptionGroup<Option extends TSelectOption<TObject>> =
-	ReturnType<typeof SelectOptionGroup<Option>>
+export type TSelectChoicesGroup<Option extends TRef<TSelectChoice<TObject>>> =
+	ReturnType<typeof SelectChoicesGroup<Option>>
 
-export type SelectOptionGroup<Option extends SelectOption<any>> = Static<
-	typeof SelectOptionGroupBase
+export type SelectChoicesGroup<Option extends SelectChoice<any>> = Static<
+	typeof SelectChoicesGroupBase
 > &
 	Choices<Option>
 
@@ -292,15 +292,13 @@ const SelectBase = Input(
 	)
 )
 
-export function SelectWithGroups<Option extends TSelectOption<TObject>>(
-	optionSchema: Option,
+export function SelectWithGroups<Option extends TSelectChoice<TObject>>(
+	choiceSchema: Option,
+	choicesGroupSchema: TSelectChoicesGroup<TRef<Option>>,
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(
-		Utils.DiscriminatedUnion(
-			[optionSchema, SelectOptionGroup(optionSchema)],
-			'option_type'
-		)
+		Utils.DiscriminatedUnion([choiceSchema, choicesGroupSchema], 'option_type')
 	)
 	return Utils.Assign([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',
@@ -316,11 +314,12 @@ export function SelectWithGroups<Option extends TSelectOption<TObject>>(
  * @remarks Semantics are similar to the HTML `<select>` element.
  */
 export function Select<
-	Option extends
-		| TSelectOption<TObject>
-		| Utils.TDiscriminatedUnion<TSelectOption<TObject>[], string>
->(optionSchema: Option, options: ObjectOptions = {}) {
-	const mixin = Choices(optionSchema)
+	Option extends TRef<
+		| TSelectChoice<TObject>
+		| Utils.TDiscriminatedUnion<TSelectChoice<TObject>[], string>
+	>
+>(choiceSchema: Option, options: ObjectOptions = {}) {
+	const mixin = Choices(choiceSchema)
 
 	return Utils.Assign([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',
@@ -330,10 +329,10 @@ export function Select<
 		ObjectProperties<typeof SelectBase> & ObjectProperties<typeof mixin>
 	>
 }
-export type TSelect<Option extends TSelectOption<TObject>> = ReturnType<
+export type TSelect<Option extends TRef<TSelectChoice<TObject>>> = ReturnType<
 	typeof Select<Option>
 >
-export type Select<Option extends SelectOption<any>> = Static<
+export type Select<Option extends SelectChoice<any>> = Static<
 	typeof SelectBase
 > &
 	Choices<Option>

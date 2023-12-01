@@ -6,7 +6,7 @@ import JsonSchema from 'json-schema-library'
 import { loadDataswornNamespace } from '../datasworn/loadDatasworn.js'
 import { extractLocaleStrings } from './extractLocaleStrings.js'
 import path from 'path'
-import { Datasworn } from '../../types/io/datasworn.js'
+import { Datasworn } from '../../types/Datasworn.js'
 
 const DEFAULT_LOCALE = 'en'
 

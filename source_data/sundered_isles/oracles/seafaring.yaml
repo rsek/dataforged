@@ -46,45 +46,60 @@ oracles:
             table:
               - min: 1
                 max: 25
-                result: &waypoint.0.result |-
-                  **Land, ho!**
-                    [Islands]
+                <<: &Waypoint.0
+                  result: |-
+                    **Land, ho!**
+                      [Islands](id:sundered_isles/collections/oracles/islands)
               - min: 26
                 max: 40
-                result: &waypoint.1.result |-
-                  **Sails, ho!**
-                    [Ships]
+                <<: &Waypoint.1
+                  result: |-
+                    **Sails, ho!**
+                      [Ships](id:sundered_isles/collections/oracles/ships)
               - min: 41
                 max: 50
-                result: &waypoint.2.result |-
-                  **Changing weather**
-                    [Weather]
+                <<: &Waypoint.2
+                  result: |-
+                    **Changing weather**
+                      [Weather](id:sundered_isles/collections/oracles/weather)
               - min: 51
                 max: 65
-                result: &waypoint.3.result |-
-                  **Instance (choose one)**
-                    * [Seafaring Details]**
-                    * [Descriptor] + [Focus]
+                <<: &Waypoint.3
+                  result: |-
+                    **Instance (choose one)**
+                      * [Seafaring Details](id:sundered_isles/oracles/seafaring/details)
+                      * [Descriptor](id:sundered_isles/oracles/core/descriptor) + [Focus](id:sundered_isles/oracles/core/focus)
+                  rolls:
+                    - oracle: sundered_isles/oracles/seafaring/details
+                    - oracle: sundered_isles/oracles/core/descriptor
+                    - oracle: sundered_isles/oracles/core/focus
               - min: 66
                 max: 70
-                result: &waypoint.4.result |-
-                  **Lost souls**
-                    [Shipwrecks]
+                <<: &Waypoint.4
+                  result: |-
+                    **Lost souls**
+                      [Shipwrecks](id:sundered_isles/collections/oracles/shipwrecks)
               - min: 71
                 max: 75
-
-                result: &waypoint.5.result |-
-                  **Relic of the past**
-                    [Ruins]
+                <<: &Waypoint.5
+                  result: |-
+                    **Relic of the past**
+                      [Ruins](id:sundered_isles/collections/oracles/ruins)
               - min: 76
                 max: 85
-                result: &waypoint.6.result |-
-                  **Character focus**
-                    [Interlude Scene]
-              - &waypoint.7
+                <<: &Waypoint.6
+                  result: |-
+                    **Character focus**
+                      [Interlude Scene](id:sundered_isles/oracles/misc/interlude_scene)
+                  rolls:
+                    - oracle: sundered_isles/oracles/misc/interlude_scene
+              - &Waypoint.7
                 min: 86
                 max: 100
                 result: Roll twice
+                rolls:
+                  - auto: true
+                    times: 2
           margins:
             source: *Source
             name: Margins
@@ -94,26 +109,26 @@ oracles:
             table:
               - min: 1
                 max: 20
-                result: *waypoint.0.result
+                <<: *Waypoint.0
               - min: 21
                 max: 30
-                result: *waypoint.1.result
+                <<: *Waypoint.1
               - min: 31
                 max: 42
-                result: *waypoint.2.result
+                <<: *Waypoint.2
               - min: 43
                 max: 57
-                result: *waypoint.3.result
+                <<: *Waypoint.3
               - min: 58
                 max: 67
-                result: *waypoint.4.result
+                <<: *Waypoint.4
               - min: 68
                 max: 75
-                result: *waypoint.5.result
+                <<: *Waypoint.5
               - min: 76
                 max: 85
-                result: *waypoint.6.result
-              - *waypoint.7
+                <<: *Waypoint.6
+              - *Waypoint.7
           reaches:
             source: *Source
             name: Reaches
@@ -123,26 +138,26 @@ oracles:
             table:
               - min: 1
                 max: 15
-                result: *waypoint.0.result
+                <<: *Waypoint.0
               - min: 16
                 max: 20
-                result: *waypoint.1.result
+                <<: *Waypoint.1
               - min: 21
                 max: 35
-                result: *waypoint.2.result
+                <<: *Waypoint.2
               - min: 36
                 max: 50
-                result: *waypoint.3.result
+                <<: *Waypoint.3
               - min: 51
                 max: 65
-                result: *waypoint.4.result
+                <<: *Waypoint.4
               - min: 66
                 max: 75
-                result: *waypoint.5.result
+                <<: *Waypoint.5
               - min: 76
                 max: 85
-                result: *waypoint.6.result
-              - *waypoint.7
+                <<: *Waypoint.6
+              - *Waypoint.7
     contents:
       details:
         source: *Source
@@ -855,19 +870,19 @@ oracles:
             result: You are lost or off course
           - min: 97
             max: 99
-            result: '[Action](id:sundered_isles/oracles/core/action) + [Theme](id:sundered_isles/oracles/core/theme)'
-            rolls:
-              - oracle: sundered_isles/oracles/core/action
-                auto: true
-              - oracle: sundered_isles/oracles/core/theme
-                auto: true
+            <<: &ActionTheme
+              result: '[Action](id:sundered_isles/oracles/core/action) + [Theme](id:sundered_isles/oracles/core/theme)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/action
+                - auto: true
+                  oracle: sundered_isles/oracles/core/theme
           - min: 100
             max: 100
             result: Roll twice
             rolls:
               - auto: true
                 times: 2
-                method: no_duplicates
       opportunity:
         source: *Source
         name: Seafaring Opportunities

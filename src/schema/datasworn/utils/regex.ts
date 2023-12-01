@@ -4,11 +4,15 @@ import {
 	type StringOptions,
 	type TString,
 	Type,
-	type ObjectOptions
+	type ObjectOptions,
+	type TUnion,
+	TypeClone
 } from '@sinclair/typebox'
-import { escapeRegExp } from 'lodash-es'
+import { escapeRegExp, omit, pick } from 'lodash-es'
 import { UnionOneOf } from './UnionOneOf.js'
 import { JsonTypeDef } from '../../../scripts/json-typedef/symbol.js'
+import { GetSourceDataSchema, setSourceDataSchema } from './Computed.js'
+import { SetOptional } from './SetOptional.js'
 
 const sep = escapeRegExp('/')
 const wc = escapeRegExp('*')
@@ -47,14 +51,19 @@ type IdElementSymbol =
 	| Index
 	| DiceRange
 	| Collection
-type IdElement = IdElementSymbol | string
+export type IdElement = IdElementSymbol | string
 
 export const PatternElements = Symbol('PatternElements')
-type IdOptions = StringOptions
-type TId = TString & { [PatternElements]: IdElement[]; pattern: string }
+type IdOptions = StringOptions & { $id: string }
+type TId = TString &
+	IdOptions & {
+		[PatternElements]: IdElement[]
+		pattern: string
+	}
+type TIdUnion = TUnion<Array<Omit<TId, '$id'> & TString>>
 
 export function IdUnion(members: TId[], options: ObjectOptions) {
-	const regex = oneOf(
+	const jtdRegex = oneOf(
 		...members.map(
 			(item) =>
 				new RegExp(getPatternSubstrings(...item[PatternElements]).join(''))
@@ -63,53 +72,78 @@ export function IdUnion(members: TId[], options: ObjectOptions) {
 
 	const extendedOptions = {
 		[JsonTypeDef]: {
-			schema: { type: 'string', metadata: { pattern: `^${regex.source}$` } }
+			schema: { type: 'string', metadata: { pattern: `^${jtdRegex.source}$` } }
 		},
 		...options
 	}
 
-	return Type.Union(members, extendedOptions)
+	return Type.Union(members, extendedOptions) as TIdUnion
 }
 
-export function Id(elements: IdElement[], options: IdOptions = {}) {
-	const regex = new RegExp(`^${getPatternSubstrings(...elements).join('')}$`)
-	const result = Type.RegExp(regex, options) as TId
-	result[PatternElements] = elements
-	if (!result.description && result.$id) {
-		const targetName = result.$id.replace(/Id$/, '')
-		const indefiniteArticle = targetName.match(/^[AEIOU]/) ? 'an' : 'a'
-		result.description = `A unique ID for ${indefiniteArticle} ${targetName}.`
-	}
+export function Id(elements: IdElement[], options: IdOptions) {
+	const targetName = options.$id.replace(/Id$/, '')
+	const indefiniteArticle = targetName.match(/^[AEIOU]/) ? 'an' : 'a'
+
+	const result = Type.RegExp(
+		new RegExp(`^${getPatternSubstrings(...elements).join('')}$`),
+		{
+			description: `A unique ID for ${indefiniteArticle} ${targetName}.`,
+			...options,
+			[PatternElements]: elements
+		}
+	) as TId
+
 	return result
 }
-export function RecursiveCollectableId(
-	type: IdElement[],
-	options: IdOptions = {}
-) {
-	return Id([Pkg, ...type, NodeRecursive, Node], options)
+export function RecursiveCollectableId(type: IdElement[], options: IdOptions) {
+	const base = Id([Pkg, ...type, NodeRecursive, Node], options)
+	return setSourceDataSchema(base, (schema) => {
+		const nuPattern = Id(['{{COLLECTION}}', Node], options)
+		return IdUnion(
+			[
+				omit(TypeClone.Type(schema), '$id') as TId,
+				{
+					...omit(TypeClone.Type(schema), '$id'),
+					...pick(nuPattern, PatternElements, 'pattern')
+				} as TId
+			],
+			options
+		)
+	})
 }
-export function RecursiveCollectionId(
-	type: IdElement[],
-	options: IdOptions = {}
-) {
-	return Id([Pkg, Collection, ...type, NodeRecursive], options)
+export function RecursiveCollectionId(type: IdElement[], options: IdOptions) {
+	const base = Id([Pkg, Collection, ...type, NodeRecursive], options)
+	return base
 }
-export function CollectableId(type: IdElement[], options: IdOptions = {}) {
-	return Id([Pkg, ...type, Node, Node], options)
+export function CollectableId(type: IdElement[], options: IdOptions) {
+	const base = Id([Pkg, ...type, Node, Node], options)
+	return setSourceDataSchema(base, (schema) => {
+		const nuPattern = Id(['{{COLLECTION}}', Node], options)
+		return IdUnion(
+			[
+				omit(TypeClone.Type(schema), '$id') as TId,
+				{
+					...omit(TypeClone.Type(schema), '$id'),
+					...pick(nuPattern, PatternElements, 'pattern')
+				} as TId
+			],
+			options
+		)
+	})
 }
-export function CollectionId(type: IdElement[], options: IdOptions = {}) {
-	return Id([Pkg, Collection, ...type, Node], options)
+export function CollectionId(type: IdElement[], options: IdOptions) {
+	const base = Id([Pkg, Collection, ...type, Node], options)
+
+	return base
 }
 
-export function UncollectableId(type: IdElement[], options: IdOptions = {}) {
-	return Id([Pkg, ...type, Node], options)
+export function UncollectableId(type: IdElement[], options: IdOptions) {
+	const base = Id([Pkg, ...type, Node], options)
+
+	return base
 }
 
-export function Extend(
-	base: TId,
-	append: IdElement[],
-	options: IdOptions = {}
-) {
+export function Extend(base: TId, append: IdElement[], options: IdOptions) {
 	const baseElements = base[PatternElements].filter(
 		(f) => f !== Collection
 	) as [string, ...IdElement[]]
@@ -117,7 +151,14 @@ export function Extend(
 	return Id([...baseElements, ...append], options)
 }
 
-export function toWildcard(base: TId, options: IdOptions = {}) {
+export function toWildcard(
+	base: TId,
+	options: SetOptional<IdOptions, '$id'> = {}
+) {
+	if (!options.$id) {
+		options.$id = base.$id + 'Wildcard'
+	}
+
 	if (base.title && !options.title)
 		options.title = base.title + ' (with wildcard)'
 	const elements = base[PatternElements].map((item) => _toWildcard(item))
@@ -127,7 +168,7 @@ export function toWildcard(base: TId, options: IdOptions = {}) {
 		options.description = `A wildcarded ID that can be used to match multiple ${targetName}s.`
 	}
 
-	return Id(elements, options)
+	return Id(elements, options as IdOptions)
 }
 
 function wildcard(pattern: RegExp) {

@@ -1,0 +1,837 @@
+id: sundered_isles
+package_type: ruleset
+oracles:
+  treasures:
+    name: Treasures
+    source:
+      <<: &Source
+        title: Sundered Isles
+        date: 2023-11-29
+        authors:
+          - name: Shawn Tomkin
+        license: null
+        url: https://ironswornrpg.com
+    contents:
+      location:
+        name: Location
+        summary: If you’re not sure of a treasure’s location—such as when chasing down a rumored treasure or gathering details on a treasure-related quest—check this table.
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 25
+            result: Borne on a > Sailing Ship; pg 128
+          - min: 26
+            max: 50
+            result: Lost with a > Shipwreck; pg XX
+          - min: 51
+            max: 70
+            result: Hidden on an > Island; pg 138
+          - min: 71
+            max: 85
+            result: Sheltered in a > Cave; pg XX
+          - min: 86
+            max: 95
+            result: Secured in a > Settlement; pg 160
+          - min: 96
+            max: 100
+            result: Preserved in a > Ruin; pg XX
+      cursed_location:
+        name: Cursed Location
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 5
+            result: Banished to the realm of the dead
+          - min: 6
+            max: 10
+            result: Consumed by a monstrous beast
+          - min: 11
+            max: 15
+            result: Entombed in a crypt or graveyard
+          - min: 16
+            max: 30
+            result: Held aboard a cursed ship
+          - min: 31
+            max: 35
+            result: Locked in a mechanized vault
+          - min: 36
+            max: 50
+            result: Lost in the heart of a trackless jungle
+          - min: 51
+            max: 65
+            result: Mired in a forsaken swamp
+          - min: 66
+            max: 80
+            result: Safeguarded in a monstrous beast's lair
+          - min: 81
+            max: 90
+            result: Sealed in the bowels of a raging volcano
+          - min: 91
+            max: 100
+            result: Sunk to the depths of an abyssal trench
+      repository:
+        name: Repository
+        source:
+          <<: *Source
+        rendering:
+          style: standalone
+          columns:
+            roll:
+              label: Roll
+              content_type: roll
+            size:
+              label: Size
+              content_type: result
+            examples:
+              label: Examples
+              content_type: summary
+        summary: Choose the scale of the treasure’s repository—small, medium, large, or vast—as appropriate to situation and location. See the examples in the table below. If unsure, roll for the answer. The result helps set the potential Value of the treasure.
+        table:
+          - min: 1
+            max: 40
+            result: Small
+            summary: Lockbox; desk drawer;  bag or pouch
+          - min: 41
+            max: 75
+            result: Medium
+            summary: Chest; crate; ship cabin;  cave alcove
+          - min: 76
+            max: 95
+            result: Large
+            summary: Cargo hold; strongroom; cave chamber
+          - min: 96
+            max: 100
+            result: Vast
+            summary: Storehouse; great hall; cavern vault
+      aspects:
+        name: Aspects
+        source:
+          <<: *Source
+        summary: Use this table to reveal characteristics of a treasure or its surroundings. Since the results often introduce twists and complications, it is best reserved for notable finds and dramatic situations. Also, keep in mind that an aspect might be outside your character’s immediate viewpoint—if so, make note of it as a future trouble or opportunity.
+        table:
+          - min: 1
+            max: 8
+            result: Bears the mark of a notorious figure
+          - min: 9
+            max: 16
+            result: Contains a long-lost object or artifact
+          - min: 17
+            max: 20
+            result: Coveted by a newly-revealed rival
+          - min: 21
+            max: 24
+            result: Guarded by a sentry or caretaker
+          - min: 25
+            max: 28
+            result: Held in a vulnerable repository
+          - min: 29
+            max: 32
+            result: Hidden among worthless items
+          - min: 33
+            max: 40
+            result: Holds a clue to a greater treasure
+          - min: 41
+            max: 48
+            result: Hunted by a foe or faction
+          - min: 49
+            max: 56
+            result: Includes counterfeit valuables
+          - min: 57
+            max: 64
+            result: Marked with a menacing warning
+          - min: 65
+            max: 72
+            result: Once claimed as pillage or spoils
+          - min: 73
+            max: 76
+            result: Planted as a lure for the unwary
+          - min: 77
+            max: 84
+            result: Protected by a clever trap
+          - min: 85
+            max: 88
+            result: Put out-of-reach by a barrier or obstacle
+          - min: 89
+            max: 96
+            result: Secured by a complex lock
+          - min: 97
+            max: 100
+            result: Shows signs of pilfering or tampering
+      cursed_aspects:
+        name: Cursed Aspects
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 4
+            result: Attracts foul creatures or vermin
+          - min: 5
+            max: 12
+            result: Awakens the dead
+          - min: 13
+            max: 16
+            result: Blighted by unnatural decay
+          - min: 17
+            max: 24
+            result: Causes foul luck
+          - min: 25
+            max: 28
+            result: Haunted by former keepers or victims
+          - min: 29
+            max: 32
+            result: Illusions conceal its true nature
+          - min: 33
+            max: 40
+            result: Imbued with a whispering sentience
+          - min: 41
+            max: 44
+            result: Incites a possessive obsession
+          - min: 45
+            max: 48
+            result: Inflicts a dreadful transformation
+          - min: 49
+            max: 52
+            result: Inflicts a sickness or wasting
+          - min: 53
+            max: 56
+            result: Marked with indelible bloodstains
+          - min: 57
+            max: 60
+            result: Marked with sinister glyphs
+          - min: 61
+            max: 64
+            result: Mystically bound to a location
+          - min: 65
+            max: 68
+            result: Mystically bound to a person
+          - min: 69
+            max: 72
+            result: Protected by a monstrous guardian
+          - min: 73
+            max: 80
+            result: Protected by a sorcerous spell
+          - min: 81
+            max: 84
+            result: Provokes dreadful visions or dreams
+          - min: 85
+            max: 92
+            result: Radiates a foul aura
+          - min: 93
+            max: 96
+            result: Sought after by a dreadful foe
+          - min: 97
+            max: 100
+            result: Summons a powerful being or creature
+      precious_items:
+        name: Precious Items
+        source:
+          <<: *Source
+        summary: Roll or select a number of items on this table as set by the treasure’s Value (page 185). Each result represents a quantity of that item, such as a lockbox filled with pearls, a barrel of aged rum, or a stack of precious metal ingots. To instead reveal a specific item of intrinsic or personal worth, check the Tokens table (below).
+        table:
+          - min: 1
+            max: 20
+            result: Cache of coins, gems, and jewels
+          - min: 21
+            max: 24
+            result: Aged rum
+          - min: 25
+            max: 28
+            result: Ancient artifacts
+          - min: 29
+            max: 30
+            result: Fine art
+          - min: 31
+            max: 32
+            result: Fine wine
+          - min: 33
+            max: 36
+            result: Gilded imperial regalia
+          - min: 37
+            max: 40
+            result: Glittering gemstones
+          - min: 41
+            max: 44
+            result: Gold coins
+          - min: 45
+            max: 46
+            result: Intricate mechanical devices
+          - min: 47
+            max: 50
+            result: Lustrous pearls
+          - min: 51
+            max: 54
+            result: Masterwork weapons
+          - min: 55
+            max: 58
+            result: Precious metal ingots
+          - min: 59
+            max: 60
+            result: Rare books
+          - min: 61
+            max: 62
+            result: Rare fossils
+          - min: 63
+            max: 64
+            result: Rare hides or furs
+          - min: 65
+            max: 66
+            result: Rare maps
+          - min: 67
+            max: 68
+            result: Rare medicinal herbs or compounds
+          - min: 69
+            max: 72
+            result: Rare spices
+          - min: 73
+            max: 74
+            result: Rare toxins or poisons
+          - min: 75
+            max: 76
+            result: Sacred relics
+          - min: 77
+            max: 80
+            result: Secret documents
+          - min: 81
+            max: 84
+            result: Unworked gemstones
+          - min: 85
+            max: 88
+            <<: &DescriptorFocus
+              result: '[Descriptor](id:sundered_isles/oracles/core/descriptor) + [Focus](id:sundered_isles/oracles/core/focus)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/descriptor
+                - auto: true
+                  oracle: sundered_isles/oracles/core/focus
+          - min: 89
+            max: 100
+            result: '[Token]'
+      tokens:
+        name: Tokens
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 1
+            result: Ancestral ring with a missing gemstone
+          - min: 2
+            max: 2
+            result: Ancient codex with cryptic secrets
+          - min: 3
+            max: 3
+            result: Ancient gold coin hung on a chain
+          - min: 4
+            max: 4
+            result: Animal figurine carved from amber
+          - min: 5
+            max: 5
+            result: Antique brass sextant
+          - min: 6
+            max: 6
+            result: Beautiful dress wrapped in silk paper
+          - min: 7
+            max: 7
+            result: Bloodstained map of an unknown island
+          - min: 8
+            max: 8
+            result: Book of scripture with ragged pages
+          - min: 9
+            max: 9
+            result: Bottle of very old wine
+          - min: 10
+            max: 10
+            result: Brass lockbox filled with bloodied rings
+          - min: 11
+            max: 11
+            result: Broken manacles
+          - min: 12
+            max: 12
+            result: Cameo portrait of a feminine figure
+          - min: 13
+            max: 13
+            result: Carefully folded flag
+          - min: 14
+            max: 14
+            result: Carved driftwood totem of a sea god
+          - min: 15
+            max: 15
+            result: Ceremonial wooden mask
+          - min: 16
+            max: 16
+            result: Clay jars filled with alchemical agents
+          - min: 17
+            max: 17
+            result: Cleaved fragment of a ship's figurehead
+          - min: 18
+            max: 18
+            result: Coral and pearl bracelet
+          - min: 19
+            max: 19
+            result: Crystalline flute
+          - min: 20
+            max: 20
+            result: Deck of marked playing cards
+          - min: 21
+            max: 21
+            result: Elaborate clockwork puzzle box
+          - min: 22
+            max: 22
+            result: Embroidered silk handkerchief
+          - min: 23
+            max: 23
+            result: Exquisite sword in a velvet-lined case
+          - min: 24
+            max: 24
+            result: Finely-crafted compass in a leather case
+          - min: 25
+            max: 25
+            result: Flask of aged rum
+          - min: 26
+            max: 26
+            result: Folded note with scrawled coordinates
+          - min: 27
+            max: 27
+            result: Forgery kit
+          - min: 28
+            max: 28
+            result: Gilded cage with a clockwork bird
+          - min: 29
+            max: 29
+            result: Gold key
+          - min: 30
+            max: 30
+            result: Gold locket with a lock of hair
+          - min: 31
+            max: 31
+            result: Gold reliquary filled with ash
+          - min: 32
+            max: 32
+            result: Gold ring hung on an iron chain
+          - min: 33
+            max: 33
+            result: Hand-drawn celestial chart
+          - min: 34
+            max: 34
+            result: Handwritten sheet music
+          - min: 35
+            max: 35
+            result: Intricate brass and silver astrolabe
+          - min: 36
+            max: 36
+            result: Iron medallion with a compass rose motif
+          - min: 37
+            max: 37
+            result: Ivory smoking pipe
+          - min: 38
+            max: 38
+            result: Jade mortar and pestle
+          - min: 39
+            max: 39
+            result: Jar of dirt
+          - min: 40
+            max: 40
+            result: Jeweled chalice
+          - min: 41
+            max: 41
+            result: Jeweled hair comb
+          - min: 42
+            max: 42
+            result: Journal filled with notes and sketches
+          - min: 43
+            max: 43
+            result: Large, flawless diamond
+          - min: 44
+            max: 44
+            result: Leather-wrapped forge hammer
+          - min: 45
+            max: 45
+            result: Leatherbound codebook
+          - min: 46
+            max: 46
+            result: Letter of marque signed with blood
+          - min: 47
+            max: 47
+            result: Letter of pardon
+          - min: 48
+            max: 48
+            result: Letter opener stained with dried blood
+          - min: 49
+            max: 49
+            result: Locket with a faded portrait
+          - min: 50
+            max: 50
+            result: Message in a bottle
+          - min: 51
+            max: 51
+            result: Military medal hung on a silk ribbon
+          - min: 52
+            max: 52
+            result: Music box
+          - min: 53
+            max: 53
+            result: Old chart with hand-drawn corrections
+          - min: 54
+            max: 54
+            result: One-half of a sundered crown
+          - min: 55
+            max: 55
+            result: One-half of a treasure map
+          - min: 56
+            max: 56
+            result: One-half of an ancient medallion
+          - min: 57
+            max: 57
+            result: Ornate hilt with a broken blade
+          - min: 58
+            max: 58
+            result: Ornate jeweled lockbox
+          - min: 59
+            max: 59
+            result: Oversized pearl
+          - min: 60
+            max: 60
+            result: Padlocked book
+          - min: 61
+            max: 61
+            result: Painted portrait of a heroic figure
+          - min: 62
+            max: 62
+            result: Pair of bone-carved dice
+          - min: 63
+            max: 63
+            result: Perfumed letter
+          - min: 64
+            max: 64
+            result: Platinum circlet set with a large ruby
+          - min: 65
+            max: 65
+            result: Pocket spyglass of wood and bronze
+          - min: 66
+            max: 66
+            result: Pocket watch with a personal engraving
+          - min: 67
+            max: 67
+            result: Pouch of silver musket balls
+          - min: 68
+            max: 68
+            result: Rare flowers pressed in a journal
+          - min: 69
+            max: 69
+            result: Rough-hewn stone key
+          - min: 70
+            max: 70
+            result: Sailor's journal filled with sea shanties
+          - min: 71
+            max: 71
+            result: Scrimshaw carving of a sea monster
+          - min: 72
+            max: 72
+            result: Sealed envelope with a black spot
+          - min: 73
+            max: 73
+            result: Set of crystal and obsidian chess pieces
+          - min: 74
+            max: 74
+            result: Set of metal lockpicks
+          - min: 75
+            max: 75
+            result: Set of onyx divination stones
+          - min: 76
+            max: 76
+            result: Shard of an iron meteorite
+          - min: 77
+            max: 77
+            result: Sheaf of wanted posters
+          - min: 78
+            max: 78
+            result: Ship in a bottle
+          - min: 79
+            max: 79
+            result: Ship's bell dented by musket shot
+          - min: 80
+            max: 80
+            result: Ship's drum with a shark skin drumhead
+          - min: 81
+            max: 81
+            result: Silver coin cut into eight fragments
+          - min: 82
+            max: 82
+            result: Silver harmonica
+          - min: 83
+            max: 83
+            result: Single entry torn from a ship's log
+          - min: 84
+            max: 84
+            result: Single musket ball in a gold snuffbox
+          - min: 85
+            max: 85
+            result: Skeleton key
+          - min: 86
+            max: 86
+            result: Skull carved with an intricate map
+          - min: 87
+            max: 87
+            result: Skull of a rare or extinct creature
+          - min: 88
+            max: 88
+            result: Small clay urn filled with gold teeth
+          - min: 89
+            max: 89
+            result: Stoppered flask containing dark liquid
+          - min: 90
+            max: 90
+            result: Strip of cloth torn from a black flag
+          - min: 91
+            max: 91
+            result: Tea leaves in an embellished wood box
+          - min: 92
+            max: 92
+            result: Timeworn bronze sundial
+          - min: 93
+            max: 93
+            result: Unadorned iron box with a complex lock
+          - min: 94
+            max: 94
+            result: Velvet pouch filled with shark teeth
+          - min: 95
+            max: 95
+            result: Vial of cloudy seawater
+          - min: 96
+            max: 96
+            result: Vial of coagulated blood
+          - min: 97
+            max: 97
+            result: Water-stained love letter
+          - min: 98
+            max: 98
+            result: Wax seal ring with a royal crest
+          - min: 99
+            max: 99
+            result: Weathered nameplate of a long-lost ship
+          - min: 100
+            max: 100
+            result: Well-stocked surgeon's bag
+      cursed_tokens:
+        name: Cursed tokens
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 2
+            result: Astrolabe with complex workings that signal a portentous cosmic event
+          - min: 3
+            max: 4
+            result: Black candle that reveals shadowy forms in its sputtering light
+          - min: 5
+            max: 7
+            result: Boatswain’s whistle that echoes with the cries of doomed mariners
+          - min: 8
+            max: 10
+            result: Chattering skull with dark gems fitted into its eye sockets
+          - min: 11
+            max: 13
+            result: Compass that stubbornly points at an unknown destination
+          - min: 14
+            max: 16
+            result: Conch shell that whispers enticingly of distant seas
+          - min: 17
+            max: 19
+            result: Corroded chronometer that offers glimpses of the past
+          - min: 20
+            max: 22
+            result: Cracked lantern that draws a beast of the abyssal depths to its pallid light
+          - min: 23
+            max: 24
+            result: Crown of jagged seashells and sharp coral that binds its wearer to the sea
+          - min: 25
+            max: 27
+            result: Dark cloak that transforms the look of the wearer
+          - min: 28
+            max: 29
+            result: Dueling sword that whispers of vengeful need
+          - min: 30
+            max: 32
+            result: Enigmatic map carved into a leathery sea serpent scale
+          - min: 33
+            max: 34
+            result: Fiddle of dark wood that—when played—evokes profound melancholy
+          - min: 35
+            max: 37
+            result: Fiendish puzzle box that compels its keeper to solve the riddle
+          - min: 38
+            max: 39
+            result: Filthy burial shroud that takes the shape of its former occupant on moonless nights
+          - min: 40
+            max: 41
+            result: Flask of green glass that releases a torrent of brackish seawater when unstoppered
+          - min: 42
+            max: 43
+            result: Frayed and bloodied rope that slithers and coils of its own accord
+          - min: 44
+            max: 46
+            result: Glass eye that peers into the realm of the dead
+          - min: 47
+            max: 49
+            result: Iron mask that—when sworn upon—cannot be removed until the vow is fulfilled
+          - min: 50
+            max: 52
+            result: Jagged obsidian dagger marked with everlasting bloodstains
+          - min: 53
+            max: 54
+            result: Large, leathery egg that pulses and shudders
+          - min: 55
+            max: 57
+            result: Leatherbound tome filled with maddening, ever-changing glyphs
+          - min: 58
+            max: 60
+            result: Lockbox containing a still-beating heart
+          - min: 61
+            max: 63
+            result: Logbook filled with the rantings of a tormented captain
+          - min: 64
+            max: 66
+            result: Macabre tarot cards with shifting illustrations
+          - min: 67
+            max: 69
+            result: Magnetic lodestone that reveals messages within iron shavings
+          - min: 70
+            max: 71
+            result: Mechanical scarab that skitters, flies, and burrows
+          - min: 72
+            max: 74
+            result: Mirror that reveals a cadaverous visage of its subject
+          - min: 75
+            max: 77
+            result: Mummified hand whose grip is locked tight around a gold coin
+          - min: 78
+            max: 80
+            result: Ornate silver chalice that turns its contents to poison
+          - min: 81
+            max: 82
+            result: Ragged ship's flag that—when raised—summons an infamous cursed vessel
+          - min: 83
+            max: 85
+            result: Rusted iron sextant that reveals an unfamiliar sky in its silvered mirror
+          - min: 86
+            max: 88
+            result: Ship in a bottle that flounders upon a storm-tossed sea
+          - min: 89
+            max: 91
+            result: Spyglass that offers glimpses of faraway seas through a cracked lens
+          - min: 92
+            max: 94
+            result: Tarnished ship's bell that calls to the spirits of drowned mariners
+          - min: 95
+            max: 97
+            result: Tattered map that reveals its secrets under moonlight
+          - min: 98
+            max: 100
+            result: Whalebone staff that resonates with dormant power
+    collections:
+      value:
+        name: Value
+        source:
+          <<: *Source
+        summary: A trove or hoard contain a vast array of riches. Collecting and transporting a trove requires great effort, while the logistics of gathering a hoard is an inconceivable task.
+        rendering:
+          style: multi_table
+          columns:
+            small:
+              label: Small
+              table_key: small
+              content_type: roll
+            medium:
+              label: Medium
+              table_key: medium
+              content_type: roll
+            large:
+              label: Large
+              table_key: large
+              content_type: roll
+            vast:
+              label: Vast
+              table_key: vast
+              content_type: roll
+            result:
+              table_key: small
+              content_type: result
+              label: Result
+        contents:
+          small:
+            name: Small
+            source:
+              <<: *Source
+            rendering:
+              style: column
+            table:
+              - &Value.0
+                min: 1
+                max: 80
+                result: Trifle
+                summary: One [Precious Item](id:sundered_isles/oracles/treasures/precious_item)
+              - &Value.1
+                min: 81
+                max: 100
+                result: Stash
+                # TODO: make number of rolls accept dice expressions
+                summary: Roll the action die and reveal that many [Precious Items](id:sundered_isles/oracles/treasures/precious_item)
+              - &Value.2
+                result: Trove
+                summary: Bountiful riches
+              - &Value.3
+                result: Hoard
+                summary: Immeasurable riches
+          medium:
+            name: Medium
+            source:
+              <<: *Source
+            rendering:
+              style: column
+            table:
+              - <<: *Value.0
+                min: 1
+                max: 60
+              - <<: *Value.1
+                min: 61
+                max: 100
+              - *Value.2
+              - *Value.3
+          large:
+            name: Large
+            source:
+              <<: *Source
+            rendering:
+              style: column
+            table:
+            - <<: *Value.0
+              min: 1
+              max: 30
+            - <<: *Value.1
+              min: 31
+              max: 99
+            - <<: *Value.2
+              min: 100
+              max: 100
+            - *Value.3
+          vast:
+            name: Vast
+            source:
+              <<: *Source
+            rendering:
+              style: column
+            table:
+              - <<: *Value.0
+                min: 1
+                max: 30
+              - <<: *Value.1
+                min: 31
+                max: 97
+              - <<: *Value.2
+                min: 98
+                max: 99
+              - <<: *Value.3
+                min: 100
+                max: 100
+

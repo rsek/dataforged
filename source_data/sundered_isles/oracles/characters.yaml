@@ -1,0 +1,1647 @@
+id: sundered_isles
+package_type: ruleset
+oracles:
+  characters:
+    name: Characters
+    source:
+      <<: &Source
+        title: Sundered Isles
+        date: 2023-11-29
+        authors:
+          - name: Shawn Tomkin
+        license: null
+        url: https://ironswornrpg.com
+    summary: When encountering a character, focus on what you learn or perceive as a first impression using tables such as First Look and Initial Disposition. Then envision or generate additional details over time.
+    contents:
+      first_look:
+        name: First Look
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 2
+            result: Accented
+          - min: 3
+            max: 5
+            result: Aged
+          - min: 6
+            max: 8
+            result: Alluring
+          - min: 9
+            max: 11
+            result: Attractive
+          - min: 12
+            max: 14
+            result: Brutish
+          - min: 15
+            max: 17
+            result: Commanding
+          - min: 18
+            max: 20
+            result: Concealed
+          - min: 21
+            max: 22
+            result: Distinguished
+          - min: 23
+            max: 25
+            result: Distressed
+          - min: 26
+            max: 28
+            result: Drunk
+          - min: 29
+            max: 30
+            result: Encumbered
+          - min: 31
+            max: 32
+            result: Fearsome
+          - min: 33
+            max: 34
+            result: Fit
+          - min: 35
+            max: 37
+            result: Flashy
+          - min: 38
+            max: 39
+            result: Furtive
+          - min: 40
+            max: 41
+            result: Graceful
+          - min: 42
+            max: 43
+            result: Grim
+          - min: 44
+            max: 45
+            result: Guarded
+          - min: 46
+            max: 47
+            result: Haggard
+          - min: 48
+            max: 49
+            result: Ill-equipped
+          - min: 50
+            max: 52
+            result: Imposing
+          - min: 53
+            max: 55
+            result: Mysterious
+          - min: 56
+            max: 57
+            result: Mystical
+          - min: 58
+            max: 59
+            result: Poised
+          - min: 60
+            max: 61
+            result: Purposeful
+          - min: 62
+            max: 63
+            result: Pursued
+          - min: 64
+            max: 66
+            result: Scarred
+          - min: 67
+            max: 68
+            result: Sickly
+          - min: 69
+            max: 70
+            result: Slight
+          - min: 71
+            max: 72
+            result: Stout
+          - min: 73
+            max: 74
+            result: Swaggering
+          - min: 75
+            max: 77
+            result: Tattooed
+          - min: 78
+            max: 80
+            result: Theatrical
+          - min: 81
+            max: 83
+            result: Threatened
+          - min: 84
+            max: 85
+            result: Unassuming
+          - min: 86
+            max: 88
+            result: Uniformed
+          - min: 89
+            max: 91
+            result: Visibly disabled
+          - min: 92
+            max: 94
+            result: Well-armed
+          - min: 95
+            max: 97
+            result: Wounded
+          - min: 98
+            max: 100
+            result: Youthful
+      cursed_first_look:
+        name: Cursed First Look
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 10
+            result: Abyssal
+          - min: 11
+            max: 15
+            result: Aflame
+          - min: 16
+            max: 20
+            result: Beastly
+          - min: 21
+            max: 30
+            result: Decaying
+          - min: 31
+            max: 45
+            result: Eerie
+          - min: 46
+            max: 55
+            result: Ghostly
+          - min: 56
+            max: 65
+            result: Grotesque
+          - min: 66
+            max: 75
+            result: Mechanical
+          - min: 76
+            max: 80
+            result: Shadowy
+          - min: 81
+            max: 85
+            result: Sinister
+          - min: 86
+            max: 95
+            result: Sorcerous
+          - min: 96
+            max: 100
+            result: Transforming
+      initial_disposition:
+        name: Initial Dispostion
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 10
+            result: Helpful
+          - min: 11
+            max: 15
+            result: Friendly
+          - min: 16
+            max: 20
+            result: Persuadable
+          - min: 21
+            max: 30
+            result: Curious
+          - min: 31
+            max: 45
+            result: Indifferent
+          - min: 46
+            max: 55
+            result: Suspicious
+          - min: 56
+            max: 65
+            result: Wanting
+          - min: 66
+            max: 75
+            result: Desperate
+          - min: 76
+            max: 80
+            result: Demanding
+          - min: 81
+            max: 85
+            result: Unfriendly
+          - min: 86
+            max: 95
+            result: Threatening
+          - min: 96
+            max: 100
+            result: Hostile
+      identity:
+        name: Identity
+        summary: You may envision a character’s role, occupation, or persona using the broad categories below. For more detail, check the related subtable.
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 5
+            result: '[Academic](id:sundered_isles/oracles/characters/roles/academic)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/academic
+          - min: 6
+            max: 10
+            result: '[Agent](id:sundered_isles/oracles/characters/roles/agent)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/agent
+          - min: 11
+            max: 15
+            result: '[Caregiver](id:sundered_isles/oracles/characters/roles/caregiver)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/caregiver
+          - min: 16
+            max: 20
+            result: '[Combatant](id:sundered_isles/oracles/characters/roles/combatant)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/combatant
+          - min: 21
+            max: 25
+            result: '[Devotant](id:sundered_isles/oracles/characters/roles/devotant)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/devotant
+          - min: 26
+            max: 30
+            result: '[Laborer](id:sundered_isles/oracles/characters/roles/laborer)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/laborer
+          - min: 31
+            max: 35
+            result: '[Merchant](id:sundered_isles/oracles/characters/roles/merchant)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/merchant
+          - min: 36
+            max: 40
+            result: '[Mystic](id:sundered_isles/oracles/characters/roles/mystic)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/mystic
+          - min: 41
+            max: 45
+            result: '[Outcast](id:sundered_isles/oracles/characters/roles/outcast)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/outcast
+          - min: 46
+            max: 50
+            result: '[Outlander](id:sundered_isles/oracles/characters/roles/outlander)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/outlander
+          - min: 51
+            max: 55
+            result: '[Outlaw](id:sundered_isles/oracles/characters/roles/outlaw)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/outlaw
+          - min: 56
+            max: 60
+            result: '[Performer](id:sundered_isles/oracles/characters/roles/performer)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/performer
+          - min: 61
+            max: 65
+            result: '[Sailor](id:sundered_isles/oracles/characters/roles/sailor)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/sailor
+          - min: 66
+            max: 70
+            result: '[Scavenger](id:sundered_isles/oracles/characters/roles/scavenger)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/scavenger
+          - min: 71
+            max: 75
+            result: '[Statesperson](id:sundered_isles/oracles/characters/roles/statesperson)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/statesperson
+          - min: 76
+            max: 80
+            result: '[Tradesperson](id:sundered_isles/oracles/characters/roles/tradesperson)'
+            rolls:
+              - oracle: sundered_isles/oracles/characters/roles/tradesperson
+          - min: 81
+            max: 90
+            <<: &ActionTheme
+              result: '[Action](id:sundered_isles/oracles/core/action) + [Theme](id:sundered_isles/oracles/core/theme)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/action
+                - auto: true
+                  oracle: sundered_isles/oracles/core/theme
+          - min: 91
+            max: 100
+            <<: &RollTwice
+              result: Roll twice
+              rolls:
+                - auto: true
+                  times: 2
+      trademark_accessories:
+        name: Trademark Accessories
+        source:
+          <<: *Source
+        table:
+            - min: 1
+              max: 2
+              result: Animal claw necklace
+            - min: 3
+              max: 4
+              result: Array of colorful sashes
+            - min: 5
+              max: 6
+              result: Baldric with a buckle of a monstrous face
+            - min: 7
+              max: 8
+              result: Bandolier stocked with vials and flasks
+            - min: 9
+              max: 10
+              result: Battle-scarred breastplate
+            - min: 11
+              max: 12
+              result: Bloodied tunic
+            - min: 13
+              max: 14
+              result: Braids strung with colorful beads
+            - min: 15
+              max: 16
+              result: Buckled corset
+            - min: 17
+              max: 18
+              result: Collection of keys hung from an iron ring
+            - min: 19
+              max: 20
+              result: Colorful skirt or kilt
+            - min: 21
+              max: 22
+              result: Cracked spectacles or goggles
+            - min: 23
+              max: 24
+              result: Dark hooded cloak
+            - min: 25
+              max: 26
+              result: Dramatic cape
+            - min: 27
+              max: 28
+              result: Ear pendant with a glimmering gem
+            - min: 29
+              max: 30
+              result: Elaborate masquerade mask
+            - min: 31
+              max: 32
+              result: Enormous shark tooth pendant
+            - min: 33
+              max: 34
+              result: Face-concealing veil or bandana
+            - min: 35
+              max: 36
+              result: False eye carved from a gemstone
+            - min: 37
+              max: 38
+              result: Fancy wig
+            - min: 39
+              max: 40
+              result: Flamboyant feathered hat
+            - min: 41
+              max: 42
+              result: Frayed straw hat
+            - min: 43
+              max: 44
+              result: Grand signet ring
+            - min: 45
+              max: 46
+              result: Heirloom fiddle with brass gilding
+            - min: 47
+              max: 48
+              result: Hook hand
+            - min: 49
+              max: 50
+              result: Immaculate frilled shirt
+            - min: 51
+              max: 52
+              result: Inscrutable iron mask
+            - min: 53
+              max: 54
+              result: Intricate mechanical prosthetic
+            - min: 55
+              max: 56
+              result: Jewel-encrusted pendant
+            - min: 57
+              max: 58
+              result: Jeweled eye patch
+            - min: 59
+              max: 60
+              result: Knee-high leather boots
+            - min: 61
+              max: 62
+              result: Large tattoo of a legendary beast
+            - min: 63
+              max: 64
+              result: Leather long coat
+            - min: 65
+              max: 66
+              result: Length of coiled rope
+            - min: 67
+              max: 68
+              result: Loyal animal companion
+            - min: 69
+              max: 70
+              result: Metal teeth
+            - min: 71
+              max: 72
+              result: Old wounds patched with metal
+            - min: 73
+              max: 74
+              result: Ornately carved wooden pegleg
+            - min: 75
+              max: 76
+              result: Ostentatious cane
+            - min: 77
+              max: 78
+              result: Out of tune squeeze box
+            - min: 79
+              max: 80
+              result: Oversized spyglass
+            - min: 81
+              max: 82
+              result: Rakish, wide-brimmed hat
+            - min: 83
+              max: 84
+              result: Rows of military medals
+            - min: 85
+              max: 86
+              result: Satchel of tools
+            - min: 87
+              max: 88
+              result: Sharkhide cuirass
+            - min: 89
+              max: 90
+              result: Shoulder-slung map case
+            - min: 91
+              max: 92
+              result: Skull-like mask
+            - min: 93
+              max: 94
+              result: Tailcoat with gold trim and epaulets
+            - min: 95
+              max: 96
+              result: Tricorn hat with holes from near misses
+            - min: 97
+              max: 98
+              result: Wooden religious medallion
+            - min: 99
+              max: 100
+              <<: &DescriptorFocus
+                result: '[Descriptor](id:sundered_isles/oracles/core/descriptor) + [Focus](id:sundered_isles/oracles/core/focus)'
+                rolls:
+                  - auto: true
+                    oracle: sundered_isles/oracles/core/descriptor
+                  - auto: true
+                    oracle: sundered_isles/oracles/core/focus
+      trademark_weapons:
+        name: Trademark Weapons
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 3
+            result: Barbed gaff hook
+          - min: 4
+            max: 6
+            result: Battle-worn boarding axe
+          - min: 7
+            max: 9
+            result: Bloodied belaying pin
+          - min: 10
+            max: 12
+            result: Brace of pearl-handled pistols
+          - min: 13
+            max: 15
+            result: Brace of throwing knives
+          - min: 16
+            max: 17
+            result: Brass knuckle dusters
+          - min: 18
+            max: 19
+            result: Broad-bladed machete
+          - min: 20
+            max: 22
+            result: Cannon ball flail
+          - min: 23
+            max: 25
+            result: Cavalry sabre
+          - min: 26
+            max: 27
+            result: Collapsible boarding pike
+          - min: 28
+            max: 30
+            result: Double-barreled pistol
+          - min: 31
+            max: 33
+            result: Fancy rapier with silver-etched hilt
+          - min: 34
+            max: 35
+            result: Gilded heirloom crossbow
+          - min: 36
+            max: 37
+            result: Grappling hook and frayed rope
+          - min: 38
+            max: 39
+            result: Handheld swivel cannon
+          - min: 40
+            max: 42
+            result: Harpoon notched with victory marks
+          - min: 43
+            max: 44
+            result: Hunting knife with antler handle
+          - min: 45
+            max: 47
+            result: Iron-shod staff
+          - min: 48
+            max: 50
+            result: Large bore blunderbuss
+          - min: 51
+            max: 52
+            result: Leather whip
+          - min: 53
+            max: 55
+            result: Military cutlass
+          - min: 56
+            max: 58
+            result: Musket with keen-edged bayonet
+          - min: 59
+            max: 61
+            result: Pair of hooked swords
+          - min: 62
+            max: 63
+            result: Pair of matching hatchets
+          - min: 64
+            max: 65
+            result: Paired rapier and dirk
+          - min: 66
+            max: 68
+            result: Poisoned dagger with obsidian handle
+          - min: 69
+            max: 70
+            result: Rusted iron chain
+          - min: 71
+            max: 72
+            result: Scrimshaw handle dirk
+          - min: 73
+            max: 75
+            result: Serrated, blade-breaking sword
+          - min: 76
+            max: 78
+            result: Shark tooth club
+          - min: 79
+            max: 81
+            result: Shipwright's hammer
+          - min: 82
+            max: 84
+            result: Shrapnel-filled iron grenades
+          - min: 85
+            max: 86
+            result: Spring-loaded gauntlet blade
+          - min: 87
+            max: 89
+            result: Sword cane
+          - min: 90
+            max: 92
+            result: Toxic stinkpot grenades
+          - min: 93
+            max: 95
+            result: Whale bone club
+          - min: 96
+            max: 97
+            result: Wooden bow
+          - min: 98
+            max: 100
+            <<: *RollTwice
+      cursed_weapon_detail:
+        name: Cursed Weapon Detail
+        source:
+          <<: *Source
+        # TODO: curse metadata should note whether it *combines* or *replaces*
+        summary: If you roll a Trademark Weapon curse, take your result and give that weapon a cursed aspect from the table below.
+        table:
+          - min: 1
+            max: 5
+            result: Adorned with bone or skull motifs
+          - min: 6
+            max: 15
+            result: Bound to a vengeful spirit
+          - min: 16
+            max: 20
+            result: Burning with intense flame
+          - min: 21
+            max: 25
+            result: Charged with sorcerous energy
+          - min: 26
+            max: 30
+            result: Consumes the souls of its victims
+          - min: 31
+            max: 35
+            result: Dripping with foul ichor
+          - min: 36
+            max: 40
+            result: Enveloped in icy frost
+          - min: 41
+            max: 45
+            result: Etched with sinister glyphs
+          - min: 46
+            max: 50
+            result: Feeding upon the lifeforce of its wielder
+          - min: 51
+            max: 55
+            result: Inflicts festering wounds
+          - min: 56
+            max: 60
+            result: Oozing with corrosive venom
+          - min: 61
+            max: 65
+            result: Powered by strange mechanisms
+          - min: 66
+            max: 70
+            result: Radiating a sickly light
+          - min: 71
+            max: 75
+            result: Summoned out of thin air
+          - min: 76
+            max: 80
+            result: Tarnished with unnatural decay
+          - min: 81
+            max: 85
+            result: Transforms its wielder
+          - min: 86
+            max: 95
+            result: Whispering irresistible commands
+          - min: 96
+            max: 100
+            result: Wreathed in smoke and ash
+      revealed_aspects:
+        name: Revealed Aspects
+        source:
+          <<: *Source
+        summary: As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. Feel free to ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.
+        table:
+          - min: 1
+            max: 1
+            result: Adventurous
+          - min: 2
+            max: 2
+            result: Afflicted
+          - min: 3
+            max: 3
+            result: Aggressive
+          - min: 4
+            max: 4
+            result: Ambitious
+          - min: 5
+            max: 5
+            result: Anxious
+          - min: 6
+            max: 6
+            result: Apathetic
+          - min: 7
+            max: 7
+            result: Artistic
+          - min: 8
+            max: 8
+            result: Bitter
+          - min: 9
+            max: 9
+            result: Black-hearted
+          - min: 10
+            max: 10
+            result: Boastful
+          - min: 11
+            max: 11
+            result: Boisterous
+          - min: 12
+            max: 12
+            result: Bold
+          - min: 13
+            max: 13
+            result: Brave
+          - min: 14
+            max: 14
+            result: Cautious
+          - min: 15
+            max: 15
+            result: Charismatic
+          - min: 16
+            max: 16
+            result: Compassionate
+          - min: 17
+            max: 17
+            result: Conceited
+          - min: 18
+            max: 18
+            result: Confident
+          - min: 19
+            max: 19
+            result: Connected
+          - min: 20
+            max: 20
+            result: Cowardly
+          - min: 21
+            max: 21
+            result: Criminal
+          - min: 22
+            max: 22
+            result: Critical
+          - min: 23
+            max: 23
+            result: Cunning
+          - min: 24
+            max: 24
+            result: Curious
+          - min: 25
+            max: 25
+            result: Dangerous
+          - min: 26
+            max: 26
+            result: Deceitful
+          - min: 27
+            max: 27
+            result: Defiant
+          - min: 28
+            max: 28
+            result: Determined
+          - min: 29
+            max: 29
+            result: Disabled
+          - min: 30
+            max: 30
+            result: Disguised
+          - min: 31
+            max: 31
+            result: Driven
+          - min: 32
+            max: 32
+            result: Dying
+          - min: 33
+            max: 33
+            result: Envious
+          - min: 34
+            max: 34
+            result: Experienced
+          - min: 35
+            max: 35
+            result: Faithful
+          - min: 36
+            max: 36
+            result: Faithless
+          - min: 37
+            max: 37
+            result: Flirtatious
+          - min: 38
+            max: 38
+            result: Generous
+          - min: 39
+            max: 39
+            result: Gifted
+          - min: 40
+            max: 40
+            result: Greedy
+          - min: 41
+            max: 41
+            result: Grief-stricken
+          - min: 42
+            max: 42
+            result: Hardhearted
+          - min: 43
+            max: 43
+            result: Heartbroken
+          - min: 44
+            max: 44
+            result: Honorable
+          - min: 45
+            max: 45
+            result: Hot-tempered
+          - min: 46
+            max: 46
+            result: Hunted
+          - min: 47
+            max: 47
+            result: Impulsive
+          - min: 48
+            max: 48
+            result: Incompetent
+          - min: 49
+            max: 49
+            result: Indebted
+          - min: 50
+            max: 50
+            result: Independent
+          - min: 51
+            max: 51
+            result: Indulgent
+          - min: 52
+            max: 52
+            result: Infamous
+          - min: 53
+            max: 53
+            result: Influential
+          - min: 54
+            max: 54
+            result: Insensitive
+          - min: 55
+            max: 55
+            result: Insightful
+          - min: 56
+            max: 56
+            result: Intelligent
+          - min: 57
+            max: 57
+            result: Intolerant
+          - min: 58
+            max: 58
+            result: Ironsworn
+          - min: 59
+            max: 59
+            result: Kind
+          - min: 60
+            max: 60
+            result: Lonely
+          - min: 61
+            max: 61
+            result: Loving
+          - min: 62
+            max: 62
+            result: Loyal
+          - min: 63
+            max: 63
+            result: Manipulative
+          - min: 64
+            max: 64
+            result: Misled
+          - min: 65
+            max: 65
+            result: Oblivious
+          - min: 66
+            max: 66
+            result: Obsessed
+          - min: 67
+            max: 67
+            result: Oppressed
+          - min: 68
+            max: 68
+            result: Powerful
+          - min: 69
+            max: 69
+            result: Proud
+          - min: 70
+            max: 70
+            result: Quiet
+          - min: 71
+            max: 71
+            result: Quirky
+          - min: 72
+            max: 72
+            result: Rebellious
+          - min: 73
+            max: 73
+            result: Reclusive
+          - min: 74
+            max: 74
+            result: Relaxed
+          - min: 75
+            max: 75
+            result: Remorseful
+          - min: 76
+            max: 76
+            result: Resourceful
+          - min: 77
+            max: 77
+            result: Ruthless
+          - min: 78
+            max: 78
+            result: Secretive
+          - min: 79
+            max: 79
+            result: Selfish
+          - min: 80
+            max: 80
+            result: Sociable
+          - min: 81
+            max: 81
+            result: Stealthy
+          - min: 82
+            max: 82
+            result: Stern
+          - min: 83
+            max: 83
+            result: Stingy
+          - min: 84
+            max: 84
+            result: Stoic
+          - min: 85
+            max: 85
+            result: Strong
+          - min: 86
+            max: 86
+            result: Stubborn
+          - min: 87
+            max: 87
+            result: Successful
+          - min: 88
+            max: 88
+            result: Superstitious
+          - min: 89
+            max: 89
+            result: Suspicious
+          - min: 90
+            max: 90
+            result: Talented
+          - min: 91
+            max: 91
+            result: Tough
+          - min: 92
+            max: 92
+            result: Traitorous
+          - min: 93
+            max: 93
+            result: Vengeful
+          - min: 94
+            max: 94
+            result: Villainous
+          - min: 95
+            max: 95
+            result: Violent
+          - min: 96
+            max: 96
+            result: Wary
+          - min: 97
+            max: 97
+            result: Weak
+          - min: 98
+            max: 98
+            result: Weary
+          - min: 99
+            max: 99
+            result: Wild
+          - min: 100
+            max: 100
+            result: Wise
+      cursed_aspects:
+        name: Cursed Aspects
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 5
+            result: Bewitched
+          - min: 6
+            max: 10
+            result: Corrupted
+          - min: 11
+            max: 15
+            result: Deep-dwelling
+          - min: 16
+            max: 25
+            result: Doomed
+          - min: 26
+            max: 30
+            result: Eldritch
+          - min: 31
+            max: 40
+            result: Haunted
+          - min: 41
+            max: 45
+            result: Illusory
+          - min: 46
+            max: 50
+            result: Inhuman
+          - min: 51
+            max: 55
+            result: Jinxed
+          - min: 56
+            max: 60
+            result: Lycanthropic
+          - min: 61
+            max: 65
+            result: Possessed
+          - min: 66
+            max: 70
+            result: Resurrected
+          - min: 71
+            max: 80
+            result: Sorcerous
+          - min: 81
+            max: 90
+            result: Tormented
+          - min: 91
+            max: 95
+            result: Undying
+          - min: 96
+            max: 100
+            result: Vampiric
+      goal:
+        name: Goal
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 2
+            result: Acquire knowledge or learning
+          - min: 3
+            max: 4
+            result: Acquire territory or dominion
+          - min: 5
+            max: 6
+            result: Amass wealth
+          - min: 7
+            max: 8
+            result: Avenge a betrayal
+          - min: 9
+            max: 10
+            result: Avenge a death
+          - min: 11
+            max: 12
+            result: Claim a lost or stolen treasure
+          - min: 13
+            max: 14
+            result: Claim a ship or command
+          - min: 15
+            max: 16
+            result: Collect a debt
+          - min: 17
+            max: 18
+            result: Complete a work of artistry or craft
+          - min: 19
+            max: 20
+            result: Conceal a true identity
+          - min: 21
+            max: 22
+            result: Cure a sickness
+          - min: 23
+            max: 24
+            result: Defeat a rival
+          - min: 25
+            max: 26
+            result: Defeat or undermine a faction
+          - min: 27
+            max: 28
+            result: Dismantle an unjust power
+          - min: 29
+            max: 30
+            result: Escape a captor or oppressor
+          - min: 31
+            max: 32
+            result: Escape or prevent a looming calamity
+          - min: 33
+            max: 34
+            result: Explore far and wide
+          - min: 35
+            max: 36
+            result: Find a lost or hidden treasure
+          - min: 37
+            max: 38
+            result: Find or build a home
+          - min: 39
+            max: 40
+            result: Find or rescue a person
+          - min: 41
+            max: 42
+            result: Follow the tenets of a faith
+          - min: 43
+            max: 44
+            result: Forge an alliance
+          - min: 45
+            max: 46
+            result: Gain glory or fame
+          - min: 47
+            max: 48
+            result: Gain power within a faction
+          - min: 49
+            max: 50
+            result: Incite conflict between factions
+          - min: 51
+            max: 52
+            result: Infiltrate a faction
+          - min: 53
+            max: 54
+            result: Master a skill or trade
+          - min: 55
+            max: 56
+            result: Preserve the legacy of a forebear
+          - min: 57
+            max: 58
+            result: Prevent conflict between factions
+          - min: 59
+            max: 60
+            result: Protect a secret
+          - min: 61
+            max: 62
+            result: Protect a threatened location
+          - min: 63
+            max: 64
+            result: Protect or support a family or community
+          - min: 65
+            max: 66
+            result: Protect or support a person
+          - min: 67
+            max: 68
+            result: Recover a stolen object
+          - min: 69
+            max: 70
+            result: Refute a falsehood
+          - min: 71
+            max: 72
+            result: Repay a debt
+          - min: 73
+            max: 74
+            result: Resist laws or authority
+          - min: 75
+            max: 76
+            result: Search out the truth of a legend
+          - min: 77
+            max: 78
+            result: Seek redemption for past wrongs
+          - min: 79
+            max: 80
+            result: Seek the favor of a person
+          - min: 81
+            max: 82
+            result: Serve the will of a leader
+          - min: 83
+            max: 84
+            result: Settle a dispute or rivalry
+          - min: 85
+            max: 86
+            result: Slay a creature
+          - min: 87
+            max: 88
+            result: Solve a mysterious murder
+          - min: 89
+            max: 90
+            result: Steal a valuable object
+          - min: 91
+            max: 92
+            result: Travel to a location
+          - min: 93
+            max: 94
+            result: Uphold or enforce laws
+          - min: 95
+            max: 100
+            <<: *ActionTheme
+      cursed_goal:
+        name: Cursed Goal
+        source:
+          <<: *Source
+        table:
+          - min: 1
+            max: 6
+            result: Avert a harrowing prophecy or vision
+          - min: 7
+            max: 12
+            result: Awaken an ancient evil
+          - min: 13
+            max: 18
+            result: Banish a restless spirit
+          - min: 19
+            max: 24
+            result: Bring about an unspeakable prophecy
+          - min: 25
+            max: 28
+            result: Control a monstrous beast
+          - min: 29
+            max: 32
+            result: Destroy an object of terrifying power
+          - min: 33
+            max: 38
+            result: Escape or undo a curse
+          - min: 39
+            max: 42
+            result: Find the truth of a nightmarish legend
+          - min: 43
+            max: 46
+            result: Gather components of a baleful ritual
+          - min: 47
+            max: 50
+            result: Gather supplicants for a dreadful faith
+          - min: 51
+            max: 56
+            result: Infiltrate a forsaken location
+          - min: 57
+            max: 62
+            result: Inflict a curse or corruption upon others
+          - min: 63
+            max: 66
+            result: Resist the call of a malevolent power
+          - min: 67
+            max: 72
+            result: Restore own humanity or mortality
+          - min: 73
+            max: 76
+            result: Return a lost loved one to life
+          - min: 77
+            max: 80
+            result: Serve a black-hearted overlord
+          - min: 81
+            max: 86
+            result: Slay a monstrous beast
+          - min: 87
+            max: 90
+            result: Unlock the secret of immortality
+          - min: 91
+            max: 94
+            result: Wield an object of terrifying power
+          - min: 95
+            max: 100
+            result: Wreak bloody vengeance
+      # name:
+      #   name: Character Name
+      #   source:
+      #     <<: *Source
+      #   table:
+
+    collections:
+      roles:
+        name: Roles
+        source:
+          <<: *Source
+        contents:
+          academic:
+            name: Academic
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Archaeologist
+              - min: 21
+                max: 40
+                result: Cartographer
+              - min: 41
+                max: 60
+                result: Historian
+              - min: 61
+                max: 80
+                result: Naturalist
+              - min: 81
+                max: 100
+                result: Philosopher
+          agent:
+            name: Agent
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Assassin
+              - min: 21
+                max: 40
+                result: Bounty Hunter / Pirate hunter
+              - min: 41
+                max: 60
+                result: Courier
+              - min: 61
+                max: 80
+                result: Investigator
+              - min: 81
+                max: 100
+                result: Spy
+
+          caregiver:
+            name: Caregiver
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Apothecary
+              - min: 21
+                max: 40
+                result: Herbalist
+              - min: 41
+                max: 60
+                result: Surgeon
+              - min: 61
+                max: 80
+                result: Midwife
+              - min: 81
+                max: 100
+                result: Physician
+          combatant:
+            name: Combatant
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Duelist
+              - min: 21
+                max: 40
+                result: Guard / Militia
+              - min: 41
+                max: 60
+                result: Mercenary
+              - min: 61
+                max: 80
+                result: Soldier
+              - min: 81
+                max: 100
+                result: Vigilante
+
+          devotant:
+            name: Devotant
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Clergy
+              - min: 21
+                max: 40
+                result: Cultist
+              - min: 41
+                max: 60
+                result: Inquisitor
+              - min: 61
+                max: 80
+                result: Monk
+              - min: 81
+                max: 100
+                result: Pilgrim
+          laborer:
+            name: Laborer
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Bricklayer
+              - min: 21
+                max: 40
+                result: Farmer
+              - min: 41
+                max: 60
+                result: Lumberer
+              - min: 61
+                max: 80
+                result: Miner
+              - min: 81
+                max: 100
+                result: Servant
+          merchant:
+            name: Merchant
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Barkeep
+              - min: 21
+                max: 40
+                result: Fence
+              - min: 41
+                max: 60
+                result: Moneylender
+              - min: 61
+                max: 80
+                result: Shopkeeper
+              - min: 81
+                max: 100
+                result: Traveling merchant
+          mystic:
+            name: Mystic
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Alchemist
+              - min: 21
+                max: 40
+                result: Elementalist
+              - min: 41
+                max: 60
+                result: Necromancer
+              - min: 61
+                max: 80
+                result: Seer
+              - min: 81
+                max: 100
+                result: Sorcerer / Shaman
+          outcast:
+            name: Outcast
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 10
+                result: Apostate
+              - min: 11
+                max: 20
+                result: Castaway
+              - min: 21
+                max: 30
+                result: Deserter / Mutineer
+              - min: 31
+                max: 40
+                result: Exile
+              - min: 41
+                max: 50
+                result: Fugitive
+              - min: 51
+                max: 60
+                result: Hermit
+              - min: 61
+                max: 70
+                result: Orphan
+              - min: 71
+                max: 80
+                result: Refugee
+              - min: 81
+                max: 90
+                result: Urchin
+              - min: 91
+                max: 100
+                result: Vagabond
+          outlander:
+            name: Outlander
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Beast Hunter
+              - min: 21
+                max: 40
+                result: Explorer
+              - min: 41
+                max: 60
+                result: Fisher / Hunter / Trapper
+              - min: 61
+                max: 80
+                result: Navigator / Guide
+              - min: 81
+                max: 100
+                result: Scout
+          performer:
+            name: Performer
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Acrobat
+              - min: 21
+                max: 40
+                result: Actor
+              - min: 41
+                max: 60
+                result: Dancer
+              - min: 61
+                max: 80
+                result: Musician
+              - min: 81
+                max: 100
+                result: Singer
+          sailor:
+            name: Sailor
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 10
+                result: Bosun
+              - min: 11
+                max: 20
+                result: Captain
+              - min: 21
+                max: 30
+                result: Carpenter
+              - min: 31
+                max: 40
+                result: Cook
+              - min: 41
+                max: 50
+                result: Deckhand
+              - min: 51
+                max: 60
+                result: First Mate
+              - min: 61
+                max: 70
+                result: Gunner
+              - min: 71
+                max: 80
+                result: Marine
+              - min: 81
+                max: 90
+                result: Master-at-arms
+              - min: 91
+                max: 100
+                result: Quartermaster
+          scavenger:
+            name: Scavenger
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 20
+                result: Beachcomber
+              - min: 21
+                max: 40
+                result: Grave Robber
+              - min: 41
+                max: 60
+                result: Relic hunter
+              - min: 61
+                max: 80
+                result: Shipbreaker
+              - min: 81
+                max: 100
+                result: Wreck diver
+          outlaw:
+            name: Outlaw
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 10
+                result: Burglar / Thief
+              - min: 11
+                max: 20
+                result: Charlatan
+              - min: 21
+                max: 30
+                result: Crime boss
+              - min: 31
+                max: 40
+                result: Forger
+              - min: 41
+                max: 50
+                result: Gambler
+              - min: 51
+                max: 60
+                result: Insurgent
+              - min: 61
+                max: 70
+                result: Pirate
+              - min: 71
+                max: 80
+                result: Raider
+              - min: 81
+                max: 90
+                result: Ruffian
+              - min: 91
+                max: 100
+                result: Smuggler
+          statesperson:
+            name: Statesperson
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 10
+                result: Aristocrat
+              - min: 11
+                max: 20
+                result: Bureaucrat
+              - min: 21
+                max: 30
+                result: Commander
+              - min: 31
+                max: 40
+                result: Courtesan
+              - min: 41
+                max: 50
+                result: Courtier
+              - min: 51
+                max: 60
+                result: Diplomat
+              - min: 61
+                max: 70
+                result: Interpreter
+              - min: 71
+                max: 80
+                result: Lawkeeper
+              - min: 81
+                max: 90
+                result: Politician
+              - min: 91
+                max: 100
+                result: Tax collector
+          tradesperson:
+            name: Tradesperson
+            source:
+              <<: *Source
+            table:
+              - min: 1
+                max: 10
+                result: Baker
+              - min: 11
+                max: 20
+                result: Brewer / Winemaker
+              - min: 21
+                max: 30
+                result: Butcher
+              - min: 31
+                max: 40
+                result: Mason
+              - min: 41
+                max: 50
+                result: Metal worker
+              - min: 51
+                max: 60
+                result: Shipwright / boatwright
+              - min: 61
+                max: 70
+                result: Tattooist
+              - min: 71
+                max: 80
+                result: Tinker / Engineer
+              - min: 81
+                max: 90
+                result: Undertaker
+              - min: 91
+                max: 100
+                result: Woodworker

@@ -1,8 +1,8 @@
-import { type Static, type TRef, type TString, Type } from '@sinclair/typebox'
+import { type ObjectOptions, Type, type Static } from '@sinclair/typebox'
 import { type Simplify } from 'type-fest'
-import { Id, Fields } from '../common/index.js'
-import * as Utils from '../Utils.js'
 import * as Generic from '../Generic.js'
+import * as Utils from '../Utils.js'
+import { Fields, Id } from '../common/index.js'
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({
@@ -16,22 +16,25 @@ const AssetBooleanFieldMixin = Type.Object({
 			'Does this field disable the asset when its value is set to `true`?'
 	})
 })
-function AssetCheckboxField(id: TRef<TString>) {
+
+function AssetCheckboxField(id: Id.TAnyId, options: ObjectOptions = {}) {
 	const base = Fields.CheckboxField(id)
 	const { $comment, description } = base
 	return Utils.Assign([Fields.CheckboxField(id), AssetBooleanFieldMixin], {
 		description,
 		$comment,
-		title: 'AssetCheckboxField'
+		title: 'AssetCheckboxField',
+		...options
 	})
 }
-function AssetCardFlipField(id: TRef<TString>) {
+function AssetCardFlipField(id: Id.TAnyId, options: ObjectOptions = {}) {
 	const base = Fields.CardFlipField(id)
 	const { $comment, description } = base
 	return Utils.Assign([base, AssetBooleanFieldMixin], {
 		description,
 		$comment,
-		title: 'AssetCardFlipField'
+		title: 'AssetCardFlipField',
+		...options
 	})
 }
 
@@ -114,14 +117,33 @@ export const AssetConditionMeter = Utils.Assign(
 
 export type AssetConditionMeter = Simplify<Static<typeof AssetConditionMeter>>
 
-const AssetOptionFields = [
-	Fields.SelectValueField,
-	Fields.SelectEnhancementField,
-	Fields.TextField
-].map((fn) => fn(Type.Ref(Id.AssetOptionFieldId)))
+// const AssetOptionFields = [
+// 	Fields.SelectValueField,
+// 	Fields.SelectEnhancementField,
+// 	Fields.TextField
+// ].map((fn) => fn(Type.Ref(Id.AssetOptionFieldId)))
+
+export const AssetSelectValueOptionField = Fields.SelectValueField(
+	Type.Ref(Id.AssetOptionFieldId),
+	{ $id: 'AssetSelectValueOptionField' }
+)
+export const AssetSelectEnhancementOptionField = Fields.SelectEnhancementField(
+	Type.Ref(Id.AssetOptionFieldId),
+	{ $id: 'AssetSelectEnhancementOptionField' }
+)
+export const AssetTextOptionField = Fields.TextField(
+	Type.Ref(Id.AssetOptionFieldId),
+	{
+		$id: 'AssetTextOptionField'
+	}
+)
 
 export const AssetOptionField = Utils.DiscriminatedUnion(
-	AssetOptionFields,
+	[
+		AssetSelectValueOptionField,
+		AssetSelectEnhancementOptionField,
+		AssetTextOptionField
+	],
 	Fields.DISCRIMINATOR,
 	{
 		$id: 'AssetOptionField',
@@ -132,17 +154,34 @@ export const AssetOptionField = Utils.DiscriminatedUnion(
 export type AssetOptionField = Static<typeof AssetOptionField>
 export type TAssetOptionField = typeof AssetOptionField
 
-const AssetControlFields = [
-	AssetConditionMeter,
-	...[
-		Fields.SelectEnhancementField,
-		AssetCheckboxField,
-		AssetCardFlipField
-	].map((fn) => fn(Type.Ref(Id.AssetControlFieldId)))
-]
+// const AssetControlFields = [
+// 	AssetConditionMeter,
+// 	...[
+// 		Fields.SelectEnhancementField,
+// 		AssetCheckboxField,
+// 		AssetCardFlipField
+// 	].map((fn) => fn(Type.Ref(Id.AssetControlFieldId)))
+// ]
+
+export const AssetSelectEnhancementControlField = Fields.SelectEnhancementField(
+	Type.Ref(Id.AssetControlFieldId),
+	{ $id: 'AssetSelectEnhancementControlField' }
+)
+export const AssetCheckboxControlField = AssetCheckboxField(
+	Type.Ref(Id.AssetControlFieldId),
+	{ $id: 'AssetCheckboxControlField' }
+)
+export const AssetCardFlipControlField = AssetCardFlipField(
+	Type.Ref(Id.AssetControlFieldId),
+	{ $id: 'AssetCardFlipControlField' }
+)
 
 export const AssetControlField = Utils.DiscriminatedUnion(
-	AssetControlFields,
+	[
+		AssetSelectEnhancementControlField,
+		AssetCheckboxControlField,
+		AssetCardFlipControlField
+	],
 	Fields.DISCRIMINATOR,
 	{
 		$id: 'AssetControlField'
@@ -152,14 +191,28 @@ export const AssetControlField = Utils.DiscriminatedUnion(
 export type TAssetControlField = typeof AssetControlField
 export type AssetControlField = Static<typeof AssetControlField>
 
-const AbilityControlFields = [
-	Fields.ClockField,
-	Fields.CounterField,
-	AssetCheckboxField
-].map((fn) => fn(Type.Ref(Id.AssetAbilityControlFieldId)))
+// const AbilityControlFields = [
+// 	Fields.ClockField,
+// 	Fields.CounterField,
+// 	AssetCheckboxField
+// ].map((fn) => fn(Type.Ref(Id.AssetAbilityControlFieldId)))
 
+export const AssetAbilityClock = Fields.ClockField(
+	Type.Ref(Id.AssetAbilityControlFieldId),
+	{ $id: 'AssetAbilityClock' }
+)
+
+export const AssetAbilityCounter = Fields.CounterField(
+	Type.Ref(Id.AssetAbilityControlFieldId),
+	{ $id: 'AssetAbilityCounter' }
+)
+
+export const AssetAbilityCheckbox = AssetCheckboxField(
+	Type.Ref(Id.AssetAbilityControlFieldId),
+	{ $id: 'AssetAbilityCheckbox' }
+)
 export const AssetAbilityControlField = Utils.DiscriminatedUnion(
-	AbilityControlFields,
+	[AssetAbilityClock, AssetAbilityCounter, AssetAbilityCheckbox],
 	Fields.DISCRIMINATOR,
 	{ $id: 'AssetAbilityControlField' }
 )
@@ -177,3 +230,9 @@ export const AssetAbilityOptionField = Utils.DiscriminatedUnion(
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>
+
+export {
+	SelectEnhancementFieldChoice,
+	SelectEnhancementFieldChoiceGroup,
+	SelectValueFieldChoice
+} from '../common/Fields.js'

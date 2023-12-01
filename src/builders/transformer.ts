@@ -7,7 +7,7 @@ import {
 	type Collection,
 	type RecursiveCollection
 } from 'schema/datasworn/Collection.js'
-import type * as Out from '../types/io/datasworn.js'
+import type * as Out from '../types/Datasworn.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>

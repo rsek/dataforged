@@ -1,10 +1,9 @@
 import fs from 'fs-extra'
-import yaml from 'yaml'
 import { merge } from 'lodash-es'
 import path from 'path'
 import { default as Prettier } from 'prettier'
 import { Simplify } from 'type-fest'
-import Log from './Log.js'
+import yaml from 'yaml'
 
 const space = '\t'
 const encoding = 'utf8'
@@ -60,10 +59,11 @@ export async function writeJSON(
 	await fs.writeFile(filePath, data)
 }
 export async function getPrettierOptions(
-	filepath: string
+	filepath: string,
+	parser: string = 'json'
 ): Promise<Prettier.Options> {
 	const defaultConfig = (await Prettier.resolveConfig(filepath)) ?? {}
-	const jsonOverrides: Prettier.Options = { filepath, parser: 'json' }
+	const jsonOverrides: Prettier.Options = { filepath, parser }
 	const prettierOptions = merge({}, defaultConfig, jsonOverrides)
 	return prettierOptions
 }
@@ -74,3 +74,16 @@ type YAMLOptions = Simplify<
 		yaml.SchemaOptions &
 		yaml.ToJSOptions
 >
+
+export async function writeCode(
+	filePath: string,
+	content: string,
+	parser = 'typescript',
+	{ prettierOptions }: { prettierOptions?: Prettier.Options } = {}
+) {
+	if (prettierOptions == null)
+		prettierOptions = await getPrettierOptions(filePath, parser)
+
+	const data = await Prettier.format(content, prettierOptions)
+	await fs.writeFile(filePath, data)
+}

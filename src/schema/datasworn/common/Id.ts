@@ -1,4 +1,4 @@
-import { type TRef, type TString, type Static } from '@sinclair/typebox'
+import { type TRef, type TString, type Static, TUnion } from '@sinclair/typebox'
 import { type Opaque } from 'type-fest'
 import {
 	DiceRange,
@@ -12,7 +12,8 @@ import {
 	UncollectableId,
 	toWildcard,
 	IdUnion,
-	RecursiveCollectableId
+	RecursiveCollectableId,
+	IdElement
 } from '../utils/regex.js'
 import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 
@@ -34,7 +35,7 @@ export type ExpansionId = Static<typeof ExpansionId>
 
 export const DictKey = Id([Node], {
 	$id: 'DictKey',
-	description: 'A key used in a Datasworn dictionary object.',
+	description: 'A `snake_case` key used in a Datasworn dictionary object.',
 	$comment:
 		"If you need to generate a key from a user-provided label, it's recommended to use a 'slugify' function/library, e.g. https://www.npmjs.com/package/slugify for NodeJS."
 })
@@ -187,11 +188,11 @@ export const MoveCategoryId = CollectionId(['moves'], {
 export type MoveCategoryId = Opaque<Static<typeof MoveCategoryId>>
 
 const StandardMoveId = Extend(MoveCategoryId, [Node], {
-	title: 'StandardMoveId',
-	description: 'A move ID for a standard move.'
+	description: 'A move ID for a standard move.',
+	$id: 'StandardMoveId'
 })
 const AssetMoveId = Extend(AssetAbilityId, ['moves', Node], {
-	title: 'AssetMoveId',
+	$id: 'AssetMoveId',
 	description: 'A move ID for an asset move.'
 })
 
@@ -253,8 +254,8 @@ export const OracleTableIdWildcard = toWildcard(OracleTableId, {
 })
 export type OracleTableIdWildcard = Opaque<Static<typeof OracleTableIdWildcard>>
 
-const RowWithRange = Extend(OracleTableId, [DiceRange])
-const RowNull = Extend(OracleTableId, [Index])
+const RowWithRange = Extend(OracleTableId, [DiceRange], { $id: 'RowWithRange' })
+const RowNull = Extend(OracleTableId, [Index], { $id: 'RowNull' })
 
 export const OracleTableRowId = IdUnion([RowWithRange, RowNull], {
 	examples: [
@@ -307,14 +308,14 @@ export const TruthOptionId = Extend(TruthId, [Index], {
 })
 export type TruthOptionId = Opaque<Static<typeof TruthOptionId>>
 
-const RuleIdHead = Id([Pkg, 'rules'])
+const RuleIdHead: IdElement[] = [Pkg, 'rules']
 
-export const StatRuleId = Extend(RuleIdHead, ['stats', Node], {
+export const StatRuleId = Id([...RuleIdHead, 'stats', Node], {
 	$id: 'StatRuleId'
 })
 export type StatRuleId = Static<typeof StatRuleId>
 
-export const ConditionMeterRuleId = Extend(RuleIdHead, ['condition_meters', Node], {
+export const ConditionMeterRuleId = Id([...RuleIdHead, 'condition_meters', Node], {
 	$id: 'ConditionMeterRuleId',
 	examples: [
 		'classic/rules/condition_meters/health',
@@ -323,7 +324,7 @@ export const ConditionMeterRuleId = Extend(RuleIdHead, ['condition_meters', Node
 })
 export type ConditionMeterRuleId = Static<typeof ConditionMeterRuleId>
 
-export const SpecialTrackRuleId = Extend(RuleIdHead, ['special_tracks', Node], {
+export const SpecialTrackRuleId = Id([...RuleIdHead, 'special_tracks', Node], {
 	$id: 'SpecialTrackRuleId',
 	examples: [
 		'classic/rules/special_tracks/bonds',
@@ -350,4 +351,4 @@ export const ImpactRuleId = Extend(ImpactRuleCollectionId, [Node], {
 	]
 })
 export type ImpactRuleId = Static<typeof ImpactRuleId>
-export type AnyID = TRef<TString | TUnionOneOf<TString[]>>
+export type TAnyId = TRef<TString | TUnion<(TString | TRef<TString>)[]>>

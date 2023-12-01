@@ -68,7 +68,7 @@ const rollMethodOutcomeCommon = {
 	[RollMethod.PlayerChoice]: 'The player chooses which roll option to use.',
 	[RollMethod.Highest]: 'Use the roll option with the best/highest value.',
 	[RollMethod.Lowest]: 'Use the roll option with the worst/lowest value.',
-	[RollMethod.All]: 'Use **every** roll option at once.'
+	[RollMethod.All]: 'Use _every_ roll option at once.'
 }
 
 export const ActionRollMethod = UnionEnumFromRecord(
@@ -104,7 +104,7 @@ export const MoveOutcome = Type.Object(
 	{
 		text: Type.Ref(Localize.MarkdownString, {
 			type: 'string',
-			pattern: /On a \*\*(strong hit|weak hit|miss)\*\*/.source
+			pattern: /On a __(strong hit|weak hit|miss)__/.source
 		})
 		// count_as: Type.Optional(Type.Ref(MoveOutcomeType))
 	},

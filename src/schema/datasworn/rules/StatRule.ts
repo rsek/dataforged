@@ -3,7 +3,7 @@ import { Localize } from '../common/index.js'
 
 export const StatRule = Type.Object(
 	{
-		label: Type.Ref(Localize.Label, {
+		label: Type.Ref(Localize.InputLabel, {
 			description: 'A label for this stat.',
 			examples: ['edge']
 		}),

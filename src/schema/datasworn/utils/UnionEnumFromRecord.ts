@@ -21,7 +21,7 @@ export function UnionEnumFromRecord<T extends string[] | number[]>(
 
 	let description = map(
 		entries,
-		(description, literal) => `  * ${literal?.toString()}: ${description}`
+		(description, literal) => `  - \`${literal?.toString()}\`: ${description}`
 	).join('\n')
 
 	if (options.description)

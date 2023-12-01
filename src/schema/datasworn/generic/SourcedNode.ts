@@ -28,7 +28,7 @@ export const SourcedNodeBase = Type.Object(
 	{ additionalProperties: true }
 )
 export function SourcedNode<T extends TObject = TObject>(
-	id: Id.AnyID,
+	id: Id.TAnyId,
 	schema: T,
 	options: ObjectOptions = {}
 ) {

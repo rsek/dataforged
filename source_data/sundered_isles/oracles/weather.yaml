@@ -1,15 +1,14 @@
 id: sundered_isles
 package_type: ruleset
-source: &Source
-  title: Sundered Isles Book Preview
-  authors:
-    - name: Shawn Tomkin
-  license: null
-  url: https://ironswornrpg.com
-  date: 2023-09-11
 oracles:
   weather:
-    source: *Source
+    source: &Source
+      title: Sundered Isles Book Preview
+      authors:
+        - name: Shawn Tomkin
+      license: null
+      url: https://ironswornrpg.com
+      date: 2023-09-11
     name: Weather
     collections:
       conditions:
@@ -44,10 +43,16 @@ oracles:
             table:
               - min: 1
                 max: 70
-                result: &result0 Fair Weather
+                <<: &WeatherConditions.0
+                  result: Fair Weather
               - min: 71
                 max: 100
-                result: &result1 '[Foul Weather](id:sundered_isles/oracles/weather/foul)'
+                <<: &WeatherConditions.1
+                  result: '[Foul Weather](id:sundered_isles/oracles/weather/foul)'
+                  rolls:
+                    - auto: false
+                      times: 1
+                      oracle: sundered_isles/oracles/weather/foul
           margins:
             source: *Source
             name: Margins
@@ -57,10 +62,10 @@ oracles:
             table:
               - min: 1
                 max: 60
-                result: *result0
+                <<: *WeatherConditions.0
               - min: 61
                 max: 100
-                result: *result1
+                <<: *WeatherConditions.1
           reaches:
             source: *Source
             name: Reaches
@@ -70,10 +75,10 @@ oracles:
             table:
               - min: 1
                 max: 50
-                result: *result0
+                <<: *WeatherConditions.0
               - min: 51
                 max: 100
-                result: *result1
+                <<: *WeatherConditions.1
     contents:
       foul:
         source: *Source

@@ -111,7 +111,11 @@ oracles:
             result: Ship of remarkable construction or function
           - min: 91
             max: 100
-            result: Roll twice
+            <<: &RollTwice
+              result: Roll twice
+              rolls:
+                - auto: true
+                  times: 2
       confront_chaos:
         source:
           <<: *Source
@@ -330,4 +334,4 @@ oracles:
             result: You are delayed or put at a disadvantage
           - min: 96
             max: 100
-            result: Roll twice
+            <<: *RollTwice

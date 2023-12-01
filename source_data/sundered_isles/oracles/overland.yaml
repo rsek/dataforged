@@ -778,10 +778,20 @@ oracles:
             result: Weather changes for the worse
           - min: 97
             max: 99
-            result: '[Action] + [Theme]'
+            <<: &ActionTheme
+              result: '[Action](id:sundered_isles/oracles/core/action) + [Theme](id:sundered_isles/oracles/core/theme)'
+              rolls:
+                - auto: true
+                  oracle: sundered_isles/oracles/core/action
+                - auto: true
+                  oracle: sundered_isles/oracles/core/theme
           - min: 100
             max: 100
-            result: Roll twice
+            <<: &RollTwice
+              result: Roll twice
+              rolls:
+                - auto: true
+                  times: 2
       opportunity:
         source: *Source
         name: Overland Opportunities
@@ -894,28 +904,55 @@ oracles:
             table:
               - min: 1
                 max: 20
-                result: &result0 Feature of the landscape > Region Landmarks
+                <<: &Waypoints.0
+                  result: |-
+                    Feature of the landscape
+                      [Region Landmarks]
               - min: 21
                 max: 30
-                result: &result1 Changing landscape > Overland Regions
+                <<: &Waypoints.1
+                  result: |-
+                    Changing landscape
+                      [Overland Regions](id:sundered_isles/oracles/overland/regions)
               - min: 31
                 max: 35
-                result: &result2 Changing weather > Weather
+                <<: &Waypoints.2
+                  result: |-
+                    Changing weather
+                      [Weather](id:sundered_isles/collections/oracles/weather)
               - min: 36
                 max: 55
-                result: &result3 Instance (choose one) > Overland Details; > Descriptor + Focus;
+                <<: &Waypoints.3
+                  result: |-
+                    Instance (choose one)
+                      * [Overland Details](id:sundered_isles/oracles/overland/details)
+                      * [Descriptor](id:sundered_isles/oracles/core/descriptor) + [Focus](id:sundered_isles/oracles/core/focus)
+                  rolls:
+                    - oracle: sundered_isles/oracles/overland/details
+                    - oracle: sundered_isles/oracles/core/descriptor
+                    - oracle: sundered_isles/oracles/core/focus
               - min: 56
                 max: 70
-                result: &result4 Inland community > Settlements
+                <<: &Waypoints.4
+                  result: |-
+                    Inland community
+                      [Settlements](id:sundered_isles/collections/oracles/settlements)
               - min: 71
                 max: 75
-                result: &result5 Relic of the past > Ruins
+                <<: &Waypoints.5
+                  result: |-
+                    Relic of the past
+                      [Ruins](id:sundered_isles/collections/oracles/ruins)
               - min: 76
                 max: 85
-                result: &result6 Character focus > Interlude Scene
-              - min: 86
+                <<: &Waypoints.6
+                  result: |-
+                    Character focus
+                      [Interlude Scene](id:sundered_isles/oracles/misc/interlude_scene)
+              - &Waypoints.7
+                min: 86
                 max: 100
-                result: &result7 Roll twice
+                <<: *RollTwice
           margins:
             source: *Source
             name: Margins
@@ -925,28 +962,26 @@ oracles:
             table:
               - min: 1
                 max: 20
-                result: *result0
+                <<: *Waypoints.0
               - min: 21
                 max: 30
-                result: *result1
+                <<: *Waypoints.1
               - min: 31
                 max: 38
-                result: *result2
+                <<: *Waypoints.2
               - min: 39
                 max: 58
-                result: *result3
+                <<: *Waypoints.3
               - min: 59
                 max: 67
-                result: *result4
+                <<: *Waypoints.4
               - min: 68
                 max: 75
-                result: *result5
+                <<: *Waypoints.5
               - min: 76
                 max: 85
-                result: *result6
-              - min: 86
-                max: 100
-                result: *result7
+                <<: *Waypoints.6
+              - *Waypoints.7
           reaches:
             source: *Source
             name: Reaches
@@ -956,28 +991,26 @@ oracles:
             table:
               - min: 1
                 max: 20
-                result: *result0
+                <<: *Waypoints.0
               - min: 21
                 max: 30
-                result: *result1
+                <<: *Waypoints.1
               - min: 31
                 max: 40
-                result: *result2
+                <<: *Waypoints.2
               - min: 41
                 max: 60
-                result: *result3
+                <<: *Waypoints.3
               - min: 61
                 max: 65
-                result: *result4
+                <<: *Waypoints.4
               - min: 66
                 max: 75
-                result: *result5
+                <<: *Waypoints.5
               - min: 76
                 max: 85
-                result: *result6
-              - min: 86
-                max: 100
-                result: *result7
+                <<: *Waypoints.6
+              - *Waypoints.7
       regional_landmarks:
         source: *Source
         name: Regional Landmarks

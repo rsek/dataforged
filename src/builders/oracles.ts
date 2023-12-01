@@ -6,8 +6,8 @@ import {
 	type Transformer,
 	recursiveCollectionTransformer
 } from './transformer.js'
-import type * as SchemaIn from '../types/io/datasworn-source.js'
-import type * as SchemaOut from '../types/io/datasworn.js'
+import type * as SchemaIn from '../types/DataswornSource.js'
+import type * as SchemaOut from '../types/Datasworn.js'
 import { cloneDeep, merge } from 'lodash-es'
 
 export const OracleTableRow: Transformer<

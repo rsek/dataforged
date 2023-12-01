@@ -16,8 +16,8 @@ export const WebpImageUrl = Type.RegExp(/\.webp$/i, {
 export type WebpImageUrl = Static<typeof WebpImageUrl>
 export const CssColor = Type.String({
 	$id: 'CssColor',
-	description:
-		'A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value'
+	$comment: 'See https://developer.mozilla.org/en-US/docs/Web/CSS/color_value',
+	description: 'A CSS color value.'
 })
 export type CssColor = Static<typeof CssColor>
 
@@ -29,6 +29,29 @@ export const SemanticVersion = Type.RegExp(
 )
 export type SemanticVersion = Static<typeof SemanticVersion>
 
+const AuthorInfo = Type.Object(
+	{
+		name: Type.String({ examples: ['Shawn Tomkin'] }),
+		email: Type.Optional(
+			Type.String({
+				title: 'Email',
+				format: 'email',
+				description: 'An optional email contact for the author'
+			})
+		),
+		url: Type.Optional(
+			Type.String({
+				format: 'uri',
+				description: "An optional URL for the author's website."
+			})
+		)
+	},
+	{
+		examples: [{ name: 'Shawn Tomkin' }],
+		$id: 'AuthorInfo',
+		description: 'Information on the original creator of this material.'
+	}
+)
 export const Source = Type.Object(
 	{
 		title: Type.String({
@@ -49,28 +72,7 @@ export const Source = Type.Object(
 				description: 'The page number where this item is described in full.'
 			})
 		),
-		authors: Type.Array(
-			Type.Object(
-				{
-					name: Type.String({ examples: ['Shawn Tomkin'] }),
-					email: Type.Optional(
-						Type.String({
-							title: 'Email',
-							format: 'email',
-							description: 'An optional email contact for the author'
-						})
-					),
-					url: Type.Optional(
-						Type.String({
-							format: 'uri',
-							description: "An optional URL for the author's website."
-						})
-					)
-				},
-				{ examples: [{ name: 'Shawn Tomkin' }] }
-			),
-			{ minItems: 1 }
-		),
+		authors: Type.Array(AuthorInfo, { minItems: 1 }),
 		date: Type.String({
 			format: 'date',
 			$comment: 'You may prefer to deserialize this as a Date object.',
@@ -90,7 +92,7 @@ export const Source = Type.Object(
 				title: 'License',
 				default: undefined,
 				description:
-					"An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
+					"An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides __no__ license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
 				examples: [
 					'https://creativecommons.org/licenses/by/4.0',
 					'https://creativecommons.org/licenses/by-nc-sa/4.0'

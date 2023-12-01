@@ -10,12 +10,10 @@ export interface RootOptions
 	$id: `${'https' | 'http'}://${string}`
 	$defs: Defs
 	$schema: string
+	title: string
 }
 
-export type TRoot<
-	T extends TSchema = TSchema,
-	Options extends RootOptions = RootOptions
-> = T & Options
+export type TRoot<T extends TSchema = TSchema> = T & RootOptions
 
 export function SchemaRoot<T extends TSchema, Options extends RootOptions>(
 	base: T,
@@ -25,7 +23,7 @@ export function SchemaRoot<T extends TSchema, Options extends RootOptions>(
 		TypeClone.Type(v, { title: k })
 	) as Defs
 
-	return TypeClone.Type(base, { ...options, $defs }) as TRoot<T, Options>
+	return TypeClone.Type(base, { ...options, $defs }) as unknown as TRoot
 }
 
 export function InputSchemaRoot<T extends TSchema, Options extends RootOptions>(
@@ -36,5 +34,5 @@ export function InputSchemaRoot<T extends TSchema, Options extends RootOptions>(
 		SourceData(v, { title: k })
 	) as Defs
 
-	return TypeClone.Type(base, { ...options, $defs }) as TRoot<T, Options>
+	return TypeClone.Type(base, { ...options, $defs }) as unknown as TRoot
 }
