@@ -4087,11 +4087,29 @@
 			"required": ["field_type"],
 			"properties": {
 				"field_type": {
-					"enum": ["select_enhancement", "checkbox", "card_flip"]
+					"enum": [
+						"condition_meter",
+						"select_enhancement",
+						"checkbox",
+						"card_flip"
+					]
 				}
 			},
 			"additionalProperties": true,
 			"allOf": [
+				{
+					"if": {
+						"properties": {
+							"field_type": {
+								"const": "condition_meter",
+								"type": "string"
+							}
+						}
+					},
+					"then": {
+						"$ref": "#/$defs/AssetConditionMeter"
+					}
+				},
 				{
 					"if": {
 						"properties": {
