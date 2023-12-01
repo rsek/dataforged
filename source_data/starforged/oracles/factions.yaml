@@ -22,10 +22,6 @@ oracles:
           template:
             name: Faction Name Template
             source: *CollectionSource
-            _i18n:
-              template:
-                result:
-                  part_of_speech: proper_noun
             # content:
             #   tags: [template]
             description: |-
@@ -33,22 +29,30 @@ oracles:
 
               An alternative approach to generating a faction from scratch is to start with a random name. Then, consider what the name evokes and choose an appropriate faction type instead of rolling on those tables. For example, “Bloody Ravens” might suggest a mercenary guild, while the “Republic of the Radiant Servants” brings to mind a dominion built upon a religion, or one that idolizes a prophesied leader. If a result doesn’t inspire anything interesting, roll again or pick.
             table:
-              - min: 1
+              - <<: &i18n.template.result.proper_noun
+                  i18n:
+                    template:
+                      result:
+                        part_of_speech: proper_noun
+                min: 1
                 max: 40
                 result: '[Legacy](id:starforged/oracles/factions/legacy) [Affiliation](id:starforged/oracles/factions/affiliation)'
                 template:
                   result: '{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}'
-              - min: 41
+              - <<: *i18n.template.result.proper_noun
+                min: 41
                 max: 55
                 result: '[Legacy](id:starforged/oracles/factions/legacy) [Identity](id:starforged/oracles/factions/identity)'
                 template:
                   result: '{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
-              - min: 56
+              - <<: *i18n.template.result.proper_noun
+                min: 56
                 max: 70
                 result: '[Identity](id:starforged/oracles/factions/identity) *of the* [Legacy](id:starforged/oracles/factions/legacy) [Affiliation](id:starforged/oracles/factions/affiliation)'
                 template:
                   result: '{{result:starforged/oracles/factions/identity}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}'
-              - min: 71
+              - <<: *i18n.template.result.proper_noun
+                min: 71
                 max: 100
                 result: '[Affiliation](id:starforged/oracles/factions/affiliation) *of the* [Legacy](id:starforged/oracles/factions/legacy) [Identity](id:starforged/oracles/factions/identity)'
                 template:
@@ -56,160 +60,210 @@ oracles:
           legacy:
             name: Legacy
             source: *CollectionSource
-            _i18n:
-              result:
-                part_of_speech: adjective
             # content:
             #   part_of_speech: [proper noun fragment]
             table:
-              - min: 1
+              - <<: &i18n.result.adjective
+                  i18n:
+                    result:
+                      part_of_speech: adjective
+                min: 1
                 max: 2
                 result: Ancient
-              - min: 3
+              - <<: *i18n.result.adjective
+                min: 3
                 max: 4
                 result: Ashen
-              - min: 5
+              - <<: *i18n.result.adjective
+                min: 5
                 max: 6
                 result: Awakened
-              - min: 7
+              - <<: *i18n.result.adjective
+                min: 7
                 max: 8
                 result: Azure
-              - min: 9
+              - <<: *i18n.result.adjective
+                min: 9
                 max: 10
                 result: Blessed
-              - min: 11
+              - <<: *i18n.result.adjective
+                min: 11
                 max: 12
                 result: Bloody
-              - min: 13
+              - <<: *i18n.result.adjective
+                min: 13
                 max: 14
                 result: Broken
-              - min: 15
+              - <<: *i18n.result.adjective
+                min: 15
                 max: 16
                 result: Ceaseless
-              - min: 17
+              - <<: *i18n.result.adjective
+                min: 17
                 max: 18
                 result: Crimson
-              - min: 19
+              - <<: *i18n.result.adjective
+                min: 19
                 max: 20
                 result: Cursed
-              - min: 21
+              - <<: *i18n.result.adjective
+                min: 21
                 max: 22
                 result: Dawning
-              - min: 23
+              - <<: *i18n.result.adjective
+                min: 23
                 max: 24
                 result: Dissident
-              - min: 25
+              - <<: *i18n.result.adjective
+                min: 25
                 max: 26
                 result: Ebon
-              - min: 27
+              - <<: *i18n.result.adjective
+                min: 27
                 max: 28
                 result: Elder
-              - min: 29
+              - <<: *i18n.result.adjective
+                min: 29
                 max: 30
                 result: Enduring
-              - min: 31
+              - <<: *i18n.result.adjective
+                min: 31
                 max: 32
                 result: Enlightened
-              - min: 33
+              - <<: *i18n.result.adjective
+                min: 33
                 max: 34
                 result: Exalted
-              - min: 35
+              - <<: *i18n.result.adjective
+                min: 35
                 max: 36
                 result: Fallen
-              - min: 37
+              - <<: *i18n.result.adjective
+                min: 37
                 max: 38
                 result: Fated
-              - min: 39
+              - <<: *i18n.result.adjective
+                min: 39
                 max: 40
                 result: First
-              - min: 41
+              - <<: *i18n.result.adjective
+                min: 41
                 max: 42
                 result: Forgotten
-              - min: 43
+              - <<: *i18n.result.adjective
+                min: 43
                 max: 44
                 result: Forsaken
-              - min: 45
+              - <<: *i18n.result.adjective
+                min: 45
                 max: 46
                 result: Gloaming
-              - min: 47
+              - <<: *i18n.result.adjective
+                min: 47
                 max: 48
                 result: Golden
-              - min: 49
+              - <<: *i18n.result.adjective
+                min: 49
                 max: 50
                 result: Hidden
-              - min: 51
+              - <<: *i18n.result.adjective
+                min: 51
                 max: 52
                 result: Infernal
-              - min: 53
+              - <<: *i18n.result.adjective
+                min: 53
                 max: 54
                 result: Infinite
-              - min: 55
+              - <<: *i18n.result.adjective
+                min: 55
                 max: 56
                 result: Iron
-              - min: 57
+              - <<: *i18n.result.adjective
+                min: 57
                 max: 58
                 result: Kindred
-              - min: 59
+              - <<: *i18n.result.adjective
+                min: 59
                 max: 60
                 result: Obsidian
-              - min: 61
+              - <<: *i18n.result.adjective
+                min: 61
                 max: 62
                 result: Radiant
-              - min: 63
+              - <<: *i18n.result.adjective
+                min: 63
                 max: 64
                 result: Risen
-              - min: 65
+              - <<: *i18n.result.adjective
+                min: 65
                 max: 66
                 result: Sacred
-              - min: 67
+              - <<: *i18n.result.adjective
+                min: 67
                 max: 68
                 result: Sapphire
-              - min: 69
+              - <<: *i18n.result.adjective
+                min: 69
                 max: 70
                 result: Scarlet
-              - min: 71
+              - <<: *i18n.result.adjective
+                min: 71
                 max: 72
                 result: Serene
-              - min: 73
+              - <<: *i18n.result.adjective
+                min: 73
                 max: 74
                 result: Shattered
-              - min: 75
+              - <<: *i18n.result.adjective
+                min: 75
                 max: 76
                 result: Shining
-              - min: 77
+              - <<: *i18n.result.adjective
+                min: 77
                 max: 78
                 result: Silent
-              - min: 79
+              - <<: *i18n.result.adjective
+                min: 79
                 max: 80
                 result: Silver
-              - min: 81
+              - <<: *i18n.result.adjective
+                min: 81
                 max: 82
                 result: Sovereign
-              - min: 83
+              - <<: *i18n.result.adjective
+                min: 83
                 max: 84
                 result: Stellar
-              - min: 85
+              - <<: *i18n.result.adjective
+                min: 85
                 max: 86
                 result: Sundered
-              - min: 87
+              - <<: *i18n.result.adjective
+                min: 87
                 max: 88
                 result: Supreme
-              - min: 89
+              - <<: *i18n.result.adjective
+                min: 89
                 max: 90
                 result: Undying
-              - min: 91
+              - <<: *i18n.result.adjective
+                min: 91
                 max: 92
                 result: Unified
-              - min: 93
+              - <<: *i18n.result.adjective
+                min: 93
                 max: 94
                 result: United
-              - min: 95
+              - <<: *i18n.result.adjective
+                min: 95
                 max: 96
                 result: Universal
-              - min: 97
+              - <<: *i18n.result.adjective
+                min: 97
                 max: 98
                 result: Veiled
-              - min: 99
+              - <<: *i18n.result.adjective
+                min: 99
                 max: 100
                 result: Wandering
           affiliation:
@@ -217,86 +271,111 @@ oracles:
             source:
               <<: *Source
               page: 345
-            _i18n:
-              result:
-                part_of_speech: common_noun
             # content:
             #   part_of_speech: [proper noun fragment]
             #   tags: [organization, actor]
             table:
-              - min: 1
+              - <<: &i18n.result.common_noun
+                  i18n:
+                    result:
+                      part_of_speech: common_noun
+                min: 1
                 max: 4
                 result: Accord
-              - min: 5
+              - <<: *i18n.result.common_noun
+                min: 5
                 max: 8
                 result: Alliance
-              - min: 9
+              - <<: *i18n.result.common_noun
+                min: 9
                 max: 12
                 result: Ascendancy
-              - min: 13
+              - <<: *i18n.result.common_noun
+                min: 13
                 max: 16
                 result: Circle
-              - min: 17
+              - <<: *i18n.result.common_noun
+                min: 17
                 max: 20
                 result: Coalition
-              - min: 21
+              - <<: *i18n.result.common_noun
+                min: 21
                 max: 24
                 result: Collective
-              - min: 25
+              - <<: *i18n.result.common_noun
+                min: 25
                 max: 28
                 result: Commonwealth
-              - min: 29
+              - <<: *i18n.result.common_noun
+                min: 29
                 max: 32
                 result: Confederation
-              - min: 33
+              - <<: *i18n.result.common_noun
+                min: 33
                 max: 36
                 result: Consortium
-              - min: 37
+              - <<: *i18n.result.common_noun
+                min: 37
                 max: 40
                 result: Council
-              - min: 41
+              - <<: *i18n.result.common_noun
+                min: 41
                 max: 44
                 result: Court
-              - min: 45
+              - <<: *i18n.result.common_noun
+                min: 45
                 max: 48
                 result: Covenant
-              - min: 49
+              - <<: *i18n.result.common_noun
+                min: 49
                 max: 52
                 result: Dominion
-              - min: 53
+              - <<: *i18n.result.common_noun
+                min: 53
                 max: 56
                 result: Empire
-              - min: 57
+              - <<: *i18n.result.common_noun
+                min: 57
                 max: 60
                 result: Federation
-              - min: 61
+              - <<: *i18n.result.common_noun
+                min: 61
                 max: 64
                 result: Imperium
-              - min: 65
+              - <<: *i18n.result.common_noun
+                min: 65
                 max: 68
                 result: League
-              - min: 69
+              - <<: *i18n.result.common_noun
+                min: 69
                 max: 72
                 result: Legion
-              - min: 73
+              - <<: *i18n.result.common_noun
+                min: 73
                 max: 76
                 result: Order
-              - min: 77
+              - <<: *i18n.result.common_noun
+                min: 77
                 max: 80
                 result: Pact
-              - min: 81
+              - <<: *i18n.result.common_noun
+                min: 81
                 max: 84
                 result: Regiment
-              - min: 85
+              - <<: *i18n.result.common_noun
+                min: 85
                 max: 88
                 result: Republic
-              - min: 89
+              - <<: *i18n.result.common_noun
+                min: 89
                 max: 92
                 result: Sphere
-              - min: 93
+              - <<: *i18n.result.common_noun
+                min: 93
                 max: 96
                 result: Syndicate
-              - min: 97
+              - <<: *i18n.result.common_noun
+                min: 97
                 max: 100
                 result: Union
           identity:
@@ -304,160 +383,207 @@ oracles:
             source:
               <<: *Source
               page: 345
-            _i18n:
-              result:
-                part_of_speech: common_noun
             # content:
             #   part_of_speech: [plural, proper noun fragment]
             table:
-              - min: 1
+              - <<: *i18n.result.common_noun
+                min: 1
                 max: 2
                 result: Blades
-              - min: 3
+              - <<: *i18n.result.common_noun
+                min: 3
                 max: 4
                 result: Builders
-              - min: 5
+              - <<: *i18n.result.common_noun
+                min: 5
                 max: 6
                 result: Daggers
-              - min: 7
+              - <<: *i18n.result.common_noun
+                min: 7
                 max: 8
                 result: Defenders
-              - min: 9
+              - <<: *i18n.result.common_noun
+                min: 9
                 max: 10
                 result: Disciples
-              - min: 11
+              - <<: *i18n.result.common_noun
+                min: 11
                 max: 12
                 result: Domains
-              - min: 13
+              - <<: *i18n.result.common_noun
+                min: 13
                 max: 14
                 result: Drifters
-              - min: 15
+              - <<: *i18n.result.common_noun
+                min: 15
                 max: 16
                 result: Embers
-              - min: 17
+              - <<: *i18n.result.common_noun
+                min: 17
                 max: 18
                 result: Flames
-              - min: 19
+              - <<: *i18n.result.common_noun
+                min: 19
                 max: 20
                 result: Fleet
-              - min: 21
+              - <<: *i18n.result.common_noun
+                min: 21
                 max: 22
                 result: Guardians
-              - min: 23
+              - <<: *i18n.result.common_noun
+                min: 23
                 max: 24
                 result: Hammers
-              - min: 25
+              - <<: *i18n.result.common_noun
+                min: 25
                 max: 26
                 result: Harbingers
-              - min: 27
+              - <<: *i18n.result.common_noun
+                min: 27
                 max: 28
                 result: Heralds
-              - min: 29
+              - <<: *i18n.result.common_noun
+                min: 29
                 max: 30
                 result: Hounds
-              - min: 31
+              - <<: *i18n.result.common_noun
+                min: 31
                 max: 32
                 result: Hunters
-              - min: 33
+              - <<: *i18n.result.common_noun
+                min: 33
                 max: 34
                 result: Jackals
-              - min: 35
+              - <<: *i18n.result.common_noun
+                min: 35
                 max: 36
                 result: Keepers
-              - min: 37
+              - <<: *i18n.result.common_noun
+                min: 37
                 max: 38
                 result: Knights
-              - min: 39
+              - <<: *i18n.result.common_noun
+                min: 39
                 max: 40
                 result: Menders
-              - min: 41
+              - <<: *i18n.result.common_noun
+                min: 41
                 max: 42
                 result: Outcasts
-              - min: 43
+              - <<: *i18n.result.common_noun
+                min: 43
                 max: 44
                 result: Phantoms
-              - min: 45
+              - <<: *i18n.result.common_noun
+                min: 45
                 max: 46
                 result: Planets
-              - min: 47
+              - <<: *i18n.result.common_noun
+                min: 47
                 max: 48
                 result: Raiders
-              - min: 49
+              - <<: *i18n.result.common_noun
+                min: 49
                 max: 50
                 result: Ravens
-              - min: 51
+              - <<: *i18n.result.common_noun
+                min: 51
                 max: 52
                 result: Realms
-              - min: 53
+              - <<: *i18n.result.common_noun
+                min: 53
                 max: 54
                 result: Reavers
-              - min: 55
+              - <<: *i18n.result.common_noun
+                min: 55
                 max: 56
                 result: Relics
-              - min: 57
+              - <<: *i18n.result.common_noun
+                min: 57
                 max: 58
                 result: Seekers
-              - min: 59
+              - <<: *i18n.result.common_noun
+                min: 59
                 max: 60
                 result: Sentinels
-              - min: 61
+              - <<: *i18n.result.common_noun
+                min: 61
                 max: 62
                 result: Serpents
-              - min: 63
+              - <<: *i18n.result.common_noun
+                min: 63
                 max: 64
                 result: Servants
-              - min: 65
+              - <<: *i18n.result.common_noun
+                min: 65
                 max: 66
                 result: Shadows
-              - min: 67
+              - <<: *i18n.result.common_noun
+                min: 67
                 max: 68
                 result: Shards
-              - min: 69
+              - <<: *i18n.result.common_noun
+                min: 69
                 max: 70
                 result: Skulls
-              - min: 71
+              - <<: *i18n.result.common_noun
+                min: 71
                 max: 72
                 result: Souls
-              - min: 73
+              - <<: *i18n.result.common_noun
+                min: 73
                 max: 74
                 result: Specters
-              - min: 75
+              - <<: *i18n.result.common_noun
+                min: 75
                 max: 76
                 result: Stars
-              - min: 77
+              - <<: *i18n.result.common_noun
+                min: 77
                 max: 78
                 result: Suns
-              - min: 79
+              - <<: *i18n.result.common_noun
+                min: 79
                 max: 80
                 result: Swarm
-              - min: 81
+              - <<: *i18n.result.common_noun
+                min: 81
                 max: 82
                 result: Swords
-              - min: 83
+              - <<: *i18n.result.common_noun
+                min: 83
                 max: 84
                 result: Talons
-              - min: 85
+              - <<: *i18n.result.common_noun
+                min: 85
                 max: 86
                 result: Vanguards
-              - min: 87
+              - <<: *i18n.result.common_noun
+                min: 87
                 max: 88
                 result: Wardens
-              - min: 89
+              - <<: *i18n.result.common_noun
+                min: 89
                 max: 90
                 result: Watchers
-              - min: 91
+              - <<: *i18n.result.common_noun
+                min: 91
                 max: 92
                 result: Wolves
-              - min: 93
+              - <<: *i18n.result.common_noun
+                min: 93
                 max: 94
                 result: Worlds
-              - min: 95
+              - <<: *i18n.result.common_noun
+                min: 95
                 max: 96
                 result: Wraiths
-              - min: 97
+              - <<: *i18n.result.common_noun
+                min: 97
                 max: 98
                 result: Wreckers
-              - min: 99
+              - <<: *i18n.result.common_noun
+                min: 99
                 max: 100
                 result: Wrights
     contents:
@@ -497,41 +623,45 @@ oracles:
         source:
           <<: *Source
           page: 340
-        _i18n:
-          result:
-            part_of_speech: adjective
         table:
-          - min: 1
+          - <<: *i18n.result.adjective
+            min: 1
             max: 10
             result: Forsaken
             summary: Banished or forgotten
             # set_attributes: {influence: [forsaken]}
-          - min: 11
+          - <<: *i18n.result.adjective
+            min: 11
             max: 30
             result: Isolated
             summary: Limited influence in a remote location
             # set_attributes: {influence: [isolated]}
-          - min: 31
+          - <<: *i18n.result.adjective
+            min: 31
             max: 50
             result: Localized
             summary: Marginal influence in a single sector
             # set_attributes: {influence: [localized]}
-          - min: 51
+          - <<: *i18n.result.adjective
+            min: 51
             max: 70
             result: Established
             summary: Strong influence in a single sector
             # set_attributes: {influence: [established]}
-          - min: 71
+          - <<: *i18n.result.adjective
+            min: 71
             max: 85
             result: Notable
             summary: Dispersed influence across a few sectors
             # set_attributes: {influence: [notable]}
-          - min: 86
+          - <<: *i18n.result.adjective
+            min: 86
             max: 95
             result: Dominant
             summary: Far-reaching influence across many sectors
             # set_attributes: {influence: [dominant]}
-          - min: 96
+          - <<: *i18n.result.adjective
+            min: 96
             max: 100
             result: Inescapable
             summary: Pervasive influence across inhabited space
@@ -544,9 +674,6 @@ oracles:
         source:
           <<: *Source
           page: 341
-        _i18n:
-          result:
-            part_of_speech: common_noun
         # usage:
         #   max_rolls: 3
         #   initial: true
@@ -556,99 +683,123 @@ oracles:
         # content:
         #   tags: [abstract noun]
         table:
-          - min: 1
+          - <<: *i18n.result.common_noun
+            min: 1
             max: 5
             result: Agriculture
             # set_attributes: {dominion: [agriculture]}
-          - min: 6
+          - <<: *i18n.result.common_noun
+            min: 6
             max: 9
             result: Artistry
             # set_attributes: {dominion: [artistry]}
-          - min: 10
+          - <<: *i18n.result.common_noun
+            min: 10
             max: 14
             result: Commerce
             # set_attributes: {dominion: [commerce]}
-          - min: 15
+          - <<: *i18n.result.common_noun
+            min: 15
             max: 18
             result: Conquest
             # set_attributes: {dominion: [conquest]}
-          - min: 19
+          - <<: *i18n.result.common_noun
+            min: 19
             max: 22
             result: Construction
             # set_attributes: {dominion: [construction]}
-          - min: 23
+          - <<: *i18n.result.common_noun
+            min: 23
             max: 26
             result: Diplomacy
             # set_attributes: {dominion: [diplomacy]}
-          - min: 27
+          - <<: *i18n.result.common_noun
+            min: 27
             max: 30
             result: Education
             # set_attributes: {dominion: [education]}
-          - min: 31
+          - <<: *i18n.result.common_noun
+            min: 31
             max: 34
             result: Environmentalism
             # set_attributes: {dominion: [environmentalism]}
-          - min: 35
+          - <<: *i18n.result.common_noun
+            min: 35
             max: 38
             result: Exploration
             # set_attributes: {dominion: [exploration]}
-          - min: 39
+          - <<: *i18n.result.common_noun
+            min: 39
             max: 42
             result: Faith
             # set_attributes: {dominion: [faith]}
-          - min: 43
+          - <<: *i18n.result.common_noun
+            min: 43
             max: 46
             result: History
             # set_attributes: {dominion: [history]}
-          - min: 47
+          - <<: *i18n.result.common_noun
+            min: 47
             max: 50
             result: Honor
             # set_attributes: {dominion: [honor]}
-          - min: 51
+          - <<: *i18n.result.common_noun
+            min: 51
             max: 55
             result: Industry
             # set_attributes: {dominion: [industry]}
-          - min: 56
+          - <<: *i18n.result.common_noun
+            min: 56
             max: 59
             result: Isolationism
             # set_attributes: {dominion: [isolationism]}
-          - min: 60
+          - <<: *i18n.result.common_noun
+            min: 60
             max: 63
             result: Law
             # set_attributes: {dominion: [law]}
-          - min: 64
+          - <<: *i18n.result.common_noun
+            min: 64
             max: 67
             result: Mysticism
             # set_attributes: {dominion: [mysticism]}
-          - min: 68
+          - <<: *i18n.result.common_noun
+            min: 68
             max: 71
             result: Pacifism
             # set_attributes: {dominion: [pacifism]}
-          - min: 72
+          - <<: *i18n.result.common_noun
+            min: 72
             max: 75
             result: Prophecy
             # set_attributes: {dominion: [prophecy]}
-          - min: 76
+          - <<: *i18n.result.common_noun
+            min: 76
             max: 79
             result: Science
             # set_attributes: {dominion: [science]}
-          - min: 80
+          - <<: *i18n.result.common_noun
+            min: 80
             max: 83
             result: Secrecy
             # set_attributes: {dominion: [secrecy]}
-          - min: 84
+          - <<: *i18n.result.common_noun
+            min: 84
             max: 87
             result: Technology
             # set_attributes: {dominion: [technology]}
-          - min: 88
+          - <<: *i18n.result.common_noun
+            min: 88
             max: 91
             result: Treachery
             # set_attributes: {dominion: [treachery]}
-          - min: 92
+          - <<: *i18n.result.common_noun
+            min: 92
             max: 96
             result: Warfare
             # set_attributes: {dominion: [warfare]}
-          - min: 97
+          - <<: *i18n.result.common_noun
+            min: 97
             max: 100
             result: Wealth
             # set_attributes: {dominion: [wealth]}
@@ -721,67 +872,79 @@ oracles:
         #       faction_type: [guild]
         # content:
         #   tags: [actor]
-        _i18n:
-          result:
-            part_of_speech: common_noun
         table:
-          - min: 1
+          - <<: *i18n.result.common_noun
+            min: 1
             max: 5
             result: Assassins
             # set_attributes: {guild: [assassins]}
-          - min: 6
+          - <<: *i18n.result.common_noun
+            min: 6
             max: 10
             result: Bounty Hunters
             # set_attributes: {guild: [bounty_hunters]}
-          - min: 11
+          - <<: *i18n.result.common_noun
+            min: 11
             max: 15
             result: Couriers
             # set_attributes: {guild: [couriers]}
-          - min: 16
+          - <<: *i18n.result.common_noun
+            min: 16
             max: 20
             result: Courtesans
             # set_attributes: {guild: [courtesans]}
-          - min: 21
+          - <<: *i18n.result.common_noun
+            min: 21
             max: 25
             result: Engineers
             # set_attributes: {guild: [engineers]}
-          - min: 26
+          - <<: *i18n.result.common_noun
+            min: 26
             max: 30
             result: Healers
             # set_attributes: {guild: [healers]}
-          - min: 31
+          - <<: *i18n.result.common_noun
+            min: 31
             max: 40
             result: Industrialists
             # set_attributes: {guild: [industrialists]}
-          - min: 41
+          - <<: *i18n.result.common_noun
+            min: 41
             max: 50
             result: Mercenaries
             # set_attributes: {guild: [mercenaries]}
-          - min: 51
+          - <<: *i18n.result.common_noun
+            min: 51
             max: 60
             result: Merchants
             # set_attributes: {guild: [merchants]}
-          - min: 61
+          - <<: *i18n.result.common_noun
+            min: 61
             max: 65
             result: Mystics
             # set_attributes: {guild: [mystics]}
-          - min: 66
+          - <<: *i18n.result.common_noun
+            min: 66
             max: 75
             result: Navigators
             # set_attributes: {guild: [navigators]}
-          - min: 76
+          - <<: *i18n.result.common_noun
+            min: 76
             max: 80
             result: Peacekeepers
             # set_attributes: {guild: [peacekeepers]}
-          - min: 81
+          - <<: *i18n.result.common_noun
+            min: 81
             max: 85
             result: Researchers
             # set_attributes: {guild: [researchers]}
-          - min: 86
+          - <<: *i18n.result.common_noun
+            min: 86
             max: 90
             result: Spies
             # set_attributes: {guild: [spies]}
-          - min: 91
+          - <<: *i18n.result.common_noun
+            min: 91
             max: 100
             result: Roll twice
             rolls:
@@ -801,55 +964,64 @@ oracles:
         #       faction_type: [fringe_group]
         # content:
         #   tags: [actor]
-        _i18n:
-          result:
-            part_of_speech: common_noun
         table:
-          - min: 1
+          - <<: *i18n.result.common_noun
+            min: 1
             max: 5
             result: Cultists
             # set_attributes: {fringe_group: [cultists]}
-          - min: 6
+          - <<: *i18n.result.common_noun
+            min: 6
             max: 15
             result: Exiles
             # set_attributes: {fringe_group: [exiles]}
-          - min: 16
+          - <<: *i18n.result.common_noun
+            min: 16
             max: 25
             result: Gangsters
             # set_attributes: {fringe_group: [gangsters]}
-          - min: 26
+          - <<: *i18n.result.common_noun
+            min: 26
             max: 35
             result: Hackers
             # set_attributes: {fringe_group: [hackers]}
-          - min: 36
+          - <<: *i18n.result.common_noun
+            min: 36
             max: 40
             result: Monster hunters
             # set_attributes: {fringe_group: [monster_hunters]}
-          - min: 41
+          - <<: *i18n.result.common_noun
+            min: 41
             max: 50
             result: Pirates
             # set_attributes: {fringe_group: [pirates]}
-          - min: 51
+          - <<: *i18n.result.common_noun
+            min: 51
             max: 60
             result: Raiders
             # set_attributes: {fringe_group: [raiders]}
-          - min: 61
+          - <<: *i18n.result.common_noun
+            min: 61
             max: 70
             result: Rebels
             # set_attributes: {fringe_group: [rebels]}
-          - min: 71
+          - <<: *i18n.result.common_noun
+            min: 71
             max: 75
             result: Rogue AI
             # set_attributes: {fringe_group: [rogue_ai]}
-          - min: 76
+          - <<: *i18n.result.common_noun
+            min: 76
             max: 85
             result: Scavengers
             # set_attributes: {fringe_group: [scavengers]}
-          - min: 86
+          - <<: *i18n.result.common_noun
+            min: 86
             max: 95
             result: Smugglers
             # set_attributes: {fringe_group: [smugglers]}
-          - min: 96
+          - <<: *i18n.result.common_noun
+            min: 96
             max: 100
             result: Roll twice
             rolls:

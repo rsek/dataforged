@@ -844,7 +844,8 @@
 			"type": "object",
 			"properties": {
 				"part_of_speech": {
-					"$ref": "#/$defs/PartOfSpeech"
+					"$ref": "#/$defs/PartOfSpeech",
+					"description": "The part of speech for this string."
 				}
 			}
 		},
@@ -900,7 +901,7 @@
 		},
 		"PartOfSpeech": {
 			"title": "PartOfSpeech",
-			"description": "  - `common_noun`: A common noun.\n  - `proper_noun`: A proper noun.\n  - `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.\n  - `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.\n  - `verb`: A verb in present tense\n  - `gerund`: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  - `adjective`: An adjective.\n  - `attributive_verb`: A verb used as an adjective, to modify a noun.",
+			"description": "  - `common_noun`: A common noun.\n  - `proper_noun`: A proper noun.\n  - `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.\n  - `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.\n  - `verb`: A verb in present tense\n  - `gerund`: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  - `adjective`: An adjective.\n  - `attributive_verb`: A verb used as an adjective, to modify a noun.\n  - `adjective_as_proper_noun`: An adjective used as a proper noun.\n  - `common_noun_as_proper_noun`: An common noun used as a proper noun.",
 			"enum": [
 				"common_noun",
 				"proper_noun",
@@ -909,7 +910,9 @@
 				"verb",
 				"gerund",
 				"adjective",
-				"attributive_verb"
+				"attributive_verb",
+				"adjective_as_proper_noun",
+				"common_noun_as_proper_noun"
 			]
 		},
 		"TemplateString": {

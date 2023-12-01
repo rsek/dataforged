@@ -22,41 +22,46 @@ oracles:
         source:
           <<: *Source
           page: 336
-        _i18n:
-          result:
-            part_of_speech: common_noun
         summary: |-
           Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
         table:
-          - min: 1
+          - <<: &i18n.result.common_noun
+              i18n:
+                result:
+                  part_of_speech: common_noun
+            min: 1
             max: 5
             result: Space
             icon: &icon.Space icons/creature/environment/space.svg
             # set_attributes: {environment: [space]}
             rolls:
               - oracle: starforged/oracles/creatures/basic_form/space
-          - min: 6
+          - <<:  *i18n.result.common_noun
+            min: 6
             max: 15
             result: Interior
             icon: &icon.Interior icons/creature/environment/interior.svg
             # set_attributes: {environment: [interior]}
             rolls:
               - oracle: starforged/oracles/creatures/basic_form/interior
-          - min: 16
+          - <<:  *i18n.result.common_noun
+            min: 16
             max: 55
             result: Land
             icon: &icon.Land icons/creature/environment/land.svg
             # set_attributes: {environment: [land]}
             rolls:
               - oracle: starforged/oracles/creatures/basic_form/land
-          - min: 56
+          - <<:  *i18n.result.common_noun
+            min: 56
             max: 80
             result: Liquid
             icon: &icon.Liquid icons/creature/environment/liquid.svg
             # set_attributes: {environment: [liquid]}
             rolls:
               - oracle: starforged/oracles/creatures/basic_form/liquid
-          - min: 81
+          - <<:  *i18n.result.common_noun
+            min: 81
             max: 100
             result: Air
             icon: &icon.Air icons/creature/environment/air.svg
@@ -70,35 +75,42 @@ oracles:
           page: 336
         # usage:
         #   initial: true
-        _i18n:
-          result:
-            part_of_speech: adjective
         table:
-          - min: 1
+          - <<: &i18n.result.adjective
+              i18n:
+                result:
+                  part_of_speech: adjective
+            min: 1
             max: 3
             result: Minuscule (bug-sized)
             # set_attributes: {creature_scale: [minuscule]}
-          - min: 4
+          - <<: *i18n.result.adjective
+            min: 4
             max: 10
             result: Tiny (rodent-sized)
             # set_attributes: {creature_scale: [tiny]}
-          - min: 11
+          - <<: *i18n.result.adjective
+            min: 11
             max: 25
             result: Small (dog-sized)
             # set_attributes: {creature_scale: [small]}
-          - min: 26
+          - <<: *i18n.result.adjective
+            min: 26
             max: 60
             result: Medium (person-sized)
             # set_attributes: {creature_scale: [medium]}
-          - min: 61
+          - <<: *i18n.result.adjective
+            min: 61
             max: 90
             result: Large (vehicle-sized)
             # set_attributes: {creature_scale: [large]}
-          - min: 91
+          - <<: *i18n.result.adjective
+            min: 91
             max: 99
             result: Huge (whale-sized)
             # set_attributes: {creature_scale: [huge]}
-          - min: 100
+          - <<: *i18n.result.adjective
+            min: 100
             max: 100
             result: '[Ultra-scale](id:starforged/oracles/creatures/ultra_scale)'
             rolls:
@@ -111,19 +123,19 @@ oracles:
           page: 336
         # usage:
         #   initial: true
-        _i18n:
-          result:
-            part_of_speech: adjective
         table:
-          - min: 1
+          - <<: *i18n.result.adjective
+            min: 1
             max: 89
             result: Titanic (hill-sized)
             # set_attributes: {creature_scale: [titanic]}
-          - min: 90
+          - <<: *i18n.result.adjective
+            min: 90
             max: 99
             result: Colossal (mountain-sized)
             # set_attributes: {creature_scale: [colossal]}
-          - min: 100
+          - <<: *i18n.result.adjective
+            min: 100
             max: 100
             result: Vast (planet-sized)
             # set_attributes: {creature_scale: [vast]}
@@ -298,93 +310,115 @@ oracles:
           page: 338
         summary: |-
           Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.
-        _i18n:
-          result:
-            part_of_speech: common_noun
+
         # usage:
         #   initial: true
         table:
-          - min: 1
+          - <<: &i18n.result.common_noun
+              i18n:
+                result:
+                  part_of_speech: common_noun
+            min: 1
             max: 5
             result: Ambusher
             # set_attributes: {encountered_behavior: [ambusher]}
-          - min: 6
+          - <<: *i18n.result.common_noun
+            min: 6
             max: 10
             result: Apex predator
             # set_attributes: {encountered_behavior: [apex_predator]}
-          - min: 11
+          - <<: *i18n.result.common_noun
+            min: 11
             max: 14
             result: Builder
             # set_attributes: {encountered_behavior: [builder]}
-          - min: 15
+          - <<: *i18n.result.common_noun
+            min: 15
             max: 19
             result: Camouflager
             # set_attributes: {encountered_behavior: [camouflager]}
-          - min: 20
+          - <<: *i18n.result.common_noun
+            min: 20
             max: 24
             result: Forager
             # set_attributes: {encountered_behavior: [forager]}
-          - min: 25
+          - <<: *i18n.result.common_noun
+            min: 25
             max: 29
             result: Grazer
             # set_attributes: {encountered_behavior: [grazer]}
-          - min: 30
+          - <<: *i18n.result.common_noun
+            min: 30
             max: 33
             result: Herder
             # set_attributes: {encountered_behavior: [herder]}
-          - min: 34
+          - <<: *i18n.result.common_noun
+            min: 34
             max: 37
             result: Hibernator
             # set_attributes: {encountered_behavior: [hibernator]}
-          - min: 38
+          - <<: *i18n.result.common_noun
+            min: 38
             max: 41
             result: Hoarder
             # set_attributes: {encountered_behavior: [hoarder]}
-          - min: 42
+          - <<: *i18n.result.common_noun
+            min: 42
             max: 46
             result: Hunter
             # set_attributes: {encountered_behavior: [hunter]}
-          - min: 47
+          - <<: *i18n.result.common_noun
+            min: 47
             max: 51
             result: Lurer
             # set_attributes: {encountered_behavior: [lurer]}
-          - min: 52
+          - <<: *i18n.result.common_noun
+            min: 52
             max: 55
             result: Migratory
             # set_attributes: {encountered_behavior: [migratory]}
-          - min: 56
+          - <<: *i18n.result.common_noun
+            min: 56
             max: 60
             result: Mimic
             # set_attributes: {encountered_behavior: [mimic]}
-          - min: 61
+          - <<: *i18n.result.common_noun
+            min: 61
             max: 65
             result: Nester
             # set_attributes: {encountered_behavior: [nester]}
-          - min: 66
+          - <<: *i18n.result.common_noun
+            min: 66
             max: 70
             result: Pack hunter
             # set_attributes: {encountered_behavior: [pack_hunter]}
-          - min: 71
+          - <<: *i18n.result.common_noun
+            min: 71
             max: 75
             result: Prey
             # set_attributes: {encountered_behavior: [prey]}
-          - min: 76
+          - <<: *i18n.result.common_noun
+            min: 76
             max: 80
             result: Protector
             # set_attributes: {encountered_behavior: [protector]}
-          - min: 81
+          - <<: *i18n.result.common_noun
+            min: 81
             max: 85
             result: Scavenger
             # set_attributes: {encountered_behavior: [scavenger]}
-          - min: 86
+          - <<: *i18n.result.common_noun
+            min: 86
             max: 90
             result: Tracker
             # set_attributes: {encountered_behavior: [tracker]}
-          - min: 91
+          - <<: *i18n.result.common_noun
+            min: 91
             max: 95
             result: Trapper
             # set_attributes: {encountered_behavior: [trapper]}
-          - min: 96
+          - <<: *i18n.result.common_noun
+            min: 96
             max: 100
             result: Roll twice
             rolls:

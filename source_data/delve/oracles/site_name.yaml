@@ -33,12 +33,13 @@ oracles:
         name: Format
         source: *Source
         canonical_name: 'Site Name: Format'
-        _i18n:
-          template:
-            result:
-              part_of_speech: proper_noun
         table:
-          - min: 1
+          - <<: &i18n.template.result.proper_noun
+              i18n:
+                template:
+                  result:
+                    part_of_speech: proper_noun
+            min: 1
             max: 25
             result: '[Description](id:delve/oracles/site_name/description) [Place](id:delve/oracles/site_name/place)'
             template:
@@ -46,7 +47,8 @@ oracles:
             rolls:
               - oracle: delve/oracles/site_name/description
               - oracle: delve/oracles/site_name/place
-          - min: 26
+          - <<: *i18n.template.result.proper_noun
+            min: 26
             max: 50
             result: '[Place](id:delve/oracles/site_name/place) of [Detail](id:delve/oracles/site_name/detail)'
             template:
@@ -54,7 +56,8 @@ oracles:
             rolls:
               - oracle: delve/oracles/site_name/place
               - oracle: delve/oracles/site_name/detail
-          - min: 51
+          - <<: *i18n.template.result.proper_noun
+            min: 51
             max: 70
             result: '[Place](id:delve/oracles/site_name/place) of [Description](id:delve/oracles/site_name/description) [Detail](id:delve/oracles/site_name/detail)'
             template:
@@ -63,7 +66,8 @@ oracles:
               - oracle: delve/oracles/site_name/place
               - oracle: delve/oracles/site_name/description
               - oracle: delve/oracles/site_name/detail
-          - min: 71
+          - <<: *i18n.template.result.proper_noun
+            min: 71
             max: 80
             result: "[Place](id:delve/oracles/site_name/place) of [Namesake's](id:delve/oracles/site_name/namesake) [Detail](id:delve/oracles/site_name/detail)"
             template:
@@ -72,7 +76,8 @@ oracles:
               - oracle: delve/oracles/site_name/place
               - oracle: delve/oracles/site_name/namesake
               - oracle: delve/oracles/site_name/detail
-          - min: 81
+          - <<: *i18n.template.result.proper_noun
+            min: 81
             max: 85
             result: "[Namesake's](id:delve/oracles/site_name/namesake) [Place](id:delve/oracles/site_name/place)"
             template:
@@ -80,7 +85,8 @@ oracles:
             rolls:
               - oracle: delve/oracles/site_name/namesake
               - oracle: delve/oracles/site_name/place
-          - min: 86
+          - <<: *i18n.template.result.proper_noun
+            min: 86
             max: 95
             result: '[Description](id:delve/oracles/site_name/description) [Place](id:delve/oracles/site_name/place) of [Namesake](id:delve/oracles/site_name/namesake)'
             template:
@@ -89,7 +95,8 @@ oracles:
               - oracle: delve/oracles/site_name/description
               - oracle: delve/oracles/site_name/place
               - oracle: delve/oracles/site_name/namesake
-          - min: 96
+          - <<: *i18n.template.result.proper_noun
+            min: 96
             max: 100
             result: '[Place](id:delve/oracles/site_name/place) of [Namesake](id:delve/oracles/site_name/namesake)'
             template:
