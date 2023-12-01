@@ -178,6 +178,7 @@ export const AssetCardFlipControlField = AssetCardFlipField(
 
 export const AssetControlField = Utils.DiscriminatedUnion(
 	[
+		AssetConditionMeter,
 		AssetSelectEnhancementControlField,
 		AssetCheckboxControlField,
 		AssetCardFlipControlField

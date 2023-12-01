@@ -1,5 +1,5 @@
 import JsonPointer from 'json-pointer'
-import type { Out } from '../../types/index.js'
+import type * as Out from '../../types/Datasworn.js'
 import {
 	isSortableObjectSchema,
 	sortDataswornKeys,
@@ -8,9 +8,8 @@ import {
 import { sortTopLevelCollection } from './sortCollection.js'
 import { type Draft07 } from 'json-schema-library'
 
-
 const metadataKeys = ['tsType']
-export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
+export function cleanRuleset(datasworn: Out.RulesPackage, jsl: Draft07) {
 	const sortedPointers: Record<string, unknown> = {}
 
 	// sort non-dictionary objects
@@ -30,17 +29,17 @@ export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
 			!unsortableKeys.includes(key) &&
 			isSortableObjectSchema(schema)
 		)
-			sortedPointers[nicePointer] = sortDataswornKeys(value as any)
+			sortedPointers[nicePointer] = sortDataswornKeys(value)
 	})
 
 	// sort collections
 	for (const [k, v] of Object.entries(datasworn)) {
-		if (metadataKeys.includes(k as any)) continue
+		if (metadataKeys.includes(k)) continue
 		if (typeof v !== 'object') continue
 		if (k === 'rules') continue
 
 		// log.info(`iterating key: ${k}`)
-		const result = sortTopLevelCollection(v as any)
+		const result = sortTopLevelCollection(v)
 
 		// console.log(result)
 		datasworn[k] = result
@@ -56,7 +55,7 @@ export function cleanRuleset(datasworn: Out.Datasworn, jsl: Draft07) {
 		if (JsonPointer.has(jsonOut, pointer))
 			JsonPointer.set(jsonOut, pointer, sortedValue)
 
-	return jsonOut as Out.Datasworn
+	return jsonOut as Out.RulesPackage
 }
 
 function replacer(key: string, value: unknown) {

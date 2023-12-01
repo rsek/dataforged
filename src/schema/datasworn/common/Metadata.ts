@@ -29,7 +29,7 @@ export const SemanticVersion = Type.RegExp(
 )
 export type SemanticVersion = Static<typeof SemanticVersion>
 
-const AuthorInfo = Type.Object(
+export const AuthorInfo = Type.Object(
 	{
 		name: Type.String({ examples: ['Shawn Tomkin'] }),
 		email: Type.Optional(
@@ -47,7 +47,7 @@ const AuthorInfo = Type.Object(
 		)
 	},
 	{
-		examples: [{ name: 'Shawn Tomkin' }],
+		examples: [{ name: 'Shawn Tomkin', url: 'https://ironswornrpg.com' }],
 		$id: 'AuthorInfo',
 		description: 'Information on the original creator of this material.'
 	}
@@ -72,7 +72,7 @@ export const Source = Type.Object(
 				description: 'The page number where this item is described in full.'
 			})
 		),
-		authors: Type.Array(AuthorInfo, { minItems: 1 }),
+		authors: Type.Array(Type.Ref(AuthorInfo), { minItems: 1 }),
 		date: Type.String({
 			format: 'date',
 			$comment: 'You may prefer to deserialize this as a Date object.',

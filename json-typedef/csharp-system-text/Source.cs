@@ -11,7 +11,7 @@ namespace Datasworn
     public class Source
     {
         [JsonPropertyName("authors")]
-        public IList<SourceAuthor> Authors { get; set; }
+        public IList<AuthorInfo> Authors { get; set; }
 
         /// <summary>
         /// The date of the source documents's last update, formatted YYYY-MM-

@@ -7,7 +7,7 @@ import {
 import * as Utils from '../Utils.js'
 import { Id, Localize, Player } from './index.js'
 
-export const RollableValueType = Utils.UnionEnumFromRecord(
+const RollableValueType = Utils.UnionEnumFromRecord(
 	{
 		stat: 'A reference to the value of a standard player character stat.',
 		condition_meter:
@@ -22,7 +22,7 @@ export const RollableValueType = Utils.UnionEnumFromRecord(
 	},
 	{ $id: 'RollableValueType' }
 )
-export type RollableValueType = Static<typeof RollableValueType>
+type RollableValueType = Static<typeof RollableValueType>
 
 function RollableValueBase<
 	Using extends RollableValueType,
@@ -56,7 +56,7 @@ export const AssetControlValueRef = RollableValueBase(
 			examples: ['health', 'integrity']
 		})
 	}),
-	{ $id: 'RollOptionAssetControl' }
+	{ $id: 'AssetControlValueRef' }
 )
 
 export type AssetControlValueRef = Static<typeof AssetControlValueRef>
@@ -97,7 +97,6 @@ export const AttachedAssetOptionValueRef = RollableValueBase(
 export type AttachedAssetOptionValueRef = Static<
 	typeof AttachedAssetOptionValueRef
 >
-// TODO: should using be 'option_type' instead?
 
 export const StatValueRef = RollableValueBase(
 	'stat',

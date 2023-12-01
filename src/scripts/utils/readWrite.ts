@@ -1,8 +1,8 @@
 import fs from 'fs-extra'
 import { merge } from 'lodash-es'
 import path from 'path'
-import { default as Prettier } from 'prettier'
-import { Simplify } from 'type-fest'
+import Prettier from 'prettier'
+import { type Simplify } from 'type-fest'
 import yaml from 'yaml'
 
 const space = '\t'

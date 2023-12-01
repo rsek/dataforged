@@ -71,7 +71,7 @@ const OracleRenderingBase = Type.Object({
 	color: Type.Optional(Type.Ref(Metadata.CssColor))
 })
 
-export const OracleCollectionStyle = Utils.UnionEnumFromRecord(
+const OracleCollectionStyle = Utils.UnionEnumFromRecord(
 	{
 		tables: 'Presented as a collection of separate tables.',
 		multi_table:
@@ -81,7 +81,7 @@ export const OracleCollectionStyle = Utils.UnionEnumFromRecord(
 		$id: 'OracleCollectionStyle'
 	}
 )
-export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
+type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
 export const OracleCollectionRenderingTables = Type.Object(
 	{
@@ -109,7 +109,7 @@ export const OracleCollectionRendering = Utils.DiscriminatedUnion(
 )
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
-export const OracleTableStyle = Utils.UnionEnumFromRecord(
+const OracleTableStyle = Utils.UnionEnumFromRecord(
 	{
 		standalone: 'Render as a standalone table.',
 		embed_in_row: 'Render as a table, within a row in another table.',
@@ -117,7 +117,7 @@ export const OracleTableStyle = Utils.UnionEnumFromRecord(
 	},
 	{ $id: 'OracleTableStyle' }
 )
-export type OracleTableStyle = Static<typeof OracleTableStyle>
+type OracleTableStyle = Static<typeof OracleTableStyle>
 
 export const OracleTableRenderingStandalone = Type.Object(
 	{

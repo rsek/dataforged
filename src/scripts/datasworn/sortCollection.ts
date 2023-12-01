@@ -16,7 +16,7 @@ function sortDictionary<
 	return Object.fromEntries(entries) as D
 }
 
-const commonRefs = [Localize.Label, Metadata.Source]
+const commonRefs = [Localize.Label, Metadata.Source, Metadata.AuthorInfo]
 
 const sourcedNodeValidatorSchema = Utils.OmitOptional(Generic.SourcedNodeBase, {
 	additionalProperties: true

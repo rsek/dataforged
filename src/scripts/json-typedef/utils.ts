@@ -42,7 +42,7 @@ import * as Utils from '../../schema/datasworn/Utils.js'
 import { TRoot } from '../../schema/datasworn/root/SchemaRoot.js'
 import Log from '../utils/Log.js'
 import { Discriminator, JsonTypeDef, Members } from './symbol.js'
-import { Value } from '@sinclair/typebox/value'
+import * as Assets from '../../schema/datasworn/Assets.js'
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
 export function extractMetadata<T extends TAnySchema>(jsonSchema: T) {
@@ -293,7 +293,7 @@ function toJtdForm(schema: TSchema): TSchema | undefined {
 export function toJtdRoot<T extends TRoot>(schemaRoot: T) {
 	const definitions = {} as { [K in keyof T['$defs']]: JTD.Schema }
 
-  const rootType = 'RulesPackage'
+	const rootType = 'RulesPackage'
 
 	for (const k in schemaRoot.$defs) {
 		if (k === rootType) continue
@@ -303,6 +303,11 @@ export function toJtdRoot<T extends TRoot>(schemaRoot: T) {
 			Log.error(`Couldn't convert ${schemaRoot.$defs[k].$id}`, err)
 		}
 	}
+	// HACK: not sure why this is getting omitted, there's a few places it could happen and i havent tracked it down yet
+
+	definitions.SelectEnhancementFieldChoice = toJtdForm(
+		omit(Assets.SelectEnhancementFieldChoice, JsonTypeDef)
+	)
 
 	const base = toJtdForm(schemaRoot.$defs[rootType] as any)
 

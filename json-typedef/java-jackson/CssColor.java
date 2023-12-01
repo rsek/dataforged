@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * A CSS color value. See: https://developer.mozilla.org/en-
- * US/docs/Web/CSS/color_value
+ * A CSS color value.
  */
 public class CssColor {
     @JsonValue

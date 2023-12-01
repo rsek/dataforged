@@ -139,7 +139,7 @@ module Datasworn
 
     private_class_method :new
 
-    # Use **every** roll option at once.
+    # Use _every_ roll option at once.
     ALL = new("all")
 
     # Use the roll option with the best/highest value.
@@ -793,25 +793,25 @@ module Datasworn
   end
 
   class AssetControlFieldSelectEnhancementChoice
-    attr_accessor :option_type
+    attr_accessor :choice_type
 
     def self.from_json_data(data)
       {
-        "option" => AssetControlFieldSelectEnhancementChoiceOption,
-        "option_group" => AssetControlFieldSelectEnhancementChoiceOptionGroup,
-      }[data["option_type"]].from_json_data(data)
+        "choice" => AssetControlFieldSelectEnhancementChoiceChoice,
+        "choice_group" => AssetControlFieldSelectEnhancementChoiceChoiceGroup,
+      }[data["choice_type"]].from_json_data(data)
     end
   end
 
   # Represents an option in a list of choices.
-  class AssetControlFieldSelectEnhancementChoiceOption < AssetControlFieldSelectEnhancementChoice
+  class AssetControlFieldSelectEnhancementChoiceChoice < AssetControlFieldSelectEnhancementChoice
     attr_accessor :label
     attr_accessor :enhance_asset
     attr_accessor :enhance_moves
 
     def self.from_json_data(data)
-      out = AssetControlFieldSelectEnhancementChoiceOption.new
-      out.option_type = "option"
+      out = AssetControlFieldSelectEnhancementChoiceChoice.new
+      out.choice_type = "choice"
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
       out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
@@ -819,56 +819,8 @@ module Datasworn
     end
 
     def to_json_data
-      data = { "option_type" => "option" }
+      data = { "choice_type" => "choice" }
       data["label"] = Datasworn::to_json_data(label)
-      data["enhance_asset"] = Datasworn::to_json_data(enhance_asset) unless enhance_asset.nil?
-      data["enhance_moves"] = Datasworn::to_json_data(enhance_moves) unless enhance_moves.nil?
-      data
-    end
-  end
-
-  class AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice
-    attr_accessor :label
-    attr_accessor :option_type
-    attr_accessor :enhance_asset
-    attr_accessor :enhance_moves
-
-    def self.from_json_data(data)
-      out = AssetControlFieldSelectEnhancementChoiceOptionGroupChoice.new
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option_type = Datasworn::from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data["option_type"])
-      out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
-      out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
-      out
-    end
-
-    def to_json_data
-      data = {}
-      data["label"] = Datasworn::to_json_data(label)
-      data["option_type"] = Datasworn::to_json_data(option_type)
       data["enhance_asset"] = Datasworn::to_json_data(enhance_asset) unless enhance_asset.nil?
       data["enhance_moves"] = Datasworn::to_json_data(enhance_moves) unless enhance_moves.nil?
       data
@@ -876,20 +828,20 @@ module Datasworn
   end
 
   # Represents a grouping of options in a list of choices.
-  class AssetControlFieldSelectEnhancementChoiceOptionGroup < AssetControlFieldSelectEnhancementChoice
+  class AssetControlFieldSelectEnhancementChoiceChoiceGroup < AssetControlFieldSelectEnhancementChoice
     attr_accessor :choices
     attr_accessor :name
 
     def self.from_json_data(data)
-      out = AssetControlFieldSelectEnhancementChoiceOptionGroup.new
-      out.option_type = "option_group"
-      out.choices = Datasworn::from_json_data(Hash[String, AssetControlFieldSelectEnhancementChoiceOptionGroupChoice], data["choices"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out = AssetControlFieldSelectEnhancementChoiceChoiceGroup.new
+      out.choice_type = "choice_group"
+      out.choices = Datasworn::from_json_data(Hash[String, SelectEnhancementFieldChoice], data["choices"])
+      out.name = Datasworn::from_json_data(InputLabel, data["name"])
       out
     end
 
     def to_json_data
-      data = { "option_type" => "option_group" }
+      data = { "choice_type" => "choice_group" }
       data["choices"] = Datasworn::to_json_data(choices)
       data["name"] = Datasworn::to_json_data(name)
       data
@@ -1078,25 +1030,25 @@ module Datasworn
   end
 
   class AssetOptionFieldSelectEnhancementChoice
-    attr_accessor :option_type
+    attr_accessor :choice_type
 
     def self.from_json_data(data)
       {
-        "option" => AssetOptionFieldSelectEnhancementChoiceOption,
-        "option_group" => AssetOptionFieldSelectEnhancementChoiceOptionGroup,
-      }[data["option_type"]].from_json_data(data)
+        "choice" => AssetOptionFieldSelectEnhancementChoiceChoice,
+        "choice_group" => AssetOptionFieldSelectEnhancementChoiceChoiceGroup,
+      }[data["choice_type"]].from_json_data(data)
     end
   end
 
   # Represents an option in a list of choices.
-  class AssetOptionFieldSelectEnhancementChoiceOption < AssetOptionFieldSelectEnhancementChoice
+  class AssetOptionFieldSelectEnhancementChoiceChoice < AssetOptionFieldSelectEnhancementChoice
     attr_accessor :label
     attr_accessor :enhance_asset
     attr_accessor :enhance_moves
 
     def self.from_json_data(data)
-      out = AssetOptionFieldSelectEnhancementChoiceOption.new
-      out.option_type = "option"
+      out = AssetOptionFieldSelectEnhancementChoiceChoice.new
+      out.choice_type = "choice"
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
       out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
@@ -1104,56 +1056,8 @@ module Datasworn
     end
 
     def to_json_data
-      data = { "option_type" => "option" }
+      data = { "choice_type" => "choice" }
       data["label"] = Datasworn::to_json_data(label)
-      data["enhance_asset"] = Datasworn::to_json_data(enhance_asset) unless enhance_asset.nil?
-      data["enhance_moves"] = Datasworn::to_json_data(enhance_moves) unless enhance_moves.nil?
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice
-    attr_accessor :label
-    attr_accessor :option_type
-    attr_accessor :enhance_asset
-    attr_accessor :enhance_moves
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice.new
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data["option_type"])
-      out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
-      out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
-      out
-    end
-
-    def to_json_data
-      data = {}
-      data["label"] = Datasworn::to_json_data(label)
-      data["option_type"] = Datasworn::to_json_data(option_type)
       data["enhance_asset"] = Datasworn::to_json_data(enhance_asset) unless enhance_asset.nil?
       data["enhance_moves"] = Datasworn::to_json_data(enhance_moves) unless enhance_moves.nil?
       data
@@ -1161,20 +1065,20 @@ module Datasworn
   end
 
   # Represents a grouping of options in a list of choices.
-  class AssetOptionFieldSelectEnhancementChoiceOptionGroup < AssetOptionFieldSelectEnhancementChoice
+  class AssetOptionFieldSelectEnhancementChoiceChoiceGroup < AssetOptionFieldSelectEnhancementChoice
     attr_accessor :choices
     attr_accessor :name
 
     def self.from_json_data(data)
-      out = AssetOptionFieldSelectEnhancementChoiceOptionGroup.new
-      out.option_type = "option_group"
-      out.choices = Datasworn::from_json_data(Hash[String, AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice], data["choices"])
-      out.name = Datasworn::from_json_data(Label, data["name"])
+      out = AssetOptionFieldSelectEnhancementChoiceChoiceGroup.new
+      out.choice_type = "choice_group"
+      out.choices = Datasworn::from_json_data(Hash[String, SelectEnhancementFieldChoice], data["choices"])
+      out.name = Datasworn::from_json_data(InputLabel, data["name"])
       out
     end
 
     def to_json_data
-      data = { "option_type" => "option_group" }
+      data = { "choice_type" => "choice_group" }
       data["choices"] = Datasworn::to_json_data(choices)
       data["name"] = Datasworn::to_json_data(name)
       data
@@ -1213,350 +1117,6 @@ module Datasworn
     end
   end
 
-  class AssetOptionFieldSelectValueChoice
-    attr_accessor :using
-
-    def self.from_json_data(data)
-      {
-        "asset_control" => AssetOptionFieldSelectValueChoiceAssetControl,
-        "asset_option" => AssetOptionFieldSelectValueChoiceAssetOption,
-        "attached_asset_control" => AssetOptionFieldSelectValueChoiceAttachedAssetControl,
-        "attached_asset_option" => AssetOptionFieldSelectValueChoiceAttachedAssetOption,
-        "condition_meter" => AssetOptionFieldSelectValueChoiceConditionMeter,
-        "custom" => AssetOptionFieldSelectValueChoiceCustom,
-        "stat" => AssetOptionFieldSelectValueChoiceStat,
-      }[data["using"]].from_json_data(data)
-    end
-  end
-
-  class AssetOptionFieldSelectValueChoiceAssetControlOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectValueChoiceAssetControl < AssetOptionFieldSelectValueChoice
-    attr_accessor :assets
-    attr_accessor :control
-    attr_accessor :label
-    attr_accessor :option_type
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectValueChoiceAssetControl.new
-      out.using = "asset_control"
-      out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
-      out.control = Datasworn::from_json_data(DictKey, data["control"])
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAssetControlOptionType, data["option_type"])
-      out
-    end
-
-    def to_json_data
-      data = { "using" => "asset_control" }
-      data["assets"] = Datasworn::to_json_data(assets)
-      data["control"] = Datasworn::to_json_data(control)
-      data["label"] = Datasworn::to_json_data(label)
-      data["option_type"] = Datasworn::to_json_data(option_type)
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectValueChoiceAssetOptionOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectValueChoiceAssetOption < AssetOptionFieldSelectValueChoice
-    attr_accessor :assets
-    attr_accessor :label
-    attr_accessor :option
-    attr_accessor :option_type
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectValueChoiceAssetOption.new
-      out.using = "asset_option"
-      out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option = Datasworn::from_json_data(DictKey, data["option"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAssetOptionOptionType, data["option_type"])
-      out
-    end
-
-    def to_json_data
-      data = { "using" => "asset_option" }
-      data["assets"] = Datasworn::to_json_data(assets)
-      data["label"] = Datasworn::to_json_data(label)
-      data["option"] = Datasworn::to_json_data(option)
-      data["option_type"] = Datasworn::to_json_data(option_type)
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectValueChoiceAttachedAssetControl < AssetOptionFieldSelectValueChoice
-    attr_accessor :control
-    attr_accessor :label
-    attr_accessor :option_type
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectValueChoiceAttachedAssetControl.new
-      out.using = "attached_asset_control"
-      out.control = Datasworn::from_json_data(DictKey, data["control"])
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType, data["option_type"])
-      out
-    end
-
-    def to_json_data
-      data = { "using" => "attached_asset_control" }
-      data["control"] = Datasworn::to_json_data(control)
-      data["label"] = Datasworn::to_json_data(label)
-      data["option_type"] = Datasworn::to_json_data(option_type)
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectValueChoiceAttachedAssetOption < AssetOptionFieldSelectValueChoice
-    attr_accessor :label
-    attr_accessor :option
-    attr_accessor :option_type
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectValueChoiceAttachedAssetOption.new
-      out.using = "attached_asset_option"
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option = Datasworn::from_json_data(DictKey, data["option"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType, data["option_type"])
-      out
-    end
-
-    def to_json_data
-      data = { "using" => "attached_asset_option" }
-      data["label"] = Datasworn::to_json_data(label)
-      data["option"] = Datasworn::to_json_data(option)
-      data["option_type"] = Datasworn::to_json_data(option_type)
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectValueChoiceConditionMeterOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectValueChoiceConditionMeter < AssetOptionFieldSelectValueChoice
-    attr_accessor :condition_meter
-    attr_accessor :label
-    attr_accessor :option_type
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectValueChoiceConditionMeter.new
-      out.using = "condition_meter"
-      out.condition_meter = Datasworn::from_json_data(ConditionMeterKey, data["condition_meter"])
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceConditionMeterOptionType, data["option_type"])
-      out
-    end
-
-    def to_json_data
-      data = { "using" => "condition_meter" }
-      data["condition_meter"] = Datasworn::to_json_data(condition_meter)
-      data["label"] = Datasworn::to_json_data(label)
-      data["option_type"] = Datasworn::to_json_data(option_type)
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectValueChoiceCustomOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectValueChoiceCustom < AssetOptionFieldSelectValueChoice
-    attr_accessor :label
-    attr_accessor :option_type
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectValueChoiceCustom.new
-      out.using = "custom"
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceCustomOptionType, data["option_type"])
-      out.value = Datasworn::from_json_data(Integer, data["value"])
-      out
-    end
-
-    def to_json_data
-      data = { "using" => "custom" }
-      data["label"] = Datasworn::to_json_data(label)
-      data["option_type"] = Datasworn::to_json_data(option_type)
-      data["value"] = Datasworn::to_json_data(value)
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectValueChoiceStatOptionType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    OPTION = new("option")
-
-    def self.from_json_data(data)
-      {
-        "option" => OPTION,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
-  # Represents an option in a list of choices.
-  class AssetOptionFieldSelectValueChoiceStat < AssetOptionFieldSelectValueChoice
-    attr_accessor :label
-    attr_accessor :option_type
-    attr_accessor :stat
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectValueChoiceStat.new
-      out.using = "stat"
-      out.label = Datasworn::from_json_data(InputLabel, data["label"])
-      out.option_type = Datasworn::from_json_data(AssetOptionFieldSelectValueChoiceStatOptionType, data["option_type"])
-      out.stat = Datasworn::from_json_data(StatKey, data["stat"])
-      out
-    end
-
-    def to_json_data
-      data = { "using" => "stat" }
-      data["label"] = Datasworn::to_json_data(label)
-      data["option_type"] = Datasworn::to_json_data(option_type)
-      data["stat"] = Datasworn::to_json_data(stat)
-      data
-    end
-  end
-
   # Represents a list of mutually exclusive choices.
   class AssetOptionFieldSelectValue < AssetOptionField
     attr_accessor :choices
@@ -1568,7 +1128,7 @@ module Datasworn
     def self.from_json_data(data)
       out = AssetOptionFieldSelectValue.new
       out.field_type = "select_value"
-      out.choices = Datasworn::from_json_data(Hash[String, AssetOptionFieldSelectValueChoice], data["choices"])
+      out.choices = Datasworn::from_json_data(Hash[String, SelectValueFieldChoice], data["choices"])
       out.id = Datasworn::from_json_data(AssetOptionFieldID, data["id"])
       out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(DictKey, data["value"])
@@ -1935,6 +1495,33 @@ module Datasworn
     end
   end
 
+  # Information on the original creator of this material.
+  class AuthorInfo
+    attr_accessor :name
+
+    # An optional email contact for the author
+    attr_accessor :email
+
+    # An optional URL for the author's website.
+    attr_accessor :url
+
+    def self.from_json_data(data)
+      out = AuthorInfo.new
+      out.name = Datasworn::from_json_data(String, data["name"])
+      out.email = Datasworn::from_json_data(String, data["email"])
+      out.url = Datasworn::from_json_data(String, data["url"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["name"] = Datasworn::to_json_data(name)
+      data["email"] = Datasworn::to_json_data(email) unless email.nil?
+      data["url"] = Datasworn::to_json_data(url) unless url.nil?
+      data
+    end
+  end
+
   # Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
   class ChallengeRank
     attr_accessor :value
@@ -2021,8 +1608,7 @@ module Datasworn
     end
   end
 
-  # A CSS color value. See: https://developer.mozilla.org/en-
-  # US/docs/Web/CSS/color_value
+  # A CSS color value.
   class CSSColor
     attr_accessor :value
 
@@ -2631,7 +2217,7 @@ module Datasworn
     end
   end
 
-  # A key used in a Datasworn dictionary object.
+  # A `snake_case` key used in a Datasworn dictionary object.
   class DictKey
     attr_accessor :value
 
@@ -2771,7 +2357,7 @@ module Datasworn
       out = ImpactCategory.new
       out.contents = Datasworn::from_json_data(Hash[String, ImpactRule], data["contents"])
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out
     end
 
@@ -2805,7 +2391,7 @@ module Datasworn
     def self.from_json_data(data)
       out = ImpactRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.permanent = Datasworn::from_json_data(TrueClass, data["permanent"])
       out.prevents_recovery = Datasworn::from_json_data(Array[ConditionMeterKey], data["prevents_recovery"])
       out.shared = Datasworn::from_json_data(TrueClass, data["shared"])
@@ -3346,37 +2932,6 @@ module Datasworn
     end
   end
 
-  class MoveOutcomeType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    # The score doesn't beat either challenge die.
-    MISS = new("miss")
-
-    # The score is greater than both challenge dice.
-    STRONG_HIT = new("strong_hit")
-
-    # The score is greater than one challenge die.
-    WEAK_HIT = new("weak_hit")
-
-    def self.from_json_data(data)
-      {
-        "miss" => MISS,
-        "strong_hit" => STRONG_HIT,
-        "weak_hit" => WEAK_HIT,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
   # A standalone localized description for each move outcome (miss, weak hit,
   # or strong hit). This is for for e.g. VTT implementations, where it's often
   # useful to display only the rules text relevant to a roll result.
@@ -3851,34 +3406,6 @@ module Datasworn
     def to_json_data
       data = { "style" => "tables" }
       data
-    end
-  end
-
-  class OracleCollectionStyle
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    # Presented as a single table, with its OracleTable children rendered as
-    # columns.
-    MULTI_TABLE = new("multi_table")
-
-    # Presented as a collection of separate tables.
-    TABLES = new("tables")
-
-    def self.from_json_data(data)
-      {
-        "multi_table" => MULTI_TABLE,
-        "tables" => TABLES,
-      }[data]
-    end
-
-    def to_json_data
-      value
     end
   end
 
@@ -4362,37 +3889,6 @@ module Datasworn
     end
   end
 
-  class OracleTableStyle
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    # Render as a single column of a table.
-    COLUMN = new("column")
-
-    # Render as a table, within a row in another table.
-    EMBED_IN_ROW = new("embed_in_row")
-
-    # Render as a standalone table.
-    STANDALONE = new("standalone")
-
-    def self.from_json_data(data)
-      {
-        "column" => COLUMN,
-        "embed_in_row" => EMBED_IN_ROW,
-        "standalone" => STANDALONE,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
   class PartOfSpeech
     attr_accessor :value
 
@@ -4737,7 +4233,7 @@ module Datasworn
     def self.from_json_data(data)
       out = RollableValueCustom.new
       out.using = "custom"
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.value = Datasworn::from_json_data(Integer, data["value"])
       out
     end
@@ -4765,55 +4261,6 @@ module Datasworn
       data = { "using" => "stat" }
       data["stat"] = Datasworn::to_json_data(stat)
       data
-    end
-  end
-
-  class RollableValueType
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    # A reference to the value of an asset control.
-    ASSET_CONTROL = new("asset_control")
-
-    # A reference to the value of an asset option.
-    ASSET_OPTION = new("asset_option")
-
-    # A reference to the value of an attached asset control. For example, a
-    # Module asset could use this to roll using the `integrity` control of an
-    # attached Vehicle.
-    ATTACHED_ASSET_CONTROL = new("attached_asset_control")
-
-    # A reference to the value of an attached asset option.
-    ATTACHED_ASSET_OPTION = new("attached_asset_option")
-
-    # A reference to the value of a standard player condition meter.
-    CONDITION_METER = new("condition_meter")
-
-    # An arbitrary static integer value with a label.
-    CUSTOM = new("custom")
-
-    # A reference to the value of a standard player character stat.
-    STAT = new("stat")
-
-    def self.from_json_data(data)
-      {
-        "asset_control" => ASSET_CONTROL,
-        "asset_option" => ASSET_OPTION,
-        "attached_asset_control" => ATTACHED_ASSET_CONTROL,
-        "attached_asset_option" => ATTACHED_ASSET_OPTION,
-        "condition_meter" => CONDITION_METER,
-        "custom" => CUSTOM,
-        "stat" => STAT,
-      }[data]
-    end
-
-    def to_json_data
-      value
     end
   end
 
@@ -4906,6 +4353,398 @@ module Datasworn
     end
   end
 
+  class SelectEnhancementFieldChoiceChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectEnhancementFieldChoice
+    attr_accessor :choice_type
+    attr_accessor :label
+    attr_accessor :enhance_asset
+    attr_accessor :enhance_moves
+
+    def self.from_json_data(data)
+      out = SelectEnhancementFieldChoice.new
+      out.choice_type = Datasworn::from_json_data(SelectEnhancementFieldChoiceChoiceType, data["choice_type"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out.enhance_asset = Datasworn::from_json_data(AssetEnhancement, data["enhance_asset"])
+      out.enhance_moves = Datasworn::from_json_data(Array[MoveEnhancement], data["enhance_moves"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["label"] = Datasworn::to_json_data(label)
+      data["enhance_asset"] = Datasworn::to_json_data(enhance_asset) unless enhance_asset.nil?
+      data["enhance_moves"] = Datasworn::to_json_data(enhance_moves) unless enhance_moves.nil?
+      data
+    end
+  end
+
+  class SelectValueFieldChoice
+    attr_accessor :using
+
+    def self.from_json_data(data)
+      {
+        "asset_control" => SelectValueFieldChoiceAssetControl,
+        "asset_option" => SelectValueFieldChoiceAssetOption,
+        "attached_asset_control" => SelectValueFieldChoiceAttachedAssetControl,
+        "attached_asset_option" => SelectValueFieldChoiceAttachedAssetOption,
+        "condition_meter" => SelectValueFieldChoiceConditionMeter,
+        "custom" => SelectValueFieldChoiceCustom,
+        "stat" => SelectValueFieldChoiceStat,
+      }[data["using"]].from_json_data(data)
+    end
+  end
+
+  class SelectValueFieldChoiceAssetControlChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectValueFieldChoiceAssetControl < SelectValueFieldChoice
+    attr_accessor :assets
+    attr_accessor :choice_type
+    attr_accessor :control
+    attr_accessor :label
+
+    def self.from_json_data(data)
+      out = SelectValueFieldChoiceAssetControl.new
+      out.using = "asset_control"
+      out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
+      out.choice_type = Datasworn::from_json_data(SelectValueFieldChoiceAssetControlChoiceType, data["choice_type"])
+      out.control = Datasworn::from_json_data(DictKey, data["control"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "asset_control" }
+      data["assets"] = Datasworn::to_json_data(assets)
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["control"] = Datasworn::to_json_data(control)
+      data["label"] = Datasworn::to_json_data(label)
+      data
+    end
+  end
+
+  class SelectValueFieldChoiceAssetOptionChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectValueFieldChoiceAssetOption < SelectValueFieldChoice
+    attr_accessor :assets
+    attr_accessor :choice_type
+    attr_accessor :label
+    attr_accessor :option
+
+    def self.from_json_data(data)
+      out = SelectValueFieldChoiceAssetOption.new
+      out.using = "asset_option"
+      out.assets = Datasworn::from_json_data(Array[AssetIDWildcard], data["assets"])
+      out.choice_type = Datasworn::from_json_data(SelectValueFieldChoiceAssetOptionChoiceType, data["choice_type"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out.option = Datasworn::from_json_data(DictKey, data["option"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "asset_option" }
+      data["assets"] = Datasworn::to_json_data(assets)
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["label"] = Datasworn::to_json_data(label)
+      data["option"] = Datasworn::to_json_data(option)
+      data
+    end
+  end
+
+  class SelectValueFieldChoiceAttachedAssetControlChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectValueFieldChoiceAttachedAssetControl < SelectValueFieldChoice
+    attr_accessor :choice_type
+    attr_accessor :control
+    attr_accessor :label
+
+    def self.from_json_data(data)
+      out = SelectValueFieldChoiceAttachedAssetControl.new
+      out.using = "attached_asset_control"
+      out.choice_type = Datasworn::from_json_data(SelectValueFieldChoiceAttachedAssetControlChoiceType, data["choice_type"])
+      out.control = Datasworn::from_json_data(DictKey, data["control"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "attached_asset_control" }
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["control"] = Datasworn::to_json_data(control)
+      data["label"] = Datasworn::to_json_data(label)
+      data
+    end
+  end
+
+  class SelectValueFieldChoiceAttachedAssetOptionChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectValueFieldChoiceAttachedAssetOption < SelectValueFieldChoice
+    attr_accessor :choice_type
+    attr_accessor :label
+    attr_accessor :option
+
+    def self.from_json_data(data)
+      out = SelectValueFieldChoiceAttachedAssetOption.new
+      out.using = "attached_asset_option"
+      out.choice_type = Datasworn::from_json_data(SelectValueFieldChoiceAttachedAssetOptionChoiceType, data["choice_type"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out.option = Datasworn::from_json_data(DictKey, data["option"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "attached_asset_option" }
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["label"] = Datasworn::to_json_data(label)
+      data["option"] = Datasworn::to_json_data(option)
+      data
+    end
+  end
+
+  class SelectValueFieldChoiceConditionMeterChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectValueFieldChoiceConditionMeter < SelectValueFieldChoice
+    attr_accessor :choice_type
+    attr_accessor :condition_meter
+    attr_accessor :label
+
+    def self.from_json_data(data)
+      out = SelectValueFieldChoiceConditionMeter.new
+      out.using = "condition_meter"
+      out.choice_type = Datasworn::from_json_data(SelectValueFieldChoiceConditionMeterChoiceType, data["choice_type"])
+      out.condition_meter = Datasworn::from_json_data(ConditionMeterKey, data["condition_meter"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "condition_meter" }
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["condition_meter"] = Datasworn::to_json_data(condition_meter)
+      data["label"] = Datasworn::to_json_data(label)
+      data
+    end
+  end
+
+  class SelectValueFieldChoiceCustomChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectValueFieldChoiceCustom < SelectValueFieldChoice
+    attr_accessor :choice_type
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = SelectValueFieldChoiceCustom.new
+      out.using = "custom"
+      out.choice_type = Datasworn::from_json_data(SelectValueFieldChoiceCustomChoiceType, data["choice_type"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out.value = Datasworn::from_json_data(Integer, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "custom" }
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["label"] = Datasworn::to_json_data(label)
+      data["value"] = Datasworn::to_json_data(value)
+      data
+    end
+  end
+
+  class SelectValueFieldChoiceStatChoiceType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHOICE = new("choice")
+
+    def self.from_json_data(data)
+      {
+        "choice" => CHOICE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # Represents an option in a list of choices.
+  class SelectValueFieldChoiceStat < SelectValueFieldChoice
+    attr_accessor :choice_type
+    attr_accessor :label
+    attr_accessor :stat
+
+    def self.from_json_data(data)
+      out = SelectValueFieldChoiceStat.new
+      out.using = "stat"
+      out.choice_type = Datasworn::from_json_data(SelectValueFieldChoiceStatChoiceType, data["choice_type"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
+      out.stat = Datasworn::from_json_data(StatKey, data["stat"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "stat" }
+      data["choice_type"] = Datasworn::to_json_data(choice_type)
+      data["label"] = Datasworn::to_json_data(label)
+      data["stat"] = Datasworn::to_json_data(stat)
+      data
+    end
+  end
+
   class SemanticVersion
     attr_accessor :value
 
@@ -4917,32 +4756,6 @@ module Datasworn
 
     def to_json_data
       Datasworn.to_json_data(value)
-    end
-  end
-
-  class SourceAuthor
-    attr_accessor :name
-
-    # An optional email contact for the author
-    attr_accessor :email
-
-    # An optional URL for the author's website.
-    attr_accessor :url
-
-    def self.from_json_data(data)
-      out = SourceAuthor.new
-      out.name = Datasworn::from_json_data(String, data["name"])
-      out.email = Datasworn::from_json_data(String, data["email"])
-      out.url = Datasworn::from_json_data(String, data["url"])
-      out
-    end
-
-    def to_json_data
-      data = {}
-      data["name"] = Datasworn::to_json_data(name)
-      data["email"] = Datasworn::to_json_data(email) unless email.nil?
-      data["url"] = Datasworn::to_json_data(url) unless url.nil?
-      data
     end
   end
 
@@ -4966,7 +4779,7 @@ module Datasworn
 
     def self.from_json_data(data)
       out = Source.new
-      out.authors = Datasworn::from_json_data(Array[SourceAuthor], data["authors"])
+      out.authors = Datasworn::from_json_data(Array[AuthorInfo], data["authors"])
       out.date = Datasworn::from_json_data(String, data["date"])
       out.license = Datasworn::from_json_data(String, data["license"])
       out.title = Datasworn::from_json_data(String, data["title"])
@@ -4996,7 +4809,7 @@ module Datasworn
 
     private_class_method :new
 
-    # Use **every** roll option at once.
+    # Use _every_ roll option at once.
     ALL = new("all")
 
     # Use the roll option with the best/highest value.
@@ -5052,7 +4865,7 @@ module Datasworn
     def self.from_json_data(data)
       out = SpecialTrackRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out.optional = Datasworn::from_json_data(TrueClass, data["optional"])
       out.shared = Datasworn::from_json_data(TrueClass, data["shared"])
       out
@@ -5132,7 +4945,7 @@ module Datasworn
     def self.from_json_data(data)
       out = StatRule.new
       out.description = Datasworn::from_json_data(MarkdownString, data["description"])
-      out.label = Datasworn::from_json_data(Label, data["label"])
+      out.label = Datasworn::from_json_data(InputLabel, data["label"])
       out
     end
 

@@ -2,7 +2,7 @@ import fastGlob from 'fast-glob'
 import fs from 'fs-extra'
 import path from 'path'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
-import type { Out } from '../../types/index.js'
+import type * as Out from '../../types/Datasworn.js'
 import { formatPath } from '../../utils.js'
 import { ROOT_OUTPUT } from '../const.js'
 import Log from '../utils/Log.js'
@@ -56,7 +56,7 @@ export async function buildRuleset(
 		})
 	)
 
-	const builtFiles = new Map<string, Out.Datasworn>()
+	const builtFiles = new Map<string, Out.RulesPackage>()
 
 	await Promise.all(
 		sourceFiles.map(async (filePath) => {
@@ -81,7 +81,7 @@ export async function buildRuleset(
 
 	// console.log(ruleset)
 
-	const toWrite: Array<Promise<void>> = [
+	const toWrite: Array<Promise<any>> = [
 		writeRuleset(path.join(destDir, `${ruleset.id}.json`), ruleset)
 	]
 
@@ -122,4 +122,4 @@ export async function buildRuleset(
 
 type SourcebookMetadataKeys = (typeof metadataKeys)[number]
 
-type SourcebookMetadata = Pick<Out.Datasworn, SourcebookMetadataKeys>
+type SourcebookMetadata = Pick<Out.RulesPackage, SourcebookMetadataKeys>

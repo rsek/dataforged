@@ -13,7 +13,7 @@ import java.util.List;
 @JsonSerialize
 public class Source {
     @JsonProperty("authors")
-    private List<SourceAuthor> authors;
+    private List<AuthorInfo> authors;
 
     @JsonProperty("date")
     private String date;
@@ -37,14 +37,14 @@ public class Source {
     /**
      * Getter for authors.<p>
      */
-    public List<SourceAuthor> getAuthors() {
+    public List<AuthorInfo> getAuthors() {
         return authors;
     }
 
     /**
      * Setter for authors.<p>
      */
-    public void setAuthors(List<SourceAuthor> authors) {
+    public void setAuthors(List<AuthorInfo> authors) {
         this.authors = authors;
     }
 

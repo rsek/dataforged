@@ -14,7 +14,7 @@ namespace Datasworn
         public string FieldType { get => "select_value"; }
 
         [JsonPropertyName("choices")]
-        public IDictionary<string, AssetOptionFieldSelectValueChoice> Choices { get; set; }
+        public IDictionary<string, SelectValueFieldChoice> Choices { get; set; }
 
         /// <summary>
         /// The unique Datasworn ID for this item.

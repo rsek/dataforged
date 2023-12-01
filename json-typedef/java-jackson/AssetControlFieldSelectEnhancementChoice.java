@@ -5,10 +5,10 @@ package Datasworn;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "option_type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "choice_type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(name = "option", value = AssetControlFieldSelectEnhancementChoiceOption.class),
-    @JsonSubTypes.Type(name = "option_group", value = AssetControlFieldSelectEnhancementChoiceOptionGroup.class),
+    @JsonSubTypes.Type(name = "choice", value = AssetControlFieldSelectEnhancementChoiceChoice.class),
+    @JsonSubTypes.Type(name = "choice_group", value = AssetControlFieldSelectEnhancementChoiceChoiceGroup.class),
 })
 public abstract class AssetControlFieldSelectEnhancementChoice {
 }

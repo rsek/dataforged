@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// A key used in a Datasworn dictionary object.
+    /// A `snake_case` key used in a Datasworn dictionary object.
     /// </summary>
     [JsonConverter(typeof(DictKeyJsonConverter))]
     public class DictKey

@@ -19,8 +19,9 @@ import {
 	RollableValues
 } from './common/index.js'
 import Log from '../../scripts/utils/Log.js'
+import { pickBy } from 'lodash-es'
 
-function validateSchemaDefinitions(defs: Defs) {
+function validateSchemaDefinitions(defs: Record<string, TSchema>) {
 	const usedRefs = new Set<string>()
 	const availableRefs = new Set<string>()
 
@@ -31,46 +32,62 @@ function validateSchemaDefinitions(defs: Defs) {
 		return v
 	})
 
-	const validPointers = new Set<string>()
+	const invalidPointers = new Set<string>()
+	const unusedDefinitions = new Set<string>()
 
-	const orphanPointers = new Set<string>()
-	const orphanDefinitions = new Set<string>()
+	const allPointers = new Set<string>([...usedRefs, ...availableRefs])
 
-	const allPointers = new Set<string>(...usedRefs, ...availableRefs)
+	for (const pointer of allPointers) {
+		if (!usedRefs.has(pointer)) unusedDefinitions.add(pointer)
+		if (!availableRefs.has(pointer)) invalidPointers.add(pointer)
+	}
+
+	// console.log('unusedDefinitions', unusedDefinitions)
+	// console.log('invalidPointers', invalidPointers)
 }
 
-export type Defs = Record<string, TSchema>
-const entries: [string, TSchema][] = Object.values<TSchema>({
-	RulesPackage,
-	Ruleset,
-	Expansion,
-	...Id,
-	...Metadata,
-	...Localize,
-	...Rules,
-	...Progress,
-	...RollableValues,
-	...Npcs,
-	...Rolls,
-	...Oracles,
-	...Moves,
-	...Assets,
-	...Truths,
-	...Atlas,
-	...Player,
-	...Rarities,
-	...DelveSites
-})
-	.filter((schema) => {
+const defsBase = pickBy(
+	{
+		RulesPackage,
+		Ruleset,
+		Expansion,
+		...Id,
+		...Metadata,
+		...Localize,
+		...Rules,
+		...Progress,
+		...RollableValues,
+		...Npcs,
+		...Rolls,
+		...Oracles,
+		...Moves,
+		...Assets,
+		...Truths,
+		...Atlas,
+		...Player,
+		...Rarities,
+		...DelveSites
+	} as Record<string, TSchema>,
+	(schema, key) => {
 		if (!TypeGuard.TSchema(schema)) return false
 
 		if (typeof schema.$id !== 'string') {
-			Log.warning(`Schema in $defs, but doesn't have an ID?`, schema)
+			Log.warn(`Schema in $defs, but doesn't have an ID?`, schema)
 			return false
 		}
+
+		if (key !== schema.$id)
+			Log.warn(`Schema has $id ${schema.$id}, but its key is ${key}`)
+
 		return true
-	})
-	.map((entry) => {
+	}
+)
+
+validateSchemaDefinitions(defsBase)
+
+export type Defs = Record<string, TSchema>
+const entries: [string, TSchema][] = Object.values<TSchema>(defsBase).map(
+	(entry) => {
 		if (typeof entry.$id !== 'string')
 			throw new Error(
 				`Schema in definitions is missing an $id:\n${JSON.stringify(
@@ -80,7 +97,9 @@ const entries: [string, TSchema][] = Object.values<TSchema>({
 				)}`
 			)
 		return [entry.$id, entry]
-	})
+	}
+)
+
 
 const Defs: Defs = Object.fromEntries(entries)
 // await fs.writeJson('baddefs.json', Defs, { spaces: '\t' })

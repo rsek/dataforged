@@ -6,12 +6,12 @@
 	"scripts": {
 		"check": "tsc --project tsconfig.json --noEmit",
 		"build:jtd": "ts-node ./src/scripts/json-typedef/index.ts",
+		"build:dts": "ts-node ./src/scripts/codegen/writeTypescriptTypes.ts",
 		"build:tools": "tsc --project tsconfig.json ; tsc-alias -p tsconfig.json ./dist",
 		"build:schema": "ts-node ./src/scripts/schema/buildSchema.ts",
-		"build:io-types": "ts-node ./src/scripts/write-io-types.ts",
 		"build:json": "ts-node ./src/scripts/datasworn/writeDatasworn.ts",
 		"build:pkg": "ts-node ./src/scripts/pkg/nodejs/buildPackages.ts",
-		"build": "npm run build:schema && npm run build:json && npm run build:jtd && npm run build:io-types && npm run build:pkg"
+		"build": "npm run build:schema && npm run build:json && npm run build:jtd && npm run build:dts && npm run build:pkg"
 	},
 	"files": [
 		"docs",

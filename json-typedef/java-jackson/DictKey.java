@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * A key used in a Datasworn dictionary object.
+ * A `snake_case` key used in a Datasworn dictionary object.
  */
 public class DictKey {
     @JsonValue

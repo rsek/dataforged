@@ -13,7 +13,7 @@ import java.util.Map;
 @JsonSerialize
 public class AssetOptionFieldSelectValue extends AssetOptionField {
     @JsonProperty("choices")
-    private Map<String, AssetOptionFieldSelectValueChoice> choices;
+    private Map<String, SelectValueFieldChoice> choices;
 
     @JsonProperty("id")
     private AssetOptionFieldId id;
@@ -34,14 +34,14 @@ public class AssetOptionFieldSelectValue extends AssetOptionField {
     /**
      * Getter for choices.<p>
      */
-    public Map<String, AssetOptionFieldSelectValueChoice> getChoices() {
+    public Map<String, SelectValueFieldChoice> getChoices() {
         return choices;
     }
 
     /**
      * Setter for choices.<p>
      */
-    public void setChoices(Map<String, AssetOptionFieldSelectValueChoice> choices) {
+    public void setChoices(Map<String, SelectValueFieldChoice> choices) {
         this.choices = choices;
     }
 

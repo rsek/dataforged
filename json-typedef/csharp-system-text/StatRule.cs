@@ -19,6 +19,6 @@ namespace Datasworn
         /// A label for this stat.
         /// </summary>
         [JsonPropertyName("label")]
-        public Label Label { get; set; }
+        public InputLabel Label { get; set; }
     }
 }

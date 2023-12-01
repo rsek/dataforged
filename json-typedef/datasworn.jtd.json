@@ -396,7 +396,7 @@
 		"DictKey": {
 			"type": "string",
 			"metadata": {
-				"description": "A key used in a Datasworn dictionary object.",
+				"description": "A `snake_case` key used in a Datasworn dictionary object.",
 				"pattern": "^([a-z][a-z_]*)$"
 			}
 		},
@@ -640,10 +640,47 @@
 				"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 			}
 		},
+		"AuthorInfo": {
+			"properties": {
+				"name": {
+					"type": "string",
+					"metadata": {
+						"examples": [
+							"Shawn Tomkin"
+						]
+					}
+				}
+			},
+			"optionalProperties": {
+				"email": {
+					"type": "string",
+					"metadata": {
+						"description": "An optional email contact for the author",
+						"format": "email"
+					}
+				},
+				"url": {
+					"type": "string",
+					"metadata": {
+						"description": "An optional URL for the author's website.",
+						"format": "uri"
+					}
+				}
+			},
+			"metadata": {
+				"description": "Information on the original creator of this material.",
+				"examples": [
+					{
+						"name": "Shawn Tomkin",
+						"url": "https://ironswornrpg.com"
+					}
+				]
+			}
+		},
 		"CssColor": {
 			"type": "string",
 			"metadata": {
-				"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
+				"description": "A CSS color value."
 			}
 		},
 		"SemanticVersion": {
@@ -670,39 +707,7 @@
 				},
 				"authors": {
 					"elements": {
-						"properties": {
-							"name": {
-								"type": "string",
-								"metadata": {
-									"examples": [
-										"Shawn Tomkin"
-									]
-								}
-							}
-						},
-						"optionalProperties": {
-							"email": {
-								"type": "string",
-								"metadata": {
-									"description": "An optional email contact for the author",
-									"format": "email"
-								}
-							},
-							"url": {
-								"type": "string",
-								"metadata": {
-									"description": "An optional URL for the author's website.",
-									"format": "uri"
-								}
-							}
-						},
-						"metadata": {
-							"examples": [
-								{
-									"name": "Shawn Tomkin"
-								}
-							]
-						}
+						"ref": "AuthorInfo"
 					},
 					"metadata": {}
 				},
@@ -932,7 +937,7 @@
 		"ImpactCategory": {
 			"properties": {
 				"label": {
-					"ref": "Label",
+					"ref": "InputLabel",
 					"metadata": {
 						"description": "A label for this impact category."
 					}
@@ -960,7 +965,7 @@
 		"ImpactRule": {
 			"properties": {
 				"label": {
-					"ref": "Label",
+					"ref": "InputLabel",
 					"metadata": {
 						"description": "The label for this impact."
 					}
@@ -1085,7 +1090,7 @@
 		"SpecialTrackRule": {
 			"properties": {
 				"label": {
-					"ref": "Label",
+					"ref": "InputLabel",
 					"metadata": {
 						"description": "A label for this special track."
 					}
@@ -1116,7 +1121,7 @@
 		"StatRule": {
 			"properties": {
 				"label": {
-					"ref": "Label",
+					"ref": "InputLabel",
 					"metadata": {
 						"description": "A label for this stat.",
 						"examples": [
@@ -1290,7 +1295,7 @@
 				"custom": {
 					"properties": {
 						"label": {
-							"ref": "Label"
+							"ref": "InputLabel"
 						},
 						"value": {
 							"type": "int16"
@@ -1299,28 +1304,6 @@
 					"metadata": {
 						"description": "An arbitrary static integer value with a label."
 					}
-				}
-			}
-		},
-		"RollableValueType": {
-			"enum": [
-				"stat",
-				"condition_meter",
-				"asset_control",
-				"asset_option",
-				"custom",
-				"attached_asset_control",
-				"attached_asset_option"
-			],
-			"metadata": {
-				"enumDescription": {
-					"stat": "A reference to the value of a standard player character stat.",
-					"condition_meter": "A reference to the value of a standard player condition meter.",
-					"asset_control": "A reference to the value of an asset control.",
-					"asset_option": "A reference to the value of an asset option.",
-					"custom": "An arbitrary static integer value with a label.",
-					"attached_asset_control": "A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
-					"attached_asset_option": "A reference to the value of an attached asset option."
 				}
 			}
 		},
@@ -1748,18 +1731,6 @@
 				"description": "Describes the presentation of this oracle collection, which might represent a group of separate tables, or a single table with additional columns."
 			}
 		},
-		"OracleCollectionStyle": {
-			"enum": [
-				"tables",
-				"multi_table"
-			],
-			"metadata": {
-				"enumDescription": {
-					"tables": "Presented as a collection of separate tables.",
-					"multi_table": "Presented as a single table, with its OracleTable children rendered as columns."
-				}
-			}
-		},
 		"OracleCollectionTableColumn": {
 			"properties": {
 				"label": {
@@ -2035,20 +2006,6 @@
 				"description": "Represents a row in an oracle table."
 			}
 		},
-		"OracleTableStyle": {
-			"enum": [
-				"standalone",
-				"embed_in_row",
-				"column"
-			],
-			"metadata": {
-				"enumDescription": {
-					"standalone": "Render as a standalone table.",
-					"embed_in_row": "Render as a table, within a row in another table.",
-					"column": "Render as a single column of a table."
-				}
-			}
-		},
 		"ActionRollMethod": {
 			"enum": [
 				"miss",
@@ -2067,7 +2024,7 @@
 					"player_choice": "The player chooses which roll option to use.",
 					"highest": "Use the roll option with the best/highest value.",
 					"lowest": "Use the roll option with the worst/lowest value.",
-					"all": "Use **every** roll option at once."
+					"all": "Use _every_ roll option at once."
 				}
 			}
 		},
@@ -2503,22 +2460,8 @@
 				"text": {
 					"ref": "MarkdownString",
 					"metadata": {
-						"pattern": "On a \\*\\*(strong hit|weak hit|miss)\\*\\*"
+						"pattern": "On a __(strong hit|weak hit|miss)__"
 					}
-				}
-			}
-		},
-		"MoveOutcomeType": {
-			"enum": [
-				"miss",
-				"weak_hit",
-				"strong_hit"
-			],
-			"metadata": {
-				"enumDescription": {
-					"miss": "The score doesn't beat either challenge die.",
-					"weak_hit": "The score is greater than one challenge die.",
-					"strong_hit": "The score is greater than both challenge dice."
 				}
 			}
 		},
@@ -2597,7 +2540,7 @@
 					"player_choice": "The player chooses which roll option to use.",
 					"highest": "Use the roll option with the best/highest value.",
 					"lowest": "Use the roll option with the worst/lowest value.",
-					"all": "Use **every** roll option at once."
+					"all": "Use _every_ roll option at once."
 				}
 			}
 		},
@@ -3504,9 +3447,9 @@
 						},
 						"choices": {
 							"values": {
-								"discriminator": "option_type",
+								"discriminator": "choice_type",
 								"mapping": {
-									"option": {
+									"choice": {
 										"properties": {
 											"label": {
 												"ref": "InputLabel"
@@ -3526,39 +3469,17 @@
 											"description": "Represents an option in a list of choices."
 										}
 									},
-									"option_group": {
+									"choice_group": {
 										"properties": {
 											"name": {
-												"ref": "Label",
+												"ref": "InputLabel",
 												"metadata": {
 													"description": "A label for this option group."
 												}
 											},
 											"choices": {
 												"values": {
-													"properties": {
-														"label": {
-															"ref": "InputLabel"
-														},
-														"option_type": {
-															"enum": [
-																"option"
-															]
-														}
-													},
-													"optionalProperties": {
-														"enhance_asset": {
-															"ref": "AssetEnhancement"
-														},
-														"enhance_moves": {
-															"elements": {
-																"ref": "MoveEnhancement"
-															}
-														}
-													},
-													"metadata": {
-														"description": "Represents an option in a list of choices."
-													}
+													"ref": "SelectEnhancementFieldChoice"
 												},
 												"metadata": {
 													"propertyPattern": "^([a-z][a-z_]*)$"
@@ -3748,165 +3669,7 @@
 						},
 						"choices": {
 							"values": {
-								"discriminator": "using",
-								"mapping": {
-									"stat": {
-										"properties": {
-											"label": {
-												"ref": "InputLabel"
-											},
-											"option_type": {
-												"enum": [
-													"option"
-												]
-											},
-											"stat": {
-												"ref": "StatKey"
-											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										}
-									},
-									"condition_meter": {
-										"properties": {
-											"label": {
-												"ref": "InputLabel"
-											},
-											"option_type": {
-												"enum": [
-													"option"
-												]
-											},
-											"condition_meter": {
-												"ref": "ConditionMeterKey"
-											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										}
-									},
-									"asset_control": {
-										"properties": {
-											"label": {
-												"ref": "InputLabel"
-											},
-											"option_type": {
-												"enum": [
-													"option"
-												]
-											},
-											"assets": {
-												"elements": {
-													"ref": "AssetIdWildcard"
-												}
-											},
-											"control": {
-												"ref": "DictKey",
-												"metadata": {
-													"description": "The dictionary key of the asset control field.",
-													"examples": [
-														"health",
-														"integrity"
-													]
-												}
-											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										}
-									},
-									"asset_option": {
-										"properties": {
-											"label": {
-												"ref": "InputLabel"
-											},
-											"option_type": {
-												"enum": [
-													"option"
-												]
-											},
-											"assets": {
-												"elements": {
-													"ref": "AssetIdWildcard"
-												}
-											},
-											"option": {
-												"ref": "DictKey",
-												"metadata": {
-													"description": "The dictionary key of the asset option field."
-												}
-											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										}
-									},
-									"attached_asset_control": {
-										"properties": {
-											"label": {
-												"ref": "InputLabel"
-											},
-											"option_type": {
-												"enum": [
-													"option"
-												]
-											},
-											"control": {
-												"ref": "DictKey",
-												"metadata": {
-													"description": "The dictionary key of the asset control field.",
-													"examples": [
-														"health",
-														"integrity"
-													]
-												}
-											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										}
-									},
-									"attached_asset_option": {
-										"properties": {
-											"label": {
-												"ref": "InputLabel"
-											},
-											"option_type": {
-												"enum": [
-													"option"
-												]
-											},
-											"option": {
-												"ref": "DictKey",
-												"metadata": {
-													"description": "The dictionary key of the asset option field."
-												}
-											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										}
-									},
-									"custom": {
-										"properties": {
-											"label": {
-												"ref": "InputLabel"
-											},
-											"option_type": {
-												"enum": [
-													"option"
-												]
-											},
-											"value": {
-												"type": "int16"
-											}
-										},
-										"metadata": {
-											"description": "Represents an option in a list of choices."
-										}
-									}
-								}
+								"ref": "SelectValueFieldChoice"
 							},
 							"metadata": {
 								"propertyPattern": "^([a-z][a-z_]*)$"
@@ -3944,9 +3707,9 @@
 						},
 						"choices": {
 							"values": {
-								"discriminator": "option_type",
+								"discriminator": "choice_type",
 								"mapping": {
-									"option": {
+									"choice": {
 										"properties": {
 											"label": {
 												"ref": "InputLabel"
@@ -3966,39 +3729,17 @@
 											"description": "Represents an option in a list of choices."
 										}
 									},
-									"option_group": {
+									"choice_group": {
 										"properties": {
 											"name": {
-												"ref": "Label",
+												"ref": "InputLabel",
 												"metadata": {
 													"description": "A label for this option group."
 												}
 											},
 											"choices": {
 												"values": {
-													"properties": {
-														"label": {
-															"ref": "InputLabel"
-														},
-														"option_type": {
-															"enum": [
-																"option"
-															]
-														}
-													},
-													"optionalProperties": {
-														"enhance_asset": {
-															"ref": "AssetEnhancement"
-														},
-														"enhance_moves": {
-															"elements": {
-																"ref": "MoveEnhancement"
-															}
-														}
-													},
-													"metadata": {
-														"description": "Represents an option in a list of choices."
-													}
+													"ref": "SelectEnhancementFieldChoice"
 												},
 												"metadata": {
 													"propertyPattern": "^([a-z][a-z_]*)$"
@@ -4145,6 +3886,192 @@
 				}
 			},
 			"metadata": {}
+		},
+		"SelectEnhancementFieldChoice": {
+			"properties": {
+				"label": {
+					"ref": "InputLabel"
+				},
+				"choice_type": {
+					"enum": [
+						"choice"
+					]
+				}
+			},
+			"optionalProperties": {
+				"enhance_asset": {
+					"ref": "AssetEnhancement"
+				},
+				"enhance_moves": {
+					"elements": {
+						"ref": "MoveEnhancement"
+					}
+				}
+			},
+			"metadata": {
+				"description": "Represents an option in a list of choices."
+			}
+		},
+		"SelectValueFieldChoice": {
+			"discriminator": "using",
+			"mapping": {
+				"stat": {
+					"properties": {
+						"label": {
+							"ref": "InputLabel"
+						},
+						"choice_type": {
+							"enum": [
+								"choice"
+							]
+						},
+						"stat": {
+							"ref": "StatKey"
+						}
+					},
+					"metadata": {
+						"description": "Represents an option in a list of choices."
+					}
+				},
+				"condition_meter": {
+					"properties": {
+						"label": {
+							"ref": "InputLabel"
+						},
+						"choice_type": {
+							"enum": [
+								"choice"
+							]
+						},
+						"condition_meter": {
+							"ref": "ConditionMeterKey"
+						}
+					},
+					"metadata": {
+						"description": "Represents an option in a list of choices."
+					}
+				},
+				"asset_control": {
+					"properties": {
+						"label": {
+							"ref": "InputLabel"
+						},
+						"choice_type": {
+							"enum": [
+								"choice"
+							]
+						},
+						"assets": {
+							"elements": {
+								"ref": "AssetIdWildcard"
+							}
+						},
+						"control": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset control field.",
+								"examples": [
+									"health",
+									"integrity"
+								]
+							}
+						}
+					},
+					"metadata": {
+						"description": "Represents an option in a list of choices."
+					}
+				},
+				"asset_option": {
+					"properties": {
+						"label": {
+							"ref": "InputLabel"
+						},
+						"choice_type": {
+							"enum": [
+								"choice"
+							]
+						},
+						"assets": {
+							"elements": {
+								"ref": "AssetIdWildcard"
+							}
+						},
+						"option": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset option field."
+							}
+						}
+					},
+					"metadata": {
+						"description": "Represents an option in a list of choices."
+					}
+				},
+				"attached_asset_control": {
+					"properties": {
+						"label": {
+							"ref": "InputLabel"
+						},
+						"choice_type": {
+							"enum": [
+								"choice"
+							]
+						},
+						"control": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset control field.",
+								"examples": [
+									"health",
+									"integrity"
+								]
+							}
+						}
+					},
+					"metadata": {
+						"description": "Represents an option in a list of choices."
+					}
+				},
+				"attached_asset_option": {
+					"properties": {
+						"label": {
+							"ref": "InputLabel"
+						},
+						"choice_type": {
+							"enum": [
+								"choice"
+							]
+						},
+						"option": {
+							"ref": "DictKey",
+							"metadata": {
+								"description": "The dictionary key of the asset option field."
+							}
+						}
+					},
+					"metadata": {
+						"description": "Represents an option in a list of choices."
+					}
+				},
+				"custom": {
+					"properties": {
+						"label": {
+							"ref": "InputLabel"
+						},
+						"choice_type": {
+							"enum": [
+								"choice"
+							]
+						},
+						"value": {
+							"type": "int16"
+						}
+					},
+					"metadata": {
+						"description": "Represents an option in a list of choices."
+					}
+				}
+			}
 		},
 		"Truth": {
 			"properties": {

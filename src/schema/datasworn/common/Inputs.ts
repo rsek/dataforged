@@ -219,7 +219,7 @@ export type TTextInput = typeof TextInput
  */
 const SelectOptionBase = Type.Object({
 	label: Type.Ref(Localize.InputLabel),
-	option_type: Type.Literal('option')
+	choice_type: Type.Literal('choice')
 })
 
 export function SelectOption<T extends TObject>(
@@ -257,7 +257,7 @@ const SelectChoicesGroupBase = Type.Object({
 	name: Type.Ref(Localize.InputLabel, {
 		description: 'A label for this option group.'
 	}),
-	option_type: Type.Literal('option_group')
+	choice_type: Type.Literal('choice_group')
 })
 export function SelectChoicesGroup<Option extends TRef<TSelectChoice<TObject>>>(
 	optionSchema: Option,
@@ -298,7 +298,7 @@ export function SelectWithGroups<Option extends TSelectChoice<TObject>>(
 	options: ObjectOptions = {}
 ) {
 	const mixin = Choices(
-		Utils.DiscriminatedUnion([choiceSchema, choicesGroupSchema], 'option_type')
+		Utils.DiscriminatedUnion([choiceSchema, choicesGroupSchema], 'choice_type')
 	)
 	return Utils.Assign([SelectBase, mixin], {
 		description: 'Represents a list of mutually exclusive choices.',

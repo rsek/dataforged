@@ -9,7 +9,7 @@ const typeKeys = [
 	'field_type',
 	'roll_type',
 	'package_type',
-	'option_type',
+	'choice_type',
 	'using'
 ]
 

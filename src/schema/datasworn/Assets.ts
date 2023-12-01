@@ -23,7 +23,6 @@ const AssetMixin = Type.Object({
 			'Ritual',
 			'Support Vehicle'
 		]
-		// i18n: true
 	}),
 	icon: Type.Optional(
 		Type.Ref(Metadata.SvgImageUrl, { description: "This asset's icon." })

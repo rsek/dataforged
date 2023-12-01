@@ -41,8 +41,8 @@ const schemaOptions: SchemaOptions[] = [
 		rootSchema: Schema.DataswornSource,
 		paths: [CONST.SCHEMA_IN],
 		messages: {
-			writeStart: '✏️  Writing schema for Datasworn YAML input',
-			writeFinish: '✅ Finished writing schema for Datasworn YAML input'
+			writeStart: '✏️  Writing schema for DataswornSource',
+			writeFinish: '✅ Finished writing schema for DataswornSource'
 		}
 	}
 ]

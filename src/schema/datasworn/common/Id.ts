@@ -1,21 +1,25 @@
-import { type TRef, type TString, type Static, TUnion } from '@sinclair/typebox'
+import {
+	type TUnion,
+	type Static,
+	type TRef,
+	type TString
+} from '@sinclair/typebox'
 import { type Opaque } from 'type-fest'
 import {
+	CollectionId,
 	DiceRange,
 	Extend,
-	Index,
-	Pkg,
-	Node,
-	CollectionId,
 	Id,
+	type IdElement,
+	IdUnion,
+	Index,
+	Node,
+	Pkg,
+	RecursiveCollectableId,
 	RecursiveCollectionId,
 	UncollectableId,
-	toWildcard,
-	IdUnion,
-	RecursiveCollectableId,
-	IdElement
+	toWildcard
 } from '../utils/regex.js'
-import { type TUnionOneOf } from '../utils/UnionOneOf.js'
 
 export const RulesetId = Id([Pkg], {
 	$id: 'RulesetId',

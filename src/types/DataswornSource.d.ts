@@ -521,6 +521,30 @@ export type TruthId = string
 export type TruthOptionId = string
 
 /**
+ * Information on the original creator of this material.
+ * @example ```javascript
+ * 	{
+ * 		name: "Shawn Tomkin",
+ * 		url: "https://ironswornrpg.com"
+ * 	}
+ * ```
+ */
+export interface AuthorInfo {
+	/**
+	 * @example "Shawn Tomkin"
+	 */
+	name: string
+	/**
+	 * An optional email contact for the author
+	 */
+	email?: string
+	/**
+	 * An optional URL for the author's website.
+	 */
+	url?: string
+}
+
+/**
  * A CSS color value.
  * @remarks See https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
  */
@@ -551,20 +575,7 @@ export interface Source {
 	 * The page number where this item is described in full.
 	 */
 	page?: number
-	authors: Array<{
-		/**
-		 * @example "Shawn Tomkin"
-		 */
-		name: string
-		/**
-		 * An optional email contact for the author
-		 */
-		email?: string
-		/**
-		 * An optional URL for the author's website.
-		 */
-		url?: string
-	}>
+	authors: AuthorInfo[]
 	/**
 	 * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
 	 * @remarks You may prefer to deserialize this as a Date object.
@@ -903,7 +914,7 @@ export type SpecialTrackType = DictKey
 /**
  * A reference to the value of an asset control.
  */
-export interface RollOptionAssetControl {
+export interface AssetControlValueRef {
 	/**
 	 * Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
 	 * @default null
@@ -999,29 +1010,11 @@ export interface CustomValue {
 export type RollableValue =
 	| StatValueRef
 	| ConditionMeterValueRef
-	| RollOptionAssetControl
+	| AssetControlValueRef
 	| AssetOptionValueRef
 	| AttachedAssetControlValueRef
 	| AttachedAssetOptionValueRef
 	| CustomValue
-
-/**
- *   - `stat`: A reference to the value of a standard player character stat.
- *   - `condition_meter`: A reference to the value of a standard player condition meter.
- *   - `asset_control`: A reference to the value of an asset control.
- *   - `asset_option`: A reference to the value of an asset option.
- *   - `custom`: An arbitrary static integer value with a label.
- *   - `attached_asset_control`: A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
- *   - `attached_asset_option`: A reference to the value of an attached asset option.
- */
-export type RollableValueType =
-	| 'stat'
-	| 'condition_meter'
-	| 'asset_control'
-	| 'asset_option'
-	| 'custom'
-	| 'attached_asset_control'
-	| 'attached_asset_option'
 
 /**
  * A reference to the value of a standard player character stat.
@@ -1320,12 +1313,6 @@ export interface OracleCollectionRenderingTables {
 	style: 'tables'
 }
 
-/**
- *   - `tables`: Presented as a collection of separate tables.
- *   - `multi_table`: Presented as a single table, with its OracleTable children rendered as columns.
- */
-export type OracleCollectionStyle = 'tables' | 'multi_table'
-
 export interface OracleCollectionTableColumn {
 	/**
 	 * The column's header text.
@@ -1551,13 +1538,6 @@ export interface OracleTableRow {
 }
 
 /**
- *   - `standalone`: Render as a standalone table.
- *   - `embed_in_row`: Render as a table, within a row in another table.
- *   - `column`: Render as a single column of a table.
- */
-export type OracleTableStyle = 'standalone' | 'embed_in_row' | 'column'
-
-/**
  *   - `miss`: An automatic miss.
  *   - `weak_hit`: An automatic weak hit.
  *   - `strong_hit`: An automatic strong hit.
@@ -1773,13 +1753,6 @@ export interface MoveOutcome {
 	 */
 	text: MarkdownString
 }
-
-/**
- *   - `miss`: The score doesn't beat either challenge die.
- *   - `weak_hit`: The score is greater than one challenge die.
- *   - `strong_hit`: The score is greater than both challenge dice.
- */
-export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
 
 /**
  * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
@@ -2641,6 +2614,7 @@ export interface AssetConditionMeterEnhancement {
  * @remarks Deserialize as a discriminated union/polymorphic object type, using the `field_type` property as a discriminator.
  */
 export type AssetControlField =
+	| AssetConditionMeter
 	| AssetSelectEnhancementControlField
 	| AssetCheckboxControlField
 	| AssetCardFlipControlField
@@ -2841,7 +2815,7 @@ export interface AssetType {
  */
 export interface SelectEnhancementFieldChoice {
 	label: InputLabel
-	option_type: 'option'
+	choice_type: 'choice'
 	enhance_asset?: AssetEnhancement
 	enhance_moves?: MoveEnhancement[]
 }
@@ -2855,7 +2829,7 @@ export interface SelectEnhancementFieldChoiceGroup {
 	 * A label for this option group.
 	 */
 	name: InputLabel
-	option_type: 'option_group'
+	choice_type: 'choice_group'
 	/**
 	 * @remarks Deserialize as a dictionary object.
 	 */
@@ -2868,7 +2842,7 @@ export interface SelectEnhancementFieldChoiceGroup {
 export type SelectValueFieldChoice =
 	| {
 			label: InputLabel
-			option_type: 'option'
+			choice_type: 'choice'
 			stat: StatKey
 			/**
 			 * A reference to the value of a standard player character stat.
@@ -2877,7 +2851,7 @@ export type SelectValueFieldChoice =
 	  }
 	| {
 			label: InputLabel
-			option_type: 'option'
+			choice_type: 'choice'
 			condition_meter: ConditionMeterKey
 			/**
 			 * A reference to the value of a standard player condition meter.
@@ -2886,7 +2860,7 @@ export type SelectValueFieldChoice =
 	  }
 	| {
 			label: InputLabel
-			option_type: 'option'
+			choice_type: 'choice'
 			/**
 			 * Asset IDs (which may be wildcarded) that may provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
 			 * @default null
@@ -2905,7 +2879,7 @@ export type SelectValueFieldChoice =
 	  }
 	| {
 			label: InputLabel
-			option_type: 'option'
+			choice_type: 'choice'
 			/**
 			 * Asset IDs (which may be wildcarded) that may provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
 			 * @default null
@@ -2922,7 +2896,7 @@ export type SelectValueFieldChoice =
 	  }
 	| {
 			label: InputLabel
-			option_type: 'option'
+			choice_type: 'choice'
 			/**
 			 * The dictionary key of the asset control field.
 			 * @example "health"
@@ -2936,7 +2910,7 @@ export type SelectValueFieldChoice =
 	  }
 	| {
 			label: InputLabel
-			option_type: 'option'
+			choice_type: 'choice'
 			/**
 			 * The dictionary key of the asset option field.
 			 */
@@ -2948,7 +2922,7 @@ export type SelectValueFieldChoice =
 	  }
 	| {
 			label: InputLabel
-			option_type: 'option'
+			choice_type: 'choice'
 			value: number
 			/**
 			 * An arbitrary static integer value with a label.

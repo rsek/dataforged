@@ -57,8 +57,8 @@ const params: ShellCommandParams<'jtd-codegen', [string], JtdOptions> = {
 		rubyOut: path.join(JTD_TYPES_ROOT, 'ruby'),
 		rubySigModule: PKG_NAME,
 		rubySigOut: path.join(JTD_TYPES_ROOT, 'ruby-sig'),
-		rustOut: path.join(JTD_TYPES_ROOT, 'rust'),
-		typescriptOut: path.join(JTD_TYPES_ROOT, 'typescript')
+		rustOut: path.join(JTD_TYPES_ROOT, 'rust')
+		// typescriptOut: path.join(JTD_TYPES_ROOT, 'typescript')
 	},
 	execOptions: {
 		env: merge(process.env, { RUST_BACKTRACE: 'full' })

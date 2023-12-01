@@ -1,4 +1,4 @@
-import type { In } from '../../types/index.js'
+import type * as In from '../../types/DataswornSource.js'
 import { formatPath } from '../../utils.js'
 import Log from '../utils/Log.js'
 import type AJV from '../validation/ajv.js'

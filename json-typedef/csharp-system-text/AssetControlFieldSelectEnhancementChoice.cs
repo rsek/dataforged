@@ -16,16 +16,16 @@ namespace Datasworn
         public override AssetControlFieldSelectEnhancementChoice Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var readerCopy = reader;
-            var tagValue = JsonDocument.ParseValue(ref reader).RootElement.GetProperty("option_type").GetString();
+            var tagValue = JsonDocument.ParseValue(ref reader).RootElement.GetProperty("choice_type").GetString();
 
             switch (tagValue)
             {
-                case "option":
-                    return JsonSerializer.Deserialize<AssetControlFieldSelectEnhancementChoiceOption>(ref readerCopy, options);
-                case "option_group":
-                    return JsonSerializer.Deserialize<AssetControlFieldSelectEnhancementChoiceOptionGroup>(ref readerCopy, options);
+                case "choice":
+                    return JsonSerializer.Deserialize<AssetControlFieldSelectEnhancementChoiceChoice>(ref readerCopy, options);
+                case "choice_group":
+                    return JsonSerializer.Deserialize<AssetControlFieldSelectEnhancementChoiceChoiceGroup>(ref readerCopy, options);
                 default:
-                    throw new ArgumentException(String.Format("Bad OptionType value: {0}", tagValue));
+                    throw new ArgumentException(String.Format("Bad ChoiceType value: {0}", tagValue));
             }
         }
 

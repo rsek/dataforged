@@ -46,7 +46,7 @@ export const MoveRollType = UnionEnumFromRecord(
 export type MoveRollType = Static<typeof MoveRollType>
 export type TMoveRollType = typeof MoveRollType
 
-export const MoveOutcomeType = UnionEnumFromRecord(
+const MoveOutcomeType = UnionEnumFromRecord(
 	{
 		[Outcome.Miss]: "The score doesn't beat either challenge die.",
 		[Outcome.WeakHit]: 'The score is greater than one challenge die.',
@@ -56,7 +56,7 @@ export const MoveOutcomeType = UnionEnumFromRecord(
 		$id: 'MoveOutcomeType'
 	}
 )
-export type MoveOutcomeType = Static<typeof MoveOutcomeType>
+type MoveOutcomeType = Static<typeof MoveOutcomeType>
 
 const rollMethodForceOutcome = {
 	[RollMethod.Miss]: 'An automatic miss.',

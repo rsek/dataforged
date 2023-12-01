@@ -6,11 +6,9 @@ import {
 } from './transformer.js'
 import { trackID } from './id-tracker.js'
 import { cloneDeep } from 'lodash-es'
-import { In, Out } from '../types/index.js'
-import {
-	DelveSiteCardRowType,
-	DelveSiteCardType
-} from 'schema/datasworn/delve/DelveCard.js'
+import type * as In from '../types/DataswornSource.js'
+import type * as Out from '../types/Datasworn.js'
+
 
 type FeatureOrDangerData =
 	| In.DelveSiteThemeDangerRow

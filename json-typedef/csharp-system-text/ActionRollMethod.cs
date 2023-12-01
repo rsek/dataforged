@@ -10,7 +10,7 @@ namespace Datasworn
     public enum ActionRollMethod
     {
         /// <summary>
-        /// Use **every** roll option at once.
+        /// Use _every_ roll option at once.
         /// </summary>
         All,
 

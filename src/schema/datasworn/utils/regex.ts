@@ -98,13 +98,13 @@ export function Id(elements: IdElement[], options: IdOptions) {
 export function RecursiveCollectableId(type: IdElement[], options: IdOptions) {
 	const base = Id([Pkg, ...type, NodeRecursive, Node], options)
 	return setSourceDataSchema(base, (schema) => {
-		const nuPattern = Id(['{{COLLECTION}}', Node], options)
+		// const nuPattern = Id(['{{COLLECTION}}', Node], options)
 		return IdUnion(
 			[
 				omit(TypeClone.Type(schema), '$id') as TId,
 				{
-					...omit(TypeClone.Type(schema), '$id'),
-					...pick(nuPattern, PatternElements, 'pattern')
+					...omit(TypeClone.Type(schema), '$id')
+					// ...pick(nuPattern, PatternElements, 'pattern')
 				} as TId
 			],
 			options
@@ -118,13 +118,13 @@ export function RecursiveCollectionId(type: IdElement[], options: IdOptions) {
 export function CollectableId(type: IdElement[], options: IdOptions) {
 	const base = Id([Pkg, ...type, Node, Node], options)
 	return setSourceDataSchema(base, (schema) => {
-		const nuPattern = Id(['{{COLLECTION}}', Node], options)
+		// const nuPattern = Id(['{{COLLECTION}}', Node], options)
 		return IdUnion(
 			[
 				omit(TypeClone.Type(schema), '$id') as TId,
 				{
-					...omit(TypeClone.Type(schema), '$id'),
-					...pick(nuPattern, PatternElements, 'pattern')
+					...omit(TypeClone.Type(schema), '$id')
+					// ...pick(nuPattern, PatternElements, 'pattern')
 				} as TId
 			],
 			options

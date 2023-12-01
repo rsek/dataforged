@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "https://ironswornrpg.com/datasworn.schema.json",
 	"$ref": "#/$defs/RulesPackage",
-	"title": "Datasworn v0.0.1-dev",
+	"title": "Datasworn v0.0.2-dev",
 	"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
 	"$defs": {
 		"RulesPackage": {
@@ -669,6 +669,35 @@
 			"examples": ["classic/truths/iron/0", "starforged/truths/iron/0"],
 			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 		},
+		"AuthorInfo": {
+			"title": "AuthorInfo",
+			"type": "object",
+			"description": "Information on the original creator of this material.",
+			"required": ["name"],
+			"properties": {
+				"name": {
+					"type": "string",
+					"examples": ["Shawn Tomkin"]
+				},
+				"url": {
+					"type": "string",
+					"description": "An optional URL for the author's website.",
+					"format": "uri"
+				},
+				"email": {
+					"title": "Email",
+					"type": "string",
+					"description": "An optional email contact for the author",
+					"format": "email"
+				}
+			},
+			"examples": [
+				{
+					"name": "Shawn Tomkin",
+					"url": "https://ironswornrpg.com"
+				}
+			]
+		},
 		"CssColor": {
 			"title": "CssColor",
 			"type": "string",
@@ -713,31 +742,7 @@
 				"authors": {
 					"type": "array",
 					"items": {
-						"type": "object",
-						"description": "Information on the original creator of this material.",
-						"required": ["name"],
-						"properties": {
-							"name": {
-								"type": "string",
-								"examples": ["Shawn Tomkin"]
-							},
-							"url": {
-								"type": "string",
-								"description": "An optional URL for the author's website.",
-								"format": "uri"
-							},
-							"email": {
-								"title": "Email",
-								"type": "string",
-								"description": "An optional email contact for the author",
-								"format": "email"
-							}
-						},
-						"examples": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						]
+						"$ref": "#/$defs/AuthorInfo"
 					},
 					"minItems": 1
 				},
@@ -1204,8 +1209,8 @@
 				"discoveries_legacy"
 			]
 		},
-		"RollOptionAssetControl": {
-			"title": "RollOptionAssetControl",
+		"AssetControlValueRef": {
+			"title": "AssetControlValueRef",
 			"type": "object",
 			"description": "A reference to the value of an asset control.",
 			"required": ["using", "assets", "control"],
@@ -1395,7 +1400,7 @@
 						}
 					},
 					"then": {
-						"$ref": "#/$defs/RollOptionAssetControl"
+						"$ref": "#/$defs/AssetControlValueRef"
 					}
 				},
 				{
@@ -1450,19 +1455,6 @@
 						"$ref": "#/$defs/CustomValue"
 					}
 				}
-			]
-		},
-		"RollableValueType": {
-			"title": "RollableValueType",
-			"description": "  - `stat`: A reference to the value of a standard player character stat.\n  - `condition_meter`: A reference to the value of a standard player condition meter.\n  - `asset_control`: A reference to the value of an asset control.\n  - `asset_option`: A reference to the value of an asset option.\n  - `custom`: An arbitrary static integer value with a label.\n  - `attached_asset_control`: A reference to the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.\n  - `attached_asset_option`: A reference to the value of an attached asset option.",
-			"enum": [
-				"stat",
-				"condition_meter",
-				"asset_control",
-				"asset_option",
-				"custom",
-				"attached_asset_control",
-				"attached_asset_option"
 			]
 		},
 		"StatValueRef": {
@@ -1922,11 +1914,6 @@
 				}
 			}
 		},
-		"OracleCollectionStyle": {
-			"title": "OracleCollectionStyle",
-			"description": "  - `tables`: Presented as a collection of separate tables.\n  - `multi_table`: Presented as a single table, with its OracleTable children rendered as columns.",
-			"enum": ["tables", "multi_table"]
-		},
 		"OracleCollectionTableColumn": {
 			"title": "OracleCollectionTableColumn",
 			"type": "object",
@@ -2254,11 +2241,6 @@
 					"$ref": "#/$defs/I18nHints"
 				}
 			}
-		},
-		"OracleTableStyle": {
-			"title": "OracleTableStyle",
-			"description": "  - `standalone`: Render as a standalone table.\n  - `embed_in_row`: Render as a table, within a row in another table.\n  - `column`: Render as a single column of a table.",
-			"enum": ["standalone", "embed_in_row", "column"]
 		},
 		"ActionRollMethod": {
 			"title": "ActionRollMethod",
@@ -2673,11 +2655,6 @@
 					"pattern": "On a __(strong hit|weak hit|miss)__"
 				}
 			}
-		},
-		"MoveOutcomeType": {
-			"title": "MoveOutcomeType",
-			"description": "  - `miss`: The score doesn't beat either challenge die.\n  - `weak_hit`: The score is greater than one challenge die.\n  - `strong_hit`: The score is greater than both challenge dice.",
-			"enum": ["miss", "weak_hit", "strong_hit"]
 		},
 		"MoveOutcomes": {
 			"title": "MoveOutcomes",
@@ -4305,11 +4282,11 @@
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"type": "object",
-							"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `option_type` property as a discriminator.",
-							"required": ["option_type"],
+							"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `choice_type` property as a discriminator.",
+							"required": ["choice_type"],
 							"properties": {
-								"option_type": {
-									"enum": ["option", "option_group"]
+								"choice_type": {
+									"enum": ["choice", "choice_group"]
 								}
 							},
 							"additionalProperties": true,
@@ -4317,8 +4294,8 @@
 								{
 									"if": {
 										"properties": {
-											"option_type": {
-												"const": "option",
+											"choice_type": {
+												"const": "choice",
 												"type": "string"
 											}
 										}
@@ -4330,8 +4307,8 @@
 								{
 									"if": {
 										"properties": {
-											"option_type": {
-												"const": "option_group",
+											"choice_type": {
+												"const": "choice_group",
 												"type": "string"
 											}
 										}
@@ -4388,11 +4365,11 @@
 					"patternProperties": {
 						"^([a-z][a-z_]*)$": {
 							"type": "object",
-							"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `option_type` property as a discriminator.",
-							"required": ["option_type"],
+							"$comment": "Deserialize as a discriminated union/polymorphic object type, using the `choice_type` property as a discriminator.",
+							"required": ["choice_type"],
 							"properties": {
-								"option_type": {
-									"enum": ["option", "option_group"]
+								"choice_type": {
+									"enum": ["choice", "choice_group"]
 								}
 							},
 							"additionalProperties": true,
@@ -4400,8 +4377,8 @@
 								{
 									"if": {
 										"properties": {
-											"option_type": {
-												"const": "option",
+											"choice_type": {
+												"const": "choice",
 												"type": "string"
 											}
 										}
@@ -4413,8 +4390,8 @@
 								{
 									"if": {
 										"properties": {
-											"option_type": {
-												"const": "option_group",
+											"choice_type": {
+												"const": "choice_group",
 												"type": "string"
 											}
 										}
@@ -4583,14 +4560,14 @@
 			"type": "object",
 			"description": "Represents an option in a list of choices.",
 			"$comment": "Semantics are similar to the HTML `<option>` element.",
-			"required": ["label", "option_type"],
+			"required": ["label", "choice_type"],
 			"properties": {
 				"label": {
 					"$ref": "#/$defs/InputLabel"
 				},
-				"option_type": {
+				"choice_type": {
 					"type": "string",
-					"const": "option"
+					"const": "choice"
 				},
 				"enhance_asset": {
 					"$ref": "#/$defs/AssetEnhancement"
@@ -4608,15 +4585,15 @@
 			"type": "object",
 			"description": "Represents a grouping of options in a list of choices.",
 			"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
-			"required": ["name", "option_type", "choices"],
+			"required": ["name", "choice_type", "choices"],
 			"properties": {
 				"name": {
 					"$ref": "#/$defs/InputLabel",
 					"description": "A label for this option group."
 				},
-				"option_type": {
+				"choice_type": {
 					"type": "string",
-					"const": "option_group"
+					"const": "choice_group"
 				},
 				"choices": {
 					"type": "object",
@@ -4666,8 +4643,8 @@
 							"label": {
 								"$ref": "#/$defs/InputLabel"
 							},
-							"option_type": {
-								"const": "option",
+							"choice_type": {
+								"const": "choice",
 								"type": "string"
 							},
 							"stat": {
@@ -4679,7 +4656,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["label", "option_type", "stat", "using"],
+						"required": ["label", "choice_type", "stat", "using"],
 						"additionalProperties": false
 					}
 				},
@@ -4700,8 +4677,8 @@
 							"label": {
 								"$ref": "#/$defs/InputLabel"
 							},
-							"option_type": {
-								"const": "option",
+							"choice_type": {
+								"const": "choice",
 								"type": "string"
 							},
 							"condition_meter": {
@@ -4713,7 +4690,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["label", "option_type", "condition_meter", "using"],
+						"required": ["label", "choice_type", "condition_meter", "using"],
 						"additionalProperties": false
 					}
 				},
@@ -4734,8 +4711,8 @@
 							"label": {
 								"$ref": "#/$defs/InputLabel"
 							},
-							"option_type": {
-								"const": "option",
+							"choice_type": {
+								"const": "choice",
 								"type": "string"
 							},
 							"assets": {
@@ -4764,7 +4741,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["label", "option_type", "assets", "control", "using"],
+						"required": ["label", "choice_type", "assets", "control", "using"],
 						"additionalProperties": false
 					}
 				},
@@ -4785,8 +4762,8 @@
 							"label": {
 								"$ref": "#/$defs/InputLabel"
 							},
-							"option_type": {
-								"const": "option",
+							"choice_type": {
+								"const": "choice",
 								"type": "string"
 							},
 							"assets": {
@@ -4814,7 +4791,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["label", "option_type", "assets", "option", "using"],
+						"required": ["label", "choice_type", "assets", "option", "using"],
 						"additionalProperties": false
 					}
 				},
@@ -4835,8 +4812,8 @@
 							"label": {
 								"$ref": "#/$defs/InputLabel"
 							},
-							"option_type": {
-								"const": "option",
+							"choice_type": {
+								"const": "choice",
 								"type": "string"
 							},
 							"control": {
@@ -4850,7 +4827,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["label", "option_type", "control", "using"],
+						"required": ["label", "choice_type", "control", "using"],
 						"additionalProperties": false
 					}
 				},
@@ -4871,8 +4848,8 @@
 							"label": {
 								"$ref": "#/$defs/InputLabel"
 							},
-							"option_type": {
-								"const": "option",
+							"choice_type": {
+								"const": "choice",
 								"type": "string"
 							},
 							"option": {
@@ -4885,7 +4862,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["label", "option_type", "option", "using"],
+						"required": ["label", "choice_type", "option", "using"],
 						"additionalProperties": false
 					}
 				},
@@ -4906,8 +4883,8 @@
 							"label": {
 								"$ref": "#/$defs/InputLabel"
 							},
-							"option_type": {
-								"const": "option",
+							"choice_type": {
+								"const": "choice",
 								"type": "string"
 							},
 							"value": {
@@ -4919,7 +4896,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["label", "option_type", "value", "using"],
+						"required": ["label", "choice_type", "value", "using"],
 						"additionalProperties": false
 					}
 				}

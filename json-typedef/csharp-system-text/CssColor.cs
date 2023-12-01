@@ -7,8 +7,7 @@ using System.Text.Json.Serialization;
 namespace Datasworn
 {
     /// <summary>
-    /// A CSS color value. See: https://developer.mozilla.org/en-
-    /// US/docs/Web/CSS/color_value
+    /// A CSS color value.
     /// </summary>
     [JsonConverter(typeof(CssColorJsonConverter))]
     public class CssColor

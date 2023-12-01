@@ -261,7 +261,7 @@ class RulesPackageRuleset(RulesPackage):
 class ActionRollMethod(Enum):
     ALL = "all"
     """
-    Use **every** roll option at once.
+    Use _every_ roll option at once.
     """
 
     HIGHEST = "highest"
@@ -1220,22 +1220,22 @@ class AssetControlFieldConditionMeter(AssetControlField):
 
 @dataclass
 class AssetControlFieldSelectEnhancementChoice:
-    option_type: 'str'
+    choice_type: 'str'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoice':
         variants: Dict[str, Type[AssetControlFieldSelectEnhancementChoice]] = {
-            "option": AssetControlFieldSelectEnhancementChoiceOption,
-            "option_group": AssetControlFieldSelectEnhancementChoiceOptionGroup,
+            "choice": AssetControlFieldSelectEnhancementChoiceChoice,
+            "choice_group": AssetControlFieldSelectEnhancementChoiceChoiceGroup,
         }
 
-        return variants[data["option_type"]].from_json_data(data)
+        return variants[data["choice_type"]].from_json_data(data)
 
     def to_json_data(self) -> Any:
         pass
 
 @dataclass
-class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnhancementChoice):
+class AssetControlFieldSelectEnhancementChoiceChoice(AssetControlFieldSelectEnhancementChoice):
     """
     Represents an option in a list of choices.
     """
@@ -1245,16 +1245,16 @@ class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnha
     enhance_moves: 'Optional[List[MoveEnhancement]]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOption':
+    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceChoice':
         return cls(
-            "option",
+            "choice",
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
             _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "option_type": "option" }
+        data = { "choice_type": "choice" }
         data["label"] = _to_json_data(self.label)
         if self.enhance_asset is not None:
              data["enhance_asset"] = _to_json_data(self.enhance_asset)
@@ -1262,68 +1262,29 @@ class AssetControlFieldSelectEnhancementChoiceOption(AssetControlFieldSelectEnha
              data["enhance_moves"] = _to_json_data(self.enhance_moves)
         return data
 
-class AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
 @dataclass
-class AssetControlFieldSelectEnhancementChoiceOptionGroupChoice:
-    """
-    Represents an option in a list of choices.
-    """
-
-    label: 'InputLabel'
-    option_type: 'AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType'
-    enhance_asset: 'Optional[AssetEnhancement]'
-    enhance_moves: 'Optional[List[MoveEnhancement]]'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOptionGroupChoice':
-        return cls(
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(AssetControlFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data.get("option_type")),
-            _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
-            _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
-        )
-
-    def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
-        data["label"] = _to_json_data(self.label)
-        data["option_type"] = _to_json_data(self.option_type)
-        if self.enhance_asset is not None:
-             data["enhance_asset"] = _to_json_data(self.enhance_asset)
-        if self.enhance_moves is not None:
-             data["enhance_moves"] = _to_json_data(self.enhance_moves)
-        return data
-
-@dataclass
-class AssetControlFieldSelectEnhancementChoiceOptionGroup(AssetControlFieldSelectEnhancementChoice):
+class AssetControlFieldSelectEnhancementChoiceChoiceGroup(AssetControlFieldSelectEnhancementChoice):
     """
     Represents a grouping of options in a list of choices.
     """
 
-    choices: 'Dict[str, AssetControlFieldSelectEnhancementChoiceOptionGroupChoice]'
-    name: 'Label'
+    choices: 'Dict[str, SelectEnhancementFieldChoice]'
+    name: 'InputLabel'
     """
     A label for this option group.
     """
 
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceOptionGroup':
+    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectEnhancementChoiceChoiceGroup':
         return cls(
-            "option_group",
-            _from_json_data(Dict[str, AssetControlFieldSelectEnhancementChoiceOptionGroupChoice], data.get("choices")),
-            _from_json_data(Label, data.get("name")),
+            "choice_group",
+            _from_json_data(Dict[str, SelectEnhancementFieldChoice], data.get("choices")),
+            _from_json_data(InputLabel, data.get("name")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "option_type": "option_group" }
+        data = { "choice_type": "choice_group" }
         data["choices"] = _to_json_data(self.choices)
         data["name"] = _to_json_data(self.name)
         return data
@@ -1558,22 +1519,22 @@ class AssetOptionField:
 
 @dataclass
 class AssetOptionFieldSelectEnhancementChoice:
-    option_type: 'str'
+    choice_type: 'str'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoice':
         variants: Dict[str, Type[AssetOptionFieldSelectEnhancementChoice]] = {
-            "option": AssetOptionFieldSelectEnhancementChoiceOption,
-            "option_group": AssetOptionFieldSelectEnhancementChoiceOptionGroup,
+            "choice": AssetOptionFieldSelectEnhancementChoiceChoice,
+            "choice_group": AssetOptionFieldSelectEnhancementChoiceChoiceGroup,
         }
 
-        return variants[data["option_type"]].from_json_data(data)
+        return variants[data["choice_type"]].from_json_data(data)
 
     def to_json_data(self) -> Any:
         pass
 
 @dataclass
-class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhancementChoice):
+class AssetOptionFieldSelectEnhancementChoiceChoice(AssetOptionFieldSelectEnhancementChoice):
     """
     Represents an option in a list of choices.
     """
@@ -1583,16 +1544,16 @@ class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhanc
     enhance_moves: 'Optional[List[MoveEnhancement]]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOption':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceChoice':
         return cls(
-            "option",
+            "choice",
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
             _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "option_type": "option" }
+        data = { "choice_type": "choice" }
         data["label"] = _to_json_data(self.label)
         if self.enhance_asset is not None:
              data["enhance_asset"] = _to_json_data(self.enhance_asset)
@@ -1600,68 +1561,29 @@ class AssetOptionFieldSelectEnhancementChoiceOption(AssetOptionFieldSelectEnhanc
              data["enhance_moves"] = _to_json_data(self.enhance_moves)
         return data
 
-class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
 @dataclass
-class AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice:
-    """
-    Represents an option in a list of choices.
-    """
-
-    label: 'InputLabel'
-    option_type: 'AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType'
-    enhance_asset: 'Optional[AssetEnhancement]'
-    enhance_moves: 'Optional[List[MoveEnhancement]]'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice':
-        return cls(
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(AssetOptionFieldSelectEnhancementChoiceOptionGroupChoiceOptionType, data.get("option_type")),
-            _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
-            _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
-        )
-
-    def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
-        data["label"] = _to_json_data(self.label)
-        data["option_type"] = _to_json_data(self.option_type)
-        if self.enhance_asset is not None:
-             data["enhance_asset"] = _to_json_data(self.enhance_asset)
-        if self.enhance_moves is not None:
-             data["enhance_moves"] = _to_json_data(self.enhance_moves)
-        return data
-
-@dataclass
-class AssetOptionFieldSelectEnhancementChoiceOptionGroup(AssetOptionFieldSelectEnhancementChoice):
+class AssetOptionFieldSelectEnhancementChoiceChoiceGroup(AssetOptionFieldSelectEnhancementChoice):
     """
     Represents a grouping of options in a list of choices.
     """
 
-    choices: 'Dict[str, AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice]'
-    name: 'Label'
+    choices: 'Dict[str, SelectEnhancementFieldChoice]'
+    name: 'InputLabel'
     """
     A label for this option group.
     """
 
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceOptionGroup':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectEnhancementChoiceChoiceGroup':
         return cls(
-            "option_group",
-            _from_json_data(Dict[str, AssetOptionFieldSelectEnhancementChoiceOptionGroupChoice], data.get("choices")),
-            _from_json_data(Label, data.get("name")),
+            "choice_group",
+            _from_json_data(Dict[str, SelectEnhancementFieldChoice], data.get("choices")),
+            _from_json_data(InputLabel, data.get("name")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "option_type": "option_group" }
+        data = { "choice_type": "choice_group" }
         data["choices"] = _to_json_data(self.choices)
         data["name"] = _to_json_data(self.name)
         return data
@@ -1715,300 +1637,12 @@ class AssetOptionFieldSelectEnhancement(AssetOptionField):
         return data
 
 @dataclass
-class AssetOptionFieldSelectValueChoice:
-    using: 'str'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoice':
-        variants: Dict[str, Type[AssetOptionFieldSelectValueChoice]] = {
-            "asset_control": AssetOptionFieldSelectValueChoiceAssetControl,
-            "asset_option": AssetOptionFieldSelectValueChoiceAssetOption,
-            "attached_asset_control": AssetOptionFieldSelectValueChoiceAttachedAssetControl,
-            "attached_asset_option": AssetOptionFieldSelectValueChoiceAttachedAssetOption,
-            "condition_meter": AssetOptionFieldSelectValueChoiceConditionMeter,
-            "custom": AssetOptionFieldSelectValueChoiceCustom,
-            "stat": AssetOptionFieldSelectValueChoiceStat,
-        }
-
-        return variants[data["using"]].from_json_data(data)
-
-    def to_json_data(self) -> Any:
-        pass
-
-class AssetOptionFieldSelectValueChoiceAssetControlOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAssetControlOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
-@dataclass
-class AssetOptionFieldSelectValueChoiceAssetControl(AssetOptionFieldSelectValueChoice):
-    """
-    Represents an option in a list of choices.
-    """
-
-    assets: 'List[AssetIDWildcard]'
-    control: 'DictKey'
-    """
-    The dictionary key of the asset control field.
-    """
-
-    label: 'InputLabel'
-    option_type: 'AssetOptionFieldSelectValueChoiceAssetControlOptionType'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAssetControl':
-        return cls(
-            "asset_control",
-            _from_json_data(List[AssetIDWildcard], data.get("assets")),
-            _from_json_data(DictKey, data.get("control")),
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(AssetOptionFieldSelectValueChoiceAssetControlOptionType, data.get("option_type")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "using": "asset_control" }
-        data["assets"] = _to_json_data(self.assets)
-        data["control"] = _to_json_data(self.control)
-        data["label"] = _to_json_data(self.label)
-        data["option_type"] = _to_json_data(self.option_type)
-        return data
-
-class AssetOptionFieldSelectValueChoiceAssetOptionOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAssetOptionOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
-@dataclass
-class AssetOptionFieldSelectValueChoiceAssetOption(AssetOptionFieldSelectValueChoice):
-    """
-    Represents an option in a list of choices.
-    """
-
-    assets: 'List[AssetIDWildcard]'
-    label: 'InputLabel'
-    option: 'DictKey'
-    """
-    The dictionary key of the asset option field.
-    """
-
-    option_type: 'AssetOptionFieldSelectValueChoiceAssetOptionOptionType'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAssetOption':
-        return cls(
-            "asset_option",
-            _from_json_data(List[AssetIDWildcard], data.get("assets")),
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(DictKey, data.get("option")),
-            _from_json_data(AssetOptionFieldSelectValueChoiceAssetOptionOptionType, data.get("option_type")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "using": "asset_option" }
-        data["assets"] = _to_json_data(self.assets)
-        data["label"] = _to_json_data(self.label)
-        data["option"] = _to_json_data(self.option)
-        data["option_type"] = _to_json_data(self.option_type)
-        return data
-
-class AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
-@dataclass
-class AssetOptionFieldSelectValueChoiceAttachedAssetControl(AssetOptionFieldSelectValueChoice):
-    """
-    Represents an option in a list of choices.
-    """
-
-    control: 'DictKey'
-    """
-    The dictionary key of the asset control field.
-    """
-
-    label: 'InputLabel'
-    option_type: 'AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAttachedAssetControl':
-        return cls(
-            "attached_asset_control",
-            _from_json_data(DictKey, data.get("control")),
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetControlOptionType, data.get("option_type")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "using": "attached_asset_control" }
-        data["control"] = _to_json_data(self.control)
-        data["label"] = _to_json_data(self.label)
-        data["option_type"] = _to_json_data(self.option_type)
-        return data
-
-class AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
-@dataclass
-class AssetOptionFieldSelectValueChoiceAttachedAssetOption(AssetOptionFieldSelectValueChoice):
-    """
-    Represents an option in a list of choices.
-    """
-
-    label: 'InputLabel'
-    option: 'DictKey'
-    """
-    The dictionary key of the asset option field.
-    """
-
-    option_type: 'AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceAttachedAssetOption':
-        return cls(
-            "attached_asset_option",
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(DictKey, data.get("option")),
-            _from_json_data(AssetOptionFieldSelectValueChoiceAttachedAssetOptionOptionType, data.get("option_type")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "using": "attached_asset_option" }
-        data["label"] = _to_json_data(self.label)
-        data["option"] = _to_json_data(self.option)
-        data["option_type"] = _to_json_data(self.option_type)
-        return data
-
-class AssetOptionFieldSelectValueChoiceConditionMeterOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceConditionMeterOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
-@dataclass
-class AssetOptionFieldSelectValueChoiceConditionMeter(AssetOptionFieldSelectValueChoice):
-    """
-    Represents an option in a list of choices.
-    """
-
-    condition_meter: 'ConditionMeterKey'
-    label: 'InputLabel'
-    option_type: 'AssetOptionFieldSelectValueChoiceConditionMeterOptionType'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceConditionMeter':
-        return cls(
-            "condition_meter",
-            _from_json_data(ConditionMeterKey, data.get("condition_meter")),
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(AssetOptionFieldSelectValueChoiceConditionMeterOptionType, data.get("option_type")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "using": "condition_meter" }
-        data["condition_meter"] = _to_json_data(self.condition_meter)
-        data["label"] = _to_json_data(self.label)
-        data["option_type"] = _to_json_data(self.option_type)
-        return data
-
-class AssetOptionFieldSelectValueChoiceCustomOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceCustomOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
-@dataclass
-class AssetOptionFieldSelectValueChoiceCustom(AssetOptionFieldSelectValueChoice):
-    """
-    Represents an option in a list of choices.
-    """
-
-    label: 'InputLabel'
-    option_type: 'AssetOptionFieldSelectValueChoiceCustomOptionType'
-    value: 'int'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceCustom':
-        return cls(
-            "custom",
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(AssetOptionFieldSelectValueChoiceCustomOptionType, data.get("option_type")),
-            _from_json_data(int, data.get("value")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "using": "custom" }
-        data["label"] = _to_json_data(self.label)
-        data["option_type"] = _to_json_data(self.option_type)
-        data["value"] = _to_json_data(self.value)
-        return data
-
-class AssetOptionFieldSelectValueChoiceStatOptionType(Enum):
-    OPTION = "option"
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceStatOptionType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
-@dataclass
-class AssetOptionFieldSelectValueChoiceStat(AssetOptionFieldSelectValueChoice):
-    """
-    Represents an option in a list of choices.
-    """
-
-    label: 'InputLabel'
-    option_type: 'AssetOptionFieldSelectValueChoiceStatOptionType'
-    stat: 'StatKey'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValueChoiceStat':
-        return cls(
-            "stat",
-            _from_json_data(InputLabel, data.get("label")),
-            _from_json_data(AssetOptionFieldSelectValueChoiceStatOptionType, data.get("option_type")),
-            _from_json_data(StatKey, data.get("stat")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "using": "stat" }
-        data["label"] = _to_json_data(self.label)
-        data["option_type"] = _to_json_data(self.option_type)
-        data["stat"] = _to_json_data(self.stat)
-        return data
-
-@dataclass
 class AssetOptionFieldSelectValue(AssetOptionField):
     """
     Represents a list of mutually exclusive choices.
     """
 
-    choices: 'Dict[str, AssetOptionFieldSelectValueChoice]'
+    choices: 'Dict[str, SelectValueFieldChoice]'
     id: 'AssetOptionFieldID'
     """
     The unique Datasworn ID for this item.
@@ -2031,7 +1665,7 @@ class AssetOptionFieldSelectValue(AssetOptionField):
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectValue':
         return cls(
             "select_value",
-            _from_json_data(Dict[str, AssetOptionFieldSelectValueChoice], data.get("choices")),
+            _from_json_data(Dict[str, SelectValueFieldChoice], data.get("choices")),
             _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(InputLabel, data.get("label")),
             _from_json_data(DictKey, data.get("value")),
@@ -2481,6 +2115,41 @@ class AtlasIDWildcard:
         return _to_json_data(self.value)
 
 @dataclass
+class AuthorInfo:
+    """
+    Information on the original creator of this material.
+    """
+
+    name: 'str'
+    email: 'Optional[str]'
+    """
+    An optional email contact for the author
+    """
+
+    url: 'Optional[str]'
+    """
+    An optional URL for the author's website.
+    """
+
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AuthorInfo':
+        return cls(
+            _from_json_data(str, data.get("name")),
+            _from_json_data(Optional[str], data.get("email")),
+            _from_json_data(Optional[str], data.get("url")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["name"] = _to_json_data(self.name)
+        if self.email is not None:
+             data["email"] = _to_json_data(self.email)
+        if self.url is not None:
+             data["url"] = _to_json_data(self.url)
+        return data
+
+@dataclass
 class ChallengeRank:
     """
     Challenge rank, represented as an integer from 1 (troublesome) to 5 (epic).
@@ -2582,8 +2251,7 @@ class ConditionMeterRuleID:
 @dataclass
 class CSSColor:
     """
-    A CSS color value. See: https://developer.mozilla.org/en-
-    US/docs/Web/CSS/color_value
+    A CSS color value.
     """
 
     value: 'str'
@@ -3338,7 +3006,7 @@ class DiceExpression:
 @dataclass
 class DictKey:
     """
-    A key used in a Datasworn dictionary object.
+    A `snake_case` key used in a Datasworn dictionary object.
     """
 
     value: 'str'
@@ -3484,7 +3152,7 @@ class ImpactCategory:
     A description of this impact category.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     """
     A label for this impact category.
     """
@@ -3495,7 +3163,7 @@ class ImpactCategory:
         return cls(
             _from_json_data(Dict[str, ImpactRule], data.get("contents")),
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
         )
 
     def to_json_data(self) -> Any:
@@ -3516,7 +3184,7 @@ class ImpactRule:
     A description of this impact.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     """
     The label for this impact.
     """
@@ -3541,7 +3209,7 @@ class ImpactRule:
     def from_json_data(cls, data: Any) -> 'ImpactRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("permanent")),
             _from_json_data(List[ConditionMeterKey], data.get("prevents_recovery")),
             _from_json_data(bool, data.get("shared")),
@@ -4305,29 +3973,6 @@ class MoveOutcome:
         data["text"] = _to_json_data(self.text)
         return data
 
-class MoveOutcomeType(Enum):
-    MISS = "miss"
-    """
-    The score doesn't beat either challenge die.
-    """
-
-    STRONG_HIT = "strong_hit"
-    """
-    The score is greater than both challenge dice.
-    """
-
-    WEAK_HIT = "weak_hit"
-    """
-    The score is greater than one challenge die.
-    """
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'MoveOutcomeType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
 @dataclass
 class MoveOutcomes:
     """
@@ -4886,25 +4531,6 @@ class OracleCollectionRenderingTables(OracleCollectionRendering):
     def to_json_data(self) -> Any:
         data = { "style": "tables" }
         return data
-
-class OracleCollectionStyle(Enum):
-    MULTI_TABLE = "multi_table"
-    """
-    Presented as a single table, with its OracleTable children rendered as
-    columns.
-    """
-
-    TABLES = "tables"
-    """
-    Presented as a collection of separate tables.
-    """
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'OracleCollectionStyle':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
 
 @dataclass
 class OracleCollectionTableColumn:
@@ -5471,29 +5097,6 @@ class OracleTableRowID:
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
 
-class OracleTableStyle(Enum):
-    COLUMN = "column"
-    """
-    Render as a single column of a table.
-    """
-
-    EMBED_IN_ROW = "embed_in_row"
-    """
-    Render as a table, within a row in another table.
-    """
-
-    STANDALONE = "standalone"
-    """
-    Render as a standalone table.
-    """
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'OracleTableStyle':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
 class PartOfSpeech(Enum):
     ADJECTIVE = "adjective"
     """
@@ -5867,14 +5470,14 @@ class RollableValueCustom(RollableValue):
     An arbitrary static integer value with a label.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     value: 'int'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'RollableValueCustom':
         return cls(
             "custom",
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(int, data.get("value")),
         )
 
@@ -5903,51 +5506,6 @@ class RollableValueStat(RollableValue):
         data = { "using": "stat" }
         data["stat"] = _to_json_data(self.stat)
         return data
-
-class RollableValueType(Enum):
-    ASSET_CONTROL = "asset_control"
-    """
-    A reference to the value of an asset control.
-    """
-
-    ASSET_OPTION = "asset_option"
-    """
-    A reference to the value of an asset option.
-    """
-
-    ATTACHED_ASSET_CONTROL = "attached_asset_control"
-    """
-    A reference to the value of an attached asset control. For example, a Module
-    asset could use this to roll using the `integrity` control of an attached
-    Vehicle.
-    """
-
-    ATTACHED_ASSET_OPTION = "attached_asset_option"
-    """
-    A reference to the value of an attached asset option.
-    """
-
-    CONDITION_METER = "condition_meter"
-    """
-    A reference to the value of a standard player condition meter.
-    """
-
-    CUSTOM = "custom"
-    """
-    An arbitrary static integer value with a label.
-    """
-
-    STAT = "stat"
-    """
-    A reference to the value of a standard player character stat.
-    """
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'RollableValueType':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
 
 @dataclass
 class Rules:
@@ -6064,6 +5622,333 @@ class RulesetID:
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
 
+class SelectEnhancementFieldChoiceChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectEnhancementFieldChoiceChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectEnhancementFieldChoice:
+    """
+    Represents an option in a list of choices.
+    """
+
+    choice_type: 'SelectEnhancementFieldChoiceChoiceType'
+    label: 'InputLabel'
+    enhance_asset: 'Optional[AssetEnhancement]'
+    enhance_moves: 'Optional[List[MoveEnhancement]]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectEnhancementFieldChoice':
+        return cls(
+            _from_json_data(SelectEnhancementFieldChoiceChoiceType, data.get("choice_type")),
+            _from_json_data(InputLabel, data.get("label")),
+            _from_json_data(Optional[AssetEnhancement], data.get("enhance_asset")),
+            _from_json_data(Optional[List[MoveEnhancement]], data.get("enhance_moves")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["label"] = _to_json_data(self.label)
+        if self.enhance_asset is not None:
+             data["enhance_asset"] = _to_json_data(self.enhance_asset)
+        if self.enhance_moves is not None:
+             data["enhance_moves"] = _to_json_data(self.enhance_moves)
+        return data
+
+@dataclass
+class SelectValueFieldChoice:
+    using: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoice':
+        variants: Dict[str, Type[SelectValueFieldChoice]] = {
+            "asset_control": SelectValueFieldChoiceAssetControl,
+            "asset_option": SelectValueFieldChoiceAssetOption,
+            "attached_asset_control": SelectValueFieldChoiceAttachedAssetControl,
+            "attached_asset_option": SelectValueFieldChoiceAttachedAssetOption,
+            "condition_meter": SelectValueFieldChoiceConditionMeter,
+            "custom": SelectValueFieldChoiceCustom,
+            "stat": SelectValueFieldChoiceStat,
+        }
+
+        return variants[data["using"]].from_json_data(data)
+
+    def to_json_data(self) -> Any:
+        pass
+
+class SelectValueFieldChoiceAssetControlChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAssetControlChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectValueFieldChoiceAssetControl(SelectValueFieldChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
+    assets: 'List[AssetIDWildcard]'
+    choice_type: 'SelectValueFieldChoiceAssetControlChoiceType'
+    control: 'DictKey'
+    """
+    The dictionary key of the asset control field.
+    """
+
+    label: 'InputLabel'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAssetControl':
+        return cls(
+            "asset_control",
+            _from_json_data(List[AssetIDWildcard], data.get("assets")),
+            _from_json_data(SelectValueFieldChoiceAssetControlChoiceType, data.get("choice_type")),
+            _from_json_data(DictKey, data.get("control")),
+            _from_json_data(InputLabel, data.get("label")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "asset_control" }
+        data["assets"] = _to_json_data(self.assets)
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["control"] = _to_json_data(self.control)
+        data["label"] = _to_json_data(self.label)
+        return data
+
+class SelectValueFieldChoiceAssetOptionChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAssetOptionChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectValueFieldChoiceAssetOption(SelectValueFieldChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
+    assets: 'List[AssetIDWildcard]'
+    choice_type: 'SelectValueFieldChoiceAssetOptionChoiceType'
+    label: 'InputLabel'
+    option: 'DictKey'
+    """
+    The dictionary key of the asset option field.
+    """
+
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAssetOption':
+        return cls(
+            "asset_option",
+            _from_json_data(List[AssetIDWildcard], data.get("assets")),
+            _from_json_data(SelectValueFieldChoiceAssetOptionChoiceType, data.get("choice_type")),
+            _from_json_data(InputLabel, data.get("label")),
+            _from_json_data(DictKey, data.get("option")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "asset_option" }
+        data["assets"] = _to_json_data(self.assets)
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["label"] = _to_json_data(self.label)
+        data["option"] = _to_json_data(self.option)
+        return data
+
+class SelectValueFieldChoiceAttachedAssetControlChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAttachedAssetControlChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectValueFieldChoiceAttachedAssetControl(SelectValueFieldChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
+    choice_type: 'SelectValueFieldChoiceAttachedAssetControlChoiceType'
+    control: 'DictKey'
+    """
+    The dictionary key of the asset control field.
+    """
+
+    label: 'InputLabel'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAttachedAssetControl':
+        return cls(
+            "attached_asset_control",
+            _from_json_data(SelectValueFieldChoiceAttachedAssetControlChoiceType, data.get("choice_type")),
+            _from_json_data(DictKey, data.get("control")),
+            _from_json_data(InputLabel, data.get("label")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "attached_asset_control" }
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["control"] = _to_json_data(self.control)
+        data["label"] = _to_json_data(self.label)
+        return data
+
+class SelectValueFieldChoiceAttachedAssetOptionChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAttachedAssetOptionChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectValueFieldChoiceAttachedAssetOption(SelectValueFieldChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
+    choice_type: 'SelectValueFieldChoiceAttachedAssetOptionChoiceType'
+    label: 'InputLabel'
+    option: 'DictKey'
+    """
+    The dictionary key of the asset option field.
+    """
+
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceAttachedAssetOption':
+        return cls(
+            "attached_asset_option",
+            _from_json_data(SelectValueFieldChoiceAttachedAssetOptionChoiceType, data.get("choice_type")),
+            _from_json_data(InputLabel, data.get("label")),
+            _from_json_data(DictKey, data.get("option")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "attached_asset_option" }
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["label"] = _to_json_data(self.label)
+        data["option"] = _to_json_data(self.option)
+        return data
+
+class SelectValueFieldChoiceConditionMeterChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceConditionMeterChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectValueFieldChoiceConditionMeter(SelectValueFieldChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
+    choice_type: 'SelectValueFieldChoiceConditionMeterChoiceType'
+    condition_meter: 'ConditionMeterKey'
+    label: 'InputLabel'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceConditionMeter':
+        return cls(
+            "condition_meter",
+            _from_json_data(SelectValueFieldChoiceConditionMeterChoiceType, data.get("choice_type")),
+            _from_json_data(ConditionMeterKey, data.get("condition_meter")),
+            _from_json_data(InputLabel, data.get("label")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "condition_meter" }
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["condition_meter"] = _to_json_data(self.condition_meter)
+        data["label"] = _to_json_data(self.label)
+        return data
+
+class SelectValueFieldChoiceCustomChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceCustomChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectValueFieldChoiceCustom(SelectValueFieldChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
+    choice_type: 'SelectValueFieldChoiceCustomChoiceType'
+    label: 'InputLabel'
+    value: 'int'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceCustom':
+        return cls(
+            "custom",
+            _from_json_data(SelectValueFieldChoiceCustomChoiceType, data.get("choice_type")),
+            _from_json_data(InputLabel, data.get("label")),
+            _from_json_data(int, data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "custom" }
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["label"] = _to_json_data(self.label)
+        data["value"] = _to_json_data(self.value)
+        return data
+
+class SelectValueFieldChoiceStatChoiceType(Enum):
+    CHOICE = "choice"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceStatChoiceType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class SelectValueFieldChoiceStat(SelectValueFieldChoice):
+    """
+    Represents an option in a list of choices.
+    """
+
+    choice_type: 'SelectValueFieldChoiceStatChoiceType'
+    label: 'InputLabel'
+    stat: 'StatKey'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SelectValueFieldChoiceStat':
+        return cls(
+            "stat",
+            _from_json_data(SelectValueFieldChoiceStatChoiceType, data.get("choice_type")),
+            _from_json_data(InputLabel, data.get("label")),
+            _from_json_data(StatKey, data.get("stat")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "stat" }
+        data["choice_type"] = _to_json_data(self.choice_type)
+        data["label"] = _to_json_data(self.label)
+        data["stat"] = _to_json_data(self.stat)
+        return data
+
 @dataclass
 class SemanticVersion:
     value: 'str'
@@ -6076,43 +5961,12 @@ class SemanticVersion:
         return _to_json_data(self.value)
 
 @dataclass
-class SourceAuthor:
-    name: 'str'
-    email: 'Optional[str]'
-    """
-    An optional email contact for the author
-    """
-
-    url: 'Optional[str]'
-    """
-    An optional URL for the author's website.
-    """
-
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'SourceAuthor':
-        return cls(
-            _from_json_data(str, data.get("name")),
-            _from_json_data(Optional[str], data.get("email")),
-            _from_json_data(Optional[str], data.get("url")),
-        )
-
-    def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
-        data["name"] = _to_json_data(self.name)
-        if self.email is not None:
-             data["email"] = _to_json_data(self.email)
-        if self.url is not None:
-             data["url"] = _to_json_data(self.url)
-        return data
-
-@dataclass
 class Source:
     """
     Metadata describing the original source of this item
     """
 
-    authors: 'List[SourceAuthor]'
+    authors: 'List[AuthorInfo]'
     date: 'str'
     """
     The date of the source documents's last update, formatted YYYY-MM-DD.
@@ -6139,7 +5993,7 @@ class Source:
     @classmethod
     def from_json_data(cls, data: Any) -> 'Source':
         return cls(
-            _from_json_data(List[SourceAuthor], data.get("authors")),
+            _from_json_data(List[AuthorInfo], data.get("authors")),
             _from_json_data(str, data.get("date")),
             _from_json_data(str, data.get("license")),
             _from_json_data(str, data.get("title")),
@@ -6161,7 +6015,7 @@ class Source:
 class SpecialTrackRollMethod(Enum):
     ALL = "all"
     """
-    Use **every** roll option at once.
+    Use _every_ roll option at once.
     """
 
     HIGHEST = "highest"
@@ -6213,7 +6067,7 @@ class SpecialTrackRule:
     A description of this special track.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     """
     A label for this special track.
     """
@@ -6233,7 +6087,7 @@ class SpecialTrackRule:
     def from_json_data(cls, data: Any) -> 'SpecialTrackRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
             _from_json_data(bool, data.get("optional")),
             _from_json_data(bool, data.get("shared")),
         )
@@ -6310,7 +6164,7 @@ class StatRule:
     A description of this stat.
     """
 
-    label: 'Label'
+    label: 'InputLabel'
     """
     A label for this stat.
     """
@@ -6320,7 +6174,7 @@ class StatRule:
     def from_json_data(cls, data: Any) -> 'StatRule':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(Label, data.get("label")),
+            _from_json_data(InputLabel, data.get("label")),
         )
 
     def to_json_data(self) -> Any:

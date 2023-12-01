@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum SpecialTrackRollMethod {
     /**
-     * Use **every** roll option at once.
+     * Use _every_ roll option at once.
      */
     @JsonProperty("all")
     ALL,
