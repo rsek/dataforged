@@ -22,10 +22,10 @@ export async function loadSchemaFile(filePath: string, key: string) {
 }
 export async function loadSourceSchema() {
 	const key = 'DataswornSource'
-	return await loadSchemaFile(CONST.SCHEMA_IN, key)
+	return await loadSchemaFile(CONST.SOURCEDATA_SCHEMA_PATH, key)
 }
 
 export async function loadSchema() {
 	const key = 'Datasworn'
-	return await loadSchemaFile(CONST.SCHEMA_OUT, key)
+	return await loadSchemaFile(CONST.SCHEMA_PATH, key)
 }

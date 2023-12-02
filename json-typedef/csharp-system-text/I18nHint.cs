@@ -6,6 +6,9 @@ namespace Datasworn
 {
     public class I18nHint
     {
+        /// <summary>
+        /// The part of speech for this string.
+        /// </summary>
         [JsonPropertyName("part_of_speech")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public PartOfSpeech? PartOfSpeech { get; set; }

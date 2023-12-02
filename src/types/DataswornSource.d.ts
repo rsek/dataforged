@@ -624,6 +624,9 @@ export type SvgImageUrl = string
 export type WebpImageUrl = string
 
 export interface I18nHint {
+	/**
+	 * The part of speech for this string.
+	 */
 	part_of_speech?: PartOfSpeech
 }
 
@@ -673,6 +676,8 @@ export type MarkdownString = string
  *   - `gerund`: Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
  *   - `adjective`: An adjective.
  *   - `attributive_verb`: A verb used as an adjective, to modify a noun.
+ *   - `adjective_as_proper_noun`: An adjective used as a proper noun.
+ *   - `common_noun_as_proper_noun`: An common noun used as a proper noun.
  */
 export type PartOfSpeech =
 	| 'common_noun'
@@ -683,6 +688,8 @@ export type PartOfSpeech =
 	| 'gerund'
 	| 'adjective'
 	| 'attributive_verb'
+	| 'adjective_as_proper_noun'
+	| 'common_noun_as_proper_noun'
 
 /**
  * A rich text string in Markdown with replaced values from oracle roll results.

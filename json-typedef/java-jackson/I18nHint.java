@@ -17,6 +17,7 @@ public class I18nHint {
 
     /**
      * Getter for partOfSpeech.<p>
+     * The part of speech for this string.
      */
     public PartOfSpeech getPartOfSpeech() {
         return partOfSpeech;
@@ -24,6 +25,7 @@ public class I18nHint {
 
     /**
      * Setter for partOfSpeech.<p>
+     * The part of speech for this string.
      */
     public void setPartOfSpeech(PartOfSpeech partOfSpeech) {
         this.partOfSpeech = partOfSpeech;

@@ -5,7 +5,8 @@ import {
 	PKG_DIR_NODE,
 	PKG_SCOPE_OFFICIAL,
 	ROOT_SOURCE_DATA,
-	SCHEMA_OUT,
+	SCHEMA_PATH,
+	SOURCE_SCHEMA_PATH,
 	TYPES_OUT
 } from '../../const.js'
 import Log from '../../utils/Log.js'
@@ -35,12 +36,11 @@ export async function buildCorePackage({
 	await fs.emptyDir(jsonDir)
 
 	await Promise.all([
-		fs.copy(SCHEMA_OUT, path.join(jsonDir, 'datasworn.schema.json'), {
+		fs.copy(SCHEMA_PATH, path.join(jsonDir, 'datasworn.schema.json'), {
 			overwrite: true
 		}),
-
 		fs.copy(
-			path.join(ROOT_SOURCE_DATA, 'datasworn-source.schema.json'),
+			SOURCE_SCHEMA_PATH,
 			path.join(jsonDir, 'datasworn-source.schema.json'),
 			{
 				overwrite: true

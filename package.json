@@ -1,7 +1,7 @@
 {
 	"name": "datasworn-tools",
-	"version": "0.0.0-0",
-	"description": "Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. 🚀 Includes JSON schemas and a Javascript/Typescript API.",
+	"version": "0.0.3",
+	"description": "",
 	"type": "module",
 	"scripts": {
 		"check": "tsc --project tsconfig.json --noEmit",
@@ -11,7 +11,8 @@
 		"build:schema": "ts-node ./src/scripts/schema/buildSchema.ts",
 		"build:json": "ts-node ./src/scripts/datasworn/writeDatasworn.ts",
 		"build:pkg": "ts-node ./src/scripts/pkg/nodejs/buildPackages.ts",
-		"build": "npm run build:schema && npm run build:json && npm run build:jtd && npm run build:dts && npm run build:pkg"
+		"build": "ts-node ./src/scripts/pkg/nodejs/updatePackageVersions.ts && npm run build:schema && npm run build:json && npm run build:jtd && npm run build:dts && npm run build:pkg",
+		"pkg:node": "ts-node ./src/scripts/pkg/nodejs/publishPackages.ts"
 	},
 	"files": [
 		"docs",

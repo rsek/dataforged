@@ -2279,6 +2279,7 @@ module Datasworn
   end
 
   class I18nHint
+    # The part of speech for this string.
     attr_accessor :part_of_speech
 
     def self.from_json_data(data)
@@ -3901,6 +3902,9 @@ module Datasworn
     # An adjective.
     ADJECTIVE = new("adjective")
 
+    # An adjective used as a proper noun.
+    ADJECTIVE_AS_PROPER_NOUN = new("adjective_as_proper_noun")
+
     # A common noun used as an adjective, to modify another noun.
     ADJUNCT_COMMON_NOUN = new("adjunct_common_noun")
 
@@ -3912,6 +3916,9 @@ module Datasworn
 
     # A common noun.
     COMMON_NOUN = new("common_noun")
+
+    # An common noun used as a proper noun.
+    COMMON_NOUN_AS_PROPER_NOUN = new("common_noun_as_proper_noun")
 
     # Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
     GERUND = new("gerund")
@@ -3925,10 +3932,12 @@ module Datasworn
     def self.from_json_data(data)
       {
         "adjective" => ADJECTIVE,
+        "adjective_as_proper_noun" => ADJECTIVE_AS_PROPER_NOUN,
         "adjunct_common_noun" => ADJUNCT_COMMON_NOUN,
         "adjunct_proper_noun" => ADJUNCT_PROPER_NOUN,
         "attributive_verb" => ATTRIBUTIVE_VERB,
         "common_noun" => COMMON_NOUN,
+        "common_noun_as_proper_noun" => COMMON_NOUN_AS_PROPER_NOUN,
         "gerund" => GERUND,
         "proper_noun" => PROPER_NOUN,
         "verb" => VERB,

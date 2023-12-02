@@ -15,6 +15,11 @@ namespace Datasworn
         Adjective,
 
         /// <summary>
+        /// An adjective used as a proper noun.
+        /// </summary>
+        AdjectiveAsProperNoun,
+
+        /// <summary>
         /// A common noun used as an adjective, to modify another noun.
         /// </summary>
         AdjunctCommonNoun,
@@ -33,6 +38,11 @@ namespace Datasworn
         /// A common noun.
         /// </summary>
         CommonNoun,
+
+        /// <summary>
+        /// An common noun used as a proper noun.
+        /// </summary>
+        CommonNounAsProperNoun,
 
         /// <summary>
         /// Gerund or present participle of a verb, e.g. "going", "seeing",
@@ -59,6 +69,8 @@ namespace Datasworn
             {
                 case "adjective":
                     return PartOfSpeech.Adjective;
+                case "adjective_as_proper_noun":
+                    return PartOfSpeech.AdjectiveAsProperNoun;
                 case "adjunct_common_noun":
                     return PartOfSpeech.AdjunctCommonNoun;
                 case "adjunct_proper_noun":
@@ -67,6 +79,8 @@ namespace Datasworn
                     return PartOfSpeech.AttributiveVerb;
                 case "common_noun":
                     return PartOfSpeech.CommonNoun;
+                case "common_noun_as_proper_noun":
+                    return PartOfSpeech.CommonNounAsProperNoun;
                 case "gerund":
                     return PartOfSpeech.Gerund;
                 case "proper_noun":
@@ -85,6 +99,9 @@ namespace Datasworn
                 case PartOfSpeech.Adjective:
                     JsonSerializer.Serialize<string>(writer, "adjective", options);
                     return;
+                case PartOfSpeech.AdjectiveAsProperNoun:
+                    JsonSerializer.Serialize<string>(writer, "adjective_as_proper_noun", options);
+                    return;
                 case PartOfSpeech.AdjunctCommonNoun:
                     JsonSerializer.Serialize<string>(writer, "adjunct_common_noun", options);
                     return;
@@ -96,6 +113,9 @@ namespace Datasworn
                     return;
                 case PartOfSpeech.CommonNoun:
                     JsonSerializer.Serialize<string>(writer, "common_noun", options);
+                    return;
+                case PartOfSpeech.CommonNounAsProperNoun:
+                    JsonSerializer.Serialize<string>(writer, "common_noun_as_proper_noun", options);
                     return;
                 case PartOfSpeech.Gerund:
                     JsonSerializer.Serialize<string>(writer, "gerund", options);

@@ -12,6 +12,12 @@ public enum PartOfSpeech {
     ADJECTIVE,
 
     /**
+     * An adjective used as a proper noun.
+     */
+    @JsonProperty("adjective_as_proper_noun")
+    ADJECTIVE_AS_PROPER_NOUN,
+
+    /**
      * A common noun used as an adjective, to modify another noun.
      */
     @JsonProperty("adjunct_common_noun")
@@ -34,6 +40,12 @@ public enum PartOfSpeech {
      */
     @JsonProperty("common_noun")
     COMMON_NOUN,
+
+    /**
+     * An common noun used as a proper noun.
+     */
+    @JsonProperty("common_noun_as_proper_noun")
+    COMMON_NOUN_AS_PROPER_NOUN,
 
     /**
      * Gerund or present participle of a verb, e.g. "going", "seeing", "waving"

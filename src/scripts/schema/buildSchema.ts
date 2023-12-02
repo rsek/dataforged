@@ -30,7 +30,7 @@ const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'Datasworn',
 		rootSchema: Schema.DataswornRoot,
-		paths: [CONST.SCHEMA_OUT],
+		paths: [CONST.SCHEMA_PATH],
 		messages: {
 			writeStart: '✏️  Writing schema for Datasworn',
 			writeFinish: '✅ Finished writing schema for Datasworn'
@@ -39,7 +39,7 @@ const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'DataswornSource',
 		rootSchema: Schema.DataswornSourceRoot,
-		paths: [CONST.SCHEMA_IN],
+		paths: [CONST.SOURCEDATA_SCHEMA_PATH, CONST.SOURCE_SCHEMA_PATH],
 		messages: {
 			writeStart: '✏️  Writing schema for DataswornSource',
 			writeFinish: '✅ Finished writing schema for DataswornSource'
@@ -47,7 +47,7 @@ const schemaOptions: SchemaOptions[] = [
 	}
 ]
 
-const prettierOptions = await getPrettierOptions(CONST.SCHEMA_OUT)
+const prettierOptions = await getPrettierOptions(CONST.SCHEMA_PATH)
 
 const metadataKeys = []
 

@@ -1647,6 +1647,7 @@ pub type ExpansionId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct I18nHint {
+    /// The part of speech for this string.
     #[serde(rename = "part_of_speech")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub partOfSpeech: Option<Box<PartOfSpeech>>,
@@ -2762,6 +2763,10 @@ pub enum PartOfSpeech {
     #[serde(rename = "adjective")]
     Adjective,
 
+    /// An adjective used as a proper noun.
+    #[serde(rename = "adjective_as_proper_noun")]
+    AdjectiveAsProperNoun,
+
     /// A common noun used as an adjective, to modify another noun.
     #[serde(rename = "adjunct_common_noun")]
     AdjunctCommonNoun,
@@ -2777,6 +2782,10 @@ pub enum PartOfSpeech {
     /// A common noun.
     #[serde(rename = "common_noun")]
     CommonNoun,
+
+    /// An common noun used as a proper noun.
+    #[serde(rename = "common_noun_as_proper_noun")]
+    CommonNounAsProperNoun,
 
     /// Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
     #[serde(rename = "gerund")]

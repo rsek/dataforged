@@ -1484,6 +1484,7 @@ type DomainFeatureRowID = string
 type ExpansionID = string
 
 type I18nHint struct {
+	// The part of speech for this string.
 	PartOfSpeech *PartOfSpeech `json:"part_of_speech,omitempty"`
 }
 
@@ -2439,6 +2440,9 @@ const (
 // An adjective.
 	PartOfSpeechAdjective PartOfSpeech = "adjective"
 
+// An adjective used as a proper noun.
+	PartOfSpeechAdjectiveAsProperNoun PartOfSpeech = "adjective_as_proper_noun"
+
 // A common noun used as an adjective, to modify another noun.
 	PartOfSpeechAdjunctCommonNoun PartOfSpeech = "adjunct_common_noun"
 
@@ -2450,6 +2454,9 @@ const (
 
 // A common noun.
 	PartOfSpeechCommonNoun PartOfSpeech = "common_noun"
+
+// An common noun used as a proper noun.
+	PartOfSpeechCommonNounAsProperNoun PartOfSpeech = "common_noun_as_proper_noun"
 
 // Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
 	PartOfSpeechGerund PartOfSpeech = "gerund"

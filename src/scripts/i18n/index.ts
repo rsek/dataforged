@@ -1,5 +1,5 @@
 import { JSONSchema7 } from 'json-schema'
-import { ROOT_OUTPUT, SCHEMA_OUT } from '../const.js'
+import { ROOT_OUTPUT, SCHEMA_PATH } from '../const.js'
 import * as pkgs from '../pkg/pkgConfig.js'
 import fs from 'fs-extra'
 import JsonSchema from 'json-schema-library'
@@ -10,7 +10,7 @@ import { Datasworn } from '../../types/Datasworn.js'
 
 const DEFAULT_LOCALE = 'en'
 
-const schema = (await fs.readJSON(SCHEMA_OUT)) as JSONSchema7
+const schema = (await fs.readJSON(SCHEMA_PATH)) as JSONSchema7
 const validator = new JsonSchema.Draft07(schema as any)
 
 for (const pkg of Object.values(pkgs)) {

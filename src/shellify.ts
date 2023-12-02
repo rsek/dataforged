@@ -29,15 +29,11 @@ export function shellify<T extends ShellCommandParams>(
 	// console.log(cmdString)
 
 	exec(cmdString, execOptions, (error, stdout, stderr) => {
-		if (error) {
-			Log.error(`error: ${error.message}`)
-			return
-		}
-		if (stderr) {
-			Log.error(`stderr: ${stderr}`)
-			return
-		}
-		Log.info(`stdout: ${stdout}`)
+		if (error) return Log.error(`error: ${error.message}`)
+
+		if (stderr) return Log.error(`stderr: ${stderr}`)
+
+		return Log.info(`stdout: ${stdout}`)
 	})
 }
 

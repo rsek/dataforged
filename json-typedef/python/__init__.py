@@ -3067,6 +3067,10 @@ class ExpansionID:
 @dataclass
 class I18nHint:
     part_of_speech: 'Optional[PartOfSpeech]'
+    """
+    The part of speech for this string.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'I18nHint':
@@ -5103,6 +5107,11 @@ class PartOfSpeech(Enum):
     An adjective.
     """
 
+    ADJECTIVE_AS_PROPER_NOUN = "adjective_as_proper_noun"
+    """
+    An adjective used as a proper noun.
+    """
+
     ADJUNCT_COMMON_NOUN = "adjunct_common_noun"
     """
     A common noun used as an adjective, to modify another noun.
@@ -5121,6 +5130,11 @@ class PartOfSpeech(Enum):
     COMMON_NOUN = "common_noun"
     """
     A common noun.
+    """
+
+    COMMON_NOUN_AS_PROPER_NOUN = "common_noun_as_proper_noun"
+    """
+    An common noun used as a proper noun.
     """
 
     GERUND = "gerund"

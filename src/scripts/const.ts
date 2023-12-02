@@ -2,7 +2,7 @@ import path from 'path'
 
 export const PKG_NAME = 'Datasworn'
 
-export const VERSION = '0.0.2-dev'
+export const VERSION = '0.0.4'
 
 export const PKG_SCOPE_OFFICIAL = '@datasworn'
 export const PKG_SCOPE_COMMUNITY = '@datasworn-community-content'
@@ -19,8 +19,12 @@ export const ROOT_TYPES_OUT = path.join(process.cwd(), 'src/types')
 
 export const TYPES_OUT = path.join(ROOT_TYPES_OUT, 'Datasworn.d.ts')
 
-export const SCHEMA_OUT = path.join(ROOT_OUTPUT, 'datasworn.schema.json')
-export const SCHEMA_IN = path.join(
+export const SCHEMA_PATH = path.join(ROOT_OUTPUT, 'datasworn.schema.json')
+export const SOURCE_SCHEMA_PATH = path.join(
+	ROOT_OUTPUT,
+	'datasworn-source.schema.json'
+)
+export const SOURCEDATA_SCHEMA_PATH = path.join(
 	ROOT_SOURCE_DATA,
 	'datasworn-source.schema.json'
 )
